@@ -1,0 +1,27 @@
+OASISFormat: 0.4
+Name:        OCaml-GObject-Introspection
+Version:     0.0.0
+Synopsis:    OCaml bindings for GObject-Introspection
+Authors:     cedlemo
+License:     GPL-3
+Plugins:     META (0.4), StdFiles (0.4), DevFiles (0.4)
+BuildTools: ocamlbuild
+
+Library "GObjectIntrospection"
+  Path: lib
+  Modules: GObjectIntrospection
+  CSources: gobject_introspection_stubs.h, gobject_introspection_stubs.c
+  CClib: -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+  CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread -I/usr/include/gobject-introspection-1.0 -I/usr/lib/libffi-3.2.1/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include # Better safe than sorry.
+
+# pkg-config --libs --cflags gobject-introspection-1.0
+# -pthread -I/usr/include/gobject-introspection-1.0 -I/usr/lib/libffi-3.2.1/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+#
+
+Executable "gi_repository"
+  Path: samples
+  MainIs: gi_repository.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
