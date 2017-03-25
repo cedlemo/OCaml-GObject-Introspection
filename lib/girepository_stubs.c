@@ -1,4 +1,4 @@
-#include "gobject_introspection_stubs.h"
+#include "girepository_stubs.h"
 #include <girepository.h>
 
 /* Encapsulation of opaque repository handles (of type GIRepository *)
@@ -32,7 +32,6 @@ static struct custom_operations gitypelib_ops = {
   custom_compare_ext_default
 };
 
-/* Allocating an OCaml custom block to hold the given WINDOW * */
 static value alloc_gitypelib(GITypelib *t)
 {
   value v = alloc_custom(&gitypelib_ops, sizeof(GITypelib *), 0, 1);
