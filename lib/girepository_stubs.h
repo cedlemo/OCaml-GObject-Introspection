@@ -13,3 +13,6 @@ caml_g_irepository_get_default_c (value unit);
 
 CAMLprim value
 caml_g_irepository_require_c (value repository, value _namespace);
+
+CAMLprim value
+caml_g_irepository_get_c_prefix_c (value repository, value _namespace);
