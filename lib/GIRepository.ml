@@ -1,7 +1,7 @@
-type repo
-type gitypelib
+type repository
+type typelib
 
-external g_irepository_get_default:
-  unit -> repo = "caml_g_irepository_get_default_c"
-external g_irepository_require:
-  repo -> string -> gitypelib = "caml_g_irepository_require_c"
+external get_default:
+  unit -> repository = "caml_g_irepository_get_default_c"
+external require:
+  repository -> string -> typelib = "caml_g_irepository_require_c"
