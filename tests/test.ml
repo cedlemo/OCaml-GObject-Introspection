@@ -6,7 +6,7 @@ let test_load_namespace test_ctxt =
   let repo = GIRepository.get_default () in
   let tplib = GIRepository.require repo namespace in
   let c_prefix = GIRepository.get_c_prefix repo namespace in
-  assert_equal namespace c_prefix
+  assert_equal ~printer: (fun s -> s) namespace c_prefix
 
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
