@@ -50,7 +50,8 @@ caml_g_irepository_get_default_c (value unit)
 }
 
 CAMLprim value
-caml_g_irepository_require_c (value caml_repository, value caml_namespace)
+caml_g_irepository_require_c (value caml_repository,
+                              value caml_namespace)
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
@@ -88,6 +89,42 @@ caml_g_irepository_get_c_prefix_c (value caml_repository,
     _namespace = String_val (caml_namespace);
 
     c_prefix = g_irepository_get_c_prefix (repository, _namespace);
+
+    CAMLreturn (caml_copy_string (c_prefix));
+}
+
+CAMLprim value
+caml_g_irepository_get_shared_library_c (value caml_repository,
+                                         value caml_namespace)
+{
+    CAMLparam2 (caml_repository, caml_namespace);
+
+    GIRepository *repository;
+    const char *c_prefix;
+    const char *_namespace;
+
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+
+    c_prefix = g_irepository_get_shared_library (repository, _namespace);
+
+    CAMLreturn (caml_copy_string (c_prefix));
+}
+
+CAMLprim value
+caml_g_irepository_get_version_c (value caml_repository,
+                                  value caml_namespace)
+{
+    CAMLparam2 (caml_repository, caml_namespace);
+
+    GIRepository *repository;
+    const char *c_prefix;
+    const char *_namespace;
+
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+
+    c_prefix = g_irepository_get_version (repository, _namespace);
 
     CAMLreturn (caml_copy_string (c_prefix));
 }
