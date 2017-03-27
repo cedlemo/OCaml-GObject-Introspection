@@ -100,15 +100,15 @@ caml_g_irepository_get_shared_library_c (value caml_repository,
     CAMLparam2 (caml_repository, caml_namespace);
 
     GIRepository *repository;
-    const char *c_prefix;
+    const char *lib;
     const char *_namespace;
 
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
 
-    c_prefix = g_irepository_get_shared_library (repository, _namespace);
+    lib = g_irepository_get_shared_library (repository, _namespace);
 
-    CAMLreturn (caml_copy_string (c_prefix));
+    CAMLreturn (caml_copy_string (lib));
 }
 
 CAMLprim value
@@ -118,15 +118,15 @@ caml_g_irepository_get_version_c (value caml_repository,
     CAMLparam2 (caml_repository, caml_namespace);
 
     GIRepository *repository;
-    const char *c_prefix;
+    const char *version;
     const char *_namespace;
 
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
 
-    c_prefix = g_irepository_get_version (repository, _namespace);
+    version = g_irepository_get_version (repository, _namespace);
 
-    CAMLreturn (caml_copy_string (c_prefix));
+    CAMLreturn (caml_copy_string (version));
 }
 
 CAMLprim value
@@ -136,13 +136,13 @@ caml_g_irepository_get_typelib_path_c (value caml_repository,
     CAMLparam2 (caml_repository, caml_namespace);
 
     GIRepository *repository;
-    const char *c_prefix;
+    const char *path;
     const char *_namespace;
 
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
 
-    c_prefix = g_irepository_get_typelib_path (repository, _namespace);
+    path = g_irepository_get_typelib_path (repository, _namespace);
 
-    CAMLreturn (caml_copy_string (c_prefix));
+    CAMLreturn (caml_copy_string (path));
 }
