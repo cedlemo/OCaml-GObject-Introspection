@@ -106,6 +106,18 @@ caml_g_irepository_prepend_library_path_c (value caml_path)
 }
 
 CAMLprim value
+caml_g_irepository_prepend_search_path_c (value caml_path)
+{
+    CAMLparam1 (caml_path);
+    const char *path;
+
+    path = String_val (caml_path);
+    g_irepository_prepend_search_path (path);
+
+    CAMLreturn (Val_unit);
+}
+
+CAMLprim value
 caml_g_irepository_get_shared_library_c (value caml_repository,
                                          value caml_namespace)
 {

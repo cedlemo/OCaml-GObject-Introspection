@@ -21,6 +21,9 @@ CAMLprim value
 caml_gi_irepository_preprend_library_path_c (value path);
 
 CAMLprim value
+caml_gi_irepository_preprend_search_path_c (value path);
+
+CAMLprim value
 caml_g_irepository_get_shared_library_c (value repository, value _namespace);
 
 CAMLprim value
