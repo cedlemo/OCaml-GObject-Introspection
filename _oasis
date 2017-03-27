@@ -25,3 +25,17 @@ Executable "gi_repository"
   CompiledObject: best
   BuildDepends: GObjectIntrospection
 
+Executable girepository_test_unit
+  Path: tests
+  Build$: flag(tests)
+  Install: false
+  CompiledObject: best
+  MainIs: test.ml
+  BuildDepends: oUnit, GObjectIntrospection
+
+Test "girepository_test_unit"
+  Run$: flag(tests)
+  TestTools: girepository_test_unit
+  Command: $girepository_test_unit
+  WorkingDirectory: tests
+
