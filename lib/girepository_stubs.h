@@ -22,3 +22,6 @@ caml_g_irepository_get_shared_library_c (value repository, value _namespace);
 
 CAMLprim value
 caml_g_irepository_get_version_c (value repository, value _namespace);
+
+CAMLprim value
+caml_g_irepository_get_typelib_path_c (value repository, value _namespace);
