@@ -76,6 +76,28 @@ caml_g_irepository_require_c (value caml_repository,
 }
 
 CAMLprim value
+caml_g_irepository_get_dependencies_c (value caml_repository,
+                                       value caml_namespace)
+{
+    CAMLparam2 (caml_repository, caml_namespace);
+
+    GIRepository *repository;
+    const char *_namespace;
+    char **c_dependencies;
+    value dependencies;
+
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+
+    c_dependencies = g_irepository_get_dependencies (repository, _namespace);
+
+    dependencies = c_null_term_array_of_string_to_ocaml_string_list (c_dependencies);
+    g_strfreev (c_dependencies);
+
+    CAMLreturn (dependencies);
+}
+
+CAMLprim value
 caml_g_irepository_get_c_prefix_c (value caml_repository,
                                    value caml_namespace)
 {

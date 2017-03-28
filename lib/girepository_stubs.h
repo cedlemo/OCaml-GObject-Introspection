@@ -1,6 +1,7 @@
 #ifndef GIREPOSITORY_STUBS_H
 #define GIREPOSITORY_STUBS_H
 
+#include "conversions.h"
 #include <stdio.h>
 #include <caml/mlvalues.h>
 #include <caml/memory.h>
@@ -16,6 +17,9 @@ caml_g_irepository_get_default_c (value unit);
 
 CAMLprim value
 caml_g_irepository_require_c (value repository, value _namespace);
+
+CAMLprim value
+caml_g_irepository_get_dependencies_c (value repository, value _namespace);
 
 CAMLprim value
 caml_g_irepository_get_c_prefix_c (value repository, value _namespace);
