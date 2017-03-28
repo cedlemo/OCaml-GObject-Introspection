@@ -14,7 +14,7 @@ static struct custom_operations repository_ops = {
   custom_compare_ext_default
 };
 
-/* Allocating an OCaml custom block to hold the given WINDOW * */
+/* Allocating an OCaml custom block to hold the given GIRepository * */
 static value alloc_repository(GIRepository *r)
 {
   value v = alloc_custom(&repository_ops, sizeof(GIRepository *), 0, 1);

@@ -2,11 +2,6 @@
 #define GIREPOSITORY_STUBS_H
 
 #include "conversions.h"
-#include <stdio.h>
-#include <caml/mlvalues.h>
-#include <caml/memory.h>
-#include <caml/alloc.h>
-#include <caml/custom.h>
 
 /* Accessing the Repository * part of an OCaml custom block */
 #define Repository_val(v) (*((GIRepository **) Data_custom_val(v)))
@@ -41,7 +36,7 @@ caml_g_irepository_get_typelib_path_c (value repository, value _namespace);
 
 /*
  * done GIRepository *	g_irepository_get_default ()
- *      gchar **	g_irepository_get_dependencies ()
+ * done gchar **	g_irepository_get_dependencies ()
  *      gchar **	g_irepository_get_immediate_dependencies ()
  *      gchar **	g_irepository_get_loaded_namespaces ()
  *      gint	g_irepository_get_n_infos ()
@@ -65,4 +60,4 @@ caml_g_irepository_get_typelib_path_c (value repository, value _namespace);
  *      gboolean	g_irepository_dump ()
  *      void	gi_cclosure_marshal_generic ()
 */
-#endif // #define GIREPOSITORY_STUBS_H
+#endif // GIREPOSITORY_STUBS_H
