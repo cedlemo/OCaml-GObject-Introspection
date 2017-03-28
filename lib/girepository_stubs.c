@@ -91,7 +91,7 @@ caml_g_irepository_get_dependencies_c (value caml_repository,
 
     c_dependencies = g_irepository_get_dependencies (repository, _namespace);
 
-    dependencies = c_null_term_array_of_string_to_ocaml_string_list (c_dependencies);
+    dependencies = c_null_term_array_of_strings_to_ocaml_strings_list (c_dependencies);
     g_strfreev (c_dependencies);
 
     CAMLreturn (dependencies);

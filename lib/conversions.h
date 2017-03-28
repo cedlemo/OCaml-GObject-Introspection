@@ -8,5 +8,5 @@
 #include <caml/custom.h>
 
 value
-c_null_term_array_of_string_to_ocaml_string_list (char **strings);
+c_null_term_array_of_strings_to_ocaml_strings_list (char **strings);
 #endif // CONVERSIONS_H
