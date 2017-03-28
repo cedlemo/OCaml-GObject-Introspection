@@ -2,7 +2,7 @@
 let () =
   let namespace = "Gtk" in
   let repo = GIRepository.get_default () in
-  let tplib = GIRepository.require repo namespace in
+  let _ = GIRepository.require repo namespace in
   let c_prefix = GIRepository.get_c_prefix repo namespace in
   let shared_lib = GIRepository.get_shared_library repo namespace in
   let typelib_path = GIRepository.get_typelib_path repo namespace in
