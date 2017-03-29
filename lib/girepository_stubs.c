@@ -120,6 +120,25 @@ caml_g_irepository_get_immediate_dependencies_c (value caml_repository,
 }
 
 CAMLprim value
+caml_g_irepository_get_loaded_namespaces_c (value caml_repository)
+{
+    CAMLparam1 (caml_repository);
+
+    GIRepository *repository;
+    char **c_namespaces;
+    value namespaces;
+
+    repository = Repository_val (caml_repository);
+
+    c_namespaces = g_irepository_get_loaded_namespaces (repository);
+
+    namespaces = c_null_term_array_of_strings_to_ocaml_strings_list (c_namespaces);
+    g_strfreev (c_namespaces);
+
+    CAMLreturn (namespaces);
+}
+
+CAMLprim value
 caml_g_irepository_get_c_prefix_c (value caml_repository,
                                    value caml_namespace)
 {
