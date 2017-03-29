@@ -8,6 +8,15 @@ let test_load_namespace test_ctxt =
   let c_prefix = GIRepository.get_c_prefix repo namespace in
   assert_equal ~printer: (fun s -> s) namespace c_prefix
 
+let test_girepository_search_path test_ctxt =
+  let _ = GIRepository.get_default () in
+  let initial_search_path = (String.concat " " (GIRepository.get_search_path ())) in
+  let with_search_path= "/home/cedlemo" in
+  let _ = GIRepository.prepend_search_path with_search_path in
+  let search_path = String.concat " " (GIRepository.get_search_path ()) in
+  assert_equal ~printer: (fun s -> s) (String.concat " " [initial_search_path; with_search_path])
+                                       search_path
+
 let test_girepository_get_dependencies test_ctxt =
   let dependencies_check = "GObject-2.0 GLib-2.0" in
   let namespace = "Gio" in
@@ -35,6 +44,7 @@ let test_girepository_get_loaded_namespaces test_ctxt =
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
     ["Load Gtk namespace" >:: test_load_namespace;
+     "Search path tests" >:: test_girepository_search_path;
      "GLib dependencies tests" >:: test_girepository_get_dependencies;
      "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies;
      "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces
