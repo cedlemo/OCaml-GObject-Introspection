@@ -19,6 +19,8 @@ external prepend_search_path:
   string -> unit = "caml_g_irepository_prepend_search_path_c"
 external get_shared_library:
   repository -> string -> string = "caml_g_irepository_get_shared_library_c"
+external get_search_path:
+  unit -> string list = "caml_g_irepository_get_search_path_c"
 external get_typelib_path:
   repository -> string -> string = "caml_g_irepository_get_typelib_path_c"
 external get_version:

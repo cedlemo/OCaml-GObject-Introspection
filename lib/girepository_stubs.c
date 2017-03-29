@@ -157,6 +157,21 @@ caml_g_irepository_get_c_prefix_c (value caml_repository,
 }
 
 CAMLprim value
+caml_g_irepository_get_search_path_c (value unit)
+{
+    CAMLparam1 (unit);
+
+    GSList *c_search_path = NULL;
+    value search_path;
+
+    c_search_path = g_irepository_get_search_path ();
+
+    search_path = gslist_of_strings_to_ocaml_strings_list (c_search_path);
+
+    CAMLreturn (search_path);
+}
+
+CAMLprim value
 caml_g_irepository_prepend_library_path_c (value caml_path)
 {
     CAMLparam1 (caml_path);
