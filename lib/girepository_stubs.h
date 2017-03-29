@@ -17,6 +17,9 @@ CAMLprim value
 caml_g_irepository_get_dependencies_c (value repository, value _namespace);
 
 CAMLprim value
+caml_g_irepository_get_immediate_dependencies_c (value repository, value _namespace);
+
+CAMLprim value
 caml_g_irepository_get_c_prefix_c (value repository, value _namespace);
 
 CAMLprim value
