@@ -2,6 +2,9 @@
 let () =
   let namespace = "Gtk" in
   let repo = GIRepository.get_default () in
+  print_endline "Search path";
+  let sp = GIRepository.get_search_path () in
+  List.iter (fun x -> print_endline ("\t -" ^ x)) sp;
   let _ = GIRepository.require repo namespace in
   let c_prefix = GIRepository.get_c_prefix repo namespace in
   let shared_lib = GIRepository.get_shared_library repo namespace in
