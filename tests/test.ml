@@ -16,10 +16,20 @@ let test_girepository_get_dependencies test_ctxt =
   let dependencies = String.concat " " (GIRepository.get_dependencies repo namespace) in
   assert_equal ~printer: (fun s -> s) dependencies_check dependencies
 
+let test_girepository_get_immediate_dependencies test_ctxt =
+  let dependencies_check = "Atk-1.0 Gdk-3.0 xlib-2.0" in
+  let namespace = "Gtk" in
+  let repo = GIRepository.get_default () in
+  let _ = GIRepository.require repo namespace in
+  let dependencies = String.concat " " (GIRepository.get_immediate_dependencies repo namespace) in
+  assert_equal ~printer: (fun s -> s) dependencies_check dependencies
+
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
     ["Load Gtk namespace" >:: test_load_namespace;
-     "GLib dependencies tests" >:: test_girepository_get_dependencies]
+     "GLib dependencies tests" >:: test_girepository_get_dependencies;
+     "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies
+    ]
 
 let () =
   run_test_tt_main gobject_introspection_tests
