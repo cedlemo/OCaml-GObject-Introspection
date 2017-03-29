@@ -16,4 +16,7 @@ let () =
   List.iter (fun x -> print_endline ("\t dep. : " ^ x)) dependencies;
   print_endline "Immediate Dependencies";
   let dependencies = GIRepository.get_immediate_dependencies repo namespace in
-  List.iter (fun x -> print_endline ("\t dep. : " ^ x)) dependencies
+  List.iter (fun x -> print_endline ("\t dep. : " ^ x)) dependencies;
+  print_endline "Loaded namespaces";
+  let namespaces = GIRepository.get_loaded_namespaces repo in
+  List.iter (fun x -> print_endline ("\t namespace : " ^ x)) namespaces
