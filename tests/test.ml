@@ -24,11 +24,20 @@ let test_girepository_get_immediate_dependencies test_ctxt =
   let dependencies = String.concat " " (GIRepository.get_immediate_dependencies repo namespace) in
   assert_equal ~printer: (fun s -> s) dependencies_check dependencies
 
+let test_girepository_get_loaded_namespaces test_ctxt =
+  let namespaces_check = "Gio GObject GLib" in
+  let namespace = "Gio" in
+  let repo = GIRepository.get_default () in
+  let _ = GIRepository.require repo namespace in
+  let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
+  assert_equal ~printer: (fun s -> s) namespaces_check namespaces
+
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
     ["Load Gtk namespace" >:: test_load_namespace;
      "GLib dependencies tests" >:: test_girepository_get_dependencies;
-     "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies
+     "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies;
+     "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces
     ]
 
 let () =
