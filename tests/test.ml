@@ -41,6 +41,14 @@ let test_girepository_get_loaded_namespaces test_ctxt =
   let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
   assert_equal ~printer: (fun s -> s) namespaces_check namespaces
 
+let test_girepository_get_loaded_versions test_ctxt =
+  let versions_check = "3.0 2.0" in
+  let namespace = "Gtk" in
+  let repo = GIRepository.get_default () in
+  let _ = GIRepository.require repo namespace in
+  let versions = String.concat " " (GIRepository.enumerate_versions repo namespace) in
+  assert_equal ~printer: (fun s -> s) versions_check versions
+
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
     ["Load Gtk namespace" >:: test_load_namespace;
