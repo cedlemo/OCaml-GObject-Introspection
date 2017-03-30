@@ -172,6 +172,25 @@ caml_g_irepository_get_search_path_c (value unit)
 }
 
 CAMLprim value
+caml_g_irepository_enumerate_versions_c (value caml_repository,
+                                         value caml_namespace)
+{
+    CAMLparam2 (caml_repository, caml_namespace);
+
+    GIRepository *repository;
+    const char *_namespace;
+    GList *c_versions = NULL;
+    value versions;
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+
+    c_versions = g_irepository_enumerate_versions (repository, _namespace);
+    versions = glist_of_strings_to_ocaml_strings_list (c_versions);
+
+    CAMLreturn (versions);
+}
+
+CAMLprim value
 caml_g_irepository_prepend_library_path_c (value caml_path)
 {
     CAMLparam1 (caml_path);

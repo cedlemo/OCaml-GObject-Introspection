@@ -13,6 +13,8 @@ external get_loaded_namespaces:
   repository -> string list = "caml_g_irepository_get_loaded_namespaces_c"
 external get_c_prefix:
   repository -> string -> string = "caml_g_irepository_get_c_prefix_c"
+external enumerate_versions:
+  repository -> string -> string list = "caml_g_irepository_enumerate_versions_c"
 external prepend_library_path:
   string -> unit = "caml_g_irepository_prepend_library_path_c"
 external prepend_search_path:
