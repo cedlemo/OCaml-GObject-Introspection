@@ -13,4 +13,7 @@ c_null_term_array_of_strings_to_ocaml_strings_list (char **strings);
 
 value
 gslist_of_strings_to_ocaml_strings_list (GSList *list);
+
+value
+glist_of_strings_to_ocaml_strings_list (GList *list);
 #endif // CONVERSIONS_H
