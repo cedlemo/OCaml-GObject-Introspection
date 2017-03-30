@@ -14,6 +14,9 @@ let () =
   print_endline ("Shared library: " ^ shared_lib);
   print_endline ("Typelib path  : " ^ typelib_path);
   print_endline ("Version:        " ^ version);
+  print_endline ("Versions:       ");
+  let versions = GIRepository.enumerate_versions repo namespace in
+  List.iter (fun x -> print_endline ("\t v. : " ^ x)) versions;
   print_endline "Dependencies";
   let dependencies = GIRepository.get_dependencies repo namespace in
   List.iter (fun x -> print_endline ("\t dep. : " ^ x)) dependencies;
