@@ -330,7 +330,7 @@ caml_g_irepository_find_by_name_c (value caml_repository,
 
     info = g_irepository_find_by_name (repository, _namespace, name);
 
-    if(info) {
+    if(info != NULL) {
         value caml_info = alloc_gibaseinfo (info);
         CAMLreturn (Val_some (caml_info));
     }

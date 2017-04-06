@@ -20,7 +20,7 @@ glist_of_strings_to_ocaml_strings_list (GList *list);
 value
 val_some (value v);
 
-#define Val_none Val_int(0)
-#define Val_some(v) val_some(v)
+#define Val_none Val_int (0)
+#define Val_some (v) val_some (v)
 
 #endif // CONVERSIONS_H
