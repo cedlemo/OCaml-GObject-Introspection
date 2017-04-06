@@ -4,10 +4,14 @@ open GObjectIntrospection
 let assert_equal_string str1 str2 =
   assert_equal ~printer: (fun s -> s) str1 str2
 
-let test_load_namespace test_ctxt =
-  let namespace = "Gtk" in
+let load_namespace namespace =
   let repo = GIRepository.get_default () in
   let _ = GIRepository.require repo namespace in
+  repo
+
+let test_load_namespace test_ctxt =
+  let namespace = "Gtk" in
+  let repo = load_namespace namespace in
   let c_prefix = GIRepository.get_c_prefix repo namespace in
   assert_equal_string namespace c_prefix
 
@@ -23,39 +27,34 @@ let test_girepository_search_path test_ctxt =
 let test_girepository_get_dependencies test_ctxt =
   let dependencies_check = "GObject-2.0 GLib-2.0" in
   let namespace = "Gio" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace in
+  let repo = load_namespace namespace in
   let dependencies = String.concat " " (GIRepository.get_dependencies repo namespace) in
   assert_equal_string dependencies_check dependencies
 
 let test_girepository_get_immediate_dependencies test_ctxt =
   let dependencies_check = "Atk-1.0 Gdk-3.0 xlib-2.0" in
   let namespace = "Gtk" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace in
+  let repo = load_namespace namespace in
   let dependencies = String.concat " " (GIRepository.get_immediate_dependencies repo namespace) in
   assert_equal_string dependencies_check dependencies
 
 let test_girepository_get_loaded_namespaces test_ctxt =
   let namespaces_check = "Gio GObject GLib" in
   let namespace = "Gio" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace in
+  let repo = load_namespace namespace in
   let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
   assert_equal_string namespaces_check namespaces
 
 let test_girepository_get_loaded_versions test_ctxt =
   let versions_check = "3.0 2.0" in
   let namespace = "Gtk" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace in
+  let repo = load_namespace namespace in
   let versions = String.concat " " (GIRepository.enumerate_versions repo namespace) in
   assert_equal_string versions_check versions
 
 let test_girepository_find_by_name test_ctxt =
   let namespace = "Gtk" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace in
+  let repo = load_namespace namespace in
   let info_name = "ProgressBarClass" in
   match GIRepository.find_by_name repo namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
