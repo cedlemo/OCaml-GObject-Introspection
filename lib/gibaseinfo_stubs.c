@@ -1,16 +1,24 @@
 #include "gibaseinfo_stubs.h"
 
+static void
+finalize_gibaseinfo (value v)
+{
+    GIBaseInfo *info = NULL;
+    info = GIBaseInfo_val (v);
+
+    if (info != NULL)
+      g_base_info_unref (info);
+}
+
 static struct custom_operations gibaseinfo_ops = {
-  "fr.github.cedlemo.gobject-introspection.gibaseinfo",
-  custom_finalize_default,
-  custom_compare_default,
-  custom_hash_default,
-  custom_serialize_default,
-  custom_deserialize_default,
-  custom_compare_ext_default
+    identifier:  "fr.github.cedlemo.gobject-introspection.gibaseinfo",
+    finalize:    finalize_gibaseinfo,
+    compare:     custom_compare_default,
+    hash:        custom_hash_default,
+    serialize:   custom_serialize_default,
+    deserialize: custom_deserialize_default
 };
-// TODO :  g_base_info_unref() has to be called
-//
+
 value
 alloc_gibaseinfo (GIBaseInfo *i)
 {

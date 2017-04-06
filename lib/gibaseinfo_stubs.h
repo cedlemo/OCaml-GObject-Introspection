@@ -5,7 +5,7 @@
 #include <girepository.h>
 
 #define GIBaseInfo_val(v) (*((GIBaseInfo **) Data_custom_val(v)))
-#define Val_gibaseinfo(i) value_gibaseinfo (i)
+#define Val_gibaseinfo(i) alloc_gibaseinfo (i)
 
 value
 alloc_gibaseinfo (GIBaseInfo *i);
