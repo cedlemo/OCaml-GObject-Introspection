@@ -39,23 +39,6 @@ static value alloc_gitypelib(GITypelib *t)
   return v;
 }
 
-static struct custom_operations gibaseinfo_ops = {
-  "fr.github.cedlemo.gobject-introspection.gibaseinfo",
-  custom_finalize_default,
-  custom_compare_default,
-  custom_hash_default,
-  custom_serialize_default,
-  custom_deserialize_default,
-  custom_compare_ext_default
-};
-
-static value alloc_gibaseinfo(GIBaseInfo *i)
-{
-  value v = alloc_custom(&gibaseinfo_ops, sizeof(GIBaseInfo *), 0, 1);
-  GIBaseInfo_val(v) = i;
-  return v;
-}
-
 CAMLprim value
 caml_g_irepository_get_default_c (value unit)
 {
