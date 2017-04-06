@@ -25,4 +25,6 @@ let () =
   List.iter (fun x -> print_endline ("\t dep. : " ^ x)) dependencies;
   print_endline "Loaded namespaces";
   let namespaces = GIRepository.get_loaded_namespaces repo in
-  List.iter (fun x -> print_endline ("\t namespace : " ^ x)) namespaces
+  List.iter (fun x -> print_endline ("\t namespace : " ^ x)) namespaces;
+  let n_infos = GIRepository.get_n_infos repo namespace in
+  print_endline ("Number of elements : " ^ (string_of_int n_infos))
