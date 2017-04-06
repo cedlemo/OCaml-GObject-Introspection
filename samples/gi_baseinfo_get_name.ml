@@ -9,6 +9,7 @@ let () =
   let namespace = "Gtk" in
   let repo = GIRepository.get_default () in
   let _ = GIRepository.require repo namespace in
-  print_info repo namespace 10;
-  print_info repo namespace 15;
-  print_info repo namespace 20
+  let n = GIRepository.get_n_infos repo namespace in
+  for i = 0 to (n - 1) do
+    print_info repo namespace i;
+  done
