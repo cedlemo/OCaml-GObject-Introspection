@@ -49,13 +49,25 @@ let test_girepository_get_loaded_versions test_ctxt =
   let versions = String.concat " " (GIRepository.enumerate_versions repo namespace) in
   assert_equal ~printer: (fun s -> s) versions_check versions
 
+let test_girepository_find_by_name test_ctxt =
+  let namespace = "Gtk" in
+  let repo = GIRepository.get_default () in
+  let _ = GIRepository.require repo namespace in
+  let info_name = "GtkWindow" in
+  match GIRepository.find_by_name repo namespace info_name with
+  | None -> assert_equal ~printer: (fun s -> s) info_name "No base info found"
+  | Some (base_info) -> let base_info_name = GIBaseInfo.get_name base_info
+  in assert_equal ~printer: (fun s -> s) info_name base_info_name
+
+
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
     ["Load Gtk namespace" >:: test_load_namespace;
      "Search path tests" >:: test_girepository_search_path;
      "GLib dependencies tests" >:: test_girepository_get_dependencies;
      "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies;
-     "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces
+     "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces;
+     "GIRepository find GIBaseInfo by name" >:: test_girepository_find_by_name
     ]
 
 let () =
