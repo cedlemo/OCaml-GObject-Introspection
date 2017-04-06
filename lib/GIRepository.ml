@@ -13,7 +13,7 @@ external get_immediate_dependencies:
 external get_n_infos:
   repository -> string -> int = "caml_g_irepository_get_n_infos_c"
 external get_info:
-  repository -> string -> int -> baseinfo = "caml_g_irepository_get_info_c"
+  repository -> string -> int -> baseinfo option = "caml_g_irepository_get_info_c"
 external get_loaded_namespaces:
   repository -> string list = "caml_g_irepository_get_loaded_namespaces_c"
 external get_c_prefix:
@@ -32,3 +32,5 @@ external get_typelib_path:
   repository -> string -> string = "caml_g_irepository_get_typelib_path_c"
 external get_version:
   repository -> string -> string = "caml_g_irepository_get_version_c"
+external find_by_name:
+  repository -> string -> string -> baseinfo option = "caml_g_irepository_find_by_name_c"

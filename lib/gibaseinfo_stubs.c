@@ -30,6 +30,5 @@ caml_g_ibaseinfo_get_name_c (value caml_baseinfo)
     c_info = GIBaseInfo_val (caml_baseinfo);
 
     name = g_base_info_get_name (c_info);
-
     CAMLreturn(caml_copy_string (name));
 }

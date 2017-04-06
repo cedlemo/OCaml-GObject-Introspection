@@ -53,13 +53,15 @@ caml_g_irepository_get_search_path_c (value unit);
 CAMLprim value
 caml_g_irepository_get_typelib_path_c (value repository, value _namespace);
 
+CAMLprim value
+caml_gi_irepository_find_by_name_c (value repository, value _namespace, value name);
 /*
  * done GIRepository *	g_irepository_get_default ()
  * done gchar **	g_irepository_get_dependencies ()
  * done gchar **	g_irepository_get_immediate_dependencies ()
  * done gchar **	g_irepository_get_loaded_namespaces ()
- *      gint	g_irepository_get_n_infos ()
- *      GIBaseInfo *	g_irepository_get_info ()
+ * done gint	g_irepository_get_n_infos ()
+ * done GIBaseInfo *	g_irepository_get_info ()
  *      GOptionGroup *	g_irepository_get_option_group ()
  *      GList *	g_irepository_enumerate_versions ()
  * done void	g_irepository_prepend_library_path ()

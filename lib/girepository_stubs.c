@@ -155,7 +155,12 @@ caml_g_irepository_get_info_c (value caml_repository,
 
     info = g_irepository_get_info (repository, _namespace, index);
 
-    CAMLreturn (alloc_gibaseinfo (info));
+    if(info != NULL) {
+        value caml_info = alloc_gibaseinfo (info);
+        CAMLreturn (Val_some (caml_info));
+    }
+    else
+        CAMLreturn (Val_none);
 }
 
 CAMLprim value
@@ -305,4 +310,30 @@ caml_g_irepository_get_typelib_path_c (value caml_repository,
     path = g_irepository_get_typelib_path (repository, _namespace);
 
     CAMLreturn (caml_copy_string (path));
+}
+
+CAMLprim value
+caml_g_irepository_find_by_name_c (value caml_repository,
+                                   value caml_namespace,
+                                   value caml_name)
+{
+    CAMLparam3 (caml_repository, caml_namespace, caml_name);
+
+    GIRepository *repository;
+    const char *_namespace;
+    const char *name;
+    GIBaseInfo *info = NULL;
+
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+    name = String_val (caml_name);
+
+    info = g_irepository_find_by_name (repository, _namespace, name);
+
+    if(info) {
+        value caml_info = alloc_gibaseinfo (info);
+        CAMLreturn (Val_some (caml_info));
+    }
+    else
+        CAMLreturn (Val_none);
 }
