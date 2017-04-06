@@ -5,7 +5,6 @@ let print_info repo namespace n =
   | Some (info) -> String.concat " " ["GIBaseInfo number"; string_of_int n; GIBaseInfo.get_name info]
   in print_endline message
 
-
 let () =
   let namespace = "Gtk" in
   let repo = GIRepository.get_default () in
