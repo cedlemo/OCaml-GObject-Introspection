@@ -6,6 +6,7 @@
 /* Accessing the Repository * part of an OCaml custom block */
 #define Repository_val(v) (*((GIRepository **) Data_custom_val(v)))
 #define GITypelib_val(v) (*((GITypelib **) Data_custom_val(v)))
+#define GIBaseInfo_val(v) (*((GIBaseInfo **) Data_custom_val(v)))
 
 CAMLprim value
 caml_g_irepository_get_default_c (value unit);
@@ -21,6 +22,9 @@ caml_g_irepository_get_immediate_dependencies_c (value repository, value _namesp
 
 CAMLprim value
 caml_g_irepository_get_n_infos_c (value repository, value _namespace);
+
+CAMLprim value
+caml_g_irepository_get_info_c (value repository, value _namespace, value index);
 
 CAMLprim value
 caml_g_irepository_get_loaded_namespaces_c (value repository);

@@ -39,6 +39,23 @@ static value alloc_gitypelib(GITypelib *t)
   return v;
 }
 
+static struct custom_operations gibaseinfo_ops = {
+  "fr.github.cedlemo.gobject-introspection.gibaseinfo",
+  custom_finalize_default,
+  custom_compare_default,
+  custom_hash_default,
+  custom_serialize_default,
+  custom_deserialize_default,
+  custom_compare_ext_default
+};
+
+static value alloc_gibaseinfo(GIBaseInfo *i)
+{
+  value v = alloc_custom(&gibaseinfo_ops, sizeof(GIBaseInfo *), 0, 1);
+  GIBaseInfo_val(v) = i;
+  return v;
+}
+
 CAMLprim value
 caml_g_irepository_get_default_c (value unit)
 {
@@ -135,6 +152,27 @@ caml_g_irepository_get_n_infos_c (value caml_repository,
     c_n_infos = g_irepository_get_n_infos (repository, _namespace);
 
     CAMLreturn (Int_val (c_n_infos));
+}
+
+CAMLprim value
+caml_g_irepository_get_info_c (value caml_repository,
+                               value caml_namespace,
+                               value caml_index)
+{
+    CAMLparam3 (caml_repository, caml_namespace, caml_index);
+
+    GIRepository *repository;
+    const char *_namespace;
+    int index = 0;
+    GIBaseInfo *info = NULL;
+
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+    index = Val_int (caml_index);
+
+    info = g_irepository_get_info (repository, _namespace, index);
+
+    CAMLreturn (alloc_gibaseinfo (info));
 }
 
 CAMLprim value
