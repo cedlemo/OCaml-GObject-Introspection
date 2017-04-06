@@ -9,6 +9,8 @@ external get_dependencies:
   repository -> string -> string list = "caml_g_irepository_get_dependencies_c"
 external get_immediate_dependencies:
   repository -> string -> string list = "caml_g_irepository_get_immediate_dependencies_c"
+external get_n_infos:
+  repository -> string -> int = "caml_g_irepository_get_n_infos_c"
 external get_loaded_namespaces:
   repository -> string list = "caml_g_irepository_get_loaded_namespaces_c"
 external get_c_prefix:

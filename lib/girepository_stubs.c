@@ -120,6 +120,24 @@ caml_g_irepository_get_immediate_dependencies_c (value caml_repository,
 }
 
 CAMLprim value
+caml_g_irepository_get_n_infos_c (value caml_repository,
+                                  value caml_namespace)
+{
+    CAMLparam2 (caml_repository, caml_namespace);
+
+    GIRepository *repository;
+    const char *_namespace;
+    int c_n_infos = 0;
+
+    repository = Repository_val (caml_repository);
+    _namespace = String_val (caml_namespace);
+
+    c_n_infos = g_irepository_get_n_infos (repository, _namespace);
+
+    CAMLreturn (Int_val (c_n_infos));
+}
+
+CAMLprim value
 caml_g_irepository_get_loaded_namespaces_c (value caml_repository)
 {
     CAMLparam1 (caml_repository);
