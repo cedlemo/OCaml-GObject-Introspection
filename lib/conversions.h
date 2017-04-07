@@ -6,6 +6,7 @@
 #include <caml/memory.h>
 #include <caml/alloc.h>
 #include <caml/custom.h>
+#include <caml/fail.h>
 #include <glib.h>
 
 value
@@ -19,6 +20,9 @@ glist_of_strings_to_ocaml_strings_list (GList *list);
 
 value
 val_some (value v);
+
+void
+raise_gerror_to_ocaml_failure_exception (GError *error);
 
 #define Val_none Val_int (0)
 #define Val_some(v) val_some (v)

@@ -80,3 +80,13 @@ val_some( value v )
 
     CAMLreturn (some);
 }
+
+void
+raise_gerror_to_ocaml_failure_exception (GError *error)
+{
+    if(error == NULL)
+        return;
+
+    caml_failwith (error->message);
+    g_clear_error (&error); // TODO : is it needed since we rise an exception ?
+}
