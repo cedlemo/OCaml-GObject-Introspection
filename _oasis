@@ -32,6 +32,13 @@ Executable "gi_baseinfo_get_name"
   CompiledObject: best
   BuildDepends: GObjectIntrospection
 
+Executable "gi_baseinfo_get_type"
+  Path: samples
+  MainIs: gi_baseinfo_get_type.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
 Executable girepository_test_unit
   Path: tests
   Build$: flag(tests)
