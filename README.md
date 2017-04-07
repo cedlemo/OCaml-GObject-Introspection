@@ -19,5 +19,12 @@
 
 ### TODO
 
-  * create specific exception ?
+  * create specific exceptions ?
   * how to wrap or use [g_irepository_find_by_error_domain](https://developer.gnome.org/gi/1.52/GIRepository.html#g-irepository-find-by-error-domain) ?
+
+## Callback and OCaml exceptions
+
+* http://caml.inria.fr/pub/docs/manual-ocaml/intfc.html#s:callback
+
+### TODO
+  * catch exceptions in callbacks ? (`caml_g_ibaseinfo_iterate_over_attributes_c`)
