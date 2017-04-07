@@ -4,6 +4,10 @@ open GObjectIntrospection
 let assert_equal_string str1 str2 =
   assert_equal ~printer: (fun s -> s) str1 str2
 
+let assert_equal_boolean bool1 bool2 =
+  assert_equal ~printer: (fun s -> string_of_bool s) bool1 bool2
+
+
 let load_namespace namespace =
   let repo = GIRepository.get_default () in
   let _ = GIRepository.require repo namespace in
@@ -77,6 +81,18 @@ let test_gibaseinfo_get_type test_ctxt =
     GIBaseInfo.baseinfo_type_get_name s
   ) GIBaseInfo.Function info_type
 
+let test_gibaseinfo_equal test_ctxt =
+  let namespace = "Gtk" in
+  let repo = load_namespace namespace in
+  match GIRepository.get_info repo namespace 10 with
+  | None -> assert_equal true false
+  | Some (rand_info) -> let info_name = GIBaseInfo.get_name rand_info in
+  match GIRepository.find_by_name repo namespace info_name with
+  | None -> assert_equal_string info_name "No base info found"
+  | Some (info) -> let is_equal = GIBaseInfo.equal rand_info info in
+  assert_equal_boolean true is_equal
+
+
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
     ["Test failure when loading bad namespace" >:: test_raises_failure_on_require;
@@ -86,7 +102,8 @@ let gobject_introspection_tests =
      "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies;
      "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces;
      "GIRepository find GIBaseInfo by name" >:: test_girepository_find_by_name;
-     "GIBaseInfo get type" >:: test_gibaseinfo_get_type
+     "GIBaseInfo get type" >:: test_gibaseinfo_get_type;
+     "GIBaseInfo equal" >:: test_gibaseinfo_equal
     ]
 
 let () =
