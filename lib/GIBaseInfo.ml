@@ -53,3 +53,6 @@ external get_type:
 
 external equal:
   baseinfo -> baseinfo -> bool = "caml_g_ibaseinfo_equal_c"
+
+external get_namespace:
+  baseinfo -> string = "caml_g_ibaseinfo_get_namespace_c"
