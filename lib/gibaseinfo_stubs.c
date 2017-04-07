@@ -86,4 +86,31 @@ caml_g_ibaseinfo_get_namespace_c (value caml_baseinfo)
     CAMLreturn(caml_copy_string (namespace));
 }
 
+CAMLprim value
+caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
+                                            value caml_callback)
+{
+    CAMLparam2 (caml_baseinfo, caml_callback);
 
+    GIBaseInfo * c_info;
+    GIAttributeIter iter = { 0, };
+    char *c_name;
+    char *c_value;
+
+    c_info = GIBaseInfo_val (caml_baseinfo);
+
+    while (g_base_info_iterate_attributes (c_info, &iter, &c_name, &c_value))
+    {
+        value caml_name = caml_copy_string (c_name);
+        value caml_value = caml_copy_string (c_value);
+
+        value callback_return = caml_callback2 (caml_callback,
+                                                caml_name,
+                                                caml_value);
+
+        if(Bool_val (callback_return) == 0)
+            CAMLreturn (Val_unit);
+    }
+
+    CAMLreturn (Val_unit);
+}

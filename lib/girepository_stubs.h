@@ -63,7 +63,7 @@ caml_gi_irepository_find_by_name_c (value repository, value _namespace, value na
  * done gint	g_irepository_get_n_infos ()
  * done GIBaseInfo *	g_irepository_get_info ()
  *      GOptionGroup *	g_irepository_get_option_group ()
- *      GList *	g_irepository_enumerate_versions ()
+ * done GList *	g_irepository_enumerate_versions ()
  * done void	g_irepository_prepend_library_path ()
  * done void	g_irepository_prepend_search_path ()
  *      GSList *	g_irepository_get_search_path ()

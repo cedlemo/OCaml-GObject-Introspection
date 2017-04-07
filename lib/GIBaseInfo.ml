@@ -56,3 +56,6 @@ external equal:
 
 external get_namespace:
   baseinfo -> string = "caml_g_ibaseinfo_get_namespace_c"
+
+external iterate_over_attributes:
+  baseinfo -> (string -> string -> bool) -> unit = "caml_g_ibaseinfo_iterate_over_attributes_c"
