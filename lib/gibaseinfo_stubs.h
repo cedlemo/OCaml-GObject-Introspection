@@ -16,4 +16,8 @@ caml_g_ibaseinfo_get_name_c (value baseinfo);
 CAMLprim value
 caml_g_ibaseinfo_get_type_c (value baseinfo);
 
+CAMLprim value
+caml_g_ibaseinfo_equal_c (value baseinfo1,
+                          value baseinfo2);
+
 #endif // GIBASEINFO_STUBS_H

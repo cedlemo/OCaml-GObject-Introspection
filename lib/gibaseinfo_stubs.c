@@ -54,3 +54,20 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
     type = g_base_info_get_type (c_info);
     CAMLreturn(Val_int (type));
 }
+
+CAMLprim value
+caml_g_ibaseinfo_equal_c (value caml_baseinfo1,
+                          value caml_baseinfo2)
+{
+    CAMLparam2 (caml_baseinfo1, caml_baseinfo2);
+
+    GIBaseInfo * c_info1;
+    GIBaseInfo * c_info2;
+    int is_equal = 0;
+
+    c_info1 = GIBaseInfo_val (caml_baseinfo1);
+    c_info2 = GIBaseInfo_val (caml_baseinfo2);
+
+    is_equal = g_base_info_equal (c_info1, c_info2);
+    CAMLreturn(Val_bool (is_equal));
+}

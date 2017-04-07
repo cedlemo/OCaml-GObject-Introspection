@@ -50,3 +50,6 @@ external get_name:
 
 external get_type:
   baseinfo -> baseinfo_type = "caml_g_ibaseinfo_get_type_c"
+
+external equal:
+  baseinfo -> baseinfo -> bool = "caml_g_ibaseinfo_equal_c"
