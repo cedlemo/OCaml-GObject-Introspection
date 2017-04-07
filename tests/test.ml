@@ -9,6 +9,11 @@ let load_namespace namespace =
   let _ = GIRepository.require repo namespace in
   repo
 
+let test_raises_failure_on_require test_ctxt =
+  let r () = load_namespace "a namespace that does not exist" in
+  let error_message = "Typelib file for namespace 'a namespace that does not exist' (any version) not found" in
+  assert_raises (Failure error_message ) r
+
 let test_load_namespace test_ctxt =
   let namespace = "Gtk" in
   let repo = load_namespace namespace in
@@ -63,7 +68,8 @@ let test_girepository_find_by_name test_ctxt =
 
 let gobject_introspection_tests =
   "GObject Introspection tests" >:::
-    ["Load Gtk namespace" >:: test_load_namespace;
+    ["Test failure when loading bad namespace" >:: test_raises_failure_on_require;
+     "Load Gtk namespace" >:: test_load_namespace;
      "Search path tests" >:: test_girepository_search_path;
      "GLib dependencies tests" >:: test_girepository_get_dependencies;
      "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies;
