@@ -58,11 +58,15 @@ caml_g_irepository_require_c (value caml_repository,
     GIRepository *repository;
     GITypelib *typelib;
     const char *_namespace;
+    GError *error = NULL;
 
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
 
-    typelib = g_irepository_require (repository, _namespace, NULL, 0, NULL);
+    typelib = g_irepository_require (repository, _namespace, NULL, 0, &error);
+
+    if(error != NULL)
+        raise_gerror_to_ocaml_failure_exception (error);
 
     /* TODO : support more arguments ?
      * repository A GIRepository or NULL for the singleton process-global
