@@ -46,6 +46,13 @@ Executable "gi_baseinfo_print_attributes"
   CompiledObject: best
   BuildDepends: GObjectIntrospection
 
+Executable "gi_baseinfo_deprecated"
+  Path: samples
+  MainIs: gi_baseinfo_deprecated.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
 Executable girepository_test_unit
   Path: tests
   Build$: flag(tests)
