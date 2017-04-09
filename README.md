@@ -28,3 +28,9 @@
 
 ### TODO
   * catch exceptions in callbacks ? (`caml_g_ibaseinfo_iterate_over_attributes_c`)
+
+# Next:
+
+* GIRepository.load_typelib
+* GIRepository.typelib
+* Create tests
