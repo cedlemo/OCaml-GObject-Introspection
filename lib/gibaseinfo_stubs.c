@@ -136,3 +136,17 @@ caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
 
     CAMLreturn (caml_container);
 }
+
+CAMLprim value
+caml_g_ibaseinfo_is_deprecated_c (value caml_baseinfo)
+{
+    CAMLparam1 (caml_baseinfo);
+
+    GIBaseInfo * c_info;
+    int c_is_deprecated = 0;
+
+    c_info = GIBaseInfo_val (caml_baseinfo);
+    c_is_deprecated = g_base_info_is_deprecated (c_info);
+
+    CAMLreturn (Val_bool (c_is_deprecated));
+}

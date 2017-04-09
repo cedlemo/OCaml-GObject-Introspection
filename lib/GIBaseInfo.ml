@@ -62,3 +62,6 @@ external iterate_over_attributes:
 
 external get_container:
   baseinfo -> baseinfo = "caml_g_ibaseinfo_get_container_c"
+
+external is_deprecated:
+  baseinfo -> bool = "caml_g_ibaseinfo_is_deprecated_c"

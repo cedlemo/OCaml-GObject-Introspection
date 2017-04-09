@@ -29,4 +29,7 @@ caml_g_ibaseinfo_iterate_over_attributes_c (value baseinfo,
 
 CAMLprim value
 caml_g_ibaseinfo_get_container_c (value baseinfo);
+
+CAMLprim value
+caml_g_ibaseinfo_is_deprecated_c (value baseinfo);
 #endif // GIBASEINFO_STUBS_H
