@@ -53,7 +53,7 @@ let test_girepository_find_by_name test_ctxt =
   let namespace = "Gtk" in
   let repo = load_namespace namespace in
   let info_name = "ProgressBarClass" in
-  match GIRepository.find_by_name repo namespace info_name with
+  match GIRepository.find_by_name (Some repo) namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let base_info_name = GIBaseInfo.get_name base_info
   in assert_equal_string info_name base_info_name
