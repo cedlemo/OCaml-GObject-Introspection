@@ -328,7 +328,11 @@ caml_g_irepository_find_by_name_c (value caml_repository,
     const char *name;
     GIBaseInfo *info = NULL;
 
-    repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        repository = NULL;
+    else
+        repository = Repository_val (Some_val (caml_repository));
+
     _namespace = String_val (caml_namespace);
     name = String_val (caml_name);
 

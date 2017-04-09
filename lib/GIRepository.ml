@@ -33,4 +33,4 @@ external get_typelib_path:
 external get_version:
   repository -> string -> string = "caml_g_irepository_get_version_c"
 external find_by_name:
-  repository -> string -> string -> baseinfo option = "caml_g_irepository_find_by_name_c"
+  repository option -> string -> string -> baseinfo option = "caml_g_irepository_find_by_name_c"
