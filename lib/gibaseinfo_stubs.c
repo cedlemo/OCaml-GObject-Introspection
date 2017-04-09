@@ -114,3 +114,25 @@ caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
 
     CAMLreturn (Val_unit);
 }
+
+CAMLprim value
+caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
+{
+    CAMLparam1 (caml_baseinfo);
+
+    GIBaseInfo * c_info;
+    GIBaseInfo * c_container;
+
+    c_info = GIBaseInfo_val (caml_baseinfo);
+
+    c_container = g_base_info_get_container (c_info);
+    // Increase ref count because g_base_info_get_container is transfert none
+    // https://developer.gnome.org/gi/1.52/gi-GIBaseInfo.html#g-base-info-get-container
+    // and finalize_gibaseinfo unref the baseinfo
+    if(c_container != NULL)
+        g_base_info_ref (c_container);
+
+    value caml_container = alloc_gibaseinfo (c_container);
+
+    CAMLreturn (caml_container);
+}
