@@ -27,5 +27,5 @@ raise_gerror_to_ocaml_failure_exception (GError *error);
 
 #define Val_none Val_int (0)
 #define Val_some(v) val_some (v)
-
+#define Some_val(v) Field(v,0)
 #endif // CONVERSIONS_H
