@@ -8,9 +8,7 @@ let test_gibaseinfo_get_type test_ctxt =
   match GIRepository.find_by_name (Some repo) namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let info_type = GIBaseInfo.get_type base_info
-  in assert_equal ~printer: (fun s ->
-    GIBaseInfo.baseinfo_type_get_name s
-  ) GIBaseInfo.Function info_type
+  in assert_equal_string "function"  (GIBaseInfo.baseinfo_type_get_name info_type)
 
 let test_gibaseinfo_equal test_ctxt =
   let namespace = "Gtk" in
