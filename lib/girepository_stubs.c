@@ -90,7 +90,7 @@ caml_g_irepository_get_dependencies_c (value caml_repository,
     GIRepository *repository;
     const char *_namespace;
     char **c_dependencies;
-    value dependencies;
+    CAMLlocal1 (dependencies);
 
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
@@ -112,7 +112,7 @@ caml_g_irepository_get_immediate_dependencies_c (value caml_repository,
     GIRepository *repository;
     const char *_namespace;
     char **c_dependencies;
-    value dependencies;
+    CAMLlocal1 (dependencies);
 
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
@@ -176,7 +176,7 @@ caml_g_irepository_get_loaded_namespaces_c (value caml_repository)
 
     GIRepository *repository;
     char **c_namespaces;
-    value namespaces;
+    CAMLlocal1 (namespaces);
 
     repository = Repository_val (caml_repository);
 
@@ -212,7 +212,7 @@ caml_g_irepository_get_search_path_c (value unit)
     CAMLparam1 (unit);
 
     GSList *c_search_path = NULL;
-    value search_path;
+    CAMLlocal1 (search_path);
 
     c_search_path = g_irepository_get_search_path ();
 
@@ -230,7 +230,7 @@ caml_g_irepository_enumerate_versions_c (value caml_repository,
     GIRepository *repository;
     const char *_namespace;
     GList *c_versions = NULL;
-    value versions;
+    CAMLlocal1 (versions);
     repository = Repository_val (caml_repository);
     _namespace = String_val (caml_namespace);
 
@@ -329,6 +329,7 @@ caml_g_irepository_find_by_name_c (value caml_repository,
     const char *_namespace;
     const char *name;
     GIBaseInfo *info = NULL;
+    CAMLlocal1 (caml_info);
 
     if(caml_repository == Val_none)
         repository = NULL;
@@ -341,7 +342,7 @@ caml_g_irepository_find_by_name_c (value caml_repository,
     info = g_irepository_find_by_name (repository, _namespace, name);
 
     if(info != NULL) {
-        value caml_info = alloc_gibaseinfo (info);
+        caml_info = alloc_gibaseinfo (info);
         CAMLreturn (Val_some (caml_info));
     }
     else
