@@ -23,8 +23,8 @@ value
 alloc_gifunctioninfo (GIFunctionInfo *i)
 {
   g_base_info_ref ((GIBaseInfo *)i);
-  value v = alloc_custom(&gifunctioninfo_ops, sizeof(GIFunctionInfo *), 0, 1);
-  GIFunctionInfo_val(v) = i;
+  value v = alloc_custom(&gifunctioninfo_ops, sizeof (GIFunctionInfo *), 0, 1);
+  GIFunctionInfo_val (v) = i;
   return v;
 }
 
