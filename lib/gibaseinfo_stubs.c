@@ -1,4 +1,5 @@
 #include "gibaseinfo_stubs.h"
+#include "gifunctioninfo_stubs.h"
 
 static void
 finalize_gibaseinfo (value v)
@@ -48,11 +49,24 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
 
     GIBaseInfo * c_info;
     int type;
+    CAMLlocal1(ret);
+    int block_tag;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
     type = g_base_info_get_type (c_info);
-    CAMLreturn(Val_int (type));
+    switch(type) {
+    case GI_INFO_TYPE_FUNCTION:
+        block_tag = 0; // see GIBaseInfo.ml in order to match the tag block
+        ret = caml_alloc (1, block_tag);
+        Store_field (ret, 0, alloc_gifunctioninfo ((GIFunctionInfo *) c_info));
+        break;
+    default:
+        ret = Val_int (type);
+        break;
+    }
+
+    CAMLreturn (ret);
 }
 
 CAMLprim value
