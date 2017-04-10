@@ -5,6 +5,7 @@ let () =
   ("GObjectIntrospection" >:::
     [
       TestGIRepository.tests;
-      TestGIBaseInfo.tests
+      TestGIBaseInfo.tests;
+      TestGIFunctionInfo.tests
     ]
   )
