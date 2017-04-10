@@ -15,10 +15,11 @@ static struct custom_operations repository_ops = {
 };
 
 /* Allocating an OCaml custom block to hold the given GIRepository * */
-static value alloc_repository(GIRepository *r)
+static value
+alloc_repository (GIRepository *r)
 {
-  value v = alloc_custom(&repository_ops, sizeof(GIRepository *), 0, 1);
-  Repository_val(v) = r;
+  value v = alloc_custom (&repository_ops, sizeof (GIRepository *), 0, 1);
+  Repository_val (v) = r;
   return v;
 }
 
@@ -32,10 +33,11 @@ static struct custom_operations gitypelib_ops = {
   custom_compare_ext_default
 };
 
-static value alloc_gitypelib(GITypelib *t)
+static value
+alloc_gitypelib (GITypelib *t)
 {
-  value v = alloc_custom(&gitypelib_ops, sizeof(GITypelib *), 0, 1);
-  GITypelib_val(v) = t;
+  value v = alloc_custom (&gitypelib_ops, sizeof (GITypelib *), 0, 1);
+  GITypelib_val (v) = t;
   return v;
 }
 
