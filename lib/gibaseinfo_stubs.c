@@ -115,12 +115,13 @@ caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
 
     while (g_base_info_iterate_attributes (c_info, &iter, &c_name, &c_value))
     {
-        value caml_name = caml_copy_string (c_name);
-        value caml_value = caml_copy_string (c_value);
+        CAMLlocal3 (caml_name, caml_value, callback_return);
+        caml_name = caml_copy_string (c_name);
+        caml_value = caml_copy_string (c_value);
 
-        value callback_return = caml_callback2 (caml_callback,
-                                                caml_name,
-                                                caml_value);
+        callback_return = caml_callback2 (caml_callback,
+                                          caml_name,
+                                          caml_value);
 
         if(Bool_val (callback_return) == 0)
             CAMLreturn (Val_unit);
@@ -136,6 +137,7 @@ caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
 
     GIBaseInfo *c_info;
     GIBaseInfo *c_container;
+    CAMLlocal1 (caml_container);
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
@@ -146,7 +148,7 @@ caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
     if(c_container != NULL)
         g_base_info_ref (c_container);
 
-    value caml_container = alloc_gibaseinfo (c_container);
+    caml_container = alloc_gibaseinfo (c_container);
 
     CAMLreturn (caml_container);
 }
