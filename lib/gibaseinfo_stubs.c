@@ -23,7 +23,7 @@ static struct custom_operations gibaseinfo_ops = {
 value
 alloc_gibaseinfo (GIBaseInfo *i)
 {
-  value v = alloc_custom(&gibaseinfo_ops, sizeof(GIBaseInfo *), 0, 1);
+  value v = alloc_custom (&gibaseinfo_ops, sizeof (GIBaseInfo *), 0, 1);
   GIBaseInfo_val(v) = i;
   return v;
 }
@@ -33,13 +33,13 @@ caml_g_ibaseinfo_get_name_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
-    GIBaseInfo * c_info;
+    GIBaseInfo *c_info;
     const char *name;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
     name = g_base_info_get_name (c_info);
-    CAMLreturn(caml_copy_string (name));
+    CAMLreturn (caml_copy_string (name));
 }
 
 CAMLprim value
@@ -47,7 +47,7 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
-    GIBaseInfo * c_info;
+    GIBaseInfo *c_info;
     int type;
     CAMLlocal1(ret);
     int block_tag;
@@ -55,7 +55,7 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
     c_info = GIBaseInfo_val (caml_baseinfo);
 
     type = g_base_info_get_type (c_info);
-    switch(type) {
+    switch (type) {
     case GI_INFO_TYPE_FUNCTION:
         block_tag = 0; // see GIBaseInfo.ml in order to match the tag block
         ret = caml_alloc (1, block_tag);
@@ -75,15 +75,15 @@ caml_g_ibaseinfo_equal_c (value caml_baseinfo1,
 {
     CAMLparam2 (caml_baseinfo1, caml_baseinfo2);
 
-    GIBaseInfo * c_info1;
-    GIBaseInfo * c_info2;
+    GIBaseInfo *c_info1;
+    GIBaseInfo *c_info2;
     int is_equal = 0;
 
     c_info1 = GIBaseInfo_val (caml_baseinfo1);
     c_info2 = GIBaseInfo_val (caml_baseinfo2);
 
     is_equal = g_base_info_equal (c_info1, c_info2);
-    CAMLreturn(Val_bool (is_equal));
+    CAMLreturn (Val_bool (is_equal));
 }
 
 CAMLprim value
@@ -91,13 +91,13 @@ caml_g_ibaseinfo_get_namespace_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
-    GIBaseInfo * c_info;
+    GIBaseInfo *c_info;
     const char *namespace;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
     namespace = g_base_info_get_namespace (c_info);
-    CAMLreturn(caml_copy_string (namespace));
+    CAMLreturn (caml_copy_string (namespace));
 }
 
 CAMLprim value
@@ -106,7 +106,7 @@ caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
 {
     CAMLparam2 (caml_baseinfo, caml_callback);
 
-    GIBaseInfo * c_info;
+    GIBaseInfo *c_info;
     GIAttributeIter iter = { 0, };
     char *c_name;
     char *c_value;
@@ -134,8 +134,8 @@ caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
-    GIBaseInfo * c_info;
-    GIBaseInfo * c_container;
+    GIBaseInfo *c_info;
+    GIBaseInfo *c_container;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
@@ -156,7 +156,7 @@ caml_g_ibaseinfo_is_deprecated_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
-    GIBaseInfo * c_info;
+    GIBaseInfo *c_info;
     int c_is_deprecated = 0;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
