@@ -28,4 +28,16 @@ alloc_gifunctioninfo (GIFunctionInfo *i)
   return v;
 }
 
+CAMLprim value
+caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
+{
+    CAMLparam1 (caml_functioninfo);
 
+    GIFunctionInfo *c_info;
+    int flags;
+
+    c_info = GIFunctionInfo_val (caml_functioninfo);
+    flags = g_function_info_get_flags (c_info);
+
+    CAMLreturn (Val_int (flags));
+}
