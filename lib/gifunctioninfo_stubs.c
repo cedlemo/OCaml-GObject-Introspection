@@ -22,9 +22,6 @@ static struct custom_operations gifunctioninfo_ops = {
 value
 alloc_gifunctioninfo (GIFunctionInfo *i)
 {
-    if(!GI_IS_FUNCTION_INFO (i))
-        caml_failwith ("The GIBaseInfo pointer is not a GIFunctionInfo");
-
     g_base_info_ref ((GIBaseInfo *)i);
     value v = alloc_custom(&gifunctioninfo_ops, sizeof (GIFunctionInfo *), 0, 1);
     GIFunctionInfo_val (v) = i;
