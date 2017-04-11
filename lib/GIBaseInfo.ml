@@ -1,4 +1,5 @@
 open GIFunctionInfo
+open GIStructInfo
 
 type baseinfo
 
@@ -6,7 +7,7 @@ type baseinfo_type =
   | Invalid (** invalid type *)
   | Function of functioninfo (** function, see GIFunctionInfo *)
   | Callback of functioninfo (** callback, see GIFunctionInfo *)
-  | Struct (** struct, see GIStructInfo *)
+  | Struct of structinfo (** struct, see GIStructInfo *)
   | Boxed (** boxed, see GIStructInfo or GIUnionInfo *)
   | Enum (** enum, see GIEnumInfo *)
   | Flags (** flags, see GIEnumInfo *)
@@ -29,7 +30,7 @@ let baseinfo_type_get_name baseinfo_t =
   | Invalid -> "invalid"
   | Function _ -> "function"
   | Callback _ -> "callback"
-  | Struct -> "struct"
+  | Struct _ -> "struct"
   | Boxed -> "boxed"
   | Enum -> "enum"
   | Flags -> "flags"
