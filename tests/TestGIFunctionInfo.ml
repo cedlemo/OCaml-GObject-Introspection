@@ -1,9 +1,11 @@
 open TestUtils
 open OUnit2
 
+let namespace = "GObject"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace
+
 let test_gifunctioninfo_get_flags test_ctxt =
-  let namespace = "GObject" in
-  let repo = load_namespace namespace in
   let fn_name = "signal_name" in
   match GIRepository.find_by_name (Some repo) namespace fn_name with
   | None -> assert_equal_string fn_name "No base info found"
