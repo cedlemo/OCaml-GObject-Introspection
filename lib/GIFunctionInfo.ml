@@ -10,3 +10,6 @@ type flags =
 
 external get_flags:
   functioninfo -> flags = "caml_g_ifunctioninfo_get_flags_c"
+
+external get_symbol:
+  functioninfo -> string = "caml_g_ifunctioninfo_get_symbol_c"

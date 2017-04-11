@@ -13,4 +13,6 @@ alloc_gifunctioninfo (GIFunctionInfo *i);
 CAMLprim value
 caml_g_ifunctioninfo_get_flags_c (value functioninfo);
 
+CAMLprim value
+caml_g_ifunctioninfo_get_symbol_c (value functioninfo);
 #endif // GIFUNCTIONINFO_STUBS_H

@@ -44,3 +44,17 @@ caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
 
     CAMLreturn (Val_int (flags));
 }
+
+CAMLprim value
+caml_g_ifunctioninfo_get_symbol_c (value caml_functioninfo)
+{
+    CAMLparam1 (caml_functioninfo);
+
+    GIFunctionInfo *c_info;
+    const char *c_symbol;
+
+    c_info = GIFunctionInfo_val (caml_functioninfo);
+    c_symbol = g_function_info_get_symbol (c_info);
+
+    CAMLreturn (caml_copy_string (c_symbol));
+}
