@@ -6,6 +6,7 @@ let () =
     [
       TestGIRepository.tests;
       TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests
+      TestGIFunctionInfo.tests;
+      TestGIStructInfo.tests
     ]
   )
