@@ -5,6 +5,7 @@ let namespace = "Gio"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace
 let info_name = "app_info_create_from_commandline"
+let callback_name = "BusNameAppearedCallback"
 
 let test_gibaseinfo_get_type test_ctxt =
   match GIRepository.find_by_name (Some repo) namespace info_name with
@@ -36,11 +37,18 @@ let test_gibaseinfo_get_container test_ctxt =
   in let container_name = GIBaseInfo.get_name container in
   assert_equal_string "nope" container_name
 
+let test_gibaseinfo_get_callback_type test_ctxt =
+  match GIRepository.find_by_name (Some repo) namespace callback_name with
+  | None -> assert_equal_string info_name "No base info found"
+  | Some (base_info) -> let info_type = GIBaseInfo.get_type base_info
+  in assert_equal_string "callback"  (GIBaseInfo.baseinfo_type_get_name info_type)
+
 let tests =
   "GObject Introspection BaseInfo tests" >:::
     [
      "GIBaseInfo get type" >:: test_gibaseinfo_get_type;
      "GIBaseInfo equal" >:: test_gibaseinfo_equal;
-     "GIBaseInfo get namespace" >:: test_gibaseinfo_get_namespace(*;
-     "GIBaseInfo get container" >:: test_gibaseinfo_get_container *)
+     "GIBaseInfo get namespace" >:: test_gibaseinfo_get_namespace;
+     (*"GIBaseInfo get container" >:: test_gibaseinfo_get_container *)
+     "GIBaseInfo get callback type" >:: test_gibaseinfo_get_callback_type
     ]
