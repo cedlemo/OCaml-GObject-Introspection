@@ -61,6 +61,11 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
         ret = caml_alloc (1, block_tag);
         Store_field (ret, 0, Val_gifunctioninfo ((GIFunctionInfo *) c_info));
         break;
+    case GI_INFO_TYPE_CALLBACK:
+        block_tag = 1; // see GIBaseInfo.ml in order to match the tag block
+        ret = caml_alloc (1, block_tag);
+        Store_field (ret, 0, Val_gifunctioninfo ((GIFunctionInfo *) c_info));
+        break;
     default:
         ret = Val_int (type);
         break;
