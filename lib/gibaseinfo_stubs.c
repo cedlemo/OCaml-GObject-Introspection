@@ -23,9 +23,9 @@ static struct custom_operations gibaseinfo_ops = {
 value
 alloc_gibaseinfo (GIBaseInfo *i)
 {
-  value v = alloc_custom (&gibaseinfo_ops, sizeof (GIBaseInfo *), 0, 1);
-  GIBaseInfo_val(v) = i;
-  return v;
+    value v = alloc_custom (&gibaseinfo_ops, sizeof (GIBaseInfo *), 0, 1);
+    GIBaseInfo_val(v) = i;
+    return v;
 }
 
 CAMLprim value
