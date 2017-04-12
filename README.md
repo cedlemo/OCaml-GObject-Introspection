@@ -1,5 +1,7 @@
 # OCaml GObject-Introspection
 
+The OCaml bindings to GObject-Introspection.
+
 ## Resources
 
 *  https://ocaml.org/learn/tutorials/calling_c_libraries.html
