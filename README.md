@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection.svg?branch=master)](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection)
+
 # OCaml GObject-Introspection
 
 The OCaml bindings to GObject-Introspection.
