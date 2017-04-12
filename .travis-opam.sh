@@ -29,11 +29,11 @@ eval $(opam config env)
 opam install ocamlfind
 opam install oasis
 
-ocamlc.opt yorick.mli
-ocamlfind ocamlc -c yorick.ml
-
-ocamlfind ocamlc -o ci-opam -package unix -linkpkg yorick.cmo ci_opam.ml
+# ocamlc.opt yorick.mli
+# ocamlfind ocamlc -c yorick.ml
+#
+# ocamlfind ocamlc -o ci-opam -package unix -linkpkg yorick.cmo ci_opam.ml
 cd -
 
 echo -en "travis_fold:end:prepare.ci\r"
-${TMP_BUILD}/ci-opam
+# ${TMP_BUILD}/ci-opam
