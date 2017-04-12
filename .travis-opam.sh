@@ -27,7 +27,7 @@ eval $(opam config env)
 
 # This could be removed with some OPAM variable plumbing into build commands
 opam install ocamlfind
-opam install oasis
+# opam install oasis
 
 # ocamlc.opt yorick.mli
 # ocamlfind ocamlc -c yorick.ml
