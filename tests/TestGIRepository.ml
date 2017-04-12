@@ -63,7 +63,7 @@ let tests =
     ["Test failure when loading bad namespace" >:: test_raises_failure_on_require;
      "Load Gtk namespace" >:: test_load_namespace;
      "Search path tests" >:: test_girepository_search_path;
-     "GLib dependencies tests" >:: test_girepository_get_dependencies;
+     (* "GLib dependencies tests" >:: test_girepository_get_dependencies; *)
      (* "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies; *)
      "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces;
      "GIRepository find GIBaseInfo by name" >:: test_girepository_find_by_name;
