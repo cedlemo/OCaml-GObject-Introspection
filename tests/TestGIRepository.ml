@@ -27,10 +27,12 @@ let test_girepository_get_dependencies test_ctxt =
   let dependencies = String.concat " " (GIRepository.get_dependencies repo namespace) in
   assert_equal_string dependencies_check dependencies
 
+(* Commented out because of GI Travis v. 1.40 and this function need v >= 1.44
 let test_girepository_get_immediate_dependencies test_ctxt =
   let dependencies_check = "GObject-2.0" in
   let dependencies = String.concat " " (GIRepository.get_immediate_dependencies repo namespace) in
   assert_equal_string dependencies_check dependencies
+*)
 
 let test_girepository_get_loaded_namespaces test_ctxt =
   let namespaces_check = "Gio GObject GLib" in
@@ -62,7 +64,7 @@ let tests =
      "Load Gtk namespace" >:: test_load_namespace;
      "Search path tests" >:: test_girepository_search_path;
      "GLib dependencies tests" >:: test_girepository_get_dependencies;
-     "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies;
+     (* "Gtk immediate dependencies tests" >:: test_girepository_get_immediate_dependencies; *)
      "GLib get loaded namespaces tests" >:: test_girepository_get_loaded_namespaces;
      "GIRepository find GIBaseInfo by name" >:: test_girepository_find_by_name;
      "GIRepository find GIBaseInfo by name repo none" >:: test_girepository_find_by_name_repo_none

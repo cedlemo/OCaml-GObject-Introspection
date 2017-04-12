@@ -8,8 +8,9 @@ external require:
   repository -> string -> typelib = "caml_g_irepository_require_c"
 external get_dependencies:
   repository -> string -> string list = "caml_g_irepository_get_dependencies_c"
-external get_immediate_dependencies:
-  repository -> string -> string list = "caml_g_irepository_get_immediate_dependencies_c"
+(* TODO : Commented out because of GI Travis v. 1.40 and this function need v >= 1.44
+ * external get_immediate_dependencies:
+ *   repository -> string -> string list = "caml_g_irepository_get_immediate_dependencies_c" *)
 external get_n_infos:
   repository -> string -> int = "caml_g_irepository_get_n_infos_c"
 external get_info:

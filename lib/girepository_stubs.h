@@ -17,9 +17,10 @@ caml_g_irepository_require_c (value repository, value _namespace);
 CAMLprim value
 caml_g_irepository_get_dependencies_c (value repository, value _namespace);
 
-CAMLprim value
-caml_g_irepository_get_immediate_dependencies_c (value repository, value _namespace);
-
+/* Travis GI version = 1.40. v should be >= 1.44
+ * CAMLprim value
+ * caml_g_irepository_get_immediate_dependencies_c (value repository, value _namespace);
+ */
 CAMLprim value
 caml_g_irepository_get_n_infos_c (value repository, value _namespace);
 
