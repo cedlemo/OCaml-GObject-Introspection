@@ -21,5 +21,4 @@ sudo apt-get install -qq -y \
     gir1.2-gnumeric\
     gnumeric\
     gnome-icon-theme \
-    dbus-x11 \
-    oasis
+    dbus-x11
