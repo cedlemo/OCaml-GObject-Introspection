@@ -26,10 +26,11 @@ let test_gistructinfo_get_alignment test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) ->let alignment = GIStructInfo.get_alignment info in
-      assert_equal_int 2 alignment
+      assert_equal_int 8 alignment
 
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
-    "GIStructInfo from baseinfo" >:: test_gistructinfo_from_baseinfo
+    "GIStructInfo from baseinfo" >:: test_gistructinfo_from_baseinfo;
+    "GIStructInfo get alignment" >:: test_gistructinfo_get_alignment
   ]
