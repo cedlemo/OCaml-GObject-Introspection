@@ -81,3 +81,12 @@ Test "girepository_test_unit"
   Command: $girepository_test_unit
   WorkingDirectory: tests
 
+AlphaFeatures: ocamlbuild_more_args
+Document "docs"
+  Type: ocamlbuild (0.4)
+  BuildTools: ocamldoc
+  Title: API reference for Mpd
+  XOCamlbuildPath: .
+  XOCamlbuildExtraArgs:
+    "-docflags '-colorize-code -short-functors -charset utf-8'"
+  XOCamlbuildLibraries: GObjectIntrospection
