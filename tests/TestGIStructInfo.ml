@@ -14,15 +14,19 @@ let test_gistructinfo_from_baseinfo test_ctxt =
       | GIBaseInfo.Struct struct_info -> true
       | _ -> false)
 
-let test_gistructinfo_get_alignment test_ctxt =
+let get_struct_info () =
   match GIRepository.find_by_name (Some repo) namespace struct_name with
-  | None -> assert_equal_string struct_name "No base info found"
+  | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Struct struct_info ->
-      let alignment = GIStructInfo.get_alignment struct_info in
+    | GIBaseInfo.Struct struct_info -> Some struct_info
+    | _ -> None
+
+let test_gistructinfo_get_alignment test_ctxt =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) ->let alignment = GIStructInfo.get_alignment info in
       assert_equal_int 2 alignment
-    | _ -> ()
 
 let tests =
   "GObject Introspection StructInfo tests" >:::
