@@ -41,3 +41,16 @@ caml_g_istructinfo_get_alignment_c (value caml_structinfo)
 
     CAMLreturn (Val_int (alignment));
 }
+
+CAMLprim value
+caml_g_istructinfo_get_size_c (value caml_structinfo)
+{
+    CAMLparam1 (caml_structinfo);
+    GIStructInfo *c_info;
+    int size;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    size = g_struct_info_get_size (c_info);
+
+    CAMLreturn (Val_int (size));
+}
