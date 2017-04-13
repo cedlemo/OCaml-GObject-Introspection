@@ -1,3 +1,7 @@
+(** GIStructInfo — Module representing a C structure *)
+
+(** GIStructInfo represents a generic C structure type.
+ A structure has methods and fields.*)
 type structinfo
 
 external get_alignment:

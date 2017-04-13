@@ -1,6 +1,9 @@
+(** GIBaseInfo — Base struct for all GITypelib structs *)
 open GIFunctionInfo
 open GIStructInfo
 
+(** GIBaseInfo is the common base struct of all other *Info structs accessible
+ through the GIRepository API *)
 type baseinfo
 
 type baseinfo_type =

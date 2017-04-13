@@ -1,3 +1,9 @@
+(** GIFunctionInfo — Module with type representing a function *)
+
+(** functioninfo represents a function, method or constructor. To find out what
+ kind of entity a functioninfo represents, call GIFunctionInfo.get_flags.
+ See also GICallableInfo for information on how to retreive arguments and other
+ metadata. *)
 type functioninfo
 
 type flags =
