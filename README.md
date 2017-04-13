@@ -3,6 +3,7 @@
 # OCaml GObject-Introspection
 
 The OCaml bindings to GObject-Introspection.
+Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
 
 ## Resources
 
