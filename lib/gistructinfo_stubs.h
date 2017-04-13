@@ -9,4 +9,7 @@
 
 value
 alloc_gistructinfo (GIStructInfo *i);
+
+CAMLprim value
+caml_g_istructinfo_get_alignment_c (value structinfo);
 #endif // GISTRUCTINFO_STUBS_H

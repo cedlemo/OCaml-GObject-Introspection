@@ -28,3 +28,16 @@ alloc_gistructinfo (GIStructInfo *i)
     GIStructInfo_val (v) = i;
     return v;
 }
+
+CAMLprim value
+caml_g_istructinfo_get_alignment_c (value caml_structinfo)
+{
+    CAMLparam1 (caml_structinfo);
+    GIStructInfo *c_info;
+    int alignment;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    alignment = g_struct_info_get_alignment (c_info);
+
+    CAMLreturn (Val_int (alignment));
+}
