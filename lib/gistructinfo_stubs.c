@@ -85,3 +85,16 @@ caml_g_istructinfo_is_gtype_struct_c (value caml_structinfo)
 
     CAMLreturn (Val_bool (is_struct));
 }
+
+CAMLprim value
+caml_g_istructinfo_is_foreign_c (value caml_structinfo)
+{
+    CAMLparam1 (caml_structinfo);
+    GIStructInfo *c_info;
+    gboolean is_foreign;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    is_foreign = g_struct_info_is_foreign (c_info);
+
+    CAMLreturn (Val_bool (is_foreign));
+}

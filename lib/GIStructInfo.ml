@@ -36,3 +36,6 @@ external get_size:
 *)
 external is_gtype_struct:
   structinfo -> bool = "caml_g_istructinfo_is_gtype_struct_c"
+
+external is_foreign:
+  structinfo -> bool = "caml_g_istructinfo_is_foreign_c"
