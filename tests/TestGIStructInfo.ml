@@ -52,10 +52,17 @@ let test_gistructinfo_get_size test_ctxt =
   | Some (info) ->let size = GIStructInfo.get_size info in
       assert_equal_int 24 size
 
+let test_gistructinfo_is_gtype_struct test_ctxt =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) -> let is_struct = GIStructInfo.is_gtype_struct info in
+    assert_equal_boolean false is_struct
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
     "GIStructInfo from baseinfo" >:: test_gistructinfo_from_baseinfo;
     "GIStructInfo get alignment" >:: test_gistructinfo_get_alignment;
-    "GIStructInfo get size" >:: test_gistructinfo_get_size
+    "GIStructInfo get size" >:: test_gistructinfo_get_size;
+    "GIStructInfo is gtype struct" >:: test_gistructinfo_is_gtype_struct
   ]
