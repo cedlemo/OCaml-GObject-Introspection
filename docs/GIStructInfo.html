@@ -35,5 +35,18 @@ GIStructInfo represents a generic C structure type.
 </div>
 
 
-<pre><span id="VALget_alignment"><span class="keyword">val</span> get_alignment</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int</code></pre>
-<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int</code></pre></body></html>
+<pre><span id="VALget_alignment"><span class="keyword">val</span> get_alignment</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int</code></pre><div class="info ">
+Obtain the required alignment of the structure.<br>
+</div>
+
+<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int</code></pre><div class="info ">
+Obtain the total size of the structure.<br>
+</div>
+
+<pre><span id="VALis_gtype_struct"><span class="keyword">val</span> is_gtype_struct</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> bool</code></pre><div class="info ">
+Return true if this structure represents the "class structure" for some
+    GObject or GInterface. This function is mainly useful to hide this kind of
+    structure from generated public APIs.<br>
+</div>
+
+<pre><span id="VALis_foreign"><span class="keyword">val</span> is_foreign</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> bool</code></pre></body></html>
