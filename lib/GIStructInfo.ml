@@ -27,3 +27,6 @@ external get_alignment:
 
 external get_size:
   structinfo -> int = "caml_g_istructinfo_get_size_c"
+
+external is_gtype_struct:
+  structinfo -> bool = "caml_g_istructinfo_is_gtype_struct_c"

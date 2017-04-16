@@ -72,3 +72,16 @@ caml_g_istructinfo_get_size_c (value caml_structinfo)
 
     CAMLreturn (Val_int (size));
 }
+
+CAMLprim value
+caml_g_istructinfo_is_gtype_struct_c (value caml_structinfo)
+{
+    CAMLparam1 (caml_structinfo);
+    GIStructInfo *c_info;
+    gboolean is_struct;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    is_struct = g_struct_info_is_gtype_struct (c_info);
+
+    CAMLreturn (Val_bool (is_struct));
+}
