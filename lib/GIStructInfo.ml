@@ -22,9 +22,11 @@
  A structure has methods and fields.*)
 type structinfo
 
+(** Obtain the required alignment of the structure.*)
 external get_alignment:
   structinfo -> int = "caml_g_istructinfo_get_alignment_c"
 
+(** Obtain the total size of the structure. *)
 external get_size:
   structinfo -> int = "caml_g_istructinfo_get_size_c"
 
