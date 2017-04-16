@@ -28,5 +28,9 @@ external get_alignment:
 external get_size:
   structinfo -> int = "caml_g_istructinfo_get_size_c"
 
+(** Return true if this structure represents the "class structure" for some
+    GObject or GInterface. This function is mainly useful to hide this kind of
+    structure from generated public APIs.
+*)
 external is_gtype_struct:
   structinfo -> bool = "caml_g_istructinfo_is_gtype_struct_c"
