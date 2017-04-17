@@ -49,4 +49,23 @@ Return true if this structure represents the "class structure" for some
     structure from generated public APIs.<br>
 </div>
 
-<pre><span id="VALis_foreign"><span class="keyword">val</span> is_foreign</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> bool</code></pre></body></html>
+<pre><span id="VALis_foreign"><span class="keyword">val</span> is_foreign</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> bool</code></pre><div class="info ">
+No doc yet<br>
+</div>
+
+<pre><span id="VALget_n_fields"><span class="keyword">val</span> get_n_fields</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int</code></pre><div class="info ">
+Obtain the number of fields this structure has.<br>
+</div>
+
+<pre><span id="VALget_n_methods"><span class="keyword">val</span> get_n_methods</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int</code></pre><div class="info ">
+Obtain the number of methods this structure has.<br>
+</div>
+
+<pre><span id="VALget_method"><span class="keyword">val</span> get_method</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> int -> <a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a></code></pre><div class="info ">
+Obtain the type information for method with specified index.<br>
+</div>
+
+<pre><span id="VALfind_method"><span class="keyword">val</span> find_method</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> -> string -> <a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> option</code></pre><div class="info ">
+Obtain the type information for method named name .<br>
+</div>
+</body></html>

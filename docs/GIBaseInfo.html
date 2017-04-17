@@ -240,10 +240,38 @@ unresolved type, a type which is not present in the typelib, or any of its depen
 
 
 <pre><span id="VALbaseinfo_type_get_name"><span class="keyword">val</span> baseinfo_type_get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a> -> string</code></pre>
-<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> string</code></pre>
-<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> <a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a></code></pre>
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> bool</code></pre>
-<pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> string</code></pre>
-<pre><span id="VALiterate_over_attributes"><span class="keyword">val</span> iterate_over_attributes</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> (string -> string -> bool) -> unit</code></pre>
-<pre><span id="VALget_container"><span class="keyword">val</span> get_container</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a></code></pre>
-<pre><span id="VALis_deprecated"><span class="keyword">val</span> is_deprecated</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> bool</code></pre></body></html>
+<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> string</code></pre><div class="info ">
+Obtain the name of the info . What the name represents depends on the
+    GIInfoType of the info . For instance for GIFunctionInfo it is the name of
+    the function.<br>
+</div>
+
+<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> <a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a></code></pre><div class="info ">
+Obtain the info type of the GIBaseInfo<br>
+</div>
+
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> bool</code></pre><div class="info ">
+Compare two GIBaseInfo.  Using pointer comparison is not practical since
+    many functions return different instances of GIBaseInfo that refers to the
+    same part of the TypeLib; use this function instead to do GIBaseInfo
+    comparisons.<br>
+</div>
+
+<pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> string</code></pre><div class="info ">
+Obtain the namespace of info .<br>
+</div>
+
+<pre><span id="VALiterate_over_attributes"><span class="keyword">val</span> iterate_over_attributes</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> (string -> string -> bool) -> unit</code></pre><div class="info ">
+Iterate over all attributes associated with this node.<br>
+</div>
+
+<pre><span id="VALget_container"><span class="keyword">val</span> get_container</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a></code></pre><div class="info ">
+Obtain the container of the info . The container is the parent GIBaseInfo.
+    For instance, the parent of a GIFunctionInfo is an GIObjectInfo or
+    GIInterfaceInfo.<br>
+</div>
+
+<pre><span id="VALis_deprecated"><span class="keyword">val</span> is_deprecated</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> -> bool</code></pre><div class="info ">
+Obtain whether the info is represents a metadata which is deprecated or not.<br>
+</div>
+</body></html>

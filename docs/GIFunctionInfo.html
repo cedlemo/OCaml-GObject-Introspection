@@ -101,5 +101,12 @@ the function may throw an error.<br>
 
 
 
-<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> <a href="GIFunctionInfo.html#TYPEflags">flags</a></code></pre>
-<pre><span id="VALget_symbol"><span class="keyword">val</span> get_symbol</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> string</code></pre></body></html>
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> <a href="GIFunctionInfo.html#TYPEflags">flags</a></code></pre><div class="info ">
+Obtain the GIFunctionInfo.flags for the info .<br>
+</div>
+
+<pre><span id="VALget_symbol"><span class="keyword">val</span> get_symbol</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> string</code></pre><div class="info ">
+Obtain the symbol of the function. The symbol is the name of the exported
+    function, suitable to be used as an argument to g_module_symbol().<br>
+</div>
+</body></html>
