@@ -24,7 +24,7 @@ let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace
 let struct_name = "Value"
 
-let test_gistructinfo_from_baseinfo test_ctxt =
+let test_from_baseinfo test_ctxt =
   match GIRepository.find_by_name (Some repo) namespace struct_name with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
@@ -40,31 +40,31 @@ let get_struct_info () =
     | GIBaseInfo.Struct struct_info -> Some struct_info
     | _ -> None
 
-let test_gistructinfo_get_alignment test_ctxt =
+let test_get_alignment test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) ->let alignment = GIStructInfo.get_alignment info in
       assert_equal_int 8 alignment
 
-let test_gistructinfo_get_size test_ctxt =
+let test_get_size test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) ->let size = GIStructInfo.get_size info in
       assert_equal_int 24 size
 
-let test_gistructinfo_is_gtype_struct test_ctxt =
+let test_is_gtype_struct test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> let is_struct = GIStructInfo.is_gtype_struct info in
     assert_equal_boolean false is_struct
 
-let test_gistructinfo_is_foreign test_ctxt =
+let test_is_foreign test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> let is_struct = GIStructInfo.is_foreign info in
     assert_equal_boolean false is_struct
 
-let test_gistructinfo_get_n_fields test_ctxt =
+let test_get_n_fields test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> let n_fields = GIStructInfo.get_n_fields info in
@@ -73,10 +73,10 @@ let test_gistructinfo_get_n_fields test_ctxt =
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
-    "GIStructInfo from baseinfo" >:: test_gistructinfo_from_baseinfo;
-    "GIStructInfo get alignment" >:: test_gistructinfo_get_alignment;
-    "GIStructInfo get size" >:: test_gistructinfo_get_size;
-    "GIStructInfo is gtype struct" >:: test_gistructinfo_is_gtype_struct;
-    "GIStructInfo is foreign" >:: test_gistructinfo_is_foreign;
-    "GIStructInfo get n fields" >:: test_gistructinfo_get_n_fields
+    "GIStructInfo from baseinfo" >:: test_from_baseinfo;
+    "GIStructInfo get alignment" >:: test_get_alignment;
+    "GIStructInfo get size" >:: test_get_size;
+    "GIStructInfo is gtype struct" >:: test_is_gtype_struct;
+    "GIStructInfo is foreign" >:: test_is_foreign;
+    "GIStructInfo get n fields" >:: test_get_n_fields
   ]
