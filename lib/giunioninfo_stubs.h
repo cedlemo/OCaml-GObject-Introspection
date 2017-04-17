@@ -30,4 +30,7 @@ alloc_giunioninfo (GIUnionInfo *i);
 
 CAMLprim value
 caml_g_iunioninfo_get_alignment_c (value unioninfo);
+
+CAMLprim value
+caml_g_iunioninfo_get_size_c (value unioninfo);
 #endif // GIUNIONINFO_STUBS_H

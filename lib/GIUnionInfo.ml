@@ -28,3 +28,7 @@ type unioninfo
 external get_alignment:
   unioninfo -> int = "caml_g_iunioninfo_get_alignment_c"
 
+(** Obtain the total size of the union. *)
+external get_size:
+  unioninfo -> int = "caml_g_iunioninfo_get_size_c"
+
