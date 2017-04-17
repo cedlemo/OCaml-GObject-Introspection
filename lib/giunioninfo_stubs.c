@@ -73,3 +73,16 @@ caml_g_iunioninfo_get_size_c (value caml_unioninfo)
 
     CAMLreturn (Val_int (c_size));
 }
+
+CAMLprim value
+caml_g_iunioninfo_get_n_methods_c (value caml_unioninfo)
+{
+    CAMLparam1 (caml_unioninfo);
+    GIUnionInfo *c_info;
+    int c_n_methods;
+
+    c_info = GIUnionInfo_val (caml_unioninfo);
+    c_n_methods = g_union_info_get_n_methods (c_info);
+
+    CAMLreturn (Val_int (c_n_methods));
+}

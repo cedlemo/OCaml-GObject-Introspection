@@ -32,3 +32,6 @@ external get_alignment:
 external get_size:
   unioninfo -> int = "caml_g_iunioninfo_get_size_c"
 
+(** Obtain the number of methods this union has. *)
+external get_n_methods:
+  unioninfo -> int = "caml_g_iunioninfo_get_n_methods_c"
