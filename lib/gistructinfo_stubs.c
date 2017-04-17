@@ -144,3 +144,26 @@ caml_g_istructinfo_get_method_c (value caml_structinfo,
     CAMLreturn (caml_function_info);
 }
 
+CAMLprim value
+caml_g_istructinfo_find_method_c (value caml_structinfo,
+                                  value caml_name)
+{
+    CAMLparam2 (caml_structinfo, caml_name);
+    GIStructInfo *c_info;
+    GIFunctionInfo *c_function_info = NULL;
+    CAMLlocal1 (caml_function_info);
+    const char *c_name;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    c_name = String_val (caml_name);
+
+    c_function_info = g_struct_info_find_method (c_info, c_name);
+
+    if (c_function_info == NULL)
+        CAMLreturn (Val_none);
+    else {
+        caml_function_info = Val_gifunctioninfo (c_function_info);
+        CAMLreturn (Val_some (caml_function_info));
+    }
+}
+

@@ -55,6 +55,9 @@ external get_n_methods:
 external get_method:
   structinfo -> int -> functioninfo = "caml_g_istructinfo_get_method_c"
 
+(** Obtain the type information for method named name . *)
+external find_method:
+  structinfo -> string -> functioninfo option = "caml_g_istructinfo_find_method_c"
+
 (* TODO: GIFieldInfo *	g_struct_info_get_field ()
- * TODO: IFunctionInfo *	g_struct_info_find_method ()
 *)

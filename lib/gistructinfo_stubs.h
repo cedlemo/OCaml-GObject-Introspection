@@ -50,4 +50,7 @@ caml_g_istructinfo_get_n_methods_c (value structinfo);
 CAMLprim value
 caml_g_istructinfo_get_method_c (value structinfo,
                                  value n);
+CAMLprim value
+caml_g_istructinfo_find_method_c (value structinfo,
+                                  value name);
 #endif // GISTRUCTINFO_STUBS_H
