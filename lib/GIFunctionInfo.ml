@@ -32,8 +32,10 @@ type flags =
   | Wraps_vfunc    (** represents a virtual function. *)
   | Throws         (** the function may throw an error. *)
 
+(** Obtain the GIFunctionInfo.flags for the info . *)
 external get_flags:
   functioninfo -> flags = "caml_g_ifunctioninfo_get_flags_c"
-
+(** Obtain the symbol of the function. The symbol is the name of the exported
+    function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
   functioninfo -> string = "caml_g_ifunctioninfo_get_symbol_c"
