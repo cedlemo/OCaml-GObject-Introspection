@@ -10,11 +10,13 @@ BuildTools: ocamlbuild
 Library "GObjectIntrospection"
   Path: lib
   Modules: GObjectIntrospection,
+           GIUnionInfo,
            GIStructInfo,
            GIFunctionInfo,
            GIBaseInfo,
            GIRepository
   CSources: conversions.h, conversions.c,
+            giunioninfo_stubs.h, giunioninfo_stubs.c,
             gistructinfo_stubs.h, gistructinfo_stubs.c,
             gifunctioninfo_stubs.h, gifunctioninfo_stubs.c,
             gibaseinfo_stubs.h, gibaseinfo_stubs.c,

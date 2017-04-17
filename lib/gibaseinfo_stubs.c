@@ -19,6 +19,7 @@
 #include "gibaseinfo_stubs.h"
 #include "gifunctioninfo_stubs.h"
 #include "gistructinfo_stubs.h"
+#include "giunioninfo_stubs.h"
 
 static void
 finalize_gibaseinfo (value v)
@@ -90,6 +91,14 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
         ret = caml_alloc (1, block_tag);
         Store_field (ret, 0, Val_gistructinfo ((GIStructInfo *) c_info));
         break;
+    case GI_INFO_TYPE_UNION:
+        block_tag = 3; // see GIBaseInfo.ml in order to match the tag block
+        ret = caml_alloc (1, block_tag);
+        Store_field (ret, 0, Val_giunioninfo ((GIUnionInfo *) c_info));
+        break;
+    /**************************************************
+     * BEFORE ADDING ANOTHER CASE CHECK GIBaseInfo.ml
+     * ***********************************************/
     default:
         ret = Val_int (type);
         break;

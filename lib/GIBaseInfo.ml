@@ -20,6 +20,7 @@
 (** GIBaseInfo — Base struct for all GITypelib structs *)
 open GIFunctionInfo
 open GIStructInfo
+open GIUnionInfo
 
 (** GIBaseInfo is the common base struct of all other *Info structs accessible
  through the GIRepository API *)
@@ -37,7 +38,7 @@ type baseinfo_type =
   | Interface (** interface, see GIInterfaceInfo *)
   | Constant (** contant, see GIConstantInfo *)
   | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
-  | Union (** union, see GIUnionInfo *)
+  | Union of unioninfo (** union, see GIUnionInfo *)
   | Value (** enum value, see GIValueInfo *)
   | Signal (** signal, see GISignalInfo *)
   | Vfunc (** virtual function, see GIVFuncInfo *)
@@ -60,7 +61,7 @@ let baseinfo_type_get_name baseinfo_t =
   | Interface -> "interface"
   | Constant -> "contant"
   | Invalid_0 -> "deleted"
-  | Union -> "union"
+  | Union _ -> "union"
   | Value -> "enum"
   | Signal -> "signal"
   | Vfunc -> "virtual"
