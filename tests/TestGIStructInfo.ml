@@ -64,6 +64,12 @@ let test_gistructinfo_is_foreign test_ctxt =
   | Some (info) -> let is_struct = GIStructInfo.is_foreign info in
     assert_equal_boolean false is_struct
 
+let test_gistructinfo_get_n_fields test_ctxt =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) -> let n_fields = GIStructInfo.get_n_fields info in
+    assert_equal_int 2 n_fields
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
@@ -71,5 +77,6 @@ let tests =
     "GIStructInfo get alignment" >:: test_gistructinfo_get_alignment;
     "GIStructInfo get size" >:: test_gistructinfo_get_size;
     "GIStructInfo is gtype struct" >:: test_gistructinfo_is_gtype_struct;
-    "GIStructInfo is foreign" >:: test_gistructinfo_is_foreign
+    "GIStructInfo is foreign" >:: test_gistructinfo_is_foreign;
+    "GIStructInfo get n fields" >:: test_gistructinfo_get_n_fields
   ]
