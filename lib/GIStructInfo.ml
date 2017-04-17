@@ -45,9 +45,8 @@ external is_foreign:
 external get_n_fields:
   structinfo -> int = "caml_g_istructinfo_get_n_fields_c"
 
-(* gint	g_struct_info_get_n_fields ()
- * GIFieldInfo *	g_struct_info_get_field ()
- * gint	g_struct_info_get_n_methods ()
- * GIFunctionInfo *	g_struct_info_get_method ()
- * GIFunctionInfo *	g_struct_info_find_method ()
+(* TODO: GIFieldInfo *	g_struct_info_get_field ()
+ * TODO: int	g_struct_info_get_n_methods ()
+ * TODO: IFunctionInfo *	g_struct_info_get_method ()
+ * TODO: IFunctionInfo *	g_struct_info_find_method ()
 *)
