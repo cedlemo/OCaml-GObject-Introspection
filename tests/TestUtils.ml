@@ -28,6 +28,12 @@ let assert_equal_boolean bool1 bool2 =
 let assert_equal_int int1 int2 =
   assert_equal ~printer: (fun s -> string_of_int s) int1 int2
 
+let assert_equal_or_greater int1 int2 =
+    assert_equal ~printer: (fun s ->
+        String.concat " " [string_of_int int1;
+                           "is not >=";
+                           string_of_int int2]) true (int1 >= int2)
+
 let load_namespace namespace =
   let repo = GIRepository.get_default () in
   let _ = GIRepository.require repo namespace in
