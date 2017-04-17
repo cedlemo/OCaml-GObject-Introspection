@@ -111,3 +111,16 @@ caml_g_istructinfo_get_n_fields_c (value caml_structinfo)
 
     CAMLreturn (Val_int (c_n_fields));
 }
+
+CAMLprim value
+caml_g_istructinfo_get_n_methods_c (value caml_structinfo)
+{
+    CAMLparam1 (caml_structinfo);
+    GIStructInfo *c_info;
+    int c_n_methods = 0;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    c_n_methods = g_struct_info_get_n_methods (c_info);
+
+    CAMLreturn (Val_int (c_n_methods));
+}
