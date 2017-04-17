@@ -54,12 +54,12 @@ caml_g_ibaseinfo_get_name_c (value caml_baseinfo)
     CAMLparam1 (caml_baseinfo);
 
     GIBaseInfo *c_info;
-    const char *name;
+    const char *c_name;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
-    name = g_base_info_get_name (c_info);
-    CAMLreturn (caml_copy_string (name));
+    c_name = g_base_info_get_name (c_info);
+    CAMLreturn (caml_copy_string (c_name));
 }
 
 CAMLprim value
@@ -68,43 +68,43 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
     CAMLparam1 (caml_baseinfo);
 
     GIBaseInfo *c_info;
-    int type;
-    CAMLlocal1(ret);
-    int block_tag;
+    int c_type;
+    CAMLlocal1(caml_ret);
+    int c_block_tag;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
-    type = g_base_info_get_type (c_info);
-    switch (type) {
+    c_type = g_base_info_get_type (c_info);
+    switch (c_type) {
     case GI_INFO_TYPE_FUNCTION:
-        block_tag = 0; // see GIBaseInfo.ml in order to match the tag block
-        ret = caml_alloc (1, block_tag);
-        Store_field (ret, 0, Val_gifunctioninfo_from_base_info (c_info));
+        c_block_tag = 0; // see GIBaseInfo.ml in order to match the tag block
+        caml_ret = caml_alloc (1, c_block_tag);
+        Store_field (caml_ret, 0, Val_gifunctioninfo_from_base_info (c_info));
         break;
     case GI_INFO_TYPE_CALLBACK:
-        block_tag = 1; // see GIBaseInfo.ml in order to match the tag block
-        ret = caml_alloc (1, block_tag);
-        Store_field (ret, 0, Val_gifunctioninfo_from_base_info (c_info));
+        c_block_tag = 1; // see GIBaseInfo.ml in order to match the tag block
+        caml_ret = caml_alloc (1, c_block_tag);
+        Store_field (caml_ret, 0, Val_gifunctioninfo_from_base_info (c_info));
         break;
     case GI_INFO_TYPE_STRUCT:
-        block_tag = 2; // see GIBaseInfo.ml in order to match the tag block
-        ret = caml_alloc (1, block_tag);
-        Store_field (ret, 0, Val_gistructinfo ((GIStructInfo *) c_info));
+        c_block_tag = 2; // see GIBaseInfo.ml in order to match the tag block
+        caml_ret = caml_alloc (1, c_block_tag);
+        Store_field (caml_ret, 0, Val_gistructinfo ((GIStructInfo *) c_info));
         break;
     case GI_INFO_TYPE_UNION:
-        block_tag = 3; // see GIBaseInfo.ml in order to match the tag block
-        ret = caml_alloc (1, block_tag);
-        Store_field (ret, 0, Val_giunioninfo ((GIUnionInfo *) c_info));
+        c_block_tag = 3; // see GIBaseInfo.ml in order to match the tag block
+        caml_ret = caml_alloc (1, c_block_tag);
+        Store_field (caml_ret, 0, Val_giunioninfo ((GIUnionInfo *) c_info));
         break;
     /**************************************************
      * BEFORE ADDING ANOTHER CASE CHECK GIBaseInfo.ml
      * ***********************************************/
     default:
-        ret = Val_int (type);
+        caml_ret = Val_int (c_type);
         break;
     }
 
-    CAMLreturn (ret);
+    CAMLreturn (caml_ret);
 }
 
 CAMLprim value
@@ -115,13 +115,13 @@ caml_g_ibaseinfo_equal_c (value caml_baseinfo1,
 
     GIBaseInfo *c_info1;
     GIBaseInfo *c_info2;
-    int is_equal = 0;
+    int c_is_equal = 0;
 
     c_info1 = GIBaseInfo_val (caml_baseinfo1);
     c_info2 = GIBaseInfo_val (caml_baseinfo2);
 
-    is_equal = g_base_info_equal (c_info1, c_info2);
-    CAMLreturn (Val_bool (is_equal));
+    c_is_equal = g_base_info_equal (c_info1, c_info2);
+    CAMLreturn (Val_bool (c_is_equal));
 }
 
 CAMLprim value
@@ -130,12 +130,12 @@ caml_g_ibaseinfo_get_namespace_c (value caml_baseinfo)
     CAMLparam1 (caml_baseinfo);
 
     GIBaseInfo *c_info;
-    const char *namespace;
+    const char *c_namespace;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
-    namespace = g_base_info_get_namespace (c_info);
-    CAMLreturn (caml_copy_string (namespace));
+    c_namespace = g_base_info_get_namespace (c_info);
+    CAMLreturn (caml_copy_string (c_namespace));
 }
 
 CAMLprim value
@@ -145,23 +145,23 @@ caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
     CAMLparam2 (caml_baseinfo, caml_callback);
 
     GIBaseInfo *c_info;
-    GIAttributeIter iter = { 0, };
+    GIAttributeIter c_iter = { 0, };
     char *c_name;
     char *c_value;
 
     c_info = GIBaseInfo_val (caml_baseinfo);
 
-    while (g_base_info_iterate_attributes (c_info, &iter, &c_name, &c_value))
+    while (g_base_info_iterate_attributes (c_info, &c_iter, &c_name, &c_value))
     {
-        CAMLlocal3 (caml_name, caml_value, callback_return);
+        CAMLlocal3 (caml_name, caml_value, caml_callback_return);
         caml_name = caml_copy_string (c_name);
         caml_value = caml_copy_string (c_value);
 
-        callback_return = caml_callback2 (caml_callback,
-                                          caml_name,
-                                          caml_value);
+        caml_callback_return = caml_callback2 (caml_callback,
+                                               caml_name,
+                                               caml_value);
 
-        if(Bool_val (callback_return) == 0)
+        if(Bool_val (caml_callback_return) == 0)
             CAMLreturn (Val_unit);
     }
 

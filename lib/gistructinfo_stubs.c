@@ -52,12 +52,12 @@ caml_g_istructinfo_get_alignment_c (value caml_structinfo)
 {
     CAMLparam1 (caml_structinfo);
     GIStructInfo *c_info;
-    int alignment;
+    int c_alignment;
 
     c_info = GIStructInfo_val (caml_structinfo);
-    alignment = g_struct_info_get_alignment (c_info);
+    c_alignment = g_struct_info_get_alignment (c_info);
 
-    CAMLreturn (Val_int (alignment));
+    CAMLreturn (Val_int (c_alignment));
 }
 
 CAMLprim value
@@ -65,12 +65,12 @@ caml_g_istructinfo_get_size_c (value caml_structinfo)
 {
     CAMLparam1 (caml_structinfo);
     GIStructInfo *c_info;
-    int size;
+    int c_size;
 
     c_info = GIStructInfo_val (caml_structinfo);
-    size = g_struct_info_get_size (c_info);
+    c_size = g_struct_info_get_size (c_info);
 
-    CAMLreturn (Val_int (size));
+    CAMLreturn (Val_int (c_size));
 }
 
 CAMLprim value
@@ -78,12 +78,12 @@ caml_g_istructinfo_is_gtype_struct_c (value caml_structinfo)
 {
     CAMLparam1 (caml_structinfo);
     GIStructInfo *c_info;
-    gboolean is_struct;
+    gboolean c_is_struct;
 
     c_info = GIStructInfo_val (caml_structinfo);
-    is_struct = g_struct_info_is_gtype_struct (c_info);
+    c_is_struct = g_struct_info_is_gtype_struct (c_info);
 
-    CAMLreturn (Val_bool (is_struct));
+    CAMLreturn (Val_bool (c_is_struct));
 }
 
 CAMLprim value
@@ -91,12 +91,12 @@ caml_g_istructinfo_is_foreign_c (value caml_structinfo)
 {
     CAMLparam1 (caml_structinfo);
     GIStructInfo *c_info;
-    gboolean is_foreign;
+    gboolean c_is_foreign;
 
     c_info = GIStructInfo_val (caml_structinfo);
-    is_foreign = g_struct_info_is_foreign (c_info);
+    c_is_foreign = g_struct_info_is_foreign (c_info);
 
-    CAMLreturn (Val_bool (is_foreign));
+    CAMLreturn (Val_bool (c_is_foreign));
 }
 
 CAMLprim value
@@ -133,12 +133,12 @@ caml_g_istructinfo_get_method_c (value caml_structinfo,
     GIStructInfo *c_info;
     GIFunctionInfo *c_function_info;
     CAMLlocal1 (caml_function_info);
-    int n;
+    int c_n;
 
     c_info = GIStructInfo_val (caml_structinfo);
-    n = Int_val (caml_n);
+    c_n = Int_val (caml_n);
 
-    c_function_info = g_struct_info_get_method (c_info, n);
+    c_function_info = g_struct_info_get_method (c_info, c_n);
     caml_function_info = Val_gifunctioninfo (c_function_info);
 
     CAMLreturn (caml_function_info);

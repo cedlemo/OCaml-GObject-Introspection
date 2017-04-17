@@ -60,13 +60,13 @@ alloc_gitypelib (GITypelib *t)
 }
 
 CAMLprim value
-caml_g_irepository_get_default_c (value unit)
+caml_g_irepository_get_default_c (value caml_unit)
 {
-    CAMLparam1 (unit);
+    CAMLparam1 (caml_unit);
 
-    GIRepository *repository;
-    repository = g_irepository_get_default ();
-    CAMLreturn (alloc_repository (repository));
+    GIRepository *c_repository;
+    c_repository = g_irepository_get_default ();
+    CAMLreturn (alloc_repository (c_repository));
 }
 
 CAMLprim value
@@ -75,18 +75,20 @@ caml_g_irepository_require_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    GITypelib *typelib;
-    const char *_namespace;
-    GError *error = NULL;
+    GIRepository *c_repository;
+    GITypelib *c_typelib;
+    const char *c_namespace;
+    GError *c_error = NULL;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    typelib = g_irepository_require (repository, _namespace, NULL, 0, &error);
+    c_typelib = g_irepository_require (c_repository,
+                                       c_namespace,
+                                       NULL, 0, &c_error);
 
-    if(error != NULL)
-        raise_gerror_to_ocaml_failure_exception (error);
+    if(c_error != NULL)
+        raise_gerror_to_ocaml_failure_exception (c_error);
 
     /* TODO : support more arguments ?
      * repository A GIRepository or NULL for the singleton process-global
@@ -96,7 +98,7 @@ caml_g_irepository_require_c (value caml_repository,
      * flags Set of GIRepositoryLoadFlags, may be 0
      * error a GError.*/
 
-     CAMLreturn (alloc_gitypelib (typelib));
+     CAMLreturn (alloc_gitypelib (c_typelib));
 }
 
 CAMLprim value
@@ -105,20 +107,20 @@ caml_g_irepository_get_dependencies_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    const char *_namespace;
+    GIRepository *c_repository;
+    const char *c_namespace;
     char **c_dependencies;
-    CAMLlocal1 (dependencies);
+    CAMLlocal1 (caml_dependencies);
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    c_dependencies = g_irepository_get_dependencies (repository, _namespace);
+    c_dependencies = g_irepository_get_dependencies (c_repository, c_namespace);
 
-    dependencies = c_null_term_array_of_strings_to_ocaml_strings_list (c_dependencies);
+    caml_dependencies = c_null_term_array_of_strings_to_ocaml_strings_list (c_dependencies);
     g_strfreev (c_dependencies);
 
-    CAMLreturn (dependencies);
+    CAMLreturn (caml_dependencies);
 }
 
 /* Travis GI version = 1.40. v should be >= 1.44
@@ -128,20 +130,20 @@ caml_g_irepository_get_dependencies_c (value caml_repository,
  * {
  *     CAMLparam2 (caml_repository, caml_namespace);
  *
- *     GIRepository *repository;
- *     const char *_namespace;
+ *     GIRepository *c_repository;
+ *     const char *c_namespace;
  *     char **c_dependencies;
- *     CAMLlocal1 (dependencies);
+ *     CAMLlocal1 (caml_dependencies);
  *
- *     repository = Repository_val (caml_repository);
- *     _namespace = String_val (caml_namespace);
+ *     c_repository = Repository_val (caml_repository);
+ *     c_namespace = String_val (caml_namespace);
  *
- *     c_dependencies = g_irepository_get_immediate_dependencies (repository, _namespace);
+ *     c_dependencies = g_irepository_get_immediate_dependencies (c_repository, c_namespace);
  *
- *     dependencies = c_null_term_array_of_strings_to_ocaml_strings_list (c_dependencies);
+ *     caml_dependencies = c_null_term_array_of_strings_to_ocaml_strings_list (c_dependencies);
  *     g_strfreev (c_dependencies);
  *
- *     CAMLreturn (dependencies);
+ *     CAMLreturn (caml_dependencies);
  * }
  */
 
@@ -151,14 +153,14 @@ caml_g_irepository_get_n_infos_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    const char *_namespace;
+    GIRepository *c_repository;
+    const char *c_namespace;
     int c_n_infos = 0;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    c_n_infos = g_irepository_get_n_infos (repository, _namespace);
+    c_n_infos = g_irepository_get_n_infos (c_repository, c_namespace);
 
     CAMLreturn (Int_val (c_n_infos));
 }
@@ -170,19 +172,20 @@ caml_g_irepository_get_info_c (value caml_repository,
 {
     CAMLparam3 (caml_repository, caml_namespace, caml_index);
 
-    GIRepository *repository;
-    const char *_namespace;
-    int index = 0;
-    GIBaseInfo *info = NULL;
+    GIRepository *c_repository;
+    const char *c_namespace;
+    int c_index = 0;
+    GIBaseInfo *c_info = NULL;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
-    index = Val_int (caml_index);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
+    c_index = Val_int (caml_index);
 
-    info = g_irepository_get_info (repository, _namespace, index);
+    c_info = g_irepository_get_info (c_repository, c_namespace, c_index);
 
-    if(info != NULL) {
-        value caml_info = alloc_gibaseinfo (info);
+    if(c_info != NULL) {
+        CAMLlocal1 (caml_info);
+        caml_info = alloc_gibaseinfo (c_info);
         CAMLreturn (Val_some (caml_info));
     }
     else
@@ -194,18 +197,18 @@ caml_g_irepository_get_loaded_namespaces_c (value caml_repository)
 {
     CAMLparam1 (caml_repository);
 
-    GIRepository *repository;
+    GIRepository *c_repository;
     char **c_namespaces;
-    CAMLlocal1 (namespaces);
+    CAMLlocal1 (caml_namespaces);
 
-    repository = Repository_val (caml_repository);
+    c_repository = Repository_val (caml_repository);
 
-    c_namespaces = g_irepository_get_loaded_namespaces (repository);
+    c_namespaces = g_irepository_get_loaded_namespaces (c_repository);
 
-    namespaces = c_null_term_array_of_strings_to_ocaml_strings_list (c_namespaces);
+    caml_namespaces = c_null_term_array_of_strings_to_ocaml_strings_list (c_namespaces);
     g_strfreev (c_namespaces);
 
-    CAMLreturn (namespaces);
+    CAMLreturn (caml_namespaces);
 }
 
 CAMLprim value
@@ -214,31 +217,31 @@ caml_g_irepository_get_c_prefix_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
+    GIRepository *c_repository;
     const char *c_prefix;
-    const char *_namespace;
+    const char *c_namespace;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    c_prefix = g_irepository_get_c_prefix (repository, _namespace);
+    c_prefix = g_irepository_get_c_prefix (c_repository, c_namespace);
 
     CAMLreturn (caml_copy_string (c_prefix));
 }
 
 CAMLprim value
-caml_g_irepository_get_search_path_c (value unit)
+caml_g_irepository_get_search_path_c (value caml_unit)
 {
-    CAMLparam1 (unit);
+    CAMLparam1 (caml_unit);
 
     GSList *c_search_path = NULL;
-    CAMLlocal1 (search_path);
+    CAMLlocal1 (caml_search_path);
 
     c_search_path = g_irepository_get_search_path ();
 
-    search_path = gslist_of_strings_to_ocaml_strings_list (c_search_path);
+    caml_search_path = gslist_of_strings_to_ocaml_strings_list (c_search_path);
 
-    CAMLreturn (search_path);
+    CAMLreturn (caml_search_path);
 }
 
 CAMLprim value
@@ -247,27 +250,27 @@ caml_g_irepository_enumerate_versions_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    const char *_namespace;
+    GIRepository *c_repository;
+    const char *c_namespace;
     GList *c_versions = NULL;
-    CAMLlocal1 (versions);
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    CAMLlocal1 (caml_versions);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    c_versions = g_irepository_enumerate_versions (repository, _namespace);
-    versions = glist_of_strings_to_ocaml_strings_list (c_versions);
+    c_versions = g_irepository_enumerate_versions (c_repository, c_namespace);
+    caml_versions = glist_of_strings_to_ocaml_strings_list (c_versions);
 
-    CAMLreturn (versions);
+    CAMLreturn (caml_versions);
 }
 
 CAMLprim value
 caml_g_irepository_prepend_library_path_c (value caml_path)
 {
     CAMLparam1 (caml_path);
-    const char *path;
+    const char *c_path;
 
-    path = String_val (caml_path);
-    g_irepository_prepend_library_path (path);
+    c_path = String_val (caml_path);
+    g_irepository_prepend_library_path (c_path);
 
     CAMLreturn (Val_unit);
 }
@@ -276,10 +279,10 @@ CAMLprim value
 caml_g_irepository_prepend_search_path_c (value caml_path)
 {
     CAMLparam1 (caml_path);
-    const char *path;
+    const char *c_path;
 
-    path = String_val (caml_path);
-    g_irepository_prepend_search_path (path);
+    c_path = String_val (caml_path);
+    g_irepository_prepend_search_path (c_path);
 
     CAMLreturn (Val_unit);
 }
@@ -290,16 +293,16 @@ caml_g_irepository_get_shared_library_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    const char *lib;
-    const char *_namespace;
+    GIRepository *c_repository;
+    const char *c_lib;
+    const char *c_namespace;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    lib = g_irepository_get_shared_library (repository, _namespace);
+    c_lib = g_irepository_get_shared_library (c_repository, c_namespace);
 
-    CAMLreturn (caml_copy_string (lib));
+    CAMLreturn (caml_copy_string (c_lib));
 }
 
 CAMLprim value
@@ -308,16 +311,16 @@ caml_g_irepository_get_version_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    const char *version;
-    const char *_namespace;
+    GIRepository *c_repository;
+    const char *c_version;
+    const char *c_namespace;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    version = g_irepository_get_version (repository, _namespace);
+    c_version = g_irepository_get_version (c_repository, c_namespace);
 
-    CAMLreturn (caml_copy_string (version));
+    CAMLreturn (caml_copy_string (c_version));
 }
 
 CAMLprim value
@@ -326,16 +329,16 @@ caml_g_irepository_get_typelib_path_c (value caml_repository,
 {
     CAMLparam2 (caml_repository, caml_namespace);
 
-    GIRepository *repository;
-    const char *path;
-    const char *_namespace;
+    GIRepository *c_repository;
+    const char *c_path;
+    const char *c_namespace;
 
-    repository = Repository_val (caml_repository);
-    _namespace = String_val (caml_namespace);
+    c_repository = Repository_val (caml_repository);
+    c_namespace = String_val (caml_namespace);
 
-    path = g_irepository_get_typelib_path (repository, _namespace);
+    c_path = g_irepository_get_typelib_path (c_repository, c_namespace);
 
-    CAMLreturn (caml_copy_string (path));
+    CAMLreturn (caml_copy_string (c_path));
 }
 
 CAMLprim value
@@ -345,24 +348,24 @@ caml_g_irepository_find_by_name_c (value caml_repository,
 {
     CAMLparam3 (caml_repository, caml_namespace, caml_name);
 
-    GIRepository *repository;
-    const char *_namespace;
-    const char *name;
-    GIBaseInfo *info = NULL;
+    GIRepository *c_repository;
+    const char *c_namespace;
+    const char *c_name;
+    GIBaseInfo *c_info = NULL;
     CAMLlocal1 (caml_info);
 
     if(caml_repository == Val_none)
-        repository = NULL;
+        c_repository = NULL;
     else
-        repository = Repository_val (Some_val (caml_repository));
+        c_repository = Repository_val (Some_val (caml_repository));
 
-    _namespace = String_val (caml_namespace);
-    name = String_val (caml_name);
+    c_namespace = String_val (caml_namespace);
+    c_name = String_val (caml_name);
 
-    info = g_irepository_find_by_name (repository, _namespace, name);
+    c_info = g_irepository_find_by_name (c_repository, c_namespace, c_name);
 
-    if(info != NULL) {
-        caml_info = alloc_gibaseinfo (info);
+    if(c_info != NULL) {
+        caml_info = alloc_gibaseinfo (c_info);
         CAMLreturn (Val_some (caml_info));
     }
     else

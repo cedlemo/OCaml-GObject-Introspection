@@ -53,12 +53,12 @@ caml_g_iunioninfo_get_alignment_c (value caml_unioninfo)
 {
     CAMLparam1 (caml_unioninfo);
     GIUnionInfo *c_info;
-    int alignment;
+    int c_alignment;
 
     c_info = GIUnionInfo_val (caml_unioninfo);
-    alignment = g_union_info_get_alignment (c_info);
+    c_alignment = g_union_info_get_alignment (c_info);
 
-    CAMLreturn (Val_int (alignment));
+    CAMLreturn (Val_int (c_alignment));
 }
 
 CAMLprim value

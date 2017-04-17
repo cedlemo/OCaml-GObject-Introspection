@@ -19,92 +19,92 @@
 #include "conversions.h"
 
 value
-c_null_term_array_of_strings_to_ocaml_strings_list (char **strings)
+c_null_term_array_of_strings_to_ocaml_strings_list (char **c_strings)
 {
 
-    value cons;
-    value cli;
-    char *str = NULL;
-    char **ptr = strings;
-    cli = Val_emptylist;
+    value caml_cons;
+    value caml_cli;
+    char *c_str = NULL;
+    char **ptr = c_strings;
+    caml_cli = Val_emptylist;
 
     for ( ; *ptr != NULL; ptr++ )
     {
-        str = *ptr;
-        cons = caml_alloc (2, 0);
+        c_str = *ptr;
+        caml_cons = caml_alloc (2, 0);
 
-        Store_field (cons, 0, caml_copy_string(str));  // head
-        Store_field (cons, 1, cli);                    // tail
+        Store_field (caml_cons, 0, caml_copy_string(c_str));  // head
+        Store_field (caml_cons, 1, caml_cli);                 // tail
 
-        cli = cons;
+        caml_cli = caml_cons;
     }
 
-    return cli;
+    return caml_cli;
 }
 
 value
-gslist_of_strings_to_ocaml_strings_list (GSList *list)
+gslist_of_strings_to_ocaml_strings_list (GSList *c_list)
 {
 
-    GSList *iterator = NULL;
-    value cons;
-    value cli;
-    char *str = NULL;
-    cli = Val_emptylist;
+    GSList *c_iterator = NULL;
+    value caml_cons;
+    value caml_cli;
+    char *c_str = NULL;
+    caml_cli = Val_emptylist;
 
-    for (iterator = list; iterator; iterator = iterator->next) {
-        str = iterator->data;
-        cons = caml_alloc (2, 0);
+    for (c_iterator = c_list; c_iterator; c_iterator = c_iterator->next) {
+        c_str = c_iterator->data;
+        caml_cons = caml_alloc (2, 0);
 
-        Store_field (cons, 0, caml_copy_string(str));  // head
-        Store_field (cons, 1, cli);                    // tail
+        Store_field (caml_cons, 0, caml_copy_string(c_str));  // head
+        Store_field (caml_cons, 1, caml_cli);                 // tail
 
-        cli = cons;
+        caml_cli = caml_cons;
     }
 
-    return cli;
+    return caml_cli;
 }
 
 value
-glist_of_strings_to_ocaml_strings_list (GList *list)
+glist_of_strings_to_ocaml_strings_list (GList *c_list)
 {
 
-    GList *iterator = NULL;
-    value cons;
-    value cli;
-    char *str = NULL;
-    cli = Val_emptylist;
+    GList *c_iterator = NULL;
+    value caml_cons;
+    value caml_cli;
+    char *c_str = NULL;
+    caml_cli = Val_emptylist;
 
-    for (iterator = list; iterator; iterator = iterator->next) {
-        str = iterator->data;
-        cons = caml_alloc (2, 0);
+    for (c_iterator = c_list; c_iterator; c_iterator = c_iterator->next) {
+        c_str = c_iterator->data;
+        caml_cons = caml_alloc (2, 0);
 
-        Store_field (cons, 0, caml_copy_string(str));  // head
-        Store_field (cons, 1, cli);                    // tail
+        Store_field (caml_cons, 0, caml_copy_string(c_str));  // head
+        Store_field (caml_cons, 1, caml_cli);                 // tail
 
-        cli = cons;
+        caml_cli = caml_cons;
     }
 
-    return cli;
+    return caml_cli;
 }
 
 value
-val_some( value v )
+val_some( value caml_v )
 {
-    CAMLparam1 (v);
-    CAMLlocal1 (some);
-    some = caml_alloc (1, 0);
-    Store_field (some, 0, v);
+    CAMLparam1 (caml_v);
+    CAMLlocal1 (caml_some);
+    caml_some = caml_alloc (1, 0);
+    Store_field (caml_some, 0, caml_v);
 
-    CAMLreturn (some);
+    CAMLreturn (caml_some);
 }
 
 void
-raise_gerror_to_ocaml_failure_exception (GError *error)
+raise_gerror_to_ocaml_failure_exception (GError *c_error)
 {
-    if(error == NULL)
+    if(c_error == NULL)
         return;
 
-    caml_failwith (error->message);
-    g_clear_error (&error); // TODO : is it needed since we rise an exception ?
+    caml_failwith (c_error->message);
+    g_clear_error (&c_error); // TODO : is it needed since we rise an exception ?
 }
