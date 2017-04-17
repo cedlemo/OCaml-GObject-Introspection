@@ -39,4 +39,7 @@ caml_g_istructinfo_is_gtype_struct_c (value structinfo);
 
 CAMLprim value
 caml_g_istructinfo_is_foreign_c (value structinfo);
+
+CAMLprim value
+caml_g_istructinfo_get_n_fields_c (value structinfo);
 #endif // GISTRUCTINFO_STUBS_H

@@ -37,5 +37,17 @@ external get_size:
 external is_gtype_struct:
   structinfo -> bool = "caml_g_istructinfo_is_gtype_struct_c"
 
+(** No doc yet *)
 external is_foreign:
   structinfo -> bool = "caml_g_istructinfo_is_foreign_c"
+
+(** Obtain the number of fields this structure has. *)
+external get_n_fields:
+  structinfo -> int = "caml_g_istructinfo_get_n_fields_c"
+
+(* gint	g_struct_info_get_n_fields ()
+ * GIFieldInfo *	g_struct_info_get_field ()
+ * gint	g_struct_info_get_n_methods ()
+ * GIFunctionInfo *	g_struct_info_get_method ()
+ * GIFunctionInfo *	g_struct_info_find_method ()
+*)

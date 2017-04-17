@@ -98,3 +98,16 @@ caml_g_istructinfo_is_foreign_c (value caml_structinfo)
 
     CAMLreturn (Val_bool (is_foreign));
 }
+
+CAMLprim value
+caml_g_istructinfo_get_n_fields_c (value caml_structinfo)
+{
+    CAMLparam1 (caml_structinfo);
+    GIStructInfo *c_info;
+    int c_n_fields = 0;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    c_n_fields = g_struct_info_get_n_fields (c_info);
+
+    CAMLreturn (Val_int (c_n_fields));
+}
