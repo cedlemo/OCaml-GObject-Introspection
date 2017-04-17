@@ -39,3 +39,9 @@ external get_flags:
     function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
   functioninfo -> string = "caml_g_ifunctioninfo_get_symbol_c"
+
+(* TODO : GIPropertyInfo *	g_function_info_get_property ()
+ * TODO : GIVFuncInfo *	g_function_info_get_vfunc ()
+ * TODO : gboolean	g_function_info_invoke ()
+ * TODO : GQuark	g_invoke_error_quark ()
+ *)
