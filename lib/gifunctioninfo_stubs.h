@@ -23,7 +23,18 @@
 #include <girepository.h>
 
 #define GIFunctionInfo_val(v) (*((GIFunctionInfo **) Data_custom_val(v)))
+/*
+ * Wrap a GIFunctionInfo pointer and increase its reference counter
+ * */
+#define Val_gifunctioninfo_from_base_info(i) alloc_gifunctioninfo_from_base_info (i)
+/*
+ * Wrap a GIFunctionInfo pointer without increasing its reference counter
+ * */
 #define Val_gifunctioninfo(i) alloc_gifunctioninfo (i)
+
+// TODO : differenciate the functions on with/without ref instead ?
+value
+alloc_gifunctioninfo_from_base_info (GIFunctionInfo *i);
 
 value
 alloc_gifunctioninfo (GIFunctionInfo *i);
