@@ -108,4 +108,4 @@ external is_deprecated:
 (*
  * TODO: GITypelib *	g_base_info_get_typelib ()
  * TODO: const gchar *	g_base_info_get_attribute ()
- * )
+ *)
