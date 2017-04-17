@@ -137,7 +137,7 @@ caml_g_istructinfo_get_method_c (value caml_structinfo,
 
     c_info = GIStructInfo_val (caml_structinfo);
     n = Int_val (caml_n);
-    // TODO : memory leak, use a Val_gifunctioninfo_no_ref
+
     c_function_info = g_struct_info_get_method (c_info, n);
     caml_function_info = Val_gifunctioninfo (c_function_info);
 
@@ -156,7 +156,6 @@ caml_g_istructinfo_find_method_c (value caml_structinfo,
 
     c_info = GIStructInfo_val (caml_structinfo);
     c_name = String_val (caml_name);
-    // TODO : memory leak, use a Val_gifunctioninfo_no_ref
 
     c_function_info = g_struct_info_find_method (c_info, c_name);
 
