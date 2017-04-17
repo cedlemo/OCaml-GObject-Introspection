@@ -32,8 +32,24 @@ let test_from_baseinfo test_ctxt =
       | GIBaseInfo.Union union_info -> true
       | _ -> false )
 
+let get_union_info () =
+  match GIRepository.find_by_name (Some repo) namespace union_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Union union_info -> Some union_info
+    | _ -> None
+
+let test_get_alignment test_ctxt =
+  match get_union_info () with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) ->let alignment = GIUnionInfo.get_alignment info in
+      assert_equal_int 8 alignment
+
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
-    "GIUnionInfo from baseinfo" >:: test_from_baseinfo
+    "GIUnionInfo from baseinfo" >:: test_from_baseinfo;
+    "GIUnionInfo get alignment" >:: test_get_alignment
   ]
