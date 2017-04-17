@@ -52,11 +52,17 @@ let test_get_size test_ctxt =
   | Some (info) ->let size = GIUnionInfo.get_size info in
       assert_equal_int 8 size
 
+let test_get_n_methods test_ctxt =
+  match get_union_info () with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) ->let n = GIUnionInfo.get_n_methods info in
+      assert_equal_int 5 n
 
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
     "GIUnionInfo from baseinfo" >:: test_from_baseinfo;
     "GIUnionInfo get alignment" >:: test_get_alignment;
-    "GIUnionInfo get size" >:: test_get_size
+    "GIUnionInfo get size" >:: test_get_size;
+    "GIUnionInfo get n methods" >:: test_get_n_methods
   ]
