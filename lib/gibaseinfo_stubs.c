@@ -79,12 +79,12 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
     case GI_INFO_TYPE_FUNCTION:
         block_tag = 0; // see GIBaseInfo.ml in order to match the tag block
         ret = caml_alloc (1, block_tag);
-        Store_field (ret, 0, Val_gifunctioninfo ((GIFunctionInfo *) c_info));
+        Store_field (ret, 0, Val_gifunctioninfo_from_base_info (c_info));
         break;
     case GI_INFO_TYPE_CALLBACK:
         block_tag = 1; // see GIBaseInfo.ml in order to match the tag block
         ret = caml_alloc (1, block_tag);
-        Store_field (ret, 0, Val_gifunctioninfo ((GIFunctionInfo *) c_info));
+        Store_field (ret, 0, Val_gifunctioninfo_from_base_info (c_info));
         break;
     case GI_INFO_TYPE_STRUCT:
         block_tag = 2; // see GIBaseInfo.ml in order to match the tag block
