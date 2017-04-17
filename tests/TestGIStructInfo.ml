@@ -83,6 +83,22 @@ let test_get_method test_ctxt =
     let symbol = GIFunctionInfo.get_symbol m in
     assert_equal_string "g_value_copy" symbol
 
+let test_find_method_bad_name test_ctxt =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) -> match GIStructInfo.find_method info "Impossible" with
+    | None -> assert_equal_boolean true true
+    | Some _ -> assert_equal_string "Impossible" "Should not returns something"
+
+let test_find_method test_ctxt =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) -> match GIStructInfo.find_method info "copy" with
+    | None -> assert_equal_boolean false true
+    | Some fn_info -> let symbol = GIFunctionInfo.get_symbol fn_info in
+      assert_equal_string "g_value_copy" symbol
+
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
@@ -93,5 +109,7 @@ let tests =
     "GIStructInfo is foreign" >:: test_is_foreign;
     "GIStructInfo get n fields" >:: test_get_n_fields;
     "GIStructInfo get n methods" >:: test_get_n_methods;
-    "GIStructInfo get method" >:: test_get_method
+    "GIStructInfo get method" >:: test_get_method;
+    "GIStructInfo find method bad name" >:: test_find_method_bad_name;
+    "GIStructInfo find method" >:: test_find_method
   ]
