@@ -74,7 +74,7 @@ let test_get_n_methods test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> let n_methods = GIStructInfo.get_n_methods info in
-    assert_equal_int 63 n_methods
+    assert_equal_or_greater n_methods 62
 
 let test_get_method test_ctxt =
   match get_struct_info () with
