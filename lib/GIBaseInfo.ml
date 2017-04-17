@@ -70,23 +70,37 @@ let baseinfo_type_get_name baseinfo_t =
   | Type -> "type"
   | Unresolved -> "unresolved"
 
+(** Obtain the name of the info . What the name represents depends on the
+    GIInfoType of the info . For instance for GIFunctionInfo it is the name of
+    the function. *)
 external get_name:
   baseinfo -> string = "caml_g_ibaseinfo_get_name_c"
 
+(** Obtain the info type of the GIBaseInfo *)
 external get_type:
   baseinfo -> baseinfo_type = "caml_g_ibaseinfo_get_type_c"
 
+(** Compare two GIBaseInfo.  Using pointer comparison is not practical since
+    many functions return different instances of GIBaseInfo that refers to the
+    same part of the TypeLib; use this function instead to do GIBaseInfo
+    comparisons. *)
 external equal:
   baseinfo -> baseinfo -> bool = "caml_g_ibaseinfo_equal_c"
 
+(** Obtain the namespace of info .*)
 external get_namespace:
   baseinfo -> string = "caml_g_ibaseinfo_get_namespace_c"
 
+(** Iterate over all attributes associated with this node. *)
 external iterate_over_attributes:
   baseinfo -> (string -> string -> bool) -> unit = "caml_g_ibaseinfo_iterate_over_attributes_c"
 
+(** Obtain the container of the info . The container is the parent GIBaseInfo.
+    For instance, the parent of a GIFunctionInfo is an GIObjectInfo or
+    GIInterfaceInfo. *)
 external get_container:
   baseinfo -> baseinfo = "caml_g_ibaseinfo_get_container_c"
 
+(** Obtain whether the info is represents a metadata which is deprecated or not. *)
 external is_deprecated:
   baseinfo -> bool = "caml_g_ibaseinfo_is_deprecated_c"
