@@ -104,3 +104,8 @@ external get_container:
 (** Obtain whether the info is represents a metadata which is deprecated or not. *)
 external is_deprecated:
   baseinfo -> bool = "caml_g_ibaseinfo_is_deprecated_c"
+
+(*
+ * TODO: GITypelib *	g_base_info_get_typelib ()
+ * TODO: const gchar *	g_base_info_get_attribute ()
+ * )
