@@ -23,3 +23,8 @@
     which is a field deciding what type of real union fields is valid for
     specified instance. *)
 type unioninfo
+
+(** Obtain the required alignment of the union. *)
+external get_alignment:
+  unioninfo -> int = "caml_g_iunioninfo_get_alignment_c"
+
