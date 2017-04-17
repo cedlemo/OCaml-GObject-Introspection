@@ -124,3 +124,23 @@ caml_g_istructinfo_get_n_methods_c (value caml_structinfo)
 
     CAMLreturn (Val_int (c_n_methods));
 }
+
+CAMLprim value
+caml_g_istructinfo_get_method_c (value caml_structinfo,
+                                 value caml_n)
+{
+    CAMLparam2 (caml_structinfo, caml_n);
+    GIStructInfo *c_info;
+    GIFunctionInfo *c_function_info;
+    CAMLlocal1 (caml_function_info);
+    int n;
+
+    c_info = GIStructInfo_val (caml_structinfo);
+    n = Int_val (caml_n);
+
+    c_function_info = g_struct_info_get_method (c_info, n);
+    caml_function_info = Val_gifunctioninfo (c_function_info);
+
+    CAMLreturn (caml_function_info);
+}
+

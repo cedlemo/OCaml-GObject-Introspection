@@ -20,6 +20,7 @@
 #define GISTRUCTINFO_STUBS_H
 
 #include "conversions.h"
+#include "gifunctioninfo_stubs.h"
 #include <girepository.h>
 
 #define GIStructInfo_val(v) (*((GIStructInfo **) Data_custom_val(v)))
@@ -45,4 +46,8 @@ caml_g_istructinfo_get_n_fields_c (value structinfo);
 
 CAMLprim value
 caml_g_istructinfo_get_n_methods_c (value structinfo);
+
+CAMLprim value
+caml_g_istructinfo_get_method_c (value structinfo,
+                                 value n);
 #endif // GISTRUCTINFO_STUBS_H
