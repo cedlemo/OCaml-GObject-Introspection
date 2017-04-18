@@ -37,6 +37,11 @@ Compare two GIBaseInfo.
 Obtain the type information for method named name .
 </div>
 </td></tr>
+<tr><td><a href="GIUnionInfo.html#VALfind_method">find_method</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Obtain the type information for method named name .
+</div>
+</td></tr>
 <tr><td align="left"><br>G</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_alignment">get_alignment</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
@@ -79,9 +84,19 @@ Obtain the GIFunctionInfo.flags for the info .
 Obtain the type information for method with specified index.
 </div>
 </td></tr>
+<tr><td><a href="GIUnionInfo.html#VALget_method">get_method</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Obtain the type information for method with specified index.
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_n_fields">get_n_fields</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the number of fields this structure has.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALget_n_fields">get_n_fields</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Obtain the number of fields this union has.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_n_infos">get_n_infos</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -142,6 +157,11 @@ Obtain the info type of the GIBaseInfo
 <tr><td><a href="GIBaseInfo.html#VALis_deprecated">is_deprecated</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
 Obtain whether the info is represents a metadata which is deprecated or not.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALis_discriminated">is_discriminated</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Return true if this union contains discriminator field.
 </div>
 </td></tr>
 <tr><td><a href="GIStructInfo.html#VALis_foreign">is_foreign</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>

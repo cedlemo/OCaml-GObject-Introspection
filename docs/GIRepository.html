@@ -39,14 +39,14 @@ GIRepository — GObject Introspection repository manager module
 Returns the singleton process-global default GIRepository.<br>
 </div>
 
-<pre><span id="VALrequire"><span class="keyword">val</span> require</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> <a href="GIRepository.html#TYPEtypelib">typelib</a></code></pre><div class="info ">
+<pre><span id="VALrequire"><span class="keyword">val</span> require</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> <a href="GIRepository.html#TYPEtypelib">typelib</a></code></pre><div class="info ">
 Force the namespace namespace_ to be loaded if it isn't already. If
  namespace_ is not loaded, this function will search for a ".typelib" file
  using the repository search path. ( TODO : In addition, a version version of
  namespace may be specified. If version is not specified, the latest will be used).<br>
 </div>
 
-<pre><span id="VALget_dependencies"><span class="keyword">val</span> get_dependencies</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string list</code></pre><div class="info ">
+<pre><span id="VALget_dependencies"><span class="keyword">val</span> get_dependencies</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> string list</code></pre><div class="info ">
 Return an list of all (transitive) versioned dependencies for namespace_ .
  Returned strings are of the form namespace-version.
  Note: namespace_ must have already been loaded using a function such as
@@ -54,20 +54,20 @@ Return an list of all (transitive) versioned dependencies for namespace_ .
  dependencies for namespace_ , use GIRepository.get_immediate_dependencies.<br>
 </div>
 
-<pre><span id="VALget_n_infos"><span class="keyword">val</span> get_n_infos</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> int</code></pre><div class="info ">
+<pre><span id="VALget_n_infos"><span class="keyword">val</span> get_n_infos</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> int</code></pre><div class="info ">
 This function returns the number of metadata entries in given namespace
  namespace_ . The namespace must have already been loaded before calling this
  function.<br>
 </div>
 
-<pre><span id="VALget_info"><span class="keyword">val</span> get_info</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> int -> <a href="GIBaseInfo.html#TYPEbaseinfo">GIBaseInfo.baseinfo</a> option</code></pre>
-<pre><span id="VALget_loaded_namespaces"><span class="keyword">val</span> get_loaded_namespaces</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string list</code></pre>
-<pre><span id="VALget_c_prefix"><span class="keyword">val</span> get_c_prefix</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre>
-<pre><span id="VALenumerate_versions"><span class="keyword">val</span> enumerate_versions</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string list</code></pre>
+<pre><span id="VALget_info"><span class="keyword">val</span> get_info</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> int -> <a href="GIBaseInfo.html#TYPEbaseinfo">GIBaseInfo.baseinfo</a> option</code></pre>
+<pre><span id="VALget_loaded_namespaces"><span class="keyword">val</span> get_loaded_namespaces</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string list</code></pre>
+<pre><span id="VALget_c_prefix"><span class="keyword">val</span> get_c_prefix</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> string</code></pre>
+<pre><span id="VALenumerate_versions"><span class="keyword">val</span> enumerate_versions</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> string list</code></pre>
 <pre><span id="VALprepend_library_path"><span class="keyword">val</span> prepend_library_path</span> : <code class="type">string -> unit</code></pre>
 <pre><span id="VALprepend_search_path"><span class="keyword">val</span> prepend_search_path</span> : <code class="type">string -> unit</code></pre>
-<pre><span id="VALget_shared_library"><span class="keyword">val</span> get_shared_library</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre>
+<pre><span id="VALget_shared_library"><span class="keyword">val</span> get_shared_library</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> string</code></pre>
 <pre><span id="VALget_search_path"><span class="keyword">val</span> get_search_path</span> : <code class="type">unit -> string list</code></pre>
-<pre><span id="VALget_typelib_path"><span class="keyword">val</span> get_typelib_path</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre>
-<pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre>
+<pre><span id="VALget_typelib_path"><span class="keyword">val</span> get_typelib_path</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> string</code></pre>
+<pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -> string -> string</code></pre>
 <pre><span id="VALfind_by_name"><span class="keyword">val</span> find_by_name</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> option -><br>       string -> string -> <a href="GIBaseInfo.html#TYPEbaseinfo">GIBaseInfo.baseinfo</a> option</code></pre></body></html>
