@@ -46,9 +46,11 @@ external get_method:
 external get_n_fields:
   unioninfo -> int = "caml_g_iunioninfo_get_n_fields_c"
 
+(** Return true if this union contains discriminator field. *)
+external is_discriminated:
+  unioninfo -> bool = "caml_g_iunioninfo_is_discriminated_c"
 (*
  * TODO : IFieldInfo *	g_union_info_get_field ()
- * TODO : boolean	g_union_info_is_discriminated ()
  * TODO : int	g_union_info_get_discriminator_offset ()
  * TODO : ITypeInfo *	g_union_info_get_discriminator_type ()
  * TODO : IConstantInfo *	g_union_info_get_discriminator ()

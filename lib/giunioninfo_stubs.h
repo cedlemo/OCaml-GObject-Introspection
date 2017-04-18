@@ -44,4 +44,7 @@ caml_g_iunioninfo_get_method_c (value unioninfo,
 
 CAMLprim value
 caml_g_iunioninfo_get_n_fields_c (value unioninfo);
+
+CAMLprim value
+caml_g_iunioninfo_is_discriminated_c (value unioninfo);
 #endif // GIUNIONINFO_STUBS_H

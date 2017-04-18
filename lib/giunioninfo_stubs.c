@@ -124,3 +124,16 @@ caml_g_iunioninfo_get_n_fields_c (value caml_unioninfo)
 
     CAMLreturn (Val_int (c_n_fields));
 }
+
+CAMLprim value
+caml_g_iunioninfo_is_discriminated_c (value caml_unioninfo)
+{
+    CAMLparam1 (caml_unioninfo);
+    GIUnionInfo *c_info;
+    int c_is_discriminated;
+
+    c_info = GIUnionInfo_val (caml_unioninfo);
+    c_is_discriminated = g_union_info_is_discriminated (c_info);
+
+    CAMLreturn (Val_bool (c_is_discriminated));
+}
