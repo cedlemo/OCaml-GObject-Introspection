@@ -24,6 +24,8 @@
     specified instance. *)
 type unioninfo
 
+open GIFunctionInfo
+
 (** Obtain the required alignment of the union. *)
 external get_alignment:
   unioninfo -> int = "caml_g_iunioninfo_get_alignment_c"
@@ -36,10 +38,13 @@ external get_size:
 external get_n_methods:
   unioninfo -> int = "caml_g_iunioninfo_get_n_methods_c"
 
+(** Obtain the type information for method with specified index. *)
+external get_method:
+  unioninfo -> int -> functioninfo = "caml_g_iunioninfo_get_method_c"
+
 (*
  * TODO : gint	g_union_info_get_n_fields ()
  * TODO : IFieldInfo *	g_union_info_get_field ()
- * TODO : IFunctionInfo *	g_union_info_get_method ()
  * TODO : boolean	g_union_info_is_discriminated ()
  * TODO : int	g_union_info_get_discriminator_offset ()
  * TODO : ITypeInfo *	g_union_info_get_discriminator_type ()

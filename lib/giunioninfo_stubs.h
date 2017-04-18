@@ -20,6 +20,7 @@
 #define GIUNIONINFO_STUBS_H
 
 #include "conversions.h"
+#include "gifunctioninfo_stubs.h"
 #include <girepository.h>
 
 #define GIUnionInfo_val(v) (*((GIUnionInfo **) Data_custom_val(v)))
@@ -36,4 +37,8 @@ caml_g_iunioninfo_get_size_c (value unioninfo);
 
 CAMLprim value
 caml_g_iunioninfo_get_n_methods_c (value unioninfo);
+
+CAMLprim value
+caml_g_iunioninfo_get_method_c (value unioninfo,
+                                value index);
 #endif // GIUNIONINFO_STUBS_H
