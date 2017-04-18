@@ -80,7 +80,11 @@ caml_g_irepository_require_c (value caml_repository,
     const char *c_namespace;
     GError *c_error = NULL;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_typelib = g_irepository_require (c_repository,
@@ -112,7 +116,11 @@ caml_g_irepository_get_dependencies_c (value caml_repository,
     char **c_dependencies;
     CAMLlocal1 (caml_dependencies);
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_dependencies = g_irepository_get_dependencies (c_repository, c_namespace);
@@ -157,7 +165,11 @@ caml_g_irepository_get_n_infos_c (value caml_repository,
     const char *c_namespace;
     int c_n_infos = 0;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_n_infos = g_irepository_get_n_infos (c_repository, c_namespace);
@@ -178,7 +190,11 @@ caml_g_irepository_get_info_c (value caml_repository,
     int c_n_max;
     GIBaseInfo *c_info = NULL;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
     c_index = Val_int (caml_index);
 
@@ -206,7 +222,10 @@ caml_g_irepository_get_loaded_namespaces_c (value caml_repository)
     char **c_namespaces;
     CAMLlocal1 (caml_namespaces);
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
 
     c_namespaces = g_irepository_get_loaded_namespaces (c_repository);
 
@@ -226,7 +245,11 @@ caml_g_irepository_get_c_prefix_c (value caml_repository,
     const char *c_prefix;
     const char *c_namespace;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_prefix = g_irepository_get_c_prefix (c_repository, c_namespace);
@@ -259,7 +282,12 @@ caml_g_irepository_enumerate_versions_c (value caml_repository,
     const char *c_namespace;
     GList *c_versions = NULL;
     CAMLlocal1 (caml_versions);
-    c_repository = Repository_val (caml_repository);
+
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_versions = g_irepository_enumerate_versions (c_repository, c_namespace);
@@ -302,7 +330,11 @@ caml_g_irepository_get_shared_library_c (value caml_repository,
     const char *c_lib;
     const char *c_namespace;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_lib = g_irepository_get_shared_library (c_repository, c_namespace);
@@ -320,7 +352,11 @@ caml_g_irepository_get_version_c (value caml_repository,
     const char *c_version;
     const char *c_namespace;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_version = g_irepository_get_version (c_repository, c_namespace);
@@ -338,7 +374,11 @@ caml_g_irepository_get_typelib_path_c (value caml_repository,
     const char *c_path;
     const char *c_namespace;
 
-    c_repository = Repository_val (caml_repository);
+    if(caml_repository == Val_none)
+        c_repository = NULL;
+    else
+        c_repository = Repository_val (Some_val (caml_repository));
+
     c_namespace = String_val (caml_namespace);
 
     c_path = g_irepository_get_typelib_path (c_repository, c_namespace);
