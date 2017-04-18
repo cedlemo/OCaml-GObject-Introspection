@@ -76,6 +76,11 @@ let test_find_by_name_repo_none test_ctxt =
   | Some (base_info) -> let base_info_name = GIBaseInfo.get_name base_info
   in assert_equal_string info_name base_info_name
 
+let test_n_infos test_ctxt =
+  let n_infos = GIRepository.get_n_infos repo namespace in
+  assert_equal_int 175 n_infos
+
+
 let tests =
   "GObject Introspection Repository tests" >:::
     ["Test failure when loading bad namespace" >:: test_raises_failure_on_require;
@@ -85,5 +90,6 @@ let tests =
      (* "Gtk immediate dependencies tests" >:: test_get_immediate_dependencies; *)
      "GLib get loaded namespaces tests" >:: test_get_loaded_namespaces;
      "GIRepository find GIBaseInfo by name" >:: test_find_by_name;
-     "GIRepository find GIBaseInfo by name repo none" >:: test_find_by_name_repo_none
+     "GIRepository find GIBaseInfo by name repo none" >:: test_find_by_name_repo_none;
+     "GIRepository get n infos" >:: test_n_infos
     ]
