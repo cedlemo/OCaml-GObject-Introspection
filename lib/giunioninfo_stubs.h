@@ -41,4 +41,7 @@ caml_g_iunioninfo_get_n_methods_c (value unioninfo);
 CAMLprim value
 caml_g_iunioninfo_get_method_c (value unioninfo,
                                 value index);
+
+CAMLprim value
+caml_g_iunioninfo_get_n_fields_c (value unioninfo);
 #endif // GIUNIONINFO_STUBS_H

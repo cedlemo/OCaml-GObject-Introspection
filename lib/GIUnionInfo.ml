@@ -42,8 +42,11 @@ external get_n_methods:
 external get_method:
   unioninfo -> int -> functioninfo = "caml_g_iunioninfo_get_method_c"
 
+(** Obtain the number of fields this union has. *)
+external get_n_fields:
+  unioninfo -> int = "caml_g_iunioninfo_get_n_fields_c"
+
 (*
- * TODO : gint	g_union_info_get_n_fields ()
  * TODO : IFieldInfo *	g_union_info_get_field ()
  * TODO : boolean	g_union_info_is_discriminated ()
  * TODO : int	g_union_info_get_discriminator_offset ()

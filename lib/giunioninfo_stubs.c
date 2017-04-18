@@ -111,3 +111,16 @@ caml_g_iunioninfo_get_method_c (value caml_unioninfo,
 
     CAMLreturn (caml_function_info);
 }
+
+CAMLprim value
+caml_g_iunioninfo_get_n_fields_c (value caml_unioninfo)
+{
+    CAMLparam1 (caml_unioninfo);
+    GIUnionInfo *c_info;
+    int c_n_fields;
+
+    c_info = GIUnionInfo_val (caml_unioninfo);
+    c_n_fields = g_union_info_get_n_fields (c_info);
+
+    CAMLreturn (Val_int (c_n_fields));
+}
