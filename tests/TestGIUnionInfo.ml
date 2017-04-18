@@ -85,6 +85,12 @@ let test_get_n_fields test_ctxt =
     assert_equal_int 2 n
   )
 
+let test_is_discriminated test_ctxt =
+  union_test (fun info ->
+      let is_discriminated = GIUnionInfo.is_discriminated info in
+      assert_equal_boolean false is_discriminated
+  )
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
@@ -94,5 +100,6 @@ let tests =
     "GIUnionInfo get n methods" >:: test_get_n_methods;
     "GIUnionInfo get method" >:: test_get_method;
     "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds;
-    "GIUnionInfo get n fields" >:: test_get_n_fields
+    "GIUnionInfo get n fields" >:: test_get_n_fields;
+    "GIUnionInfo is discriminated" >:: test_is_discriminated
   ]
