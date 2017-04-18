@@ -92,7 +92,6 @@ let test_get_method_out_of_bounds test_ctxt =
                                               message
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
 
-
 let test_find_method_bad_name test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
