@@ -137,3 +137,26 @@ caml_g_iunioninfo_is_discriminated_c (value caml_unioninfo)
 
     CAMLreturn (Val_bool (c_is_discriminated));
 }
+
+CAMLprim value
+caml_g_iunioninfo_find_method_c (value caml_unioninfo,
+                                 value caml_name)
+{
+    CAMLparam1 (caml_unioninfo);
+    GIUnionInfo *c_info;
+    GIFunctionInfo *c_function_info = NULL;
+    const char *c_name;
+    CAMLlocal1 (caml_function_info);
+
+    c_info = GIUnionInfo_val (caml_unioninfo);
+    c_name = String_val (caml_name);
+
+    c_function_info = g_union_info_find_method (c_info, c_name);
+
+    if (c_function_info == NULL)
+        CAMLreturn (Val_none);
+    else {
+        caml_function_info = Val_gifunctioninfo (c_function_info);
+        CAMLreturn (Val_some (caml_function_info));
+    }
+}

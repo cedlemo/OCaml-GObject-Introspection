@@ -49,10 +49,14 @@ external get_n_fields:
 (** Return true if this union contains discriminator field. *)
 external is_discriminated:
   unioninfo -> bool = "caml_g_iunioninfo_is_discriminated_c"
+
+(** Obtain the type information for method named name .*)
+external find_method:
+  unioninfo -> string -> functioninfo option = "caml_g_iunioninfo_find_method_c"
+
 (*
  * TODO : IFieldInfo *	g_union_info_get_field ()
  * TODO : int	g_union_info_get_discriminator_offset ()
  * TODO : ITypeInfo *	g_union_info_get_discriminator_type ()
  * TODO : IConstantInfo *	g_union_info_get_discriminator ()
- * TODO : IFunctionInfo *	g_union_info_find_method ()
  *)
