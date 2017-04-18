@@ -65,6 +65,14 @@ let test_get_method test_ctxt =
     let symbol = GIFunctionInfo.get_symbol m in
     assert_equal_string "g_mutex_clear" symbol
 
+let test_get_method_out_of_bounds test_ctxt =
+  match get_union_info () with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) -> try ignore(GIUnionInfo.get_method info 300)
+    with
+    | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+    | _ -> assert_equal_string "Bad exception" "Not a Failure"
 
 let tests =
   "GObject Introspection UnionInfo tests" >:::
@@ -73,5 +81,6 @@ let tests =
     "GIUnionInfo get alignment" >:: test_get_alignment;
     "GIUnionInfo get size" >:: test_get_size;
     "GIUnionInfo get n methods" >:: test_get_n_methods;
-    "GIUnionInfo get method" >:: test_get_method
+    "GIUnionInfo get method" >:: test_get_method;
+    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds
   ]
