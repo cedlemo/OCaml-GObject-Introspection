@@ -58,11 +58,20 @@ let test_get_n_methods test_ctxt =
   | Some (info) ->let n = GIUnionInfo.get_n_methods info in
       assert_equal_int 5 n
 
+let test_get_method test_ctxt =
+  match get_union_info () with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) -> let m = GIUnionInfo.get_method info 0 in
+    let symbol = GIFunctionInfo.get_symbol m in
+    assert_equal_string "g_mutex_clear" symbol
+
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
     "GIUnionInfo from baseinfo" >:: test_from_baseinfo;
     "GIUnionInfo get alignment" >:: test_get_alignment;
     "GIUnionInfo get size" >:: test_get_size;
-    "GIUnionInfo get n methods" >:: test_get_n_methods
+    "GIUnionInfo get n methods" >:: test_get_n_methods;
+    "GIUnionInfo get method" >:: test_get_method
   ]
