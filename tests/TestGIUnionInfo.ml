@@ -74,6 +74,13 @@ let test_get_method_out_of_bounds test_ctxt =
                                               message
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
 
+let test_get_n_fields test_ctxt =
+  match get_union_info () with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) ->let n = GIUnionInfo.get_n_fields info in
+      assert_equal_int 2 n
+
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
@@ -82,5 +89,6 @@ let tests =
     "GIUnionInfo get size" >:: test_get_size;
     "GIUnionInfo get n methods" >:: test_get_n_methods;
     "GIUnionInfo get method" >:: test_get_method;
-    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds
+    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds;
+    "GIUnionInfo get n fields" >:: test_get_n_fields
   ]
