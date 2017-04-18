@@ -40,46 +40,50 @@ let get_union_info () =
     | GIBaseInfo.Union union_info -> Some union_info
     | _ -> None
 
-let test_get_alignment test_ctxt =
+let union_test fn =
   match get_union_info () with
   | None -> assert_equal_string union_name "No base info found"
-  | Some (info) ->let alignment = GIUnionInfo.get_alignment info in
-      assert_equal_int 8 alignment
+  | Some (info) -> fn info
+
+let test_get_alignment test_ctxt =
+  union_test (fun info ->
+    let alignment = GIUnionInfo.get_alignment info in
+    assert_equal_int 8 alignment
+  )
 
 let test_get_size test_ctxt =
-  match get_union_info () with
-  | None -> assert_equal_string union_name "No base info found"
-  | Some (info) ->let size = GIUnionInfo.get_size info in
-      assert_equal_int 8 size
+  union_test (fun info ->
+    let size = GIUnionInfo.get_size info in
+    assert_equal_int 8 size
+  )
 
 let test_get_n_methods test_ctxt =
-  match get_union_info () with
-  | None -> assert_equal_string union_name "No base info found"
-  | Some (info) ->let n = GIUnionInfo.get_n_methods info in
-      assert_equal_int 5 n
+  union_test (fun info ->
+    let n = GIUnionInfo.get_n_methods info in
+    assert_equal_int 5 n
+  )
 
 let test_get_method test_ctxt =
-  match get_union_info () with
-  | None -> assert_equal_string union_name "No base info found"
-  | Some (info) -> let m = GIUnionInfo.get_method info 0 in
+  union_test (fun info ->
+    let m = GIUnionInfo.get_method info 0 in
     let symbol = GIFunctionInfo.get_symbol m in
     assert_equal_string "g_mutex_clear" symbol
+  )
 
 let test_get_method_out_of_bounds test_ctxt =
-  match get_union_info () with
-  | None -> assert_equal_string union_name "No base info found"
-  | Some (info) -> try ignore(GIUnionInfo.get_method info 300)
+  union_test (fun info ->
+    try ignore(GIUnionInfo.get_method info 300)
     with
     | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
+  )
 
 let test_get_n_fields test_ctxt =
-  match get_union_info () with
-  | None -> assert_equal_string union_name "No base info found"
-  | Some (info) ->let n = GIUnionInfo.get_n_fields info in
-      assert_equal_int 2 n
-
+  union_test (fun info ->
+    let n = GIUnionInfo.get_n_fields info in
+    assert_equal_int 2 n
+  )
 
 let tests =
   "GObject Introspection UnionInfo tests" >:::
