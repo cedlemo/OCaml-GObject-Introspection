@@ -83,6 +83,16 @@ let test_get_method test_ctxt =
     let symbol = GIFunctionInfo.get_symbol m in
     assert_equal_string "g_value_copy" symbol
 
+let test_get_method_out_of_bounds test_ctxt =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) -> try ignore(GIStructInfo.get_method info 300)
+    with
+    | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+    | _ -> assert_equal_string "Bad exception" "Not a Failure"
+
+
 let test_find_method_bad_name test_ctxt =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
@@ -110,6 +120,7 @@ let tests =
     "GIStructInfo get n fields" >:: test_get_n_fields;
     "GIStructInfo get n methods" >:: test_get_n_methods;
     "GIStructInfo get method" >:: test_get_method;
+    "GIStructInfo get method out of bounds" >:: test_get_method_out_of_bounds;
     "GIStructInfo find method bad name" >:: test_find_method_bad_name;
     "GIStructInfo find method" >:: test_find_method
   ]

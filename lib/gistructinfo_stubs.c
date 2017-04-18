@@ -134,9 +134,14 @@ caml_g_istructinfo_get_method_c (value caml_structinfo,
     GIFunctionInfo *c_function_info;
     CAMLlocal1 (caml_function_info);
     int c_n;
+    int c_n_max;
 
     c_info = GIStructInfo_val (caml_structinfo);
     c_n = Int_val (caml_n);
+
+    c_n_max = g_struct_info_get_n_methods (c_info);
+    if(c_n < 0 || c_n >= c_n_max)
+        caml_failwith ("Array Index out of bounds");
 
     c_function_info = g_struct_info_get_method (c_info, c_n);
     caml_function_info = Val_gifunctioninfo (c_function_info);
