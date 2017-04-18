@@ -40,73 +40,76 @@ let get_struct_info () =
     | GIBaseInfo.Struct struct_info -> Some struct_info
     | _ -> None
 
-let test_get_alignment test_ctxt =
+let struct_test fn =
   match get_struct_info () with
   | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) ->let alignment = GIStructInfo.get_alignment info in
-      assert_equal_int 8 alignment
+  | Some (info) -> fn info
+
+let test_get_alignment test_ctxt =
+  struct_test (fun info ->
+    let alignment = GIStructInfo.get_alignment info in
+    assert_equal_int 8 alignment
+  )
 
 let test_get_size test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) ->let size = GIStructInfo.get_size info in
-      assert_equal_int 24 size
+  struct_test (fun info ->
+    let size = GIStructInfo.get_size info in
+    assert_equal_int 24 size
+  )
 
 let test_is_gtype_struct test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> let is_struct = GIStructInfo.is_gtype_struct info in
+  struct_test (fun info ->
+    let is_struct = GIStructInfo.is_gtype_struct info in
     assert_equal_boolean false is_struct
+  )
 
 let test_is_foreign test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> let is_struct = GIStructInfo.is_foreign info in
+  struct_test (fun info ->
+    let is_struct = GIStructInfo.is_foreign info in
     assert_equal_boolean false is_struct
+  )
 
 let test_get_n_fields test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> let n_fields = GIStructInfo.get_n_fields info in
+  struct_test (fun info ->
+    let n_fields = GIStructInfo.get_n_fields info in
     assert_equal_int 2 n_fields
+  )
 
 let test_get_n_methods test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> let n_methods = GIStructInfo.get_n_methods info in
+  struct_test (fun info ->
+    let n_methods = GIStructInfo.get_n_methods info in
     assert_equal_or_greater n_methods 62
+  )
 
 let test_get_method test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> let m = GIStructInfo.get_method info 0 in
+  struct_test (fun info ->
+    let m = GIStructInfo.get_method info 0 in
     let symbol = GIFunctionInfo.get_symbol m in
     assert_equal_string "g_value_copy" symbol
+  )
 
 let test_get_method_out_of_bounds test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> try ignore(GIStructInfo.get_method info 300)
+  struct_test (fun info ->
+    try ignore(GIStructInfo.get_method info 300)
     with
     | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
+  )
 
 let test_find_method_bad_name test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> match GIStructInfo.find_method info "Impossible" with
+  struct_test (fun info ->
+    match GIStructInfo.find_method info "Impossible" with
     | None -> assert_equal_boolean true true
     | Some _ -> assert_equal_string "Impossible" "Should not returns something"
+  )
 
 let test_find_method test_ctxt =
-  match get_struct_info () with
-  | None -> assert_equal_string struct_name "No base info found"
-  | Some (info) -> match GIStructInfo.find_method info "copy" with
+  struct_test (fun info -> match GIStructInfo.find_method info "copy" with
     | None -> assert_equal_boolean false true
     | Some fn_info -> let symbol = GIFunctionInfo.get_symbol fn_info in
       assert_equal_string "g_value_copy" symbol
-
+  )
 
 let tests =
   "GObject Introspection StructInfo tests" >:::
