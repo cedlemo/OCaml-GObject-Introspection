@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace
+let typelib = GIRepository.require (Some repo) namespace
 let struct_name = "Value"
 
 let test_from_baseinfo test_ctxt =

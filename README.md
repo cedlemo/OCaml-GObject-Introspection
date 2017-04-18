@@ -27,6 +27,12 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
 ## Rules
   * variables that hold c values are prefixed with "c_"
   * varibales that hold caml values are prefixed with "caml_"
+  * each access to an array must be checked and raise a Failure exception with
+
+	`caml_failwith ("Array Index out of bounds");`
+
+    * `GIStructInfo.get_method`
+    * `GIRepository.get_info`
 
 ### TODO
 

@@ -36,5 +36,5 @@ let assert_equal_or_greater int1 int2 =
 
 let load_namespace namespace =
   let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace in
+  let _ = GIRepository.require (Some repo) namespace in
   repo

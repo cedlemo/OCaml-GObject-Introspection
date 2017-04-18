@@ -21,7 +21,7 @@ open TestUtils
 
 let namespace = "Gio"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace
+let typelib = GIRepository.require (Some repo) namespace
 
 let test_raises_failure_on_require test_ctxt =
   let r () = load_namespace "a namespace that does not exist" in
@@ -29,7 +29,7 @@ let test_raises_failure_on_require test_ctxt =
   assert_raises (Failure error_message ) r
 
 let test_load_namespace test_ctxt =
-  let c_prefix = GIRepository.get_c_prefix repo namespace in
+  let c_prefix = GIRepository.get_c_prefix (Some repo) namespace in
   assert_equal_string "G" c_prefix
 
 let test_search_path test_ctxt =
@@ -42,7 +42,7 @@ let test_search_path test_ctxt =
 
 let test_get_dependencies test_ctxt =
   let dependencies_check = "GObject-2.0 GLib-2.0" in
-  let dependencies = String.concat " " (GIRepository.get_dependencies repo namespace) in
+  let dependencies = String.concat " " (GIRepository.get_dependencies (Some repo) namespace) in
   assert_equal_string dependencies_check dependencies
 
 (* Commented out because of GI Travis v. 1.40 and this function need v >= 1.44
@@ -54,12 +54,12 @@ let test_get_immediate_dependencies test_ctxt =
 
 let test_get_loaded_namespaces test_ctxt =
   let namespaces_check = "Gio GObject GLib" in
-  let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
+  let namespaces = String.concat " " (GIRepository.get_loaded_namespaces (Some repo)) in
   assert_equal_string namespaces_check namespaces
 
 let test_get_loaded_versions test_ctxt =
   let versions_check = "3.0 2.0" in
-  let versions = String.concat " " (GIRepository.enumerate_versions repo namespace) in
+  let versions = String.concat " " (GIRepository.enumerate_versions None namespace) in
   assert_equal_string versions_check versions
 
 let test_find_by_name test_ctxt =
@@ -71,13 +71,13 @@ let test_find_by_name test_ctxt =
 
 let test_find_by_name_repo_none test_ctxt =
   let info_name = "Application" in
-  match GIRepository.find_by_name (None) namespace info_name with
+  match GIRepository.find_by_name None namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let base_info_name = GIBaseInfo.get_name base_info
   in assert_equal_string info_name base_info_name
 
 let test_n_infos test_ctxt =
-  let n_infos = GIRepository.get_n_infos repo namespace in
+  let n_infos = GIRepository.get_n_infos (Some repo) namespace in
   assert_equal_int 175 n_infos
 
 

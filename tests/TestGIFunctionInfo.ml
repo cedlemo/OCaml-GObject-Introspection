@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace
+let typelib = GIRepository.require (Some repo) namespace
 
 let test_get_flags test_ctxt =
   let fn_name = "signal_name" in
