@@ -103,7 +103,7 @@ caml_g_iunioninfo_get_method_c (value caml_unioninfo,
 
     c_n_max = g_union_info_get_n_methods (c_info);
     if(c_n < 0 || c_n >= c_n_max)
-        caml_failwith ("Array Index out of bounds");
+        RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS;
 
 
     c_function_info = g_union_info_get_method (c_info, c_n);
