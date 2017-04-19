@@ -57,5 +57,11 @@ caml_g_ifieldinfo_get_flags_c (value caml_fieldinfo)
     c_info = GIFieldInfo_val (caml_fieldinfo);
     c_flags = g_field_info_get_flags (c_info);
 
-    CAMLreturn (Val_int (c_flags));
+    switch (c_flags){
+    case GI_FIELD_IS_READABLE:
+    case GI_FIELD_IS_WRITABLE:
+        CAMLreturn (Val_int (c_flags));
+    default:
+        RAISE_FAILURE_NOT_REACHED;
+    }
 }

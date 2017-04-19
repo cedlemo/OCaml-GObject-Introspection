@@ -24,5 +24,8 @@
 #define RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS \
     caml_failwith ("Array Index out of bounds")
 
+#define RAISE_FAILURE_NOT_REACHED \
+    caml_failwith ("This should not has been reached.")
+
 #endif // OCAML_GOBJECT_INTROSPECTION_UTILS_H
 
