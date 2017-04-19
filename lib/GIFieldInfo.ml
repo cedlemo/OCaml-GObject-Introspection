@@ -27,3 +27,12 @@
     asssociated and a set of flags, which is currently
     GI_FIELD_IS_READABLE or GI_FIELD_IS_WRITABLE.*)
 type fieldinfo
+
+(** Flags for a GIFieldInfo. *)
+type flags =
+  | Is_readable (** field is readable. *)
+  | Is_writable (** field is writable. *)
+
+external get_flags:
+  fieldinfo -> flags = "caml_g_ifieldinfo_get_flags_c"
+

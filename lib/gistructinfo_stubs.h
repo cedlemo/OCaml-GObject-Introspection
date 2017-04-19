@@ -20,6 +20,7 @@
 #define GISTRUCTINFO_STUBS_H
 
 #include "conversions.h"
+#include "gifieldinfo_stubs.h"
 #include "gifunctioninfo_stubs.h"
 #include <girepository.h>
 
@@ -43,6 +44,10 @@ caml_g_istructinfo_is_foreign_c (value structinfo);
 
 CAMLprim value
 caml_g_istructinfo_get_n_fields_c (value structinfo);
+
+CAMLprim value
+caml_g_istructinfo_get_field_c (value structinfo,
+                                value n);
 
 CAMLprim value
 caml_g_istructinfo_get_n_methods_c (value structinfo);

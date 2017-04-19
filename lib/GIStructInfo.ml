@@ -19,6 +19,7 @@
 (** GIStructInfo — Module representing a C structure *)
 
 open GIFunctionInfo
+open GIFieldInfo
 
 (** GIStructInfo represents a generic C structure type.
  A structure has methods and fields.*)
@@ -46,6 +47,10 @@ external is_foreign:
 (** Obtain the number of fields this structure has. *)
 external get_n_fields:
   structinfo -> int = "caml_g_istructinfo_get_n_fields_c"
+
+(** Obtain the type information for field with specified index. *)
+external get_field:
+  structinfo -> int -> fieldinfo = "caml_g_istructinfo_get_field_c"
 
 (** Obtain the number of methods this structure has. *)
 external get_n_methods:
