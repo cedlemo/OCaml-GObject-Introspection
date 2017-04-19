@@ -20,6 +20,7 @@
 #define GIUNIONINFO_STUBS_H
 
 #include "utils.h"
+#include "gifieldinfo_stubs.h"
 #include "gifunctioninfo_stubs.h"
 #include <girepository.h>
 
@@ -44,6 +45,10 @@ caml_g_iunioninfo_get_method_c (value unioninfo,
 
 CAMLprim value
 caml_g_iunioninfo_get_n_fields_c (value unioninfo);
+
+CAMLprim value
+caml_g_iunioninfo_get_field_c (value unioninfo,
+                               value index);
 
 CAMLprim value
 caml_g_iunioninfo_is_discriminated_c (value unioninfo);

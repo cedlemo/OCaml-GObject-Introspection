@@ -25,6 +25,7 @@
 type unioninfo
 
 open GIFunctionInfo
+open GIFieldInfo
 
 (** Obtain the required alignment of the union. *)
 external get_alignment:
@@ -46,6 +47,10 @@ external get_method:
 external get_n_fields:
   unioninfo -> int = "caml_g_iunioninfo_get_n_fields_c"
 
+(** Obtain the type information for field with specified index. *)
+external get_field:
+  unioninfo -> int -> fieldinfo = "caml_g_iunioninfo_get_field_c"
+
 (** Return true if this union contains discriminator field. *)
 external is_discriminated:
   unioninfo -> bool = "caml_g_iunioninfo_is_discriminated_c"
@@ -55,7 +60,6 @@ external find_method:
   unioninfo -> string -> functioninfo option = "caml_g_iunioninfo_find_method_c"
 
 (*
- * TODO : IFieldInfo *	g_union_info_get_field ()
  * TODO : int	g_union_info_get_discriminator_offset ()
  * TODO : ITypeInfo *	g_union_info_get_discriminator_type ()
  * TODO : IConstantInfo *	g_union_info_get_discriminator ()

@@ -89,7 +89,7 @@ caml_g_iunioninfo_get_n_methods_c (value caml_unioninfo)
 
 CAMLprim value
 caml_g_iunioninfo_get_method_c (value caml_unioninfo,
-                                 value caml_n)
+                                value caml_n)
 {
     CAMLparam2 (caml_unioninfo, caml_n);
     GIUnionInfo *c_info;
@@ -123,6 +123,31 @@ caml_g_iunioninfo_get_n_fields_c (value caml_unioninfo)
     c_n_fields = g_union_info_get_n_fields (c_info);
 
     CAMLreturn (Val_int (c_n_fields));
+}
+
+CAMLprim value
+caml_g_iunioninfo_get_field_c (value caml_unioninfo,
+                               value caml_n)
+{
+    CAMLparam2 (caml_unioninfo, caml_n);
+    GIUnionInfo *c_info;
+    GIFieldInfo *c_field_info;
+    CAMLlocal1 (caml_field_info);
+    int c_n;
+    int c_n_max;
+
+    c_info = GIUnionInfo_val (caml_unioninfo);
+    c_n = Int_val (caml_n);
+
+    c_n_max = g_union_info_get_n_fields (c_info);
+    if(c_n < 0 || c_n >= c_n_max)
+        RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS;
+
+
+    c_field_info = g_union_info_get_field (c_info, c_n);
+    caml_field_info = Val_gifieldinfo (c_field_info);
+
+    CAMLreturn (caml_field_info);
 }
 
 CAMLprim value
