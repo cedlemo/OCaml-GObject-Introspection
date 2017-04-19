@@ -19,7 +19,7 @@
 #ifndef GISTRUCTINFO_STUBS_H
 #define GISTRUCTINFO_STUBS_H
 
-#include "conversions.h"
+#include "utils.h"
 #include "gifieldinfo_stubs.h"
 #include "gifunctioninfo_stubs.h"
 #include <girepository.h>

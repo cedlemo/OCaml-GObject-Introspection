@@ -20,7 +20,7 @@
 #define GIREPOSITORY_STUBS_H
 
 #include "gibaseinfo_stubs.h"
-#include "conversions.h"
+#include "utils.h"
 
 /* Accessing the Repository * part of an OCaml custom block */
 #define Repository_val(v) (*((GIRepository **) Data_custom_val(v)))

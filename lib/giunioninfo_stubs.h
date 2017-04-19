@@ -19,7 +19,7 @@
 #ifndef GIUNIONINFO_STUBS_H
 #define GIUNIONINFO_STUBS_H
 
-#include "conversions.h"
+#include "utils.h"
 #include "gifunctioninfo_stubs.h"
 #include <girepository.h>
 

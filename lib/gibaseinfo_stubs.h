@@ -19,7 +19,7 @@
 #ifndef GIBASEINFO_STUBS_H
 #define GIBASEINFO_STUBS_H
 
-#include "conversions.h"
+#include "utils.h"
 #include <girepository.h>
 
 #define GIBaseInfo_val(v) (*((GIBaseInfo **) Data_custom_val(v)))

@@ -16,18 +16,13 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GIFIELDINFO_STUBS_H
-#define GIFIELDINFO_STUBS_H
+#ifndef OCAML_GOBJECT_INTROSPECTION_UTILS_H
+#define OCAML_GOBJECT_INTROSPECTION_UTILS_H
 
-#include "utils.h"
-#include <girepository.h>
+#include "conversions.h"
 
-#define GIFieldInfo_val(v) (*((GIFieldInfo **) Data_custom_val(v)))
-#define Val_gifieldinfo(i) alloc_gifieldinfo (i)
+#define RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS \
+    caml_failwith ("Array Index out of bounds")
 
-value
-alloc_gifieldinfo (GIFieldInfo *i);
+#endif // OCAML_GOBJECT_INTROSPECTION_UTILS_H
 
-CAMLprim value
-caml_g_ifieldinfo_get_flags_c (value fieldinfo);
-#endif // GIFIELDINFO_STUBS_H

@@ -16,7 +16,7 @@ Library "GObjectIntrospection"
            GIFunctionInfo,
            GIBaseInfo,
            GIRepository
-  CSources: conversions.h, conversions.c,
+  CSources: utils.h, conversions.h, conversions.c,
             gifieldinfo_stubs.h, gifieldinfo_stubs.c,
             giunioninfo_stubs.h, giunioninfo_stubs.c,
             gistructinfo_stubs.h, gistructinfo_stubs.c,
