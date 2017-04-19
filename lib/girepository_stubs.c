@@ -202,7 +202,7 @@ caml_g_irepository_get_info_c (value caml_repository,
     c_n_max = g_irepository_get_n_infos (c_repository, c_namespace);
 
     if(c_index < 0 || c_index >= c_n_max)
-        caml_failwith ("Array Index out of bounds");
+        RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS;
 
     if(c_info != NULL) {
         CAMLlocal1 (caml_info);

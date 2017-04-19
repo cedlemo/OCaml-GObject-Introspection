@@ -128,7 +128,7 @@ caml_g_istructinfo_get_field_c (value caml_structinfo,
 
     c_n_max = g_struct_info_get_n_fields (c_info);
     if(c_n < 0 || c_n >= c_n_max)
-        caml_failwith ("Array Index out of bounds");
+        RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS;
 
     c_field_info = g_struct_info_get_field (c_info, c_n);
     caml_field_info = Val_gifieldinfo (c_field_info);
@@ -165,7 +165,7 @@ caml_g_istructinfo_get_method_c (value caml_structinfo,
 
     c_n_max = g_struct_info_get_n_methods (c_info);
     if(c_n < 0 || c_n >= c_n_max)
-        caml_failwith ("Array Index out of bounds");
+        RAISE_FAILURE_ARRAY_OUT_OF_BOUNDS;
 
     c_function_info = g_struct_info_get_method (c_info, c_n);
     caml_function_info = Val_gifunctioninfo (c_function_info);
