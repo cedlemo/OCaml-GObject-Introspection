@@ -46,3 +46,16 @@ alloc_gifieldinfo (GIFieldInfo *i)
     GIFieldInfo_val (v) = i;
     return v;
 }
+
+CAMLprim value
+caml_g_ifieldinfo_get_flags_c (value caml_fieldinfo)
+{
+    CAMLparam1 (caml_fieldinfo);
+    GIFieldInfo *c_info;
+    GIFieldInfoFlags c_flags;
+
+    c_info = GIFieldInfo_val (caml_fieldinfo);
+    c_flags = g_field_info_get_flags (c_info);
+
+    CAMLreturn (Val_int (c_flags));
+}
