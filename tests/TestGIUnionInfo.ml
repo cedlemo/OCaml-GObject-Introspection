@@ -110,6 +110,15 @@ let test_get_field test_ctxt =
                   ) GIFieldInfo.Is_writable flags
     )
 
+let test_get_field_out_of_bounds test_ctxt =
+  union_test (fun info ->
+    try ignore(GIUnionInfo.get_field info 3000)
+    with
+    | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+    | _ -> assert_equal_string "Bad exception" "Not a Failure"
+  )
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
@@ -122,5 +131,6 @@ let tests =
     "GIUnionInfo get n fields" >:: test_get_n_fields;
     "GIUnionInfo is discriminated" >:: test_is_discriminated;
     "GIUnionInfo find method" >:: test_find_method;
-    "GIUnionInfo get field" >:: test_get_field
+    "GIUnionInfo get field" >:: test_get_field;
+    "GIUnionInfo get field out of bounds" >:: test_get_field_out_of_bounds
   ]
