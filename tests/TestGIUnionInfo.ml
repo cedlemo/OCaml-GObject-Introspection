@@ -100,6 +100,16 @@ let test_find_method test_ctxt =
         assert_equal_string ("g_mutex_" ^ function_name) symbol
     )
 
+let test_get_field test_ctxt =
+  union_test (fun info ->
+    let field = GIUnionInfo.get_field info 0 in
+    let flags = GIFieldInfo.get_flags field in
+    assert_equal ~printer:(fun flags -> match flags with
+                  | GIFieldInfo.Is_writable -> "Writable"
+                  | GIFieldInfo.Is_readable -> "Readable"
+                  ) GIFieldInfo.Is_writable flags
+    )
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
@@ -111,5 +121,6 @@ let tests =
     "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds;
     "GIUnionInfo get n fields" >:: test_get_n_fields;
     "GIUnionInfo is discriminated" >:: test_is_discriminated;
-    "GIUnionInfo find method" >:: test_find_method
+    "GIUnionInfo find method" >:: test_find_method;
+    "GIUnionInfo get field" >:: test_get_field
   ]
