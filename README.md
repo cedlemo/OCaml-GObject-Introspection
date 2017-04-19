@@ -9,7 +9,7 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
 ## Resources
 
 *  https://ocaml.org/learn/tutorials/calling_c_libraries.html
-*  https://developer.gnome.org/gi/1.52/
+*  https://developer.gnome.org/gi/
 *  https://developer.gnome.org/gi/1.52/GIRepository.html
 *  https://ocaml.org/learn/tutorials/objects.html
 *  http://caml.inria.fr/pub/docs/manual-ocaml/index.html
@@ -47,3 +47,5 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * catch exceptions in callbacks ? (`caml_g_ibaseinfo_iterate_over_attributes_c`)
 
 # Next:
+
+  * the finalize function : simplify no cast, use GIBaseInfo directly
