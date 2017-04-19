@@ -80,6 +80,12 @@ let test_n_infos test_ctxt =
   let n_infos = GIRepository.get_n_infos (Some repo) namespace in
   assert_equal_int 175 n_infos
 
+let test_get_info_out_of_bound test_ctxt =
+  try ignore (GIRepository.get_info (Some repo) namespace 1500)
+  with
+  | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+  | _ -> assert_equal_string "Bad exception" "Not a Failure"
 
 let tests =
   "GObject Introspection Repository tests" >:::
@@ -90,7 +96,8 @@ let tests =
      (* "Gtk immediate dependencies tests" >:: test_get_immediate_dependencies; *)
      "GLib get loaded namespaces tests" >:: test_get_loaded_namespaces;
      "GIRepository find GIBaseInfo by name" >:: test_find_by_name;
-     "GIRepository find GIBaseInfo by name repo none" >:: test_find_by_name_repo_none (* ;
-      TODO : why 175 is not equal to  175 ?????
+     "GIRepository find GIBaseInfo by name repo none" >:: test_find_by_name_repo_none ;
+     (*  TODO : why 175 is not equal to  175 ?????
      "GIRepository get n infos" >:: test_n_infos *)
+     "GIRepository get BaseInfo out of bound" >:: test_get_info_out_of_bound
     ]
