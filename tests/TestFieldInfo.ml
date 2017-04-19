@@ -16,17 +16,30 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests
-    ]
-  )
+let namespace = "GLib"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require (Some repo) namespace
+let union_name = "Mutex"
+
+let get_union_info () =
+  match GIRepository.find_by_name (Some repo) namespace union_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Union union_info -> Some union_info
+    | _ -> None
+
+let field_test fn =
+  match get_union_info () with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) -> fn info
+
+let tests =
+  "GObject Introspection FiledInfo tests" >:::
+  [
+  ]
+
+
