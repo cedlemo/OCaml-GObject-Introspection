@@ -58,14 +58,30 @@ CAMLprim value
 caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
 {
     CAMLparam1 (caml_functioninfo);
+    CAMLlocal1 (caml_flags);
 
     GIFunctionInfo *c_info;
-    int c_flags;
+    GIFunctionInfoFlags c_flags;
 
     c_info = GIFunctionInfo_val (caml_functioninfo);
     c_flags = g_function_info_get_flags (c_info);
 
-    CAMLreturn (Val_int (c_flags));
+
+/*
+ *  TODO : flags should be tested with
+ *
+ * if ((c_flags & GI_FUNCTION_IS_METHOD) != 0 )
+ * if ((c_flags & GI_FUNCTION_IS_CONSTRUCTOR) != 0 )
+ * if ((c_flags & GI_FUNCTION_IS_GETTER) != 0 )
+ * if ((c_flags & GI_FUNCTION_IS_SETTER) != 0 )
+ * if ((c_flags & GI_FUNCTION_WRAPS_VFUNC) != 0 )
+ * if ((c_flags & GI_FUNCTION_THROWS) != 0 )
+ *
+ * Why g_function_info_get_flags returns 0 too ?
+ *
+ */
+    caml_flags = Val_int (c_flags);
+    CAMLreturn (caml_flags);
 }
 
 CAMLprim value
