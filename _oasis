@@ -79,6 +79,14 @@ Executable girepository_test_unit
   MainIs: test.ml
   BuildDepends: oUnit, GObjectIntrospection
 
+Executable "gi_baseinfo_print_function_flags"
+  Path: samples
+  MainIs: gi_baseinfo_print_function_flags.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
+
 Test "girepository_test_unit"
   Run$: flag(tests)
   TestTools: girepository_test_unit
