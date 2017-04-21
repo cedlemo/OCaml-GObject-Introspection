@@ -48,7 +48,7 @@ alloc_gifieldinfo (GIFieldInfo *i)
 }
 
 CAMLprim value
-caml_g_ifieldinfo_get_flags_c (value caml_fieldinfo)
+caml_g_field_info_get_flags_c (value caml_fieldinfo)
 {
     CAMLparam1 (caml_fieldinfo);
     GIFieldInfo *c_info;
@@ -67,7 +67,7 @@ caml_g_ifieldinfo_get_flags_c (value caml_fieldinfo)
 }
 
 CAMLprim value
-caml_g_ifieldinfo_get_offset_c (value caml_fieldinfo)
+caml_g_field_info_get_offset_c (value caml_fieldinfo)
 {
     CAMLparam1 (caml_fieldinfo);
     GIFieldInfo *c_info;
