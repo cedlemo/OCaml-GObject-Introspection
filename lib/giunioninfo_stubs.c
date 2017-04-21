@@ -49,7 +49,7 @@ alloc_giunioninfo (GIUnionInfo *i)
 
 
 CAMLprim value
-caml_g_iunioninfo_get_alignment_c (value caml_unioninfo)
+caml_g_union_info_get_alignment_c (value caml_unioninfo)
 {
     CAMLparam1 (caml_unioninfo);
     GIUnionInfo *c_info;
@@ -62,7 +62,7 @@ caml_g_iunioninfo_get_alignment_c (value caml_unioninfo)
 }
 
 CAMLprim value
-caml_g_iunioninfo_get_size_c (value caml_unioninfo)
+caml_g_union_info_get_size_c (value caml_unioninfo)
 {
     CAMLparam1 (caml_unioninfo);
     GIUnionInfo *c_info;
@@ -75,7 +75,7 @@ caml_g_iunioninfo_get_size_c (value caml_unioninfo)
 }
 
 CAMLprim value
-caml_g_iunioninfo_get_n_methods_c (value caml_unioninfo)
+caml_g_union_info_get_n_methods_c (value caml_unioninfo)
 {
     CAMLparam1 (caml_unioninfo);
     GIUnionInfo *c_info;
@@ -88,7 +88,7 @@ caml_g_iunioninfo_get_n_methods_c (value caml_unioninfo)
 }
 
 CAMLprim value
-caml_g_iunioninfo_get_method_c (value caml_unioninfo,
+caml_g_union_info_get_method_c (value caml_unioninfo,
                                 value caml_n)
 {
     CAMLparam2 (caml_unioninfo, caml_n);
@@ -113,7 +113,7 @@ caml_g_iunioninfo_get_method_c (value caml_unioninfo,
 }
 
 CAMLprim value
-caml_g_iunioninfo_get_n_fields_c (value caml_unioninfo)
+caml_g_union_info_get_n_fields_c (value caml_unioninfo)
 {
     CAMLparam1 (caml_unioninfo);
     GIUnionInfo *c_info;
@@ -126,7 +126,7 @@ caml_g_iunioninfo_get_n_fields_c (value caml_unioninfo)
 }
 
 CAMLprim value
-caml_g_iunioninfo_get_field_c (value caml_unioninfo,
+caml_g_union_info_get_field_c (value caml_unioninfo,
                                value caml_n)
 {
     CAMLparam2 (caml_unioninfo, caml_n);
@@ -151,7 +151,7 @@ caml_g_iunioninfo_get_field_c (value caml_unioninfo,
 }
 
 CAMLprim value
-caml_g_iunioninfo_is_discriminated_c (value caml_unioninfo)
+caml_g_union_info_is_discriminated_c (value caml_unioninfo)
 {
     CAMLparam1 (caml_unioninfo);
     GIUnionInfo *c_info;
@@ -164,7 +164,7 @@ caml_g_iunioninfo_is_discriminated_c (value caml_unioninfo)
 }
 
 CAMLprim value
-caml_g_iunioninfo_find_method_c (value caml_unioninfo,
+caml_g_union_info_find_method_c (value caml_unioninfo,
                                  value caml_name)
 {
     CAMLparam1 (caml_unioninfo);

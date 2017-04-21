@@ -31,29 +31,29 @@ value
 alloc_giunioninfo (GIUnionInfo *i);
 
 CAMLprim value
-caml_g_iunioninfo_get_alignment_c (value unioninfo);
+caml_g_union_info_get_alignment_c (value unioninfo);
 
 CAMLprim value
-caml_g_iunioninfo_get_size_c (value unioninfo);
+caml_g_union_info_get_size_c (value unioninfo);
 
 CAMLprim value
-caml_g_iunioninfo_get_n_methods_c (value unioninfo);
+caml_g_union_info_get_n_methods_c (value unioninfo);
 
 CAMLprim value
-caml_g_iunioninfo_get_method_c (value unioninfo,
+caml_g_union_info_get_method_c (value unioninfo,
                                 value index);
 
 CAMLprim value
-caml_g_iunioninfo_get_n_fields_c (value unioninfo);
+caml_g_union_info_get_n_fields_c (value unioninfo);
 
 CAMLprim value
-caml_g_iunioninfo_get_field_c (value unioninfo,
+caml_g_union_info_get_field_c (value unioninfo,
                                value index);
 
 CAMLprim value
-caml_g_iunioninfo_is_discriminated_c (value unioninfo);
+caml_g_union_info_is_discriminated_c (value unioninfo);
 
 CAMLprim value
-caml_g_iunioninfo_find_method_c (value unioninfo,
+caml_g_union_info_find_method_c (value unioninfo,
                                  value name);
 #endif // GIUNIONINFO_STUBS_H

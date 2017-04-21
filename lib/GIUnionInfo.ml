@@ -29,35 +29,35 @@ open GIFieldInfo
 
 (** Obtain the required alignment of the union. *)
 external get_alignment:
-  unioninfo -> int = "caml_g_iunioninfo_get_alignment_c"
+  unioninfo -> int = "caml_g_union_info_get_alignment_c"
 
 (** Obtain the total size of the union. *)
 external get_size:
-  unioninfo -> int = "caml_g_iunioninfo_get_size_c"
+  unioninfo -> int = "caml_g_union_info_get_size_c"
 
 (** Obtain the number of methods this union has. *)
 external get_n_methods:
-  unioninfo -> int = "caml_g_iunioninfo_get_n_methods_c"
+  unioninfo -> int = "caml_g_union_info_get_n_methods_c"
 
 (** Obtain the type information for method with specified index. *)
 external get_method:
-  unioninfo -> int -> functioninfo = "caml_g_iunioninfo_get_method_c"
+  unioninfo -> int -> functioninfo = "caml_g_union_info_get_method_c"
 
 (** Obtain the number of fields this union has. *)
 external get_n_fields:
-  unioninfo -> int = "caml_g_iunioninfo_get_n_fields_c"
+  unioninfo -> int = "caml_g_union_info_get_n_fields_c"
 
 (** Obtain the type information for field with specified index. *)
 external get_field:
-  unioninfo -> int -> fieldinfo = "caml_g_iunioninfo_get_field_c"
+  unioninfo -> int -> fieldinfo = "caml_g_union_info_get_field_c"
 
 (** Return true if this union contains discriminator field. *)
 external is_discriminated:
-  unioninfo -> bool = "caml_g_iunioninfo_is_discriminated_c"
+  unioninfo -> bool = "caml_g_union_info_is_discriminated_c"
 
 (** Obtain the type information for method named name .*)
 external find_method:
-  unioninfo -> string -> functioninfo option = "caml_g_iunioninfo_find_method_c"
+  unioninfo -> string -> functioninfo option = "caml_g_union_info_find_method_c"
 
 (*
  * TODO : int	g_union_info_get_discriminator_offset ()
