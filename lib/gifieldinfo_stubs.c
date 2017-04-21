@@ -65,3 +65,16 @@ caml_g_ifieldinfo_get_flags_c (value caml_fieldinfo)
         RAISE_FAILURE_NOT_REACHED;
     }
 }
+
+CAMLprim value
+caml_g_ifieldinfo_get_offset_c (value caml_fieldinfo)
+{
+    CAMLparam1 (caml_fieldinfo);
+    GIFieldInfo *c_info;
+    int c_offset = 0;
+
+    c_info = GIFieldInfo_val (caml_fieldinfo);
+    c_offset = g_field_info_get_offset (c_info);
+
+    CAMLreturn (Val_int (c_offset));
+}
