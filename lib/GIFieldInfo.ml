@@ -33,6 +33,15 @@ type flags =
   | Is_readable (** field is readable. *)
   | Is_writable (** field is writable. *)
 
+(** Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
+ flag values. *)
 external get_flags:
   fieldinfo -> flags = "caml_g_ifieldinfo_get_flags_c"
 
+(*
+   TODO : gboolean	g_field_info_get_field ()
+   TODO : gboolean	g_field_info_set_field ()
+   TODO : gint	g_field_info_get_offset ()
+   TODO : gint	g_field_info_get_size ()
+   TODO : GITypeInfo *	g_field_info_get_type ()
+*)
