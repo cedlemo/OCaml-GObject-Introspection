@@ -20,12 +20,27 @@ let printer attr_name attr_value =
   print_endline (String.concat " " ["\t"; "name :"; attr_name; "value :"; attr_value]);
   true
 
+let flags_to_strings f =
+  match f with
+  | GIFunctionInfo.Is_method -> print_endline "\tmethod"
+  | GIFunctionInfo.Is_constructor -> print_endline "\tconstructor"
+  | GIFunctionInfo.Is_getter -> print_endline "\tgetter"
+  | GIFunctionInfo.Is_setter -> print_endline "\tsetter"
+  | GIFunctionInfo.Wraps_vfunc -> print_endline "\tWraps vfunc"
+  | GIFunctionInfo.Throws -> print_endline "\tthrows"
+
+let rec print_flags = function
+  | [] -> ()
+  | f :: q -> let _ = flags_to_strings f in print_flags q
+
 let print_fn_flags repo namespace n =
   match GIRepository.get_info repo namespace n with
   | None -> let message = String.concat " " ["GIBaseInfo number"; string_of_int n; "unable to be loaded"] in
     print_endline message
   | Some (info) -> match GIBaseInfo.get_type info with
-    | GIBaseInfo.Function fn_info -> let flags = GIFunctionInfo.get_flags fn_info in ()
+    | GIBaseInfo.Function fn_info -> let name = GIBaseInfo.get_name info in
+      let _ = print_endline name in let flags = GIFunctionInfo.get_flags fn_info in
+      print_flags flags
     | _ -> ()
 
 
