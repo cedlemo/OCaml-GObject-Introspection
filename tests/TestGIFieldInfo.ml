@@ -46,10 +46,16 @@ let test_field_flag test_ctxt =
           | GIFieldInfo.Is_writable -> "writable"
       ) GIFieldInfo.Is_writable flag
     )
+
+let test_field_get_offset test_ctxt =
+  field_test (fun info ->
+      let offset = GIFieldInfo.get_offset info in
+      assert_equal_int 0 offset
+    )
+
 let tests =
   "GObject Introspection FiledInfo tests" >:::
   [
-    "GIFieldInfo get flag" >:: test_field_flag
+    "GIFieldInfo get flag" >:: test_field_flag;
+    "GIFieldInfo get offset" >:: test_field_get_offset
   ]
-
-
