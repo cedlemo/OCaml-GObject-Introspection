@@ -58,14 +58,51 @@ CAMLprim value
 caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
 {
     CAMLparam1 (caml_functioninfo);
-    CAMLlocal1 (caml_flags);
+    CAMLlocal2 (caml_list, caml_cons);
 
     GIFunctionInfo *c_info;
     GIFunctionInfoFlags c_flags;
 
     c_info = GIFunctionInfo_val (caml_functioninfo);
     c_flags = g_function_info_get_flags (c_info);
+    caml_list = Val_emptylist;
 
+    if (c_flags & GI_FUNCTION_IS_METHOD) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (0));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
+    if (c_flags & GI_FUNCTION_IS_CONSTRUCTOR) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (1));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
+    if (c_flags & GI_FUNCTION_IS_GETTER) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (2));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
+    if (c_flags & GI_FUNCTION_IS_SETTER) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (3));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
+    if (c_flags & GI_FUNCTION_WRAPS_VFUNC) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (4));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
+    if (c_flags & GI_FUNCTION_THROWS) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (5));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
 
 /*
  *  TODO : flags should be tested with
@@ -80,8 +117,7 @@ caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
  * Why g_function_info_get_flags returns 0 too ?
  *
  */
-    caml_flags = Val_int (c_flags);
-    CAMLreturn (caml_flags);
+    CAMLreturn (caml_list);
 }
 
 CAMLprim value
