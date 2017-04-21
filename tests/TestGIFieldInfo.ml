@@ -35,11 +35,21 @@ let get_union_info () =
 let field_test fn =
   match get_union_info () with
   | None -> assert_equal_string union_name "No base info found"
-  | Some (info) -> fn info
+  | Some (info) -> fn (GIUnionInfo.get_field info 0)
 
+let test_field_flag test_ctxt =
+  field_test (fun info ->
+      let flag = GIFieldInfo.get_flags info in
+      assert_equal ~printer:(fun f ->
+          match f with
+          | GIFieldInfo.Is_readable -> "readable"
+          | GIFieldInfo.Is_writable -> "writable"
+      ) GIFieldInfo.Is_writable flag
+    )
 let tests =
   "GObject Introspection FiledInfo tests" >:::
   [
+    "GIFieldInfo get flag" >:: test_field_flag
   ]
 
 
