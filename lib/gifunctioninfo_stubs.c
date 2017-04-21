@@ -55,7 +55,7 @@ alloc_gifunctioninfo (GIFunctionInfo *i)
 }
 
 CAMLprim value
-caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
+caml_g_function_info_get_flags_c (value caml_functioninfo)
 {
     CAMLparam1 (caml_functioninfo);
     CAMLlocal2 (caml_list, caml_cons);
@@ -108,7 +108,7 @@ caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
 }
 
 CAMLprim value
-caml_g_ifunctioninfo_get_symbol_c (value caml_functioninfo)
+caml_g_function_info_get_symbol_c (value caml_functioninfo)
 {
     CAMLparam1 (caml_functioninfo);
 

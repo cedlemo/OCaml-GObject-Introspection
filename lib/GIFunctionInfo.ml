@@ -34,11 +34,11 @@ type flags =
 
 (** Obtain the GIFunctionInfo.flags for the info . *)
 external get_flags:
-  functioninfo -> flags list = "caml_g_ifunctioninfo_get_flags_c"
+  functioninfo -> flags list = "caml_g_function_info_get_flags_c"
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
-  functioninfo -> string = "caml_g_ifunctioninfo_get_symbol_c"
+  functioninfo -> string = "caml_g_function_info_get_symbol_c"
 
 (* TODO : GIPropertyInfo *	g_function_info_get_property ()
  * TODO : GIVFuncInfo *	g_function_info_get_vfunc ()
