@@ -49,7 +49,7 @@ alloc_gibaseinfo (GIBaseInfo *i)
 }
 
 CAMLprim value
-caml_g_ibaseinfo_get_name_c (value caml_baseinfo)
+caml_g_base_info_get_name_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
@@ -63,7 +63,7 @@ caml_g_ibaseinfo_get_name_c (value caml_baseinfo)
 }
 
 CAMLprim value
-caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
+caml_g_base_info_get_type_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
@@ -108,7 +108,7 @@ caml_g_ibaseinfo_get_type_c (value caml_baseinfo)
 }
 
 CAMLprim value
-caml_g_ibaseinfo_equal_c (value caml_baseinfo1,
+caml_g_base_info_equal_c (value caml_baseinfo1,
                           value caml_baseinfo2)
 {
     CAMLparam2 (caml_baseinfo1, caml_baseinfo2);
@@ -125,7 +125,7 @@ caml_g_ibaseinfo_equal_c (value caml_baseinfo1,
 }
 
 CAMLprim value
-caml_g_ibaseinfo_get_namespace_c (value caml_baseinfo)
+caml_g_base_info_get_namespace_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
@@ -139,7 +139,7 @@ caml_g_ibaseinfo_get_namespace_c (value caml_baseinfo)
 }
 
 CAMLprim value
-caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
+caml_g_base_info_iterate_over_attributes_c (value caml_baseinfo,
                                             value caml_callback)
 {
     CAMLparam2 (caml_baseinfo, caml_callback);
@@ -169,7 +169,7 @@ caml_g_ibaseinfo_iterate_over_attributes_c (value caml_baseinfo,
 }
 
 CAMLprim value
-caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
+caml_g_base_info_get_container_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
@@ -182,7 +182,7 @@ caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
     c_container = g_base_info_get_container (c_info);
     // Increase ref count because g_base_info_get_container is transfert none
     // https://developer.gnome.org/gi/1.52/gi-GIBaseInfo.html#g-base-info-get-container
-    // and finalize_gibaseinfo unref the baseinfo
+    // and finalize_gbase_info unref the baseinfo
     if(c_container != NULL)
         g_base_info_ref (c_container);
 
@@ -192,7 +192,7 @@ caml_g_ibaseinfo_get_container_c (value caml_baseinfo)
 }
 
 CAMLprim value
-caml_g_ibaseinfo_is_deprecated_c (value caml_baseinfo)
+caml_g_base_info_is_deprecated_c (value caml_baseinfo)
 {
     CAMLparam1 (caml_baseinfo);
 
