@@ -31,31 +31,31 @@ value
 alloc_gistructinfo (GIStructInfo *i);
 
 CAMLprim value
-caml_g_istructinfo_get_alignment_c (value structinfo);
+caml_g_struct_info_get_alignment_c (value structinfo);
 
 CAMLprim value
-caml_g_istructinfo_get_size_c (value structinfo);
+caml_g_struct_info_get_size_c (value structinfo);
 
 CAMLprim value
-caml_g_istructinfo_is_gtype_struct_c (value structinfo);
+caml_g_struct_info_is_gtype_struct_c (value structinfo);
 
 CAMLprim value
-caml_g_istructinfo_is_foreign_c (value structinfo);
+caml_g_struct_info_is_foreign_c (value structinfo);
 
 CAMLprim value
-caml_g_istructinfo_get_n_fields_c (value structinfo);
+caml_g_struct_info_get_n_fields_c (value structinfo);
 
 CAMLprim value
-caml_g_istructinfo_get_field_c (value structinfo,
+caml_g_struct_info_get_field_c (value structinfo,
                                 value n);
 
 CAMLprim value
-caml_g_istructinfo_get_n_methods_c (value structinfo);
+caml_g_struct_info_get_n_methods_c (value structinfo);
 
 CAMLprim value
-caml_g_istructinfo_get_method_c (value structinfo,
+caml_g_struct_info_get_method_c (value structinfo,
                                  value n);
 CAMLprim value
-caml_g_istructinfo_find_method_c (value structinfo,
+caml_g_struct_info_find_method_c (value structinfo,
                                   value name);
 #endif // GISTRUCTINFO_STUBS_H
