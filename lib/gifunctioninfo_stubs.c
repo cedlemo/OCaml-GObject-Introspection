@@ -104,19 +104,6 @@ caml_g_ifunctioninfo_get_flags_c (value caml_functioninfo)
         caml_list = caml_cons;
     }
 
-/*
- *  TODO : flags should be tested with
- *
- * if ((c_flags & GI_FUNCTION_IS_METHOD) != 0 )
- * if ((c_flags & GI_FUNCTION_IS_CONSTRUCTOR) != 0 )
- * if ((c_flags & GI_FUNCTION_IS_GETTER) != 0 )
- * if ((c_flags & GI_FUNCTION_IS_SETTER) != 0 )
- * if ((c_flags & GI_FUNCTION_WRAPS_VFUNC) != 0 )
- * if ((c_flags & GI_FUNCTION_THROWS) != 0 )
- *
- * Why g_function_info_get_flags returns 0 too ?
- *
- */
     CAMLreturn (caml_list);
 }
 
