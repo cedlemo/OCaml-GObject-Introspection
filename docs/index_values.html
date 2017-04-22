@@ -87,7 +87,10 @@ Obtain the GIFunctionInfo.flags for the info .
 </div>
 </td></tr>
 <tr><td><a href="GIFieldInfo.html#VALget_flags">get_flags</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Obtain the flags for this GIFieldInfo.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_info">get_info</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIRepository.html#VALget_loaded_namespaces">get_loaded_namespaces</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -138,6 +141,12 @@ Obtain the name of the info .
 Obtain the namespace of info .
 </div>
 </td></tr>
+<tr><td><a href="GIFieldInfo.html#VALget_offset">get_offset</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
+<td><div class="info">
+Obtain the offset in bits of the field member, this is relative to the
+    beginning of the struct or union.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIRepository.html#VALget_shared_library">get_shared_library</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -167,6 +176,11 @@ Obtain the info type of the GIBaseInfo
 <tr><td><a href="GIRepository.html#VALget_version">get_version</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>I</td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALis_constructor">is_constructor</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Check if the info has the Is_constructor flag
+</div>
+</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALis_deprecated">is_deprecated</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
 Obtain whether the info is represents a metadata which is deprecated or not.
@@ -182,10 +196,25 @@ Return true if this union contains discriminator field.
 No doc yet
 </div>
 </td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALis_getter">is_getter</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Check if the info has the Is_getter flag
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALis_gtype_struct">is_gtype_struct</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Return true if this structure represents the "class structure" for some
     GObject or GInterface.
+</div>
+</td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALis_method">is_method</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Check if the info has the flag Is_method
+</div>
+</td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALis_setter">is_setter</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Check if the info has the Is_getter flag
 </div>
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALiterate_over_attributes">iterate_over_attributes</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
@@ -202,6 +231,18 @@ Iterate over all attributes associated with this node.
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Force the namespace namespace_ to be loaded if it isn't already.
+</div>
+</td></tr>
+<tr><td align="left"><br>T</td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALthrows">throws</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Check if the info has the Throws flag
+</div>
+</td></tr>
+<tr><td align="left"><br>W</td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALwraps_vfunc">wraps_vfunc</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Check if the info has the Wraps_vfunc flag
 </div>
 </td></tr>
 </table>

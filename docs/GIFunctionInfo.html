@@ -103,8 +103,32 @@ the function may throw an error.<br>
 
 
 
-<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> <a href="GIFunctionInfo.html#TYPEflags">flags</a></code></pre><div class="info ">
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> <a href="GIFunctionInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
 Obtain the GIFunctionInfo.flags for the info .<br>
+</div>
+
+<pre><span id="VALis_method"><span class="keyword">val</span> is_method</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> bool</code></pre><div class="info ">
+Check if the info has the flag Is_method<br>
+</div>
+
+<pre><span id="VALis_constructor"><span class="keyword">val</span> is_constructor</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> bool</code></pre><div class="info ">
+Check if the info has the Is_constructor flag<br>
+</div>
+
+<pre><span id="VALis_getter"><span class="keyword">val</span> is_getter</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> bool</code></pre><div class="info ">
+Check if the info has the Is_getter flag<br>
+</div>
+
+<pre><span id="VALis_setter"><span class="keyword">val</span> is_setter</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> bool</code></pre><div class="info ">
+Check if the info has the Is_getter flag<br>
+</div>
+
+<pre><span id="VALwraps_vfunc"><span class="keyword">val</span> wraps_vfunc</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> bool</code></pre><div class="info ">
+Check if the info has the Wraps_vfunc flag<br>
+</div>
+
+<pre><span id="VALthrows"><span class="keyword">val</span> throws</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> bool</code></pre><div class="info ">
+Check if the info has the Throws flag<br>
 </div>
 
 <pre><span id="VALget_symbol"><span class="keyword">val</span> get_symbol</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> -> string</code></pre><div class="info ">
