@@ -10,12 +10,26 @@ BuildTools: ocamlbuild
 Library "GObjectIntrospection"
   Path: lib
   Modules: GIRepository
-  BuildDepends: ctypes
+  BuildDepends: ctypes, ctypes.foreign
+  CClib: -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+  CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread
+         -I/usr/include/gobject-introspection-1.0
+         -I/usr/lib/libffi-3.2.1/include
+         -I/usr/include/glib-2.0
+         -I/usr/lib/glib-2.0/include
 
-Test "girepository_test_unit"
+Executable gobject_instrospection_tests
+  Path: tests
+  Build$: flag(tests)
+  Install: false
+  CompiledObject: best
+  MainIs: test.ml
+  BuildDepends: oUnit, GObjectIntrospection
+
+Test "gobject_instrospection_tests"
   Run$: flag(tests)
-  TestTools: girepository_test_unit
-  Command: $girepository_test_unit
+  TestTools: gobject_instrospection_tests
+  Command: $gobject_instrospection_tests
   WorkingDirectory: tests
 
 AlphaFeatures: ocamlbuild_more_args
@@ -90,13 +104,6 @@ Document "docs"
 #   CompiledObject: best
 #   BuildDepends: GObjectIntrospection
 #
-# Executable girepository_test_unit
-#   Path: tests
-#   Build$: flag(tests)
-#   Install: false
-#   CompiledObject: best
-#   MainIs: test.ml
-#   BuildDepends: oUnit, GObjectIntrospection
 #
 # Executable "gi_baseinfo_print_function_flags"
 #   Path: samples
