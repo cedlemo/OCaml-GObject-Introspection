@@ -66,7 +66,7 @@ let test_field_get_offset test_ctxt =
 let tests =
   "GObject Introspection FiledInfo tests" >:::
   [
-    "GIFieldInfo get flag" >:: test_field_get_flags;
+    "GIFieldInfo get flags" >:: test_field_get_flags;
     "GIFieldInfo is readable" >:: test_field_is_readable;
     "GIFieldInfo get offset" >:: test_field_get_offset
   ]
