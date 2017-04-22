@@ -51,19 +51,29 @@ CAMLprim value
 caml_g_field_info_get_flags_c (value caml_fieldinfo)
 {
     CAMLparam1 (caml_fieldinfo);
+    CAMLlocal2 (caml_list, caml_cons);
+
     GIFieldInfo *c_info;
     GIFieldInfoFlags c_flags;
+    caml_list = Val_emptylist;
 
     c_info = GIFieldInfo_val (caml_fieldinfo);
     c_flags = g_field_info_get_flags (c_info);
 
-    switch (c_flags){
-    case GI_FIELD_IS_READABLE:
-    case GI_FIELD_IS_WRITABLE:
-        CAMLreturn (Val_int (c_flags));
-    default:
-        RAISE_FAILURE_NOT_REACHED;
+    if (c_flags & GI_FIELD_IS_READABLE) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (0));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
     }
+    if (c_flags & GI_FIELD_IS_READABLE) {
+        caml_cons = caml_alloc (2, 0);
+        Store_field (caml_cons, 0, Val_int (0));
+        Store_field (caml_cons, 1, caml_list);
+        caml_list = caml_cons;
+    }
+
+    CAMLreturn (caml_list);
 }
 
 CAMLprim value

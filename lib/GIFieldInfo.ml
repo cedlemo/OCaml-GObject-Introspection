@@ -36,7 +36,7 @@ type flags =
 (** Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
     flag values. *)
 external get_flags:
-  fieldinfo -> flags = "caml_g_field_info_get_flags_c"
+  fieldinfo -> flags list= "caml_g_field_info_get_flags_c"
 
 (** Obtain the offset in bits of the field member, this is relative to the
     beginning of the struct or union.*)
