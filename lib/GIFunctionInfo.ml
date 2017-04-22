@@ -46,6 +46,11 @@ external is_constructor:
   functioninfo -> bool = "caml_g_function_info_is_constructor_c"
 (* TODO test is_constructor *)
 
+(** Check if the info has the Is_getter flag *)
+external is_getter:
+  functioninfo -> bool = "caml_g_function_info_is_getter_c"
+(* TODO test is_getter *)
+
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
