@@ -47,9 +47,13 @@ external get_offset:
 external is_readable:
   fieldinfo -> bool = "caml_g_field_info_is_readable_c"
 
+(** Obtain the size in bits of the field member, this is how much space you
+    need to allocate to store the field. *)
+external get_size:
+  fieldinfo -> int = "caml_g_field_info_get_size_c"
+
 (*
    TODO : gboolean	g_field_info_get_field ()
    TODO : gboolean	g_field_info_set_field ()
-   TODO : gint	g_field_info_get_size ()
    TODO : GITypeInfo *	g_field_info_get_type ()
 *)

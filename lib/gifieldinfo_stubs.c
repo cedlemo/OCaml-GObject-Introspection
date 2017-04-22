@@ -105,3 +105,16 @@ caml_g_field_info_get_offset_c (value caml_fieldinfo)
 
     CAMLreturn (Val_int (c_offset));
 }
+
+CAMLprim value
+caml_g_field_info_get_size_c (value caml_fieldinfo)
+{
+    CAMLparam1 (caml_fieldinfo);
+    GIFieldInfo *c_info;
+    int c_size = 0;
+
+    c_info = GIFieldInfo_val (caml_fieldinfo);
+    c_size = g_field_info_get_size (c_info);
+
+    CAMLreturn (Val_int (c_size));
+}
