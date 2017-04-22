@@ -27,5 +27,12 @@ open Foreign
 type repository = unit ptr
 let repository : repository typ = ptr void
 
+type typelib = unit ptr
+let typelib : typelib typ = ptr void
+
 let get_default =
   foreign "g_irepository_get_default" (void @-> returning repository)
+
+let require =
+  foreign "g_irepository_require" (repository @-> string_opt @-> string_opt @-> int @->  void @-> returning typelib)
+
