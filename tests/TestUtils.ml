@@ -17,14 +17,18 @@
  *)
 
 open OUnit2
-open TestUtils
 
-let get_default test_ctxt =
-  let _ = GIRepository.get_default () in
-  assert_equal_boolean true true
+let assert_equal_string str1 str2 =
+  assert_equal ~printer: (fun s -> s) str1 str2
 
-let tests =
-  "GObject Introspection Repository tests" >:::
-    [
-      "GIRepository get default" >:: get_default
-    ]
+let assert_equal_boolean bool1 bool2 =
+  assert_equal ~printer: (fun s -> string_of_bool s) bool1 bool2
+
+let assert_equal_int int1 int2 =
+  assert_equal ~printer: (fun s -> string_of_int s) int1 int2
+
+let assert_equal_or_greater int1 int2 =
+    assert_equal ~printer: (fun s ->
+        String.concat " " [string_of_int int1;
+                           "is not >=";
+                           string_of_int int2]) true (int1 >= int2)
