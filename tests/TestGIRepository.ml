@@ -23,8 +23,15 @@ let get_default test_ctxt =
   let _ = GIRepository.get_default () in
   assert_equal_boolean true true
 
+let require test_ctxt =
+  let repo = GIRepository.get_default () in
+  let namespace = Some "Gtk" in
+  let _ = GIRepository.require repo namespace None 0 () in
+  assert_equal_boolean true true
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
-      "GIRepository get default" >:: get_default
+      "GIRepository get default" >:: get_default;
+      "GIRepository require" >:: require
     ]
