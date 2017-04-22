@@ -25,14 +25,35 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
 * http://caml.inria.fr/pub/docs/manual-ocaml/intfc.html#s:register-exn
 
 ## Rules
+
+  ### General
+
   * variables that hold c values are prefixed with "c_"
-  * varibales that hold caml values are prefixed with "caml_"
+  * variables that hold caml values are prefixed with "caml_"
   * each access to an array must be checked and raise a Failure exception with
 
 	`caml_failwith ("Array Index out of bounds");`
 
     * `GIStructInfo.get_method`
     * `GIRepository.get_info`
+
+  ### Enums
+
+  * an enum should have an OCaml variant type with all the possible values
+  * For a property of an objet that is represented by values of an enum
+    * it can be get via an OCaml function that returns a list of the value
+    * the object can be queried on each value with boolean functions name like
+      * `has_attribute`
+      * `is_attribute`
+  * examples :
+      * `GIFunctionInfo.flags`
+      * `GIFunctionInfo.get_flags`
+      * `GIFunctionInfo.is_method`
+      * `GIFunctionInfo.is_constructor`
+      * `GIFunctionInfo.is_setter`
+      * `GIFunctionInfo.is_gettter`
+      * `GIFunctionInfo.wraps_vfunc`
+      * `GIFunctionInfo.throws`
 
 ### TODO
 
