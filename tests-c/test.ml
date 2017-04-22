@@ -16,8 +16,17 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIRepository — GObject Introspection repository manager module
-  GIRepository is used to manage repositories of namespaces. Namespaces are
-  represented on disk by type libraries (.typelib files).
-*)
+open OUnit2
 
+let () =
+  run_test_tt_main
+  ("GObjectIntrospection" >:::
+    [
+      TestGIRepository.tests;
+      TestGIBaseInfo.tests;
+      TestGIFunctionInfo.tests;
+      TestGIStructInfo.tests;
+      TestGIUnionInfo.tests;
+      TestGIFieldInfo.tests
+    ]
+  )

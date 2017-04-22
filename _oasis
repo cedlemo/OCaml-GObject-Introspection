@@ -9,83 +9,8 @@ BuildTools: ocamlbuild
 
 Library "GObjectIntrospection"
   Path: lib
-  Modules: GObjectIntrospection,
-           GIFieldInfo,
-           GIUnionInfo,
-           GIStructInfo,
-           GIFunctionInfo,
-           GIBaseInfo,
-           GIRepository
-  CSources: utils.h, conversions.h, conversions.c,
-            gifieldinfo_stubs.h, gifieldinfo_stubs.c,
-            giunioninfo_stubs.h, giunioninfo_stubs.c,
-            gistructinfo_stubs.h, gistructinfo_stubs.c,
-            gifunctioninfo_stubs.h, gifunctioninfo_stubs.c,
-            gibaseinfo_stubs.h, gibaseinfo_stubs.c,
-            girepository_stubs.h, girepository_stubs.c
-  CClib: -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
-  CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread
-         -I/usr/include/gobject-introspection-1.0
-         -I/usr/lib/libffi-3.2.1/include
-         -I/usr/include/glib-2.0
-         -I/usr/lib/glib-2.0/include
-
-# pkg-config --libs --cflags gobject-introspection-1.0
-# -pthread -I/usr/include/gobject-introspection-1.0
-# -I/usr/lib/libffi-3.2.1/include -I/usr/include/glib-2.0
-# -I/usr/lib/glib-2.0/include -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
-#
-
-Executable "gi_repository"
-  Path: samples
-  MainIs: gi_repository.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_get_name"
-  Path: samples
-  MainIs: gi_baseinfo_get_name.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_get_type"
-  Path: samples
-  MainIs: gi_baseinfo_get_type.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_print_attributes"
-  Path: samples
-  MainIs: gi_baseinfo_print_attributes.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_deprecated"
-  Path: samples
-  MainIs: gi_baseinfo_deprecated.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable girepository_test_unit
-  Path: tests
-  Build$: flag(tests)
-  Install: false
-  CompiledObject: best
-  MainIs: test.ml
-  BuildDepends: oUnit, GObjectIntrospection
-
-Executable "gi_baseinfo_print_function_flags"
-  Path: samples
-  MainIs: gi_baseinfo_print_function_flags.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
+  Modules: GIRepository
+  BuildDepends: ctypes
 
 Test "girepository_test_unit"
   Run$: flag(tests)
@@ -101,4 +26,85 @@ Document "docs"
   XOCamlbuildPath: .
   XOCamlbuildExtraArgs:
     "-docflags '-colorize-code -short-functors -charset utf-8'"
-  XOCamlbuildLibraries: GObjectIntrospection
+  XOCamlbuildLibraries: GObjectIntrospection# Library "GObjectIntrospection"
+
+#   Modules: GObjectIntrospection,
+#            GIFieldInfo,
+#            GIUnionInfo,
+#            GIStructInfo,
+#            GIFunctionInfo,
+#            GIBaseInfo,
+#            GIRepository
+#   CSources: utils.h, conversions.h, conversions.c,
+#             gifieldinfo_stubs.h, gifieldinfo_stubs.c,
+#             giunioninfo_stubs.h, giunioninfo_stubs.c,
+#             gistructinfo_stubs.h, gistructinfo_stubs.c,
+#             gifunctioninfo_stubs.h, gifunctioninfo_stubs.c,
+#             gibaseinfo_stubs.h, gibaseinfo_stubs.c,
+#             girepository_stubs.h, girepository_stubs.c
+#   CClib: -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+#   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread
+#          -I/usr/include/gobject-introspection-1.0
+#          -I/usr/lib/libffi-3.2.1/include
+#          -I/usr/include/glib-2.0
+#          -I/usr/lib/glib-2.0/include
+#
+# # pkg-config --libs --cflags gobject-introspection-1.0
+# # -pthread -I/usr/include/gobject-introspection-1.0
+# # -I/usr/lib/libffi-3.2.1/include -I/usr/include/glib-2.0
+# # -I/usr/lib/glib-2.0/include -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+# #
+#
+# Executable "gi_repository"
+#   Path: samples
+#   MainIs: gi_repository.ml
+#   Install: false
+#   CompiledObject: best
+#   BuildDepends: GObjectIntrospection
+#
+# Executable "gi_baseinfo_get_name"
+#   Path: samples
+#   MainIs: gi_baseinfo_get_name.ml
+#   Install: false
+#   CompiledObject: best
+#   BuildDepends: GObjectIntrospection
+#
+# Executable "gi_baseinfo_get_type"
+#   Path: samples
+#   MainIs: gi_baseinfo_get_type.ml
+#   Install: false
+#   CompiledObject: best
+#   BuildDepends: GObjectIntrospection
+#
+# Executable "gi_baseinfo_print_attributes"
+#   Path: samples
+#   MainIs: gi_baseinfo_print_attributes.ml
+#   Install: false
+#   CompiledObject: best
+#   BuildDepends: GObjectIntrospection
+#
+# Executable "gi_baseinfo_deprecated"
+#   Path: samples
+#   MainIs: gi_baseinfo_deprecated.ml
+#   Install: false
+#   CompiledObject: best
+#   BuildDepends: GObjectIntrospection
+#
+# Executable girepository_test_unit
+#   Path: tests
+#   Build$: flag(tests)
+#   Install: false
+#   CompiledObject: best
+#   MainIs: test.ml
+#   BuildDepends: oUnit, GObjectIntrospection
+#
+# Executable "gi_baseinfo_print_function_flags"
+#   Path: samples
+#   MainIs: gi_baseinfo_print_function_flags.ml
+#   Install: false
+#   CompiledObject: best
+#   BuildDepends: GObjectIntrospection
+#
+#
+#
+

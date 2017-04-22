@@ -22,11 +22,6 @@ let () =
   run_test_tt_main
   ("GObjectIntrospection" >:::
     [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests
+      TestGIRepository.tests
     ]
   )
