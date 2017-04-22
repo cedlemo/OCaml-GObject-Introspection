@@ -32,5 +32,8 @@ CAMLprim value
 caml_g_field_info_get_flags_c (value fieldinfo);
 
 CAMLprim value
+caml_g_field_info_is_readable_c (value fieldinfo);
+
+CAMLprim value
 caml_g_field_info_get_offset_c (value fieldinfo);
 #endif // GIFIELDINFO_STUBS_H

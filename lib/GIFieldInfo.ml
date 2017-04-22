@@ -36,12 +36,16 @@ type flags =
 (** Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
     flag values. *)
 external get_flags:
-  fieldinfo -> flags list= "caml_g_field_info_get_flags_c"
+  fieldinfo -> flags list = "caml_g_field_info_get_flags_c"
 
 (** Obtain the offset in bits of the field member, this is relative to the
     beginning of the struct or union.*)
 external get_offset:
   fieldinfo -> int = "caml_g_field_info_get_offset_c"
+
+(** Check is the info has the readable flag. *)
+external is_readable:
+  fieldinfo -> bool = "caml_g_field_info_is_readable_c"
 
 (*
    TODO : gboolean	g_field_info_get_field ()

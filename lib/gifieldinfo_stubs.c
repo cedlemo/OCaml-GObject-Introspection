@@ -77,6 +77,23 @@ caml_g_field_info_get_flags_c (value caml_fieldinfo)
 }
 
 CAMLprim value
+caml_g_field_info_is_readable_c (value caml_fieldinfo)
+{
+    CAMLparam1 (caml_fieldinfo);
+
+    GIFieldInfo *c_info;
+    GIFieldInfoFlags c_flags;
+
+    c_info = GIFieldInfo_val (caml_fieldinfo);
+    c_flags = g_field_info_get_flags (c_info);
+
+    if (c_flags & GI_FIELD_IS_READABLE)
+        CAMLreturn (Val_bool (1));
+    else
+        CAMLreturn (Val_bool (0));
+}
+
+CAMLprim value
 caml_g_field_info_get_offset_c (value caml_fieldinfo)
 {
     CAMLparam1 (caml_fieldinfo);
