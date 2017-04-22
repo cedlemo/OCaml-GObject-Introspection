@@ -21,3 +21,11 @@
   represented on disk by type libraries (.typelib files).
 *)
 
+open Ctypes
+open Foreign
+
+type repository = unit ptr
+let repository : repository typ = ptr void
+
+let get_default =
+  foreign "g_irepository_get_default" (void @-> returning repository)
