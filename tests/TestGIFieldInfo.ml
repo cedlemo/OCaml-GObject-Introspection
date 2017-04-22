@@ -39,12 +39,15 @@ let field_test fn =
 
 let test_field_get_flags test_ctxt =
   field_test (fun info ->
-      let flag = GIFieldInfo.get_flags info in
-      assert_equal ~printer:(fun f ->
-          match f with
-          | GIFieldInfo.Is_readable -> "readable"
-          | GIFieldInfo.Is_writable -> "writable"
-      ) GIFieldInfo.Is_writable flag
+      let flags = GIFieldInfo.get_flags info in
+      let rec check_flags = function
+        | [] -> ()
+        | f' :: q -> let _ = assert_equal ~printer:(fun f ->
+            match f with
+            | GIFieldInfo.Is_readable -> "readable"
+            | GIFieldInfo.Is_writable -> "writable"
+          ) GIFieldInfo.Is_readable f' in check_flags q
+      in check_flags flags
     )
 
 let test_field_get_offset test_ctxt =
