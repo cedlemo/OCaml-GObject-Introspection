@@ -58,5 +58,8 @@ CAMLprim value
 caml_g_function_info_wraps_vfunc_c (value functioninfo);
 
 CAMLprim value
+caml_g_function_info_throws_c (value functioninfo);
+
+CAMLprim value
 caml_g_function_info_get_symbol_c (value functioninfo);
 #endif // GIFUNCTIONINFO_STUBS_H

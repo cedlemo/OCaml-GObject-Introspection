@@ -61,6 +61,10 @@ external wraps_vfunc:
   functioninfo -> bool = "caml_g_function_info_wraps_vfunc_c"
 (* TODO test is_setter *)
 
+(** Check if the info has the Throws flag *)
+external throws:
+  functioninfo -> bool = "caml_g_function_info_throws_c"
+
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
