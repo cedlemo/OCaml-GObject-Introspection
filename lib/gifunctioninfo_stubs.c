@@ -107,56 +107,29 @@ caml_g_function_info_get_flags_c (value caml_functioninfo)
     CAMLreturn (caml_list);
 }
 
-CAMLprim value
-caml_g_function_info_is_method_c (value caml_functioninfo)
-{
-    CAMLparam1 (caml_functioninfo);
-
-    GIFunctionInfo *c_info;
-    GIFunctionInfoFlags c_flags;
-
-    c_info = GIFunctionInfo_val (caml_functioninfo);
-    c_flags = g_function_info_get_flags (c_info);
-
-    if (c_flags & GI_FUNCTION_IS_METHOD)
-        CAMLreturn (Val_int (1));
-    else
-        CAMLreturn (Val_int (0));
+#define BUILD_ENUM_VAL_CHECKER(val_name, VAL_NAME)\
+CAMLprim value \
+caml_g_function_info_##val_name##_c (value caml_functioninfo)\
+{  \
+    CAMLparam1 (caml_functioninfo); \
+ \
+    GIFunctionInfo *c_info; \
+    GIFunctionInfoFlags c_flags; \
+ \
+    c_info = GIFunctionInfo_val (caml_functioninfo); \
+    c_flags = g_function_info_get_flags (c_info); \
+ \
+    if (c_flags & GI_FUNCTION_##VAL_NAME) \
+        CAMLreturn (Val_int (1)); \
+    else \
+        CAMLreturn (Val_int (0)); \
 }
 
-CAMLprim value
-caml_g_function_info_is_constructor_c (value caml_functioninfo)
-{
-    CAMLparam1 (caml_functioninfo);
-
-    GIFunctionInfo *c_info;
-    GIFunctionInfoFlags c_flags;
-
-    c_info = GIFunctionInfo_val (caml_functioninfo);
-    c_flags = g_function_info_get_flags (c_info);
-
-    if (c_flags & GI_FUNCTION_IS_CONSTRUCTOR)
-        CAMLreturn (Val_int (1));
-    else
-        CAMLreturn (Val_int (0));
-}
-
-CAMLprim value
-caml_g_function_info_is_getter_c (value caml_functioninfo)
-{
-    CAMLparam1 (caml_functioninfo);
-
-    GIFunctionInfo *c_info;
-    GIFunctionInfoFlags c_flags;
-
-    c_info = GIFunctionInfo_val (caml_functioninfo);
-    c_flags = g_function_info_get_flags (c_info);
-
-    if (c_flags & GI_FUNCTION_IS_GETTER)
-        CAMLreturn (Val_int (1));
-    else
-        CAMLreturn (Val_int (0));
-}
+BUILD_ENUM_VAL_CHECKER(is_method, IS_METHOD)
+BUILD_ENUM_VAL_CHECKER(is_constructor, IS_CONSTRUCTOR)
+BUILD_ENUM_VAL_CHECKER(is_getter, IS_GETTER)
+BUILD_ENUM_VAL_CHECKER(is_setter, IS_SETTER)
+#undef BUILD_ENUM_VAL_CHECKER
 
 CAMLprim value
 caml_g_function_info_get_symbol_c (value caml_functioninfo)

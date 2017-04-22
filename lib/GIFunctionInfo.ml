@@ -51,6 +51,11 @@ external is_getter:
   functioninfo -> bool = "caml_g_function_info_is_getter_c"
 (* TODO test is_getter *)
 
+(** Check if the info has the Is_getter flag *)
+external is_setter:
+  functioninfo -> bool = "caml_g_function_info_is_setter_c"
+(* TODO test is_setter *)
+
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
