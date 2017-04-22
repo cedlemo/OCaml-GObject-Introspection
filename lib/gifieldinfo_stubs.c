@@ -66,9 +66,9 @@ caml_g_field_info_get_flags_c (value caml_fieldinfo)
         Store_field (caml_cons, 1, caml_list);
         caml_list = caml_cons;
     }
-    if (c_flags & GI_FIELD_IS_READABLE) {
+    if (c_flags & GI_FIELD_IS_WRITABLE) {
         caml_cons = caml_alloc (2, 0);
-        Store_field (caml_cons, 0, Val_int (0));
+        Store_field (caml_cons, 0, Val_int (1));
         Store_field (caml_cons, 1, caml_list);
         caml_list = caml_cons;
     }
