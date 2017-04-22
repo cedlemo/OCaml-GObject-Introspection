@@ -50,6 +50,13 @@ let test_field_get_flags test_ctxt =
       in check_flags flags
     )
 
+let test_field_is_readable test_ctxt =
+  field_test (fun info ->
+    let readable = GIFieldInfo.is_readable info in
+    assert_equal_boolean true readable
+    )
+
+
 let test_field_get_offset test_ctxt =
   field_test (fun info ->
       let offset = GIFieldInfo.get_offset info in
@@ -60,5 +67,6 @@ let tests =
   "GObject Introspection FiledInfo tests" >:::
   [
     "GIFieldInfo get flag" >:: test_field_get_flags;
+    "GIFieldInfo is readable" >:: test_field_is_readable;
     "GIFieldInfo get offset" >:: test_field_get_offset
   ]
