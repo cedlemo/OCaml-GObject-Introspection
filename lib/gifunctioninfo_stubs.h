@@ -43,5 +43,8 @@ CAMLprim value
 caml_g_function_info_get_flags_c (value functioninfo);
 
 CAMLprim value
+caml_g_function_info_is_method_c (value functioninfo);
+
+CAMLprim value
 caml_g_function_info_get_symbol_c (value functioninfo);
 #endif // GIFUNCTIONINFO_STUBS_H

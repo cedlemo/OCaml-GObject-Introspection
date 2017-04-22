@@ -108,6 +108,23 @@ caml_g_function_info_get_flags_c (value caml_functioninfo)
 }
 
 CAMLprim value
+caml_g_function_info_is_method_c (value caml_functioninfo)
+{
+    CAMLparam1 (caml_functioninfo);
+
+    GIFunctionInfo *c_info;
+    GIFunctionInfoFlags c_flags;
+
+    c_info = GIFunctionInfo_val (caml_functioninfo);
+    c_flags = g_function_info_get_flags (c_info);
+
+    if (c_flags & GI_FUNCTION_IS_METHOD)
+        CAMLreturn (Val_int (1));
+    else
+        CAMLreturn (Val_int (0));
+}
+
+CAMLprim value
 caml_g_function_info_get_symbol_c (value caml_functioninfo)
 {
     CAMLparam1 (caml_functioninfo);

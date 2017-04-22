@@ -35,6 +35,12 @@ type flags =
 (** Obtain the GIFunctionInfo.flags for the info . *)
 external get_flags:
   functioninfo -> flags list = "caml_g_function_info_get_flags_c"
+
+(** Check if the info has the flag Is_method *)
+external is_method:
+  functioninfo -> bool = "caml_g_function_info_is_method_c"
+(* TODO test_is_method *)
+
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol(). *)
 external get_symbol:
