@@ -120,9 +120,9 @@ caml_g_function_info_##val_name##_c (value caml_functioninfo)\
     c_flags = g_function_info_get_flags (c_info); \
  \
     if (c_flags & GI_FUNCTION_##VAL_NAME) \
-        CAMLreturn (Val_int (1)); \
+        CAMLreturn (Val_bool (1)); \
     else \
-        CAMLreturn (Val_int (0)); \
+        CAMLreturn (Val_bool (0)); \
 }
 
 BUILD_ENUM_VAL_CHECKER(is_method, IS_METHOD)
