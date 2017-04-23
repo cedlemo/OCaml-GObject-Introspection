@@ -29,9 +29,18 @@ let require test_ctxt =
   let _ = GIRepository.require repo namespace None 0 () in
   assert_equal_boolean true true
 
+let get_loaded_namespaces test_ctxt =
+  let repo = GIRepository.get_default () in
+  let namespace = Some "Gio" in
+  let _ = GIRepository.require repo namespace None 0 () in
+  let namespaces_check = "Gio GObject GLib" in
+  let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
+  assert_equal_string namespaces_check namespaces
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
       "GIRepository get default" >:: get_default;
-      "GIRepository require" >:: require
+      "GIRepository require" >:: require;
+      "GIRepository get loaded namespaces" >:: get_loaded_namespaces
     ]
