@@ -9,7 +9,8 @@ BuildTools: ocamlbuild
 
 Library "GObjectIntrospection"
   Path: lib
-  Modules: GIRepository
+  Modules: Conversions,
+           GIRepository
   BuildDepends: ctypes, ctypes.foreign
   CClib: -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread
