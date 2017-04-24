@@ -55,3 +55,34 @@ val get_loaded_namespaces:
  *)
 val get_dependencies:
   repository -> string option -> string list
+
+(** This function returns the "C prefix", or the C level namespace associated
+    with the given introspection namespace. Each C symbol starts with this
+    prefix, as well each GType in the library.
+    Note: The namespace must have already been loaded using a function such as
+    GIRepository.require before calling this function. *)
+val get_c_prefix:
+  repository -> string option -> string
+
+(*
+   TODO: gchar **	g_irepository_get_immediate_dependencies ()
+   TODO: gint	g_irepository_get_n_infos ()
+   TODO: GIBaseInfo *	g_irepository_get_info ()
+   TODO: GOptionGroup *	g_irepository_get_option_group ()
+   TODO: GList *	g_irepository_enumerate_versions ()
+   TODO: void	g_irepository_prepend_library_path ()
+   TODO: void	g_irepository_prepend_search_path ()
+   TODO: GSList *	g_irepository_get_search_path ()
+   TODO: const char *	g_irepository_load_typelib ()
+   TODO: const gchar *	g_irepository_get_typelib_path ()
+   TODO: gboolean	g_irepository_is_registered ()
+   TODO: GITypelib *	g_irepository_require_private ()
+   TODO: const gchar *	g_irepository_get_c_prefix ()
+   TODO: const gchar *	g_irepository_get_shared_library ()
+   TODO: const gchar *	g_irepository_get_version ()
+   TODO: GIBaseInfo *	g_irepository_find_by_gtype ()
+   TODO: GIEnumInfo *	g_irepository_find_by_error_domain ()
+   TODO: GIBaseInfo *	g_irepository_find_by_name ()
+   TODO: gboolean	g_irepository_dump ()
+   TODO: void	gi_cclosure_marshal_generic ()
+*)
