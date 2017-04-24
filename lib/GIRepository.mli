@@ -16,19 +16,23 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Ctypes
-open Foreign
-open Conversions
+(** GIRepository — GObject Introspection repository manager module
+  GIRepository is used to manage repositories of namespaces. Namespaces are
+  represented on disk by type libraries (.typelib files).
+*)
 
-type repository = unit ptr
-let repository : repository typ = ptr void
+(** GIRepository — GObject Introspection repository manager module
+  GIRepository is used to manage repositories of namespaces. Namespaces are
+  represented on disk by type libraries (.typelib files).
+*)
 
-type typelib = unit ptr
-let typelib : typelib typ = ptr void
+type repository
+
+type typelib
 
 (** Returns the singleton process-global default GIRepository. *)
-let get_default =
-  foreign "g_irepository_get_default" (void @-> returning repository)
+val get_default:
+  unit -> repository
 
 (** Force the namespace namespace_ to be loaded if it isn't already. If
     namespace_ is not loaded, this function will search for a ".typelib" file
@@ -36,17 +40,12 @@ let get_default =
     namespace may be specified. If version is not specified, the latest will be
     used).
  *)
-let require =
-  foreign "g_irepository_require"
-    (repository @-> string_opt @-> string_opt @-> int @->  void @-> returning typelib)
+val require:
+  repository -> string option -> string option -> int -> unit -> typelib
 
 (** Return the list of currently loaded namespaces. *)
-let get_loaded_namespaces repo =
-  let get_loaded_namespaces_raw =
-    foreign "g_irepository_get_loaded_namespaces"
-      (repository @-> returning carray_of_strings) in
-  let c_arr = get_loaded_namespaces_raw repo in
-  carray_of_strings_to_list c_arr
+val get_loaded_namespaces:
+  repository -> string list
 
 (** Return an list of all (transitive) versioned dependencies for namespace_ .
     Returned strings are of the form namespace-version.
@@ -54,9 +53,5 @@ let get_loaded_namespaces repo =
     GIRepository.require before calling this function. To get only the immediate
     dependencies for namespace_ , use GIRepository.get_immediate_dependencies.
  *)
-let get_dependencies repo namespace =
-  let get_dependencies_raw =
-    foreign "g_irepository_get_dependencies"
-      (repository @-> string_opt @-> returning carray_of_strings) in
-  let c_arr = get_dependencies_raw repo namespace in
-  carray_of_strings_to_list c_arr
+val get_dependencies:
+  repository -> string option -> string list
