@@ -70,6 +70,13 @@ val get_c_prefix:
     GIRepository.require before calling this function. *)
 val get_version:
   repository -> string option -> string
+
+(** If namespace namespace_ is loaded, return the full path to the .typelib
+    file it was loaded from. If the typelib for namespace namespace_ was
+    included in a shared library, return the special string "<builtin>". *)
+val get_typelib_path:
+  repository -> string option -> string
+
 (*
    TODO: gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()
@@ -80,10 +87,8 @@ val get_version:
    TODO: void	g_irepository_prepend_search_path ()
    TODO: GSList *	g_irepository_get_search_path ()
    TODO: const char *	g_irepository_load_typelib ()
-   TODO: const gchar *	g_irepository_get_typelib_path ()
    TODO: gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
-   TODO: const gchar *	g_irepository_get_c_prefix ()
    TODO: const gchar *	g_irepository_get_shared_library ()
    TODO: const gchar *	g_irepository_get_version ()
    TODO: GIBaseInfo *	g_irepository_find_by_gtype ()

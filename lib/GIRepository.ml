@@ -48,7 +48,13 @@ let get_dependencies repo namespace =
   carray_of_strings_to_list c_arr
 
 let get_c_prefix =
-  foreign "g_irepository_get_c_prefix" (repository @-> string_opt @-> returning string)
+  foreign "g_irepository_get_c_prefix"
+          (repository @-> string_opt @-> returning string)
 
 let get_version =
-  foreign "g_irepository_get_version" (repository @-> string_opt @-> returning string)
+  foreign "g_irepository_get_version"
+          (repository @-> string_opt @-> returning string)
+
+let get_typelib_path =
+  foreign "g_irepository_get_typelib_path"
+          (repository @-> string_opt @-> returning string)
