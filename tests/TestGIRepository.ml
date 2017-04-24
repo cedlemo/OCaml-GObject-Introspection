@@ -29,10 +29,11 @@ let require test_ctxt =
   let _ = GIRepository.require repo namespace None 0 () in
   assert_equal_boolean true true
 
+let namespace = Some "Gio"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace None 0 ()
+
 let get_loaded_namespaces test_ctxt =
-  let repo = GIRepository.get_default () in
-  let namespace = Some "Gio" in
-  let _ = GIRepository.require repo namespace None 0 () in
   let namespaces_check = "GLib GObject Gio" in
   let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
   assert_equal_string namespaces_check namespaces
