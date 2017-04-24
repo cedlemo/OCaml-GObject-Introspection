@@ -9,59 +9,13 @@ BuildTools: ocamlbuild
 
 Library "GObjectIntrospection"
   Path: lib
-  Modules: GObjectIntrospection,
-           GIFieldInfo,
-           GIUnionInfo,
-           GIStructInfo,
-           GIFunctionInfo,
-           GIBaseInfo,
+  Modules: Conversions,
            GIRepository
-  CSources: utils.h, conversions.h, conversions.c,
-            gifieldinfo_stubs.h, gifieldinfo_stubs.c,
-            giunioninfo_stubs.h, giunioninfo_stubs.c,
-            gistructinfo_stubs.h, gistructinfo_stubs.c,
-            gifunctioninfo_stubs.h, gifunctioninfo_stubs.c,
-            gibaseinfo_stubs.h, gibaseinfo_stubs.c,
-            girepository_stubs.h, girepository_stubs.c
+  BuildDepends: ctypes, ctypes.foreign
   CClib: GOBJ_LIBS
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter GOBJ_FLAGS
 
-Executable "gi_repository"
-  Path: samples
-  MainIs: gi_repository.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_get_name"
-  Path: samples
-  MainIs: gi_baseinfo_get_name.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_get_type"
-  Path: samples
-  MainIs: gi_baseinfo_get_type.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_print_attributes"
-  Path: samples
-  MainIs: gi_baseinfo_print_attributes.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable "gi_baseinfo_deprecated"
-  Path: samples
-  MainIs: gi_baseinfo_deprecated.ml
-  Install: false
-  CompiledObject: best
-  BuildDepends: GObjectIntrospection
-
-Executable girepository_test_unit
+Executable gobject_instrospection_tests
   Path: tests
   Build$: flag(tests)
   Install: false
@@ -69,9 +23,10 @@ Executable girepository_test_unit
   MainIs: test.ml
   BuildDepends: oUnit, GObjectIntrospection
 
-Test "girepository_test_unit"
+Test "gobject_instrospection_tests"
   Run$: flag(tests)
-  TestTools: girepository_test_unit
-  Command: $girepository_test_unit
+  TestTools: gobject_instrospection_tests
+  Command: $gobject_instrospection_tests
   WorkingDirectory: tests
+
 
