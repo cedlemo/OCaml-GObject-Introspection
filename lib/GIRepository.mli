@@ -64,6 +64,12 @@ val get_dependencies:
 val get_c_prefix:
   repository -> string option -> string
 
+(** This function returns the loaded version associated with the given
+    namespace namespace_ .
+    Note: The namespace must have already been loaded using a function such as
+    GIRepository.require before calling this function. *)
+val get_version:
+  repository -> string option -> string
 (*
    TODO: gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()

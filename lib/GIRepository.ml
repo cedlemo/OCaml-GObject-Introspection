@@ -49,3 +49,6 @@ let get_dependencies repo namespace =
 
 let get_c_prefix =
   foreign "g_irepository_get_c_prefix" (repository @-> string_opt @-> returning string)
+
+let get_version =
+  foreign "g_irepository_get_version" (repository @-> string_opt @-> returning string)
