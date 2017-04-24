@@ -12,3 +12,8 @@ let carray_of_strings_to_list : char ptr ptr -> string list =
 in loop []
 
 external carrayof_strings_to_array : carray_of_strings -> string array = "caml_copy_string_array"
+
+(**
+ * https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#GList
+ * https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#g-list-next
+ * https://github.com/ocamllabs/ocaml-ctypes/wiki/ctypes-tutorial#structs-and-unions *)

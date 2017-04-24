@@ -24,15 +24,17 @@ GIRepository — GObject Introspection repository manager module
   represented on disk by type libraries (.typelib files).<br>
 </div>
 <hr width="100%">
+<br>
+GIRepository — GObject Introspection repository manager module
+  GIRepository is used to manage repositories of namespaces. Namespaces are
+  represented on disk by type libraries (.typelib files).<br>
 
-<pre><span id="TYPErepository"><span class="keyword">type</span> <code class="type"></code>repository</span> = <code class="type">unit Ctypes.ptr</code> </pre>
+<pre><span id="TYPErepository"><span class="keyword">type</span> <code class="type"></code>repository</span> </pre>
 
 
-<pre><span id="VALrepository"><span class="keyword">val</span> repository</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> Ctypes.typ</code></pre>
-<pre><span id="TYPEtypelib"><span class="keyword">type</span> <code class="type"></code>typelib</span> = <code class="type">unit Ctypes.ptr</code> </pre>
+<pre><span id="TYPEtypelib"><span class="keyword">type</span> <code class="type"></code>typelib</span> </pre>
 
 
-<pre><span id="VALtypelib"><span class="keyword">val</span> typelib</span> : <code class="type"><a href="GIRepository.html#TYPEtypelib">typelib</a> Ctypes.typ</code></pre>
 <pre><span id="VALget_default"><span class="keyword">val</span> get_default</span> : <code class="type">unit -> <a href="GIRepository.html#TYPErepository">repository</a></code></pre><div class="info ">
 Returns the singleton process-global default GIRepository.<br>
 </div>
@@ -55,5 +57,26 @@ Return an list of all (transitive) versioned dependencies for namespace_ .
     Note: namespace_ must have already been loaded using a function such as
     GIRepository.require before calling this function. To get only the immediate
     dependencies for namespace_ , use GIRepository.get_immediate_dependencies.<br>
+</div>
+
+<pre><span id="VALget_c_prefix"><span class="keyword">val</span> get_c_prefix</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string</code></pre><div class="info ">
+This function returns the "C prefix", or the C level namespace associated
+    with the given introspection namespace. Each C symbol starts with this
+    prefix, as well each GType in the library.
+    Note: The namespace must have already been loaded using a function such as
+    GIRepository.require before calling this function.<br>
+</div>
+
+<pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string</code></pre><div class="info ">
+This function returns the loaded version associated with the given
+    namespace namespace_ .
+    Note: The namespace must have already been loaded using a function such as
+    GIRepository.require before calling this function.<br>
+</div>
+
+<pre><span id="VALget_typelib_path"><span class="keyword">val</span> get_typelib_path</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string</code></pre><div class="info ">
+If namespace namespace_ is loaded, return the full path to the .typelib
+    file it was loaded from. If the typelib for namespace namespace_ was
+    included in a shared library, return the special string "&lt;builtin&gt;".<br>
 </div>
 </body></html>
