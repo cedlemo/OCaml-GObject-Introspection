@@ -31,13 +31,21 @@ let repository : repository typ = ptr void
 type typelib = unit ptr
 let typelib : typelib typ = ptr void
 
+(** Returns the singleton process-global default GIRepository. *)
 let get_default =
   foreign "g_irepository_get_default" (void @-> returning repository)
 
+(** Force the namespace namespace_ to be loaded if it isn't already. If
+    namespace_ is not loaded, this function will search for a ".typelib" file
+    using the repository search path. In addition, a version version of
+    namespace may be specified. If version is not specified, the latest will be
+    used).
+ *)
 let require =
-  foreign "g_irepository_require" (repository @-> string_opt @-> string_opt @-> int @->  void @-> returning typelib)
+  foreign "g_irepository_require"
+    (repository @-> string_opt @-> string_opt @-> int @->  void @-> returning typelib)
 
-
+(** Return the list of currently loaded namespaces. *)
 let get_loaded_namespaces repo =
   let get_loaded_namespaces_raw =
     foreign "g_irepository_get_loaded_namespaces"
