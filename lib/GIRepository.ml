@@ -40,6 +40,20 @@ let require =
 
 let get_loaded_namespaces repo =
   let get_loaded_namespaces_raw =
-  foreign "g_irepository_get_loaded_namespaces" (repository @-> returning carray_of_strings) in
+    foreign "g_irepository_get_loaded_namespaces"
+      (repository @-> returning carray_of_strings) in
   let c_arr = get_loaded_namespaces_raw repo in
+  carray_of_strings_to_list c_arr
+
+(** Return an list of all (transitive) versioned dependencies for namespace_ .
+    Returned strings are of the form namespace-version.
+    Note: namespace_ must have already been loaded using a function such as
+    GIRepository.require before calling this function. To get only the immediate
+    dependencies for namespace_ , use GIRepository.get_immediate_dependencies.
+ *)
+let get_dependencies repo namespace =
+  let get_dependencies_raw =
+    foreign "g_irepository_get_dependencies"
+      (repository @-> string_opt @-> returning carray_of_strings) in
+  let c_arr = get_dependencies_raw repo namespace in
   carray_of_strings_to_list c_arr
