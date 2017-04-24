@@ -38,10 +38,16 @@ let get_loaded_namespaces test_ctxt =
   let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
   assert_equal_string namespaces_check namespaces
 
+let test_get_dependencies test_ctxt =
+  let dependencies_check = "GLib-2.0 GObject-2.0" in
+  let dependencies = String.concat " " (GIRepository.get_dependencies repo namespace) in
+  assert_equal_string dependencies_check dependencies
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
       "GIRepository get default" >:: get_default;
       "GIRepository require" >:: require;
-      "GIRepository get loaded namespaces" >:: get_loaded_namespaces
+      "GIRepository get loaded namespaces" >:: get_loaded_namespaces;
+      "GIRepository get dependencies" >:: test_get_dependencies
     ]
