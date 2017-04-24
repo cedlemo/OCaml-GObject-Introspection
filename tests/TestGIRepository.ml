@@ -47,6 +47,10 @@ let test_get_c_prefix test_ctxt =
   let c_prefix = GIRepository.get_c_prefix repo namespace in
   assert_equal_string "G" c_prefix
 
+let test_get_version test_ctxt =
+  let version = GIRepository.get_version repo namespace in
+  assert_equal_string "2.0" version
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -55,5 +59,6 @@ let tests =
       (* Disable for compatibility with Travis
        * "GIRepository get dependencies" >:: test_get_dependencies; *)
       "GIRepository get loaded namespaces" >:: test_get_loaded_namespaces;
-      "GIRepository get c prefix" >:: test_get_c_prefix
+      "GIRepository get c prefix" >:: test_get_c_prefix;
+      "GIRepository get version" >:: test_get_version
     ]
