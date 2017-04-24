@@ -25,7 +25,7 @@ let test_get_default test_ctxt =
 
 let test_require test_ctxt =
   let repo = GIRepository.get_default () in
-  let namespace = Some "Gtk" in
+  let namespace = Some "Gio" in
   let _ = GIRepository.require repo namespace None 0 () in
   assert_equal_boolean true true
 
