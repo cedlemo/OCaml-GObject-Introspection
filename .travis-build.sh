@@ -9,4 +9,7 @@ opam install ctypes
 opam install ctypes-foreign
 sh .travis-gobject-introspection.sh
 ruby _oasis_conf.rb > _oasis
+echo "########################## oasis configuration #########################"
+cat _oasis
+echo "########################## oasis configuration #########################"
 sh build_and_test.sh
