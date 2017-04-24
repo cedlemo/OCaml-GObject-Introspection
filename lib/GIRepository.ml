@@ -37,9 +37,9 @@ let get_default =
 let require =
   foreign "g_irepository_require" (repository @-> string_opt @-> string_opt @-> int @->  void @-> returning typelib)
 
-let get_loaded_namespaces_raw =
-  foreign "g_irepository_get_loaded_namespaces" (repository @-> returning carray_of_strings)
 
 let get_loaded_namespaces repo =
+  let get_loaded_namespaces_raw =
+  foreign "g_irepository_get_loaded_namespaces" (repository @-> returning carray_of_strings) in
   let c_arr = get_loaded_namespaces_raw repo in
-  null_term_array_of_strings_to_list c_arr
+  carray_of_strings_to_list c_arr
