@@ -19,11 +19,11 @@
 open OUnit2
 open TestUtils
 
-let get_default test_ctxt =
+let test_get_default test_ctxt =
   let _ = GIRepository.get_default () in
   assert_equal_boolean true true
 
-let require test_ctxt =
+let test_require test_ctxt =
   let repo = GIRepository.get_default () in
   let namespace = Some "Gtk" in
   let _ = GIRepository.require repo namespace None 0 () in
@@ -33,7 +33,7 @@ let namespace = Some "Gio"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
 
-let get_loaded_namespaces test_ctxt =
+let test_get_loaded_namespaces test_ctxt =
   let namespaces_check = "GLib GObject Gio" in
   let namespaces = String.concat " " (GIRepository.get_loaded_namespaces repo) in
   assert_equal_string namespaces_check namespaces
@@ -46,8 +46,8 @@ let test_get_dependencies test_ctxt =
 let tests =
   "GObject Introspection Repository tests" >:::
     [
-      "GIRepository get default" >:: get_default;
-      "GIRepository require" >:: require;
-      "GIRepository get loaded namespaces" >:: get_loaded_namespaces;
+      "GIRepository get default" >:: test_get_default;
+      "GIRepository require" >:: test_require;
+      "GIRepository get loaded namespaces" >:: test_get_loaded_namespaces;
       "GIRepository get dependencies" >:: test_get_dependencies
     ]
