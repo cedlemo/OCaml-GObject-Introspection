@@ -1,3 +1,4 @@
+sh .travis-libffi.sh
 sh .travis-ocaml.sh
 export OPAMYES=1
 eval `opam config env`
