@@ -12,7 +12,7 @@ Library "GObjectIntrospection"
   Modules: Conversions,
            GIRepository
   BuildDepends: ctypes, ctypes.foreign
-  CClib: GOBJ_LIBS
+  CCLib: -Wl,-no-as-needed GOBJ_LIBS
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter GOBJ_FLAGS
 
 Executable gobject_instrospection_tests
