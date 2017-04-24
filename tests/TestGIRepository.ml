@@ -43,6 +43,10 @@ let test_get_dependencies test_ctxt =
   let dependencies = String.concat " " (GIRepository.get_dependencies repo namespace) in
   assert_equal_string dependencies_check dependencies
 
+let test_get_c_prefix test_ctxt =
+  let c_prefix = GIRepository.get_c_prefix repo namespace in
+  assert_equal_string "G" c_prefix
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -50,5 +54,6 @@ let tests =
       "GIRepository require" >:: test_require;
       (* Disable for compatibility with Travis
        * "GIRepository get dependencies" >:: test_get_dependencies; *)
-      "GIRepository get loaded namespaces" >:: test_get_loaded_namespaces
+      "GIRepository get loaded namespaces" >:: test_get_loaded_namespaces;
+      "GIRepository get c prefix" >:: test_get_c_prefix
     ]
