@@ -73,6 +73,15 @@ let test_prepend_search_path test_ctxt =
   let initial_paths = String.concat " " [new_path; initial_path] in
   assert_equal_string initial_paths paths
 
+let test_find_by_name test_ctxt =
+  let info_name = "Application" in
+  let namespace = "Gio" in
+  match GIRepository.find_by_name repo namespace info_name with
+  | None -> assert_equal_string info_name "No base info found"
+  | Some (base_info) -> match GIBaseInfo.get_name base_info with
+    | None -> assert_equal_string info_name "No name found"
+    | Some name -> assert_equal_string info_name name
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -86,5 +95,6 @@ let tests =
       "GIRepository get typelib path" >:: test_get_typelib_path;
       "GIRepository enumerate versions" >:: test_enumerate_versions;
       "GIRepository get search path" >:: test_get_search_path;
-      "GIRepository prepend search path" >:: test_prepend_search_path
+      "GIRepository prepend search path" >:: test_prepend_search_path;
+      "GIRepository find by name" >:: test_find_by_name
     ]
