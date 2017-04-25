@@ -65,6 +65,14 @@ let test_get_search_path test_ctxt =
   let path = String.concat " " (GIRepository.get_search_path ()) in
   assert_equal_string "/usr/lib/girepository-1.0" path
 
+let test_prepend_search_path test_ctxt =
+  let initial_path = String.concat " " (GIRepository.get_search_path ()) in
+  let new_path = "/home/myhome" in
+  let _ = GIRepository.prepend_search_path new_path in
+  let paths = String.concat " " (GIRepository.get_search_path ()) in
+  let initial_paths = String.concat " " [new_path; initial_path] in
+  assert_equal_string initial_paths paths
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -77,5 +85,6 @@ let tests =
       "GIRepository get version" >:: test_get_version;
       "GIRepository get typelib path" >:: test_get_typelib_path;
       "GIRepository enumerate versions" >:: test_enumerate_versions;
-      "GIRepository get search path" >:: test_get_search_path
+      "GIRepository get search path" >:: test_get_search_path;
+      "GIRepository prepend search path" >:: test_prepend_search_path
     ]
