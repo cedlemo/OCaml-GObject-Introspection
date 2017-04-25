@@ -77,6 +77,10 @@ val get_version:
 val get_typelib_path:
   repository -> string option -> string
 
+(** Obtain an unordered list of versions (either currently loaded or available)
+    for namespace_ in this repository . *)
+val enumerate_versions:
+  repository -> string option -> string list
 (*
    TODO: gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()

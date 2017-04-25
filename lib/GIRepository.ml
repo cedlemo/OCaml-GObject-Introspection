@@ -58,3 +58,10 @@ let get_version =
 let get_typelib_path =
   foreign "g_irepository_get_typelib_path"
           (repository @-> string_opt @-> returning string)
+
+let enumerate_versions repo namespace =
+  let enumerate_versions_raw =
+    foreign "g_irepository_enumerate_versions"
+      (repository @-> string_opt @-> returning (ptr_opt glist)) in
+  let glist_ptr = enumerate_versions_raw repo namespace in
+  glist_of_strings_to_list glist_ptr
