@@ -61,6 +61,10 @@ let test_enumerate_versions test_ctxt =
   let versions = String.concat " " (GIRepository.enumerate_versions repo namespace) in
   assert_equal_string versions_check versions
 
+let test_get_search_path test_ctxt =
+  let path = String.concat " " (GIRepository.get_search_path ()) in
+  assert_equal_string "/usr/lib/girepository-1.0" path
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -72,5 +76,6 @@ let tests =
       "GIRepository get c prefix" >:: test_get_c_prefix;
       "GIRepository get version" >:: test_get_version;
       "GIRepository get typelib path" >:: test_get_typelib_path;
-      "GIRepository enumerate versions" >:: test_enumerate_versions
+      "GIRepository enumerate versions" >:: test_enumerate_versions;
+      "GIRepository get search path" >:: test_get_search_path
     ]
