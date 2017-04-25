@@ -20,9 +20,8 @@ open Ctypes
 open Foreign
 open Conversions
 
-type baseinfo = unit ptr
-
-let baseinfo : baseinfo typ = ptr void
+type baseinfo
+let baseinfo : baseinfo structure typ = structure "GIBaseInfo"
 
 let get_name =
-  foreign "g_base_info_get_name" (baseinfo @-> returning string_opt)
+  foreign "g_base_info_get_name" (ptr baseinfo @-> returning string_opt)

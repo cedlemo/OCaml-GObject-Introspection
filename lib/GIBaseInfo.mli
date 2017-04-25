@@ -17,14 +17,14 @@
  *)
 
 (** GIBaseInfo — Base struct for all GITypelib structs *)
-
+open Ctypes
 (** GIBaseInfo is the common base struct of all other *Info structs accessible
     through the GIRepository API. All other structs can be casted to a
     GIBaseInfo *)
 type baseinfo
-
+val baseinfo : baseinfo structure typ
 (** Obtain the name of the info . What the name represents depends on the
     GIInfoType of the info . For instance for GIFunctionInfo it is the name of
     the function.*)
 val get_name:
-  baseinfo -> string option
+  baseinfo structure ptr -> string option
