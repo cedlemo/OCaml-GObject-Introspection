@@ -13,6 +13,31 @@ in loop []
 
 external carrayof_strings_to_array : carray_of_strings -> string array = "caml_copy_string_array"
 
+type glist
+let glist : glist structure typ = structure "GList"
+let glist_data  = field glist "data" (ptr void)
+let glist_next  = field glist "next" (ptr_opt glist)
+let glist_prev  = field glist "prev" (ptr_opt glist)
+let () = seal glist
+
+let g_list_next l_ptr =
+  getf (!@l_ptr) glist_next
+
+let g_list_data l_ptr =
+  getf (!@l_ptr) glist_data
+
+(* TODO: Fix pb *)
+let glist_of_strings_to_list glist_ptr =
+  let rec loop acc p =
+    match p with
+    | None -> List.rev acc
+    | Some p' -> let data = g_list_data p' in
+      let next = g_list_next p' in
+      match coerce (ptr void) string_opt data with
+      | None -> loop acc next
+      | Some s -> loop (s :: acc) next
+  in loop [] glist_ptr
+
 (**
  * https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#GList
  * https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#g-list-next
