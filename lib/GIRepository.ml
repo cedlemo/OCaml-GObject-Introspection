@@ -72,3 +72,6 @@ let get_search_path () =
       (void @-> returning (ptr_opt gslist)) in
   let gslist_ptr = get_search_path_raw () in
   gslist_of_strings_to_list gslist_ptr
+
+let prepend_search_path =
+  foreign "g_irepository_prepend_search_path" (string @-> returning void)

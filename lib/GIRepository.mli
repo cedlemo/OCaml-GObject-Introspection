@@ -87,21 +87,26 @@ val enumerate_versions:
     should its string elements. *)
 val get_search_path:
   unit -> string list
+
+(** Prepends directory to the typelib search path. See
+    GIRepository.get_search_path. *)
+
+val prepend_search_path:
+  string -> unit
+
 (*
-   TODO: gchar **	g_irepository_get_immediate_dependencies ()
+   gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()
    TODO: GIBaseInfo *	g_irepository_get_info ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
    TODO: void	g_irepository_prepend_library_path ()
-   TODO: void	g_irepository_prepend_search_path ()
    TODO: const char *	g_irepository_load_typelib ()
-   TODO: gboolean	g_irepository_is_registered ()
+   gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
    TODO: const gchar *	g_irepository_get_shared_library ()
-   TODO: const gchar *	g_irepository_get_version ()
    TODO: GIBaseInfo *	g_irepository_find_by_gtype ()
    TODO: GIEnumInfo *	g_irepository_find_by_error_domain ()
    TODO: GIBaseInfo *	g_irepository_find_by_name ()
-   TODO: gboolean	g_irepository_dump ()
-   TODO: void	gi_cclosure_marshal_generic ()
+   gboolean	g_irepository_dump ()
+   void	gi_cclosure_marshal_generic ()
 *)
