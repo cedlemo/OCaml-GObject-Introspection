@@ -82,6 +82,10 @@ let test_find_by_name test_ctxt =
     | None -> assert_equal_string info_name "No name found"
     | Some name -> assert_equal_string info_name name
 
+let test_get_n_infos test_ctxt =
+  let n_infos = GIRepository.get_n_infos repo namespace in
+  assert_equal_int 702 n_infos
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -96,5 +100,6 @@ let tests =
       "GIRepository enumerate versions" >:: test_enumerate_versions;
       "GIRepository get search path" >:: test_get_search_path;
       "GIRepository prepend search path" >:: test_prepend_search_path;
-      "GIRepository find by name" >:: test_find_by_name
+      "GIRepository find by name" >:: test_find_by_name;
+      "GIRepository get n infos" >:: test_get_n_infos
     ]
