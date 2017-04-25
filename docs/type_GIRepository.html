@@ -22,4 +22,8 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_c_prefix&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_version&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_typelib_path&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;enumerate_versions&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_search_path&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;prepend_search_path&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
 <span class="keyword">end</span></code></body></html>

@@ -79,4 +79,19 @@ If namespace namespace_ is loaded, return the full path to the .typelib
     file it was loaded from. If the typelib for namespace namespace_ was
     included in a shared library, return the special string "&lt;builtin&gt;".<br>
 </div>
-</body></html>
+
+<pre><span id="VALenumerate_versions"><span class="keyword">val</span> enumerate_versions</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string list</code></pre><div class="info ">
+Obtain an unordered list of versions (either currently loaded or available)
+    for namespace_ in this repository .<br>
+</div>
+
+<pre><span id="VALget_search_path"><span class="keyword">val</span> get_search_path</span> : <code class="type">unit -> string list</code></pre><div class="info ">
+Returns the current search path GIRepository will use when loading typelib
+    files. The list is internal to GIRespository and should not be freed, nor
+    should its string elements.<br>
+</div>
+<br>
+Prepends directory to the typelib search path. See
+    GIRepository.get_search_path.<br>
+
+<pre><span id="VALprepend_search_path"><span class="keyword">val</span> prepend_search_path</span> : <code class="type">string -> unit</code></pre></body></html>

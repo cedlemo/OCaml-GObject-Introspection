@@ -19,19 +19,65 @@
 <h1>Module <a href="type_Conversions.html">Conversions</a></h1>
 
 <pre><span class="keyword">module</span> Conversions: <code class="code"><span class="keyword">sig</span></code> <a href="Conversions.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-* https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#GList
- * https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#g-list-next
- * https://github.com/ocamllabs/ocaml-ctypes/wiki/ctypes-tutorial#structs-and-unions<br>
+Conversions functions<br>
 </div>
 <hr width="100%">
 
 <pre><span id="TYPEcarray_of_strings"><span class="keyword">type</span> <code class="type"></code>carray_of_strings</span> = <code class="type">char Ctypes.ptr Ctypes.ptr</code> </pre>
+<div class="info ">
+C pointer of null terminated array of C strings<br>
+</div>
 
 
 <pre><span id="VALcarray_of_strings"><span class="keyword">val</span> carray_of_strings</span> : <code class="type"><a href="Conversions.html#TYPEcarray_of_strings">carray_of_strings</a> Ctypes.typ</code></pre>
-<pre><span id="VALcarray_of_strings_to_list"><span class="keyword">val</span> carray_of_strings_to_list</span> : <code class="type">char Ctypes.ptr Ctypes.ptr -> string list</code></pre>
-<pre><span id="VALcarrayof_strings_to_array"><span class="keyword">val</span> carrayof_strings_to_array</span> : <code class="type"><a href="Conversions.html#TYPEcarray_of_strings">carray_of_strings</a> -> string array</code></pre><br>
-* https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#GList
- * https://developer.gnome.org/glib/stable/glib-Doubly-Linked-Lists.html#g-list-next
- * https://github.com/ocamllabs/ocaml-ctypes/wiki/ctypes-tutorial#structs-and-unions<br>
+<pre><span id="VALcarray_of_strings_to_list"><span class="keyword">val</span> carray_of_strings_to_list</span> : <code class="type">char Ctypes.ptr Ctypes.ptr -> string list</code></pre><div class="info ">
+Converts C array of strings to OCaml list of strings<br>
+</div>
+
+<pre><span id="VALcarray_of_strings_to_array"><span class="keyword">val</span> carray_of_strings_to_array</span> : <code class="type"><a href="Conversions.html#TYPEcarray_of_strings">carray_of_strings</a> -> string array</code></pre><div class="info ">
+Converts C array of strings to OCaml array of strings<br>
+</div>
+
+<pre><span id="TYPEglist"><span class="keyword">type</span> <code class="type"></code>glist</span> </pre>
+<div class="info ">
+GList struct<br>
+</div>
+
+
+<pre><span id="VALglist"><span class="keyword">val</span> glist</span> : <code class="type"><a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALglist_data"><span class="keyword">val</span> glist_data</span> : <code class="type">(unit Ctypes_static.ptr, <a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure) Ctypes.field</code></pre>
+<pre><span id="VALglist_next"><span class="keyword">val</span> glist_next</span> : <code class="type">((<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option,<br>        <a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure)<br>       Ctypes.field</code></pre>
+<pre><span id="VALglist_prev"><span class="keyword">val</span> glist_prev</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure Ctypes_static.ptr option,<br>        <a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure)<br>       Ctypes.field</code></pre>
+<pre><span id="VALg_list_next"><span class="keyword">val</span> g_list_next</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -><br>       (<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option</code></pre><div class="info ">
+Get the next element of a glist<br>
+</div>
+
+<pre><span id="VALg_list_data"><span class="keyword">val</span> g_list_data</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -><br>       unit Ctypes_static.ptr</code></pre><div class="info ">
+Get the void ptr data of the current element<br>
+</div>
+
+<pre><span id="VALglist_of_strings_to_list"><span class="keyword">val</span> glist_of_strings_to_list</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option -><br>       string list</code></pre><div class="info ">
+Transform a GList of strings to an OCaml list of strings<br>
+</div>
+
+<pre><span id="TYPEgslist"><span class="keyword">type</span> <code class="type"></code>gslist</span> </pre>
+<div class="info ">
+GSList struct<br>
+</div>
+
+
+<pre><span id="VALgslist"><span class="keyword">val</span> gslist</span> : <code class="type"><a href="Conversions.html#TYPEgslist">gslist</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALgslist_data"><span class="keyword">val</span> gslist_data</span> : <code class="type">(unit Ctypes_static.ptr, <a href="Conversions.html#TYPEgslist">gslist</a> Ctypes.structure) Ctypes.field</code></pre>
+<pre><span id="VALgslist_next"><span class="keyword">val</span> gslist_next</span> : <code class="type">((<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option,<br>        <a href="Conversions.html#TYPEgslist">gslist</a> Ctypes.structure)<br>       Ctypes.field</code></pre>
+<pre><span id="VALg_slist_next"><span class="keyword">val</span> g_slist_next</span> : <code class="type">(<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -><br>       (<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option</code></pre><div class="info ">
+Get the next element of a gslist<br>
+</div>
+
+<pre><span id="VALg_slist_data"><span class="keyword">val</span> g_slist_data</span> : <code class="type">(<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -><br>       unit Ctypes_static.ptr</code></pre><div class="info ">
+Get the void ptr data of the current element<br>
+</div>
+
+<pre><span id="VALgslist_of_strings_to_list"><span class="keyword">val</span> gslist_of_strings_to_list</span> : <code class="type">(<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option -><br>       string list</code></pre><div class="info ">
+Transform a GSList of strings to an OCaml list of strings<br>
+</div>
 </body></html>

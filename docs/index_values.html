@@ -17,11 +17,44 @@
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
+<tr><td><a href="Conversions.html#VALcarray_of_strings_to_array">carray_of_strings_to_array</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Converts C array of strings to OCaml array of strings
+</div>
+</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings_to_list">carray_of_strings_to_list</a> [<a href="Conversions.html">Conversions</a>]</td>
-<td></td></tr>
-<tr><td><a href="Conversions.html#VALcarrayof_strings_to_array">carrayof_strings_to_array</a> [<a href="Conversions.html">Conversions</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Converts C array of strings to OCaml list of strings
+</div>
+</td></tr>
+<tr><td align="left"><br>E</td></tr>
+<tr><td><a href="GIRepository.html#VALenumerate_versions">enumerate_versions</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+Obtain an unordered list of versions (either currently loaded or available)
+    for namespace_ in this repository .
+</div>
+</td></tr>
 <tr><td align="left"><br>G</td></tr>
+<tr><td><a href="Conversions.html#VALg_list_data">g_list_data</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Get the void ptr data of the current element
+</div>
+</td></tr>
+<tr><td><a href="Conversions.html#VALg_list_next">g_list_next</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Get the next element of a glist
+</div>
+</td></tr>
+<tr><td><a href="Conversions.html#VALg_slist_data">g_slist_data</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Get the void ptr data of the current element
+</div>
+</td></tr>
+<tr><td><a href="Conversions.html#VALg_slist_next">g_slist_next</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Get the next element of a gslist
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_c_prefix">get_c_prefix</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 This function returns the "C prefix", or the C level namespace associated
@@ -43,6 +76,12 @@ Return an list of all (transitive) versioned dependencies for namespace_ .
 Return the list of currently loaded namespaces.
 </div>
 </td></tr>
+<tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+Returns the current search path GIRepository will use when loading typelib
+    files.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_typelib_path">get_typelib_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 If namespace namespace_ is loaded, return the full path to the .typelib
@@ -55,6 +94,33 @@ This function returns the loaded version associated with the given
     namespace namespace_ .
 </div>
 </td></tr>
+<tr><td><a href="Conversions.html#VALglist">glist</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALglist_data">glist_data</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALglist_next">glist_next</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALglist_of_strings_to_list">glist_of_strings_to_list</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Transform a GList of strings to an OCaml list of strings
+</div>
+</td></tr>
+<tr><td><a href="Conversions.html#VALglist_prev">glist_prev</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALgslist">gslist</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALgslist_data">gslist_data</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALgslist_next">gslist_next</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALgslist_of_strings_to_list">gslist_of_strings_to_list</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td><div class="info">
+Transform a GSList of strings to an OCaml list of strings
+</div>
+</td></tr>
+<tr><td align="left"><br>P</td></tr>
+<tr><td><a href="GIRepository.html#VALprepend_search_path">prepend_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td></td></tr>
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
