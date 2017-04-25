@@ -1,9 +1,13 @@
+(** Conversions functions *)
+
 open Ctypes
 open Foreign
 
+(** C pointer of null terminated array of C strings *)
 type carray_of_strings = char ptr ptr
 let carray_of_strings : carray_of_strings typ = ptr (ptr char)
 
+(** Converts C array of strings to OCaml list of strings *)
 let carray_of_strings_to_list : char ptr ptr -> string list =
   let rec loop acc p =
     match coerce (ptr char) string_opt !@p with
@@ -11,8 +15,11 @@ let carray_of_strings_to_list : char ptr ptr -> string list =
     | Some s -> loop (s :: acc) (p +@ 1)
 in loop []
 
-external carrayof_strings_to_array : carray_of_strings -> string array = "caml_copy_string_array"
+(** Converts C array of strings to OCaml array of strings *)
+external carray_of_strings_to_array : carray_of_strings -> string array =
+  "caml_copy_string_array"
 
+(** GList struct *)
 type glist
 let glist : glist structure typ = structure "GList"
 let glist_data  = field glist "data" (ptr void)
@@ -20,13 +27,16 @@ let glist_next  = field glist "next" (ptr_opt glist)
 let glist_prev  = field glist "prev" (ptr_opt glist)
 let () = seal glist
 
+(** Get the next element of a glist *)
 let g_list_next l_ptr =
   getf (!@l_ptr) glist_next
 
+(** Get the void ptr data of the current element *)
 let g_list_data l_ptr =
   getf (!@l_ptr) glist_data
 
 (* TODO: Fix pb *)
+(** Transform a GList of strings to an OCaml list of strings *)
 let glist_of_strings_to_list glist_ptr =
   let rec loop acc p =
     match p with
@@ -38,18 +48,22 @@ let glist_of_strings_to_list glist_ptr =
       | Some s -> loop (s :: acc) next
   in loop [] glist_ptr
 
+(** GSList struct *)
 type gslist
 let gslist : gslist structure typ = structure "GSList"
 let gslist_data  = field gslist "data" (ptr void)
 let gslist_next  = field gslist "next" (ptr_opt gslist)
 let () = seal gslist
 
+(** Get the next element of a gslist *)
 let g_slist_next l_ptr =
   getf (!@l_ptr) gslist_next
 
+(** Get the void ptr data of the current element *)
 let g_slist_data l_ptr =
   getf (!@l_ptr) gslist_data
 
+(** Transform a GSList of strings to an OCaml list of strings *)
 let gslist_of_strings_to_list gslist_ptr =
   let rec loop acc p =
     match p with
