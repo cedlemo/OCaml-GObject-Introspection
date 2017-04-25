@@ -19,6 +19,7 @@
 open Ctypes
 open Foreign
 open Conversions
+open GIBaseInfo
 
 type repository = unit ptr
 let repository : repository typ = ptr void
@@ -75,3 +76,7 @@ let get_search_path () =
 
 let prepend_search_path =
   foreign "g_irepository_prepend_search_path" (string @-> returning void)
+
+let find_by_name =
+  foreign "g_irepository_find_by_name"
+    (repository @-> string @-> string @-> returning (ptr_opt baseinfo))

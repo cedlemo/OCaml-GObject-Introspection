@@ -21,6 +21,9 @@
   represented on disk by type libraries (.typelib files).
 *)
 
+open GIBaseInfo
+open Ctypes
+
 (** GIRepository — GObject Introspection repository manager module
   GIRepository is used to manage repositories of namespaces. Namespaces are
   represented on disk by type libraries (.typelib files).
@@ -90,10 +93,15 @@ val get_search_path:
 
 (** Prepends directory to the typelib search path. See
     GIRepository.get_search_path. *)
-
 val prepend_search_path:
   string -> unit
 
+(** Searches for a particular entry in a namespace. Before calling this
+    function for a particular namespace, you must call GIRepository.require
+    once to load the namespace, or otherwise ensure the namespace has already
+    been loaded.*)
+val find_by_name:
+  repository -> string -> string -> baseinfo structure ptr option
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()
