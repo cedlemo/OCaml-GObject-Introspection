@@ -102,6 +102,12 @@ val prepend_search_path:
     been loaded.*)
 val find_by_name:
   repository -> string -> string -> baseinfo structure ptr option
+
+(** This function returns the number of metadata entries in given namespace
+    namespace_ . The namespace must have already been loaded before calling
+    this function. *)
+val get_n_infos:
+  repository -> string option -> int
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()
@@ -114,7 +120,6 @@ val find_by_name:
    TODO: const gchar *	g_irepository_get_shared_library ()
    TODO: GIBaseInfo *	g_irepository_find_by_gtype ()
    TODO: GIEnumInfo *	g_irepository_find_by_error_domain ()
-   TODO: GIBaseInfo *	g_irepository_find_by_name ()
    gboolean	g_irepository_dump ()
    void	gi_cclosure_marshal_generic ()
 *)

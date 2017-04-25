@@ -80,3 +80,7 @@ let prepend_search_path =
 let find_by_name =
   foreign "g_irepository_find_by_name"
     (repository @-> string @-> string @-> returning (ptr_opt baseinfo))
+
+let get_n_infos =
+  foreign "g_irepository_get_n_infos"
+    (repository @-> string_opt @-> returning int)
