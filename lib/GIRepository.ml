@@ -65,3 +65,10 @@ let enumerate_versions repo namespace =
       (repository @-> string_opt @-> returning (ptr_opt glist)) in
   let glist_ptr = enumerate_versions_raw repo namespace in
   glist_of_strings_to_list glist_ptr
+
+let get_search_path () =
+  let get_search_path_raw =
+    foreign "g_irepository_get_search_path"
+      (void @-> returning (ptr_opt gslist)) in
+  let gslist_ptr = get_search_path_raw () in
+  gslist_of_strings_to_list gslist_ptr

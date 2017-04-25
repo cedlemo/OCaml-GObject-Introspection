@@ -81,15 +81,19 @@ val get_typelib_path:
     for namespace_ in this repository . *)
 val enumerate_versions:
   repository -> string option -> string list
+
+(** Returns the current search path GIRepository will use when loading typelib
+    files. The list is internal to GIRespository and should not be freed, nor
+    should its string elements. *)
+val get_search_path:
+  unit -> string list
 (*
    TODO: gchar **	g_irepository_get_immediate_dependencies ()
    TODO: gint	g_irepository_get_n_infos ()
    TODO: GIBaseInfo *	g_irepository_get_info ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
-   TODO: GList *	g_irepository_enumerate_versions ()
    TODO: void	g_irepository_prepend_library_path ()
    TODO: void	g_irepository_prepend_search_path ()
-   TODO: GSList *	g_irepository_get_search_path ()
    TODO: const char *	g_irepository_load_typelib ()
    TODO: gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
