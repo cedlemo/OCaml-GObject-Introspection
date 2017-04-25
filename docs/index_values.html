@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>Index of values</title>
 </head>
 <body>
@@ -14,6 +15,12 @@
 &nbsp;</div>
 <h1>Index of values</h1>
 <table>
+<tr><td align="left"><br>B</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALbaseinfo">baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Obtain the name of the info .
+</div>
+</td></tr>
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
@@ -32,6 +39,12 @@ Converts C array of strings to OCaml list of strings
 <td><div class="info">
 Obtain an unordered list of versions (either currently loaded or available)
     for namespace_ in this repository .
+</div>
+</td></tr>
+<tr><td align="left"><br>F</td></tr>
+<tr><td><a href="GIRepository.html#VALfind_by_name">find_by_name</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+Searches for a particular entry in a namespace.
 </div>
 </td></tr>
 <tr><td align="left"><br>G</td></tr>
@@ -76,6 +89,8 @@ Return an list of all (transitive) versioned dependencies for namespace_ .
 Return the list of currently loaded namespaces.
 </div>
 </td></tr>
+<tr><td><a href="GIBaseInfo.html#VALget_name">get_name</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Returns the current search path GIRepository will use when loading typelib
@@ -120,7 +135,10 @@ Transform a GSList of strings to an OCaml list of strings
 </td></tr>
 <tr><td align="left"><br>P</td></tr>
 <tr><td><a href="GIRepository.html#VALprepend_search_path">prepend_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Prepends directory to the typelib search path.
+</div>
+</td></tr>
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">

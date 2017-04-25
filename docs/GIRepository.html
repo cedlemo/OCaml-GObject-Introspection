@@ -4,16 +4,17 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Conversions.html">
+<link rel="previous" href="GIBaseInfo.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIRepository</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+<div class="navbar"><a class="pre" href="GIBaseInfo.html" title="GIBaseInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;</div>
 <h1>Module <a href="type_GIRepository.html">GIRepository</a></h1>
@@ -90,8 +91,16 @@ Returns the current search path GIRepository will use when loading typelib
     files. The list is internal to GIRespository and should not be freed, nor
     should its string elements.<br>
 </div>
-<br>
+
+<pre><span id="VALprepend_search_path"><span class="keyword">val</span> prepend_search_path</span> : <code class="type">string -> unit</code></pre><div class="info ">
 Prepends directory to the typelib search path. See
     GIRepository.get_search_path.<br>
+</div>
 
-<pre><span id="VALprepend_search_path"><span class="keyword">val</span> prepend_search_path</span> : <code class="type">string -> unit</code></pre></body></html>
+<pre><span id="VALfind_by_name"><span class="keyword">val</span> find_by_name</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string -> string -> <a href="GIBaseInfo.html#TYPEbaseinfo">GIBaseInfo.baseinfo</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Searches for a particular entry in a namespace. Before calling this
+    function for a particular namespace, you must call GIRepository.require
+    once to load the namespace, or otherwise ensure the namespace has already
+    been loaded.<br>
+</div>
+</body></html>
