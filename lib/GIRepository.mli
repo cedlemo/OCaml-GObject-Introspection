@@ -108,10 +108,15 @@ val find_by_name:
     this function. *)
 val get_n_infos:
   repository -> string option -> int
+
+(** This function returns a particular metadata entry in the given namespace
+    namespace_ . The namespace must have already been loaded before calling
+    this function. See GIRepository.get_n_infos to find the maximum number of
+    entries. *)
+val get_info:
+  repository -> string option -> int -> baseinfo structure ptr
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
-   TODO: gint	g_irepository_get_n_infos ()
-   TODO: GIBaseInfo *	g_irepository_get_info ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
    TODO: void	g_irepository_prepend_library_path ()
    TODO: const char *	g_irepository_load_typelib ()

@@ -84,3 +84,11 @@ let find_by_name =
 let get_n_infos =
   foreign "g_irepository_get_n_infos"
     (repository @-> string_opt @-> returning int)
+
+let get_info repo namespace n=
+  let get_info_raw =
+    foreign "g_irepository_get_info"
+      (repository @-> string_opt @-> int @-> returning (ptr baseinfo))
+  in let max_infos = get_n_infos repo namespace in
+  if (n < 0 || n >= max_infos) then raise (Failure "Array Index out of bounds")
+  else get_info_raw repo namespace n
