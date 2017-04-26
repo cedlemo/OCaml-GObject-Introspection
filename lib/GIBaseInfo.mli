@@ -26,12 +26,12 @@ type baseinfo
 val baseinfo : baseinfo structure typ
 
 (** Increases the reference count of underlying GIBaseInfo *info. *)
-val ref:
+val base_info_ref:
   baseinfo structure ptr -> baseinfo structure ptr
 
 (** Decreases the reference count of underlying GIBaseInfo *info . When its
     reference count drops to 0, the info is freed. *)
-val unref:
+val base_info_unref:
   baseinfo structure ptr -> unit
 
 (** Obtain the name of the info . What the name represents depends on the
