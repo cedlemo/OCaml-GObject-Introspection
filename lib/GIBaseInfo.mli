@@ -47,11 +47,14 @@ val get_name:
 val equal:
   baseinfo structure ptr -> baseinfo structure ptr -> bool
 
+(** Obtain the namespace of info *)
+val get_namespace:
+  baseinfo structure ptr -> string
+
 (*
   GIBaseInfo *	g_info_new ()
   TODO : GIInfoType	g_base_info_get_type ()
   TODO : GITypelib *	g_base_info_get_typelib ()
-  TODO : const gchar *	g_base_info_get_namespace ()
   TODO : const gchar *	g_base_info_get_attribute ()
   TODO : gboolean	g_base_info_iterate_attributes ()
   TODO : GIBaseInfo *	g_base_info_get_container ()

@@ -34,3 +34,6 @@ let get_name =
 
 let equal =
   foreign "g_base_info_equal" (ptr baseinfo @-> ptr baseinfo @-> returning bool)
+
+let get_namespace =
+  foreign "g_base_info_get_namespace" (ptr baseinfo @-> returning string)
