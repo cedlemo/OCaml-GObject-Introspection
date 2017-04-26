@@ -86,6 +86,19 @@ let test_get_n_infos test_ctxt =
   let n_infos = GIRepository.get_n_infos repo namespace in
   assert_equal_int 702 n_infos
 
+let test_get_info_out_of_bounds test_ctxt =
+  try ignore (GIRepository.get_info repo namespace 1500)
+  with
+  | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+  | _ -> assert_equal_string "Bad exception" "Not a Failure"
+
+let test_get_info test_ctxt =
+  let info_name = "Action" in
+  let info = GIRepository.get_info repo namespace 0 in
+  match GIBaseInfo.get_name info with
+  | None -> assert_equal_string info_name "No name found"
+  | Some name -> assert_equal_string info_name name
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -100,7 +113,9 @@ let tests =
       "GIRepository enumerate versions" >:: test_enumerate_versions;
       "GIRepository get search path" >:: test_get_search_path;
       "GIRepository prepend search path" >:: test_prepend_search_path;
-      "GIRepository find by name" >:: test_find_by_name
+      "GIRepository find by name" >:: test_find_by_name;
       (* Disable for compatibility with Travis
       "GIRepository get n infos" >:: test_get_n_infos *)
+      "GIRepository get info out of bounds" >:: test_get_info_out_of_bounds;
+      "GIRepository get info" >:: test_get_info
     ]
