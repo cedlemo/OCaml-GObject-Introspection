@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>Index of values</title>
 </head>
@@ -49,6 +50,8 @@ Compare two GIBaseInfo.
 Searches for a particular entry in a namespace.
 </div>
 </td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALfunctioninfo">functioninfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td></td></tr>
 <tr><td align="left"><br>G</td></tr>
 <tr><td><a href="Conversions.html#VALg_list_data">g_list_data</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
@@ -119,6 +122,13 @@ Returns the current search path GIRepository will use when loading typelib
     files.
 </div>
 </td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALget_symbol">get_symbol</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Obtain the symbol of the function.
+</div>
+</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALget_type">get_type</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIRepository.html#VALget_typelib_path">get_typelib_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 If namespace namespace_ is loaded, return the full path to the .typelib
@@ -153,6 +163,12 @@ Transform a GList of strings to an OCaml list of strings
 <tr><td><a href="Conversions.html#VALgslist_of_strings_to_list">gslist_of_strings_to_list</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
 Transform a GSList of strings to an OCaml list of strings
+</div>
+</td></tr>
+<tr><td align="left"><br>I</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALis_deprecated">is_deprecated</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Obtain whether the info is represents a metadata which is deprecated or not.
 </div>
 </td></tr>
 <tr><td align="left"><br>P</td></tr>

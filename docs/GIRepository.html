@@ -10,6 +10,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIRepository</title>
 </head>
@@ -40,7 +41,7 @@ GIRepository — GObject Introspection repository manager module
 Returns the singleton process-global default GIRepository.<br>
 </div>
 
-<pre><span id="VALrequire"><span class="keyword">val</span> require</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string option -> string option -> int -> unit -> <a href="GIRepository.html#TYPEtypelib">typelib</a></code></pre><div class="info ">
+<pre><span id="VALrequire"><span class="keyword">val</span> require</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string -> string option -> int -> unit -> <a href="GIRepository.html#TYPEtypelib">typelib</a></code></pre><div class="info ">
 Force the namespace namespace_ to be loaded if it isn't already. If
     namespace_ is not loaded, this function will search for a ".typelib" file
     using the repository search path. In addition, a version version of
@@ -52,7 +53,7 @@ Force the namespace namespace_ to be loaded if it isn't already. If
 Return the list of currently loaded namespaces.<br>
 </div>
 
-<pre><span id="VALget_dependencies"><span class="keyword">val</span> get_dependencies</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string list</code></pre><div class="info ">
+<pre><span id="VALget_dependencies"><span class="keyword">val</span> get_dependencies</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string list</code></pre><div class="info ">
 Return an list of all (transitive) versioned dependencies for namespace_ .
     Returned strings are of the form namespace-version.
     Note: namespace_ must have already been loaded using a function such as
@@ -60,7 +61,7 @@ Return an list of all (transitive) versioned dependencies for namespace_ .
     dependencies for namespace_ , use GIRepository.get_immediate_dependencies.<br>
 </div>
 
-<pre><span id="VALget_c_prefix"><span class="keyword">val</span> get_c_prefix</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string</code></pre><div class="info ">
+<pre><span id="VALget_c_prefix"><span class="keyword">val</span> get_c_prefix</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre><div class="info ">
 This function returns the "C prefix", or the C level namespace associated
     with the given introspection namespace. Each C symbol starts with this
     prefix, as well each GType in the library.
@@ -68,20 +69,20 @@ This function returns the "C prefix", or the C level namespace associated
     GIRepository.require before calling this function.<br>
 </div>
 
-<pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string</code></pre><div class="info ">
+<pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre><div class="info ">
 This function returns the loaded version associated with the given
     namespace namespace_ .
     Note: The namespace must have already been loaded using a function such as
     GIRepository.require before calling this function.<br>
 </div>
 
-<pre><span id="VALget_typelib_path"><span class="keyword">val</span> get_typelib_path</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string</code></pre><div class="info ">
+<pre><span id="VALget_typelib_path"><span class="keyword">val</span> get_typelib_path</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string</code></pre><div class="info ">
 If namespace namespace_ is loaded, return the full path to the .typelib
     file it was loaded from. If the typelib for namespace namespace_ was
     included in a shared library, return the special string "&lt;builtin&gt;".<br>
 </div>
 
-<pre><span id="VALenumerate_versions"><span class="keyword">val</span> enumerate_versions</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> string list</code></pre><div class="info ">
+<pre><span id="VALenumerate_versions"><span class="keyword">val</span> enumerate_versions</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string list</code></pre><div class="info ">
 Obtain an unordered list of versions (either currently loaded or available)
     for namespace_ in this repository .<br>
 </div>
@@ -104,13 +105,13 @@ Searches for a particular entry in a namespace. Before calling this
     been loaded.<br>
 </div>
 
-<pre><span id="VALget_n_infos"><span class="keyword">val</span> get_n_infos</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string option -> int</code></pre><div class="info ">
+<pre><span id="VALget_n_infos"><span class="keyword">val</span> get_n_infos</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> int</code></pre><div class="info ">
 This function returns the number of metadata entries in given namespace
     namespace_ . The namespace must have already been loaded before calling
     this function.<br>
 </div>
 
-<pre><span id="VALget_info"><span class="keyword">val</span> get_info</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string option -> int -> <a href="GIBaseInfo.html#TYPEbaseinfo">GIBaseInfo.baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALget_info"><span class="keyword">val</span> get_info</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string -> int -> <a href="GIBaseInfo.html#TYPEbaseinfo">GIBaseInfo.baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 This function returns a particular metadata entry in the given namespace
     namespace_ . The namespace must have already been loaded before calling
     this function. See GIRepository.get_n_infos to find the maximum number of
