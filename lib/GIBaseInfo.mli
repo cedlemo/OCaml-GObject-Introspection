@@ -55,9 +55,32 @@ val get_namespace:
 val is_deprecated:
   baseinfo structure ptr -> bool
 
+type baseinfo_type =
+  | Invalid (** invalid type *)
+  | Function of (GIFunctionInfo.functioninfo structure ptr) (** function, see GIFunctionInfo *)
+  | Callback of (GIFunctionInfo.functioninfo structure ptr)(** callback, see GIFunctionInfo *)
+  | Struct (** struct, see GIStructInfo *)
+  | Boxed (** boxed, see GIStructInfo or GIUnionInfo *)
+  | Enum (** enum, see GIEnumInfo *)
+  | Flags (** flags, see GIEnumInfo *)
+  | Object (** object, see GIObjectInfo *)
+  | Interface (** interface, see GIInterfaceInfo *)
+  | Constant (** contant, see GIConstantInfo *)
+  | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
+  | Union (** union, see GIUnionInfo *)
+  | Value (** enum value, see GIValueInfo *)
+  | Signal (** signal, see GISignalInfo *)
+  | Vfunc (** virtual function, see GIVFuncInfo *)
+  | Property (** GObject property, see GIPropertyInfo *)
+  | Field (** struct or union field, see GIFieldInfo *)
+  | Arg (** argument of a function or callback, see GIArgInfo *)
+  | Type (** type information, see GITypeInfo *)
+  | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
+
+val get_type:
+  baseinfo structure ptr -> baseinfo_type
 (*
   GIBaseInfo *	g_info_new ()
-  TODO : GIInfoType	g_base_info_get_type ()
   TODO : GITypelib *	g_base_info_get_typelib ()
   TODO : const gchar *	g_base_info_get_attribute ()
   TODO : gboolean	g_base_info_iterate_attributes ()
