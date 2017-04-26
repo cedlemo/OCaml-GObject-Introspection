@@ -10,6 +10,7 @@ BuildTools: ocamlbuild
 Library "GObjectIntrospection"
   Path: lib
   Modules: Conversions,
+           GIFunctionInfo,
            GIBaseInfo,
            GIRepository
   BuildDepends: ctypes, ctypes.foreign
