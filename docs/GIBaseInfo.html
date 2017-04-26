@@ -34,10 +34,30 @@ GIBaseInfo is the common base struct of all other *Info structs accessible
 </div>
 
 
-<pre><span id="VALbaseinfo"><span class="keyword">val</span> baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.typ</code></pre><div class="info ">
+<pre><span id="VALbaseinfo"><span class="keyword">val</span> baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALref"><span class="keyword">val</span> ref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Increases the reference count of underlying GIBaseInfo *info.<br>
+</div>
+
+<pre><span id="VALunref"><span class="keyword">val</span> unref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> unit</code></pre><div class="info ">
+Decreases the reference count of underlying GIBaseInfo *info . When its
+    reference count drops to 0, the info is freed.<br>
+</div>
+
+<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> string option</code></pre><div class="info ">
 Obtain the name of the info . What the name represents depends on the
     GIInfoType of the info . For instance for GIFunctionInfo it is the name of
     the function.<br>
 </div>
 
-<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> string option</code></pre></body></html>
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+Compare two GIBaseInfo.
+    Using pointer comparison is not practical since many functions return
+    different instances of GIBaseInfo that refers to the same part of the
+    TypeLib; use this function instead to do GIBaseInfo comparisons.<br>
+</div>
+
+<pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> string</code></pre><div class="info ">
+Obtain the namespace of info<br>
+</div>
+</body></html>

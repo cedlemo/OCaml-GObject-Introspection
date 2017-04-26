@@ -17,10 +17,7 @@
 <table>
 <tr><td align="left"><br>B</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbaseinfo">baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td><div class="info">
-Obtain the name of the info .
-</div>
-</td></tr>
+<td></td></tr>
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
@@ -39,6 +36,11 @@ Converts C array of strings to OCaml list of strings
 <td><div class="info">
 Obtain an unordered list of versions (either currently loaded or available)
     for namespace_ in this repository .
+</div>
+</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALequal">equal</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Compare two GIBaseInfo.
 </div>
 </td></tr>
 <tr><td align="left"><br>F</td></tr>
@@ -84,6 +86,12 @@ Returns the singleton process-global default GIRepository.
 Return an list of all (transitive) versioned dependencies for namespace_ .
 </div>
 </td></tr>
+<tr><td><a href="GIRepository.html#VALget_info">get_info</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+This function returns a particular metadata entry in the given namespace
+    namespace_ .
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_loaded_namespaces">get_loaded_namespaces</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Return the list of currently loaded namespaces.
@@ -96,7 +104,15 @@ This function returns the number of metadata entries in given namespace
 </div>
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALget_name">get_name</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Obtain the name of the info .
+</div>
+</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALget_namespace">get_namespace</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Obtain the namespace of info
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Returns the current search path GIRepository will use when loading typelib
@@ -146,9 +162,20 @@ Prepends directory to the typelib search path.
 </div>
 </td></tr>
 <tr><td align="left"><br>R</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALref">ref</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Increases the reference count of underlying GIBaseInfo *info.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Force the namespace namespace_ to be loaded if it isn't already.
+</div>
+</td></tr>
+<tr><td align="left"><br>U</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALunref">unref</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Decreases the reference count of underlying GIBaseInfo *info .
 </div>
 </td></tr>
 </table>
