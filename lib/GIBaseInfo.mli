@@ -39,3 +39,15 @@ val unref:
     the function.*)
 val get_name:
   baseinfo structure ptr -> string option
+
+(*
+  GIBaseInfo *	g_info_new ()
+  TODO : gboolean	g_base_info_equal ()
+  TODO : GIInfoType	g_base_info_get_type ()
+  TODO : GITypelib *	g_base_info_get_typelib ()
+  TODO : const gchar *	g_base_info_get_namespace ()
+  TODO : const gchar *	g_base_info_get_attribute ()
+  TODO : gboolean	g_base_info_iterate_attributes ()
+  TODO : GIBaseInfo *	g_base_info_get_container ()
+  TODO : gboolean	g_base_info_is_deprecated ()
+*)
