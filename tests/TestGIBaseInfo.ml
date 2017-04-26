@@ -41,9 +41,16 @@ let test_get_namespace test_ctxt =
   | Some (base_info) -> let info_namespace = GIBaseInfo.get_namespace base_info
   in assert_equal_string namespace info_namespace
 
+let test_is_deprecated test_ctxt =
+  match GIRepository.find_by_name repo namespace info_name with
+  | None -> assert_equal_string info_name "No base info found"
+  | Some (base_info) -> let is_deprecated = GIBaseInfo.is_deprecated base_info in
+    assert_equal_boolean false is_deprecated
+
 let tests =
   "GObject Introspection BaseInfo tests" >:::
     [
       "GIBaseInfo equal" >:: test_equal;
-      "GIBaseInfo get namespace" >:: test_get_namespace
+      "GIBaseInfo get namespace" >:: test_get_namespace;
+      "GIBaseInfo is deprecated" >:: test_is_deprecated
     ]
