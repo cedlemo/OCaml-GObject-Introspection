@@ -25,6 +25,15 @@ open Ctypes
 type baseinfo
 val baseinfo : baseinfo structure typ
 
+(** Increases the reference count of underlying GIBaseInfo *info. *)
+val ref:
+  baseinfo structure ptr -> baseinfo structure ptr
+
+(** Decreases the reference count of underlying GIBaseInfo *info . When its
+    reference count drops to 0, the info is freed. *)
+val unref:
+  baseinfo structure ptr -> unit
+
 (** Obtain the name of the info . What the name represents depends on the
     GIInfoType of the info . For instance for GIFunctionInfo it is the name of
     the function.*)

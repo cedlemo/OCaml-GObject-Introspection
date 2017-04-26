@@ -23,5 +23,12 @@ open Conversions
 type baseinfo
 let baseinfo : baseinfo structure typ = structure "GIBaseInfo"
 
+let ref =
+  foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
+
+let unref =
+  foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
+
 let get_name =
   foreign "g_base_info_get_name" (ptr baseinfo @-> returning string_opt)
+
