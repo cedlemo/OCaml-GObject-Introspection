@@ -77,9 +77,13 @@ let get_search_path () =
 let prepend_search_path =
   foreign "g_irepository_prepend_search_path" (string @-> returning void)
 
-let find_by_name =
-  foreign "g_irepository_find_by_name"
-    (repository @-> string @-> string @-> returning (ptr_opt baseinfo))
+let find_by_name repo namespace name =
+  let find_by_name_raw =
+    foreign "g_irepository_find_by_name"
+      (repository @-> string @-> string @-> returning (ptr_opt baseinfo))
+  in match find_by_name_raw repo namespace name with
+  | None -> None
+  | Some info -> let _ = Gc.finalise (fun i -> unref i) info in Some info
 
 let get_n_infos =
   foreign "g_irepository_get_n_infos"
@@ -91,4 +95,6 @@ let get_info repo namespace n=
       (repository @-> string_opt @-> int @-> returning (ptr baseinfo))
   in let max_infos = get_n_infos repo namespace in
   if (n < 0 || n >= max_infos) then raise (Failure "Array Index out of bounds")
-  else get_info_raw repo namespace n
+  else let info = get_info_raw repo namespace n in
+    let _ = Gc.finalise (fun i -> unref i) info in
+    info
