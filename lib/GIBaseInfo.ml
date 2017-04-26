@@ -93,14 +93,24 @@ let baseinfo_to_functioninfo info =
 let functioninfo_to_baseinfo info =
   coerce (ptr functioninfo) (ptr baseinfo) info
 
+let ref_and_finalise_returned_function_info base_info =
+  let _ = ref base_info in
+  let info' = baseinfo_to_functioninfo base_info in
+  let _ = Gc.finalise (fun i ->
+      let i' = functioninfo_to_baseinfo i in
+      unref i') info' in
+  info'
+
 let get_type info =
   let get_type_raw =
     foreign "g_base_info_get_type"
       (ptr baseinfo @-> returning int)
   in match get_type_raw info with
   | 0 -> Invalid
-  | 1 -> Function (baseinfo_to_functioninfo info)
-  | 2 -> Callback (baseinfo_to_functioninfo info)
+  | 1 -> let info' = ref_and_finalise_returned_function_info info
+    in Function info'
+  | 2 -> let info' = ref_and_finalise_returned_function_info info
+    in Callback info'
   | 3 -> Struct
   | 4 -> Boxed
   | 5 -> Enum
