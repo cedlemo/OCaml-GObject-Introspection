@@ -32,3 +32,5 @@ let unref =
 let get_name =
   foreign "g_base_info_get_name" (ptr baseinfo @-> returning string_opt)
 
+let equal =
+  foreign "g_base_info_equal" (ptr baseinfo @-> ptr baseinfo @-> returning bool)

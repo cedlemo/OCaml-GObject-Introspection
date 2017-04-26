@@ -40,9 +40,15 @@ val unref:
 val get_name:
   baseinfo structure ptr -> string option
 
+(** Compare two GIBaseInfo.
+    Using pointer comparison is not practical since many functions return
+    different instances of GIBaseInfo that refers to the same part of the
+    TypeLib; use this function instead to do GIBaseInfo comparisons. *)
+val equal:
+  baseinfo structure ptr -> baseinfo structure ptr -> bool
+
 (*
   GIBaseInfo *	g_info_new ()
-  TODO : gboolean	g_base_info_equal ()
   TODO : GIInfoType	g_base_info_get_type ()
   TODO : GITypelib *	g_base_info_get_typelib ()
   TODO : const gchar *	g_base_info_get_namespace ()
