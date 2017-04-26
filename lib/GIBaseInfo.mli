@@ -51,6 +51,10 @@ val equal:
 val get_namespace:
   baseinfo structure ptr -> string
 
+(** Obtain whether the info is represents a metadata which is deprecated or not. *)
+val is_deprecated:
+  baseinfo structure ptr -> bool
+
 (*
   GIBaseInfo *	g_info_new ()
   TODO : GIInfoType	g_base_info_get_type ()
@@ -58,5 +62,4 @@ val get_namespace:
   TODO : const gchar *	g_base_info_get_attribute ()
   TODO : gboolean	g_base_info_iterate_attributes ()
   TODO : GIBaseInfo *	g_base_info_get_container ()
-  TODO : gboolean	g_base_info_is_deprecated ()
 *)

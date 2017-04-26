@@ -37,3 +37,6 @@ let equal =
 
 let get_namespace =
   foreign "g_base_info_get_namespace" (ptr baseinfo @-> returning string)
+
+let is_deprecated =
+  foreign "g_base_info_is_deprecated" (ptr baseinfo @-> returning bool)
