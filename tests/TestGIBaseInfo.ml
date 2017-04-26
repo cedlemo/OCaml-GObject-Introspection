@@ -21,12 +21,12 @@ open OUnit2
 
 let namespace = "Gio"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo (Some namespace)
+let typelib = GIRepository.require repo namespace
 let info_name = "app_info_create_from_commandline"
 let callback_name = "BusNameAppearedCallback"
 
 let test_equal test_ctxt =
-  let rand_info = GIRepository.get_info repo (Some namespace) 10 in
+  let rand_info = GIRepository.get_info repo namespace 10 in
   match GIBaseInfo.get_name rand_info with
   | None -> assert_equal_string "Base Info " "has no name"
   | Some info_name ->

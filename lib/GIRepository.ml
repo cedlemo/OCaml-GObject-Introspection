@@ -32,7 +32,7 @@ let get_default =
 
 let require =
   foreign "g_irepository_require"
-    (repository @-> string_opt @-> string_opt @-> int @->  void @-> returning typelib)
+    (repository @-> string @-> string_opt @-> int @->  void @-> returning typelib)
 
 let get_loaded_namespaces repo =
   let get_loaded_namespaces_raw =
@@ -44,26 +44,26 @@ let get_loaded_namespaces repo =
 let get_dependencies repo namespace =
   let get_dependencies_raw =
     foreign "g_irepository_get_dependencies"
-      (repository @-> string_opt @-> returning carray_of_strings) in
+      (repository @-> string @-> returning carray_of_strings) in
   let c_arr = get_dependencies_raw repo namespace in
   carray_of_strings_to_list c_arr
 
 let get_c_prefix =
   foreign "g_irepository_get_c_prefix"
-          (repository @-> string_opt @-> returning string)
+          (repository @-> string @-> returning string)
 
 let get_version =
   foreign "g_irepository_get_version"
-          (repository @-> string_opt @-> returning string)
+          (repository @-> string @-> returning string)
 
 let get_typelib_path =
   foreign "g_irepository_get_typelib_path"
-          (repository @-> string_opt @-> returning string)
+          (repository @-> string @-> returning string)
 
 let enumerate_versions repo namespace =
   let enumerate_versions_raw =
     foreign "g_irepository_enumerate_versions"
-      (repository @-> string_opt @-> returning (ptr_opt glist)) in
+      (repository @-> string @-> returning (ptr_opt glist)) in
   let glist_ptr = enumerate_versions_raw repo namespace in
   glist_of_strings_to_list glist_ptr
 
@@ -87,12 +87,12 @@ let find_by_name repo namespace name =
 
 let get_n_infos =
   foreign "g_irepository_get_n_infos"
-    (repository @-> string_opt @-> returning int)
+    (repository @-> string @-> returning int)
 
 let get_info repo namespace n=
   let get_info_raw =
     foreign "g_irepository_get_info"
-      (repository @-> string_opt @-> int @-> returning (ptr baseinfo))
+      (repository @-> string @-> int @-> returning (ptr baseinfo))
   in let max_infos = get_n_infos repo namespace in
   if (n < 0 || n >= max_infos) then raise (Failure "Array Index out of bounds")
   else let info = get_info_raw repo namespace n in

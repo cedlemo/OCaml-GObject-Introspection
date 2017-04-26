@@ -25,11 +25,11 @@ let test_get_default test_ctxt =
 
 let test_require test_ctxt =
   let repo = GIRepository.get_default () in
-  let namespace = Some "Gio" in
+  let namespace = "Gio" in
   let _ = GIRepository.require repo namespace None 0 () in
   assert_equal_boolean true true
 
-let namespace = Some "Gio"
+let namespace = "Gio"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
 
@@ -75,7 +75,6 @@ let test_prepend_search_path test_ctxt =
 
 let test_find_by_name test_ctxt =
   let info_name = "Application" in
-  let namespace = "Gio" in
   match GIRepository.find_by_name repo namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> match GIBaseInfo.get_name base_info with

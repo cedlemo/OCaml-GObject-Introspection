@@ -44,7 +44,7 @@ val get_default:
     used).
  *)
 val require:
-  repository -> string option -> string option -> int -> unit -> typelib
+  repository -> string -> string option -> int -> unit -> typelib
 
 (** Return the list of currently loaded namespaces. *)
 val get_loaded_namespaces:
@@ -57,7 +57,7 @@ val get_loaded_namespaces:
     dependencies for namespace_ , use GIRepository.get_immediate_dependencies.
  *)
 val get_dependencies:
-  repository -> string option -> string list
+  repository -> string -> string list
 
 (** This function returns the "C prefix", or the C level namespace associated
     with the given introspection namespace. Each C symbol starts with this
@@ -65,25 +65,25 @@ val get_dependencies:
     Note: The namespace must have already been loaded using a function such as
     GIRepository.require before calling this function. *)
 val get_c_prefix:
-  repository -> string option -> string
+  repository -> string -> string
 
 (** This function returns the loaded version associated with the given
     namespace namespace_ .
     Note: The namespace must have already been loaded using a function such as
     GIRepository.require before calling this function. *)
 val get_version:
-  repository -> string option -> string
+  repository -> string -> string
 
 (** If namespace namespace_ is loaded, return the full path to the .typelib
     file it was loaded from. If the typelib for namespace namespace_ was
     included in a shared library, return the special string "<builtin>". *)
 val get_typelib_path:
-  repository -> string option -> string
+  repository -> string -> string
 
 (** Obtain an unordered list of versions (either currently loaded or available)
     for namespace_ in this repository . *)
 val enumerate_versions:
-  repository -> string option -> string list
+  repository -> string -> string list
 
 (** Returns the current search path GIRepository will use when loading typelib
     files. The list is internal to GIRespository and should not be freed, nor
@@ -107,14 +107,14 @@ val find_by_name:
     namespace_ . The namespace must have already been loaded before calling
     this function. *)
 val get_n_infos:
-  repository -> string option -> int
+  repository -> string -> int
 
 (** This function returns a particular metadata entry in the given namespace
     namespace_ . The namespace must have already been loaded before calling
     this function. See GIRepository.get_n_infos to find the maximum number of
     entries. *)
 val get_info:
-  repository -> string option -> int -> baseinfo structure ptr
+  repository -> string -> int -> baseinfo structure ptr
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
