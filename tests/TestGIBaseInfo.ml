@@ -35,8 +35,15 @@ let test_equal test_ctxt =
     | Some (info) -> let is_equal = GIBaseInfo.equal rand_info info in
       assert_equal_boolean true is_equal
 
+let test_get_namespace test_ctxt =
+  match GIRepository.find_by_name repo namespace info_name with
+  | None -> assert_equal_string info_name "No base info found"
+  | Some (base_info) -> let info_namespace = GIBaseInfo.get_namespace base_info
+  in assert_equal_string namespace info_namespace
+
 let tests =
   "GObject Introspection BaseInfo tests" >:::
     [
-     "GIBaseInfo equal" >:: test_equal
+      "GIBaseInfo equal" >:: test_equal;
+      "GIBaseInfo get namespace" >:: test_get_namespace
     ]
