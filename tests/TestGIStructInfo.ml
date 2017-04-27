@@ -75,6 +75,12 @@ let test_get_n_fields test_ctxt =
     assert_equal_int 2 n_fields
   )
 
+let test_get_n_methods test_ctxt =
+  struct_test (fun info ->
+    let n_methods = GIStructInfo.get_n_methods info in
+    assert_equal_or_greater n_methods 62
+  )
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
@@ -83,5 +89,6 @@ let tests =
     "GIStructInfo get alignment" >:: test_get_alignment;
     "GIStructInfo get size" >:: test_get_size;
     "GIStructInfo is foreign" >:: test_is_foreign;
-    "GIStructInfo get n fields" >:: test_get_n_fields
+    "GIStructInfo get n fields" >:: test_get_n_fields;
+    "GIStructInfo get n methods" >:: test_get_n_methods
   ]
