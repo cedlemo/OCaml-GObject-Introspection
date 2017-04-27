@@ -32,9 +32,28 @@ let test_baseinfo_get_type test_ctxt =
       | GIBaseInfo.Struct struct_info -> true
       | _ -> false)
 
+let get_struct_info () =
+  match GIRepository.find_by_name repo namespace struct_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Struct struct_info -> Some struct_info
+    | _ -> None
+
+let struct_test fn =
+  match get_struct_info () with
+  | None -> assert_equal_string struct_name "No base info found"
+  | Some (info) -> fn info
+
+let test_is_gtype_struct test_ctxt =
+  struct_test (fun info ->
+    let is_struct = GIStructInfo.is_gtype_struct info in
+    assert_equal_boolean false is_struct
+  )
 
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
-    "GIStructInfo from BaseInfo" >:: test_baseinfo_get_type
+    "GIStructInfo from BaseInfo" >:: test_baseinfo_get_type;
+    "GIStructInfo is gtype struct" >:: test_is_gtype_struct
   ]
