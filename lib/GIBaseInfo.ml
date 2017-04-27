@@ -20,6 +20,7 @@ open Ctypes
 open Foreign
 open Conversions
 open GIFunctionInfo
+open GIStructInfo
 
 type baseinfo
 let baseinfo : baseinfo structure typ = structure "GIBaseInfo"
@@ -46,7 +47,7 @@ type baseinfo_type =
   | Invalid
   | Function of (functioninfo structure ptr)
   | Callback of (functioninfo structure ptr)
-  | Struct
+  | Struct of (structinfo structure ptr)
   | Boxed
   | Enum
   | Flags
@@ -69,7 +70,7 @@ let baseinfo_type_get_name baseinfo_t =
   | Invalid -> "invalid"
   | Function _ -> "function"
   | Callback _ -> "callback"
-  | Struct -> "struct"
+  | Struct _ -> "struct"
   | Boxed -> "boxed"
   | Enum -> "enum"
   | Flags -> "flags"
@@ -101,6 +102,21 @@ let ref_and_finalise_returned_function_info base_info =
       base_info_unref i') info' in
   info'
 
+let baseinfo_to_structinfo info =
+  coerce (ptr baseinfo) (ptr structinfo) info
+
+let structinfo_to_baseinfo info =
+  coerce (ptr structinfo) (ptr baseinfo) info
+
+let ref_and_finalise_returned_struct_info base_info =
+  let _ = base_info_ref base_info in
+  let info' = baseinfo_to_structinfo base_info in
+  let _ = Gc.finalise (fun i ->
+      let i' = structinfo_to_baseinfo i in
+      base_info_unref i') info' in
+  info'
+
+
 let get_type info =
   let get_type_raw =
     foreign "g_base_info_get_type"
@@ -111,7 +127,8 @@ let get_type info =
     in Function info'
   | 2 -> let info' = ref_and_finalise_returned_function_info info
     in Callback info'
-  | 3 -> Struct
+  | 3 -> let info' = ref_and_finalise_returned_struct_info info
+    in Struct info'
   | 4 -> Boxed
   | 5 -> Enum
   | 6 -> Flags
