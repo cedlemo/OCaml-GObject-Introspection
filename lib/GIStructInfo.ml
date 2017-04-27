@@ -42,3 +42,7 @@ let is_foreign =
 let get_n_fields =
   foreign "g_struct_info_get_n_fields"
     (ptr structinfo @-> returning int)
+
+let get_n_methods =
+  foreign "g_struct_info_get_n_methods"
+    (ptr structinfo @-> returning int)

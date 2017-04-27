@@ -47,3 +47,8 @@ val is_foreign:
 (** Obtain the number of fields this structure has. *)
 val get_n_fields:
   structinfo structure ptr -> int
+
+(** Obtain the number of methods this structure has. *)
+val get_n_methods:
+  structinfo structure ptr -> int
+
