@@ -22,3 +22,7 @@ open Conversions
 
 type structinfo
 let structinfo : structinfo structure typ = structure "GIStructInfo"
+
+let is_gtype_struct =
+  foreign "g_struct_info_is_gtype_struct"
+    (ptr structinfo @-> returning bool)

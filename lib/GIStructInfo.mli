@@ -25,3 +25,10 @@ open Ctypes
 type structinfo
 val structinfo : structinfo structure typ
 
+(** Return true if this structure represents the "class structure" for some
+    GObject or GInterface. This function is mainly useful to hide this kind of
+    structure from generated public APIs.
+*)
+val is_gtype_struct:
+  structinfo structure ptr -> bool
+
