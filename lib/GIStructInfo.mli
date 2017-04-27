@@ -43,3 +43,7 @@ val get_size:
 (** No doc yet *)
 val is_foreign:
   structinfo structure ptr -> bool
+
+(** Obtain the number of fields this structure has. *)
+val get_n_fields:
+  structinfo structure ptr -> int

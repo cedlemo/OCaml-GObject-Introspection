@@ -38,3 +38,7 @@ let get_size =
 let is_foreign =
   foreign "g_struct_info_is_foreign"
     (ptr structinfo @-> returning bool)
+
+let get_n_fields =
+  foreign "g_struct_info_get_n_fields"
+    (ptr structinfo @-> returning int)
