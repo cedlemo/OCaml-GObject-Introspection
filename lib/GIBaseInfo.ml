@@ -21,6 +21,7 @@ open Foreign
 open Conversions
 open GIFunctionInfo
 open GIStructInfo
+open GIFieldInfo
 
 type baseinfo
 let baseinfo : baseinfo structure typ = structure "GIBaseInfo"
@@ -116,6 +117,11 @@ let ref_and_finalise_returned_struct_info base_info =
       base_info_unref i') info' in
   info'
 
+let baseinfo_to_fieldinfo info =
+  coerce (ptr baseinfo) (ptr fieldinfo) info
+
+let fieldinfo_to_baseinfo info =
+  coerce (ptr fieldinfo) (ptr baseinfo) info
 
 let get_type info =
   let get_type_raw =

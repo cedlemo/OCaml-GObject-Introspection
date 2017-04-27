@@ -86,3 +86,21 @@ val get_type:
   TODO : gboolean	g_base_info_iterate_attributes ()
   TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
+
+val baseinfo_to_functioninfo:
+  baseinfo structure ptr -> GIFunctionInfo.functioninfo structure ptr
+
+val functioninfo_to_baseinfo:
+  GIFunctionInfo.functioninfo structure ptr -> baseinfo structure ptr
+
+val baseinfo_to_structinfo:
+  baseinfo structure ptr -> GIStructInfo.structinfo structure ptr
+
+val structinfo_to_baseinfo:
+  GIStructInfo.structinfo structure ptr -> baseinfo structure ptr
+
+val baseinfo_to_fieldinfo:
+  baseinfo structure ptr -> GIFieldInfo.fieldinfo structure ptr
+
+val fieldinfo_to_baseinfo:
+  GIFieldInfo.fieldinfo structure ptr -> baseinfo structure ptr
