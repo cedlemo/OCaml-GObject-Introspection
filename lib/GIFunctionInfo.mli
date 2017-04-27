@@ -47,7 +47,6 @@ val get_flags:
   functioninfo structure ptr -> flags list
 
 (*
-  TODO: GIFunctionInfoFlags	g_function_info_get_flags ()
   TODO: GIPropertyInfo *	g_function_info_get_property ()
   TODO: GIVFuncInfo *	g_function_info_get_vfunc ()
   TODO: gboolean	g_function_info_invoke ()
