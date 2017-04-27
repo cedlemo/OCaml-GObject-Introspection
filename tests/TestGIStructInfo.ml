@@ -51,9 +51,16 @@ let test_is_gtype_struct test_ctxt =
     assert_equal_boolean false is_struct
   )
 
+let test_get_alignment test_ctxt =
+  struct_test (fun info ->
+    let alignment = GIStructInfo.get_alignment info in
+    assert_equal_int 8 alignment
+  )
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
     "GIStructInfo from BaseInfo" >:: test_baseinfo_get_type;
-    "GIStructInfo is gtype struct" >:: test_is_gtype_struct
+    "GIStructInfo is gtype struct" >:: test_is_gtype_struct;
+    "GIStructInfo get alignment" >:: test_get_alignment
   ]
