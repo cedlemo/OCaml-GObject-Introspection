@@ -32,3 +32,6 @@ val structinfo : structinfo structure typ
 val is_gtype_struct:
   structinfo structure ptr -> bool
 
+(** Obtain the required alignment of the structure.*)
+val get_alignment:
+  structinfo structure ptr -> int
