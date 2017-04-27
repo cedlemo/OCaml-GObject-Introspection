@@ -34,3 +34,7 @@ let get_alignment =
 let get_size =
   foreign "g_struct_info_get_size"
     (ptr structinfo @-> returning int)
+
+let is_foreign =
+  foreign "g_struct_info_is_foreign"
+    (ptr structinfo @-> returning bool)

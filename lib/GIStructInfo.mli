@@ -39,3 +39,7 @@ val get_alignment:
 (** Obtain the total size of the structure. *)
 val get_size:
   structinfo structure ptr -> int
+
+(** No doc yet *)
+val is_foreign:
+  structinfo structure ptr -> bool
