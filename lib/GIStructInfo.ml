@@ -30,3 +30,7 @@ let is_gtype_struct =
 let get_alignment =
   foreign "g_struct_info_get_alignment"
     (ptr structinfo @-> returning int)
+
+let get_size =
+  foreign "g_struct_info_get_size"
+    (ptr structinfo @-> returning int)

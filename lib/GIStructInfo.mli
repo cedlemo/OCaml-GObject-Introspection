@@ -35,3 +35,7 @@ val is_gtype_struct:
 (** Obtain the required alignment of the structure.*)
 val get_alignment:
   structinfo structure ptr -> int
+
+(** Obtain the total size of the structure. *)
+val get_size:
+  structinfo structure ptr -> int
