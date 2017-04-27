@@ -33,3 +33,10 @@ val functioninfo : functioninfo structure typ
 val get_symbol:
   functioninfo structure ptr -> string
 
+(*
+  TODO: GIFunctionInfoFlags	g_function_info_get_flags ()
+  TODO: GIPropertyInfo *	g_function_info_get_property ()
+  TODO: GIVFuncInfo *	g_function_info_get_vfunc ()
+  TODO: gboolean	g_function_info_invoke ()
+  TODO: GQuark	g_invoke_error_quark ()
+*)
