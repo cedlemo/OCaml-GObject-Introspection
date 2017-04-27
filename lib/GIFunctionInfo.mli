@@ -33,6 +33,19 @@ val functioninfo : functioninfo structure typ
 val get_symbol:
   functioninfo structure ptr -> string
 
+(** Flags for a GIFunctionInfo struct. *)
+type flags =
+  | Is_method      (** is a method. *)
+  | Is_constructor (** is a constructor. *)
+  | Is_getter      (** is a getter of a GIPropertyInfo. *)
+  | Is_setter      (** is a setter of a GIPropertyInfo. *)
+  | Wraps_vfunc    (** represents a virtual function. *)
+  | Throws         (** the function may throw an error. *)
+
+(** Obtain the GIFunctionInfoFlags for the info . *)
+val get_flags:
+  functioninfo structure ptr -> flags list
+
 (*
   TODO: GIFunctionInfoFlags	g_function_info_get_flags ()
   TODO: GIPropertyInfo *	g_function_info_get_property ()
