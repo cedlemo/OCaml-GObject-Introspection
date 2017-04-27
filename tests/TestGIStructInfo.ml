@@ -63,11 +63,18 @@ let test_get_size test_ctxt =
     assert_equal_int 24 size
   )
 
+let test_is_foreign test_ctxt =
+  struct_test (fun info ->
+    let is_struct = GIStructInfo.is_foreign info in
+    assert_equal_boolean false is_struct
+  )
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
     "GIStructInfo from BaseInfo" >:: test_baseinfo_get_type;
     "GIStructInfo is gtype struct" >:: test_is_gtype_struct;
     "GIStructInfo get alignment" >:: test_get_alignment;
-    "GIStructInfo get size" >:: test_get_size
+    "GIStructInfo get size" >:: test_get_size;
+    "GIStructInfo is foreign" >:: test_is_foreign
   ]
