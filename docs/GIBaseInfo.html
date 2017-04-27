@@ -11,6 +11,8 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
+<link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIBaseInfo</title>
@@ -36,11 +38,11 @@ GIBaseInfo is the common base struct of all other *Info structs accessible
 
 
 <pre><span id="VALbaseinfo"><span class="keyword">val</span> baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.typ</code></pre>
-<pre><span id="VALref"><span class="keyword">val</span> ref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALbase_info_ref"><span class="keyword">val</span> base_info_ref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Increases the reference count of underlying GIBaseInfo *info.<br>
 </div>
 
-<pre><span id="VALunref"><span class="keyword">val</span> unref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> unit</code></pre><div class="info ">
+<pre><span id="VALbase_info_unref"><span class="keyword">val</span> base_info_unref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> unit</code></pre><div class="info ">
 Decreases the reference count of underlying GIBaseInfo *info . When its
     reference count drops to 0, the info is freed.<br>
 </div>
@@ -101,7 +103,7 @@ callback, see GIFunctionInfo<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTbaseinfo_type.Struct"><span class="constructor">Struct</span></span></code></td>
+<code><span id="TYPEELTbaseinfo_type.Struct"><span class="constructor">Struct</span></span> <span class="keyword">of</span> <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">GIStructInfo.structinfo</a> Ctypes.structure Ctypes.ptr</code></code></td>
 <td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
 struct, see GIStructInfo<br>
 </div>
@@ -270,4 +272,10 @@ unresolved type, a type which is not present in the typelib, or any of its depen
 
 
 
-<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> <a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a></code></pre></body></html>
+<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> <a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a></code></pre>
+<pre><span id="VALbaseinfo_to_functioninfo"><span class="keyword">val</span> baseinfo_to_functioninfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> Ctypes.structure Ctypes.ptr</code></pre>
+<pre><span id="VALfunctioninfo_to_baseinfo"><span class="keyword">val</span> functioninfo_to_baseinfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
+<pre><span id="VALbaseinfo_to_structinfo"><span class="keyword">val</span> baseinfo_to_structinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEstructinfo">GIStructInfo.structinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
+<pre><span id="VALstructinfo_to_baseinfo"><span class="keyword">val</span> structinfo_to_baseinfo</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">GIStructInfo.structinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
+<pre><span id="VALbaseinfo_to_fieldinfo"><span class="keyword">val</span> baseinfo_to_fieldinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEfieldinfo">GIFieldInfo.fieldinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
+<pre><span id="VALfieldinfo_to_baseinfo"><span class="keyword">val</span> fieldinfo_to_baseinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEfieldinfo">GIFieldInfo.fieldinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre></body></html>

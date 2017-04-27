@@ -6,6 +6,8 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
+<link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIFunctionInfo</title>
@@ -16,4 +18,14 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;functioninfo&nbsp;:&nbsp;<span class="constructor">GIFunctionInfo</span>.functioninfo&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_symbol&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.functioninfo&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;flags&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Is_method</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Is_constructor</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Is_getter</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Is_setter</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Wraps_vfunc</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Throws</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_flags&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.functioninfo&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.flags&nbsp;list
 <span class="keyword">end</span></code></body></html>
