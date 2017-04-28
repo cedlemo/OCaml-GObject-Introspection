@@ -31,6 +31,10 @@ let get_size =
   foreign "g_union_info_get_size"
     (ptr unioninfo @-> returning int)
 
+let get_alignment =
+  foreign "g_union_info_get_alignment"
+    (ptr unioninfo @-> returning int)
+
 (* TODO : check that the info can be casted to a structinfo ? *)
 let cast_baseinfo_to_unioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr unioninfo) info

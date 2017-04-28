@@ -35,6 +35,10 @@ val get_n_fields:
 val get_size:
   t structure ptr -> int
 
+(** Obtain the required alignment of the union. *)
+val get_alignment:
+  t structure ptr -> int
+
 (*
   TODO : GIFieldInfo *	g_union_info_get_field ()
   TODO : gint	g_union_info_get_n_methods ()
@@ -44,7 +48,6 @@ val get_size:
   TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
   TODO : GIConstantInfo *	g_union_info_get_discriminator ()
   TODO : GIFunctionInfo *	g_union_info_find_method ()
-  TODO : gsize	g_union_info_get_alignment ()
 *)
 
 (** Just cast OCaml Ctypes base info to union info. *)
