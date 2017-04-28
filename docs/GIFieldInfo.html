@@ -5,13 +5,14 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Conversions.html">
-<link rel="next" href="GIStructInfo.html">
+<link rel="next" href="GIUnionInfo.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
 <link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
+<link title="GIUnionInfo" rel="Chapter" href="GIUnionInfo.html">
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
@@ -20,7 +21,7 @@
 <body>
 <div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;<a class="post" href="GIStructInfo.html" title="GIStructInfo">Next</a>
+&nbsp;<a class="post" href="GIUnionInfo.html" title="GIUnionInfo">Next</a>
 </div>
 <h1>Module <a href="type_GIFieldInfo.html">GIFieldInfo</a></h1>
 
@@ -73,5 +74,25 @@ Flags for a GIFieldInfo.<br>
 <pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIFieldInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
 Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
     flag values.<br>
+</div>
+
+<pre><span id="VALcast_baseinfo_to_fieldinfo"><span class="keyword">val</span> cast_baseinfo_to_fieldinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Just cast OCaml Ctypes base info to field info.<br>
+</div>
+
+<pre><span id="VALcast_fieldinfo_to_baseinfo"><span class="keyword">val</span> cast_fieldinfo_to_baseinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Just cast OCaml Ctypes field info to base info<br>
+</div>
+
+<pre><span id="VALfieldinfo_of_baseinfo"><span class="keyword">val</span> fieldinfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIFieldInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
+</div>
+
+<pre><span id="VALbaseinfo_of_fieldinfo"><span class="keyword">val</span> baseinfo_of_fieldinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIBaseInfo.t from a GIFieldInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
 </div>
 </body></html>
