@@ -29,37 +29,53 @@ GIStructInfo — Module representing a C structure<br>
 </div>
 <hr width="100%">
 
-<pre><span id="TYPEstructinfo"><span class="keyword">type</span> <code class="type"></code>structinfo</span> </pre>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 <div class="info ">
 GIStructInfo represents a generic C structure type.
  A structure has methods and fields.<br>
 </div>
 
 
-<pre><span id="VALstructinfo"><span class="keyword">val</span> structinfo</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.typ</code></pre>
-<pre><span id="VALis_gtype_struct"><span class="keyword">val</span> is_gtype_struct</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+<pre><span id="VALstructinfo"><span class="keyword">val</span> structinfo</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALis_gtype_struct"><span class="keyword">val</span> is_gtype_struct</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
 Return true if this structure represents the "class structure" for some
     GObject or GInterface. This function is mainly useful to hide this kind of
     structure from generated public APIs.<br>
 </div>
 
-<pre><span id="VALget_alignment"><span class="keyword">val</span> get_alignment</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+<pre><span id="VALget_alignment"><span class="keyword">val</span> get_alignment</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the required alignment of the structure.<br>
 </div>
 
-<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the total size of the structure.<br>
 </div>
 
-<pre><span id="VALis_foreign"><span class="keyword">val</span> is_foreign</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+<pre><span id="VALis_foreign"><span class="keyword">val</span> is_foreign</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
 No doc yet<br>
 </div>
 
-<pre><span id="VALget_n_fields"><span class="keyword">val</span> get_n_fields</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+<pre><span id="VALget_n_fields"><span class="keyword">val</span> get_n_fields</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of fields this structure has.<br>
 </div>
 
-<pre><span id="VALget_n_methods"><span class="keyword">val</span> get_n_methods</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">structinfo</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+<pre><span id="VALget_n_methods"><span class="keyword">val</span> get_n_methods</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of methods this structure has.<br>
+</div>
+
+<pre><span id="VALget_field"><span class="keyword">val</span> get_field</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIFieldInfo.html#TYPEt">GIFieldInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain the type information for field with specified index.<br>
+</div>
+
+<pre><span id="VALstructinfo_of_baseinfo"><span class="keyword">val</span> structinfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
+</div>
+
+<pre><span id="VALbaseinfo_of_structinfo"><span class="keyword">val</span> baseinfo_of_structinfo</span> : <code class="type"><a href="GIStructInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
 </div>
 </body></html>

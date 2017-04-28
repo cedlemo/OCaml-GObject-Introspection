@@ -29,7 +29,7 @@ GIFunctionInfo — Struct representing a function.<br>
 </div>
 <hr width="100%">
 
-<pre><span id="TYPEfunctioninfo"><span class="keyword">type</span> <code class="type"></code>functioninfo</span> </pre>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 <div class="info ">
 GIFunctionInfo represents a function, method or constructor. To find out
     what kind of entity a GIFunctionInfo represents, call
@@ -39,8 +39,8 @@ GIFunctionInfo represents a function, method or constructor. To find out
 </div>
 
 
-<pre><span id="VALfunctioninfo"><span class="keyword">val</span> functioninfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> Ctypes.structure Ctypes.typ</code></pre>
-<pre><span id="VALget_symbol"><span class="keyword">val</span> get_symbol</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> Ctypes.structure Ctypes.ptr -> string</code></pre><div class="info ">
+<pre><span id="VALfunctioninfo"><span class="keyword">val</span> functioninfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALget_symbol"><span class="keyword">val</span> get_symbol</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> string</code></pre><div class="info ">
 Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol().<br>
 </div>
@@ -112,7 +112,19 @@ Flags for a GIFunctionInfo struct.<br>
 </div>
 
 
-<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">functioninfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIFunctionInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
 Obtain the GIFunctionInfoFlags for the info .<br>
+</div>
+
+<pre><span id="VALfunctioninfo_of_baseinfo"><span class="keyword">val</span> functioninfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
+</div>
+
+<pre><span id="VALbaseinfo_of_functioninfo"><span class="keyword">val</span> baseinfo_of_functioninfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
 </div>
 </body></html>

@@ -29,7 +29,7 @@ GIBaseInfo — Base struct for all GITypelib structs<br>
 </div>
 <hr width="100%">
 
-<pre><span id="TYPEbaseinfo"><span class="keyword">type</span> <code class="type"></code>baseinfo</span> </pre>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 <div class="info ">
 GIBaseInfo is the common base struct of all other *Info structs accessible
     through the GIRepository API. All other structs can be casted to a
@@ -37,34 +37,34 @@ GIBaseInfo is the common base struct of all other *Info structs accessible
 </div>
 
 
-<pre><span id="VALbaseinfo"><span class="keyword">val</span> baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.typ</code></pre>
-<pre><span id="VALbase_info_ref"><span class="keyword">val</span> base_info_ref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALbaseinfo"><span class="keyword">val</span> baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALbase_info_ref"><span class="keyword">val</span> base_info_ref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Increases the reference count of underlying GIBaseInfo *info.<br>
 </div>
 
-<pre><span id="VALbase_info_unref"><span class="keyword">val</span> base_info_unref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> unit</code></pre><div class="info ">
+<pre><span id="VALbase_info_unref"><span class="keyword">val</span> base_info_unref</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre><div class="info ">
 Decreases the reference count of underlying GIBaseInfo *info . When its
     reference count drops to 0, the info is freed.<br>
 </div>
 
-<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> string option</code></pre><div class="info ">
+<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> string option</code></pre><div class="info ">
 Obtain the name of the info . What the name represents depends on the
     GIInfoType of the info . For instance for GIFunctionInfo it is the name of
     the function.<br>
 </div>
 
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
 Compare two GIBaseInfo.
     Using pointer comparison is not practical since many functions return
     different instances of GIBaseInfo that refers to the same part of the
     TypeLib; use this function instead to do GIBaseInfo comparisons.<br>
 </div>
 
-<pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> string</code></pre><div class="info ">
+<pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> string</code></pre><div class="info ">
 Obtain the namespace of info<br>
 </div>
 
-<pre><span id="VALis_deprecated"><span class="keyword">val</span> is_deprecated</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+<pre><span id="VALis_deprecated"><span class="keyword">val</span> is_deprecated</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
 Obtain whether the info is represents a metadata which is deprecated or not.<br>
 </div>
 
@@ -83,7 +83,7 @@ invalid type<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTbaseinfo_type.Function"><span class="constructor">Function</span></span> <span class="keyword">of</span> <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> Ctypes.structure Ctypes.ptr</code></code></td>
+<code><span id="TYPEELTbaseinfo_type.Function"><span class="constructor">Function</span></span></code></td>
 <td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
 function, see GIFunctionInfo<br>
 </div>
@@ -93,7 +93,7 @@ function, see GIFunctionInfo<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTbaseinfo_type.Callback"><span class="constructor">Callback</span></span> <span class="keyword">of</span> <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> Ctypes.structure Ctypes.ptr</code></code></td>
+<code><span id="TYPEELTbaseinfo_type.Callback"><span class="constructor">Callback</span></span></code></td>
 <td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
 callback, see GIFunctionInfo<br>
 </div>
@@ -103,7 +103,7 @@ callback, see GIFunctionInfo<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTbaseinfo_type.Struct"><span class="constructor">Struct</span></span> <span class="keyword">of</span> <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">GIStructInfo.structinfo</a> Ctypes.structure Ctypes.ptr</code></code></td>
+<code><span id="TYPEELTbaseinfo_type.Struct"><span class="constructor">Struct</span></span></code></td>
 <td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
 struct, see GIStructInfo<br>
 </div>
@@ -272,10 +272,6 @@ unresolved type, a type which is not present in the typelib, or any of its depen
 
 
 
-<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -> <a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a></code></pre>
-<pre><span id="VALbaseinfo_to_functioninfo"><span class="keyword">val</span> baseinfo_to_functioninfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> Ctypes.structure Ctypes.ptr</code></pre>
-<pre><span id="VALfunctioninfo_to_baseinfo"><span class="keyword">val</span> functioninfo_to_baseinfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEfunctioninfo">GIFunctionInfo.functioninfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
-<pre><span id="VALbaseinfo_to_structinfo"><span class="keyword">val</span> baseinfo_to_structinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEstructinfo">GIStructInfo.structinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
-<pre><span id="VALstructinfo_to_baseinfo"><span class="keyword">val</span> structinfo_to_baseinfo</span> : <code class="type"><a href="GIStructInfo.html#TYPEstructinfo">GIStructInfo.structinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
-<pre><span id="VALbaseinfo_to_fieldinfo"><span class="keyword">val</span> baseinfo_to_fieldinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEfieldinfo">GIFieldInfo.fieldinfo</a> Ctypes.structure Ctypes.ptr</code></pre>
-<pre><span id="VALfieldinfo_to_baseinfo"><span class="keyword">val</span> fieldinfo_to_baseinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEfieldinfo">GIFieldInfo.fieldinfo</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEbaseinfo">baseinfo</a> Ctypes.structure Ctypes.ptr</code></pre></body></html>
+<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIBaseInfo.html#TYPEbaseinfo_type">baseinfo_type</a></code></pre>
+<pre><span id="VALbaseinfo_to_fieldinfo"><span class="keyword">val</span> baseinfo_to_fieldinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEt">GIFieldInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre>
+<pre><span id="VALfieldinfo_to_baseinfo"><span class="keyword">val</span> fieldinfo_to_baseinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">GIFieldInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre></body></html>

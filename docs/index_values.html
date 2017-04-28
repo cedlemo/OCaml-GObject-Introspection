@@ -31,11 +31,21 @@ Decreases the reference count of underlying GIBaseInfo *info .
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbaseinfo">baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td></td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALbaseinfo_of_functioninfo">baseinfo_of_functioninfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIStructInfo.html#VALbaseinfo_of_structinfo">baseinfo_of_structinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbaseinfo_to_fieldinfo">baseinfo_to_fieldinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td></td></tr>
-<tr><td><a href="GIBaseInfo.html#VALbaseinfo_to_functioninfo">baseinfo_to_functioninfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td></td></tr>
-<tr><td><a href="GIBaseInfo.html#VALbaseinfo_to_structinfo">baseinfo_to_structinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
@@ -74,8 +84,13 @@ Searches for a particular entry in a namespace.
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfunctioninfo">functioninfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td></td></tr>
-<tr><td><a href="GIBaseInfo.html#VALfunctioninfo_to_baseinfo">functioninfo_to_baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td></td></tr>
+<tr><td><a href="GIFunctionInfo.html#VALfunctioninfo_of_baseinfo">functioninfo_of_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td align="left"><br>G</td></tr>
 <tr><td><a href="Conversions.html#VALg_list_data">g_list_data</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
@@ -116,6 +131,11 @@ Returns the singleton process-global default GIRepository.
 <tr><td><a href="GIRepository.html#VALget_dependencies">get_dependencies</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Return an list of all (transitive) versioned dependencies for namespace_ .
+</div>
+</td></tr>
+<tr><td><a href="GIStructInfo.html#VALget_field">get_field</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Obtain the type information for field with specified index.
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALget_flags">get_flags</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -251,8 +271,13 @@ Force the namespace namespace_ to be loaded if it isn't already.
 <tr><td align="left"><br>S</td></tr>
 <tr><td><a href="GIStructInfo.html#VALstructinfo">structinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td></td></tr>
-<tr><td><a href="GIBaseInfo.html#VALstructinfo_to_baseinfo">structinfo_to_baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td></td></tr>
+<tr><td><a href="GIStructInfo.html#VALstructinfo_of_baseinfo">structinfo_of_baseinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 </table>
 </body>
 </html>

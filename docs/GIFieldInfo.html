@@ -29,7 +29,7 @@ GIFieldInfo — Struct representing a struct or union field<br>
 </div>
 <hr width="100%">
 
-<pre><span id="TYPEfieldinfo"><span class="keyword">type</span> <code class="type"></code>fieldinfo</span> </pre>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 <div class="info ">
 A GIFieldInfo struct represents a field of a struct (see GIStructInfo),
     union (see GIUnionInfo) or an object (see GIObjectInfo).
@@ -42,7 +42,7 @@ A GIFieldInfo struct represents a field of a struct (see GIStructInfo),
 </div>
 
 
-<pre><span id="VALfieldinfo"><span class="keyword">val</span> fieldinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEfieldinfo">fieldinfo</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALfieldinfo"><span class="keyword">val</span> fieldinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
 <pre><code><span id="TYPEflags"><span class="keyword">type</span> <code class="type"></code>flags</span> = </code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -70,7 +70,7 @@ Flags for a GIFieldInfo.<br>
 </div>
 
 
-<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFieldInfo.html#TYPEfieldinfo">fieldinfo</a> Ctypes.structure Ctypes.ptr -> <a href="GIFieldInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIFieldInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
 Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
     flag values.<br>
 </div>
