@@ -30,6 +30,11 @@ val unioninfo : t structure typ
 (** Obtain the number of fields this union has. *)
 val get_n_fields:
   t structure ptr -> int
+
+(** Obtain the total size of the union. *)
+val get_size:
+  t structure ptr -> int
+
 (*
   TODO : GIFieldInfo *	g_union_info_get_field ()
   TODO : gint	g_union_info_get_n_methods ()
@@ -39,7 +44,6 @@ val get_n_fields:
   TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
   TODO : GIConstantInfo *	g_union_info_get_discriminator ()
   TODO : GIFunctionInfo *	g_union_info_find_method ()
-  TODO : gsize	g_union_info_get_size ()
   TODO : gsize	g_union_info_get_alignment ()
 *)
 
