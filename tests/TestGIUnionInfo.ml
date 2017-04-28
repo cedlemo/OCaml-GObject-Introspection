@@ -64,11 +64,18 @@ let test_get_alignment test_ctxt =
     assert_equal_int 8 alignment
   )
 
+let test_get_n_methods test_ctxt =
+  union_test (fun info ->
+    let n = GIUnionInfo.get_n_methods info in
+    assert_equal_int 5 n
+  )
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
     "GIUnionInfo from baseinfo" >:: test_from_baseinfo;
     "GIUnionInfo get n fields" >:: test_get_n_fields;
     "GIUnionInfo get size" >:: test_get_size;
-    "GIUnionInfo get alignment" >:: test_get_alignment
+    "GIUnionInfo get alignment" >:: test_get_alignment;
+    "GIUnionInfo get n methods" >:: test_get_n_methods
   ]
