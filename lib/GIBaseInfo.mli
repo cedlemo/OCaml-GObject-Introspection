@@ -87,8 +87,3 @@ val get_type:
   TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
 
-val baseinfo_to_fieldinfo:
-  t structure ptr -> GIFieldInfo.t structure ptr
-
-val fieldinfo_to_baseinfo:
-  GIFieldInfo.t structure ptr -> t structure ptr

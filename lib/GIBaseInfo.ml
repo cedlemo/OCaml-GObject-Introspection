@@ -86,12 +86,6 @@ let baseinfo_type_get_name baseinfo_t =
   | Type -> "type"
   | Unresolved -> "unresolved"
 
-let baseinfo_to_fieldinfo info =
-  coerce (ptr baseinfo) (ptr GIFieldInfo.fieldinfo) info
-
-let fieldinfo_to_baseinfo info =
-  coerce (ptr GIFieldInfo.fieldinfo) (ptr baseinfo) info
-
 let get_type info =
   let get_type_raw =
     foreign "g_base_info_get_type"

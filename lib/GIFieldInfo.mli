@@ -48,3 +48,15 @@ val get_flags:
    TODO: gint	g_field_info_get_size ()
    TODO: GITypeInfo *	g_field_info_get_type ()
  *)
+
+(** Return a GIFieldInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val fieldinfo_of_baseinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Return a GIBaseInfo.t from a GIFieldInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val baseinfo_of_fieldinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
