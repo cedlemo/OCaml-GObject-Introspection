@@ -81,6 +81,21 @@ let test_get_n_methods test_ctxt =
     assert_equal_or_greater n_methods 62
   )
 
+let test_get_field test_ctxt =
+  struct_test (fun info ->
+      let field = GIStructInfo.get_field info 0 in
+      let flags = GIFieldInfo.get_flags field in
+      let rec check_flags = function
+        | [] -> ()
+        | f' :: q -> let _ = assert_equal ~printer:(fun f ->
+            match f with
+            | GIFieldInfo.Is_readable -> "readable"
+            | GIFieldInfo.Is_writable -> "writable"
+          ) GIFieldInfo.Is_readable f' in check_flags q
+      in check_flags flags
+    )
+
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
@@ -90,5 +105,6 @@ let tests =
     "GIStructInfo get size" >:: test_get_size;
     "GIStructInfo is foreign" >:: test_is_foreign;
     "GIStructInfo get n fields" >:: test_get_n_fields;
-    "GIStructInfo get n methods" >:: test_get_n_methods
+    "GIStructInfo get n methods" >:: test_get_n_methods;
+    "GIStructInfo get field" >:: test_get_field
   ]
