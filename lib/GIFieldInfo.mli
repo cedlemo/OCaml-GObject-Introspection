@@ -40,3 +40,11 @@ type flags =
     flag values. *)
 val get_flags:
   fieldinfo structure ptr -> flags list
+
+(*
+   TODO: gboolean	g_field_info_get_field ()
+   TODO: gboolean	g_field_info_set_field ()
+   TODO: gint	g_field_info_get_offset ()
+   TODO: gint	g_field_info_get_size ()
+   TODO: GITypeInfo *	g_field_info_get_type ()
+ *)
