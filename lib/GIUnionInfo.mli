@@ -27,6 +27,20 @@ open Ctypes
 type t
 val unioninfo : t structure typ
 
+(*
+  TODO : gint	g_union_info_get_n_fields ()
+  TODO : GIFieldInfo *	g_union_info_get_field ()
+  TODO : gint	g_union_info_get_n_methods ()
+  TODO : GIFunctionInfo *	g_union_info_get_method ()
+  TODO : gboolean	g_union_info_is_discriminated ()
+  TODO : gint	g_union_info_get_discriminator_offset ()
+  TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
+  TODO : GIConstantInfo *	g_union_info_get_discriminator ()
+  TODO : GIFunctionInfo *	g_union_info_find_method ()
+  TODO : gsize	g_union_info_get_size ()
+  TODO : gsize	g_union_info_get_alignment ()
+*)
+
 (** Just cast OCaml Ctypes base info to union info. *)
 val cast_baseinfo_to_unioninfo:
   GIBaseInfo.t structure ptr -> t structure ptr
