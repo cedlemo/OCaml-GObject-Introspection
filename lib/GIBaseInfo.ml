@@ -43,8 +43,8 @@ let is_deprecated =
 
 type baseinfo_type =
   | Invalid
-  | Function of (GIFunctionInfo.functioninfo structure ptr)
-  | Callback of (GIFunctionInfo.functioninfo structure ptr)
+  | Function of (GIFunctionInfo.t structure ptr)
+  | Callback of (GIFunctionInfo.t structure ptr)
   | Struct of (GIStructInfo.t structure ptr)
   | Boxed
   | Enum

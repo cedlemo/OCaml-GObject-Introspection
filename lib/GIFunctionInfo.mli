@@ -25,13 +25,13 @@ open Ctypes
     GIFunctionInfo.get_flags.
     See also GICallableInfo for information on how to retreive arguments and
     other metadata. *)
-type functioninfo
-val functioninfo : functioninfo structure typ
+type t
+val functioninfo : t structure typ
 
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol().*)
 val get_symbol:
-  functioninfo structure ptr -> string
+  t structure ptr -> string
 
 (** Flags for a GIFunctionInfo struct. *)
 type flags =
@@ -44,7 +44,7 @@ type flags =
 
 (** Obtain the GIFunctionInfoFlags for the info . *)
 val get_flags:
-  functioninfo structure ptr -> flags list
+  t structure ptr -> flags list
 
 (*
   TODO: GIPropertyInfo *	g_function_info_get_property ()

@@ -22,8 +22,8 @@ open Ctypes
 open Foreign
 open Conversions
 
-type functioninfo
-let functioninfo : functioninfo structure typ = structure "GIFunctionInfo"
+type t
+let functioninfo : t structure typ = structure "GIFunctionInfo"
 
 (** Obtain the symbol of the function. The symbol is the name of the exported
     function, suitable to be used as an argument to g_module_symbol().*)
