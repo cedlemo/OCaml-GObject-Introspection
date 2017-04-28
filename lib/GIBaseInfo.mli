@@ -22,38 +22,38 @@ open Ctypes
 (** GIBaseInfo is the common base struct of all other *Info structs accessible
     through the GIRepository API. All other structs can be casted to a
     GIBaseInfo *)
-type baseinfo
-val baseinfo : baseinfo structure typ
+type t
+val baseinfo : t structure typ
 
 (** Increases the reference count of underlying GIBaseInfo *info. *)
 val base_info_ref:
-  baseinfo structure ptr -> baseinfo structure ptr
+  t structure ptr -> t structure ptr
 
 (** Decreases the reference count of underlying GIBaseInfo *info . When its
     reference count drops to 0, the info is freed. *)
 val base_info_unref:
-  baseinfo structure ptr -> unit
+  t structure ptr -> unit
 
 (** Obtain the name of the info . What the name represents depends on the
     GIInfoType of the info . For instance for GIFunctionInfo it is the name of
     the function.*)
 val get_name:
-  baseinfo structure ptr -> string option
+  t structure ptr -> string option
 
 (** Compare two GIBaseInfo.
     Using pointer comparison is not practical since many functions return
     different instances of GIBaseInfo that refers to the same part of the
     TypeLib; use this function instead to do GIBaseInfo comparisons. *)
 val equal:
-  baseinfo structure ptr -> baseinfo structure ptr -> bool
+  t structure ptr -> t structure ptr -> bool
 
 (** Obtain the namespace of info *)
 val get_namespace:
-  baseinfo structure ptr -> string
+  t structure ptr -> string
 
 (** Obtain whether the info is represents a metadata which is deprecated or not. *)
 val is_deprecated:
-  baseinfo structure ptr -> bool
+  t structure ptr -> bool
 
 type baseinfo_type =
   | Invalid (** invalid type *)
@@ -78,7 +78,7 @@ type baseinfo_type =
   | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
 
 val get_type:
-  baseinfo structure ptr -> baseinfo_type
+  t structure ptr -> baseinfo_type
 (*
   GIBaseInfo *	g_info_new ()
   TODO : GITypelib *	g_base_info_get_typelib ()
@@ -88,19 +88,19 @@ val get_type:
 *)
 
 val baseinfo_to_functioninfo:
-  baseinfo structure ptr -> GIFunctionInfo.t structure ptr
+  t structure ptr -> GIFunctionInfo.t structure ptr
 
 val functioninfo_to_baseinfo:
-  GIFunctionInfo.t structure ptr -> baseinfo structure ptr
+  GIFunctionInfo.t structure ptr -> t structure ptr
 
 val baseinfo_to_structinfo:
-  baseinfo structure ptr -> GIStructInfo.t structure ptr
+  t structure ptr -> GIStructInfo.t structure ptr
 
 val structinfo_to_baseinfo:
-  GIStructInfo.t structure ptr -> baseinfo structure ptr
+  GIStructInfo.t structure ptr -> t structure ptr
 
 val baseinfo_to_fieldinfo:
-  baseinfo structure ptr -> GIFieldInfo.t structure ptr
+  t structure ptr -> GIFieldInfo.t structure ptr
 
 val fieldinfo_to_baseinfo:
-  GIFieldInfo.t structure ptr -> baseinfo structure ptr
+  GIFieldInfo.t structure ptr -> t structure ptr

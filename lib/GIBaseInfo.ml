@@ -20,8 +20,8 @@ open Ctypes
 open Foreign
 open Conversions
 
-type baseinfo
-let baseinfo : baseinfo structure typ = structure "GIBaseInfo"
+type t
+let baseinfo : t structure typ = structure "GIBaseInfo"
 
 let base_info_ref =
   foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
