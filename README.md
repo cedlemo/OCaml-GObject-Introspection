@@ -16,3 +16,30 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
 *  http://caml.inria.fr/pub/docs/manual-ocaml/intfc.html
 *  http://www.linux-nantes.org/~fmonnier/OCaml/ocaml-wrapping-c.html (old)
 *  https://wiki.haskell.org/GObjectIntrospection
+
+## Progress
+
+  ### Started or finished
+
+  * GIRepository — GObject Introspection repository manager
+  * GIBaseInfo — Base struct for all GITypelib structs
+  * GIFunctionInfo — Struct representing a function
+  * GIStructInfo — Struct representing a C structure
+  * GIFieldInfo — Struct representing a struct or union field
+
+  ### Remains
+
+  * GICallableInfo — Struct representing a callable
+  * GICallbackInfo — Struct representing a callback
+  * GISignalInfo — Struct representing a signal
+  * GIVFuncInfo — Struct representing a virtual function
+  * GIRegisteredTypeInfo — Struct representing a struct with a GType
+  * GIEnumInfo — Structs representing an enumeration and its values
+  * GIUnionInfo — Struct representing a union.
+  * GIObjectInfo — Struct representing a GObject
+  * GIInterfaceInfo — Struct representing a GInterface
+  * GIArgInfo — Struct representing an argument
+  * GIConstantInfo — Struct representing a constant
+  * GIPropertyInfo — Struct representing a property
+  * GITypeInfo — Struct representing a type
+  * GIValueInfo — Struct representing a value
