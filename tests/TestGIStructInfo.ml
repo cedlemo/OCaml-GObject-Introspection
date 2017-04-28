@@ -121,6 +121,20 @@ let test_get_method_out_of_bounds test_ctxt =
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
   )
 
+let test_find_method test_ctxt =
+  struct_test (fun info -> match GIStructInfo.find_method info "copy" with
+    | None -> assert_equal_boolean false true
+    | Some fn_info -> let symbol = GIFunctionInfo.get_symbol fn_info in
+      assert_equal_string "g_value_copy" symbol
+  )
+
+let test_find_method_bad_name test_ctxt =
+  struct_test (fun info ->
+    match GIStructInfo.find_method info "Impossible" with
+    | None -> assert_equal_boolean true true
+    | Some _ -> assert_equal_string "Impossible" "Should not returns something"
+  )
+
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
@@ -134,5 +148,7 @@ let tests =
     "GIStructInfo get field" >:: test_get_field;
     "GIStructInfo get field out of bounds" >:: test_get_field_out_of_bounds;
     "GIStructInfo get method" >:: test_get_method;
-    "GIStructInfo get method out of bounds" >:: test_get_method_out_of_bounds
+    "GIStructInfo get method out of bounds" >:: test_get_method_out_of_bounds;
+    "GIStructInfo find method" >:: test_find_method;
+    "GIStructInfo find method bad name" >:: test_find_method_bad_name
   ]
