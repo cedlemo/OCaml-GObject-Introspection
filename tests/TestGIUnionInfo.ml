@@ -46,8 +46,15 @@ let union_test fn =
   | None -> assert_equal_string union_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_n_fields test_ctxt =
+  union_test (fun info ->
+    let n = GIUnionInfo.get_n_fields info in
+    assert_equal_int 2 n
+  )
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
-    "GIUnionInfo from baseinfo" >:: test_from_baseinfo
+    "GIUnionInfo from baseinfo" >:: test_from_baseinfo;
+    "GIUnionInfo get n fields" >:: test_get_n_fields
   ]
