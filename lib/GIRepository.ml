@@ -19,7 +19,6 @@
 open Ctypes
 open Foreign
 open Conversions
-open GIBaseInfo
 
 type repository = unit ptr
 let repository : repository typ = ptr void
@@ -80,10 +79,10 @@ let prepend_search_path =
 let find_by_name repo namespace name =
   let find_by_name_raw =
     foreign "g_irepository_find_by_name"
-      (repository @-> string @-> string @-> returning (ptr_opt baseinfo))
+      (repository @-> string @-> string @-> returning (ptr_opt GIBaseInfo.baseinfo))
   in match find_by_name_raw repo namespace name with
   | None -> None
-  | Some info -> let _ = Gc.finalise (fun i -> base_info_unref i) info
+  | Some info -> let _ = Gc.finalise (fun i -> GIBaseInfo.base_info_unref i) info
     in Some info
 
 let get_n_infos =
@@ -93,9 +92,9 @@ let get_n_infos =
 let get_info repo namespace n=
   let get_info_raw =
     foreign "g_irepository_get_info"
-      (repository @-> string @-> int @-> returning (ptr baseinfo))
+      (repository @-> string @-> int @-> returning (ptr GIBaseInfo.baseinfo))
   in let max_infos = get_n_infos repo namespace in
   if (n < 0 || n >= max_infos) then raise (Failure "Array Index out of bounds")
   else let info = get_info_raw repo namespace n in
-    let _ = Gc.finalise (fun i -> base_info_unref i) info in
+    let _ = Gc.finalise (fun i -> GIBaseInfo.base_info_unref i) info in
     info

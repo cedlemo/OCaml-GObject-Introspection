@@ -19,9 +19,6 @@
 open Ctypes
 open Foreign
 open Conversions
-open GIFunctionInfo
-open GIStructInfo
-open GIFieldInfo
 
 type baseinfo
 let baseinfo : baseinfo structure typ = structure "GIBaseInfo"
@@ -46,9 +43,9 @@ let is_deprecated =
 
 type baseinfo_type =
   | Invalid
-  | Function of (functioninfo structure ptr)
-  | Callback of (functioninfo structure ptr)
-  | Struct of (structinfo structure ptr)
+  | Function of (GIFunctionInfo.functioninfo structure ptr)
+  | Callback of (GIFunctionInfo.functioninfo structure ptr)
+  | Struct of (GIStructInfo.structinfo structure ptr)
   | Boxed
   | Enum
   | Flags
@@ -90,10 +87,10 @@ let baseinfo_type_get_name baseinfo_t =
   | Unresolved -> "unresolved"
 
 let baseinfo_to_functioninfo info =
-  coerce (ptr baseinfo) (ptr functioninfo) info
+  coerce (ptr baseinfo) (ptr GIFunctionInfo.functioninfo) info
 
 let functioninfo_to_baseinfo info =
-  coerce (ptr functioninfo) (ptr baseinfo) info
+  coerce (ptr GIFunctionInfo.functioninfo) (ptr baseinfo) info
 
 let ref_and_finalise_returned_function_info base_info =
   let _ = base_info_ref base_info in
@@ -104,10 +101,10 @@ let ref_and_finalise_returned_function_info base_info =
   info'
 
 let baseinfo_to_structinfo info =
-  coerce (ptr baseinfo) (ptr structinfo) info
+  coerce (ptr baseinfo) (ptr GIStructInfo.structinfo) info
 
 let structinfo_to_baseinfo info =
-  coerce (ptr structinfo) (ptr baseinfo) info
+  coerce (ptr GIStructInfo.structinfo) (ptr baseinfo) info
 
 let ref_and_finalise_returned_struct_info base_info =
   let _ = base_info_ref base_info in
@@ -118,10 +115,10 @@ let ref_and_finalise_returned_struct_info base_info =
   info'
 
 let baseinfo_to_fieldinfo info =
-  coerce (ptr baseinfo) (ptr fieldinfo) info
+  coerce (ptr baseinfo) (ptr GIFieldInfo.fieldinfo) info
 
 let fieldinfo_to_baseinfo info =
-  coerce (ptr fieldinfo) (ptr baseinfo) info
+  coerce (ptr GIFieldInfo.fieldinfo) (ptr baseinfo) info
 
 let get_type info =
   let get_type_raw =

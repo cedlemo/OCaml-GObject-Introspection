@@ -21,7 +21,6 @@
   represented on disk by type libraries (.typelib files).
 *)
 
-open GIBaseInfo
 open Ctypes
 
 (** GIRepository — GObject Introspection repository manager module
@@ -101,7 +100,7 @@ val prepend_search_path:
     once to load the namespace, or otherwise ensure the namespace has already
     been loaded.*)
 val find_by_name:
-  repository -> string -> string -> baseinfo structure ptr option
+  repository -> string -> string -> GIBaseInfo.baseinfo structure ptr option
 
 (** This function returns the number of metadata entries in given namespace
     namespace_ . The namespace must have already been loaded before calling
@@ -114,7 +113,7 @@ val get_n_infos:
     this function. See GIRepository.get_n_infos to find the maximum number of
     entries. *)
 val get_info:
-  repository -> string -> int -> baseinfo structure ptr
+  repository -> string -> int -> GIBaseInfo.baseinfo structure ptr
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()

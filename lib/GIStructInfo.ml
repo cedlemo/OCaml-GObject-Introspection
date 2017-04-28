@@ -53,5 +53,4 @@ let get_field info n =
       (ptr structinfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
   let max = get_n_fields info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
-  else let ptr' = get_field_raw info n in
-    ptr'
+  else get_field_raw info n
