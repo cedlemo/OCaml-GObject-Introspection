@@ -25,6 +25,7 @@ let () =
       TestGIRepository.tests;
       TestGIBaseInfo.tests;
       TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests
+      TestGIStructInfo.tests;
+      TestGIUnionInfo.tests
     ]
   )
