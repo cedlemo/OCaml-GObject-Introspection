@@ -56,8 +56,11 @@ val get_n_methods:
 val get_field:
   t structure ptr -> int -> GIFieldInfo.t structure ptr
 
+(** Obtain the type information for method with specified index. *)
+val get_method:
+  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+
 (*
-   TODO : GIFunctionInfo *	g_struct_info_get_method ()
    TODO : GIFunctionInfo *	g_struct_info_find_method ()
 *)
 
