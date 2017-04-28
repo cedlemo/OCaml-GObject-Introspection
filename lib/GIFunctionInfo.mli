@@ -59,7 +59,7 @@ val get_flags:
 val functioninfo_of_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
-(** Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+(** Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
 val baseinfo_of_functioninfo:
