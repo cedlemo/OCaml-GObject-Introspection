@@ -39,9 +39,12 @@ val get_size:
 val get_alignment:
   t structure ptr -> int
 
+(** Obtain the number of methods this union has. *)
+val get_n_methods:
+  t structure ptr -> int
+
 (*
   TODO : GIFieldInfo *	g_union_info_get_field ()
-  TODO : gint	g_union_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_union_info_get_method ()
   TODO : gboolean	g_union_info_is_discriminated ()
   TODO : gint	g_union_info_get_discriminator_offset ()
