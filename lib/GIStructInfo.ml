@@ -20,8 +20,8 @@ open Ctypes
 open Foreign
 open Conversions
 
-type structinfo
-let structinfo : structinfo structure typ = structure "GIStructInfo"
+type t
+let structinfo : t structure typ = structure "GIStructInfo"
 
 let is_gtype_struct =
   foreign "g_struct_info_is_gtype_struct"

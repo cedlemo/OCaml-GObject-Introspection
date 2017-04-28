@@ -59,7 +59,7 @@ type baseinfo_type =
   | Invalid (** invalid type *)
   | Function of (GIFunctionInfo.functioninfo structure ptr) (** function, see GIFunctionInfo *)
   | Callback of (GIFunctionInfo.functioninfo structure ptr) (** callback, see GIFunctionInfo *)
-  | Struct of (GIStructInfo.structinfo structure ptr) (** struct, see GIStructInfo *)
+  | Struct of (GIStructInfo.t structure ptr) (** struct, see GIStructInfo *)
   | Boxed (** boxed, see GIStructInfo or GIUnionInfo *)
   | Enum (** enum, see GIEnumInfo *)
   | Flags (** flags, see GIEnumInfo *)
@@ -94,10 +94,10 @@ val functioninfo_to_baseinfo:
   GIFunctionInfo.functioninfo structure ptr -> baseinfo structure ptr
 
 val baseinfo_to_structinfo:
-  baseinfo structure ptr -> GIStructInfo.structinfo structure ptr
+  baseinfo structure ptr -> GIStructInfo.t structure ptr
 
 val structinfo_to_baseinfo:
-  GIStructInfo.structinfo structure ptr -> baseinfo structure ptr
+  GIStructInfo.t structure ptr -> baseinfo structure ptr
 
 val baseinfo_to_fieldinfo:
   baseinfo structure ptr -> GIFieldInfo.fieldinfo structure ptr

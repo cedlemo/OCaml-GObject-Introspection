@@ -22,36 +22,36 @@ open Ctypes
 
 (** GIStructInfo represents a generic C structure type.
  A structure has methods and fields.*)
-type structinfo
-val structinfo : structinfo structure typ
+type t
+val structinfo : t structure typ
 
 (** Return true if this structure represents the "class structure" for some
     GObject or GInterface. This function is mainly useful to hide this kind of
     structure from generated public APIs.
 *)
 val is_gtype_struct:
-  structinfo structure ptr -> bool
+  t structure ptr -> bool
 
 (** Obtain the required alignment of the structure.*)
 val get_alignment:
-  structinfo structure ptr -> int
+  t structure ptr -> int
 
 (** Obtain the total size of the structure. *)
 val get_size:
-  structinfo structure ptr -> int
+  t structure ptr -> int
 
 (** No doc yet *)
 val is_foreign:
-  structinfo structure ptr -> bool
+  t structure ptr -> bool
 
 (** Obtain the number of fields this structure has. *)
 val get_n_fields:
-  structinfo structure ptr -> int
+  t structure ptr -> int
 
 (** Obtain the number of methods this structure has. *)
 val get_n_methods:
-  structinfo structure ptr -> int
+  t structure ptr -> int
 
 (** Obtain the type information for field with specified index. *)
 val get_field:
-  structinfo structure ptr -> int -> GIFieldInfo.fieldinfo structure ptr
+  t structure ptr -> int -> GIFieldInfo.fieldinfo structure ptr

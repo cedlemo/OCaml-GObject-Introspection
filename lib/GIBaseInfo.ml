@@ -45,7 +45,7 @@ type baseinfo_type =
   | Invalid
   | Function of (GIFunctionInfo.functioninfo structure ptr)
   | Callback of (GIFunctionInfo.functioninfo structure ptr)
-  | Struct of (GIStructInfo.structinfo structure ptr)
+  | Struct of (GIStructInfo.t structure ptr)
   | Boxed
   | Enum
   | Flags
