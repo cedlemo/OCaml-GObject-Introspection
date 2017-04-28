@@ -60,9 +60,9 @@ val get_field:
 val get_method:
   t structure ptr -> int -> GIFunctionInfo.t structure ptr
 
-(*
-   TODO : GIFunctionInfo *	g_struct_info_find_method ()
-*)
+(** Obtain the type information for method named name .*)
+val find_method:
+  t structure ptr -> string -> GIFunctionInfo.t structure ptr option
 
 (** Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with

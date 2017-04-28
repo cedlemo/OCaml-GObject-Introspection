@@ -77,6 +77,15 @@ let get_method info n =
   else let info' = get_method_raw info n in
     add_finaliser_to_method_info info'
 
+let find_method info name =
+  let find_method_raw =
+    foreign "g_struct_info_find_method"
+    (ptr structinfo @-> string @-> returning (ptr_opt GIFunctionInfo.functioninfo))
+  in match find_method_raw info name with
+  | None -> None
+  | Some info' -> let fn_info = add_finaliser_to_method_info info' in
+    Some fn_info
+
 (* TODO : check that the info can be casted to a structinfo ? *)
 let cast_baseinfo_to_structinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr structinfo) info
