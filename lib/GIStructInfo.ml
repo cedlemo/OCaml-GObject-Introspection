@@ -47,6 +47,13 @@ let get_n_methods =
   foreign "g_struct_info_get_n_methods"
     (ptr structinfo @-> returning int)
 
+(* let finalise_returned_field info =
+  let _ = Gc.finalise (fun i ->
+      let i' = GIBaseInfo.fieldinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+*)
+
 let get_field info n =
   let get_field_raw =
     foreign "g_struct_info_get_field"
