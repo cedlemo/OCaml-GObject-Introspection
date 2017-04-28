@@ -29,7 +29,7 @@ let test_baseinfo_get_type test_ctxt =
   | None -> assert_equal_string struct_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match GIBaseInfo.get_type base_info with
-      | GIBaseInfo.Struct struct_info -> true
+      | GIBaseInfo.Struct -> true
       | _ -> false)
 
 let get_struct_info () =
@@ -37,7 +37,7 @@ let get_struct_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Struct struct_info -> Some struct_info
+    | GIBaseInfo.Struct -> Some (GIStructInfo.structinfo_of_baseinfo base_info)
     | _ -> None
 
 let struct_test fn =
