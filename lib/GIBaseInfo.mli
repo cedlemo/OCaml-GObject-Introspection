@@ -57,8 +57,8 @@ val is_deprecated:
 
 type baseinfo_type =
   | Invalid (** invalid type *)
-  | Function of (GIFunctionInfo.t structure ptr) (** function, see GIFunctionInfo *)
-  | Callback of (GIFunctionInfo.t structure ptr) (** callback, see GIFunctionInfo *)
+  | Function (** function, see GIFunctionInfo *)
+  | Callback (** callback, see GIFunctionInfo *)
   | Struct (** struct, see GIStructInfo *)
   | Boxed (** boxed, see GIStructInfo or GIUnionInfo *)
   | Enum (** enum, see GIEnumInfo *)
@@ -86,12 +86,6 @@ val get_type:
   TODO : gboolean	g_base_info_iterate_attributes ()
   TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
-
-val baseinfo_to_functioninfo:
-  t structure ptr -> GIFunctionInfo.t structure ptr
-
-val functioninfo_to_baseinfo:
-  GIFunctionInfo.t structure ptr -> t structure ptr
 
 val baseinfo_to_fieldinfo:
   t structure ptr -> GIFieldInfo.t structure ptr

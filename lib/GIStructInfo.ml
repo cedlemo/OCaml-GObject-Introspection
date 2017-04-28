@@ -75,4 +75,3 @@ let baseinfo_of_structinfo info =
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
   info'
-

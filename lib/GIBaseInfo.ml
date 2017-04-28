@@ -43,8 +43,8 @@ let is_deprecated =
 
 type baseinfo_type =
   | Invalid
-  | Function of (GIFunctionInfo.t structure ptr)
-  | Callback of (GIFunctionInfo.t structure ptr)
+  | Function
+  | Callback
   | Struct
   | Boxed
   | Enum
@@ -66,8 +66,8 @@ type baseinfo_type =
 let baseinfo_type_get_name baseinfo_t =
   match baseinfo_t with
   | Invalid -> "invalid"
-  | Function _ -> "function"
-  | Callback _ -> "callback"
+  | Function -> "function"
+  | Callback -> "callback"
   | Struct -> "struct"
   | Boxed -> "boxed"
   | Enum -> "enum"
@@ -86,20 +86,6 @@ let baseinfo_type_get_name baseinfo_t =
   | Type -> "type"
   | Unresolved -> "unresolved"
 
-let baseinfo_to_functioninfo info =
-  coerce (ptr baseinfo) (ptr GIFunctionInfo.functioninfo) info
-
-let functioninfo_to_baseinfo info =
-  coerce (ptr GIFunctionInfo.functioninfo) (ptr baseinfo) info
-
-let ref_and_finalise_returned_function_info base_info =
-  let _ = base_info_ref base_info in
-  let info' = baseinfo_to_functioninfo base_info in
-  let _ = Gc.finalise (fun i ->
-      let i' = functioninfo_to_baseinfo i in
-      base_info_unref i') info' in
-  info'
-
 let baseinfo_to_fieldinfo info =
   coerce (ptr baseinfo) (ptr GIFieldInfo.fieldinfo) info
 
@@ -112,10 +98,8 @@ let get_type info =
       (ptr baseinfo @-> returning int)
   in match get_type_raw info with
   | 0 -> Invalid
-  | 1 -> let info' = ref_and_finalise_returned_function_info info
-    in Function info'
-  | 2 -> let info' = ref_and_finalise_returned_function_info info
-    in Callback info'
+  | 1 -> Function
+  | 2 -> Callback
   | 3 -> Struct
   | 4 -> Boxed
   | 5 -> Enum
