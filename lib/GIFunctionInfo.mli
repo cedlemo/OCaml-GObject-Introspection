@@ -52,3 +52,15 @@ val get_flags:
   TODO: gboolean	g_function_info_invoke ()
   TODO: GQuark	g_invoke_error_quark ()
 *)
+
+(** Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val functioninfo_of_baseinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val baseinfo_of_functioninfo:
+  t structure ptr -> GIBaseInfo.t structure ptr

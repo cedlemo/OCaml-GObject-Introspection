@@ -52,3 +52,24 @@ let get_flags info =
   if ((c_flags land (1 lsl 4)) != 0) then ignore (Wraps_vfunc :: flags);
   if ((c_flags land (1 lsl 5)) != 0) then ignore (Throws :: flags);
   flags
+
+let cast_baseinfo_to_functioninfo info =
+  coerce (ptr GIBaseInfo.baseinfo) (ptr functioninfo) info
+
+let cast_functioninfo_to_baseinfo info =
+  coerce (ptr functioninfo) (ptr GIBaseInfo.baseinfo) info
+
+let functioninfo_of_baseinfo info =
+  let _ = GIBaseInfo.base_info_ref info in
+  let info' = cast_baseinfo_to_functioninfo info in
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_functioninfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info' in
+  info'
+
+let baseinfo_of_functioninfo info =
+  let info' = cast_functioninfo_to_baseinfo info in
+  let _ = GIBaseInfo.base_info_ref info' in
+  let _ = Gc.finalise (fun i ->
+      GIBaseInfo.base_info_unref i) info' in
+  info'
