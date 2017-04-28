@@ -49,6 +49,14 @@ val get_flags:
    TODO: GITypeInfo *	g_field_info_get_type ()
  *)
 
+(** Just cast OCaml Ctypes base info to field info. *)
+val cast_baseinfo_to_fieldinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes field info to base info *)
+val cast_fieldinfo_to_baseinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
+
 (** Return a GIFieldInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
