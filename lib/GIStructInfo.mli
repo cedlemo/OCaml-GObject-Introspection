@@ -52,3 +52,6 @@ val get_n_fields:
 val get_n_methods:
   structinfo structure ptr -> int
 
+(** Obtain the type information for field with specified index. *)
+val get_field:
+  structinfo structure ptr -> int -> GIFieldInfo.fieldinfo structure ptr
