@@ -27,8 +27,10 @@ open Ctypes
 type t
 val unioninfo : t structure typ
 
+(** Obtain the number of fields this union has. *)
+val get_n_fields:
+  t structure ptr -> int
 (*
-  TODO : gint	g_union_info_get_n_fields ()
   TODO : GIFieldInfo *	g_union_info_get_field ()
   TODO : gint	g_union_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_union_info_get_method ()

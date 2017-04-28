@@ -23,6 +23,10 @@ open Conversions
 type t
 let unioninfo : t structure typ = structure "GIUnionInfo"
 
+let get_n_fields =
+  foreign "g_union_info_get_n_fields"
+    (ptr unioninfo @-> returning int)
+
 (* TODO : check that the info can be casted to a structinfo ? *)
 let cast_baseinfo_to_unioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr unioninfo) info
