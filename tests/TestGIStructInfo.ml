@@ -95,6 +95,16 @@ let test_get_field test_ctxt =
       in check_flags flags
     )
 
+let test_get_field_out_of_bounds test_ctxt =
+  struct_test (fun info ->
+    try ignore(GIStructInfo.get_field info 300)
+    with
+    | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+    | _ -> assert_equal_string "Bad exception" "Not a Failure"
+  )
+
+
 let test_get_method test_ctxt =
   struct_test (fun info ->
     let m = GIStructInfo.get_method info 0 in
@@ -113,5 +123,6 @@ let tests =
     "GIStructInfo get n fields" >:: test_get_n_fields;
     "GIStructInfo get n methods" >:: test_get_n_methods;
     "GIStructInfo get field" >:: test_get_field;
+    "GIStructInfo get field out of bounds" >:: test_get_field_out_of_bounds;
     "GIStructInfo get method" >:: test_get_method
   ]
