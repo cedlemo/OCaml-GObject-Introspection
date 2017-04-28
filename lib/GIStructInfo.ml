@@ -55,6 +55,7 @@ let get_field info n =
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else get_field_raw info n
 
+(* TODO : check that the info can be casted to a structinfo ? *)
 let cast_baseinfo_to_structinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr structinfo) info
 

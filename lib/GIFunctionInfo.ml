@@ -53,6 +53,7 @@ let get_flags info =
   if ((c_flags land (1 lsl 5)) != 0) then ignore (Throws :: flags);
   flags
 
+(* TODO : check that the info can be casted to function info ? *)
 let cast_baseinfo_to_functioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr functioninfo) info
 

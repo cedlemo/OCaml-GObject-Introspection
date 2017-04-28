@@ -56,6 +56,11 @@ val get_n_methods:
 val get_field:
   t structure ptr -> int -> GIFieldInfo.t structure ptr
 
+(*
+   TODO : GIFunctionInfo *	g_struct_info_get_method ()
+   TODO : GIFunctionInfo *	g_struct_info_find_method ()
+*)
+
 (** Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
