@@ -95,6 +95,12 @@ let test_get_field test_ctxt =
       in check_flags flags
     )
 
+let test_get_method test_ctxt =
+  struct_test (fun info ->
+    let m = GIStructInfo.get_method info 0 in
+    let symbol = GIFunctionInfo.get_symbol m in
+    assert_equal_string "g_value_copy" symbol
+  )
 
 let tests =
   "GObject Introspection StructInfo tests" >:::
@@ -106,5 +112,6 @@ let tests =
     "GIStructInfo is foreign" >:: test_is_foreign;
     "GIStructInfo get n fields" >:: test_get_n_fields;
     "GIStructInfo get n methods" >:: test_get_n_methods;
-    "GIStructInfo get field" >:: test_get_field
+    "GIStructInfo get field" >:: test_get_field;
+    "GIStructInfo get method" >:: test_get_method
   ]
