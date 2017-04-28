@@ -53,6 +53,15 @@ val get_flags:
   TODO: GQuark	g_invoke_error_quark ()
 *)
 
+(** Just cast OCaml Ctypes base info to function info. *)
+val cast_baseinfo_to_functioninfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes function info to base info *)
+val cast_functioninfo_to_baseinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
+
+
 (** Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
