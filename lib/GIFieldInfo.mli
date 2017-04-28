@@ -28,8 +28,8 @@ open Ctypes
     or GIObjectInfo.get_field. A field has a size, type and a struct offset
     asssociated and a set of flags, which is currently
     GI_FIELD_IS_READABLE or GI_FIELD_IS_WRITABLE.*)
-type fieldinfo
-val fieldinfo : fieldinfo structure typ
+type t
+val fieldinfo : t structure typ
 
 (** Flags for a GIFieldInfo. *)
 type flags =
@@ -39,7 +39,7 @@ type flags =
 (** Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
     flag values. *)
 val get_flags:
-  fieldinfo structure ptr -> flags list
+  t structure ptr -> flags list
 
 (*
    TODO: gboolean	g_field_info_get_field ()

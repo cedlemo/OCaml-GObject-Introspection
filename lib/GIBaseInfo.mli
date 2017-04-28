@@ -100,7 +100,7 @@ val structinfo_to_baseinfo:
   GIStructInfo.t structure ptr -> baseinfo structure ptr
 
 val baseinfo_to_fieldinfo:
-  baseinfo structure ptr -> GIFieldInfo.fieldinfo structure ptr
+  baseinfo structure ptr -> GIFieldInfo.t structure ptr
 
 val fieldinfo_to_baseinfo:
-  GIFieldInfo.fieldinfo structure ptr -> baseinfo structure ptr
+  GIFieldInfo.t structure ptr -> baseinfo structure ptr

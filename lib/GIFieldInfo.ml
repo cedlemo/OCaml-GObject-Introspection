@@ -20,8 +20,8 @@ open Ctypes
 open Foreign
 open Conversions
 
-type fieldinfo
-let fieldinfo : fieldinfo structure typ = structure "GIFieldInfo"
+type t
+let fieldinfo : t structure typ = structure "GIFieldInfo"
 
 type flags =
   | Is_readable

@@ -54,4 +54,4 @@ val get_n_methods:
 
 (** Obtain the type information for field with specified index. *)
 val get_field:
-  t structure ptr -> int -> GIFieldInfo.fieldinfo structure ptr
+  t structure ptr -> int -> GIFieldInfo.t structure ptr
