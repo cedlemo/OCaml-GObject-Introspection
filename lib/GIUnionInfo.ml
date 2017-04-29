@@ -67,6 +67,10 @@ let find_method info name =
     let fn_info = GIFunctionInfo.add_unref_finaliser_to_function_info info' in
     Some fn_info
 
+let is_discriminated =
+  foreign "g_union_info_is_discriminated"
+    (ptr unioninfo @-> returning bool)
+
 (* TODO : check that the info can be casted to a structinfo ? *)
 let cast_baseinfo_to_unioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr unioninfo) info

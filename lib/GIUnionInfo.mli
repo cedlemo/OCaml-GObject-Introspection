@@ -54,8 +54,11 @@ val get_method:
 (** Obtain the type information for method named name .*)
 val find_method:
   t structure ptr -> string -> GIFunctionInfo.t structure ptr option
+
+(** Return true if this union contains discriminator field. *)
+val is_discriminated:
+  t structure ptr -> bool
 (*
-  TODO : gboolean	g_union_info_is_discriminated ()
   TODO : gint	g_union_info_get_discriminator_offset ()
   TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
   TODO : GIConstantInfo *	g_union_info_get_discriminator ()
