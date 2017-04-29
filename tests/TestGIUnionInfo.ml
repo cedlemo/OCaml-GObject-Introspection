@@ -93,6 +93,22 @@ let test_get_field_out_of_bounds test_ctxt =
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
   )
 
+let test_get_method test_ctxt =
+  union_test (fun info ->
+    let m = GIUnionInfo.get_method info 0 in
+    let symbol = GIFunctionInfo.get_symbol m in
+    assert_equal_string "g_mutex_clear" symbol
+  )
+
+let test_get_method_out_of_bounds test_ctxt =
+  union_test (fun info ->
+    try ignore(GIUnionInfo.get_method info 300)
+    with
+    | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+    | _ -> assert_equal_string "Bad exception" "Not a Failure"
+  )
+
 
 let tests =
   "GObject Introspection UnionInfo tests" >:::
@@ -103,5 +119,7 @@ let tests =
     "GIUnionInfo get alignment" >:: test_get_alignment;
     "GIUnionInfo get n methods" >:: test_get_n_methods;
     "GIUnionInfo get field" >:: test_get_field;
-    "GIUnionInfo get field out of bound" >:: test_get_field_out_of_bounds
+    "GIUnionInfo get field out of bounds" >:: test_get_field_out_of_bounds;
+    "GIUnionInfo get method" >:: test_get_method;
+    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds
   ]
