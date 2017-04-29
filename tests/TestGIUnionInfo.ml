@@ -118,6 +118,12 @@ let test_find_method test_ctxt =
         assert_equal_string ("g_mutex_" ^ function_name) symbol
     )
 
+let test_is_discriminated test_ctxt =
+  union_test (fun info ->
+      let is_discriminated = GIUnionInfo.is_discriminated info in
+      assert_equal_boolean false is_discriminated
+  )
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
@@ -130,5 +136,6 @@ let tests =
     "GIUnionInfo get field out of bounds" >:: test_get_field_out_of_bounds;
     "GIUnionInfo get method" >:: test_get_method;
     "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds;
-    "GIUnionInfo find method" >:: test_find_method
+    "GIUnionInfo find method" >:: test_find_method;
+    "GIUnionInfo is discriminated" >:: test_is_discriminated
   ]
