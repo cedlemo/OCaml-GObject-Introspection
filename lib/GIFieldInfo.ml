@@ -37,6 +37,10 @@ let get_flags info =
   if ((c_flags land (1 lsl 1)) != 0) then ignore (Is_writable :: flags);
   flags
 
+let get_offset =
+  foreign "g_field_info_get_offset"
+    (ptr fieldinfo @-> returning int)
+
 (* TODO : check that the info can be casted to field info ? *)
 let cast_baseinfo_to_fieldinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr fieldinfo) info
