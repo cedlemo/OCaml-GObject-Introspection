@@ -46,10 +46,13 @@ val get_flags:
 val get_offset:
   t structure ptr -> int
 
+(** Obtain the size in bits of the field member, this is how much space you
+    need to allocate to store the field. *)
+val get_size:
+  t structure ptr -> int
 (*
    TODO: gboolean	g_field_info_get_field ()
    TODO: gboolean	g_field_info_set_field ()
-   TODO: gint	g_field_info_get_size ()
    TODO: GITypeInfo *	g_field_info_get_type ()
  *)
 

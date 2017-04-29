@@ -41,6 +41,10 @@ let get_offset =
   foreign "g_field_info_get_offset"
     (ptr fieldinfo @-> returning int)
 
+let get_size =
+  foreign "g_field_info_get_size"
+    (ptr fieldinfo @-> returning int)
+
 (* TODO : check that the info can be casted to field info ? *)
 let cast_baseinfo_to_fieldinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr fieldinfo) info
