@@ -27,6 +27,10 @@ open Ctypes
 type t
 val enuminfo : t structure typ
 
+(** Obtain the number of values this enumeration contains. *)
+val get_n_values:
+  t structure ptr -> int
+
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_baseinfo_to_enuminfo:
   GIBaseInfo.t structure ptr -> t structure ptr
@@ -48,7 +52,6 @@ val baseinfo_of_enuminfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (*
-  TODO : gint	g_enum_info_get_n_values ()
   TODO : GIValueInfo *	g_enum_info_get_value ()
   TODO : gint	g_enum_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_enum_info_get_method ()
