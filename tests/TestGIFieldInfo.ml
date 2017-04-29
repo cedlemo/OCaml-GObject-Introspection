@@ -64,7 +64,7 @@ let test_get_size test_ctxt =
   )
 
 let tests =
-  "GObject Introspection FiledInfo tests" >:::
+  "GObject Introspection FieldInfo tests" >:::
   [
     "GIFieldInfo get flags" >:: test_get_flags;
     "GIFieldInfo get offset" >:: test_get_offset;
