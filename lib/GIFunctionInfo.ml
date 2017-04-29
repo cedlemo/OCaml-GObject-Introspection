@@ -60,13 +60,16 @@ let cast_baseinfo_to_functioninfo info =
 let cast_functioninfo_to_baseinfo info =
   coerce (ptr functioninfo) (ptr GIBaseInfo.baseinfo) info
 
+let add_unref_finaliser_to_function_info info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_functioninfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+
 let functioninfo_of_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
   let info' = cast_baseinfo_to_functioninfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_functioninfo_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
-  info'
+  add_unref_finaliser_to_function_info info'
 
 let baseinfo_of_functioninfo info =
   let info' = cast_functioninfo_to_baseinfo info in

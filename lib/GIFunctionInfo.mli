@@ -61,6 +61,9 @@ val cast_baseinfo_to_functioninfo:
 val cast_functioninfo_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
+(** Add unref of the C underlying structure whith Gc.finalise. *)
+val add_unref_finaliser_to_function_info:
+  t structure ptr -> t structure ptr
 
 (** Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with

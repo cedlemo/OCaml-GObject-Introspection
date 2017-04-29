@@ -56,12 +56,6 @@ let get_field info n =
   else let info' = get_field_raw info n in
     GIFieldInfo.add_unref_finaliser_to_field_info info'
 
-let add_finaliser_to_method_info info =
-  let _ = Gc.finalise (fun i ->
-      let i' = GIFunctionInfo.cast_functioninfo_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info
-  in info
-
 let get_method info n =
   let get_method_raw =
     foreign "g_struct_info_get_method"
@@ -69,7 +63,7 @@ let get_method info n =
   let max = get_n_methods info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_method_raw info n in
-    add_finaliser_to_method_info info'
+    GIFunctionInfo.add_unref_finaliser_to_function_info info'
 
 let find_method info name =
   let find_method_raw =
@@ -77,7 +71,8 @@ let find_method info name =
     (ptr structinfo @-> string @-> returning (ptr_opt GIFunctionInfo.functioninfo))
   in match find_method_raw info name with
   | None -> None
-  | Some info' -> let fn_info = add_finaliser_to_method_info info' in
+  | Some info' ->
+    let fn_info = GIFunctionInfo.add_unref_finaliser_to_function_info info' in
     Some fn_info
 
 (* TODO : check that the info can be casted to a structinfo ? *)
