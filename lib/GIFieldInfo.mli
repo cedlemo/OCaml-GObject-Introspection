@@ -57,6 +57,10 @@ val cast_baseinfo_to_fieldinfo:
 val cast_fieldinfo_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
+(** Add unref of the C underlying structure whith Gc.finalise. *)
+val add_unref_finaliser_to_field_info:
+  t structure ptr -> t structure ptr
+
 (** Return a GIFieldInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)

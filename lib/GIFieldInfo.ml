@@ -44,13 +44,16 @@ let cast_baseinfo_to_fieldinfo info =
 let cast_fieldinfo_to_baseinfo info =
   coerce (ptr fieldinfo) (ptr GIBaseInfo.baseinfo) info
 
+let add_unref_finaliser_to_field_info info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_fieldinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+
 let fieldinfo_of_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
   let info' = cast_baseinfo_to_fieldinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_fieldinfo_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
-  info'
+  add_unref_finaliser_to_field_info info'
 
 let baseinfo_of_fieldinfo info =
   let info' = cast_fieldinfo_to_baseinfo info in
