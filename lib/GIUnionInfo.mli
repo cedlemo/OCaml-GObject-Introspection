@@ -62,7 +62,6 @@ val is_discriminated:
   TODO : gint	g_union_info_get_discriminator_offset ()
   TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
   TODO : GIConstantInfo *	g_union_info_get_discriminator ()
-  TODO : GIFunctionInfo *	g_union_info_find_method ()
 *)
 
 (** Just cast OCaml Ctypes base info to union info. *)
