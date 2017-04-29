@@ -43,6 +43,10 @@ val get_alignment:
 val get_n_methods:
   t structure ptr -> int
 
+(** Obtain the type information for field with specified index. *)
+val get_field:
+  t structure ptr -> int -> GIFieldInfo.t structure ptr
+
 (*
   TODO : GIFieldInfo *	g_union_info_get_field ()
   TODO : GIFunctionInfo *	g_union_info_get_method ()
@@ -72,4 +76,3 @@ val unioninfo_of_baseinfo:
     GIBaseInfo.baseinfo_unref. *)
 val baseinfo_of_unioninfo:
   t structure ptr -> GIBaseInfo.t structure ptr
-

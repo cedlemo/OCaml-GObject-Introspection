@@ -39,6 +39,21 @@ let get_n_methods =
   foreign "g_union_info_get_n_methods"
     (ptr unioninfo @-> returning int)
 
+let add_finaliser_to_field_info info =
+  let _ = Gc.finalise (fun i ->
+      let i' = GIFieldInfo.cast_fieldinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+
+let get_field info n =
+  let get_field_raw =
+    foreign "g_struct_info_get_field"
+      (ptr unioninfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
+  let max = get_n_fields info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_field_raw info n in
+    add_finaliser_to_field_info info'
+
 (* TODO : check that the info can be casted to a structinfo ? *)
 let cast_baseinfo_to_unioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr unioninfo) info
