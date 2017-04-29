@@ -26,6 +26,7 @@ let () =
       TestGIBaseInfo.tests;
       TestGIFunctionInfo.tests;
       TestGIStructInfo.tests;
-      TestGIUnionInfo.tests
+      TestGIUnionInfo.tests;
+      TestGIFieldInfo.tests
     ]
   )
