@@ -47,3 +47,12 @@ val enuminfo_of_baseinfo:
 val baseinfo_of_enuminfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
+(*
+  TODO : gint	g_enum_info_get_n_values ()
+  TODO : GIValueInfo *	g_enum_info_get_value ()
+  TODO : gint	g_enum_info_get_n_methods ()
+  TODO : GIFunctionInfo *	g_enum_info_get_method ()
+  TODO : GITypeTag	g_enum_info_get_storage_type ()
+  TODO : const gchar *	g_enum_info_get_error_domain ()
+  TODO : gint64	g_value_info_get_value ()
+*)
