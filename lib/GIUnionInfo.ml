@@ -71,7 +71,7 @@ let is_discriminated =
   foreign "g_union_info_is_discriminated"
     (ptr unioninfo @-> returning bool)
 
-(* TODO : check that the info can be casted to a enuminfo ? *)
+(* TODO : check that the info can be casted to a unioninfo ? *)
 let cast_baseinfo_to_unioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr unioninfo) info
 
