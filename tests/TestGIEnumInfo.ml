@@ -33,7 +33,19 @@ let get_enum_info () =
       in Some info
     | _ -> None
 
+let enum_test fn =
+  match get_enum_info () with
+  | None -> assert_equal_string enum_name "No base info found"
+  | Some (info) -> fn info
+
+let test_get_n_values test_ctxt =
+  enum_test (fun info ->
+      let n_values = GIEnumInfo.get_n_values info in
+      assert_equal_int 8 n_values
+    )
+
 let tests =
   "GObject Introspection GIEnumInfo tests" >:::
   [
+    "GIEnumInfo get n values" >:: test_get_n_values
   ]
