@@ -109,6 +109,14 @@ let test_get_method_out_of_bounds test_ctxt =
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
   )
 
+let test_find_method test_ctxt =
+  let function_name = "clear" in
+  union_test (fun info ->
+      match GIUnionInfo.find_method info function_name with
+      | None -> assert_equal_boolean true false
+      | Some m -> let symbol = GIFunctionInfo.get_symbol m in
+        assert_equal_string ("g_mutex_" ^ function_name) symbol
+    )
 
 let tests =
   "GObject Introspection UnionInfo tests" >:::
@@ -121,5 +129,6 @@ let tests =
     "GIUnionInfo get field" >:: test_get_field;
     "GIUnionInfo get field out of bounds" >:: test_get_field_out_of_bounds;
     "GIUnionInfo get method" >:: test_get_method;
-    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds
+    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds;
+    "GIUnionInfo find method" >:: test_find_method
   ]
