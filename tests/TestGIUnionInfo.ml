@@ -70,6 +70,30 @@ let test_get_n_methods test_ctxt =
     assert_equal_int 5 n
   )
 
+let test_get_field test_ctxt =
+  union_test (fun info ->
+    let field = GIUnionInfo.get_field info 0 in
+      let flags = GIFieldInfo.get_flags field in
+      let rec check_flags = function
+        | [] -> ()
+        | f' :: q -> let _ = assert_equal ~printer:(fun f ->
+            match f with
+            | GIFieldInfo.Is_readable -> "readable"
+            | GIFieldInfo.Is_writable -> "writable"
+          ) GIFieldInfo.Is_readable f' in check_flags q
+      in check_flags flags
+    )
+
+let test_get_field_out_of_bounds test_ctxt =
+  union_test (fun info ->
+    try ignore(GIUnionInfo.get_field info 3000)
+    with
+    | Failure message -> assert_equal_string "Array Index out of bounds"
+                                              message
+    | _ -> assert_equal_string "Bad exception" "Not a Failure"
+  )
+
+
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
@@ -77,5 +101,7 @@ let tests =
     "GIUnionInfo get n fields" >:: test_get_n_fields;
     "GIUnionInfo get size" >:: test_get_size;
     "GIUnionInfo get alignment" >:: test_get_alignment;
-    "GIUnionInfo get n methods" >:: test_get_n_methods
+    "GIUnionInfo get n methods" >:: test_get_n_methods;
+    "GIUnionInfo get field" >:: test_get_field;
+    "GIUnionInfo get field out of bound" >:: test_get_field_out_of_bounds
   ]
