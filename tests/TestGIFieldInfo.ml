@@ -38,7 +38,7 @@ let field_test fn =
   | None -> assert_equal_string union_name "No base info found"
   | Some (info) -> fn (GIUnionInfo.get_field info 0)
 
-let test_field_get_flags test_ctxt =
+let test_get_flags test_ctxt =
   field_test (fun info ->
       let flags = GIFieldInfo.get_flags info in
       let rec check_flags = function
@@ -51,8 +51,15 @@ let test_field_get_flags test_ctxt =
       in check_flags flags
     )
 
+let test_get_offset test_ctxt =
+  field_test (fun info ->
+      let offset = GIFieldInfo.get_offset info in
+      assert_equal_int 0 offset
+    )
+
 let tests =
   "GObject Introspection FiledInfo tests" >:::
   [
-    "GIFieldInfo get flags" >:: test_field_get_flags
+    "GIFieldInfo get flags" >:: test_get_flags;
+    "GIFieldInfo get offset" >:: test_get_offset
   ]
