@@ -76,12 +76,26 @@ Obtain the flags for this GIFieldInfo. See GIFieldInfo.flags for possible
     flag values.<br>
 </div>
 
+<pre><span id="VALget_offset"><span class="keyword">val</span> get_offset</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the offset in bits of the field member, this is relative to the
+    beginning of the struct or union.<br>
+</div>
+
+<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the size in bits of the field member, this is how much space you
+    need to allocate to store the field.<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_fieldinfo"><span class="keyword">val</span> cast_baseinfo_to_fieldinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to field info.<br>
 </div>
 
 <pre><span id="VALcast_fieldinfo_to_baseinfo"><span class="keyword">val</span> cast_fieldinfo_to_baseinfo</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes field info to base info<br>
+</div>
+
+<pre><span id="VALadd_unref_finaliser_to_field_info"><span class="keyword">val</span> add_unref_finaliser_to_field_info</span> : <code class="type"><a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Add unref of the C underlying structure whith Gc.finalise.<br>
 </div>
 
 <pre><span id="VALfieldinfo_of_baseinfo"><span class="keyword">val</span> fieldinfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFieldInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

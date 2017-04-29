@@ -20,12 +20,17 @@
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;flags&nbsp;=&nbsp;<span class="constructor">Is_readable</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Is_writable</span>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_flags&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFieldInfo</span>.flags&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_offset&nbsp;:&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_size&nbsp;:&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_baseinfo_to_fieldinfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_fieldinfo_to_baseinfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_unref_finaliser_to_field_info&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fieldinfo_of_baseinfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
