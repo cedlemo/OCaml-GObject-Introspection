@@ -16,18 +16,24 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests;
-      TestGIEnumInfo.tests
-    ]
-  )
+let namespace = "GLib"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace
+let enum_name = "DateWeekday"
+
+let get_enum_info () =
+  match GIRepository.find_by_name repo namespace enum_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Enum -> let info = GIEnumInfo.enuminfo_of_baseinfo base_info
+      in Some info
+    | _ -> None
+
+let tests =
+  "GObject Introspection GIEnumInfo tests" >:::
+  [
+  ]
