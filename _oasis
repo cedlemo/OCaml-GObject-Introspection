@@ -11,6 +11,7 @@ Library "GObjectIntrospection"
   Path: lib
   Modules: Conversions,
            GIFieldInfo,
+           GIEnumInfo,
            GIUnionInfo,
            GIStructInfo,
            GIFunctionInfo,
