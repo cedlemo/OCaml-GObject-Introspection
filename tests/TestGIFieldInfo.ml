@@ -57,9 +57,16 @@ let test_get_offset test_ctxt =
       assert_equal_int 0 offset
     )
 
+let test_get_size test_ctxt =
+  field_test (fun info ->
+      let size = GIFieldInfo.get_size info in
+      assert_equal_int 0 size
+  )
+
 let tests =
   "GObject Introspection FiledInfo tests" >:::
   [
     "GIFieldInfo get flags" >:: test_get_flags;
-    "GIFieldInfo get offset" >:: test_get_offset
+    "GIFieldInfo get offset" >:: test_get_offset;
+    "GIFieldInfo get size" >:: test_get_size
   ]
