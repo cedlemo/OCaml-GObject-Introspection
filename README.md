@@ -28,6 +28,7 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIFieldInfo — Struct representing a struct or union field
   * GIUnionInfo — Struct representing a union.
   * GIEnumInfo — Structs representing an enumeration and its values
+  * GIValueInfo — Struct representing a value
 
   ### Remains
 
@@ -42,4 +43,3 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIConstantInfo — Struct representing a constant
   * GIPropertyInfo — Struct representing a property
   * GITypeInfo — Struct representing a type
-  * GIValueInfo — Struct representing a value
