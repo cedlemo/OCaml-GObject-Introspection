@@ -31,6 +31,15 @@ let get_n_methods =
   foreign "g_enum_info_get_n_methods"
     (ptr enuminfo @-> returning int)
 
+let get_method info n =
+  let get_method_raw =
+    foreign "g_enum_info_get_method"
+      (ptr enuminfo @-> int @-> returning (ptr GIFunctionInfo.functioninfo)) in
+  let max = get_n_methods info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_method_raw info n in
+    GIFunctionInfo.add_unref_finaliser_to_function_info info'
+
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_baseinfo_to_enuminfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr enuminfo) info

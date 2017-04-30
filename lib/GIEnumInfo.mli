@@ -35,6 +35,10 @@ val get_n_values:
 val get_n_methods:
   t structure ptr -> int
 
+(** Obtain an enum type method at index n . *)
+val get_method:
+  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_baseinfo_to_enuminfo:
   GIBaseInfo.t structure ptr -> t structure ptr
