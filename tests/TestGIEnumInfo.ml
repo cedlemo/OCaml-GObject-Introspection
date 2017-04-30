@@ -57,10 +57,23 @@ let test_get_method test_ctxt =
       assert_equal_string "g_resource_error_quark" name
     )
 
+let test_get_value test_ctxt =
+  enum_test (fun info ->
+      match GIEnumInfo.get_value info 1 with
+      | None -> assert_equal_string "No value " "found"
+      | Some value -> let value' = GIValueInfo.get_value value in
+        let _ = assert_equal_int 1 value' in
+        let base = GIValueInfo.baseinfo_of_valueinfo value in
+        match GIBaseInfo.get_name base with
+        | None -> ()
+        | Some name -> assert_equal_string "internal" name
+    )
+
 let tests =
   "GObject Introspection GIEnumInfo tests" >:::
   [
     "GIEnumInfo get n values" >:: test_get_n_values;
     "GIEnumInfo get n methods" >:: test_get_n_methods;
-    "GIEnumInfo get method" >:: test_get_method
+    "GIEnumInfo get method" >:: test_get_method;
+    "GIEnumInfo get value" >:: test_get_value
   ]
