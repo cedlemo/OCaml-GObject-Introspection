@@ -7,7 +7,9 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
 <link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
+<link title="GIEnumInfo" rel="Chapter" href="GIEnumInfo.html">
 <link title="GIUnionInfo" rel="Chapter" href="GIUnionInfo.html">
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
@@ -30,6 +32,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
+<tr><td><a href="GIValueInfo.html#VALadd_unref_finaliser_to_value_info">add_unref_finaliser_to_value_info</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
 <tr><td align="left"><br>B</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbase_info_ref">base_info_ref</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
@@ -43,6 +50,13 @@ Decreases the reference count of underlying GIBaseInfo *info .
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbaseinfo">baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td></td></tr>
+<tr><td><a href="GIEnumInfo.html#VALbaseinfo_of_enuminfo">baseinfo_of_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIFieldInfo.html#VALbaseinfo_of_fieldinfo">baseinfo_of_fieldinfo</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td><div class="info">
 Return a GIBaseInfo.t from a GIFieldInfo, the underlying C structure
@@ -66,7 +80,14 @@ Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
 </td></tr>
 <tr><td><a href="GIUnionInfo.html#VALbaseinfo_of_unioninfo">baseinfo_of_unioninfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
-Return a GIBaseInfo.t form a GIStructInfo, the underlying C union
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIValueInfo.html#VALbaseinfo_of_valueinfo">baseinfo_of_valueinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -84,6 +105,11 @@ Converts C array of strings to OCaml array of strings
 Converts C array of strings to OCaml list of strings
 </div>
 </td></tr>
+<tr><td><a href="GIEnumInfo.html#VALcast_baseinfo_to_enuminfo">cast_baseinfo_to_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to enum info.
+</div>
+</td></tr>
 <tr><td><a href="GIFieldInfo.html#VALcast_baseinfo_to_fieldinfo">cast_baseinfo_to_fieldinfo</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes base info to field info.
@@ -97,6 +123,16 @@ Just cast OCaml Ctypes base info to function info.
 <tr><td><a href="GIUnionInfo.html#VALcast_baseinfo_to_unioninfo">cast_baseinfo_to_unioninfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes base info to union info.
+</div>
+</td></tr>
+<tr><td><a href="GIValueInfo.html#VALcast_baseinfo_to_valueinfo">cast_baseinfo_to_valueinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to enum info.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALcast_enuminfo_to_baseinfo">cast_enuminfo_to_baseinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes enum info to base info
 </div>
 </td></tr>
 <tr><td><a href="GIFieldInfo.html#VALcast_fieldinfo_to_baseinfo">cast_fieldinfo_to_baseinfo</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
@@ -114,11 +150,25 @@ Just cast OCaml Ctypes function info to base info
 Just cast OCaml Ctypes union info to base info
 </div>
 </td></tr>
+<tr><td><a href="GIValueInfo.html#VALcast_valueinfo_to_baseinfo">cast_valueinfo_to_baseinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes enum info to base info
+</div>
+</td></tr>
 <tr><td align="left"><br>E</td></tr>
 <tr><td><a href="GIRepository.html#VALenumerate_versions">enumerate_versions</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Obtain an unordered list of versions (either currently loaded or available)
     for namespace_ in this repository .
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALenuminfo">enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GIEnumInfo.html#VALenuminfo_of_baseinfo">enuminfo_of_baseinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALequal">equal</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
@@ -248,6 +298,11 @@ Obtain the type information for method with specified index.
 Obtain the type information for method with specified index.
 </div>
 </td></tr>
+<tr><td><a href="GIEnumInfo.html#VALget_method">get_method</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Obtain an enum type method at index n .
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_n_fields">get_n_fields</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the number of fields this structure has.
@@ -272,6 +327,16 @@ Obtain the number of methods this structure has.
 <tr><td><a href="GIUnionInfo.html#VALget_n_methods">get_n_methods</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
 Obtain the number of methods this union has.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALget_n_methods">get_n_methods</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Obtain the number of methods that this enum type has.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALget_n_values">get_n_values</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Obtain the number of values this enumeration contains.
 </div>
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALget_name">get_name</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
@@ -323,6 +388,16 @@ Obtain the symbol of the function.
 <td><div class="info">
 If namespace namespace_ is loaded, return the full path to the .typelib
     file it was loaded from.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALget_value">get_value</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Obtain a value for this enumeration.
+</div>
+</td></tr>
+<tr><td><a href="GIValueInfo.html#VALget_value">get_value</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td><div class="info">
+Obtain the enumeration value of the GIValueInfo.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_version">get_version</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -404,7 +479,17 @@ Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
 <td></td></tr>
 <tr><td><a href="GIUnionInfo.html#VALunioninfo_of_baseinfo">unioninfo_of_baseinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
-Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C union
+Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td align="left"><br>V</td></tr>
+<tr><td><a href="GIValueInfo.html#VALvalueinfo">valueinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GIValueInfo.html#VALvalueinfo_of_baseinfo">valueinfo_of_baseinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
+<td><div class="info">
+Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
