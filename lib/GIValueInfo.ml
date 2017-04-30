@@ -30,6 +30,12 @@ let cast_baseinfo_to_valueinfo info =
 let cast_valueinfo_to_baseinfo info =
   coerce (ptr valueinfo) (ptr GIBaseInfo.baseinfo) info
 
+let add_unref_finaliser_to_value_info info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_valueinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+
 let valueinfo_of_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
   let info' = cast_baseinfo_to_valueinfo info in
