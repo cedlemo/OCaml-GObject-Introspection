@@ -21,7 +21,11 @@ open Foreign
 open Conversions
 
 type t
-let valueinfo : t structure typ = structure "GIUnionInfo"
+let valueinfo : t structure typ = structure "GIValueInfo"
+
+let get_value =
+  foreign "g_value_info_get_value"
+    (ptr valueinfo @-> returning int)
 
 (* TODO : check that the info can be casted to a valueinfo ? *)
 let cast_baseinfo_to_valueinfo info =

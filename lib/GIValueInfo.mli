@@ -16,16 +16,17 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIEnumInfo — Structs representing an enumeration and its values *)
+(** GIValueInfo — Struct representing a value *)
 
 open Ctypes
 
-(** A GIEnumInfo represents an enumeration and a GIValueInfo struct represents
-    a value of an enumeration. The GIEnumInfo contains a set of values and a
-    type The GIValueInfo is fetched by calling GIEnumInfo.get_value on a
-    GIEnumInfo.*)
+(** Represents a enum value of a GIEnumInfo.*)
 type t
 val valueinfo : t structure typ
+
+(** Obtain the enumeration value of the GIValueInfo. *)
+val get_value:
+  t structure ptr -> int
 
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_baseinfo_to_valueinfo:
