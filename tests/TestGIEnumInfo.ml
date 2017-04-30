@@ -69,11 +69,19 @@ let test_get_value test_ctxt =
         | Some name -> assert_equal_string "internal" name
     )
 
+let test_get_error_domain test_ctxt =
+  enum_test (fun info ->
+      match GIEnumInfo.get_error_domain info with
+      | None -> assert_equal_boolean true false
+      | Some error_domain -> assert_equal_string "g-resource-error-quark" error_domain
+    )
+
 let tests =
   "GObject Introspection GIEnumInfo tests" >:::
   [
     "GIEnumInfo get n values" >:: test_get_n_values;
     "GIEnumInfo get n methods" >:: test_get_n_methods;
     "GIEnumInfo get method" >:: test_get_method;
-    "GIEnumInfo get value" >:: test_get_value
+    "GIEnumInfo get value" >:: test_get_value;
+    "GIEnumInfo get error domain" >:: test_get_error_domain
   ]
