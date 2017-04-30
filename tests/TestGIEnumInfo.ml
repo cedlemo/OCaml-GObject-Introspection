@@ -44,8 +44,15 @@ let test_get_n_values test_ctxt =
       assert_equal_int 8 n_values
     )
 
+let test_get_n_methods test_ctxt =
+  enum_test (fun info ->
+      let n_methods = GIEnumInfo.get_n_methods info in
+      assert_equal_int 0 n_methods
+    )
+
 let tests =
   "GObject Introspection GIEnumInfo tests" >:::
   [
-    "GIEnumInfo get n values" >:: test_get_n_values
+    "GIEnumInfo get n values" >:: test_get_n_values;
+    "GIEnumInfo get n methods" >:: test_get_n_methods
   ]
