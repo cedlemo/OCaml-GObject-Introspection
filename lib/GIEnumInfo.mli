@@ -43,6 +43,11 @@ val get_method:
 val get_value:
   t structure ptr -> int -> GIValueInfo.t structure ptr option
 
+(** Obtain the string form of the quark for the error domain associated with
+    this enum, if any. *)
+val get_error_domain:
+  t structure ptr -> string option
+
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_baseinfo_to_enuminfo:
   GIBaseInfo.t structure ptr -> t structure ptr
@@ -64,8 +69,6 @@ val baseinfo_of_enuminfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (*
-  TODO : GIValueInfo *	g_enum_info_get_value ()
-  TODO : GIFunctionInfo *	g_enum_info_get_method ()
   TODO : GITypeTag	g_enum_info_get_storage_type ()
   TODO : const gchar *	g_enum_info_get_error_domain ()
   TODO : gint64	g_value_info_get_value ()

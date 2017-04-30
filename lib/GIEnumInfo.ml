@@ -50,6 +50,10 @@ let get_value info n =
     | None -> None
     | Some info' -> Some (GIValueInfo.add_unref_finaliser_to_value_info info')
 
+let get_error_domain =
+  foreign "g_enum_info_get_error_domain"
+    (ptr enuminfo @-> returning string_opt)
+
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_baseinfo_to_enuminfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr enuminfo) info
