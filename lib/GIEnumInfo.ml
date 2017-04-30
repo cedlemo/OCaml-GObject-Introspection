@@ -27,6 +27,10 @@ let get_n_values =
   foreign "g_enum_info_get_n_values"
     (ptr enuminfo @-> returning int)
 
+let get_n_methods =
+  foreign "g_enum_info_get_n_methods"
+    (ptr enuminfo @-> returning int)
+
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_baseinfo_to_enuminfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr enuminfo) info

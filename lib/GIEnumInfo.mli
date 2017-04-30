@@ -31,6 +31,10 @@ val enuminfo : t structure typ
 val get_n_values:
   t structure ptr -> int
 
+(** Obtain the number of methods that this enum type has. *)
+val get_n_methods:
+  t structure ptr -> int
+
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_baseinfo_to_enuminfo:
   GIBaseInfo.t structure ptr -> t structure ptr
@@ -53,7 +57,6 @@ val baseinfo_of_enuminfo:
 
 (*
   TODO : GIValueInfo *	g_enum_info_get_value ()
-  TODO : gint	g_enum_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_enum_info_get_method ()
   TODO : GITypeTag	g_enum_info_get_storage_type ()
   TODO : const gchar *	g_enum_info_get_error_domain ()
