@@ -40,6 +40,16 @@ let get_method info n =
   else let info' = get_method_raw info n in
     GIFunctionInfo.add_unref_finaliser_to_function_info info'
 
+let get_value info n =
+  let get_value_raw =
+    foreign "g_enum_info_get_value"
+      (ptr enuminfo @-> int @-> returning (ptr_opt GIValueInfo.valueinfo)) in
+  let max = get_n_values info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else match get_value_raw info n with
+    | None -> None
+    | Some info' -> Some (GIValueInfo.add_unref_finaliser_to_value_info info')
+
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_baseinfo_to_enuminfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr enuminfo) info
