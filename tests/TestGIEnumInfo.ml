@@ -19,10 +19,10 @@
 open TestUtils
 open OUnit2
 
-let namespace = "GLib"
+let namespace = "Gio"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace
-let enum_name = "DateWeekday"
+let enum_name = "ResourceError"
 
 let get_enum_info () =
   match GIRepository.find_by_name repo namespace enum_name with
@@ -41,13 +41,13 @@ let enum_test fn =
 let test_get_n_values test_ctxt =
   enum_test (fun info ->
       let n_values = GIEnumInfo.get_n_values info in
-      assert_equal_int 8 n_values
+      assert_equal_int 2 n_values
     )
 
 let test_get_n_methods test_ctxt =
   enum_test (fun info ->
       let n_methods = GIEnumInfo.get_n_methods info in
-      assert_equal_int 0 n_methods
+      assert_equal_int 1 n_methods
     )
 
 let tests =
