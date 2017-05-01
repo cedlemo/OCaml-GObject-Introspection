@@ -1,0 +1,115 @@
+(*
+ * Copyright 2017 Cedric LE MOIGNE, cedlemo@gmx.com
+ * This file is part of OCaml-GObject-Introspection.
+ *
+ * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OCaml-GObject-Introspection is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
+ *)
+
+(** GICallableInfo — Struct representing a callable. *)
+
+open Ctypes
+
+(** GICallableInfo represents an entity which is callable. Currently a function
+    (GIFunctionInfo), virtual function, (GIVFuncInfo) or callback
+    (GICallbackInfo).
+    A callable has a list of arguments (GIArgInfo), a return type, direction
+    and a flag which decides if it returns null*)
+type t
+val callableinfo: t structure typ
+
+(** Just cast OCaml Ctypes base info to callable info. *)
+val cast_baseinfo_to_callableinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes callable info to base info *)
+val cast_callableinfo_to_baseinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
+
+(** Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val callableinfo_of_baseinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val baseinfo_of_callableinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
+
+(** Just cast OCaml Ctypes function info to callable info. *)
+val cast_functioninfo_to_callableinfo:
+  GIFunctionInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes callable info to function info *)
+val cast_callableinfo_to_functioninfo:
+  t structure ptr -> GIFunctionInfo.t structure ptr
+
+(** Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val functioninfo_of_callableinfo:
+  t structure ptr -> GIFunctionInfo.t structure ptr
+
+(** Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val callableinfo_of_functioninfo:
+  GIFunctionInfo.t structure ptr -> t structure ptr
+
+(* GICallableInfo and GIVfuncInfo
+
+(** Just cast OCaml Ctypes vfunc info to callable info. *)
+TODO :val cast_vfunc_to_callableinfo:
+  GIVFuncInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes callable info to vfunc info *)
+TODO :val cast_vfuncinfo_to_baseinfo:
+  t structure ptr -> GIVFuncInfo.t structure ptr
+
+(** Return a GIVFuncInfo.t from a GICallableInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+TODO :val vfuncinfo_of_callableinfo:
+  t structure ptr -> GIVFuncInfo.t structure ptr
+
+(** Return a GICallableInfo.t from a GIVFuncInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+TODO :val callableinfo_of_vfuncinfo:
+  GIVFuncInfo.t structure ptr -> t structure ptr
+*)
+
+(* GICallableInfo and GICallbackInfo
+
+(** Just cast OCaml Ctypes callback info to callable info. *)
+TODO :val cast_callback_to_callableinfo:
+  GICallbackInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes callable info to callback info *)
+TODO :val cast_callbackinfo_to_baseinfo:
+  t structure ptr -> GICallbackInfo.t structure ptr
+
+(** Return a GICallbackInfo.t from a GICallableInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+TODO :val callbackinfo_of_callableinfo:
+  t structure ptr -> GICallbackInfo.t structure ptr
+
+(** Return a GICallableInfo.t from a GICallbackInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+TODO :val callableinfo_of_callbackinfo:
+  GICallbackInfo.t structure ptr -> t structure ptr
+*)
