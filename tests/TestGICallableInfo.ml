@@ -22,7 +22,7 @@ open OUnit2
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace
-let func_name = "g_signal_name"
+let func_name = "signal_name"
 
 let get_callable_info () =
   match GIRepository.find_by_name repo namespace func_name with
@@ -38,8 +38,13 @@ let callable_test fn =
   | None -> assert_equal_string func_name "No base info found"
   | Some (info) -> fn info
 
-
+let test_can_throw_gerror test_ctxt =
+  callable_test (fun info ->
+      let throw_error = GICallableInfo.can_throw_gerror info in
+      assert_equal_boolean false throw_error
+    )
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
+    "GCallableInfo can throw gerror" >:: test_can_throw_gerror
   ]
