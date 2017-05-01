@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
 <link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
@@ -51,6 +52,13 @@ Decreases the reference count of underlying GIBaseInfo *info .
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbaseinfo">baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td></td></tr>
+<tr><td><a href="GICallableInfo.html#VALbaseinfo_of_callableinfo">baseinfo_of_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALbaseinfo_of_enuminfo">baseinfo_of_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
@@ -99,6 +107,22 @@ Transform an integer value to a baseinfo_type.
 </div>
 </td></tr>
 <tr><td align="left"><br>C</td></tr>
+<tr><td><a href="GICallableInfo.html#VALcallableinfo">callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GICallableInfo.html#VALcallableinfo_of_baseinfo">callableinfo_of_baseinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALcallableinfo_of_functioninfo">callableinfo_of_functioninfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings_to_array">carray_of_strings_to_array</a> [<a href="Conversions.html">Conversions</a>]</td>
@@ -109,6 +133,11 @@ Converts C array of strings to OCaml array of strings
 <tr><td><a href="Conversions.html#VALcarray_of_strings_to_list">carray_of_strings_to_list</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
 Converts C array of strings to OCaml list of strings
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALcast_baseinfo_to_callableinfo">cast_baseinfo_to_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to callable info.
 </div>
 </td></tr>
 <tr><td><a href="GIEnumInfo.html#VALcast_baseinfo_to_enuminfo">cast_baseinfo_to_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
@@ -136,6 +165,16 @@ Just cast OCaml Ctypes base info to union info.
 Just cast OCaml Ctypes base info to enum info.
 </div>
 </td></tr>
+<tr><td><a href="GICallableInfo.html#VALcast_callableinfo_to_baseinfo">cast_callableinfo_to_baseinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes callable info to base info
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALcast_callableinfo_to_functioninfo">cast_callableinfo_to_functioninfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes callable info to function info
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALcast_enuminfo_to_baseinfo">cast_enuminfo_to_baseinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes enum info to base info
@@ -149,6 +188,11 @@ Just cast OCaml Ctypes field info to base info
 <tr><td><a href="GIFunctionInfo.html#VALcast_functioninfo_to_baseinfo">cast_functioninfo_to_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes function info to base info
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALcast_functioninfo_to_callableinfo">cast_functioninfo_to_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes function info to callable info.
 </div>
 </td></tr>
 <tr><td><a href="GIUnionInfo.html#VALcast_unioninfo_to_baseinfo">cast_unioninfo_to_baseinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
@@ -212,6 +256,13 @@ Obtain the type information for method named name .
 <tr><td><a href="GIFunctionInfo.html#VALfunctioninfo_of_baseinfo">functioninfo_of_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALfunctioninfo_of_callableinfo">functioninfo_of_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
