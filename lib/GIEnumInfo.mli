@@ -75,9 +75,3 @@ val enuminfo_of_baseinfo:
     GIBaseInfo.baseinfo_unref. *)
 val baseinfo_of_enuminfo:
   t structure ptr -> GIBaseInfo.t structure ptr
-
-(*
-  TODO : GITypeTag	g_enum_info_get_storage_type ()
-  TODO : const gchar *	g_enum_info_get_error_domain ()
-  TODO : gint64	g_value_info_get_value ()
-*)
