@@ -32,8 +32,10 @@ val callableinfo: t structure typ
 val can_throw_gerror:
   t structure ptr -> bool
 
+(** Obtain the number of arguments (both IN and OUT) for this callable. *)
+val get_n_args:
+  t structure ptr -> int
 (*
-  TODO : gint	g_callable_info_get_n_args ()
   TODO : GIArgInfo *	g_callable_info_get_arg ()
   TODO : GITransfer	g_callable_info_get_caller_owns ()
   TODO : const gchar *	g_callable_info_get_return_attribute ()

@@ -29,6 +29,10 @@ let can_throw_gerror =
   foreign "g_callable_info_can_throw_gerror"
     (ptr callableinfo @-> returning bool)
 
+let get_n_args =
+  foreign "g_callable_info_get_n_args"
+    (ptr callableinfo @-> returning int)
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 
