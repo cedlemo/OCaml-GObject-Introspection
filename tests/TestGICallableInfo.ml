@@ -57,10 +57,24 @@ let test_get_return_attribute test_ctxt =
       | Some attribute -> assert_equal_string "This should not return a string" attribute
     )
 
+let test_is_method test_ctxt =
+  callable_test (fun info ->
+      let is_method = GICallableInfo.is_method info in
+      assert_equal_boolean false is_method
+    )
+
+let test_may_return_null test_ctxt =
+  callable_test (fun info ->
+      let may_return_null = GICallableInfo.may_return_null info in
+      assert_equal_boolean false may_return_null
+    )
+
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
     "GCallableInfo can throw gerror" >:: test_can_throw_gerror;
     "GCallableInfo get n args" >:: test_get_n_args;
-    "GCallableInfo get return attribute" >:: test_get_return_attribute
+    "GCallableInfo get return attribute" >:: test_get_return_attribute;
+    "GCallableInfo is method" >:: test_is_method;
+    "GCallableInfo may return null" >:: test_may_return_null
   ]
