@@ -45,6 +45,10 @@ let may_return_null =
   foreign "g_callable_info_may_return_null"
     (ptr callableinfo @-> returning bool)
 
+let skip_return =
+  foreign "g_callable_info_skip_return"
+    (ptr callableinfo @-> returning bool)
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 

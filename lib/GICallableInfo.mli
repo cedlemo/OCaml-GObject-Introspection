@@ -53,16 +53,18 @@ val is_method:
 val may_return_null:
   t structure ptr -> bool
 
+(** See if a callable's return value is only useful in C. *)
+val skip_return:
+  t structure ptr -> bool
+
 (*
   TODO : GIArgInfo *	g_callable_info_get_arg ()
   TODO : GITransfer	g_callable_info_get_caller_owns ()
-  TODO : const gchar *	g_callable_info_get_return_attribute ()
   TODO : GITypeInfo *	g_callable_info_get_return_type ()
   TODO : gboolean	g_callable_info_invoke ()
   TODO : gboolean	g_callable_info_iterate_return_attributes ()
   TODO : void	g_callable_info_load_arg ()
   TODO : void	g_callable_info_load_return_type ()
-  TODO : gboolean	g_callable_info_skip_return ()
  *)
 
 (** Just cast OCaml Ctypes base info to callable info. *)
