@@ -69,6 +69,12 @@ let test_may_return_null test_ctxt =
       assert_equal_boolean false may_return_null
     )
 
+let test_skip_return test_ctxt =
+  callable_test (fun info ->
+      let skip_return = GICallableInfo.skip_return info in
+      assert_equal_boolean false skip_return
+    )
+
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
@@ -76,5 +82,6 @@ let tests =
     "GCallableInfo get n args" >:: test_get_n_args;
     "GCallableInfo get return attribute" >:: test_get_return_attribute;
     "GCallableInfo is method" >:: test_is_method;
-    "GCallableInfo may return null" >:: test_may_return_null
+    "GCallableInfo may return null" >:: test_may_return_null;
+    "GCallableInfo skip return" >:: test_skip_return
   ]
