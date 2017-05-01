@@ -28,6 +28,23 @@ open Ctypes
 type t
 val callableinfo: t structure typ
 
+
+(*
+  TODO : gboolean	g_callable_info_can_throw_gerror ()
+  TODO : gint	g_callable_info_get_n_args ()
+  TODO : GIArgInfo *	g_callable_info_get_arg ()
+  TODO : GITransfer	g_callable_info_get_caller_owns ()
+  TODO : const gchar *	g_callable_info_get_return_attribute ()
+  TODO : GITypeInfo *	g_callable_info_get_return_type ()
+  TODO : gboolean	g_callable_info_invoke ()
+  TODO : gboolean	g_callable_info_is_method ()
+  TODO : gboolean	g_callable_info_iterate_return_attributes ()
+  TODO : void	g_callable_info_load_arg ()
+  TODO : void	g_callable_info_load_return_type ()
+  TODO : gboolean	g_callable_info_may_return_null ()
+  TODO : gboolean	g_callable_info_skip_return ()
+ *)
+
 (** Just cast OCaml Ctypes base info to callable info. *)
 val cast_baseinfo_to_callableinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
