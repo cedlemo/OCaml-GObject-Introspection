@@ -81,6 +81,10 @@ type baseinfo_type =
 val baseinfo_type_of_int:
   int -> baseinfo_type
 
+(** Get the name of a baseinfo_type. *)
+val string_of_baseinfo_type:
+  baseinfo_type -> string
+
 (** Obtain the info type of the GIBaseInfo. *)
 val get_type:
   t structure ptr -> baseinfo_type
@@ -91,4 +95,3 @@ val get_type:
   TODO : gboolean	g_base_info_iterate_attributes ()
   TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
-

@@ -89,7 +89,7 @@ let baseinfo_type_of_int = function
                                                "should not have been reached"]
     in raise (Failure message)
 
-let baseinfo_type_get_name baseinfo_t =
+let string_of_baseinfo_type baseinfo_t =
   match baseinfo_t with
   | Invalid -> "invalid"
   | Function -> "function"
