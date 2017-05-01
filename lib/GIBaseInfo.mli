@@ -77,6 +77,10 @@ type baseinfo_type =
   | Type (** type information, see GITypeInfo *)
   | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
 
+(** Transform an integer value to a baseinfo_type. *)
+val baseinfo_type_of_int:
+  int -> baseinfo_type
+
 val get_type:
   t structure ptr -> baseinfo_type
 (*

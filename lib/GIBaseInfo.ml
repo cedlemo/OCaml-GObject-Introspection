@@ -63,6 +63,32 @@ type baseinfo_type =
   | Type
   | Unresolved
 
+let baseinfo_type_of_int = function
+  | 0 -> Invalid
+  | 1 -> Function
+  | 2 -> Callback
+  | 3 -> Struct
+  | 4 -> Boxed
+  | 5 -> Enum
+  | 6 -> Flags
+  | 7 -> Object
+  | 8 -> Interface
+  | 9 -> Constant
+  | 10 -> Invalid_0
+  | 11 -> Union
+  | 12 -> Value
+  | 13 -> Signal
+  | 14 -> Vfunc
+  | 15 -> Property
+  | 16 -> Field
+  | 17 -> Arg
+  | 18 -> Type
+  | 19 -> Unresolved
+  | value  -> let message = String.concat " " ["GIBaseInfo baseinfo_type value";
+                                               string_of_int value;
+                                               "should not have been reached"]
+    in raise (Failure message)
+
 let baseinfo_type_get_name baseinfo_t =
   match baseinfo_t with
   | Invalid -> "invalid"
@@ -90,25 +116,5 @@ let get_type info =
   let get_type_raw =
     foreign "g_base_info_get_type"
       (ptr baseinfo @-> returning int)
-  in match get_type_raw info with
-  | 0 -> Invalid
-  | 1 -> Function
-  | 2 -> Callback
-  | 3 -> Struct
-  | 4 -> Boxed
-  | 5 -> Enum
-  | 6 -> Flags
-  | 7 -> Object
-  | 8 -> Interface
-  | 9 -> Constant
-  | 10 -> Invalid_0
-  | 11 -> Union
-  | 12 -> Value
-  | 13 -> Signal
-  | 14 -> Vfunc
-  | 15 -> Property
-  | 16 -> Field
-  | 17 -> Arg
-  | 18 -> Type
-  | 19 -> Unresolved
-  | _  -> raise (Failure "GIBaseInfo.get_type should not return this value")
+  in let value = get_type_raw info in
+  baseinfo_type_of_int value
