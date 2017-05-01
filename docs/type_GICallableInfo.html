@@ -21,6 +21,12 @@
 <code class="code"><span class="keyword">sig</span>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;callableinfo&nbsp;:&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;can_throw_gerror&nbsp;:&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_args&nbsp;:&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_return_attribute&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_method&nbsp;:&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;may_return_null&nbsp;:&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_baseinfo_to_callableinfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr

@@ -45,6 +45,31 @@ GICallableInfo represents an entity which is callable. Currently a function
 
 
 <pre><span id="VALcallableinfo"><span class="keyword">val</span> callableinfo</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALcan_throw_gerror"><span class="keyword">val</span> can_throw_gerror</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+Does the function throws an error.<br>
+</div>
+
+<pre><span id="VALget_n_args"><span class="keyword">val</span> get_n_args</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of arguments (both IN and OUT) for this callable.<br>
+</div>
+
+<pre><span id="VALget_return_attribute"><span class="keyword">val</span> get_return_attribute</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> string option</code></pre><div class="info ">
+Retrieve an arbitrary attribute associated with the return value.<br>
+</div>
+
+<pre><span id="VALis_method"><span class="keyword">val</span> is_method</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+Determines if the callable info is a method. For GIVFuncInfos,
+    GICallbackInfos, and GISignalInfos, this is always true. Otherwise, this
+    looks at the GIFunctionInfo.Is_method flag on the GIFunctionInfo.
+    Concretely, this function returns whether GICallableInfo.get_n_args matches
+    the number of arguments in the raw C method. For methods, there is one more
+    C argument than is exposed by introspection: the "self" or "this" object.<br>
+</div>
+
+<pre><span id="VALmay_return_null"><span class="keyword">val</span> may_return_null</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+See if a callable could return NULL.<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_callableinfo"><span class="keyword">val</span> cast_baseinfo_to_callableinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to callable info.<br>
 </div>

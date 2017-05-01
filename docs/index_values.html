@@ -123,6 +123,11 @@ Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GICallableInfo.html#VALcan_throw_gerror">can_throw_gerror</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Does the function throws an error.
+</div>
+</td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
 <tr><td><a href="Conversions.html#VALcarray_of_strings_to_array">carray_of_strings_to_array</a> [<a href="Conversions.html">Conversions</a>]</td>
@@ -366,6 +371,11 @@ Obtain the type information for method with specified index.
 Obtain an enum type method at index n .
 </div>
 </td></tr>
+<tr><td><a href="GICallableInfo.html#VALget_n_args">get_n_args</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Obtain the number of arguments (both IN and OUT) for this callable.
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_n_fields">get_n_fields</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the number of fields this structure has.
@@ -416,6 +426,11 @@ Obtain the namespace of info
 <td><div class="info">
 Obtain the offset in bits of the field member, this is relative to the
     beginning of the struct or union.
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALget_return_attribute">get_return_attribute</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Retrieve an arbitrary attribute associated with the return value.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -521,6 +536,17 @@ No doc yet
 <td><div class="info">
 Return true if this structure represents the "class structure" for some
     GObject or GInterface.
+</div>
+</td></tr>
+<tr><td><a href="GICallableInfo.html#VALis_method">is_method</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Determines if the callable info is a method.
+</div>
+</td></tr>
+<tr><td align="left"><br>M</td></tr>
+<tr><td><a href="GICallableInfo.html#VALmay_return_null">may_return_null</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+See if a callable could return NULL.
 </div>
 </td></tr>
 <tr><td align="left"><br>P</td></tr>
