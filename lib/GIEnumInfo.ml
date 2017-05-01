@@ -54,6 +54,34 @@ let get_error_domain =
   foreign "g_enum_info_get_error_domain"
     (ptr enuminfo @-> returning string_opt)
 
+let get_storage_type info =
+  let get_storage_type_raw =
+    foreign "g_enum_info_get_storage_type"
+      (ptr enuminfo @-> returning int)
+  in match get_storage_type_raw info with
+  | 0 -> GITypes.Void
+  | 1 -> GITypes.Boolean
+  | 2 -> GITypes.Int8
+  | 3 -> GITypes.Uint8
+  | 4 -> GITypes.Int16
+  | 5 -> GITypes.Uint16
+  | 6 -> GITypes.Int32
+  | 7 -> GITypes.Uint32
+  | 8 -> GITypes.Int64
+  | 9 -> GITypes.Uint64
+  | 10 -> GITypes.Float
+  | 11 -> GITypes.Double
+  | 12 -> GITypes.GType
+  | 13 -> GITypes.Utf8
+  | 14 -> GITypes.Filename
+  | 15 -> GITypes.Array
+  | 16 -> GITypes.Interface
+  | 17 -> GITypes.GList
+  | 18 -> GITypes.GSList
+  | 19 -> GITypes.GHash
+  | 20 -> GITypes.Error
+  | 21 -> GITypes.Unichar
+
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_baseinfo_to_enuminfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr enuminfo) info

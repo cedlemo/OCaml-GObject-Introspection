@@ -48,6 +48,14 @@ val get_value:
 val get_error_domain:
   t structure ptr -> string option
 
+(** Obtain the tag of the type used for the enum in the C ABI. This will will
+    be a signed or unsigned integral type.
+    Note that in the current implementation the width of the type is computed
+    correctly, but the signed or unsigned nature of the type may not match the
+    sign of the type used by the C compiler. *)
+val get_storage_type:
+  t structure ptr -> GITypes.tag
+
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_baseinfo_to_enuminfo:
   GIBaseInfo.t structure ptr -> t structure ptr
