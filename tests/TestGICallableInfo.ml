@@ -43,8 +43,16 @@ let test_can_throw_gerror test_ctxt =
       let throw_error = GICallableInfo.can_throw_gerror info in
       assert_equal_boolean false throw_error
     )
+
+let test_get_n_args test_ctxt =
+  callable_test (fun info ->
+      let n = GICallableInfo.get_n_args info in
+      assert_equal_int 1 n
+    )
+
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
-    "GCallableInfo can throw gerror" >:: test_can_throw_gerror
+    "GCallableInfo can throw gerror" >:: test_can_throw_gerror;
+    "GCallableInfo get n args" >:: test_get_n_args
   ]
