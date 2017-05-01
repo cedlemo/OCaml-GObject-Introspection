@@ -81,6 +81,7 @@ type baseinfo_type =
 val baseinfo_type_of_int:
   int -> baseinfo_type
 
+(** Obtain the info type of the GIBaseInfo. *)
 val get_type:
   t structure ptr -> baseinfo_type
 (*
