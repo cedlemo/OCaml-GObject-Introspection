@@ -11,6 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
 <link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
 <link title="GIEnumInfo" rel="Chapter" href="GIEnumInfo.html">
@@ -56,6 +57,19 @@ Obtain an enum type method at index n .<br>
 
 <pre><span id="VALget_value"><span class="keyword">val</span> get_value</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIValueInfo.html#TYPEt">GIValueInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
 Obtain a value for this enumeration.<br>
+</div>
+
+<pre><span id="VALget_error_domain"><span class="keyword">val</span> get_error_domain</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> string option</code></pre><div class="info ">
+Obtain the string form of the quark for the error domain associated with
+    this enum, if any.<br>
+</div>
+
+<pre><span id="VALget_storage_type"><span class="keyword">val</span> get_storage_type</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GITypes.html#TYPEtag">GITypes.tag</a></code></pre><div class="info ">
+Obtain the tag of the type used for the enum in the C ABI. This will will
+    be a signed or unsigned integral type.
+    Note that in the current implementation the width of the type is computed
+    correctly, but the signed or unsigned nature of the type may not match the
+    sign of the type used by the C compiler.<br>
 </div>
 
 <pre><span id="VALcast_baseinfo_to_enuminfo"><span class="keyword">val</span> cast_baseinfo_to_enuminfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

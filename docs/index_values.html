@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
 <link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
 <link title="GIEnumInfo" rel="Chapter" href="GIEnumInfo.html">
@@ -90,6 +91,11 @@ Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
 Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALbaseinfo_type_of_int">baseinfo_type_of_int</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Transform an integer value to a baseinfo_type.
 </div>
 </td></tr>
 <tr><td align="left"><br>C</td></tr>
@@ -257,6 +263,12 @@ Returns the singleton process-global default GIRepository.
 Return an list of all (transitive) versioned dependencies for namespace_ .
 </div>
 </td></tr>
+<tr><td><a href="GIEnumInfo.html#VALget_error_domain">get_error_domain</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Obtain the string form of the quark for the error domain associated with
+    this enum, if any.
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_field">get_field</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the type information for field with specified index.
@@ -377,13 +389,21 @@ Obtain the size in bits of the field member, this is how much space you
     need to allocate to store the field.
 </div>
 </td></tr>
+<tr><td><a href="GIEnumInfo.html#VALget_storage_type">get_storage_type</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Obtain the tag of the type used for the enum in the C ABI.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALget_symbol">get_symbol</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Obtain the symbol of the function.
 </div>
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALget_type">get_type</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Obtain the info type of the GIBaseInfo.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_typelib_path">get_typelib_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 If namespace namespace_ is loaded, return the full path to the .typelib
@@ -465,6 +485,11 @@ Force the namespace namespace_ to be loaded if it isn't already.
 </div>
 </td></tr>
 <tr><td align="left"><br>S</td></tr>
+<tr><td><a href="GIBaseInfo.html#VALstring_of_baseinfo_type">string_of_baseinfo_type</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td><div class="info">
+Get the name of a baseinfo_type.
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALstructinfo">structinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIStructInfo.html#VALstructinfo_of_baseinfo">structinfo_of_baseinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
@@ -474,6 +499,9 @@ Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td align="left"><br>T</td></tr>
+<tr><td><a href="GITypes.html#VALtag_of_int">tag_of_int</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
 <tr><td align="left"><br>U</td></tr>
 <tr><td><a href="GIUnionInfo.html#VALunioninfo">unioninfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td></td></tr>

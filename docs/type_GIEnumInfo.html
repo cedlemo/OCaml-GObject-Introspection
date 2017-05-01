@@ -6,6 +6,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
 <link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
 <link title="GIEnumInfo" rel="Chapter" href="GIEnumInfo.html">
@@ -27,6 +28,10 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_value&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIEnumInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIValueInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_error_domain&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIEnumInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_storage_type&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIEnumInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GITypes</span>.tag
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_baseinfo_to_enuminfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIEnumInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
