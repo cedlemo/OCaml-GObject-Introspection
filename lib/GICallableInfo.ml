@@ -33,6 +33,10 @@ let get_n_args =
   foreign "g_callable_info_get_n_args"
     (ptr callableinfo @-> returning int)
 
+let get_return_attribute =
+  foreign "g_callable_info_get_return_attribute"
+    (ptr callableinfo @-> returning string_opt)
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 

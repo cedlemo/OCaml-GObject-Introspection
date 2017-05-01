@@ -35,6 +35,11 @@ val can_throw_gerror:
 (** Obtain the number of arguments (both IN and OUT) for this callable. *)
 val get_n_args:
   t structure ptr -> int
+
+(** Retrieve an arbitrary attribute associated with the return value. *)
+val get_return_attribute:
+  t structure ptr -> string option
+
 (*
   TODO : GIArgInfo *	g_callable_info_get_arg ()
   TODO : GITransfer	g_callable_info_get_caller_owns ()
