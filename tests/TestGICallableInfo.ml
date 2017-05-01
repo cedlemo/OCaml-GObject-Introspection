@@ -50,9 +50,17 @@ let test_get_n_args test_ctxt =
       assert_equal_int 1 n
     )
 
+let test_get_return_attribute test_ctxt =
+  callable_test (fun info ->
+      match GICallableInfo.get_return_attribute info with
+      | None -> assert_equal_boolean true true
+      | Some attribute -> assert_equal_string "This should not return a string" attribute
+    )
+
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
     "GCallableInfo can throw gerror" >:: test_can_throw_gerror;
-    "GCallableInfo get n args" >:: test_get_n_args
+    "GCallableInfo get n args" >:: test_get_n_args;
+    "GCallableInfo get return attribute" >:: test_get_return_attribute
   ]
