@@ -41,3 +41,32 @@ type tag =
   | GHash
   | Error
   | Unichar
+
+let tag_of_int = function
+  | 0 -> Void
+  | 1 -> Boolean
+  | 2 -> Int8
+  | 3 -> Uint8
+  | 4 -> Int16
+  | 5 -> Uint16
+  | 6 -> Int32
+  | 7 -> Uint32
+  | 8 -> Int64
+  | 9 -> Uint64
+  | 10 -> Float
+  | 11 -> Double
+  | 12 -> GType
+  | 13 -> Utf8
+  | 14 -> Filename
+  | 15 -> Array
+  | 16 -> Interface
+  | 17 -> GList
+  | 18 -> GSList
+  | 19 -> GHash
+  | 20 -> Error
+  | 21 -> Unichar
+  | value  -> let message = String.concat " " ["GITypes tag value";
+                                               string_of_int value;
+                                               "should not have been reached"]
+    in raise (Failure message)
+

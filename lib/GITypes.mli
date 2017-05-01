@@ -44,3 +44,6 @@ type tag =
   | GHash (** a GHashTable *)
   | Error (** a GError *)
   | Unichar (** Unicode character *)
+
+val tag_of_int:
+  int -> tag
