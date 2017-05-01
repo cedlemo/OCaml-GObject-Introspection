@@ -25,6 +25,10 @@ open Conversions
 type t
 let callableinfo : t structure typ = structure "GICallableInfo"
 
+let can_throw_gerror =
+  foreign "g_callable_info_can_throw_gerror"
+    (ptr callableinfo @-> returning bool)
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 

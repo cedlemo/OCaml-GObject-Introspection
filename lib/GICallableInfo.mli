@@ -28,9 +28,11 @@ open Ctypes
 type t
 val callableinfo: t structure typ
 
+(** Does the function throws an error. *)
+val can_throw_gerror:
+  t structure ptr -> bool
 
 (*
-  TODO : gboolean	g_callable_info_can_throw_gerror ()
   TODO : gint	g_callable_info_get_n_args ()
   TODO : GIArgInfo *	g_callable_info_get_arg ()
   TODO : GITransfer	g_callable_info_get_caller_owns ()
