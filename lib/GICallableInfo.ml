@@ -37,6 +37,14 @@ let get_return_attribute =
   foreign "g_callable_info_get_return_attribute"
     (ptr callableinfo @-> returning string_opt)
 
+let is_method =
+  foreign "g_callable_info_is_method"
+    (ptr callableinfo @-> returning bool)
+
+let may_return_null =
+  foreign "g_callable_info_may_return_null"
+    (ptr callableinfo @-> returning bool)
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 
