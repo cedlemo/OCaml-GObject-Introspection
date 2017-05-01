@@ -29,10 +29,10 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIUnionInfo — Struct representing a union.
   * GIEnumInfo — Structs representing an enumeration and its values
   * GIValueInfo — Struct representing a value
+  * GICallableInfo — Struct representing a callable
 
   ### Remains
 
-  * GICallableInfo — Struct representing a callable
   * GICallbackInfo — Struct representing a callback
   * GISignalInfo — Struct representing a signal
   * GIVFuncInfo — Struct representing a virtual function
