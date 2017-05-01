@@ -76,6 +76,13 @@ let test_get_error_domain test_ctxt =
       | Some error_domain -> assert_equal_string "g-resource-error-quark" error_domain
     )
 
+let test_get_storage_type test_ctxt =
+  enum_test (fun info ->
+      match GIEnumInfo.get_storage_type info with
+      | GITypes.Uint32 -> assert_equal true true
+      | _ -> assert_equal_string "bad " "type"
+    )
+
 let tests =
   "GObject Introspection GIEnumInfo tests" >:::
   [
@@ -83,5 +90,6 @@ let tests =
     "GIEnumInfo get n methods" >:: test_get_n_methods;
     "GIEnumInfo get method" >:: test_get_method;
     "GIEnumInfo get value" >:: test_get_value;
-    "GIEnumInfo get error domain" >:: test_get_error_domain
+    "GIEnumInfo get error domain" >:: test_get_error_domain;
+    "GIEnumInfo get storage type" >:: test_get_storage_type
   ]
