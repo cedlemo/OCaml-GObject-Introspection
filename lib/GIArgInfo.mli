@@ -91,11 +91,15 @@ val may_be_null:
 val is_caller_allocates:
   t structure ptr -> bool
 
+(** Obtain if the argument is optional. For 'out' arguments this means that you
+    can pass NULL in order to ignore the result. *)
+val is_optional:
+  t structure ptr -> bool
+
 (*
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
-  TODO : gboolean	g_arg_info_is_optional ()
   TODO : gboolean	g_arg_info_is_return_value ()
   TODO : gboolean	g_arg_info_is_skip ()
 *)

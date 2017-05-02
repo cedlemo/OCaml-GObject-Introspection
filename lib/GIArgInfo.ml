@@ -75,6 +75,10 @@ let is_caller_allocates =
   foreign "g_arg_info_is_caller_allocates"
     (ptr arginfo @-> returning bool)
 
+let is_optional =
+  foreign "g_arg_info_is_optional"
+    (ptr arginfo @-> returning bool)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_arginfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info
