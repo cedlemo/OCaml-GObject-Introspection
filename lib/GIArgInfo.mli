@@ -101,11 +101,14 @@ val is_optional:
 val is_return_value:
   t structure ptr -> bool
 
+(** Obtain if an argument is only useful in C. *)
+val is_skip:
+  t structure ptr -> bool
+
 (*
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
-  TODO : gboolean	g_arg_info_is_skip ()
 *)
 
 (** Just cast OCaml Ctypes base info to arg info. *)
