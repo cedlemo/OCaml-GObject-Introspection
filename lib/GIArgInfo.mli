@@ -96,11 +96,15 @@ val is_caller_allocates:
 val is_optional:
   t structure ptr -> bool
 
+(** Obtain if the argument is a return value. It can either be a parameter or a
+    return value. *)
+val is_return_value:
+  t structure ptr -> bool
+
 (*
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
-  TODO : gboolean	g_arg_info_is_return_value ()
   TODO : gboolean	g_arg_info_is_skip ()
 *)
 

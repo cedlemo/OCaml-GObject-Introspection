@@ -79,6 +79,10 @@ let is_optional =
   foreign "g_arg_info_is_optional"
     (ptr arginfo @-> returning bool)
 
+let is_return_value =
+  foreign "g_arg_info_is_return_value"
+    (ptr arginfo @-> returning bool)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_arginfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info
