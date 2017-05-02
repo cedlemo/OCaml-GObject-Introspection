@@ -10,6 +10,7 @@ BuildTools: ocamlbuild
 Library "GObjectIntrospection"
   Path: lib
   Modules: Conversions,
+           GIArgInfo,
            GICallableInfo,
            GITypes,
            GIValueInfo,
