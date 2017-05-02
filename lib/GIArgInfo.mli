@@ -35,8 +35,13 @@ type direction =
     direction values.*)
 val get_direction:
   t structure ptr -> direction
+
+(** Obtain the index of the user data argument. This is only valid for
+    arguments which are callbacks. Returns index of the user data argument or
+    -1 if there is none. *)
+val get_closure:
+  t structure ptr -> int
 (*
-  TODO : gint	g_arg_info_get_closure ()
   TODO : gint	g_arg_info_get_destroy ()
   TODO : GITransfer	g_arg_info_get_ownership_transfer ()
   TODO : GIScopeType	g_arg_info_get_scope ()

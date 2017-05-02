@@ -41,6 +41,9 @@ let get_direction info =
                                                "should not have been reached"]
     in raise (Failure message)
 
+let get_closure =
+  foreign "g_arg_info_get_closure"
+    (ptr arginfo @-> returning int)
 
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_arginfo info =
