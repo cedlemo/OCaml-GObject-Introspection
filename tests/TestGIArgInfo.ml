@@ -77,6 +77,12 @@ let test_may_be_null test_ctxt =
       assert_equal_boolean false may_be_null
     )
 
+let test_is_caller_allocates test_ctxt =
+  arg_test (fun info ->
+      let caller_allocates = GIArgInfo.is_caller_allocates info in
+      assert_equal_boolean false caller_allocates
+    )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
@@ -84,5 +90,6 @@ let tests =
     "GIArgInfo get closure" >:: test_get_closure;
     "GIArgInfo get destroy" >:: test_get_destroy;
     "GIArgInfo get ownership transfer" >:: test_get_ownership_transfer;
-    "GIArgInfo may be null" >:: test_may_be_null
+    "GIArgInfo may be null" >:: test_may_be_null;
+    "GIArgInfo is caller allocates" >:: test_is_caller_allocates
   ]
