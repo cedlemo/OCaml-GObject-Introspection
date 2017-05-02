@@ -84,11 +84,17 @@ val get_ownership_transfer:
 val may_be_null:
   t structure ptr -> bool
 
+(** Obtain if the argument is a pointer to a struct or object that will receive
+    an output of a function. The default assumption for GIArgInfo.Out arguments
+    which have allocation is that the callee allocates; if this is TRUE, then
+    the caller must allocate. *)
+val is_caller_allocates:
+  t structure ptr -> bool
+
 (*
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
-  TODO : gboolean	g_arg_info_is_caller_allocates ()
   TODO : gboolean	g_arg_info_is_optional ()
   TODO : gboolean	g_arg_info_is_return_value ()
   TODO : gboolean	g_arg_info_is_skip ()
