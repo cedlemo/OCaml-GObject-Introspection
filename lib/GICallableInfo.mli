@@ -57,8 +57,11 @@ val may_return_null:
 val skip_return:
   t structure ptr -> bool
 
+(** Obtain information about a particular argument of this callable. *)
+val get_arg:
+  t structure ptr -> int -> GIArgInfo.t structure ptr
+
 (*
-  TODO : GIArgInfo *	g_callable_info_get_arg ()
   TODO : GITransfer	g_callable_info_get_caller_owns ()
   TODO : GITypeInfo *	g_callable_info_get_return_type ()
   TODO : gboolean	g_callable_info_invoke ()

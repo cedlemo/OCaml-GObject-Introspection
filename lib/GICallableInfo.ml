@@ -49,6 +49,16 @@ let skip_return =
   foreign "g_callable_info_skip_return"
     (ptr callableinfo @-> returning bool)
 
+let get_arg info n =
+  let get_arg_raw =
+    foreign "g_callable_info_get_arg"
+      (ptr callableinfo @-> int @-> returning (ptr GIArgInfo.arginfo))
+  in let max = get_n_args info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else
+    let info' = get_arg_raw info n in
+    GIArgInfo.add_unref_finaliser_to_arg_info info'
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 
