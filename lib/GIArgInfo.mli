@@ -25,6 +25,21 @@ open Ctypes
 type t
 val arginfo : t structure typ
 
+(*
+  TODO : gint	g_arg_info_get_closure ()
+  TODO : gint	g_arg_info_get_destroy ()
+  TODO : GIDirection	g_arg_info_get_direction ()
+  TODO : GITransfer	g_arg_info_get_ownership_transfer ()
+  TODO : GIScopeType	g_arg_info_get_scope ()
+  TODO : GITypeInfo *	g_arg_info_get_type ()
+  TODO : void	g_arg_info_load_type ()
+  TODO : gboolean	g_arg_info_may_be_null ()
+  TODO : gboolean	g_arg_info_is_caller_allocates ()
+  TODO : gboolean	g_arg_info_is_optional ()
+  TODO : gboolean	g_arg_info_is_return_value ()
+  TODO : gboolean	g_arg_info_is_skip ()
+*)
+
 (** Just cast OCaml Ctypes base info to arg info. *)
 val cast_baseinfo_to_arginfo:
   GIBaseInfo.t structure ptr -> t structure ptr
@@ -48,3 +63,5 @@ val arginfo_of_baseinfo:
     GIBaseInfo.baseinfo_unref. *)
 val baseinfo_of_arginfo:
   t structure ptr -> GIBaseInfo.t structure ptr
+
+
