@@ -20,15 +20,16 @@
 
 open Ctypes
 
-(** GIEnumInfo — Structs representing an enumeration and its values. *)
+(** GIArgInfo represents an argument. An argument is always part of a
+    GICallableInfo. *)
 type t
 val arginfo : t structure typ
 
-(** Just cast OCaml Ctypes base info to enum info. *)
+(** Just cast OCaml Ctypes base info to arg info. *)
 val cast_baseinfo_to_arginfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
-(** Just cast OCaml Ctypes enum info to base info *)
+(** Just cast OCaml Ctypes arg info to base info *)
 val cast_arginfo_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 

@@ -16,8 +16,6 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIFunctionInfo — Struct representing a function. *)
-
 open Ctypes
 open Foreign
 open Conversions
@@ -25,8 +23,6 @@ open Conversions
 type t
 let functioninfo : t structure typ = structure "GIFunctionInfo"
 
-(** Obtain the symbol of the function. The symbol is the name of the exported
-    function, suitable to be used as an argument to g_module_symbol().*)
 let get_symbol =
   foreign "g_function_info_get_symbol"
     (ptr functioninfo @-> returning string)
