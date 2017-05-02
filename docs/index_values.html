@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
@@ -24,6 +25,11 @@
 <h1>Index of values</h1>
 <table>
 <tr><td align="left"><br>A</td></tr>
+<tr><td><a href="GIArgInfo.html#VALadd_unref_finaliser_to_arg_info">add_unref_finaliser_to_arg_info</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
 <tr><td><a href="GIFieldInfo.html#VALadd_unref_finaliser_to_field_info">add_unref_finaliser_to_field_info</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
@@ -39,6 +45,15 @@ Add unref of the C underlying structure whith Gc.finalise.
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
+<tr><td><a href="GIArgInfo.html#VALarginfo">arginfo</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GIArgInfo.html#VALarginfo_of_baseinfo">arginfo_of_baseinfo</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Return a GIArgInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td align="left"><br>B</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbase_info_ref">base_info_ref</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
@@ -52,6 +67,13 @@ Decreases the reference count of underlying GIBaseInfo *info .
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbaseinfo">baseinfo</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td></td></tr>
+<tr><td><a href="GIArgInfo.html#VALbaseinfo_of_arginfo">baseinfo_of_arginfo</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GIArgInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GICallableInfo.html#VALbaseinfo_of_callableinfo">baseinfo_of_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
@@ -61,7 +83,7 @@ Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
 </td></tr>
 <tr><td><a href="GIEnumInfo.html#VALbaseinfo_of_enuminfo">baseinfo_of_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
-Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+Return a GIBaseInfo.t form a GIEnumInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -138,6 +160,16 @@ Converts C array of strings to OCaml array of strings
 <tr><td><a href="Conversions.html#VALcarray_of_strings_to_list">carray_of_strings_to_list</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
 Converts C array of strings to OCaml list of strings
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALcast_arginfo_to_baseinfo">cast_arginfo_to_baseinfo</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes arg info to base info
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALcast_baseinfo_to_arginfo">cast_baseinfo_to_arginfo</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to arg info.
 </div>
 </td></tr>
 <tr><td><a href="GICallableInfo.html#VALcast_baseinfo_to_callableinfo">cast_baseinfo_to_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
@@ -221,7 +253,7 @@ Obtain an unordered list of versions (either currently loaded or available)
 <td></td></tr>
 <tr><td><a href="GIEnumInfo.html#VALenuminfo_of_baseinfo">enuminfo_of_baseinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
-Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+Return a GIEnumInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -303,10 +335,20 @@ Obtain the required alignment of the structure.
 Obtain the required alignment of the union.
 </div>
 </td></tr>
+<tr><td><a href="GICallableInfo.html#VALget_arg">get_arg</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Obtain information about a particular argument of this callable.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_c_prefix">get_c_prefix</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 This function returns the "C prefix", or the C level namespace associated
     with the given introspection namespace.
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALget_closure">get_closure</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain the index of the user data argument.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_default">get_default</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -317,6 +359,16 @@ Returns the singleton process-global default GIRepository.
 <tr><td><a href="GIRepository.html#VALget_dependencies">get_dependencies</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Return an list of all (transitive) versioned dependencies for namespace_ .
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALget_destroy">get_destroy</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtains the index of the GDestroyNotify argument.
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALget_direction">get_direction</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain the direction of the argument.
 </div>
 </td></tr>
 <tr><td><a href="GIEnumInfo.html#VALget_error_domain">get_error_domain</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
@@ -428,6 +480,8 @@ Obtain the offset in bits of the field member, this is relative to the
     beginning of the struct or union.
 </div>
 </td></tr>
+<tr><td><a href="GIArgInfo.html#VALget_ownership_transfer">get_ownership_transfer</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GICallableInfo.html#VALget_return_attribute">get_return_attribute</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 Retrieve an arbitrary attribute associated with the return value.
@@ -562,6 +616,11 @@ Force the namespace namespace_ to be loaded if it isn't already.
 </div>
 </td></tr>
 <tr><td align="left"><br>S</td></tr>
+<tr><td><a href="GICallableInfo.html#VALskip_return">skip_return</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+See if a callable's return value is only useful in C.
+</div>
+</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALstring_of_baseinfo_type">string_of_baseinfo_type</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
 Get the name of a baseinfo_type.

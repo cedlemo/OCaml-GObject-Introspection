@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
@@ -30,6 +31,12 @@
 <tr><td><a href="Conversions.html#TYPEcarray_of_strings">carray_of_strings</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
 C pointer of null terminated array of C strings
+</div>
+</td></tr>
+<tr><td align="left"><br>D</td></tr>
+<tr><td><a href="GIArgInfo.html#TYPEdirection">direction</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+The direction of a GIArgInfo.
 </div>
 </td></tr>
 <tr><td align="left"><br>F</td></tr>
@@ -101,9 +108,20 @@ Represents a enum value of a GIEnumInfo.
 GICallableInfo represents an entity which is callable.
 </div>
 </td></tr>
+<tr><td><a href="GIArgInfo.html#TYPEt">t</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+GIArgInfo represents an argument.
+</div>
+</td></tr>
 <tr><td><a href="GITypes.html#TYPEtag">tag</a> [<a href="GITypes.html">GITypes</a>]</td>
 <td><div class="info">
 The type tag of a GITypeInfo.
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#TYPEtransfer">transfer</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+The transfer is the exchange of data between two parts, from the callee to
+    the caller.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#TYPEtypelib">typelib</a> [<a href="GIRepository.html">GIRepository</a>]</td>

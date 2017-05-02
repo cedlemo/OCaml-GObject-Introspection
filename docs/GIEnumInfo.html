@@ -11,6 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
@@ -82,13 +83,13 @@ Just cast OCaml Ctypes enum info to base info<br>
 </div>
 
 <pre><span id="VALenuminfo_of_baseinfo"><span class="keyword">val</span> enuminfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
-Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+Return a GIEnumInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
 </div>
 
 <pre><span id="VALbaseinfo_of_enuminfo"><span class="keyword">val</span> baseinfo_of_enuminfo</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
-Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+Return a GIBaseInfo.t form a GIEnumInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
 </div>

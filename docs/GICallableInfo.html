@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Conversions.html">
+<link rel="previous" href="GIArgInfo.html">
 <link rel="next" href="GITypes.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
 <link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
@@ -23,7 +24,7 @@
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GICallableInfo</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+<div class="navbar"><a class="pre" href="GIArgInfo.html" title="GIArgInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;<a class="post" href="GITypes.html" title="GITypes">Next</a>
 </div>
@@ -68,6 +69,14 @@ Determines if the callable info is a method. For GIVFuncInfos,
 
 <pre><span id="VALmay_return_null"><span class="keyword">val</span> may_return_null</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
 See if a callable could return NULL.<br>
+</div>
+
+<pre><span id="VALskip_return"><span class="keyword">val</span> skip_return</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+See if a callable's return value is only useful in C.<br>
+</div>
+
+<pre><span id="VALget_arg"><span class="keyword">val</span> get_arg</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIArgInfo.html#TYPEt">GIArgInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain information about a particular argument of this callable.<br>
 </div>
 
 <pre><span id="VALcast_baseinfo_to_callableinfo"><span class="keyword">val</span> cast_baseinfo_to_callableinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
