@@ -481,7 +481,10 @@ Obtain the offset in bits of the field member, this is relative to the
 </div>
 </td></tr>
 <tr><td><a href="GIArgInfo.html#VALget_ownership_transfer">get_ownership_transfer</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Obtain the ownership transfer for this argument.
+</div>
+</td></tr>
 <tr><td><a href="GICallableInfo.html#VALget_return_attribute">get_return_attribute</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 Retrieve an arbitrary attribute associated with the return value.
@@ -571,6 +574,12 @@ Transform a GSList of strings to an OCaml list of strings
 </div>
 </td></tr>
 <tr><td align="left"><br>I</td></tr>
+<tr><td><a href="GIArgInfo.html#VALis_caller_allocates">is_caller_allocates</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain if the argument is a pointer to a struct or object that will receive
+    an output of a function.
+</div>
+</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALis_deprecated">is_deprecated</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
 Obtain whether the info is represents a metadata which is deprecated or not.
@@ -597,7 +606,27 @@ Return true if this structure represents the "class structure" for some
 Determines if the callable info is a method.
 </div>
 </td></tr>
+<tr><td><a href="GIArgInfo.html#VALis_optional">is_optional</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain if the argument is optional.
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALis_return_value">is_return_value</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain if the argument is a return value.
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALis_skip">is_skip</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain if an argument is only useful in C.
+</div>
+</td></tr>
 <tr><td align="left"><br>M</td></tr>
+<tr><td><a href="GIArgInfo.html#VALmay_be_null">may_be_null</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Obtain if the type of the argument includes the possibility of NULL.
+</div>
+</td></tr>
 <tr><td><a href="GICallableInfo.html#VALmay_return_null">may_return_null</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 See if a callable could return NULL.
