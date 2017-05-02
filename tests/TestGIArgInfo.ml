@@ -71,11 +71,18 @@ let test_get_ownership_transfer test_ctxt =
         ) GIArgInfo.Nothing transfer
     )
 
+let test_may_be_null test_ctxt =
+  arg_test (fun info ->
+      let may_be_null = GIArgInfo.may_be_null info in
+      assert_equal_boolean false may_be_null
+    )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
     "GIArgInfo get direction" >:: test_get_direction;
     "GIArgInfo get closure" >:: test_get_closure;
     "GIArgInfo get destroy" >:: test_get_destroy;
-    "GIArgInfo get ownership transfer" >:: test_get_ownership_transfer
+    "GIArgInfo get ownership transfer" >:: test_get_ownership_transfer;
+    "GIArgInfo may be null" >:: test_may_be_null
   ]
