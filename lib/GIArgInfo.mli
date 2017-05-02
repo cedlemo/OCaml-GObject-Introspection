@@ -25,10 +25,19 @@ open Ctypes
 type t
 val arginfo : t structure typ
 
+(** The direction of a GIArgInfo. *)
+type direction =
+  | In    (** in argument. *)
+  | Out   (** out argument. *)
+  | InOut (** in and out argument. *)
+
+(** Obtain the direction of the argument. Check GIDirection for possible
+    direction values.*)
+val get_direction:
+  t structure ptr -> direction
 (*
   TODO : gint	g_arg_info_get_closure ()
   TODO : gint	g_arg_info_get_destroy ()
-  TODO : GIDirection	g_arg_info_get_direction ()
   TODO : GITransfer	g_arg_info_get_ownership_transfer ()
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()

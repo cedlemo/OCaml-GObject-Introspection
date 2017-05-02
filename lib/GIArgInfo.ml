@@ -23,6 +23,24 @@ open Conversions
 type t
 let arginfo : t structure typ = structure "GIArgInfo"
 
+type direction =
+  | In
+  | Out
+  | InOut
+
+let get_direction info =
+  let get_direction_raw =
+    foreign "g_arg_info_get_direction"
+      (ptr arginfo @-> returning int)
+  in match get_direction_raw info with
+  | 0 -> In
+  | 1 -> Out
+  | 2 -> InOut
+  | value  -> let message = String.concat " " ["GIArgInfo get_direction value";
+                                               string_of_int value;
+                                               "should not have been reached"]
+    in raise (Failure message)
+
 
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_arginfo info =
