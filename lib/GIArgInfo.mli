@@ -73,8 +73,10 @@ type transfer =
                    responsible for cleaning up the container and item resources
                    of this transfer. *)
 
+val get_ownership_transfer:
+  t structure ptr -> transfer
+
 (*
-  TODO : GITransfer	g_arg_info_get_ownership_transfer ()
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
