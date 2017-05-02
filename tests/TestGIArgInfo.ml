@@ -48,8 +48,15 @@ let test_get_direction test_ctxt =
           | GIArgInfo.InOut -> "InOut") GIArgInfo.In dir
     )
 
+let test_get_closure test_ctxt =
+  arg_test (fun info ->
+      let closure = GIArgInfo.get_closure info in
+      assert_equal_int (-1) closure
+    )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
-    "GIArgInfo get direction" >:: test_get_direction
+    "GIArgInfo get direction" >:: test_get_direction;
+    "GIArgInfo get closure" >:: test_get_closure
   ]
