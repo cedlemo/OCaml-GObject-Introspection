@@ -60,10 +60,22 @@ let test_get_destroy test_ctxt =
       assert_equal_int (-1) index
     )
 
+let test_get_ownership_transfer test_ctxt =
+  arg_test (fun info ->
+      let transfer = GIArgInfo.get_ownership_transfer info in
+      assert_equal ~printer:(fun t ->
+          match t with
+          | GIArgInfo.Nothing -> "nothing"
+          | GIArgInfo.Container -> "container"
+          | GIArgInfo.Everything -> "everything"
+        ) GIArgInfo.Nothing transfer
+    )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
     "GIArgInfo get direction" >:: test_get_direction;
     "GIArgInfo get closure" >:: test_get_closure;
-    "GIArgInfo get destroy" >:: test_get_destroy
+    "GIArgInfo get destroy" >:: test_get_destroy;
+    "GIArgInfo get ownership transfer" >:: test_get_ownership_transfer
   ]
