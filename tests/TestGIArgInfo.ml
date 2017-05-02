@@ -54,9 +54,16 @@ let test_get_closure test_ctxt =
       assert_equal_int (-1) closure
     )
 
+let test_get_destroy test_ctxt =
+  arg_test (fun info ->
+      let index = GIArgInfo.get_destroy info in
+      assert_equal_int (-1) index
+    )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
     "GIArgInfo get direction" >:: test_get_direction;
-    "GIArgInfo get closure" >:: test_get_closure
+    "GIArgInfo get closure" >:: test_get_closure;
+    "GIArgInfo get destroy" >:: test_get_destroy
   ]
