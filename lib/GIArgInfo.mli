@@ -76,11 +76,16 @@ type transfer =
 val get_ownership_transfer:
   t structure ptr -> transfer
 
+(** Obtain if the type of the argument includes the possibility of NULL. For
+    'in' values this means that NULL is a valid value. For 'out' values, this
+    means that NULL may be returned. See also GIArgInfo.is_optional. *)
+val may_be_null:
+  t structure ptr -> bool
+
 (*
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
-  TODO : gboolean	g_arg_info_may_be_null ()
   TODO : gboolean	g_arg_info_is_caller_allocates ()
   TODO : gboolean	g_arg_info_is_optional ()
   TODO : gboolean	g_arg_info_is_return_value ()
