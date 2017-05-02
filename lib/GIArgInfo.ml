@@ -45,6 +45,10 @@ let get_closure =
   foreign "g_arg_info_get_closure"
     (ptr arginfo @-> returning int)
 
+let get_destroy =
+  foreign "g_arg_info_get_destroy"
+    (ptr arginfo @-> returning int)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_arginfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info

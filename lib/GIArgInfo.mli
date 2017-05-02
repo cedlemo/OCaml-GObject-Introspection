@@ -41,8 +41,14 @@ val get_direction:
     -1 if there is none. *)
 val get_closure:
   t structure ptr -> int
+
+(** Obtains the index of the GDestroyNotify argument. This is only valid for
+    arguments which are callbacks. Returns index of the GDestroyNotify argument
+    or -1 if there is none *)
+val get_destroy:
+  t structure ptr -> int
+
 (*
-  TODO : gint	g_arg_info_get_destroy ()
   TODO : GITransfer	g_arg_info_get_ownership_transfer ()
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
