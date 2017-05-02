@@ -73,6 +73,8 @@ type transfer =
                    responsible for cleaning up the container and item resources
                    of this transfer. *)
 
+(** Obtain the ownership transfer for this argument. GITransfer contains a list
+    of possible values. *)
 val get_ownership_transfer:
   t structure ptr -> transfer
 
