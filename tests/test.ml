@@ -29,6 +29,7 @@ let () =
       TestGIUnionInfo.tests;
       TestGIFieldInfo.tests;
       TestGIEnumInfo.tests;
-      TestGICallableInfo.tests
+      TestGICallableInfo.tests;
+      TestGIArgInfo.tests
     ]
   )
