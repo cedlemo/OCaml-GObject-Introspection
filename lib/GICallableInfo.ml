@@ -59,6 +59,13 @@ let get_arg info n =
     let info' = get_arg_raw info n in
     GIArgInfo.add_unref_finaliser_to_arg_info info'
 
+let get_return_type info =
+  let get_return_type_raw =
+    foreign "g_callable_info_get_return_type"
+      (ptr callableinfo @-> returning (ptr GITypeInfo.typeinfo))
+  in let info' = get_return_type_raw info in
+  GITypeInfo.add_unref_finaliser_to_type_info info'
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 

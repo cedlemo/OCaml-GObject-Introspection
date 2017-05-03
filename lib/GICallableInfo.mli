@@ -61,9 +61,12 @@ val skip_return:
 val get_arg:
   t structure ptr -> int -> GIArgInfo.t structure ptr
 
+(** Obtain the return type of a callable item as a GITypeInfo. *)
+val get_return_type:
+  t structure ptr -> GITypeInfo.t structure ptr
+
 (*
   TODO : GITransfer	g_callable_info_get_caller_owns ()
-  TODO : GITypeInfo *	g_callable_info_get_return_type ()
   TODO : gboolean	g_callable_info_invoke ()
   TODO : gboolean	g_callable_info_iterate_return_attributes ()
   TODO : void	g_callable_info_load_arg ()
