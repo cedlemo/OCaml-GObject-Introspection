@@ -75,6 +75,17 @@ let test_skip_return test_ctxt =
       assert_equal_boolean false skip_return
     )
 
+let test_get_caller_owns test_ctxt =
+  callable_test (fun info ->
+      let transfer = GICallableInfo.get_caller_owns info in
+      assert_equal ~printer:(fun t ->
+          match t with
+          | GIArgInfo.Nothing -> "nothing"
+          | GIArgInfo.Container -> "container"
+          | GIArgInfo.Everything -> "everything"
+        ) GIArgInfo.Nothing transfer
+    )
+
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
@@ -83,5 +94,6 @@ let tests =
     "GCallableInfo get return attribute" >:: test_get_return_attribute;
     "GCallableInfo is method" >:: test_is_method;
     "GCallableInfo may return null" >:: test_may_return_null;
-    "GCallableInfo skip return" >:: test_skip_return
+    "GCallableInfo skip return" >:: test_skip_return;
+    "GCallableInfo get caller owns" >:: test_get_caller_owns
   ]
