@@ -63,10 +63,18 @@ let test_get_size test_ctxt =
       assert_equal_int 0 size
   )
 
+let test_get_type test_ctxt =
+  field_test (fun info ->
+      let info_type = GIFieldInfo.get_type info in
+      let type_name = GITypeInfo.to_string info_type in
+      assert_equal_string "unknown" type_name
+    )
+
 let tests =
   "GObject Introspection FieldInfo tests" >:::
   [
     "GIFieldInfo get flags" >:: test_get_flags;
     "GIFieldInfo get offset" >:: test_get_offset;
-    "GIFieldInfo get size" >:: test_get_size
+    "GIFieldInfo get size" >:: test_get_size;
+    "GIFieldInfo get type" >:: test_get_type
   ]
