@@ -89,11 +89,11 @@ let test_get_caller_owns test_ctxt =
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
-    "GCallableInfo can throw gerror" >:: test_can_throw_gerror;
-    "GCallableInfo get n args" >:: test_get_n_args;
-    "GCallableInfo get return attribute" >:: test_get_return_attribute;
-    "GCallableInfo is method" >:: test_is_method;
-    "GCallableInfo may return null" >:: test_may_return_null;
-    "GCallableInfo skip return" >:: test_skip_return;
-    "GCallableInfo get caller owns" >:: test_get_caller_owns
+    "GICallableInfo can throw gerror" >:: test_can_throw_gerror;
+    "GICallableInfo get n args" >:: test_get_n_args;
+    "GICallableInfo get return attribute" >:: test_get_return_attribute;
+    "GICallableInfo is method" >:: test_is_method;
+    "GICallableInfo may return null" >:: test_may_return_null;
+    "GICallableInfo skip return" >:: test_skip_return;
+    "GICallableInfo get caller owns" >:: test_get_caller_owns
   ]
