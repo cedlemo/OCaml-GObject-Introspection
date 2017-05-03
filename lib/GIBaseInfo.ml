@@ -43,18 +43,22 @@ let base_info_ref =
 let base_info_unref =
   foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
 
-(* let base_info_unref info =
+(*
+let base_info_unref info =
   let base_info_unref_raw =
     foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
   in
   let ref_count = get_ref_count info in
+  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
   let message = String.concat " " ["Ref count";
+                                   Nativeint.to_string addr;
                                    string_of_int ref_count;
                                    "unref to";
                                    string_of_int (ref_count - 1)] in
   let _ = print_endline message in
   base_info_unref_raw info
 *)
+
 let get_name =
   foreign "g_base_info_get_name" (ptr baseinfo @-> returning string_opt)
 
