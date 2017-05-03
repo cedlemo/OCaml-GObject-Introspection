@@ -84,6 +84,11 @@ Obtain information about a particular argument of this callable.<br>
 Obtain the return type of a callable item as a GITypeInfo.<br>
 </div>
 
+<pre><span id="VALget_caller_owns"><span class="keyword">val</span> get_caller_owns</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIArgInfo.html#TYPEtransfer">GIArgInfo.transfer</a></code></pre><div class="info ">
+See whether the caller owns the return value of this callable. GITransfer
+    contains a list of possible transfer values.<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_callableinfo"><span class="keyword">val</span> cast_baseinfo_to_callableinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to callable info.<br>
 </div>
