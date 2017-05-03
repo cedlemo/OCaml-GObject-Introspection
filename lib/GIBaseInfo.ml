@@ -23,66 +23,10 @@ open Conversions
 type t
 let baseinfo : t structure typ = structure "GIBaseInfo"
 
-(** GIRealInfo private struct only used to check ref_count and memory leaks *)
-type realinfo
-let realinfo : realinfo structure typ = structure "GIRealInfo"
-let girealinfo_type = field realinfo "type" (int32_t)
-let girealinfo_ref_count = field realinfo "ref_count" (int)
-let () = seal realinfo
-
-let realinfo_of_baseinfo info =
-  coerce (ptr baseinfo) (ptr realinfo) info
-
-let get_ref_count info =
-  let realinfo = realinfo_of_baseinfo info in
-  getf (!@realinfo) girealinfo_ref_count
-
-(*
 let base_info_ref =
   foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
-*)
-let ref_count_file = (Sys.getcwd ()) ^ "/ref_count.log"
-
-(* http://stackoverflow.com/questions/8090490/how-to-implement-appendfile-function *)
-let write_ref_count_log message =
-  let oc = open_out_gen [Open_wronly; Open_append; Open_creat; Open_text] 0o640 ref_count_file in
-  let _ = output_string oc message in
-  close_out oc
-
-let base_info_ref info =
-  let base_info_ref_raw =
-    foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
-  in
-  let ref_count = get_ref_count info in
-  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
-  let message = String.concat " " ["++ Ref count";
-                                   Nativeint.to_string addr;
-                                   string_of_int ref_count;
-                                   "ref to  ";
-                                   string_of_int (ref_count + 1);
-                                   "\n"] in
-  let _ = write_ref_count_log message in
-  base_info_ref_raw info
-
-(*
 let base_info_unref =
   foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
-*)
-
-let base_info_unref info =
-  let base_info_unref_raw =
-    foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
-  in
-  let ref_count = get_ref_count info in
-  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
-  let message = String.concat " " ["-- Ref count";
-                                   Nativeint.to_string addr;
-                                   string_of_int ref_count;
-                                   "unref to";
-                                   string_of_int (ref_count - 1);
-                                   "\n"] in
-  let _ = write_ref_count_log message in
-  base_info_unref_raw info
 
 let get_name =
   foreign "g_base_info_get_name" (ptr baseinfo @-> returning string_opt)
@@ -173,3 +117,69 @@ let get_type info =
       (ptr baseinfo @-> returning int)
   in let value = get_type_raw info in
   baseinfo_type_of_int value
+
+(** GIRealInfo private struct only used to check ref_count and memory leaks *)
+(* type realinfo
+let realinfo : realinfo structure typ = structure "GIRealInfo"
+let girealinfo_type = field realinfo "type" (int32_t)
+let girealinfo_ref_count = field realinfo "ref_count" (int)
+let () = seal realinfo
+
+let realinfo_of_baseinfo info =
+  coerce (ptr baseinfo) (ptr realinfo) info
+
+let get_ref_count info =
+  let realinfo = realinfo_of_baseinfo info in
+  getf (!@realinfo) girealinfo_ref_count
+
+let ref_count_file = (Sys.getcwd ()) ^ "/ref_count.log"
+   *)
+(* http://stackoverflow.com/questions/8090490/how-to-implement-appendfile-function *)
+(*
+let write_ref_count_log message =
+  let oc = open_out_gen [Open_wronly; Open_append; Open_creat; Open_text] 0o640 ref_count_file in
+  let _ = output_string oc message in
+  close_out oc
+
+let base_info_ref info =
+  let base_info_ref_raw =
+    foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
+  in
+  let ref_count = get_ref_count info in
+  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
+  let name = match get_name info with
+    | None -> "No name"
+    | Some str -> str
+  in
+  let message = String.concat " " ["++ Ref count";
+                                   Nativeint.to_string addr;
+                                   string_of_int ref_count;
+                                   "ref to  ";
+                                   string_of_int (ref_count + 1);
+                                   name;
+                                   "\n"] in
+  let _ = write_ref_count_log message in
+  base_info_ref_raw info
+*)
+
+(*
+let base_info_unref info =
+  let base_info_unref_raw =
+    foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
+  in
+  let ref_count = get_ref_count info in
+  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
+  let name = match get_name info with
+    | None -> "No name"
+    | Some str -> str
+  in
+  let message = String.concat " " ["-- Ref count";
+                                   Nativeint.to_string addr;
+                                   string_of_int ref_count;
+                                   "unref to";
+                                   string_of_int (ref_count - 1);
+                                   name;
+                                   "\n"] in
+  let _ = write_ref_count_log message in
+  base_info_unref_raw info
+*)
