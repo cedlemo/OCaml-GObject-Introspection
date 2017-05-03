@@ -101,6 +101,18 @@ let test_is_skip test_ctxt =
       assert_equal_boolean false is_skip
     )
 
+let test_get_scope test_ctxt =
+  arg_test (fun info ->
+      let scope = GIArgInfo.get_scope info in
+      assert_equal ~printer:(fun scope ->
+          match scope with
+          | GIArgInfo.Invalid -> "Invalid"
+          | GIArgInfo.Call -> "Call"
+          | GIArgInfo.Async -> "Async"
+          | GIArgInfo.Notified -> "Notified"
+        ) GIArgInfo.Invalid scope
+    )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
@@ -112,5 +124,6 @@ let tests =
     "GIArgInfo is caller allocates" >:: test_is_caller_allocates;
     "GIArgInfo is optional" >:: test_is_optional;
     "GIArgInfo is return value" >:: test_is_return_value;
-    "GIArgInfo is skip" >:: test_is_skip
+    "GIArgInfo is skip" >:: test_is_skip;
+    "GIArgInfo get scope" >:: test_get_scope
   ]
