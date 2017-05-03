@@ -23,12 +23,38 @@ open Conversions
 type t
 let baseinfo : t structure typ = structure "GIBaseInfo"
 
+(** GIRealInfo private struct only used to check ref_count and memory leaks *)
+type realinfo
+let realinfo : realinfo structure typ = structure "GIRealInfo"
+let girealinfo_type = field realinfo "type" (int32_t)
+let girealinfo_ref_count = field realinfo "ref_count" (int)
+let () = seal realinfo
+
+let realinfo_of_baseinfo info =
+  coerce (ptr baseinfo) (ptr realinfo) info
+
+let get_ref_count info =
+  let realinfo = realinfo_of_baseinfo info in
+  getf (!@realinfo) girealinfo_ref_count
+
 let base_info_ref =
   foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
 
 let base_info_unref =
   foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
 
+(* let base_info_unref info =
+  let base_info_unref_raw =
+    foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
+  in
+  let ref_count = get_ref_count info in
+  let message = String.concat " " ["Ref count";
+                                   string_of_int ref_count;
+                                   "unref to";
+                                   string_of_int (ref_count - 1)] in
+  let _ = print_endline message in
+  base_info_unref_raw info
+*)
 let get_name =
   foreign "g_base_info_get_name" (ptr baseinfo @-> returning string_opt)
 
