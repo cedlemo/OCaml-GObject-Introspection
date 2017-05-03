@@ -16,21 +16,30 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests;
-      TestGIEnumInfo.tests;
-      TestGICallableInfo.tests;
-      TestGIArgInfo.tests;
-      TestGITypeInfo.tests
-    ]
-  )
+let namespace = "GObject"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace
+let fn_name = "signal_list_ids"
+
+let get_type_info () =
+  match GIRepository.find_by_name repo namespace fn_name with
+  | None -> assert_equal_string fn_name "No base info found"; None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Function ->
+      let fn_info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
+      Some fn_info (* Returns a type info from this *)
+    | _ -> None
+
+let type_test fn =
+  match get_type_info () with
+  | None -> assert_equal_string fn_name "No base info found"
+  | Some info -> fn info
+
+let tests =
+  "GObject Introspection TypeInfo tests" >:::
+  [
+  ]
