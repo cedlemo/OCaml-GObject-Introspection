@@ -35,6 +35,18 @@ val typeinfo : t structure typ
 val to_string:
   t structure ptr -> string
 
+(*
+  TODO : const gchar *	g_info_type_to_string ()
+  TODO : gboolean	g_type_info_is_pointer ()
+  TODO : GITypeTag	g_type_info_get_tag ()
+  TODO : GITypeInfo *	g_type_info_get_param_type ()
+  TODO : GIBaseInfo *	g_type_info_get_interface ()
+  TODO : gint	g_type_info_get_array_length ()
+  TODO : gint	g_type_info_get_array_fixed_size ()
+  TODO : gboolean	g_type_info_is_zero_terminated ()
+  TODO : GIArrayType	g_type_info_get_array_type ()
+ *)
+
 (** Just cast OCaml Ctypes base info to typeinfo. *)
 val cast_baseinfo_to_typeinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
