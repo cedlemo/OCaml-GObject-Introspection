@@ -50,10 +50,14 @@ val get_offset:
     need to allocate to store the field. *)
 val get_size:
   t structure ptr -> int
+
+(** Obtain the type of a field as a GITypeInfo. *)
+val get_type:
+  t structure ptr -> GITypeInfo.t structure ptr
+
 (*
    TODO: gboolean	g_field_info_get_field ()
    TODO: gboolean	g_field_info_set_field ()
-   TODO: GITypeInfo *	g_field_info_get_type ()
  *)
 
 (** Just cast OCaml Ctypes base info to field info. *)

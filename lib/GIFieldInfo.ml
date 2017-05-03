@@ -45,6 +45,13 @@ let get_size =
   foreign "g_field_info_get_size"
     (ptr fieldinfo @-> returning int)
 
+let get_type info =
+  let get_type_raw =
+    foreign "g_field_info_get_type"
+      (ptr fieldinfo @-> returning (ptr GITypeInfo.typeinfo))
+  in let info' = get_type_raw info in
+  GITypeInfo.add_unref_finaliser_to_type_info info'
+
 (* TODO : check that the info can be casted to field info ? *)
 let cast_baseinfo_to_fieldinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr fieldinfo) info
