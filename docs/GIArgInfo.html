@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Conversions.html">
+<link rel="previous" href="GITypeInfo.html">
 <link rel="next" href="GICallableInfo.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
@@ -24,7 +25,7 @@
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIArgInfo</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+<div class="navbar"><a class="pre" href="GITypeInfo.html" title="GITypeInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;<a class="post" href="GICallableInfo.html" title="GICallableInfo">Next</a>
 </div>
@@ -185,6 +186,60 @@ Obtain if the argument is a return value. It can either be a parameter or a
 Obtain if an argument is only useful in C.<br>
 </div>
 
+<pre><code><span id="TYPEscope"><span class="keyword">type</span> <code class="type"></code>scope</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTscope.Invalid"><span class="constructor">Invalid</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The argument is not of callback type.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTscope.Call"><span class="constructor">Call</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The callback and associated user_data is only used during the
+                  call to this function.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTscope.Async"><span class="constructor">Async</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The callback and associated user_data is only used until the
+                  callback is invoked, and the callback. is invoked always
+                  exactly once.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTscope.Notified"><span class="constructor">Notified</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The callback and and associated user_data is used until the
+                  caller is notfied via the destroy_notify.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+<div class="info ">
+Scope type of a GIArgInfo representing callback, determines how the
+    callback is invoked and is used to decided when the invoke structs can be
+    freed.<br>
+</div>
+
+
+<pre><span id="VALget_scope"><span class="keyword">val</span> get_scope</span> : <code class="type"><a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIArgInfo.html#TYPEscope">scope</a></code></pre>
 <pre><span id="VALcast_baseinfo_to_arginfo"><span class="keyword">val</span> cast_baseinfo_to_arginfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to arg info.<br>
 </div>

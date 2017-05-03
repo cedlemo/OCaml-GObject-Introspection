@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
@@ -64,6 +65,14 @@ GSList struct
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="GIRepository.html#TYPErepository">repository</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td></td></tr>
+<tr><td align="left"><br>S</td></tr>
+<tr><td><a href="GIArgInfo.html#TYPEscope">scope</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td><div class="info">
+Scope type of a GIArgInfo representing callback, determines how the
+    callback is invoked and is used to decided when the invoke structs can be
+    freed.
+</div>
+</td></tr>
 <tr><td align="left"><br>T</td></tr>
 <tr><td><a href="GIBaseInfo.html#TYPEt">t</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
@@ -111,6 +120,11 @@ GICallableInfo represents an entity which is callable.
 <tr><td><a href="GIArgInfo.html#TYPEt">t</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
 GIArgInfo represents an argument.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#TYPEt">t</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+GITypeInfo represents a type.
 </div>
 </td></tr>
 <tr><td><a href="GITypes.html#TYPEtag">tag</a> [<a href="GITypes.html">GITypes</a>]</td>

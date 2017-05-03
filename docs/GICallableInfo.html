@@ -11,6 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
@@ -77,6 +78,10 @@ See if a callable's return value is only useful in C.<br>
 
 <pre><span id="VALget_arg"><span class="keyword">val</span> get_arg</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIArgInfo.html#TYPEt">GIArgInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Obtain information about a particular argument of this callable.<br>
+</div>
+
+<pre><span id="VALget_return_type"><span class="keyword">val</span> get_return_type</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">GITypeInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain the return type of a callable item as a GITypeInfo.<br>
 </div>
 
 <pre><span id="VALcast_baseinfo_to_callableinfo"><span class="keyword">val</span> cast_baseinfo_to_callableinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

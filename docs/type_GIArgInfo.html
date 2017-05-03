@@ -6,6 +6,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
@@ -35,6 +36,8 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_optional&nbsp;:&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_return_value&nbsp;:&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_skip&nbsp;:&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;scope&nbsp;=&nbsp;<span class="constructor">Invalid</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Call</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Async</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Notified</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_scope&nbsp;:&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIArgInfo</span>.scope
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_baseinfo_to_arginfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr

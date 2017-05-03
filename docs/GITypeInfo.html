@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Conversions.html">
+<link rel="next" href="GIArgInfo.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
+<link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
+<link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
+<link title="GITypes" rel="Chapter" href="GITypes.html">
+<link title="GIValueInfo" rel="Chapter" href="GIValueInfo.html">
+<link title="GIFieldInfo" rel="Chapter" href="GIFieldInfo.html">
+<link title="GIEnumInfo" rel="Chapter" href="GIEnumInfo.html">
+<link title="GIUnionInfo" rel="Chapter" href="GIUnionInfo.html">
+<link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
+<link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
+<link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
+<link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GITypeInfo</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="GIArgInfo.html" title="GIArgInfo">Next</a>
+</div>
+<h1>Module <a href="type_GITypeInfo.html">GITypeInfo</a></h1>
+
+<pre><span class="keyword">module</span> GITypeInfo: <code class="code"><span class="keyword">sig</span></code> <a href="GITypeInfo.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+GITypeInfo — Struct representing a type<br>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+GITypeInfo represents a type. You can retrieve a type info from an argument
+    (see GIArgInfo), a function return value (see GIFunctionInfo), a field
+    (see GIFieldInfo), a property (see GIPropertyInfo), a constant
+    (see GIConstantInfo) or for a union discriminator (see GIUnionInfo).
+    A type can either be a of a basic type which is a standard C primitive type
+    or an interface type. For interface types you need to call
+    GITypeInfo.get_interface to get a reference to the base info for that
+    interface.<br>
+</div>
+
+
+<pre><span id="VALtypeinfo"><span class="keyword">val</span> typeinfo</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> string</code></pre><div class="info ">
+Obtain a string representation of type.<br>
+</div>
+
+<pre><span id="VALcast_baseinfo_to_typeinfo"><span class="keyword">val</span> cast_baseinfo_to_typeinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Just cast OCaml Ctypes base info to typeinfo.<br>
+</div>
+
+<pre><span id="VALcast_typeinfo_to_baseinfo"><span class="keyword">val</span> cast_typeinfo_to_baseinfo</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Just cast OCaml Ctypes typeinfo to base info<br>
+</div>
+
+<pre><span id="VALadd_unref_finaliser_to_type_info"><span class="keyword">val</span> add_unref_finaliser_to_type_info</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Add unref of the C underlying structure whith Gc.finalise.<br>
+</div>
+
+<pre><span id="VALtypeinfo_of_baseinfo"><span class="keyword">val</span> typeinfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GITypeInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
+</div>
+
+<pre><span id="VALbaseinfo_of_typeinfo"><span class="keyword">val</span> baseinfo_of_typeinfo</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIBaseInfo.t form a GITypeInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.<br>
+</div>
+</body></html>

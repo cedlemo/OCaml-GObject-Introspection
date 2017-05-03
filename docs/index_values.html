@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
 <link title="GITypes" rel="Chapter" href="GITypes.html">
@@ -36,6 +37,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALadd_unref_finaliser_to_function_info">add_unref_finaliser_to_function_info</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#VALadd_unref_finaliser_to_type_info">add_unref_finaliser_to_type_info</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
@@ -105,6 +111,13 @@ Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
 <tr><td><a href="GIStructInfo.html#VALbaseinfo_of_structinfo">baseinfo_of_structinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#VALbaseinfo_of_typeinfo">baseinfo_of_typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GITypeInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -192,6 +205,11 @@ Just cast OCaml Ctypes base info to field info.
 Just cast OCaml Ctypes base info to function info.
 </div>
 </td></tr>
+<tr><td><a href="GITypeInfo.html#VALcast_baseinfo_to_typeinfo">cast_baseinfo_to_typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to typeinfo.
+</div>
+</td></tr>
 <tr><td><a href="GIUnionInfo.html#VALcast_baseinfo_to_unioninfo">cast_baseinfo_to_unioninfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes base info to union info.
@@ -230,6 +248,11 @@ Just cast OCaml Ctypes function info to base info
 <tr><td><a href="GICallableInfo.html#VALcast_functioninfo_to_callableinfo">cast_functioninfo_to_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes function info to callable info.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#VALcast_typeinfo_to_baseinfo">cast_typeinfo_to_baseinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes typeinfo to base info
 </div>
 </td></tr>
 <tr><td><a href="GIUnionInfo.html#VALcast_unioninfo_to_baseinfo">cast_unioninfo_to_baseinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
@@ -490,6 +513,13 @@ Obtain the ownership transfer for this argument.
 Retrieve an arbitrary attribute associated with the return value.
 </div>
 </td></tr>
+<tr><td><a href="GICallableInfo.html#VALget_return_type">get_return_type</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Obtain the return type of a callable item as a GITypeInfo.
+</div>
+</td></tr>
+<tr><td><a href="GIArgInfo.html#VALget_scope">get_scope</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Returns the current search path GIRepository will use when loading typelib
@@ -667,6 +697,20 @@ Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
 <tr><td align="left"><br>T</td></tr>
 <tr><td><a href="GITypes.html#VALtag_of_int">tag_of_int</a> [<a href="GITypes.html">GITypes</a>]</td>
 <td></td></tr>
+<tr><td><a href="GITypeInfo.html#VALto_string">to_string</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Obtain a string representation of type.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#VALtypeinfo">typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypeInfo.html#VALtypeinfo_of_baseinfo">typeinfo_of_baseinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Return a GITypeInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td align="left"><br>U</td></tr>
 <tr><td><a href="GIUnionInfo.html#VALunioninfo">unioninfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td></td></tr>
