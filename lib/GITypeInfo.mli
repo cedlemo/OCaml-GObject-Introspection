@@ -31,6 +31,10 @@ open Ctypes
 type t
 val typeinfo : t structure typ
 
+(** Obtain a string representation of type. *)
+val to_string:
+  t structure ptr -> string
+
 (** Just cast OCaml Ctypes base info to typeinfo. *)
 val cast_baseinfo_to_typeinfo:
   GIBaseInfo.t structure ptr -> t structure ptr

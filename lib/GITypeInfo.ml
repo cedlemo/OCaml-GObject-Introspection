@@ -23,6 +23,10 @@ open Conversions
 type t
 let typeinfo : t structure typ = structure "GITypeInfo"
 
+let to_string =
+  foreign "g_info_type_to_string"
+    (ptr typeinfo @-> returning string)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info
