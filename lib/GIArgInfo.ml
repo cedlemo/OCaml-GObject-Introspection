@@ -54,18 +54,22 @@ type transfer =
   | Container
   | Everything
 
-let get_ownership_transfer info =
-  let get_ownership_transfer_raw =
-    foreign "g_arg_info_get_ownership_transfer"
-      (ptr arginfo @-> returning int)
-  in match get_ownership_transfer_raw info with
-  | 0 -> Nothing
+let transfer_of_int = function
+| 0 -> Nothing
   | 1 -> Container
   | 2 -> Everything
   | value -> let message = String.concat " " ["GIArgInfo get_ownership_transfer value";
                                               string_of_int value;
                                               "should not have been reached"]
     in raise (Failure message)
+
+
+let get_ownership_transfer info =
+  let get_ownership_transfer_raw =
+    foreign "g_arg_info_get_ownership_transfer"
+      (ptr arginfo @-> returning int)
+  in let transf_val = get_ownership_transfer_raw info
+  in transfer_of_int transf_val
 
 let may_be_null =
   foreign "g_arg_info_may_be_null"
