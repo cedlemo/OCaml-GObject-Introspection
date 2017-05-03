@@ -30,8 +30,9 @@ let get_type_info () =
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
     | GIBaseInfo.Function ->
-      let fn_info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
-      Some fn_info (* Returns a type info from this *)
+      let callable_info = GICallableInfo.callableinfo_of_baseinfo base_info in
+      let type_info = GICallableInfo.get_return_type callable_info in
+      Some type_info
     | _ -> None
 
 let type_test fn =
@@ -39,7 +40,14 @@ let type_test fn =
   | None -> assert_equal_string fn_name "No base info found"
   | Some info -> fn info
 
+let test_to_string test_ctxt =
+  type_test (fun info ->
+      let str = GITypeInfo.to_string info in
+      assert_equal_string "unknown" str
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
+    "GITypeInfo to string" >:: test_to_string
   ]
