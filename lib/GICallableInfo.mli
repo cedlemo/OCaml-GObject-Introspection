@@ -71,7 +71,6 @@ val get_caller_owns:
   t structure ptr -> GIArgInfo.transfer
 
 (*
-  TODO : GITransfer	g_callable_info_get_caller_owns ()
   TODO : gboolean	g_callable_info_invoke ()
   TODO : gboolean	g_callable_info_iterate_return_attributes ()
   TODO : void	g_callable_info_load_arg ()
