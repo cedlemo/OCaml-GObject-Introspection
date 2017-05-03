@@ -122,7 +122,6 @@ val get_scope:
   t structure ptr -> scope
 
 (*
-  TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
   TODO : void	g_arg_info_load_type ()
 *)
