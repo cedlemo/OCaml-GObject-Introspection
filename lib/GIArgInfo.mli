@@ -105,6 +105,18 @@ val is_return_value:
 val is_skip:
   t structure ptr -> bool
 
+(** Scope type of a GIArgInfo representing callback, determines how the
+    callback is invoked and is used to decided when the invoke structs can be
+    freed. *)
+type scope =
+  | Invalid   (** The argument is not of callback type. *)
+  | Call      (** The callback and associated user_data is only used during the
+                  call to this function. *)
+  | Async     (** The callback and associated user_data is only used until the
+                  callback is invoked, and the callback. is invoked always
+                  exactly once. *)
+  | Notified  (** The callback and and associated user_data is used until the
+                  caller is notfied via the destroy_notify. *)
 (*
   TODO : GIScopeType	g_arg_info_get_scope ()
   TODO : GITypeInfo *	g_arg_info_get_type ()
