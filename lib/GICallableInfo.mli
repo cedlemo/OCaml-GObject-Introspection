@@ -65,6 +65,11 @@ val get_arg:
 val get_return_type:
   t structure ptr -> GITypeInfo.t structure ptr
 
+(** See whether the caller owns the return value of this callable. GITransfer
+    contains a list of possible transfer values. *)
+val get_caller_owns:
+  t structure ptr -> GIArgInfo.transfer
+
 (*
   TODO : GITransfer	g_callable_info_get_caller_owns ()
   TODO : gboolean	g_callable_info_invoke ()

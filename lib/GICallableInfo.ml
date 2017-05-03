@@ -66,6 +66,13 @@ let get_return_type info =
   in let info' = get_return_type_raw info in
   GITypeInfo.add_unref_finaliser_to_type_info info'
 
+let get_caller_owns info =
+  let get_caller_owns_raw =
+    foreign "g_callable_info_get_caller_owns"
+      (ptr callableinfo @-> returning int)
+  in let transfer = get_caller_owns_raw info
+  in GIArgInfo.transfer_of_int transfer
+
 let cast_baseinfo_to_callableinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 
