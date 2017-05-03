@@ -41,6 +41,13 @@ let get_ref_count info =
 let base_info_ref =
   foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
 *)
+let ref_count_file = (Sys.getcwd ()) ^ "/ref_count.log"
+
+(* http://stackoverflow.com/questions/8090490/how-to-implement-appendfile-function *)
+let write_ref_count_log message =
+  let oc = open_out_gen [Open_wronly; Open_append; Open_creat; Open_text] 0o640 ref_count_file in
+  let _ = output_string oc message in
+  close_out oc
 
 let base_info_ref info =
   let base_info_ref_raw =
@@ -52,8 +59,9 @@ let base_info_ref info =
                                    Nativeint.to_string addr;
                                    string_of_int ref_count;
                                    "ref to  ";
-                                   string_of_int (ref_count + 1)] in
-  let _ = print_endline message in
+                                   string_of_int (ref_count + 1);
+                                   "\n"] in
+  let _ = write_ref_count_log message in
   base_info_ref_raw info
 
 (*
@@ -71,8 +79,9 @@ let base_info_unref info =
                                    Nativeint.to_string addr;
                                    string_of_int ref_count;
                                    "unref to";
-                                   string_of_int (ref_count - 1)] in
-  let _ = print_endline message in
+                                   string_of_int (ref_count - 1);
+                                   "\n"] in
+  let _ = write_ref_count_log message in
   base_info_unref_raw info
 
 let get_name =
