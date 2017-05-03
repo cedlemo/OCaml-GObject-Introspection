@@ -93,6 +93,21 @@ type scope =
   | Async
   | Notified
 
+let get_scope info =
+  let get_scope_raw =
+    foreign "g_arg_info_get_scope"
+      (ptr arginfo @-> returning int)
+  in match get_scope_raw info with
+  | 0 -> Invalid
+  | 1 -> Call
+  | 2 -> Async
+  | 3 -> Notified
+  | value -> let message = String.concat " " ["GIArgInfo get_scope value";
+                                              string_of_int value;
+                                              "should not have been reached"]
+    in raise (Failure message)
+
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_arginfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info
