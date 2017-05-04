@@ -67,6 +67,10 @@ val is_zero_terminated:
 val get_array_type:
   t structure ptr -> GITypes.array_type option
 
+(** Obtain the parameter type n .*)
+val get_param_type:
+  t structure ptr -> int -> t structure ptr
+
 (*
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()
