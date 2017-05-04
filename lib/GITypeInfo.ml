@@ -50,6 +50,12 @@ let is_zero_terminated =
   foreign "g_type_info_is_zero_terminated"
     (ptr typeinfo @-> returning bool)
 
+type array_type =
+  | C          (** a C array, char[] for instance *)
+  | Array      (** a GArray array *)
+  | Ptr_array  (** a GPtrArray array *)
+  | Byte_array (** a GByteArray array *)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info
