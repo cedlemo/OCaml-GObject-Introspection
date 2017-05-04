@@ -52,10 +52,13 @@ val get_tag:
 val get_array_length:
   t structure ptr -> int
 
+(** Obtain the fixed array size of the type. The type tag must be a
+    GIType.array or -1 will returned. *)
+val get_array_fixed_size:
+  t structure ptr -> int
 (*
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()
-  TODO : gint	g_type_info_get_array_fixed_size ()
   TODO : gboolean	g_type_info_is_zero_terminated ()
   TODO : GIArrayType	g_type_info_get_array_type ()
  *)

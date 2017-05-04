@@ -42,6 +42,10 @@ let get_array_length =
   foreign "g_type_info_get_array_length"
     (ptr typeinfo @-> returning int)
 
+let get_array_fixed_size =
+  foreign "g_type_info_get_array_fixed_size"
+    (ptr typeinfo @-> returning int)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info
