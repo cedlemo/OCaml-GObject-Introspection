@@ -72,6 +72,12 @@ let test_get_array_fixed_size test_ctxt =
       assert_equal_int (-1) size
     )
 
+let test_is_zero_terminated test_ctxt =
+  type_test (fun info ->
+      let zero_terminated = GITypeInfo.is_zero_terminated info in
+      assert_equal_boolean false zero_terminated
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
@@ -79,5 +85,6 @@ let tests =
     "GITypeInfo is pointer" >:: test_is_pointer;
     "GITypeInfo get tag" >:: test_get_tag;
     "GITypeInfo get array length" >:: test_get_array_length;
-    "GITypeInfo get array fixed size" >:: test_get_array_fixed_size
+    "GITypeInfo get array fixed size" >:: test_get_array_fixed_size;
+    "GITypeInfo get is zero terminated" >:: test_is_zero_terminated
   ]
