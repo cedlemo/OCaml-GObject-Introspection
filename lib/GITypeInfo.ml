@@ -31,6 +31,13 @@ let is_pointer =
   foreign "g_type_info_is_pointer"
     (ptr typeinfo @-> returning bool)
 
+let get_tag info =
+  let get_tag_raw =
+    foreign "g_type_info_get_tag"
+      (ptr typeinfo @-> returning int) in
+  let tag = get_tag_raw info in
+  GITypes.tag_of_int tag
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info

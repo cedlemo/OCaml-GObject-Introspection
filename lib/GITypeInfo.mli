@@ -43,8 +43,11 @@ val to_string:
 val is_pointer:
   t structure ptr -> bool
 
+(** Obtain the type tag for the type. See GITypeTag for a list of type tags. *)
+val get_tag:
+  t structure ptr -> GITypes.tag
+
 (*
-  TODO : GITypeTag	g_type_info_get_tag ()
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()
   TODO : gint	g_type_info_get_array_length ()
