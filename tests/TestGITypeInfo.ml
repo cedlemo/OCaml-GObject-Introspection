@@ -53,11 +53,17 @@ let test_is_pointer test_ctxt =
     )
 
 let test_get_tag test_ctxt =
-type_test (fun info ->
+  type_test (fun info ->
       let tag = GITypeInfo.get_tag info in
       assert_equal ~printer:(fun tag ->
           GITypes.string_of_tag tag
         ) GITypes.Array tag
+    )
+
+let test_get_array_length test_ctxt =
+  type_test (fun info ->
+      let length = GITypeInfo.get_array_length info in
+      assert_equal_int 1 length
     )
 
 let tests =
@@ -65,5 +71,6 @@ let tests =
   [
     "GITypeInfo to string" >:: test_to_string;
     "GITypeInfo is pointer" >:: test_is_pointer;
-    "GITypeInfo get tag" >:: test_get_tag
+    "GITypeInfo get tag" >:: test_get_tag;
+    "GITypeInfo get array length" >:: test_get_array_length
   ]
