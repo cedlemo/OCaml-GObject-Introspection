@@ -95,9 +95,24 @@ let string_of_tag = function
   | Unichar -> "unichar"
 
 type array_type =
-  | C          (** a C array, char[] for instance *)
-  | Array      (** a GArray array *)
-  | Ptr_array  (** a GPtrArray array *)
-  | Byte_array (** a GByteArray array *)
+  | C
+  | Array
+  | Ptr_array
+  | Byte_array
 
+let array_type_of_int = function
+  | 0 -> C
+  | 1 -> Array
+  | 2 -> Ptr_array
+  | 3 -> Byte_array
+  | value  -> let message = String.concat " " ["GITypes array_type value";
+                                               string_of_int value;
+                                               "should not have been reached"]
+    in raise (Failure message)
+
+let string_of_array_type = function
+  | C -> "c"
+  | Array -> "array"
+  | Ptr_array -> "ptr_array"
+  | Byte_array -> "byte_array"
 

@@ -56,3 +56,9 @@ type array_type =
   | Array      (** a GArray array *)
   | Ptr_array  (** a GPtrArray array *)
   | Byte_array (** a GByteArray array *)
+
+val array_type_of_int:
+  int -> array_type
+
+val string_of_array_type:
+  array_type -> string
