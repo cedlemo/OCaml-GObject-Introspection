@@ -38,6 +38,10 @@ let get_tag info =
   let tag = get_tag_raw info in
   GITypes.tag_of_int tag
 
+let get_array_length =
+  foreign "g_type_info_get_array_length"
+    (ptr typeinfo @-> returning int)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info
