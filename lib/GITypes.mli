@@ -47,3 +47,6 @@ type tag =
 
 val tag_of_int:
   int -> tag
+
+val string_of_tag:
+  tag -> string

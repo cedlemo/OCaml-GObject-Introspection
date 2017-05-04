@@ -70,3 +70,27 @@ let tag_of_int = function
                                                "should not have been reached"]
     in raise (Failure message)
 
+let string_of_tag = function
+  | Void -> "void"
+  | Boolean -> "boolean"
+  | Int8 -> "int8"
+  | Uint8 -> "uint8"
+  | Int16 -> "int16"
+  | Uint16 -> "uint16"
+  | Int32 -> "int32"
+  | Uint32 -> "uint32"
+  | Int64 -> "int64"
+  | Uint64 -> "uint64"
+  | Float -> "float"
+  | Double -> "double"
+  | GType -> "gType"
+  | Utf8 -> "utf8"
+  | Filename -> "filename"
+  | Array -> "array"
+  | Interface -> "interface"
+  | GList -> "gList"
+  | GSList -> "gSList"
+  | GHash -> "gHash"
+  | Error -> "error"
+  | Unichar -> "unichar"
+
