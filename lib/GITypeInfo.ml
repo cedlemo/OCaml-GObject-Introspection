@@ -50,6 +50,14 @@ let is_zero_terminated =
   foreign "g_type_info_is_zero_terminated"
     (ptr typeinfo @-> returning bool)
 
+let get_array_type info =
+  let get_array_type_raw =
+    foreign "g_type_info_get_array_type"
+      (ptr typeinfo @-> returning int) in
+  match get_array_type_raw info with
+  | -1 -> None
+  | array_type -> Some (GITypes.array_type_of_int array_type)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info

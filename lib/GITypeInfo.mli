@@ -62,10 +62,14 @@ val get_array_fixed_size:
 val is_zero_terminated:
   t structure ptr -> bool
 
+(** Obtain the array type for this type. See GIArrayType for a list of possible
+    values. If the type tag of this type is not array, None will be returned. *)
+val get_array_type:
+  t structure ptr -> GITypes.array_type option
+
 (*
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()
-  TODO : GIArrayType	g_type_info_get_array_type ()
  *)
 
 (** Just cast OCaml Ctypes base info to typeinfo. *)
