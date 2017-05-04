@@ -87,6 +87,15 @@ let test_get_array_type test_ctxt =
           GITypes.C array_type
     )
 
+let test_get_param_type test_ctxt =
+  type_test (fun info ->
+     let param_type = GITypeInfo.get_param_type info 0 in
+     let tag = GITypeInfo.get_tag param_type in
+      assert_equal ~printer:(fun tag ->
+          GITypes.string_of_tag tag
+        ) GITypes.Uint32 tag
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
@@ -96,5 +105,6 @@ let tests =
     "GITypeInfo get array length" >:: test_get_array_length;
     "GITypeInfo get array fixed size" >:: test_get_array_fixed_size;
     "GITypeInfo get is zero terminated" >:: test_is_zero_terminated;
-    "GITypeInfo get array type" >:: test_get_array_type
+    "GITypeInfo get array type" >:: test_get_array_type;
+    "GITypeInfo get param type" >:: test_get_param_type
   ]
