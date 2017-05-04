@@ -66,11 +66,18 @@ let test_get_array_length test_ctxt =
       assert_equal_int 1 length
     )
 
+let test_get_array_fixed_size test_ctxt =
+  type_test (fun info ->
+      let size = GITypeInfo.get_array_fixed_size info in
+      assert_equal_int (-1) size
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
     "GITypeInfo to string" >:: test_to_string;
     "GITypeInfo is pointer" >:: test_is_pointer;
     "GITypeInfo get tag" >:: test_get_tag;
-    "GITypeInfo get array length" >:: test_get_array_length
+    "GITypeInfo get array length" >:: test_get_array_length;
+    "GITypeInfo get array fixed size" >:: test_get_array_fixed_size
   ]
