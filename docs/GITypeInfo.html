@@ -54,6 +54,23 @@ GITypeInfo represents a type. You can retrieve a type info from an argument
 Obtain a string representation of type.<br>
 </div>
 
+<pre><span id="VALis_pointer"><span class="keyword">val</span> is_pointer</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+Obtain if the type is passed as a reference.
+    Note that the types of GI_DIRECTION_OUT and GI_DIRECTION_INOUT parameters
+    will only be pointers if the underlying type being transferred is a pointer
+    (i.e. only if the type of the C function’s formal parameter is a pointer to
+    a pointer).<br>
+</div>
+
+<pre><span id="VALget_tag"><span class="keyword">val</span> get_tag</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GITypes.html#TYPEtag">GITypes.tag</a></code></pre><div class="info ">
+Obtain the type tag for the type. See GITypeTag for a list of type tags.<br>
+</div>
+
+<pre><span id="VALget_array_length"><span class="keyword">val</span> get_array_length</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the array length of the type. The type tag must be a GIType.array or
+    -1 will returned.<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_typeinfo"><span class="keyword">val</span> cast_baseinfo_to_typeinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to typeinfo.<br>
 </div>
