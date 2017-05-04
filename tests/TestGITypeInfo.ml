@@ -46,8 +46,15 @@ let test_to_string test_ctxt =
       assert_equal_string "unknown" str
     )
 
+let test_is_pointer test_ctxt =
+  type_test (fun info ->
+      let is_pointer = GITypeInfo.is_pointer info in
+      assert_equal_boolean true is_pointer
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
-    "GITypeInfo to string" >:: test_to_string
+    "GITypeInfo to string" >:: test_to_string;
+    "GITypeInfo is pointer" >:: test_is_pointer
   ]
