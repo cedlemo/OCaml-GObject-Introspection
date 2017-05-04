@@ -52,9 +52,18 @@ let test_is_pointer test_ctxt =
       assert_equal_boolean true is_pointer
     )
 
+let test_get_tag test_ctxt =
+type_test (fun info ->
+      let tag = GITypeInfo.get_tag info in
+      assert_equal ~printer:(fun tag ->
+          GITypes.string_of_tag tag
+        ) GITypes.Array tag
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
     "GITypeInfo to string" >:: test_to_string;
-    "GITypeInfo is pointer" >:: test_is_pointer
+    "GITypeInfo is pointer" >:: test_is_pointer;
+    "GITypeInfo get tag" >:: test_get_tag
   ]
