@@ -62,12 +62,6 @@ val get_array_fixed_size:
 val is_zero_terminated:
   t structure ptr -> bool
 
-type array_type =
-  | C          (** a C array, char[] for instance *)
-  | Array      (** a GArray array *)
-  | Ptr_array  (** a GPtrArray array *)
-  | Byte_array (** a GByteArray array *)
-
 (*
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()

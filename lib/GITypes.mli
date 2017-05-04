@@ -50,3 +50,9 @@ val tag_of_int:
 
 val string_of_tag:
   tag -> string
+
+type array_type =
+  | C          (** a C array, char[] for instance *)
+  | Array      (** a GArray array *)
+  | Ptr_array  (** a GPtrArray array *)
+  | Byte_array (** a GByteArray array *)

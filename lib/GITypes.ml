@@ -94,3 +94,10 @@ let string_of_tag = function
   | Error -> "error"
   | Unichar -> "unichar"
 
+type array_type =
+  | C          (** a C array, char[] for instance *)
+  | Array      (** a GArray array *)
+  | Ptr_array  (** a GPtrArray array *)
+  | Byte_array (** a GByteArray array *)
+
+
