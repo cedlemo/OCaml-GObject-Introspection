@@ -78,6 +78,15 @@ let test_is_zero_terminated test_ctxt =
       assert_equal_boolean false zero_terminated
     )
 
+let test_get_array_type test_ctxt =
+  type_test (fun info ->
+      match GITypeInfo.get_array_type info with
+      | None -> assert_equal_string "It should " "be an array"
+      | Some array_type -> assert_equal ~printer:(fun t ->
+          GITypes.string_of_array_type t)
+          GITypes.C array_type
+    )
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
@@ -86,5 +95,6 @@ let tests =
     "GITypeInfo get tag" >:: test_get_tag;
     "GITypeInfo get array length" >:: test_get_array_length;
     "GITypeInfo get array fixed size" >:: test_get_array_fixed_size;
-    "GITypeInfo get is zero terminated" >:: test_is_zero_terminated
+    "GITypeInfo get is zero terminated" >:: test_is_zero_terminated;
+    "GITypeInfo get array type" >:: test_get_array_type
   ]
