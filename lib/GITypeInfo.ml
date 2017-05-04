@@ -27,6 +27,10 @@ let to_string =
   foreign "g_info_type_to_string"
     (ptr typeinfo @-> returning string)
 
+let is_pointer =
+  foreign "g_type_info_is_pointer"
+    (ptr typeinfo @-> returning bool)
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info

@@ -35,9 +35,15 @@ val typeinfo : t structure typ
 val to_string:
   t structure ptr -> string
 
+(** Obtain if the type is passed as a reference.
+    Note that the types of GI_DIRECTION_OUT and GI_DIRECTION_INOUT parameters
+    will only be pointers if the underlying type being transferred is a pointer
+    (i.e. only if the type of the C function’s formal parameter is a pointer to
+    a pointer). *)
+val is_pointer:
+  t structure ptr -> bool
+
 (*
-  TODO : const gchar *	g_info_type_to_string ()
-  TODO : gboolean	g_type_info_is_pointer ()
   TODO : GITypeTag	g_type_info_get_tag ()
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()
