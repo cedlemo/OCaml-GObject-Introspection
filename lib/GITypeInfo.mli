@@ -56,6 +56,12 @@ val get_array_length:
     GIType.array or -1 will returned. *)
 val get_array_fixed_size:
   t structure ptr -> int
+
+(** Obtain if the last element of the array is NULL. The type tag must be a
+    GIType.array  or FALSE will returned. *)
+val is_zero_terminated:
+  t structure ptr -> bool
+
 (*
   TODO : GITypeInfo *	g_type_info_get_param_type ()
   TODO : GIBaseInfo *	g_type_info_get_interface ()
