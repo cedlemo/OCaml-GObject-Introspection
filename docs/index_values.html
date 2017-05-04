@@ -60,6 +60,8 @@ Return a GIArgInfo.t from a GIBaseInfo.t, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GITypes.html#VALarray_type_of_int">array_type_of_int</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
 <tr><td align="left"><br>B</td></tr>
 <tr><td><a href="GIBaseInfo.html#VALbase_info_ref">base_info_ref</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
@@ -363,9 +365,19 @@ Obtain the required alignment of the union.
 Obtain information about a particular argument of this callable.
 </div>
 </td></tr>
+<tr><td><a href="GITypeInfo.html#VALget_array_fixed_size">get_array_fixed_size</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Obtain the fixed array size of the type.
+</div>
+</td></tr>
 <tr><td><a href="GITypeInfo.html#VALget_array_length">get_array_length</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Obtain the array length of the type.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#VALget_array_type">get_array_type</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Obtain the array type for this type.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_c_prefix">get_c_prefix</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -516,6 +528,11 @@ Obtain the offset in bits of the field member, this is relative to the
 <tr><td><a href="GIArgInfo.html#VALget_ownership_transfer">get_ownership_transfer</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
 Obtain the ownership transfer for this argument.
+</div>
+</td></tr>
+<tr><td><a href="GITypeInfo.html#VALget_param_type">get_param_type</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Obtain the parameter type n .
 </div>
 </td></tr>
 <tr><td><a href="GICallableInfo.html#VALget_return_attribute">get_return_attribute</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
@@ -676,6 +693,11 @@ Obtain if the argument is a return value.
 Obtain if an argument is only useful in C.
 </div>
 </td></tr>
+<tr><td><a href="GITypeInfo.html#VALis_zero_terminated">is_zero_terminated</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+Obtain if the last element of the array is NULL.
+</div>
+</td></tr>
 <tr><td align="left"><br>M</td></tr>
 <tr><td><a href="GIArgInfo.html#VALmay_be_null">may_be_null</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
@@ -705,6 +727,8 @@ Force the namespace namespace_ to be loaded if it isn't already.
 See if a callable's return value is only useful in C.
 </div>
 </td></tr>
+<tr><td><a href="GITypes.html#VALstring_of_array_type">string_of_array_type</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIBaseInfo.html#VALstring_of_baseinfo_type">string_of_baseinfo_type</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
 Get the name of a baseinfo_type.

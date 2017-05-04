@@ -264,4 +264,50 @@ The type tag of a GITypeInfo.<br>
 
 
 <pre><span id="VALtag_of_int"><span class="keyword">val</span> tag_of_int</span> : <code class="type">int -> <a href="GITypes.html#TYPEtag">tag</a></code></pre>
-<pre><span id="VALstring_of_tag"><span class="keyword">val</span> string_of_tag</span> : <code class="type"><a href="GITypes.html#TYPEtag">tag</a> -> string</code></pre></body></html>
+<pre><span id="VALstring_of_tag"><span class="keyword">val</span> string_of_tag</span> : <code class="type"><a href="GITypes.html#TYPEtag">tag</a> -> string</code></pre>
+<pre><code><span id="TYPEarray_type"><span class="keyword">type</span> <code class="type"></code>array_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarray_type.C"><span class="constructor">C</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+a C array, char[] for instance<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarray_type.Array"><span class="constructor">Array</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+a GArray array<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarray_type.Ptr_array"><span class="constructor">Ptr_array</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+a GPtrArray array<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarray_type.Byte_array"><span class="constructor">Byte_array</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+a GByteArray array<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="VALarray_type_of_int"><span class="keyword">val</span> array_type_of_int</span> : <code class="type">int -> <a href="GITypes.html#TYPEarray_type">array_type</a></code></pre>
+<pre><span id="VALstring_of_array_type"><span class="keyword">val</span> string_of_array_type</span> : <code class="type"><a href="GITypes.html#TYPEarray_type">array_type</a> -> string</code></pre></body></html>

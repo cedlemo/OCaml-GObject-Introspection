@@ -46,4 +46,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Unichar</span>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;tag_of_int&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GITypes</span>.tag
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_tag&nbsp;:&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;array_type&nbsp;=&nbsp;<span class="constructor">C</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Array</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Ptr_array</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Byte_array</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;array_type_of_int&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GITypes</span>.array_type
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_array_type&nbsp;:&nbsp;<span class="constructor">GITypes</span>.array_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
 <span class="keyword">end</span></code></body></html>

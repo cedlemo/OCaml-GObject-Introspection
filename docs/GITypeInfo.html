@@ -71,6 +71,25 @@ Obtain the array length of the type. The type tag must be a GIType.array or
     -1 will returned.<br>
 </div>
 
+<pre><span id="VALget_array_fixed_size"><span class="keyword">val</span> get_array_fixed_size</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the fixed array size of the type. The type tag must be a
+    GIType.array or -1 will returned.<br>
+</div>
+
+<pre><span id="VALis_zero_terminated"><span class="keyword">val</span> is_zero_terminated</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> bool</code></pre><div class="info ">
+Obtain if the last element of the array is NULL. The type tag must be a
+    GIType.array  or FALSE will returned.<br>
+</div>
+
+<pre><span id="VALget_array_type"><span class="keyword">val</span> get_array_type</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GITypes.html#TYPEarray_type">GITypes.array_type</a> option</code></pre><div class="info ">
+Obtain the array type for this type. See GIArrayType for a list of possible
+    values. If the type tag of this type is not array, None will be returned.<br>
+</div>
+
+<pre><span id="VALget_param_type"><span class="keyword">val</span> get_param_type</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain the parameter type n .<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_typeinfo"><span class="keyword">val</span> cast_baseinfo_to_typeinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to typeinfo.<br>
 </div>
