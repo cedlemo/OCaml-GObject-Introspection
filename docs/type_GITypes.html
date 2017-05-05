@@ -49,4 +49,39 @@
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;array_type&nbsp;=&nbsp;<span class="constructor">C</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Array</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Ptr_array</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Byte_array</span>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;array_type_of_int&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GITypes</span>.array_type
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_array_type&nbsp;:&nbsp;<span class="constructor">GITypes</span>.array_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;argument_t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;argument&nbsp;:&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_boolean&nbsp;:&nbsp;(bool,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_int8&nbsp;:&nbsp;(int,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_uint8&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.uint8,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_int16&nbsp;:&nbsp;(int,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_uint16&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.uint16,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_int32&nbsp;:&nbsp;(int32,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_uint32&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.uint32,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_int64&nbsp;:&nbsp;(int64,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_uint64&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.uint64,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_float&nbsp;:&nbsp;(float,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_double&nbsp;:&nbsp;(float,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_short&nbsp;:&nbsp;(int,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_ushort&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.ushort,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_int&nbsp;:&nbsp;(int,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_uint&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.uint,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_long&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Signed</span>.long,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_ulong&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.ulong,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_ssize&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">PosixTypes</span>.ssize_t,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_size&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">PosixTypes</span>.size_t,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_string&nbsp;:&nbsp;(string,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;v_pointer&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;option,&nbsp;<span class="constructor">GITypes</span>.argument_t&nbsp;<span class="constructor">Ctypes</span>.structure)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field
 <span class="keyword">end</span></code></body></html>

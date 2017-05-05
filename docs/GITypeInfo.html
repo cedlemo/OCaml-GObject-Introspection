@@ -90,6 +90,14 @@ Obtain the array type for this type. See GIArrayType for a list of possible
 Obtain the parameter type n .<br>
 </div>
 
+<pre><span id="VALget_interface"><span class="keyword">val</span> get_interface</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+For types which have GITypes.Interface such as GObjects and boxed
+    values, this function returns full information about the referenced type.
+    You can then inspect the type of the returned GIBaseInfo to further query
+    whether it is a concrete GObject, a GInterface, a structure, etc. using
+    GIBaseInfo.get_type.<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_typeinfo"><span class="keyword">val</span> cast_baseinfo_to_typeinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to typeinfo.<br>
 </div>

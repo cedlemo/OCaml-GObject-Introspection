@@ -31,6 +31,8 @@
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
+<tr><td><a href="GIBaseInfo.html#VALadd_unref_finaliser_to_base_info">add_unref_finaliser_to_base_info</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIFieldInfo.html#VALadd_unref_finaliser_to_field_info">add_unref_finaliser_to_field_info</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
@@ -60,6 +62,8 @@ Return a GIArgInfo.t from a GIBaseInfo.t, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GITypes.html#VALargument">argument</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
 <tr><td><a href="GITypes.html#VALarray_type_of_int">array_type_of_int</a> [<a href="GITypes.html">GITypes</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>B</td></tr>
@@ -448,6 +452,12 @@ This function returns a particular metadata entry in the given namespace
     namespace_ .
 </div>
 </td></tr>
+<tr><td><a href="GITypeInfo.html#VALget_interface">get_interface</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
+<td><div class="info">
+For types which have GITypes.Interface such as GObjects and boxed
+    values, this function returns full information about the referenced type.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_loaded_namespaces">get_loaded_namespaces</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Return the list of currently loaded namespaces.
@@ -775,6 +785,48 @@ Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
 </div>
 </td></tr>
 <tr><td align="left"><br>V</td></tr>
+<tr><td><a href="GITypes.html#VALv_boolean">v_boolean</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_double">v_double</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_float">v_float</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_int">v_int</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_int16">v_int16</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_int32">v_int32</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_int64">v_int64</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_int8">v_int8</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_long">v_long</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_pointer">v_pointer</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_short">v_short</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_size">v_size</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_ssize">v_ssize</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_string">v_string</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_uint">v_uint</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_uint16">v_uint16</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_uint32">v_uint32</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_uint64">v_uint64</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_uint8">v_uint8</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_ulong">v_ulong</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
+<tr><td><a href="GITypes.html#VALv_ushort">v_ushort</a> [<a href="GITypes.html">GITypes</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIValueInfo.html#VALvalueinfo">valueinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIValueInfo.html#VALvalueinfo_of_baseinfo">valueinfo_of_baseinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
