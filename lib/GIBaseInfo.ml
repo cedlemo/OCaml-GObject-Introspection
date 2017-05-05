@@ -25,6 +25,7 @@ let baseinfo : t structure typ = structure "GIBaseInfo"
 
 let base_info_ref =
   foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
+
 let base_info_unref =
   foreign "g_base_info_unref" (ptr baseinfo @-> returning void)
 
