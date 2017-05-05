@@ -33,12 +33,25 @@ let get_constant_info () =
       Some const_info
     | _ -> None
 
-let const_test fn =
+let constant_test fn =
   match get_constant_info () with
   | None -> assert_equal_string const_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_type test_ctxt =
+  constant_test (fun info ->
+      let type_info = GIConstantInfo.get_type info in
+      let str = GITypeInfo.to_string type_info in
+      assert_equal_string "unknown" str ;
+      let tag = GITypeInfo.get_tag type_info in
+      assert_equal ~printer:(fun tag ->
+          GITypes.string_of_tag tag
+        ) GITypes.Int32 tag
+
+    )
+
 let tests =
   "GObject Introspection ConstantInfo tests" >:::
   [
+    "GIConstantInfo get type" >:: test_get_type
   ]
