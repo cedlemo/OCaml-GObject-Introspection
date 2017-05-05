@@ -16,22 +16,29 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests;
-      TestGIEnumInfo.tests;
-      TestGICallableInfo.tests;
-      TestGIArgInfo.tests;
-      TestGITypeInfo.tests;
-      TestGIConstantInfo.tests
-    ]
-  )
+let namespace = "GObject"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace None 0 ()
+let const_name = "SIGNAL_FLAGS_MASK"
+
+let get_constant_info () =
+  match GIRepository.find_by_name repo namespace const_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Constant -> let const_info = GIConstantInfo.constantinfo_of_baseinfo base_info in
+      Some const_info
+    | _ -> None
+
+let const_test fn =
+  match get_constant_info () with
+  | None -> assert_equal_string const_name "No base info found"
+  | Some (info) -> fn info
+
+let tests =
+  "GObject Introspection ConstantInfo tests" >:::
+  [
+  ]
