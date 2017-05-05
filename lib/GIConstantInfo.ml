@@ -22,6 +22,13 @@ open Foreign
 type t
 let constantinfo: t structure typ = structure "GIConstantInfo"
 
+let get_type info =
+  let get_type_raw =
+    foreign "g_constant_info_get_type"
+      (ptr constantinfo @-> returning (ptr GITypeInfo.typeinfo)) in
+  let info' = get_type_raw info in
+  GITypeInfo.add_unref_finaliser_to_type_info info'
+
 (* TODO : check that the info can be casted to a constantinfo ? *)
 let cast_baseinfo_to_constantinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr constantinfo) info
