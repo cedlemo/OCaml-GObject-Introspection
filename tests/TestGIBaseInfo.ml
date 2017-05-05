@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "Gio"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace
+let typelib = GIRepository.require repo namespace None 0 ()
 let info_name = "app_info_create_from_commandline"
 let callback_name = "BusNameAppearedCallback"
 

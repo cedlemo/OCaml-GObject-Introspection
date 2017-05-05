@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace
+let typelib = GIRepository.require repo namespace None 0 ()
 let fn_name = "signal_list_ids"
 
 let get_type_info () =

@@ -47,7 +47,6 @@ let test_get_type test_ctxt =
       assert_equal ~printer:(fun tag ->
           GITypes.string_of_tag tag
         ) GITypes.Int32 tag
-
     )
 
 let tests =
