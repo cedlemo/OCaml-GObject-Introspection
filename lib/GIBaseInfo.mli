@@ -95,3 +95,6 @@ val get_type:
   TODO : gboolean	g_base_info_iterate_attributes ()
   TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
+
+val add_unref_finaliser_to_base_info:
+  t structure ptr -> t structure ptr

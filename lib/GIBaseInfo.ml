@@ -118,6 +118,12 @@ let get_type info =
   in let value = get_type_raw info in
   baseinfo_type_of_int value
 
+let add_unref_finaliser_to_base_info info =
+  let _ = Gc.finalise (fun i ->
+      base_info_unref i
+    ) info in
+  info
+
 (** GIRealInfo private struct only used to check ref_count and memory leaks *)
 (* type realinfo
 let realinfo : realinfo structure typ = structure "GIRealInfo"
