@@ -61,6 +61,13 @@ Executable "gi_repository"
   CompiledObject: best
   BuildDepends: GObjectIntrospection
 
+Executable "gi_baseinfo_get_name"
+  Path: samples
+  MainIs: gi_baseinfo_get_name.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
 #   Modules: GObjectIntrospection,
 #            GIFieldInfo,
 #            GIUnionInfo,
@@ -89,12 +96,6 @@ Executable "gi_repository"
 # #
 #
 #
-# Executable "gi_baseinfo_get_name"
-#   Path: samples
-#   MainIs: gi_baseinfo_get_name.ml
-#   Install: false
-#   CompiledObject: best
-#   BuildDepends: GObjectIntrospection
 #
 # Executable "gi_baseinfo_get_type"
 #   Path: samples
