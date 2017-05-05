@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIConstantInfo" rel="Chapter" href="GIConstantInfo.html">
 <link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
 <link title="GICallableInfo" rel="Chapter" href="GICallableInfo.html">
@@ -93,6 +94,13 @@ Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GIConstantInfo.html#VALbaseinfo_of_constantinfo">baseinfo_of_constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t form a GIConstantInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALbaseinfo_of_enuminfo">baseinfo_of_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Return a GIBaseInfo.t form a GIEnumInfo, the underlying C structure
@@ -130,7 +138,7 @@ Return a GIBaseInfo.t form a GITypeInfo, the underlying C structure
 </td></tr>
 <tr><td><a href="GIUnionInfo.html#VALbaseinfo_of_unioninfo">baseinfo_of_unioninfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
-Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+Return a GIBaseInfo.t form a GIUnionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -196,6 +204,11 @@ Just cast OCaml Ctypes base info to arg info.
 Just cast OCaml Ctypes base info to callable info.
 </div>
 </td></tr>
+<tr><td><a href="GIConstantInfo.html#VALcast_baseinfo_to_constantinfo">cast_baseinfo_to_constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to constant info.
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALcast_baseinfo_to_enuminfo">cast_baseinfo_to_enuminfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes base info to enum info.
@@ -236,6 +249,11 @@ Just cast OCaml Ctypes callable info to base info
 Just cast OCaml Ctypes callable info to function info
 </div>
 </td></tr>
+<tr><td><a href="GIConstantInfo.html#VALcast_constantinfo_to_baseinfo">cast_constantinfo_to_baseinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes constant info to base info
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALcast_enuminfo_to_baseinfo">cast_enuminfo_to_baseinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes enum info to base info
@@ -269,6 +287,15 @@ Just cast OCaml Ctypes union info to base info
 <tr><td><a href="GIValueInfo.html#VALcast_valueinfo_to_baseinfo">cast_valueinfo_to_baseinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes enum info to base info
+</div>
+</td></tr>
+<tr><td><a href="GIConstantInfo.html#VALconstantinfo">constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GIConstantInfo.html#VALconstantinfo_of_baseinfo">constantinfo_of_baseinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+Return a GIConstantInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
 <tr><td align="left"><br>E</td></tr>
@@ -604,6 +631,11 @@ Obtain the info type of the GIBaseInfo.
 Obtain the type of a field as a GITypeInfo.
 </div>
 </td></tr>
+<tr><td><a href="GIConstantInfo.html#VALget_type">get_type</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+Obtain the type of the constant as a GITypeInfo.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_typelib_path">get_typelib_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 If namespace namespace_ is loaded, return the full path to the .typelib
@@ -779,7 +811,7 @@ Return a GITypeInfo.t from a GIBaseInfo.t, the underlying C structure
 <td></td></tr>
 <tr><td><a href="GIUnionInfo.html#VALunioninfo_of_baseinfo">unioninfo_of_baseinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
-Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+Return a GIUnionInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
