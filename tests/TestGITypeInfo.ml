@@ -96,6 +96,31 @@ let test_get_param_type test_ctxt =
         ) GITypes.Uint32 tag
     )
 
+let test_get_interface_none test_ctxt =
+type_test (fun info ->
+      match GITypeInfo.get_interface info with
+      | None -> assert_equal true true
+      | _ -> assert_equal_string "This type info " "should not have interface"
+    )
+
+let test_get_interface test_ctxt =
+  let name = "type_class_ref" in
+  match GIRepository.find_by_name repo namespace name with
+  | None -> assert_equal_string fn_name "No base info found"
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Function ->
+      (
+        let callable_info = GICallableInfo.callableinfo_of_baseinfo base_info in
+        let type_info = GICallableInfo.get_return_type callable_info in
+        match GITypeInfo.get_interface type_info with
+        | None -> assert_equal_string "It should " "have an interface"
+        | Some interface -> match GIBaseInfo.get_name interface with
+          | None -> assert_equal_string "It should " "have a name"
+          | Some interface_name -> assert_equal_string "TypeClass" interface_name
+      )
+    | _ -> assert_equal_string name "should be function type"
+
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
@@ -106,5 +131,7 @@ let tests =
     "GITypeInfo get array fixed size" >:: test_get_array_fixed_size;
     "GITypeInfo get is zero terminated" >:: test_is_zero_terminated;
     "GITypeInfo get array type" >:: test_get_array_type;
-    "GITypeInfo get param type" >:: test_get_param_type
+    "GITypeInfo get param type" >:: test_get_param_type;
+    "GITypeInfo get interface none" >:: test_get_interface_none;
+    "GITypeInfo get interface" >:: test_get_interface
   ]
