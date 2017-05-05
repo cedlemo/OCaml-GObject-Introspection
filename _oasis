@@ -54,6 +54,13 @@ Document "docs"
     "-docflags '-colorize-code -short-functors -charset utf-8'"
   XOCamlbuildLibraries: GObjectIntrospection# Library "GObjectIntrospection"
 
+Executable "gi_repository"
+  Path: samples
+  MainIs: gi_repository.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
 #   Modules: GObjectIntrospection,
 #            GIFieldInfo,
 #            GIUnionInfo,
@@ -81,12 +88,6 @@ Document "docs"
 # # -I/usr/lib/glib-2.0/include -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
 # #
 #
-# Executable "gi_repository"
-#   Path: samples
-#   MainIs: gi_repository.ml
-#   Install: false
-#   CompiledObject: best
-#   BuildDepends: GObjectIntrospection
 #
 # Executable "gi_baseinfo_get_name"
 #   Path: samples
