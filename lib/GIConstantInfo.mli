@@ -26,3 +26,23 @@ open Ctypes
 type t
 val constantinfo : t structure typ
 
+(** Just cast OCaml Ctypes base info to constant info. *)
+val cast_baseinfo_to_constantinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes constant info to base info *)
+val cast_constantinfo_to_baseinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
+
+(** Return a GIConstantInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val constantinfo_of_baseinfo:
+  GIBaseInfo.t structure ptr -> t structure ptr
+
+(** Return a GIBaseInfo.t form a GIConstantInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val baseinfo_of_constantinfo:
+  t structure ptr -> GIBaseInfo.t structure ptr
+

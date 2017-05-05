@@ -21,3 +21,25 @@ open Foreign
 
 type t
 let constantinfo: t structure typ = structure "GIConstantInfo"
+
+(* TODO : check that the info can be casted to a constantinfo ? *)
+let cast_baseinfo_to_constantinfo info =
+  coerce (ptr GIBaseInfo.baseinfo) (ptr constantinfo) info
+
+let cast_constantinfo_to_baseinfo info =
+  coerce (ptr constantinfo) (ptr GIBaseInfo.baseinfo) info
+
+let constantinfo_of_baseinfo info =
+  let _ = GIBaseInfo.base_info_ref info in
+  let info' = cast_baseinfo_to_constantinfo info in
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_constantinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info' in
+  info'
+
+let baseinfo_of_constantinfo info =
+  let info' = cast_constantinfo_to_baseinfo info in
+  let _ = GIBaseInfo.base_info_ref info' in
+  let _ = Gc.finalise (fun i ->
+      GIBaseInfo.base_info_unref i) info' in
+  info'
