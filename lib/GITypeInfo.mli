@@ -71,10 +71,13 @@ val get_array_type:
 val get_param_type:
   t structure ptr -> int -> t structure ptr
 
-(*
-  TODO : GITypeInfo *	g_type_info_get_param_type ()
-  TODO : GIBaseInfo *	g_type_info_get_interface ()
- *)
+(** For types which have GITypes.Interface such as GObjects and boxed
+    values, this function returns full information about the referenced type.
+    You can then inspect the type of the returned GIBaseInfo to further query
+    whether it is a concrete GObject, a GInterface, a structure, etc. using
+    GIBaseInfo.get_type. *)
+val get_interface:
+  t structure ptr -> GIBaseInfo.t structure ptr option
 
 (** Just cast OCaml Ctypes base info to typeinfo. *)
 val cast_baseinfo_to_typeinfo:

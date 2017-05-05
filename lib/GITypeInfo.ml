@@ -58,6 +58,15 @@ let get_array_type info =
   | -1 -> None
   | array_type -> Some (GITypes.array_type_of_int array_type)
 
+let get_interface info =
+  let get_interface_raw =
+    foreign "g_type_info_get_interface"
+      (ptr typeinfo @-> returning (ptr_opt GIBaseInfo.baseinfo)) in
+  match get_interface_raw info with
+  | None -> None
+  | Some info' -> let info'' = GIBaseInfo.add_unref_finaliser_to_base_info info' in
+    Some info''
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_baseinfo_to_typeinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info
