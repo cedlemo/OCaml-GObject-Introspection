@@ -361,6 +361,10 @@ Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
 </div>
 </td></tr>
 <tr><td align="left"><br>G</td></tr>
+<tr><td><a href="Conversions.html#VALg_free">g_free</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALg_free_t">g_free_t</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
 <tr><td><a href="Conversions.html#VALg_list_data">g_list_data</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td><div class="info">
 Get the void ptr data of the current element
@@ -590,6 +594,12 @@ Returns the current search path GIRepository will use when loading typelib
     files.
 </div>
 </td></tr>
+<tr><td><a href="GIRepository.html#VALget_shared_library">get_shared_library</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+This function returns a comma-separated list of paths to the shared C
+    libraries associated with the given namespace namespace_ .
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_size">get_size</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the total size of the structure.
@@ -652,6 +662,11 @@ Obtain a value for this enumeration.
 Obtain the enumeration value of the GIValueInfo.
 </div>
 </td></tr>
+<tr><td><a href="GIConstantInfo.html#VALget_value">get_value</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+TODO : fix - not working see tests
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_version">get_version</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 This function returns the loaded version associated with the given
@@ -661,6 +676,8 @@ This function returns the loaded version associated with the given
 <tr><td><a href="Conversions.html#VALglist">glist</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
 <tr><td><a href="Conversions.html#VALglist_data">glist_data</a> [<a href="Conversions.html">Conversions</a>]</td>
+<td></td></tr>
+<tr><td><a href="Conversions.html#VALglist_free_full">glist_free_full</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
 <tr><td><a href="Conversions.html#VALglist_next">glist_next</a> [<a href="Conversions.html">Conversions</a>]</td>
 <td></td></tr>
@@ -752,6 +769,12 @@ See if a callable could return NULL.
 </div>
 </td></tr>
 <tr><td align="left"><br>P</td></tr>
+<tr><td><a href="GIRepository.html#VALprepend_library_path">prepend_library_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+Prepends directory to the search path that is used to search shared
+    libraries referenced by imported namespaces.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALprepend_search_path">prepend_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Prepends directory to the typelib search path.

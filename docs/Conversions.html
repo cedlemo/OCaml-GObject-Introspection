@@ -60,6 +60,9 @@ GList struct<br>
 <pre><span id="VALglist_data"><span class="keyword">val</span> glist_data</span> : <code class="type">(unit Ctypes_static.ptr, <a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure) Ctypes.field</code></pre>
 <pre><span id="VALglist_next"><span class="keyword">val</span> glist_next</span> : <code class="type">((<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option,<br>        <a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure)<br>       Ctypes.field</code></pre>
 <pre><span id="VALglist_prev"><span class="keyword">val</span> glist_prev</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure Ctypes_static.ptr option,<br>        <a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure)<br>       Ctypes.field</code></pre>
+<pre><span id="VALg_free"><span class="keyword">val</span> g_free</span> : <code class="type">unit Ctypes_static.ptr -> unit</code></pre>
+<pre><span id="VALg_free_t"><span class="keyword">val</span> g_free_t</span> : <code class="type">(unit Ctypes_static.ptr -> unit) Ctypes.fn</code></pre>
+<pre><span id="VALglist_free_full"><span class="keyword">val</span> glist_free_full</span> : <code class="type"><a href="Conversions.html#TYPEglist">glist</a> Ctypes.structure Ctypes_static.ptr -><br>       (unit Ctypes_static.ptr -> unit) -> unit</code></pre>
 <pre><span id="VALg_list_next"><span class="keyword">val</span> g_list_next</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -><br>       (<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option</code></pre><div class="info ">
 Get the next element of a glist<br>
 </div>
@@ -68,7 +71,7 @@ Get the next element of a glist<br>
 Get the void ptr data of the current element<br>
 </div>
 
-<pre><span id="VALglist_of_strings_to_list"><span class="keyword">val</span> glist_of_strings_to_list</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option -><br>       string list</code></pre><div class="info ">
+<pre><span id="VALglist_of_strings_to_list"><span class="keyword">val</span> glist_of_strings_to_list</span> : <code class="type">(<a href="Conversions.html#TYPEglist">glist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -> string list</code></pre><div class="info ">
 Transform a GList of strings to an OCaml list of strings<br>
 </div>
 
@@ -89,7 +92,7 @@ Get the next element of a gslist<br>
 Get the void ptr data of the current element<br>
 </div>
 
-<pre><span id="VALgslist_of_strings_to_list"><span class="keyword">val</span> gslist_of_strings_to_list</span> : <code class="type">(<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr option -><br>       string list</code></pre><div class="info ">
+<pre><span id="VALgslist_of_strings_to_list"><span class="keyword">val</span> gslist_of_strings_to_list</span> : <code class="type">(<a href="Conversions.html#TYPEgslist">gslist</a>, [ `Struct ]) Ctypes.structured Ctypes.ptr -> string list</code></pre><div class="info ">
 Transform a GSList of strings to an OCaml list of strings<br>
 </div>
 </body></html>

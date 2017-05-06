@@ -69,4 +69,13 @@ Return a GIBaseInfo.t form a GIConstantInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
 </div>
+<br>
+Obtain the value associated with the GIConstantInfo and store it in the
+    value parameter. argument needs to be allocated before passing it in. The
+    size of the constant value stored in argument will be returned. Free the
+    value with GIConstantInfo.free_value.<br>
+
+<pre><span id="VALget_value"><span class="keyword">val</span> get_value</span> : <code class="type"><a href="GIConstantInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypes.html#TYPEargument_t">GITypes.argument_t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+TODO : fix - not working see tests<br>
+</div>
 </body></html>

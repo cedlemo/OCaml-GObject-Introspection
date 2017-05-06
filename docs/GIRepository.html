@@ -127,4 +127,25 @@ This function returns a particular metadata entry in the given namespace
     this function. See GIRepository.get_n_infos to find the maximum number of
     entries.<br>
 </div>
+
+<pre><span id="VALget_shared_library"><span class="keyword">val</span> get_shared_library</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -> string -> string option</code></pre><div class="info ">
+This function returns a comma-separated list of paths to the shared C
+    libraries associated with the given namespace namespace_ . There may be no
+    shared library path associated, in which case this function will return
+    NULL.
+    Note: The namespace must have already been loaded using a function such as
+    GIRepository.require before calling this function.<br>
+</div>
+
+<pre><span id="VALprepend_library_path"><span class="keyword">val</span> prepend_library_path</span> : <code class="type">string -> unit</code></pre><div class="info ">
+Prepends directory to the search path that is used to search shared
+    libraries referenced by imported namespaces. Multiple calls to this
+    function all contribute to the final list of paths. The list of paths is
+    unique and shared for all GIRepository instances across the process, but it
+    doesn't affect namespaces imported before the call.
+    If the library is not found in the directories configured in this way,
+    loading will fall back to the system library path (ie. LD_LIBRARY_PATH and
+    DT_RPATH in ELF systems). See the documentation of your dynamic linker for
+    full details.<br>
+</div>
 </body></html>
