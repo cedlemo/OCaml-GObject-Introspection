@@ -50,3 +50,11 @@ let baseinfo_of_constantinfo info =
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
   info'
+
+let get_value info =
+  let get_value_raw =
+    foreign "g_constant_info_get_value"
+      (ptr constantinfo @-> ptr GITypes.argument @-> returning int) in
+  let arg_ptr = allocate_n GITypes.argument ~count:1 in
+  let _ = get_value_raw info arg_ptr in
+  arg_ptr

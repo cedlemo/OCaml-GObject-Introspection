@@ -50,3 +50,10 @@ val constantinfo_of_baseinfo:
 val baseinfo_of_constantinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
+(** Obtain the value associated with the GIConstantInfo and store it in the
+    value parameter. argument needs to be allocated before passing it in. The
+    size of the constant value stored in argument will be returned. Free the
+    value with GIConstantInfo.free_value. *)
+  (** TODO : fix - not working see tests *)
+val get_value:
+  t structure ptr -> GITypes.argument_t structure ptr
