@@ -63,15 +63,17 @@ let enumerate_versions repo namespace =
   let enumerate_versions_raw =
     foreign "g_irepository_enumerate_versions"
       (repository @-> string @-> returning (ptr_opt glist)) in
-  let glist_ptr = enumerate_versions_raw repo namespace in
-  glist_of_strings_to_list glist_ptr
+  match enumerate_versions_raw repo namespace with
+  | None -> []
+  | Some glist_ptr -> glist_of_strings_to_list glist_ptr
 
 let get_search_path () =
   let get_search_path_raw =
     foreign "g_irepository_get_search_path"
       (void @-> returning (ptr_opt gslist)) in
-  let gslist_ptr = get_search_path_raw () in
-  gslist_of_strings_to_list gslist_ptr
+  match get_search_path_raw () with
+  | None -> []
+  | Some gslist_ptr -> gslist_of_strings_to_list gslist_ptr
 
 let prepend_search_path =
   foreign "g_irepository_prepend_search_path" (string @-> returning void)

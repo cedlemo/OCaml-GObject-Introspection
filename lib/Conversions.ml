@@ -27,6 +27,10 @@ let glist_next  = field glist "next" (ptr_opt glist)
 let glist_prev  = field glist "prev" (ptr_opt glist)
 let () = seal glist
 
+let glist_free =
+  foreign "g_list_free"
+    (ptr glist @-> returning void)
+
 (** Get the next element of a glist *)
 let g_list_next l_ptr =
   getf (!@l_ptr) glist_next
@@ -44,9 +48,9 @@ let glist_of_strings_to_list glist_ptr =
     | Some p' -> let data = g_list_data p' in
       let next = g_list_next p' in
       match coerce (ptr void) string_opt data with
-      | None -> loop ("toto" :: acc) next
+      | None -> loop acc next
       | Some s -> loop (s :: acc) next
-  in loop [] glist_ptr
+  in loop [] (Some glist_ptr)
 
 (** GSList struct *)
 type gslist
@@ -73,4 +77,4 @@ let gslist_of_strings_to_list gslist_ptr =
       match coerce (ptr void) string_opt data with
       | None -> loop acc next
       | Some s -> loop (s :: acc) next
-  in loop [] gslist_ptr
+  in loop [] (Some gslist_ptr)
