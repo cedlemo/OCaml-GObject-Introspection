@@ -19,12 +19,17 @@
 let () =
   let namespace = "Gtk" in
   let repo = GIRepository.get_default () in
-  let _ = GIRepository.require (Some repo) namespace in
-  let n = GIRepository.get_n_infos (Some repo) namespace in
+  let typelib = GIRepository.require repo namespace None 0 () in
+  let n = GIRepository.get_n_infos repo namespace in
   for i = 0 to (n - 1) do
-    match GIRepository.get_info (Some repo) namespace n with
-    | None -> ()
-    | Some (info) -> if GIBaseInfo.is_deprecated info then
-        let message = String.concat " " ["GIBaseInfo number"; string_of_int n; GIBaseInfo.get_name info]
-        in print_endline message
+    print_endline (String.concat "/" ["\t\t"; string_of_int i; string_of_int n]);
+    let info = GIRepository.get_info repo namespace i in
+    if GIBaseInfo.is_deprecated info then
+        let name = (match GIBaseInfo.get_name info with
+          | None -> "No name"
+          | Some str -> str ) in
+        let message = String.concat " " ["GIBaseInfo number";
+                                         string_of_int i;
+                                         name]
+        in print_endline message;
   done

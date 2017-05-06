@@ -69,6 +69,13 @@ Executable "gi_baseinfo_get_name"
   CompiledObject: best
   BuildDepends: GObjectIntrospection
 
+Executable "gi_baseinfo_deprecated"
+  Path: samples
+  MainIs: gi_baseinfo_deprecated.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+#
 #   Modules: GObjectIntrospection,
 #            GIFieldInfo,
 #            GIUnionInfo,
@@ -112,13 +119,7 @@ Executable "gi_baseinfo_get_name"
 #   CompiledObject: best
 #   BuildDepends: GObjectIntrospection
 #
-# Executable "gi_baseinfo_deprecated"
-#   Path: samples
-#   MainIs: gi_baseinfo_deprecated.ml
-#   Install: false
-#   CompiledObject: best
-#   BuildDepends: GObjectIntrospection
-#
+
 #
 # Executable "gi_baseinfo_print_function_flags"
 #   Path: samples
