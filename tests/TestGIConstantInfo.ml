@@ -18,6 +18,7 @@
 
 open TestUtils
 open OUnit2
+open Ctypes
 
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
@@ -49,8 +50,19 @@ let test_get_type test_ctxt =
         ) GITypes.Int32 tag
     )
 
+let test_get_value test_ctxt =
+  constant_test (fun info ->
+      let type_info = GIConstantInfo.get_type info in
+      match GITypeInfo.get_tag type_info with
+      | GITypes.Int32 -> let argument = GIConstantInfo.get_value info in
+        let value = getf (!@argument) GITypes.v_int32 in
+        assert_equal_int 511 (Int32.to_int value)
+      | _ -> assert_equal_string "The tag should be " "Int32"
+    )
+
 let tests =
   "GObject Introspection ConstantInfo tests" >:::
   [
-    "GIConstantInfo get type" >:: test_get_type
+    "GIConstantInfo get type" >:: test_get_type;
+    (* "GIConstantInfo get value" >:: test_get_value *)
   ]
