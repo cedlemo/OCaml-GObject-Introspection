@@ -114,6 +114,16 @@ val get_n_infos:
     entries. *)
 val get_info:
   repository -> string -> int -> GIBaseInfo.t structure ptr
+
+(** This function returns a comma-separated list of paths to the shared C
+    libraries associated with the given namespace namespace_ . There may be no
+    shared library path associated, in which case this function will return
+    NULL.
+    Note: The namespace must have already been loaded using a function such as
+    GIRepository.require before calling this function. *)
+val get_shared_library:
+  repository -> string -> string option
+
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
@@ -121,7 +131,6 @@ val get_info:
    TODO: const char *	g_irepository_load_typelib ()
    gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
-   TODO: const gchar *	g_irepository_get_shared_library ()
    TODO: GIBaseInfo *	g_irepository_find_by_gtype ()
    TODO: GIEnumInfo *	g_irepository_find_by_error_domain ()
    gboolean	g_irepository_dump ()

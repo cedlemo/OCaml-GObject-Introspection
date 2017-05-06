@@ -100,3 +100,7 @@ let get_info repo namespace n=
   else let info = get_info_raw repo namespace n in
     let _ = Gc.finalise (fun i -> GIBaseInfo.base_info_unref i) info in
     info
+
+let get_shared_library =
+  foreign "g_irepository_get_shared_library"
+    (repository @-> string @-> returning string_opt)
