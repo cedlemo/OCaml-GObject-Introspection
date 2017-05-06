@@ -104,3 +104,8 @@ let get_info repo namespace n=
 let get_shared_library =
   foreign "g_irepository_get_shared_library"
     (repository @-> string @-> returning string_opt)
+
+let prepend_library_path=
+  foreign "g_irepository_prepend_library_path"
+    (string @-> returning void)
+

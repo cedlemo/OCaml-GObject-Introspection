@@ -124,10 +124,21 @@ val get_info:
 val get_shared_library:
   repository -> string -> string option
 
+(** Prepends directory to the search path that is used to search shared
+    libraries referenced by imported namespaces. Multiple calls to this
+    function all contribute to the final list of paths. The list of paths is
+    unique and shared for all GIRepository instances across the process, but it
+    doesn't affect namespaces imported before the call.
+    If the library is not found in the directories configured in this way,
+    loading will fall back to the system library path (ie. LD_LIBRARY_PATH and
+    DT_RPATH in ELF systems). See the documentation of your dynamic linker for
+    full details. *)
+val prepend_library_path:
+  string -> unit
+
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
-   TODO: void	g_irepository_prepend_library_path ()
    TODO: const char *	g_irepository_load_typelib ()
    gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
