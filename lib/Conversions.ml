@@ -27,9 +27,15 @@ let glist_next  = field glist "next" (ptr_opt glist)
 let glist_prev  = field glist "prev" (ptr_opt glist)
 let () = seal glist
 
-let glist_free =
-  foreign "g_list_free"
-    (ptr glist @-> returning void)
+let g_free =
+  foreign "g_free"
+    (ptr void @-> returning void)
+
+let g_free_t = ptr void @-> returning void
+
+let glist_free_full =
+  foreign "g_list_free_full"
+    (ptr glist @-> funptr g_free_t @-> returning void)
 
 (** Get the next element of a glist *)
 let g_list_next l_ptr =
@@ -49,7 +55,10 @@ let glist_of_strings_to_list glist_ptr =
       match coerce (ptr void) string_opt data with
       | None -> loop acc next
       | Some s -> loop (s :: acc) next
-  in loop [] (Some glist_ptr)
+  in
+  let ocaml_list = loop [] (Some glist_ptr) in
+  let _ = glist_free_full glist_ptr g_free in
+  ocaml_list
 
 (** GSList struct *)
 type gslist
