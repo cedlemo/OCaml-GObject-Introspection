@@ -97,6 +97,12 @@ let test_get_info test_ctxt =
   match GIBaseInfo.get_name info with
   | None -> assert_equal_string info_name "No name found"
   | Some name -> assert_equal_string info_name name
+
+let test_get_shared_library test_ctxt =
+  match GIRepository.get_shared_library repo namespace with
+  | None -> assert_equal_string "It should return " "something"
+  | Some shared_lib -> assert_equal_string "libgio-2.0.so.0" shared_lib
+
 let tests =
   "GObject Introspection Repository tests" >:::
     [
@@ -115,5 +121,6 @@ let tests =
       (* Disable for compatibility with Travis
       "GIRepository get n infos" >:: test_get_n_infos *)
       "GIRepository get info out of bounds" >:: test_get_info_out_of_bounds;
-      "GIRepository get info" >:: test_get_info
+      "GIRepository get info" >:: test_get_info;
+      "GIRepository get shared library" >:: test_get_shared_library
     ]
