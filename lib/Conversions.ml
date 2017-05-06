@@ -39,7 +39,6 @@ let g_list_next l_ptr =
 let g_list_data l_ptr =
   getf (!@l_ptr) glist_data
 
-(* TODO: Fix pb *)
 (** Transform a GList of strings to an OCaml list of strings *)
 let glist_of_strings_to_list glist_ptr =
   let rec loop acc p =
