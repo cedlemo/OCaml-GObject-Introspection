@@ -56,7 +56,6 @@ let test_get_typelib_path text_ctxt =
   assert_equal_string "/usr/lib/girepository-1.0/Gio-2.0.typelib" path
 
 let test_enumerate_versions test_ctxt =
-  (* TODO : fix -> should be "3.0 2.0" *)
   let versions_check = "2.0 2.0" in
   let versions = String.concat " " (GIRepository.enumerate_versions repo namespace) in
   assert_equal_string versions_check versions
