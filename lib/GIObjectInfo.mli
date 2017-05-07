@@ -37,6 +37,10 @@ val get_abstract:
 val get_fundamental:
   t structure ptr -> bool
 
+(** Obtain the parent of the object type.*)
+val get_parent:
+  t structure ptr -> GIBaseInfo.t structure ptr
+
 (*
   TODO : GIObjectInfo *	g_object_info_get_parent ()
   TODO : const gchar *	g_object_info_get_type_name ()
