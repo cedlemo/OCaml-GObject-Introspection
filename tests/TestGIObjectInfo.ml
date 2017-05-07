@@ -52,9 +52,16 @@ let test_get_abstract test_ctxt =
       assert_equal_boolean false is_abstract
     )
 
+let test_get_fundamental test_ctxt =
+  object_test (fun info ->
+      let is_fundamental = GIObjectInfo.get_fundamental info in
+      assert_equal_boolean false is_fundamental
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
     "GIObjectInfo from baseinfo" >:: test_from_baseinfo;
-    "GIObjectInfo get abstract" >:: test_get_abstract
+    "GIObjectInfo get abstract" >:: test_get_abstract;
+    "GIObjectInfo get fundamental" >:: test_get_fundamental
   ]
