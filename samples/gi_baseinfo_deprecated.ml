@@ -19,7 +19,7 @@
 let () =
   let namespace = "Gtk" in
   let repo = GIRepository.get_default () in
-  let typelib = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace None 0 () in
   let n = GIRepository.get_n_infos repo namespace in
   for i = 0 to (n - 1) do
     print_endline (String.concat "/" ["\t\t"; string_of_int i; string_of_int n]);
