@@ -33,6 +33,7 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIArgInfo — Struct representing an argument
   * GITypeInfo — Struct representing a type
   * GIConstantInfo — Struct representing a constant
+  * GIObjectInfo — Struct representing a GObject
 
   ### Remains
 
@@ -40,6 +41,5 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GISignalInfo — Struct representing a signal
   * GIVFuncInfo — Struct representing a virtual function
   * GIRegisteredTypeInfo — Struct representing a struct with a GType
-  * GIObjectInfo — Struct representing a GObject
   * GIInterfaceInfo — Struct representing a GInterface
   * GIPropertyInfo — Struct representing a property
