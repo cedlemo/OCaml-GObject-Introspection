@@ -110,7 +110,10 @@ let tests =
       "GIRepository require" >:: test_require;
       (* Disable for compatibility with Travis
        * "GIRepository get dependencies" >:: test_get_dependencies; *)
-      "GIRepository get loaded namespaces" >:: test_get_loaded_namespaces;
+      (* Disable because there is only one instance of GIRepository and those
+       * namespaces depends on the nampespaces loaded previously and can
+       * interfers with previous test.
+       * "GIRepository get loaded namespaces" >:: test_get_loaded_namespaces;*)
       "GIRepository get c prefix" >:: test_get_c_prefix;
       "GIRepository get version" >:: test_get_version;
       "GIRepository get typelib path" >:: test_get_typelib_path;
