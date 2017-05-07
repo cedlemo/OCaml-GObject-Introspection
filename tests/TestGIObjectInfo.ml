@@ -58,10 +58,19 @@ let test_get_fundamental test_ctxt =
       assert_equal_boolean false is_fundamental
     )
 
+let test_get_parent test_ctxt =
+  object_test (fun info ->
+      let parent = GIObjectInfo.get_parent info in
+      match GIBaseInfo.get_name parent with
+      | None -> assert_equal_string "It should have " "a name"
+      | Some parent_name -> assert_equal_string "Object" parent_name
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
     "GIObjectInfo from baseinfo" >:: test_from_baseinfo;
     "GIObjectInfo get abstract" >:: test_get_abstract;
-    "GIObjectInfo get fundamental" >:: test_get_fundamental
+    "GIObjectInfo get fundamental" >:: test_get_fundamental;
+    "GIObjectInfo get parent" >:: test_get_parent
   ]
