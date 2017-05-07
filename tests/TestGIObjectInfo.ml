@@ -66,11 +66,18 @@ let test_get_parent test_ctxt =
       | Some parent_name -> assert_equal_string "Object" parent_name
     )
 
+let test_get_type_name test_ctxt =
+  object_test (fun info ->
+      let type_name = GIObjectInfo.get_type_name info in
+      assert_equal_string "GdkDisplay" type_name
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
     "GIObjectInfo from baseinfo" >:: test_from_baseinfo;
     "GIObjectInfo get abstract" >:: test_get_abstract;
     "GIObjectInfo get fundamental" >:: test_get_fundamental;
-    "GIObjectInfo get parent" >:: test_get_parent
+    "GIObjectInfo get parent" >:: test_get_parent;
+    "GIObjectInfo get type name" >:: test_get_type_name
   ]
