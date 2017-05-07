@@ -42,6 +42,10 @@ let get_type_name =
   foreign "g_object_info_get_type_name"
     (ptr objectinfo @-> returning string)
 
+let get_type_init =
+  foreign "g_object_info_get_type_init"
+    (ptr objectinfo @-> returning string)
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_baseinfo_to_objectinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info

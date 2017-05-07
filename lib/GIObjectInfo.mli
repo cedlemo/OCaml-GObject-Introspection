@@ -45,8 +45,12 @@ val get_parent:
 val get_type_name:
   t structure ptr -> string
 
+(** Obtain the function which when called will return the GType function for
+    which this object type is registered. *)
+val get_type_init:
+  t structure ptr -> string
+
 (*
-  TODO : const gchar *	g_object_info_get_type_init ()
   TODO : gint	g_object_info_get_n_constants ()
   TODO : GIConstantInfo *	g_object_info_get_constant ()
   TODO : gint	g_object_info_get_n_fields ()
