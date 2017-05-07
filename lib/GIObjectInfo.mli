@@ -27,6 +27,11 @@ open Ctypes
 type t
 val objectinfo : t structure typ
 
+(** Obtain if the object type is an abstract type, eg if it cannot be
+    instantiated *)
+val get_abstract:
+  t structure ptr -> bool
+
 (*
   TODO : gboolean	g_object_info_get_abstract ()
   TODO : gboolean	g_object_info_get_fundamental ()
