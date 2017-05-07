@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIObjectInfo" rel="Chapter" href="GIObjectInfo.html">
 <link title="GIConstantInfo" rel="Chapter" href="GIConstantInfo.html">
 <link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
 <link title="GIArgInfo" rel="Chapter" href="GIArgInfo.html">
@@ -122,6 +123,13 @@ Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALbaseinfo_of_objectinfo">baseinfo_of_objectinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t from a GIObjectInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALbaseinfo_of_structinfo">baseinfo_of_structinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
@@ -224,6 +232,11 @@ Just cast OCaml Ctypes base info to field info.
 Just cast OCaml Ctypes base info to function info.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALcast_baseinfo_to_objectinfo">cast_baseinfo_to_objectinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to object info.
+</div>
+</td></tr>
 <tr><td><a href="GITypeInfo.html#VALcast_baseinfo_to_typeinfo">cast_baseinfo_to_typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes base info to typeinfo.
@@ -272,6 +285,11 @@ Just cast OCaml Ctypes function info to base info
 <tr><td><a href="GICallableInfo.html#VALcast_functioninfo_to_callableinfo">cast_functioninfo_to_callableinfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes function info to callable info.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALcast_objectinfo_to_baseinfo">cast_objectinfo_to_baseinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes object info to base info
 </div>
 </td></tr>
 <tr><td><a href="GITypeInfo.html#VALcast_typeinfo_to_baseinfo">cast_typeinfo_to_baseinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
@@ -385,6 +403,12 @@ Get the void ptr data of the current element
 Get the next element of a gslist
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_abstract">get_abstract</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain if the object type is an abstract type, eg if it cannot be
+    instantiated
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_alignment">get_alignment</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the required alignment of the structure.
@@ -477,6 +501,12 @@ Obtain the GIFunctionInfoFlags for the info .
 Obtain the flags for this GIFieldInfo.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_fundamental">get_fundamental</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain if the object type is of a fundamental type which is not
+    G_TYPE_OBJECT.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_info">get_info</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 This function returns a particular metadata entry in the given namespace
@@ -514,6 +544,11 @@ Obtain an enum type method at index n .
 Obtain the number of arguments (both IN and OUT) for this callable.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_constants">get_n_constants</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of constants that this object type has.
+</div>
+</td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_n_fields">get_n_fields</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
 <td><div class="info">
 Obtain the number of fields this structure has.
@@ -524,10 +559,20 @@ Obtain the number of fields this structure has.
 Obtain the number of fields this union has.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_fields">get_n_fields</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of fields that this object type has.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_n_infos">get_n_infos</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 This function returns the number of metadata entries in given namespace
     namespace_ .
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_interfaces">get_n_interfaces</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of interfaces that this object type has.
 </div>
 </td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_n_methods">get_n_methods</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
@@ -574,6 +619,11 @@ Obtain the ownership transfer for this argument.
 <tr><td><a href="GITypeInfo.html#VALget_param_type">get_param_type</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Obtain the parameter type n .
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_parent">get_parent</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the parent of the object type.
 </div>
 </td></tr>
 <tr><td><a href="GICallableInfo.html#VALget_return_attribute">get_return_attribute</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
@@ -644,6 +694,17 @@ Obtain the type of a field as a GITypeInfo.
 <tr><td><a href="GIConstantInfo.html#VALget_type">get_type</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
 <td><div class="info">
 Obtain the type of the constant as a GITypeInfo.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_type_init">get_type_init</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the function which when called will return the GType function for
+    which this object type is registered.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_type_name">get_type_name</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the name of the objects class/type.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_typelib_path">get_typelib_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -766,6 +827,16 @@ Obtain if the type of the argument includes the possibility of NULL.
 <tr><td><a href="GICallableInfo.html#VALmay_return_null">may_return_null</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 See if a callable could return NULL.
+</div>
+</td></tr>
+<tr><td align="left"><br>O</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALobjectinfo">objectinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GIObjectInfo.html#VALobjectinfo_of_baseinfo">objectinfo_of_baseinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Return a GIObjectInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
 <tr><td align="left"><br>P</td></tr>
