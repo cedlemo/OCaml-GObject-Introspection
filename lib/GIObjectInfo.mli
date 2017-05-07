@@ -41,9 +41,11 @@ val get_fundamental:
 val get_parent:
   t structure ptr -> GIBaseInfo.t structure ptr
 
+(** Obtain the name of the objects class/type. *)
+val get_type_name:
+  t structure ptr -> string
+
 (*
-  TODO : GIObjectInfo *	g_object_info_get_parent ()
-  TODO : const gchar *	g_object_info_get_type_name ()
   TODO : const gchar *	g_object_info_get_type_init ()
   TODO : gint	g_object_info_get_n_constants ()
   TODO : GIConstantInfo *	g_object_info_get_constant ()

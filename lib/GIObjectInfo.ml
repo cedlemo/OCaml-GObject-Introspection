@@ -38,6 +38,10 @@ let get_parent info =
   let info' = get_parent_raw info in
   GIBaseInfo.add_unref_finaliser_to_base_info info'
 
+let get_type_name =
+  foreign "g_object_info_get_type_name"
+    (ptr objectinfo @-> returning string)
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_baseinfo_to_objectinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info
