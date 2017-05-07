@@ -46,8 +46,15 @@ let object_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_abstract test_ctxt =
+  object_test (fun info ->
+      let is_abstract = GIObjectInfo.get_abstract info in
+      assert_equal_boolean false is_abstract
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
-    "GIObjectInfo from baseinfo" >:: test_from_baseinfo
+    "GIObjectInfo from baseinfo" >:: test_from_baseinfo;
+    "GIObjectInfo get abstract" >:: test_get_abstract
   ]
