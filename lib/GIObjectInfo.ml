@@ -27,6 +27,10 @@ let get_abstract =
   foreign "g_object_info_get_abstract"
     (ptr objectinfo @-> returning bool)
 
+let get_fundamental =
+  foreign "g_object_info_get_fundamental"
+    (ptr objectinfo @-> returning bool)
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_baseinfo_to_objectinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info

@@ -32,9 +32,12 @@ val objectinfo : t structure typ
 val get_abstract:
   t structure ptr -> bool
 
+(** Obtain if the object type is of a fundamental type which is not
+    G_TYPE_OBJECT. This is mostly for supporting GstMiniObject. *)
+val get_fundamental:
+  t structure ptr -> bool
+
 (*
-  TODO : gboolean	g_object_info_get_abstract ()
-  TODO : gboolean	g_object_info_get_fundamental ()
   TODO : GIObjectInfo *	g_object_info_get_parent ()
   TODO : const gchar *	g_object_info_get_type_name ()
   TODO : const gchar *	g_object_info_get_type_init ()
