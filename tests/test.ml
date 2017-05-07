@@ -32,6 +32,7 @@ let () =
       TestGICallableInfo.tests;
       TestGIArgInfo.tests;
       TestGITypeInfo.tests;
-      TestGIConstantInfo.tests
+      TestGIConstantInfo.tests;
+      TestGIObjectInfo.tests
     ]
   )
