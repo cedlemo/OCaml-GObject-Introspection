@@ -50,8 +50,15 @@ val get_type_name:
 val get_type_init:
   t structure ptr -> string
 
+(** Obtain the number of constants that this object type has. *)
+val get_n_constants:
+  t structure ptr -> int
+
+(** Obtain the number of fields that this object type has. *)
+val get_n_fields:
+  t structure ptr -> int
+
 (*
-  TODO : gint	g_object_info_get_n_constants ()
   TODO : GIConstantInfo *	g_object_info_get_constant ()
   TODO : gint	g_object_info_get_n_fields ()
   TODO : GIFieldInfo *	g_object_info_get_field ()
