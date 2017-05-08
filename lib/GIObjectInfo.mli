@@ -70,9 +70,12 @@ val get_field:
 val get_n_interfaces:
   t structure ptr -> int
 
+(** Obtain the number of methods that this object type has. *)
+val get_n_methods:
+  t structure ptr -> int
+
 (*
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
-  TODO : gint	g_object_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_object_info_get_method ()
   TODO : GIFunctionInfo *	g_object_info_find_method ()
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
