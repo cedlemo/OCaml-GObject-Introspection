@@ -136,6 +136,14 @@ let test_get_n_vfuncs test_ctxt =
       assert_equal_int 0 n
     )
 
+let test_get_class_struct test_ctxt =
+  object_test (fun info ->
+      match GIObjectInfo.get_class_struct info with
+      | None -> assert_equal_boolean true true
+      | Some info' -> let is_struct = GIStructInfo.is_gtype_struct info' in
+        assert_equal_boolean true is_struct
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -153,5 +161,6 @@ let tests =
     "GIObjectInfo find method" >:: test_find_method;
     "GIObjectInfo get n properties" >:: test_get_n_properties;
     (* "GIObjectInfo get n signals" >:: test_get_n_signals; *)
-    "GIObjectInfo get n vfuncs" >:: test_get_n_vfuncs
+    "GIObjectInfo get n vfuncs" >:: test_get_n_vfuncs;
+    "GIObjectInfo get class struct" >:: test_get_class_struct
   ]
