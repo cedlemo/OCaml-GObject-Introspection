@@ -91,13 +91,16 @@ val get_n_properties:
 val get_n_signals:
   t structure ptr -> int
 
+(** Obtain the number of virtual functions that this object type has. *)
+val get_n_vfuncs:
+  t structure ptr -> int
+
 (*
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
   TODO : GIPropertyInfo *	g_object_info_get_property ()
   TODO : GISignalInfo *	g_object_info_get_signal ()
   TODO : GISignalInfo *	g_object_info_find_signal ()
-  TODO : gint	g_object_info_get_n_vfuncs ()
   TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
