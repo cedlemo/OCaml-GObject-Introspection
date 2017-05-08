@@ -64,5 +64,5 @@ let tests =
   "GObject Introspection ConstantInfo tests" >:::
   [
     "GIConstantInfo get type" >:: test_get_type;
-    (* "GIConstantInfo get value" >:: test_get_value *)
+    "GIConstantInfo get value" >:: test_get_value
   ]
