@@ -117,7 +117,7 @@ let string_of_array_type = function
   | Byte_array -> "byte_array"
 
 type argument_t
-let argument : argument_t structure typ = structure "GIArgument"
+let argument : argument_t union typ = union "GIArgument"
 let v_boolean = field argument "v_boolean" (bool)
 let v_int8 = field argument "v_int8" (int8_t)
 let v_uint8 = field argument "v_uint8" (uint8_t)

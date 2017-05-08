@@ -56,4 +56,4 @@ val baseinfo_of_constantinfo:
     value with GIConstantInfo.free_value. *)
   (** TODO : fix - not working see tests *)
 val get_value:
-  t structure ptr -> GITypes.argument_t structure ptr
+  t structure ptr -> GITypes.argument_t union ptr
