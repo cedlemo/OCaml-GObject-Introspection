@@ -117,6 +117,13 @@ let test_find_method test_ctxt =
       | Some info' -> let symbol = GIFunctionInfo.get_symbol info' in
         assert_equal_string ("gdk_display_" ^ m_name) symbol
     )
+
+let test_get_n_properties test_ctxt =
+  object_test (fun info ->
+      let n = GIObjectInfo.get_n_properties info in
+      assert_equal_int 0 n
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -131,5 +138,6 @@ let tests =
     "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
     (* "GIObjectInfo get n methods" >:: test_get_n_methods; *)
     "GIObjectInfo get method" >:: test_get_method;
-    "GIObjectInfo find method" >:: test_find_method
+    "GIObjectInfo find method" >:: test_find_method;
+    "GIObjectInfo get n properties" >:: test_get_n_properties
   ]
