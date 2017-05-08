@@ -75,12 +75,33 @@ Obtain the function which when called will return the GType function for
 Obtain the number of constants that this object type has.<br>
 </div>
 
+<pre><span id="VALget_constant"><span class="keyword">val</span> get_constant</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIConstantInfo.html#TYPEt">GIConstantInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type constant at index n .<br>
+</div>
+
 <pre><span id="VALget_n_fields"><span class="keyword">val</span> get_n_fields</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of fields that this object type has.<br>
 </div>
 
+<pre><span id="VALget_field"><span class="keyword">val</span> get_field</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIFieldInfo.html#TYPEt">GIFieldInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type field at index n .<br>
+</div>
+
 <pre><span id="VALget_n_interfaces"><span class="keyword">val</span> get_n_interfaces</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of interfaces that this object type has.<br>
+</div>
+
+<pre><span id="VALget_n_methods"><span class="keyword">val</span> get_n_methods</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of methods that this object type has.<br>
+</div>
+
+<pre><span id="VALget_method"><span class="keyword">val</span> get_method</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type method at index n .<br>
+</div>
+
+<pre><span id="VALfind_method"><span class="keyword">val</span> find_method</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -> <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Obtain a method of the object type given a name . None will be returned if
+    there's no method available with that name.<br>
 </div>
 
 <pre><span id="VALcast_baseinfo_to_objectinfo"><span class="keyword">val</span> cast_baseinfo_to_objectinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

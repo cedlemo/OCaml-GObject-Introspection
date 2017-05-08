@@ -35,6 +35,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALadd_unref_finaliser_to_base_info">add_unref_finaliser_to_base_info</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td></td></tr>
+<tr><td><a href="GIConstantInfo.html#VALadd_unref_finaliser_to_constant_info">add_unref_finaliser_to_constant_info</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
 <tr><td><a href="GIFieldInfo.html#VALadd_unref_finaliser_to_field_info">add_unref_finaliser_to_field_info</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
@@ -362,6 +367,11 @@ Obtain the type information for method named name .
 Obtain the type information for method named name .
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALfind_method">find_method</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain a method of the object type given a name .
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfunctioninfo">functioninfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfunctioninfo_of_baseinfo">functioninfo_of_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -455,6 +465,11 @@ See whether the caller owns the return value of this callable.
 Obtain the index of the user data argument.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_constant">get_constant</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain an object type constant at index n .
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_default">get_default</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Returns the singleton process-global default GIRepository.
@@ -489,6 +504,11 @@ Obtain the type information for field with specified index.
 <tr><td><a href="GIUnionInfo.html#VALget_field">get_field</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
 <td><div class="info">
 Obtain the type information for field with specified index.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_field">get_field</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain an object type field at index n .
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALget_flags">get_flags</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -537,6 +557,11 @@ Obtain the type information for method with specified index.
 <tr><td><a href="GIEnumInfo.html#VALget_method">get_method</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Obtain an enum type method at index n .
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_method">get_method</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain an object type method at index n .
 </div>
 </td></tr>
 <tr><td><a href="GICallableInfo.html#VALget_n_args">get_n_args</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
@@ -588,6 +613,11 @@ Obtain the number of methods this union has.
 <tr><td><a href="GIEnumInfo.html#VALget_n_methods">get_n_methods</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Obtain the number of methods that this enum type has.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_methods">get_n_methods</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of methods that this object type has.
 </div>
 </td></tr>
 <tr><td><a href="GIEnumInfo.html#VALget_n_values">get_n_values</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
@@ -725,7 +755,8 @@ Obtain the enumeration value of the GIValueInfo.
 </td></tr>
 <tr><td><a href="GIConstantInfo.html#VALget_value">get_value</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
 <td><div class="info">
-TODO : fix - not working see tests
+Obtain the value associated with the GIConstantInfo and store it in the
+    value parameter.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_version">get_version</a> [<a href="GIRepository.html">GIRepository</a>]</td>
