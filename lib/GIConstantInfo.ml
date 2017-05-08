@@ -36,6 +36,12 @@ let cast_baseinfo_to_constantinfo info =
 let cast_constantinfo_to_baseinfo info =
   coerce (ptr constantinfo) (ptr GIBaseInfo.baseinfo) info
 
+let add_unref_finaliser_to_constant_info info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_constantinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info in
+  info
+
 let constantinfo_of_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
   let info' = cast_baseinfo_to_constantinfo info in

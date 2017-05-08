@@ -38,6 +38,10 @@ val cast_baseinfo_to_constantinfo:
 val cast_constantinfo_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
+(** Add unref of the C underlying structure whith Gc.finalise. *)
+val add_unref_finaliser_to_constant_info:
+  t structure ptr -> t structure ptr
+
 (** Return a GIConstantInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
