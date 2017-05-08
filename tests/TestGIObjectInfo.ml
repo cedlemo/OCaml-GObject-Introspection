@@ -130,6 +130,12 @@ let test_get_n_signals test_ctxt =
       assert_equal_int 6 n
     )
 
+let test_get_n_vfuncs test_ctxt =
+  object_test (fun info ->
+      let n = GIObjectInfo.get_n_vfuncs info in
+      assert_equal_int 0 n
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -146,5 +152,6 @@ let tests =
     "GIObjectInfo get method" >:: test_get_method;
     "GIObjectInfo find method" >:: test_find_method;
     "GIObjectInfo get n properties" >:: test_get_n_properties;
-    "GIObjectInfo get n signals" >:: test_get_n_signals
+    "GIObjectInfo get n signals" >:: test_get_n_signals;
+    "GIObjectInfo get n vfuncs" >:: test_get_n_vfuncs
   ]
