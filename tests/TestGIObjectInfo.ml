@@ -152,6 +152,6 @@ let tests =
     "GIObjectInfo get method" >:: test_get_method;
     "GIObjectInfo find method" >:: test_find_method;
     "GIObjectInfo get n properties" >:: test_get_n_properties;
-    "GIObjectInfo get n signals" >:: test_get_n_signals;
+    (* "GIObjectInfo get n signals" >:: test_get_n_signals; *)
     "GIObjectInfo get n vfuncs" >:: test_get_n_vfuncs
   ]
