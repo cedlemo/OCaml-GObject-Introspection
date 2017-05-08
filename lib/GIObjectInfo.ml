@@ -102,6 +102,10 @@ let get_n_properties =
   foreign "g_object_info_get_n_properties"
     (ptr objectinfo @-> returning int)
 
+let get_n_signals =
+  foreign "g_object_info_get_n_signals"
+    (ptr objectinfo @-> returning int)
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_baseinfo_to_objectinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info
