@@ -82,13 +82,16 @@ let cast_baseinfo_to_structinfo info =
 let cast_structinfo_to_baseinfo info =
   coerce (ptr structinfo) (ptr GIBaseInfo.baseinfo) info
 
+let add_unref_finaliser_to_struct_info info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_structinfo_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info in
+  info
+
 let structinfo_of_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
   let info' = cast_baseinfo_to_structinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_structinfo_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
-  info'
+  add_unref_finaliser_to_struct_info info'
 
 let baseinfo_of_structinfo info =
   let info' = cast_structinfo_to_baseinfo info in

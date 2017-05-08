@@ -64,6 +64,10 @@ val get_method:
 val find_method:
   t structure ptr -> string -> GIFunctionInfo.t structure ptr option
 
+(** Add unref of the C underlying structure whith Gc.finalise. *)
+val add_unref_finaliser_to_struct_info:
+  t structure ptr -> t structure ptr
+
 (** Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
