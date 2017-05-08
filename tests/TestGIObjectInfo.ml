@@ -109,6 +109,14 @@ let test_get_method test_ctxt =
       assert_equal_string "gdk_display_get_default" m_name
     )
 
+let test_find_method test_ctxt =
+  object_test (fun info ->
+      let m_name = "get_default" in
+      match GIObjectInfo.find_method info m_name with
+      | None -> assert_equal_string "It should find " "a method"
+      | Some info' -> let symbol = GIFunctionInfo.get_symbol info' in
+        assert_equal_string ("gdk_display_" ^ m_name) symbol
+    )
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -122,5 +130,6 @@ let tests =
     "GIObjectInfo get n fields" >:: test_get_n_fields;
     "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
     "GIObjectInfo get n methods" >:: test_get_n_methods;
-    "GIObjectInfo get method" >:: test_get_method
+    "GIObjectInfo get method" >:: test_get_method;
+    "GIObjectInfo find method" >:: test_find_method
   ]
