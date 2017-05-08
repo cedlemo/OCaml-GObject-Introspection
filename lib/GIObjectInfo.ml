@@ -50,6 +50,15 @@ let get_n_constants =
   foreign "g_object_info_get_n_constants"
     (ptr objectinfo @-> returning int)
 
+let get_constant info n =
+  let get_constant_raw =
+    foreign "g_object_info_get_constant"
+      (ptr objectinfo @-> int @-> returning (ptr GIConstantInfo.constantinfo)) in
+  let max = get_n_constants info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_constant_raw info n in
+    GIConstantInfo.add_unref_finaliser_to_constant_info info'
+
 let get_n_fields =
   foreign "g_object_info_get_n_fields"
     (ptr objectinfo @-> returning int)

@@ -54,6 +54,10 @@ val get_type_init:
 val get_n_constants:
   t structure ptr -> int
 
+(** Obtain an object type constant at index n . *)
+val get_constant:
+  t structure ptr -> int -> GIConstantInfo.t structure ptr
+
 (** Obtain the number of fields that this object type has. *)
 val get_n_fields:
   t structure ptr -> int
