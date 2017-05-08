@@ -54,6 +54,5 @@ val baseinfo_of_constantinfo:
     value parameter. argument needs to be allocated before passing it in. The
     size of the constant value stored in argument will be returned. Free the
     value with GIConstantInfo.free_value. *)
-  (** TODO : fix - not working see tests *)
 val get_value:
   t structure ptr -> GITypes.argument_t union ptr
