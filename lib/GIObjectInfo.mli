@@ -83,10 +83,13 @@ val get_method:
 val find_method:
   t structure ptr -> string -> GIFunctionInfo.t structure ptr option
 
+(** Obtain the number of properties that this object type has. *)
+val get_n_properties:
+  t structure ptr -> int
+
 (*
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
-  TODO : gint	g_object_info_get_n_properties ()
   TODO : GIPropertyInfo *	g_object_info_get_property ()
   TODO : gint	g_object_info_get_n_signals ()
   TODO : GISignalInfo *	g_object_info_get_signal ()

@@ -98,6 +98,10 @@ let find_method info name =
   | Some info' -> let info'' = GIFunctionInfo.add_unref_finaliser_to_function_info info' in
     Some info''
 
+let get_n_properties =
+  foreign "g_object_info_get_n_properties"
+    (ptr objectinfo @-> returning int)
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_baseinfo_to_objectinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info
