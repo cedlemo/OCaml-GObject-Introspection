@@ -102,6 +102,13 @@ let test_get_n_methods test_ctxt =
       assert_equal_int 48 n
     )
 
+let test_get_method test_ctxt =
+  object_test (fun info ->
+      let m = GIObjectInfo.get_method info 0 in
+      let m_name = GIFunctionInfo.get_symbol m in
+      assert_equal_string "gdk_display_get_default" m_name
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -114,5 +121,6 @@ let tests =
     "GIObjectInfo get n constants" >:: test_get_n_constants;
     "GIObjectInfo get n fields" >:: test_get_n_fields;
     "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
-    "GIObjectInfo get n methods" >:: test_get_n_methods
+    "GIObjectInfo get n methods" >:: test_get_n_methods;
+    "GIObjectInfo get method" >:: test_get_method
   ]
