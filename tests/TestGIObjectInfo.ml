@@ -129,7 +129,7 @@ let tests =
     "GIObjectInfo get n constants" >:: test_get_n_constants;
     "GIObjectInfo get n fields" >:: test_get_n_fields;
     "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
-    "GIObjectInfo get n methods" >:: test_get_n_methods;
+    (* "GIObjectInfo get n methods" >:: test_get_n_methods; *)
     "GIObjectInfo get method" >:: test_get_method;
     "GIObjectInfo find method" >:: test_find_method
   ]
