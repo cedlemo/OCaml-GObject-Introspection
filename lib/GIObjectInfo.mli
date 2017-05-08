@@ -62,13 +62,15 @@ val get_constant:
 val get_n_fields:
   t structure ptr -> int
 
+(** Obtain an object type field at index n . *)
+val get_field:
+  t structure ptr -> int -> GIFieldInfo.t structure ptr
+
 (** Obtain the number of interfaces that this object type has. *)
 val get_n_interfaces:
   t structure ptr -> int
 
 (*
-  TODO : GIConstantInfo *	g_object_info_get_constant ()
-  TODO : GIFieldInfo *	g_object_info_get_field ()
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
   TODO : gint	g_object_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_object_info_get_method ()
