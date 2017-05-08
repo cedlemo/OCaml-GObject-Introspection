@@ -96,6 +96,12 @@ let test_get_n_interfaces test_ctxt =
       assert_equal_int 0 n
     )
 
+let test_get_n_methods test_ctxt =
+  object_test (fun info ->
+      let n = GIObjectInfo.get_n_methods info in
+      assert_equal_int 48 n
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -107,5 +113,6 @@ let tests =
     "GIObjectInfo get type init" >:: test_get_type_init;
     "GIObjectInfo get n constants" >:: test_get_n_constants;
     "GIObjectInfo get n fields" >:: test_get_n_fields;
-    "GIObjectInfo get n interfaces" >:: test_get_n_interfaces
+    "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
+    "GIObjectInfo get n methods" >:: test_get_n_methods
   ]
