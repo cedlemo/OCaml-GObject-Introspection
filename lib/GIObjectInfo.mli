@@ -78,10 +78,13 @@ val get_n_methods:
 val get_method:
   t structure ptr -> int -> GIFunctionInfo.t structure ptr
 
+(** Obtain a method of the object type given a name . None will be returned if
+    there's no method available with that name. *)
+val find_method:
+  t structure ptr -> string -> GIFunctionInfo.t structure ptr option
+
 (*
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
-  TODO : GIFunctionInfo *	g_object_info_get_method ()
-  TODO : GIFunctionInfo *	g_object_info_find_method ()
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
   TODO : gint	g_object_info_get_n_properties ()
   TODO : GIPropertyInfo *	g_object_info_get_property ()
