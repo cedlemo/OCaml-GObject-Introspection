@@ -74,6 +74,10 @@ val get_n_interfaces:
 val get_n_methods:
   t structure ptr -> int
 
+(** Obtain an object type method at index n . *)
+val get_method:
+  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+
 (*
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
   TODO : GIFunctionInfo *	g_object_info_get_method ()
