@@ -104,6 +104,24 @@ Obtain a method of the object type given a name . None will be returned if
     there's no method available with that name.<br>
 </div>
 
+<pre><span id="VALget_n_properties"><span class="keyword">val</span> get_n_properties</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of properties that this object type has.<br>
+</div>
+
+<pre><span id="VALget_n_signals"><span class="keyword">val</span> get_n_signals</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of signals that this object type has.<br>
+</div>
+
+<pre><span id="VALget_n_vfuncs"><span class="keyword">val</span> get_n_vfuncs</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of virtual functions that this object type has.<br>
+</div>
+
+<pre><span id="VALget_class_struct"><span class="keyword">val</span> get_class_struct</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEt">GIStructInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Every GObject has two structures; an instance structure and a class
+    structure. This function returns the metadata for the class structure.
+    It returns a GIStructInfo.t or None.<br>
+</div>
+
 <pre><span id="VALcast_baseinfo_to_objectinfo"><span class="keyword">val</span> cast_baseinfo_to_objectinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to object info.<br>
 </div>

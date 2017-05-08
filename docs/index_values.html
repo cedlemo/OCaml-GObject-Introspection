@@ -50,6 +50,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
+<tr><td><a href="GIStructInfo.html#VALadd_unref_finaliser_to_struct_info">add_unref_finaliser_to_struct_info</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
 <tr><td><a href="GITypeInfo.html#VALadd_unref_finaliser_to_type_info">add_unref_finaliser_to_type_info</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
@@ -460,6 +465,12 @@ This function returns the "C prefix", or the C level namespace associated
 See whether the caller owns the return value of this callable.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_class_struct">get_class_struct</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Every GObject has two structures; an instance structure and a class
+    structure.
+</div>
+</td></tr>
 <tr><td><a href="GIArgInfo.html#VALget_closure">get_closure</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
 Obtain the index of the user data argument.
@@ -620,9 +631,24 @@ Obtain the number of methods that this enum type has.
 Obtain the number of methods that this object type has.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_properties">get_n_properties</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of properties that this object type has.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_signals">get_n_signals</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of signals that this object type has.
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALget_n_values">get_n_values</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Obtain the number of values this enumeration contains.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_n_vfuncs">get_n_vfuncs</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the number of virtual functions that this object type has.
 </div>
 </td></tr>
 <tr><td><a href="GIBaseInfo.html#VALget_name">get_name</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
