@@ -110,6 +110,15 @@ let get_n_vfuncs =
   foreign "g_object_info_get_n_vfuncs"
     (ptr objectinfo @-> returning int)
 
+let get_class_struct info =
+  let get_class_struct_raw =
+    foreign "g_object_info_get_class_struct"
+      (ptr objectinfo @-> returning (ptr_opt GIStructInfo.structinfo)) in
+  match get_class_struct_raw info with
+  | None -> None
+  | Some info' -> let info'' = GIStructInfo.add_unref_finaliser_to_struct_info info' in
+    Some info''
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_baseinfo_to_objectinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info

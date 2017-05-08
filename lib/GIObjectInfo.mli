@@ -95,6 +95,12 @@ val get_n_signals:
 val get_n_vfuncs:
   t structure ptr -> int
 
+(** Every GObject has two structures; an instance structure and a class
+    structure. This function returns the metadata for the class structure.
+    It returns a GIStructInfo.t or None. *)
+val get_class_struct:
+  t structure ptr -> GIStructInfo.t structure ptr option
+
 (*
   TODO : GIInterfaceInfo *	g_object_info_get_interface ()
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
@@ -104,7 +110,6 @@ val get_n_vfuncs:
   TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
-  TODO : GIStructInfo *	g_object_info_get_class_struct ()
   TODO : const char *	g_object_info_get_ref_function ()
   TODO : GIObjectInfoRefFunction	g_object_info_get_ref_function_pointer ()
   TODO : const char *	g_object_info_get_unref_function ()
