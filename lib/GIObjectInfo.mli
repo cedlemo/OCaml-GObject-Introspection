@@ -70,6 +70,10 @@ val get_field:
 val get_n_interfaces:
   t structure ptr -> int
 
+(** Obtain an object type interface at index n . *)
+val get_interface:
+  t structure ptr -> int -> GIInterfaceInfo.t structure ptr
+
 (** Obtain the number of methods that this object type has. *)
 val get_n_methods:
   t structure ptr -> int
@@ -102,7 +106,6 @@ val get_class_struct:
   t structure ptr -> GIStructInfo.t structure ptr option
 
 (*
-  TODO : GIInterfaceInfo *	g_object_info_get_interface ()
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
   TODO : GIPropertyInfo *	g_object_info_get_property ()
   TODO : GISignalInfo *	g_object_info_get_signal ()
