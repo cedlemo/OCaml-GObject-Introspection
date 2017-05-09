@@ -26,6 +26,25 @@ open Ctypes
 type t
 val interfaceinfo : t structure typ
 
+(*
+  TODO : gint	g_interface_info_get_n_prerequisites ()
+  TODO : GIBaseInfo *	g_interface_info_get_prerequisite ()
+  TODO : gint	g_interface_info_get_n_properties ()
+  TODO : GIPropertyInfo *	g_interface_info_get_property ()
+  TODO : gint	g_interface_info_get_n_methods ()
+  TODO : GIFunctionInfo *	g_interface_info_get_method ()
+  TODO : GIFunctionInfo *	g_interface_info_find_method ()
+  TODO : gint	g_interface_info_get_n_signals ()
+  TODO : GISignalInfo *	g_interface_info_get_signal ()
+  TODO : GISignalInfo *	g_interface_info_find_signal ()
+  TODO : gint	g_interface_info_get_n_vfuncs ()
+  TODO : GIVFuncInfo *	g_interface_info_get_vfunc ()
+  TODO : GIVFuncInfo *	g_interface_info_find_vfunc ()
+  TODO : gint	g_interface_info_get_n_constants ()
+  TODO : GIConstantInfo *	g_interface_info_get_constant ()
+  TODO : GIStructInfo *	g_interface_info_get_iface_struct ()
+*)
+
 (** Just cast OCaml Ctypes base info to interface info. *)
 val cast_baseinfo_to_interfaceinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
