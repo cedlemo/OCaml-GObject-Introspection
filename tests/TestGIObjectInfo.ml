@@ -292,11 +292,11 @@ let tests =
     "GIObjectInfo get n constants" >:: test_get_n_constants;
     "GIObjectInfo get n fields" >:: test_get_n_fields;
     "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
-    (* "GIObjectInfo get n methods" >:: test_get_n_methods; *)
+    "GIObjectInfo get n methods" >:: test_get_n_methods;
     "GIObjectInfo get method" >:: test_get_method;
     "GIObjectInfo find method" >:: test_find_method;
     "GIObjectInfo get n properties" >:: test_get_n_properties;
-    (* "GIObjectInfo get n signals" >:: test_get_n_signals; *)
+    "GIObjectInfo get n signals" >:: test_get_n_signals;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_get_n_vfuncs;
     "GIObjectInfo GtkWindow get class struct" >:: test_get_class_struct;
     "GIObjectInfo GtkWindow from baseinfo" >:: test_gtk_window_from_baseinfo;
@@ -309,11 +309,11 @@ let tests =
     "GIObjectInfo GtkWindow get n fields" >:: test_gtk_window_get_n_fields;
     "GIObjectInfo GtkWindow get n interfaces" >:: test_gtk_window_get_n_interfaces;
     "GIObjectInfo GtkWindow get interface" >:: test_gtk_window_get_interface;
-    (* "GIObjectInfo get n methods" >:: test_gtk_window_get_n_methods; *)
+    "GIObjectInfo get n methods" >:: test_gtk_window_get_n_methods;
     "GIObjectInfo GtkWindow get method" >:: test_gtk_window_get_method;
     "GIObjectInfo GtkWindow find method" >:: test_gtk_window_find_method;
     "GIObjectInfo GtkWindow get n properties" >:: test_gtk_window_get_n_properties;
-    (* "GIObjectInfo get n signals" >:: test_gtk_window_get_n_signals; *)
+    "GIObjectInfo get n signals" >:: test_gtk_window_get_n_signals;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
     "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct
   ]
