@@ -19,6 +19,11 @@
 open TestUtils
 open OUnit2
 
+let is_travis = try
+    bool_of_string (Sys.getenv "TRAVIS_TESTS")
+  with
+  | _ -> false
+
 let namespace = "Gdk"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
@@ -246,7 +251,8 @@ let test_gtk_window_find_method test_ctxt =
 let test_gtk_window_get_n_properties test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_properties info in
-      assert_equal_int 33 n
+      if is_travis then assert_equal_int 21 n
+      else assert_equal_int 33 n
     )
 
 let test_gtk_window_get_n_signals test_ctxt =
@@ -258,7 +264,8 @@ let test_gtk_window_get_n_signals test_ctxt =
 let test_gtk_window_get_n_vfuncs test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_vfuncs info in
-      assert_equal_int 5 n
+      if is_travis then assert_equal_int 4 n
+      else assert_equal_int 5 n
     )
 
 let test_gtk_window_get_class_struct test_ctxt =

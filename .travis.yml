@@ -4,6 +4,7 @@ sudo: required
 # install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
 script: bash -ex .travis-build.sh
 env:
+   - TRAVIS_TESTS=true
    - OCAML_VERSION=4.03
    #  - OCAML_VERSION=4.00
    #  - OCAML_VERSION=4.01
