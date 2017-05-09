@@ -221,6 +221,15 @@ let test_gtk_window_get_n_interfaces test_ctxt =
       assert_equal_int 2 n
     )
 
+let test_gtk_window_get_interface test_ctxt =
+   object_test (fun info ->
+      let info' = GIObjectInfo.get_interface info 0 in
+      let base_info' = GIInterfaceInfo.baseinfo_of_interfaceinfo info' in
+      match GIBaseInfo.get_name base_info' with
+      | None -> assert_equal_string "It should have" " a name"
+      | Some interface_name -> assert_equal_string "ImplementorIface" interface_name
+    )
+
 let test_gtk_window_get_n_methods test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_methods info in
@@ -299,6 +308,7 @@ let tests =
     "GIObjectInfo GtkWindow get n constants" >:: test_gtk_window_get_n_constants;
     "GIObjectInfo GtkWindow get n fields" >:: test_gtk_window_get_n_fields;
     "GIObjectInfo GtkWindow get n interfaces" >:: test_gtk_window_get_n_interfaces;
+    "GIObjectInfo GtkWindow get interface" >:: test_gtk_window_get_interface;
     (* "GIObjectInfo get n methods" >:: test_gtk_window_get_n_methods; *)
     "GIObjectInfo GtkWindow get method" >:: test_gtk_window_get_method;
     "GIObjectInfo GtkWindow find method" >:: test_gtk_window_find_method;
