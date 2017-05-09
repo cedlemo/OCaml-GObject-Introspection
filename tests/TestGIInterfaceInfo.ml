@@ -16,24 +16,19 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests;
-      TestGIEnumInfo.tests;
-      TestGICallableInfo.tests;
-      TestGIArgInfo.tests;
-      TestGITypeInfo.tests;
-      TestGIConstantInfo.tests;
-      TestGIObjectInfo.tests;
-      TestGIInterfaceInfo.tests
-    ]
-  )
+let is_travis = try
+    bool_of_string (Sys.getenv "TRAVIS_TESTS")
+  with
+  | _ -> false
+
+let namespace = "Gtk"
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace None 0 ()
+
+let tests =
+  "GObject Introspection InterfaceInfo tests" >:::
+  [
+  ]
