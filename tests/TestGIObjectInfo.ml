@@ -262,6 +262,15 @@ let test_gtk_window_get_n_properties test_ctxt =
       else assert_equal_int 33 n
     )
 
+let test_gtk_window_get_property test_ctxt =
+  object_test (fun info ->
+      let prop = GIObjectInfo.get_property info 0 in
+      let base_prop = GIPropertyInfo.baseinfo_of_propertyinfo prop in
+      match GIBaseInfo.get_name base_prop with
+      | None -> assert_equal_string "It should have " "a name"
+      | Some name -> assert_equal_string "accept-focus" name
+    )
+
 let test_gtk_window_get_n_signals test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_signals info in
@@ -319,5 +328,6 @@ let tests =
     "GIObjectInfo GtkWindow get n properties" >:: test_gtk_window_get_n_properties;
     "GIObjectInfo GtkWindow get n signals" >:: test_gtk_window_get_n_signals;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
-    "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct
+    "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
+    "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property
   ]
