@@ -91,6 +91,10 @@ val find_method:
 val get_n_properties:
   t structure ptr -> int
 
+(** Obtain an object type property at index n .*)
+val get_property:
+  t structure ptr -> int -> GIPropertyInfo.t structure ptr
+
 (** Obtain the number of signals that this object type has. *)
 val get_n_signals:
   t structure ptr -> int
@@ -107,7 +111,6 @@ val get_class_struct:
 
 (*
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
-  TODO : GIPropertyInfo *	g_object_info_get_property ()
   TODO : GISignalInfo *	g_object_info_get_signal ()
   TODO : GISignalInfo *	g_object_info_find_signal ()
   TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
