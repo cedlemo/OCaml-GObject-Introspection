@@ -19,11 +19,6 @@
 open TestUtils
 open OUnit2
 
-let is_travis = try
-    bool_of_string (Sys.getenv "TRAVIS_TESTS")
-  with
-  | _ -> false
-
 let namespace = "Gdk"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
