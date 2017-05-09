@@ -4,13 +4,15 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Conversions.html">
+<link rel="previous" href="GIInterfaceInfo.html">
 <link rel="next" href="GIConstantInfo.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
+<link title="GIInterfaceInfo" rel="Chapter" href="GIInterfaceInfo.html">
 <link title="GIObjectInfo" rel="Chapter" href="GIObjectInfo.html">
 <link title="GIConstantInfo" rel="Chapter" href="GIConstantInfo.html">
 <link title="GITypeInfo" rel="Chapter" href="GITypeInfo.html">
@@ -27,7 +29,7 @@
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIObjectInfo</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+<div class="navbar"><a class="pre" href="GIInterfaceInfo.html" title="GIInterfaceInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;<a class="post" href="GIConstantInfo.html" title="GIConstantInfo">Next</a>
 </div>
@@ -91,6 +93,10 @@ Obtain an object type field at index n .<br>
 Obtain the number of interfaces that this object type has.<br>
 </div>
 
+<pre><span id="VALget_interface"><span class="keyword">val</span> get_interface</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIInterfaceInfo.html#TYPEt">GIInterfaceInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type interface at index n .<br>
+</div>
+
 <pre><span id="VALget_n_methods"><span class="keyword">val</span> get_n_methods</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of methods that this object type has.<br>
 </div>
@@ -106,6 +112,10 @@ Obtain a method of the object type given a name . None will be returned if
 
 <pre><span id="VALget_n_properties"><span class="keyword">val</span> get_n_properties</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of properties that this object type has.<br>
+</div>
+
+<pre><span id="VALget_property"><span class="keyword">val</span> get_property</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIPropertyInfo.html#TYPEt">GIPropertyInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type property at index n .<br>
 </div>
 
 <pre><span id="VALget_n_signals"><span class="keyword">val</span> get_n_signals</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
