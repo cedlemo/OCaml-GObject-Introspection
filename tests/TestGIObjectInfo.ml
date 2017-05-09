@@ -251,7 +251,7 @@ let test_gtk_window_find_method test_ctxt =
 let test_gtk_window_get_n_properties test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_properties info in
-      if is_travis then assert_equal_int 21 n
+      if is_travis then assert_equal_int 32 n
       else assert_equal_int 33 n
     )
 
