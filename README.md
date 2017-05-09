@@ -35,6 +35,7 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIConstantInfo — Struct representing a constant
   * GIObjectInfo — Struct representing a GObject
   * GIInterfaceInfo — Struct representing a GInterface
+  * GIPropertyInfo — Struct representing a property
 
   ### Remains
 
@@ -42,4 +43,3 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GISignalInfo — Struct representing a signal
   * GIVFuncInfo — Struct representing a virtual function
   * GIRegisteredTypeInfo — Struct representing a struct with a GType
-  * GIPropertyInfo — Struct representing a property
