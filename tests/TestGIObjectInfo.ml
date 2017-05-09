@@ -99,7 +99,8 @@ let test_get_n_interfaces test_ctxt =
 let test_get_n_methods test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_methods info in
-      assert_equal_int 48 n
+      if is_travis then assert_equal_int 41 n
+      else assert_equal_int 48 n
     )
 
 let test_get_method test_ctxt =
@@ -127,7 +128,8 @@ let test_get_n_properties test_ctxt =
 let test_get_n_signals test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_signals info in
-      assert_equal_int 6 n
+      if is_travis then assert_equal_int 2 n
+      else assert_equal_int 6 n
     )
 
 let test_get_n_vfuncs test_ctxt =
@@ -233,7 +235,8 @@ let test_gtk_window_get_interface test_ctxt =
 let test_gtk_window_get_n_methods test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_methods info in
-      assert_equal_int 48 n
+      if is_travis then assert_equal_int 115 n
+      else assert_equal_int 119 n
     )
 
 let test_gtk_window_get_method test_ctxt =
@@ -262,7 +265,8 @@ let test_gtk_window_get_n_properties test_ctxt =
 let test_gtk_window_get_n_signals test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_signals info in
-      assert_equal_int 6 n
+      if is_travis then assert_equal_int 4 n
+      else assert_equal_int 5 n
     )
 
 let test_gtk_window_get_n_vfuncs test_ctxt =
@@ -309,11 +313,11 @@ let tests =
     "GIObjectInfo GtkWindow get n fields" >:: test_gtk_window_get_n_fields;
     "GIObjectInfo GtkWindow get n interfaces" >:: test_gtk_window_get_n_interfaces;
     "GIObjectInfo GtkWindow get interface" >:: test_gtk_window_get_interface;
-    "GIObjectInfo get n methods" >:: test_gtk_window_get_n_methods;
+    "GIObjectInfo GtkWindow get n methods" >:: test_gtk_window_get_n_methods;
     "GIObjectInfo GtkWindow get method" >:: test_gtk_window_get_method;
     "GIObjectInfo GtkWindow find method" >:: test_gtk_window_find_method;
     "GIObjectInfo GtkWindow get n properties" >:: test_gtk_window_get_n_properties;
-    "GIObjectInfo get n signals" >:: test_gtk_window_get_n_signals;
+    "GIObjectInfo GtkWindow get n signals" >:: test_gtk_window_get_n_signals;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
     "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct
   ]
