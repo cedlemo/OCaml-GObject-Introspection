@@ -32,7 +32,7 @@ let test_get_property_from_repo test_ctxt =
     | GIBaseInfo.Object -> (
         let info = GIObjectInfo.from_baseinfo base_info in
         let prop = GIObjectInfo.get_property info 0 in
-        let base_prop = GIPropertyInfo.baseinfo_of_propertyinfo prop in
+        let base_prop = GIPropertyInfo.to_baseinfo prop in
         match  GIBaseInfo.get_type base_prop with
         | GIBaseInfo.Property -> assert_equal true true
         | _ -> assert_equal_string "It should be a" "Property info"

@@ -118,7 +118,7 @@ let get_property info n =
   let max = get_n_properties info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_property_raw info n in
-    GIPropertyInfo.add_unref_finaliser_to_property_info info'
+    GIPropertyInfo.add_unref_finaliser info'
 
 let get_n_signals =
   foreign "g_object_info_get_n_signals"

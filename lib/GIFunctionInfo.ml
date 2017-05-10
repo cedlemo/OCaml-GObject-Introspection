@@ -62,7 +62,7 @@ let get_property info =
         (ptr functioninfo @-> returning (ptr_opt GIPropertyInfo.propertyinfo)) in
     match get_property_raw info with
     | None -> None
-    | Some info' -> let info'' = GIPropertyInfo.add_unref_finaliser_to_property_info info' in
+    | Some info' -> let info'' = GIPropertyInfo.add_unref_finaliser info' in
       Some info''
   )
   else None
