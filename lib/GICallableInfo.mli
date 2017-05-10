@@ -71,10 +71,10 @@ val get_caller_owns:
   t structure ptr -> GIArgInfo.transfer
 
 (*
-  TODO : gboolean	g_callable_info_invoke ()
-  TODO : gboolean	g_callable_info_iterate_return_attributes ()
-  TODO : void	g_callable_info_load_arg ()
-  TODO : void	g_callable_info_load_return_type ()
+  gboolean	g_callable_info_invoke ()
+  gboolean	g_callable_info_iterate_return_attributes ()
+  void	g_callable_info_load_arg ()
+  void	g_callable_info_load_return_type ()
  *)
 
 (** Just cast OCaml Ctypes base info to callable info. *)
@@ -116,49 +116,3 @@ val to_functioninfo:
     GIBaseInfo.baseinfo_unref. *)
 val from_functioninfo:
   GIFunctionInfo.t structure ptr -> t structure ptr
-
-(* GICallableInfo and GIVfuncInfo
-
-(** Just cast OCaml Ctypes vfunc info to callable info. *)
-TODO :val cast_vfunc_to_callableinfo:
-  GIVFuncInfo.t structure ptr -> t structure ptr
-
-(** Just cast OCaml Ctypes callable info to vfunc info *)
-TODO :val cast_vfuncinfo_to_baseinfo:
-  t structure ptr -> GIVFuncInfo.t structure ptr
-
-(** Return a GIVFuncInfo.t from a GICallableInfo.t, the underlying C structure
-    ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
-TODO :val vfuncinfo_of_callableinfo:
-  t structure ptr -> GIVFuncInfo.t structure ptr
-
-(** Return a GICallableInfo.t from a GIVFuncInfo, the underlying C structure
-    ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
-TODO :val callableinfo_of_vfuncinfo:
-  GIVFuncInfo.t structure ptr -> t structure ptr
-*)
-
-(* GICallableInfo and GICallbackInfo
-
-(** Just cast OCaml Ctypes callback info to callable info. *)
-TODO :val cast_callback_to_callableinfo:
-  GICallbackInfo.t structure ptr -> t structure ptr
-
-(** Just cast OCaml Ctypes callable info to callback info *)
-TODO :val cast_callbackinfo_to_baseinfo:
-  t structure ptr -> GICallbackInfo.t structure ptr
-
-(** Return a GICallbackInfo.t from a GICallableInfo.t, the underlying C structure
-    ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
-TODO :val callbackinfo_of_callableinfo:
-  t structure ptr -> GICallbackInfo.t structure ptr
-
-(** Return a GICallableInfo.t from a GICallbackInfo, the underlying C structure
-    ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
-TODO :val callableinfo_of_callbackinfo:
-  GICallbackInfo.t structure ptr -> t structure ptr
-*)

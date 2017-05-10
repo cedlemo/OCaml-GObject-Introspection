@@ -56,8 +56,8 @@ val get_type:
   t structure ptr -> GITypeInfo.t structure ptr
 
 (*
-   TODO: gboolean	g_field_info_get_field ()
-   TODO: gboolean	g_field_info_set_field ()
+   gboolean	g_field_info_get_field ()
+   gboolean	g_field_info_set_field ()
  *)
 
 (** Just cast OCaml Ctypes base info to field info. *)

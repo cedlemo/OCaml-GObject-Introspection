@@ -53,10 +53,9 @@ val get_property:
   t structure ptr -> GIPropertyInfo.t structure ptr option
 
 (*
-  TODO: GIPropertyInfo *	g_function_info_get_property ()
   TODO: GIVFuncInfo *	g_function_info_get_vfunc ()
-  TODO: gboolean	g_function_info_invoke ()
-  TODO: GQuark	g_invoke_error_quark ()
+  gboolean	g_function_info_invoke ()
+  GQuark	g_invoke_error_quark ()
 *)
 
 (** Just cast OCaml Ctypes base info to function info. *)
