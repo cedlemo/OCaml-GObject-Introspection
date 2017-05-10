@@ -80,25 +80,25 @@ val get_interface:
   t structure ptr -> GIBaseInfo.t structure ptr option
 
 (** Just cast OCaml Ctypes base info to typeinfo. *)
-val cast_baseinfo_to_typeinfo:
+val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes typeinfo to base info *)
-val cast_typeinfo_to_baseinfo:
+val cast_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (** Add unref of the C underlying structure whith Gc.finalise. *)
-val add_unref_finaliser_to_type_info:
+val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
 (** Return a GITypeInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val typeinfo_of_baseinfo:
+val from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Return a GIBaseInfo.t form a GITypeInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val baseinfo_of_typeinfo:
+val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr

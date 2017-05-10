@@ -27,7 +27,7 @@ let get_type info =
     foreign "g_constant_info_get_type"
       (ptr constantinfo @-> returning (ptr GITypeInfo.typeinfo)) in
   let info' = get_type_raw info in
-  GITypeInfo.add_unref_finaliser_to_type_info info'
+  GITypeInfo.add_unref_finaliser info'
 
 (* TODO : check that the info can be casted to a constantinfo ? *)
 let cast_baseinfo_to_constantinfo info =

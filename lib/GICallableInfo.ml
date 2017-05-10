@@ -64,7 +64,7 @@ let get_return_type info =
     foreign "g_callable_info_get_return_type"
       (ptr callableinfo @-> returning (ptr GITypeInfo.typeinfo))
   in let info' = get_return_type_raw info in
-  GITypeInfo.add_unref_finaliser_to_type_info info'
+  GITypeInfo.add_unref_finaliser info'
 
 let get_caller_owns info =
   let get_caller_owns_raw =

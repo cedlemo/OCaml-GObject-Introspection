@@ -50,7 +50,7 @@ let get_type info =
     foreign "g_field_info_get_type"
       (ptr fieldinfo @-> returning (ptr GITypeInfo.typeinfo))
   in let info' = get_type_raw info in
-  GITypeInfo.add_unref_finaliser_to_type_info info'
+  GITypeInfo.add_unref_finaliser info'
 
 (* TODO : check that the info can be casted to field info ? *)
 let cast_from_baseinfo info =
