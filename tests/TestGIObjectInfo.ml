@@ -37,7 +37,7 @@ let get_object_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let object_info = GIObjectInfo.objectinfo_of_baseinfo base_info in
+    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
       Some object_info
     | _ -> None
 
@@ -164,7 +164,7 @@ let get_object_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let object_info = GIObjectInfo.objectinfo_of_baseinfo base_info in
+    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
       Some object_info
     | _ -> None
 

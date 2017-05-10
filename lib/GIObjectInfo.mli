@@ -126,21 +126,21 @@ val get_class_struct:
   TODO : GIObjectInfoGetValueFunction	g_object_info_get_get_value_function_pointer ()
 *)
 (** Just cast OCaml Ctypes base info to object info. *)
-val cast_baseinfo_to_objectinfo:
+val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes object info to base info *)
-val cast_objectinfo_to_baseinfo:
+val cast_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (** Return a GIObjectInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val objectinfo_of_baseinfo:
+val from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Return a GIBaseInfo.t from a GIObjectInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val baseinfo_of_objectinfo:
+val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr

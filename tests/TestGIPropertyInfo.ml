@@ -30,7 +30,7 @@ let test_get_property_from_repo test_ctxt =
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
     | GIBaseInfo.Object -> (
-        let info = GIObjectInfo.objectinfo_of_baseinfo base_info in
+        let info = GIObjectInfo.from_baseinfo base_info in
         let prop = GIObjectInfo.get_property info 0 in
         let base_prop = GIPropertyInfo.baseinfo_of_propertyinfo prop in
         match  GIBaseInfo.get_type base_prop with
@@ -44,7 +44,7 @@ let get_property_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let info = GIObjectInfo.objectinfo_of_baseinfo base_info in
+    | GIBaseInfo.Object -> let info = GIObjectInfo.from_baseinfo base_info in
         let prop = GIObjectInfo.get_property info 0 in
         Some prop
     | _ -> None
