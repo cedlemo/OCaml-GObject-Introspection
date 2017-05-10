@@ -107,10 +107,10 @@ let functioninfo_of_callableinfo info =
   let info' = cast_callableinfo_to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
   let info'' = cast_callableinfo_to_functioninfo info in
-  GIFunctionInfo.add_unref_finaliser_to_function_info info''
+  GIFunctionInfo.add_unref_finaliser info''
 
 let callableinfo_of_functioninfo info =
-  let info' = GIFunctionInfo.cast_functioninfo_to_baseinfo info in
+  let info' = GIFunctionInfo.to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
   let info'' = cast_functioninfo_to_callableinfo info in
   let _ = Gc.finalise (fun i ->

@@ -55,7 +55,7 @@ let get_method info n =
   let max = get_n_methods info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_method_raw info n in
-    GIFunctionInfo.add_unref_finaliser_to_function_info info'
+    GIFunctionInfo.add_unref_finaliser info'
 
 let find_method info name =
   let find_method_raw =
@@ -64,7 +64,7 @@ let find_method info name =
   in match find_method_raw info name with
   | None -> None
   | Some info' ->
-    let fn_info = GIFunctionInfo.add_unref_finaliser_to_function_info info' in
+    let fn_info = GIFunctionInfo.add_unref_finaliser info' in
     Some fn_info
 
 let is_discriminated =

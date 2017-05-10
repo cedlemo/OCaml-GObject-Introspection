@@ -28,7 +28,7 @@ let get_function_info () =
   match GIRepository.find_by_name repo namespace name with
   | None -> None
   | Some (base_info) -> match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function -> let info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
+    | GIBaseInfo.Function -> let info = GIFunctionInfo.from_baseinfo base_info in
       Some info
     | _ -> None
 

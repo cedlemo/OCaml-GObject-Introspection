@@ -38,7 +38,7 @@ let get_method info n =
   let max = get_n_methods info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_method_raw info n in
-    GIFunctionInfo.add_unref_finaliser_to_function_info info'
+    GIFunctionInfo.add_unref_finaliser info'
 
 let get_value info n =
   let get_value_raw =
