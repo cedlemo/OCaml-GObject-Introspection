@@ -57,7 +57,7 @@ let get_arg info n =
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else
     let info' = get_arg_raw info n in
-    GIArgInfo.add_unref_finaliser_to_arg_info info'
+    GIArgInfo.add_unref_finaliser info'
 
 let get_return_type info =
   let get_return_type_raw =

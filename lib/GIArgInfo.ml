@@ -113,25 +113,25 @@ let get_scope info =
 
 
 (* TODO : check that the info can be casted to arg info ? *)
-let cast_baseinfo_to_arginfo info =
+let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info
 
-let cast_arginfo_to_baseinfo info =
+let cast_to_baseinfo info =
   coerce (ptr arginfo) (ptr GIBaseInfo.baseinfo) info
 
-let add_unref_finaliser_to_arg_info info =
+let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
-      let i' = cast_arginfo_to_baseinfo i in
+      let i' = cast_to_baseinfo i in
       GIBaseInfo.base_info_unref i') info
   in info
 
-let arginfo_of_baseinfo info =
+let from_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
-  let info' = cast_baseinfo_to_arginfo info in
-  add_unref_finaliser_to_arg_info info'
+  let info' = cast_from_baseinfo info in
+  add_unref_finaliser info'
 
-let baseinfo_of_arginfo info =
-  let info' = cast_arginfo_to_baseinfo info in
+let to_baseinfo info =
+  let info' = cast_to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
