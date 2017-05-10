@@ -41,7 +41,7 @@ let get_interface_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Interface -> let interface_info = GIInterfaceInfo.interfaceinfo_of_baseinfo base_info in
+    | GIBaseInfo.Interface -> let interface_info = GIInterfaceInfo.from_baseinfo base_info in
       Some interface_info
     | _ -> None
 

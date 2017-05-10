@@ -226,7 +226,7 @@ let test_gtk_window_get_n_interfaces test_ctxt =
 let test_gtk_window_get_interface test_ctxt =
    object_test (fun info ->
       let info' = GIObjectInfo.get_interface info 0 in
-      let base_info' = GIInterfaceInfo.baseinfo_of_interfaceinfo info' in
+      let base_info' = GIInterfaceInfo.to_baseinfo info' in
       match GIBaseInfo.get_name base_info' with
       | None -> assert_equal_string "It should have" " a name"
       | Some interface_name -> assert_equal_string "ImplementorIface" interface_name
