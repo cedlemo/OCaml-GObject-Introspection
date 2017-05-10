@@ -30,7 +30,7 @@ let get_constant_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Constant -> let const_info = GIConstantInfo.constantinfo_of_baseinfo base_info in
+    | GIBaseInfo.Constant -> let const_info = GIConstantInfo.from_baseinfo base_info in
       Some const_info
     | _ -> None
 
