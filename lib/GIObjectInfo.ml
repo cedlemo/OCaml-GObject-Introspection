@@ -70,7 +70,7 @@ let get_field info n =
   let max = get_n_fields info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_field_raw info n in
-    GIFieldInfo.add_unref_finaliser_to_field_info info'
+    GIFieldInfo.add_unref_finaliser info'
 
 let get_n_interfaces =
   foreign "g_object_info_get_n_interfaces"

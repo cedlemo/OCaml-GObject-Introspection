@@ -61,25 +61,25 @@ val get_type:
  *)
 
 (** Just cast OCaml Ctypes base info to field info. *)
-val cast_baseinfo_to_fieldinfo:
+val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes field info to base info *)
-val cast_fieldinfo_to_baseinfo:
+val cast_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (** Add unref of the C underlying structure whith Gc.finalise. *)
-val add_unref_finaliser_to_field_info:
+val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
 (** Return a GIFieldInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val fieldinfo_of_baseinfo:
+val from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Return a GIBaseInfo.t from a GIFieldInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val baseinfo_of_fieldinfo:
+val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
