@@ -22,7 +22,31 @@ open OUnit2
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
+let name = "signal_name"
 
+let get_function_info () =
+  match GIRepository.find_by_name repo namespace name with
+  | None -> None
+  | Some (base_info) -> match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Function -> let info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
+      Some info
+    | _ -> None
+
+let test_function_info fn =
+  match get_function_info () with
+  | None -> assert_equal_string name "No base info found"
+  | Some info -> fn info
+
+let test_get_symbol test_ctxt =
+  test_function_info (fun info ->
+      assert_equal "g_signal_name" (GIFunctionInfo.get_symbol info)
+    )
+
+let test_get_flags test_ctxt =
+  test_function_info (fun info ->
+      assert_equal [] (GIFunctionInfo.get_flags info)
+    )
+(*
 let test_get_symbol test_ctxt =
   let fn_name = "signal_name" in
   match GIRepository.find_by_name repo namespace fn_name with
@@ -42,7 +66,7 @@ let test_get_flags test_ctxt =
       let fn_info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
       assert_equal [] (GIFunctionInfo.get_flags fn_info)
     | _ -> assert_equal_string "Base info" "Wrong info type"
-
+*)
 let tests =
   "GObject Introspection FunctionInfo tests" >:::
   [
