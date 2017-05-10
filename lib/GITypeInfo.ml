@@ -64,7 +64,7 @@ let get_interface info =
       (ptr typeinfo @-> returning (ptr_opt GIBaseInfo.baseinfo)) in
   match get_interface_raw info with
   | None -> None
-  | Some info' -> let info'' = GIBaseInfo.add_unref_finaliser_to_base_info info' in
+  | Some info' -> let info'' = GIBaseInfo.add_unref_finaliser info' in
     Some info''
 
 (* TODO : check that the info can be casted to arg info ? *)

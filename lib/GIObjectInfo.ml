@@ -36,7 +36,7 @@ let get_parent info =
     foreign "g_object_info_get_parent"
       (ptr objectinfo @-> returning (ptr GIBaseInfo.baseinfo)) in
   let info' = get_parent_raw info in
-  GIBaseInfo.add_unref_finaliser_to_base_info info'
+  GIBaseInfo.add_unref_finaliser info'
 
 let get_type_name =
   foreign "g_object_info_get_type_name"

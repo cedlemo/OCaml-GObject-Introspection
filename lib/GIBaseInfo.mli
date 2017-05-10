@@ -96,5 +96,5 @@ val get_type:
   TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
 
-val add_unref_finaliser_to_base_info:
+val add_unref_finaliser:
   t structure ptr -> t structure ptr
