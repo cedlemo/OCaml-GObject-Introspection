@@ -18,7 +18,6 @@
 
 open Ctypes
 open Foreign
-open Conversions
 
 type t
 let fieldinfo : t structure typ = structure "GIFieldInfo"

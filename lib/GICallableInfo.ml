@@ -20,7 +20,6 @@
 
 open Ctypes
 open Foreign
-open Conversions
 
 type t
 let callableinfo : t structure typ = structure "GICallableInfo"

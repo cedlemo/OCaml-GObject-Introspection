@@ -18,7 +18,6 @@
 
 open Ctypes
 open Foreign
-open Conversions
 
 type t
 let unioninfo : t structure typ = structure "GIUnionInfo"

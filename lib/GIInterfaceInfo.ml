@@ -18,7 +18,6 @@
 
 open Ctypes
 open Foreign
-open Conversions
 
 type t
 let interfaceinfo : t structure typ = structure "GIInterfaceInfo"
