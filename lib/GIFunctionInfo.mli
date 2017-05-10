@@ -46,6 +46,12 @@ type flags =
 val get_flags:
   t structure ptr -> flags list
 
+(** Obtain the property associated with this GIFunctionInfo. Only
+    GIFunctionInfo with the flag GIFunction.Is_getter or GIFunction.Is_setter
+    have a property set. For other cases, NULL will be returned. *)
+val get_property:
+  t structure ptr -> GIPropertyInfo.t structure ptr option
+
 (*
   TODO: GIPropertyInfo *	g_function_info_get_property ()
   TODO: GIVFuncInfo *	g_function_info_get_vfunc ()

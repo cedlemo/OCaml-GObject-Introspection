@@ -49,6 +49,24 @@ let get_flags info =
   if ((c_flags land (1 lsl 5)) != 0) then ignore (Throws :: flags);
   flags
 
+let get_property info =
+  let flags = get_flags info in
+  let rec find_set_get = function
+    | [] -> false
+    | h :: q -> match h with
+      | Is_setter | Is_getter -> true
+      | _ -> find_set_get q
+  in if (find_set_get flags) then (
+    let get_property_raw =
+      foreign "g_function_info_get_property"
+        (ptr functioninfo @-> returning (ptr_opt GIPropertyInfo.propertyinfo)) in
+    match get_property_raw info with
+    | None -> None
+    | Some info' -> let info'' = GIPropertyInfo.add_unref_finaliser_to_property_info info' in
+      Some info''
+  )
+  else None
+
 (* TODO : check that the info can be casted to function info ? *)
 let cast_baseinfo_to_functioninfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr functioninfo) info
