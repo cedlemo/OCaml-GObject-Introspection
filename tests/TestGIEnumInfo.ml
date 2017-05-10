@@ -63,7 +63,7 @@ let test_get_value test_ctxt =
       | None -> assert_equal_string "No value " "found"
       | Some value -> let value' = GIValueInfo.get_value value in
         let _ = assert_equal_int 1 value' in
-        let base = GIValueInfo.baseinfo_of_valueinfo value in
+        let base = GIValueInfo.to_baseinfo value in
         match GIBaseInfo.get_name base with
         | None -> ()
         | Some name -> assert_equal_string "internal" name

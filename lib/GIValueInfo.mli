@@ -29,25 +29,25 @@ val get_value:
   t structure ptr -> int
 
 (** Just cast OCaml Ctypes base info to enum info. *)
-val cast_baseinfo_to_valueinfo:
+val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes enum info to base info *)
-val cast_valueinfo_to_baseinfo:
+val cast_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (** Add unref of the C underlying structure whith Gc.finalise. *)
-val add_unref_finaliser_to_value_info:
+val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
 (** Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val valueinfo_of_baseinfo:
+val from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val baseinfo_of_valueinfo:
+val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr

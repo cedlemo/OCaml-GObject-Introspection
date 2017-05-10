@@ -48,7 +48,7 @@ let get_value info n =
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else match get_value_raw info n with
     | None -> None
-    | Some info' -> Some (GIValueInfo.add_unref_finaliser_to_value_info info')
+    | Some info' -> Some (GIValueInfo.add_unref_finaliser info')
 
 let get_error_domain =
   foreign "g_enum_info_get_error_domain"
