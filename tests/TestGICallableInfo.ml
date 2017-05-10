@@ -29,7 +29,7 @@ let get_callable_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function -> let info = GICallableInfo.callableinfo_of_baseinfo base_info
+    | GIBaseInfo.Function -> let info = GICallableInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 

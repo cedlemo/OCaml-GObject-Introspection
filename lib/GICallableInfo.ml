@@ -73,47 +73,47 @@ let get_caller_owns info =
   in let transfer = get_caller_owns_raw info
   in GIArgInfo.transfer_of_int transfer
 
-let cast_baseinfo_to_callableinfo info =
+let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr callableinfo) info
 
-let cast_callableinfo_to_baseinfo info =
+let cast_to_baseinfo info =
   coerce (ptr callableinfo) (ptr GIBaseInfo.baseinfo) info
 
-let add_unref_finaliser_to_callable_info info =
+let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
-      let i' = cast_callableinfo_to_baseinfo i in
+      let i' = cast_to_baseinfo i in
       GIBaseInfo.base_info_unref i') info
   in info
 
-let callableinfo_of_baseinfo info =
+let from_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
-  let info' = cast_baseinfo_to_callableinfo info in
-  add_unref_finaliser_to_callable_info info'
+  let info' = cast_from_baseinfo info in
+  add_unref_finaliser info'
 
-let baseinfo_of_callableinfo info =
-  let info' = cast_callableinfo_to_baseinfo info in
+let to_baseinfo info =
+  let info' = cast_to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
   info'
 
-let cast_callableinfo_to_functioninfo info =
+let cast_to_functioninfo info =
   coerce (ptr callableinfo) (ptr GIFunctionInfo.functioninfo) info
 
-let cast_functioninfo_to_callableinfo info =
+let cast_from_functioninfo info =
   coerce (ptr GIFunctionInfo.functioninfo) (ptr callableinfo) info
 
-let functioninfo_of_callableinfo info =
-  let info' = cast_callableinfo_to_baseinfo info in
+let to_functioninfo info =
+  let info' = cast_to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
-  let info'' = cast_callableinfo_to_functioninfo info in
+  let info'' = cast_to_functioninfo info in
   GIFunctionInfo.add_unref_finaliser info''
 
-let callableinfo_of_functioninfo info =
+let from_functioninfo info =
   let info' = GIFunctionInfo.to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
-  let info'' = cast_functioninfo_to_callableinfo info in
+  let info'' = cast_from_functioninfo info in
   let _ = Gc.finalise (fun i ->
-      let i' = cast_callableinfo_to_baseinfo i in
+      let i' = cast_to_baseinfo i in
       GIBaseInfo.base_info_unref i') info'' in
   info''
