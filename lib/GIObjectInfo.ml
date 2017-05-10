@@ -134,7 +134,7 @@ let get_class_struct info =
       (ptr objectinfo @-> returning (ptr_opt GIStructInfo.structinfo)) in
   match get_class_struct_raw info with
   | None -> None
-  | Some info' -> let info'' = GIStructInfo.add_unref_finaliser_to_struct_info info' in
+  | Some info' -> let info'' = GIStructInfo.add_unref_finaliser info' in
     Some info''
 
 (* TODO : check that the info can be casted to object info ? *)

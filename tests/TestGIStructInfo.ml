@@ -37,7 +37,7 @@ let get_struct_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Struct -> Some (GIStructInfo.structinfo_of_baseinfo base_info)
+    | GIBaseInfo.Struct -> Some (GIStructInfo.from_baseinfo base_info)
     | _ -> None
 
 let struct_test fn =

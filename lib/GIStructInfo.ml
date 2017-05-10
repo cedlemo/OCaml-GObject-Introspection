@@ -76,25 +76,25 @@ let find_method info name =
     Some fn_info
 
 (* TODO : check that the info can be casted to a structinfo ? *)
-let cast_baseinfo_to_structinfo info =
+let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr structinfo) info
 
-let cast_structinfo_to_baseinfo info =
+let cast_to_baseinfo info =
   coerce (ptr structinfo) (ptr GIBaseInfo.baseinfo) info
 
-let add_unref_finaliser_to_struct_info info =
+let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
-      let i' = cast_structinfo_to_baseinfo i in
+      let i' = cast_to_baseinfo i in
       GIBaseInfo.base_info_unref i') info in
   info
 
-let structinfo_of_baseinfo info =
+let from_baseinfo info =
   let _ = GIBaseInfo.base_info_ref info in
-  let info' = cast_baseinfo_to_structinfo info in
-  add_unref_finaliser_to_struct_info info'
+  let info' = cast_from_baseinfo info in
+  add_unref_finaliser info'
 
-let baseinfo_of_structinfo info =
-  let info' = cast_structinfo_to_baseinfo info in
+let to_baseinfo info =
+  let info' = cast_to_baseinfo info in
   let _ = GIBaseInfo.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
