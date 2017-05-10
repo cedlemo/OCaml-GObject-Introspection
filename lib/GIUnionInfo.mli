@@ -65,21 +65,21 @@ val is_discriminated:
 *)
 
 (** Just cast OCaml Ctypes base info to union info. *)
-val cast_baseinfo_to_unioninfo:
+val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes union info to base info *)
-val cast_unioninfo_to_baseinfo:
+val cast_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (** Return a GIUnionInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val unioninfo_of_baseinfo:
+val from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Return a GIBaseInfo.t form a GIUnionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val baseinfo_of_unioninfo:
+val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr

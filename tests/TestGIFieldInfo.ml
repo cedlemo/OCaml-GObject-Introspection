@@ -29,7 +29,7 @@ let get_union_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Union -> let info = GIUnionInfo.unioninfo_of_baseinfo base_info
+    | GIBaseInfo.Union -> let info = GIUnionInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
