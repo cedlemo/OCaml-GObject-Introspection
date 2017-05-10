@@ -46,27 +46,7 @@ let test_get_flags test_ctxt =
   test_function_info (fun info ->
       assert_equal [] (GIFunctionInfo.get_flags info)
     )
-(*
-let test_get_symbol test_ctxt =
-  let fn_name = "signal_name" in
-  match GIRepository.find_by_name repo namespace fn_name with
-  | None -> assert_equal_string fn_name "No base info found"
-  | Some (base_info) -> match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function ->
-      let fn_info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
-      assert_equal "g_signal_name" (GIFunctionInfo.get_symbol fn_info)
-    | _ -> assert_equal_string "Base info" "Wrong info type"
 
-let test_get_flags test_ctxt =
-  let fn_name = "signal_name" in
-  match GIRepository.find_by_name repo namespace fn_name with
-  | None -> assert_equal_string fn_name "No base info found"
-  | Some (base_info) -> match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function ->
-      let fn_info = GIFunctionInfo.functioninfo_of_baseinfo base_info in
-      assert_equal [] (GIFunctionInfo.get_flags fn_info)
-    | _ -> assert_equal_string "Base info" "Wrong info type"
-*)
 let tests =
   "GObject Introspection FunctionInfo tests" >:::
   [
