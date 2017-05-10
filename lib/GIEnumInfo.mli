@@ -57,21 +57,21 @@ val get_storage_type:
   t structure ptr -> GITypes.tag
 
 (** Just cast OCaml Ctypes base info to enum info. *)
-val cast_baseinfo_to_enuminfo:
+val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes enum info to base info *)
-val cast_enuminfo_to_baseinfo:
+val cast_to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
 
 (** Return a GIEnumInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val enuminfo_of_baseinfo:
+val from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
 
 (** Return a GIBaseInfo.t form a GIEnumInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref. *)
-val baseinfo_of_enuminfo:
+val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr

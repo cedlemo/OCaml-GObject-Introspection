@@ -29,7 +29,7 @@ let get_enum_info () =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Enum -> let info = GIEnumInfo.enuminfo_of_baseinfo base_info
+    | GIBaseInfo.Enum -> let info = GIEnumInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
