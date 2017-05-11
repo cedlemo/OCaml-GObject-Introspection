@@ -326,6 +326,13 @@ let test_gtk_window_get_unref_function test_ctxt =
       | Some _ -> assert_equal_string "It should not " "have any ref function"
     )
 
+let test_gtk_window_get_set_value_function test_ctxt =
+  object_test (fun info ->
+      match GIObjectInfo.get_set_value_function info with
+      | None -> assert_equal true true
+      | Some _ -> assert_equal_string "It should not " "have any set value function"
+    )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -365,5 +372,6 @@ let tests =
     "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property;
     "GIObjectInfo GtkWindow find method using interfaces" >:: test_gtk_window_find_method_using_interfaces;
     "GIObjectInfo GtkWindow get ref function" >:: test_gtk_window_get_ref_function;
-    "GIObjectInfo GtkWindow get unref function" >:: test_gtk_window_get_unref_function
+    "GIObjectInfo GtkWindow get unref function" >:: test_gtk_window_get_unref_function;
+    "GIObjectInfo GtkWindow get set value function" >:: test_gtk_window_get_set_value_function
   ]
