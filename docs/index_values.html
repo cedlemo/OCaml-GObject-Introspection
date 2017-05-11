@@ -290,6 +290,12 @@ Obtain the type information for method named name .
 Obtain a method of the object type given a name .
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALfind_method_using_interfaces">find_method_using_interfaces</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain a method of the object given a name , searching both the object info
+    and any interfaces it implements.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfrom_baseinfo">from_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
@@ -535,6 +541,12 @@ Obtain if the object type is of a fundamental type which is not
     G_TYPE_OBJECT.
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_get_value_function">get_get_value_function</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the symbol name of the function that should be called to convert an
+    object instance pointer of this object type to a GValue.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALget_info">get_info</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 This function returns a particular metadata entry in the given namespace
@@ -694,6 +706,12 @@ Obtain the property associated with this GIFunctionInfo.
 Obtain an object type property at index n .
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_ref_function">get_ref_function</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the symbol name of the function that should be called to ref this
+    object type.
+</div>
+</td></tr>
 <tr><td><a href="GICallableInfo.html#VALget_return_attribute">get_return_attribute</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 Retrieve an arbitrary attribute associated with the return value.
@@ -710,6 +728,12 @@ Obtain the return type of a callable item as a GITypeInfo.
 <td><div class="info">
 Returns the current search path GIRepository will use when loading typelib
     files.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_set_value_function">get_set_value_function</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the symbol name of the function that should be called to convert set
+    a GValue giving an object instance pointer of this object type.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_shared_library">get_shared_library</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -779,6 +803,12 @@ Obtain the name of the objects class/type.
 <td><div class="info">
 If namespace namespace_ is loaded, return the full path to the .typelib
     file it was loaded from.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALget_unref_function">get_unref_function</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Obtain the symbol name of the function that should be called to unref this
+    object type.
 </div>
 </td></tr>
 <tr><td><a href="GIEnumInfo.html#VALget_value">get_value</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>

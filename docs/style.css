@@ -15,7 +15,7 @@ td.typefieldcomment { background-color : #FFFFFF ; font-size: smaller ;}
 div.sig_block {margin-left: 2em}
 *:target { background: yellow; }
 body {font: 13px sans-serif; color: black; text-align: left; padding: 5px; margin: 0}
-h1 { font-size : 40pt ; text-align: center; }
+h1 { font-size : 20pt ; text-align: center; }
 h2 { font-size : 20pt ; border: 1px solid #000000; margin-top: 5px; margin-bottom: 2px;text-align: center; background-color: #90BDFF ;padding: 2px; }
 h3 { font-size : 20pt ; border: 1px solid #000000; margin-top: 5px; margin-bottom: 2px;text-align: center; background-color: #90DDFF ;padding: 2px; }
 h4 { font-size : 20pt ; border: 1px solid #000000; margin-top: 5px; margin-bottom: 2px;text-align: center; background-color: #90EDFF ;padding: 2px; }
