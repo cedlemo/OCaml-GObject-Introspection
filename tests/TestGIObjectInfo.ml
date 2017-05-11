@@ -293,6 +293,25 @@ let test_gtk_window_get_class_struct test_ctxt =
         assert_equal_boolean true is_struct
     )
 
+let test_gtk_window_find_method_using_interfaces test_ctxt =
+  object_test (fun info ->
+      let method_name = "set_title" in
+      let (meth, implementor) =
+        GIObjectInfo.find_method_using_interfaces info method_name in
+      let _ = ( match implementor with
+          | None -> assert_equal true true
+          | Some info_implementor ->
+            let base_info = GIObjectInfo.to_baseinfo info_implementor in
+            match GIBaseInfo.get_name base_info with
+            | None -> assert_equal_string "It should " "have a name"
+            | Some name -> assert_equal_string "Window" name
+        )
+      in match meth with
+      | None -> assert_equal_string "It should return " " a function info"
+      | Some info' -> let symbol = GIFunctionInfo.get_symbol info' in
+        assert_equal_string ("gtk_window_" ^ method_name) symbol
+     )
+
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
@@ -329,5 +348,6 @@ let tests =
     "GIObjectInfo GtkWindow get n signals" >:: test_gtk_window_get_n_signals;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
     "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
-    "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property
+    "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property;
+    "GIObjectInfo GtkWindow find method using interfaces" >:: test_gtk_window_find_method_using_interfaces
   ]
