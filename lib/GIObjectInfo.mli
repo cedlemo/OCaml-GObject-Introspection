@@ -125,15 +125,20 @@ val find_method_using_interfaces:
 val get_ref_function:
   t structure ptr -> string option
 
+(** Obtain the symbol name of the function that should be called to unref this
+    object type. It's mainly used fundamental types. The type signature for the
+    symbol is GIObjectInfoUnrefFunction, to fetch the function pointer see
+    GIObjectInfo.get_unref_function. *)
+val get_unref_function:
+  t structure ptr -> string option
+
 (*
   TODO : GISignalInfo *	g_object_info_get_signal ()
   TODO : GISignalInfo *	g_object_info_find_signal ()
   TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
-  TODO : const char *	g_object_info_get_ref_function ()
   TODO : GIObjectInfoRefFunction	g_object_info_get_ref_function_pointer ()
-  TODO : const char *	g_object_info_get_unref_function ()
   TODO : GIObjectInfoUnrefFunction	g_object_info_get_unref_function_pointer ()
   TODO : const char *	g_object_info_get_set_value_function ()
   TODO : GIObjectInfoSetValueFunction	g_object_info_get_set_value_function_pointer ()

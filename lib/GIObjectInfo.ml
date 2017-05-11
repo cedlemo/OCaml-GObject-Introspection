@@ -140,6 +140,10 @@ let get_ref_function =
   foreign "g_object_info_get_ref_function"
     (ptr objectinfo @-> returning string_opt)
 
+let get_unref_function =
+  foreign "g_object_info_get_unref_function"
+    (ptr objectinfo @-> returning string_opt)
+
 (* TODO : check that the info can be casted to object info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info
