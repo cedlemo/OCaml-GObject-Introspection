@@ -127,25 +127,31 @@ Flags for a GIFunctionInfo struct.<br>
 Obtain the GIFunctionInfoFlags for the info .<br>
 </div>
 
-<pre><span id="VALcast_baseinfo_to_functioninfo"><span class="keyword">val</span> cast_baseinfo_to_functioninfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALget_property"><span class="keyword">val</span> get_property</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIPropertyInfo.html#TYPEt">GIPropertyInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Obtain the property associated with this GIFunctionInfo. Only
+    GIFunctionInfo with the flag GIFunction.Is_getter or GIFunction.Is_setter
+    have a property set. For other cases, NULL will be returned.<br>
+</div>
+
+<pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to function info.<br>
 </div>
 
-<pre><span id="VALcast_functioninfo_to_baseinfo"><span class="keyword">val</span> cast_functioninfo_to_baseinfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALcast_to_baseinfo"><span class="keyword">val</span> cast_to_baseinfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes function info to base info<br>
 </div>
 
-<pre><span id="VALadd_unref_finaliser_to_function_info"><span class="keyword">val</span> add_unref_finaliser_to_function_info</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALadd_unref_finaliser"><span class="keyword">val</span> add_unref_finaliser</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Add unref of the C underlying structure whith Gc.finalise.<br>
 </div>
 
-<pre><span id="VALfunctioninfo_of_baseinfo"><span class="keyword">val</span> functioninfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALfrom_baseinfo"><span class="keyword">val</span> from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
 </div>
 
-<pre><span id="VALbaseinfo_of_functioninfo"><span class="keyword">val</span> baseinfo_of_functioninfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALto_baseinfo"><span class="keyword">val</span> to_baseinfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>

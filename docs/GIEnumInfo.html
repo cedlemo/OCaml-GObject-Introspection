@@ -79,21 +79,21 @@ Obtain the tag of the type used for the enum in the C ABI. This will will
     sign of the type used by the C compiler.<br>
 </div>
 
-<pre><span id="VALcast_baseinfo_to_enuminfo"><span class="keyword">val</span> cast_baseinfo_to_enuminfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to enum info.<br>
 </div>
 
-<pre><span id="VALcast_enuminfo_to_baseinfo"><span class="keyword">val</span> cast_enuminfo_to_baseinfo</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALcast_to_baseinfo"><span class="keyword">val</span> cast_to_baseinfo</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes enum info to base info<br>
 </div>
 
-<pre><span id="VALenuminfo_of_baseinfo"><span class="keyword">val</span> enuminfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALfrom_baseinfo"><span class="keyword">val</span> from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIEnumInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
 </div>
 
-<pre><span id="VALbaseinfo_of_enuminfo"><span class="keyword">val</span> baseinfo_of_enuminfo</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALto_baseinfo"><span class="keyword">val</span> to_baseinfo</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIBaseInfo.t form a GIEnumInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>

@@ -49,25 +49,25 @@ GIInterfaceInfo represents a GInterface type.
 
 
 <pre><span id="VALinterfaceinfo"><span class="keyword">val</span> interfaceinfo</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
-<pre><span id="VALcast_baseinfo_to_interfaceinfo"><span class="keyword">val</span> cast_baseinfo_to_interfaceinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to interface info.<br>
 </div>
 
-<pre><span id="VALcast_interfaceinfo_to_baseinfo"><span class="keyword">val</span> cast_interfaceinfo_to_baseinfo</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALcast_to_baseinfo"><span class="keyword">val</span> cast_to_baseinfo</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes interface info to base info<br>
 </div>
 
-<pre><span id="VALadd_unref_finaliser_to_interface_info"><span class="keyword">val</span> add_unref_finaliser_to_interface_info</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALadd_unref_finaliser"><span class="keyword">val</span> add_unref_finaliser</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Add unref of the C underlying structure whith Gc.finalise.<br>
 </div>
 
-<pre><span id="VALinterfaceinfo_of_baseinfo"><span class="keyword">val</span> interfaceinfo_of_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALfrom_baseinfo"><span class="keyword">val</span> from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIInterfaceInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
 </div>
 
-<pre><span id="VALbaseinfo_of_interfaceinfo"><span class="keyword">val</span> baseinfo_of_interfaceinfo</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+<pre><span id="VALto_baseinfo"><span class="keyword">val</span> to_baseinfo</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIBaseInfo.t from a GIInterfaceInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
