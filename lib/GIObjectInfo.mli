@@ -109,6 +109,14 @@ val get_n_vfuncs:
 val get_class_struct:
   t structure ptr -> GIStructInfo.t structure ptr option
 
+(** Obtain a method of the object given a name , searching both the object info
+    and any interfaces it implements. None will be returned if there's no
+    method available with that name.
+    Note that this function does *not* search parent classes; you will have to
+    chain up if that's desired. *)
+val find_method_using_interfaces:
+  t structure ptr -> string -> (GIFunctionInfo.t structure ptr option *
+                                t structure ptr option)
 (*
   TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
   TODO : GISignalInfo *	g_object_info_get_signal ()
