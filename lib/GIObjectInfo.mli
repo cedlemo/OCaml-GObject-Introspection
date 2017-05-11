@@ -117,8 +117,15 @@ val get_class_struct:
 val find_method_using_interfaces:
   t structure ptr -> string -> (GIFunctionInfo.t structure ptr option *
                                 t structure ptr option)
+
+(** Obtain the symbol name of the function that should be called to ref this
+    object type. It's mainly used fundamental types. The type signature for the
+    symbol is GIObjectInfoRefFunction, to fetch the function pointer
+    see GIObjectInfo.get_ref_function. *)
+val get_ref_function:
+  t structure ptr -> string option
+
 (*
-  TODO : GIFunctionInfo *	g_object_info_find_method_using_interfaces ()
   TODO : GISignalInfo *	g_object_info_get_signal ()
   TODO : GISignalInfo *	g_object_info_find_signal ()
   TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
