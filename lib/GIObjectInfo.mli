@@ -132,6 +132,14 @@ val get_ref_function:
 val get_unref_function:
   t structure ptr -> string option
 
+(** Obtain the symbol name of the function that should be called to convert set
+    a GValue giving an object instance pointer of this object type. I's mainly
+    used fundamental types. The type signature for the symbol is
+    GIObjectInfoSetValueFunction, to fetch the function pointer see
+    GIObjectInfo.get_set_value_function. *)
+val get_set_value_function:
+  t structure ptr -> string option
+
 (*
   TODO : GISignalInfo *	g_object_info_get_signal ()
   TODO : GISignalInfo *	g_object_info_find_signal ()
