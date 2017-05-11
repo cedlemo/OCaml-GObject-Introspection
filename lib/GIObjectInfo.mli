@@ -140,6 +140,14 @@ val get_unref_function:
 val get_set_value_function:
   t structure ptr -> string option
 
+(** Obtain the symbol name of the function that should be called to convert an
+    object instance pointer of this object type to a GValue. I's mainly used
+    fundamental types. The type signature for the symbol is
+    GIObjectInfoGetValueFunction, to fetch the function pointer see
+    GIObjectInfo.get_get_value_function. *)
+val get_get_value_function:
+  t structure ptr -> string option
+
 (*
   TODO : GISignalInfo *	g_object_info_get_signal ()
   TODO : GISignalInfo *	g_object_info_find_signal ()
@@ -148,9 +156,7 @@ val get_set_value_function:
   TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
   TODO : GIObjectInfoRefFunction	g_object_info_get_ref_function_pointer ()
   TODO : GIObjectInfoUnrefFunction	g_object_info_get_unref_function_pointer ()
-  TODO : const char *	g_object_info_get_set_value_function ()
   TODO : GIObjectInfoSetValueFunction	g_object_info_get_set_value_function_pointer ()
-  TODO : const char *	g_object_info_get_get_value_function ()
   TODO : GIObjectInfoGetValueFunction	g_object_info_get_get_value_function_pointer ()
 *)
 (** Just cast OCaml Ctypes base info to object info. *)
