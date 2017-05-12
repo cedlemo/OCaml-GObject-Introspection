@@ -22,6 +22,10 @@ open Foreign
 type t
 let interfaceinfo : t structure typ = structure "GIInterfaceInfo"
 
+let get_n_prerequisites =
+  foreign "g_interface_info_get_n_prerequisites"
+    (ptr interfaceinfo @-> returning int)
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info

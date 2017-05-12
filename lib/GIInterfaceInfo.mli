@@ -26,8 +26,13 @@ open Ctypes
 type t
 val interfaceinfo : t structure typ
 
+(** Obtain the number of prerequisites for this interface type. A prerequisites
+    is another interface that needs to be implemented for interface, similar to
+    an base class for GObjects. *)
+val get_n_prerequisites:
+  t structure ptr -> int
+
 (*
-  TODO : gint	g_interface_info_get_n_prerequisites ()
   TODO : GIBaseInfo *	g_interface_info_get_prerequisite ()
   TODO : gint	g_interface_info_get_n_properties ()
   TODO : GIPropertyInfo *	g_interface_info_get_property ()
