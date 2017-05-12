@@ -40,6 +40,10 @@ val get_prerequisite:
 val get_n_properties:
   t structure ptr -> int
 
+(** Obtain an interface type property at index n . *)
+val get_property:
+  t structure ptr -> int -> GIPropertyInfo.t structure ptr
+
 (*
   TODO : gint	g_interface_info_get_n_properties ()
   TODO : GIPropertyInfo *	g_interface_info_get_property ()

@@ -39,6 +39,15 @@ let get_n_properties =
   foreign "g_interface_info_get_n_properties"
     (ptr interfaceinfo @-> returning int)
 
+let get_property info n =
+  let get_property_raw =
+    foreign "g_interface_info_get_property"
+      (ptr interfaceinfo @-> int @-> returning (ptr GIPropertyInfo.propertyinfo)) in
+  let max = get_n_properties info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_property_raw info n in
+    GIPropertyInfo.add_unref_finaliser info'
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
