@@ -47,8 +47,8 @@ let test_get_n_prerequisites test_ctxt =
 
 let test_get_prerequisite test_ctxt =
   interface_test (fun info ->
-      let info = GIInterfaceInfo.get_prerequisite info 0 in
-      match GIBaseInfo.get_name info with
+      let info' = GIInterfaceInfo.get_prerequisite info 0 in
+      match GIBaseInfo.get_name info' with
       | None -> assert_equal_string "It should have " " a name"
       | Some name -> assert_equal_string "TlsConnection" name
     )
@@ -58,7 +58,15 @@ let test_get_n_properties test_ctxt =
       let n = GIInterfaceInfo.get_n_properties info in
       assert_equal_int 1 n
     )
-(* TODO: test_get_property *)
+
+let test_get_property test_ctxt =
+interface_test (fun info ->
+      let info' = GIInterfaceInfo.get_property info 0 in
+      let base_info = GIPropertyInfo.to_baseinfo info' in
+      match GIBaseInfo.get_name base_info with
+      | None -> assert_equal_string "It should have " " a name"
+      | Some name -> assert_equal_string "authentication-mode" name
+    )
 
 let test_get_n_methods test_ctxt =
   interface_test (fun info ->
@@ -72,5 +80,6 @@ let tests =
     "GIInterfaceInfo get n prerequisites" >:: test_get_n_prerequisites;
     "GIInterfaceInfo get prerequisiste" >:: test_get_prerequisite;
     "GIInterfaceInfo get n properties" >:: test_get_n_properties;
+    "GIInterfaceInfo get property" >:: test_get_property;
     "GIInterfaceInfo get n methods" >:: test_get_n_methods
   ]
