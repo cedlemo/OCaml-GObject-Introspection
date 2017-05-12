@@ -74,6 +74,15 @@ let test_get_n_methods test_ctxt =
       assert_equal_int 1 n
     )
 
+let test_get_method test_ctxt =
+  interface_test (fun info ->
+      let info' = GIInterfaceInfo.get_method info 0 in
+      let base_info = GIFunctionInfo.to_baseinfo info' in
+      match GIBaseInfo.get_name base_info with
+      | None -> assert_equal_string "It should have " " a name"
+      | Some name -> assert_equal_string "new" name
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
@@ -81,5 +90,6 @@ let tests =
     "GIInterfaceInfo get prerequisiste" >:: test_get_prerequisite;
     "GIInterfaceInfo get n properties" >:: test_get_n_properties;
     "GIInterfaceInfo get property" >:: test_get_property;
-    "GIInterfaceInfo get n methods" >:: test_get_n_methods
+    "GIInterfaceInfo get n methods" >:: test_get_n_methods;
+    "GIInterfaceInfo get method" >:: test_get_method
   ]
