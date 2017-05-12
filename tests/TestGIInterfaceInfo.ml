@@ -30,7 +30,7 @@ let get_interface_info () =
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
     | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
-      let interface_info = GIObjectInfo.get_interface object_info 1 in
+      let interface_info = GIObjectInfo.get_interface object_info 0 in
       Some interface_info
     | _ -> None
 
@@ -44,9 +44,17 @@ let test_get_n_prerequisites test_ctxt =
       let n = GIInterfaceInfo.get_n_prerequisites info in
       assert_equal_int 0 n
     )
+(* TODO: test_get_prerequisite *)
+
+let test_get_n_properties test_ctxt =
+  interface_test (fun info ->
+      let n = GIInterfaceInfo.get_n_properties info in
+      assert_equal_int 0 n
+    )
 
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
-    "GIInterfaceInfo get n prerquisites" >:: test_get_n_prerequisites
+    "GIInterfaceInfo get n prerquisites" >:: test_get_n_prerequisites;
+    "GIInterfaceInfo get n properties" >:: test_get_n_properties
   ]
