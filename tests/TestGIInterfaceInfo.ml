@@ -19,40 +19,27 @@
 open TestUtils
 open OUnit2
 
-let namespace = "Atk"
+let namespace = "Gtk"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
-let interface_name = "ImplementorIface"
-
-let test_get_interface_from_repo test_ctxt =
-  match GIRepository.find_by_name repo namespace interface_name with
-  | None -> assert_equal_string interface_name "No base info found"
-  | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Interface -> (
-        match GIBaseInfo.get_name base_info with
-        | None -> assert_equal_string interface_name "No name found"
-        | Some name -> assert_equal_string name interface_name
-      )
-    | _ -> assert_equal_string interface_name "No base info found"
+let object_name = "Window"
 
 let get_interface_info () =
-  match GIRepository.find_by_name repo namespace interface_name with
+  match GIRepository.find_by_name repo namespace object_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Interface -> let interface_info = GIInterfaceInfo.from_baseinfo base_info in
+    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
+      let interface_info = GIObjectInfo.get_interface object_info 1 in
       Some interface_info
     | _ -> None
 
 let interface_test fn =
   match get_interface_info () with
-  | None -> assert_equal_string interface_name "No base info found"
+  | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
-
 
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
-    "GIInterfaceInfo find from repo" >:: test_get_interface_from_repo
   ]
