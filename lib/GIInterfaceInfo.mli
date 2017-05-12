@@ -36,8 +36,11 @@ val get_n_prerequisites:
 val get_prerequisite:
   t structure ptr -> int -> GIBaseInfo.t structure ptr
 
+(** Obtain the number of properties that this interface type has.*)
+val get_n_properties:
+  t structure ptr -> int
+
 (*
-  TODO : GIBaseInfo *	g_interface_info_get_prerequisite ()
   TODO : gint	g_interface_info_get_n_properties ()
   TODO : GIPropertyInfo *	g_interface_info_get_property ()
   TODO : gint	g_interface_info_get_n_methods ()

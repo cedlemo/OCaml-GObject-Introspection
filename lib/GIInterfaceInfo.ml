@@ -35,6 +35,10 @@ let get_prerequisite info n =
   else let info' = get_prerequisite_raw info n in
     GIBaseInfo.add_unref_finaliser info'
 
+let get_n_properties =
+  foreign "g_interface_info_get_n_properties"
+    (ptr interfaceinfo @-> returning int)
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
