@@ -48,8 +48,11 @@ val get_property:
 val get_n_methods:
   t structure ptr -> int
 
+(** Obtain an interface type method at index n . *)
+val get_method:
+  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+
 (*
-  TODO : GIFunctionInfo *	g_interface_info_get_method ()
   TODO : GIFunctionInfo *	g_interface_info_find_method ()
   TODO : gint	g_interface_info_get_n_signals ()
   TODO : GISignalInfo *	g_interface_info_get_signal ()
