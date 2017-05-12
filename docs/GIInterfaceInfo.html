@@ -49,6 +49,32 @@ GIInterfaceInfo represents a GInterface type.
 
 
 <pre><span id="VALinterfaceinfo"><span class="keyword">val</span> interfaceinfo</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALget_n_prerequisites"><span class="keyword">val</span> get_n_prerequisites</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of prerequisites for this interface type. A prerequisites
+    is another interface that needs to be implemented for interface, similar to
+    an base class for GObjects.<br>
+</div>
+
+<pre><span id="VALget_prerequisite"><span class="keyword">val</span> get_prerequisite</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an interface type prerequisites index n .<br>
+</div>
+
+<pre><span id="VALget_n_properties"><span class="keyword">val</span> get_n_properties</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of properties that this interface type has.<br>
+</div>
+
+<pre><span id="VALget_property"><span class="keyword">val</span> get_property</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIPropertyInfo.html#TYPEt">GIPropertyInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an interface type property at index n .<br>
+</div>
+
+<pre><span id="VALget_n_methods"><span class="keyword">val</span> get_n_methods</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of methods that this interface type has.<br>
+</div>
+
+<pre><span id="VALget_method"><span class="keyword">val</span> get_method</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an interface type method at index n .<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to interface info.<br>
 </div>
