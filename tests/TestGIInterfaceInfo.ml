@@ -55,6 +55,6 @@ let test_get_n_properties test_ctxt =
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
-    "GIInterfaceInfo get n prerquisites" >:: test_get_n_prerequisites;
+    "GIInterfaceInfo get n prerequisites" >:: test_get_n_prerequisites;
     "GIInterfaceInfo get n properties" >:: test_get_n_properties
   ]
