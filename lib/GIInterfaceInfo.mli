@@ -44,10 +44,11 @@ val get_n_properties:
 val get_property:
   t structure ptr -> int -> GIPropertyInfo.t structure ptr
 
+(** Obtain the number of methods that this interface type has. *)
+val get_n_methods:
+  t structure ptr -> int
+
 (*
-  TODO : gint	g_interface_info_get_n_properties ()
-  TODO : GIPropertyInfo *	g_interface_info_get_property ()
-  TODO : gint	g_interface_info_get_n_methods ()
   TODO : GIFunctionInfo *	g_interface_info_get_method ()
   TODO : GIFunctionInfo *	g_interface_info_find_method ()
   TODO : gint	g_interface_info_get_n_signals ()

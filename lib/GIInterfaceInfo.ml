@@ -48,6 +48,10 @@ let get_property info n =
   else let info' = get_property_raw info n in
     GIPropertyInfo.add_unref_finaliser info'
 
+let get_n_methods =
+  foreign "g_interface_info_get_n_methods"
+    (ptr interfaceinfo @-> returning int)
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
