@@ -19,44 +19,44 @@
 open TestUtils
 open OUnit2
 
-let namespace = "Gtk"
+let namespace = "Gio"
 let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
-let object_name = "Window"
+let interface_name = "TlsServerConnection"
 
 let get_interface_info () =
-  match GIRepository.find_by_name repo namespace object_name with
+  match GIRepository.find_by_name repo namespace interface_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
-      let interface_info = GIObjectInfo.get_interface object_info 0 in
+    | GIBaseInfo.Interface ->
+      let interface_info = GIInterfaceInfo.from_baseinfo base_info in
       Some interface_info
     | _ -> None
 
 let interface_test fn =
   match get_interface_info () with
-  | None -> assert_equal_string object_name "No base info found"
+  | None -> assert_equal_string interface_name "No base info found"
   | Some (info) -> fn info
 
 let test_get_n_prerequisites test_ctxt =
   interface_test (fun info ->
       let n = GIInterfaceInfo.get_n_prerequisites info in
-      assert_equal_int 0 n
+      assert_equal_int 1 n
     )
 (* TODO: test_get_prerequisite *)
 
 let test_get_n_properties test_ctxt =
   interface_test (fun info ->
       let n = GIInterfaceInfo.get_n_properties info in
-      assert_equal_int 0 n
+      assert_equal_int 1 n
     )
 (* TODO: test_get_property *)
 
 let test_get_n_methods test_ctxt =
   interface_test (fun info ->
       let n = GIInterfaceInfo.get_n_methods info in
-      assert_equal_int 0 n
+      assert_equal_int 1 n
     )
 
 let tests =
