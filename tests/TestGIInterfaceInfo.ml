@@ -39,7 +39,14 @@ let interface_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_n_prerequisites test_ctxt =
+  interface_test (fun info ->
+      let n = GIInterfaceInfo.get_n_prerequisites info in
+      assert_equal_int 0 n
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
+    "GIInterfaceInfo get n prerquisites" >:: test_get_n_prerequisites
   ]
