@@ -51,6 +51,7 @@ let test_get_n_properties test_ctxt =
       let n = GIInterfaceInfo.get_n_properties info in
       assert_equal_int 0 n
     )
+(* TODO: test_get_property *)
 
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
