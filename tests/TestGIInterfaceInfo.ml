@@ -53,9 +53,16 @@ let test_get_n_properties test_ctxt =
     )
 (* TODO: test_get_property *)
 
+let test_get_n_methods test_ctxt =
+  interface_test (fun info ->
+      let n = GIInterfaceInfo.get_n_methods info in
+      assert_equal_int 0 n
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
     "GIInterfaceInfo get n prerequisites" >:: test_get_n_prerequisites;
-    "GIInterfaceInfo get n properties" >:: test_get_n_properties
+    "GIInterfaceInfo get n properties" >:: test_get_n_properties;
+    "GIInterfaceInfo get n methods" >:: test_get_n_methods
   ]
