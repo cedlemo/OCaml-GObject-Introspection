@@ -32,6 +32,10 @@ val interfaceinfo : t structure typ
 val get_n_prerequisites:
   t structure ptr -> int
 
+(** Obtain an interface type prerequisites index n . *)
+val get_prerequisite:
+  t structure ptr -> int -> GIBaseInfo.t structure ptr
+
 (*
   TODO : GIBaseInfo *	g_interface_info_get_prerequisite ()
   TODO : gint	g_interface_info_get_n_properties ()
