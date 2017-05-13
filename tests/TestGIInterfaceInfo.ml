@@ -83,6 +83,16 @@ let test_get_method test_ctxt =
       | Some name -> assert_equal_string "new" name
     )
 
+let test_find_method test_ctxt =
+  interface_test (fun info ->
+      let method_name = "new" in
+      match GIInterfaceInfo.find_method info method_name with
+      | None -> assert_equal_string "It should " "return an info"
+      | Some info' ->
+      let symbol = GIFunctionInfo.get_symbol info' in
+      assert_equal_string ("g_tls_server_connection_"^ method_name) symbol
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
@@ -91,5 +101,6 @@ let tests =
     "GIInterfaceInfo get n properties" >:: test_get_n_properties;
     "GIInterfaceInfo get property" >:: test_get_property;
     "GIInterfaceInfo get n methods" >:: test_get_n_methods;
-    "GIInterfaceInfo get method" >:: test_get_method
+    "GIInterfaceInfo get method" >:: test_get_method;
+    "GIInterfaceInfo find method" >:: test_find_method
   ]
