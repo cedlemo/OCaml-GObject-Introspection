@@ -52,6 +52,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
+<tr><td><a href="GICallableInfo.html#VALadd_unref_finaliser">add_unref_finaliser</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
 <tr><td><a href="GIArgInfo.html#VALadd_unref_finaliser">add_unref_finaliser</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
@@ -181,9 +186,9 @@ Just cast OCaml Ctypes base info to interface info.
 Just cast OCaml Ctypes base info to property info.
 </div>
 </td></tr>
-<tr><td><a href="GICallableInfo.html#VALcast_from_functioninfo">cast_from_functioninfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<tr><td><a href="GIFunctionInfo.html#VALcast_from_callableinfo">cast_from_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
-Just cast OCaml Ctypes function info to callable info.
+Just cast OCaml Ctypes callable info to function info.
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_to_baseinfo">cast_to_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -246,9 +251,9 @@ Just cast OCaml Ctypes interface info to base info
 Just cast OCaml Ctypes property info to base info
 </div>
 </td></tr>
-<tr><td><a href="GICallableInfo.html#VALcast_to_functioninfo">cast_to_functioninfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<tr><td><a href="GIFunctionInfo.html#VALcast_to_callableinfo">cast_to_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
-Just cast OCaml Ctypes callable info to function info
+Just cast OCaml Ctypes function info to callable info
 </div>
 </td></tr>
 <tr><td><a href="GIConstantInfo.html#VALconstantinfo">constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
@@ -288,6 +293,11 @@ Obtain the type information for method named name .
 <tr><td><a href="GIObjectInfo.html#VALfind_method">find_method</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
 <td><div class="info">
 Obtain a method of the object type given a name .
+</div>
+</td></tr>
+<tr><td><a href="GIInterfaceInfo.html#VALfind_method">find_method</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
+<td><div class="info">
+Obtain a method of the interface type given a name .
 </div>
 </td></tr>
 <tr><td><a href="GIObjectInfo.html#VALfind_method_using_interfaces">find_method_using_interfaces</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
@@ -387,9 +397,9 @@ Return a GIPropertyInfo.t from a GIBaseInfo.t, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
-<tr><td><a href="GICallableInfo.html#VALfrom_functioninfo">from_functioninfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<tr><td><a href="GIFunctionInfo.html#VALfrom_callableinfo">from_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
-Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
+Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -673,6 +683,11 @@ Obtain the number of properties that this interface type has.
 <tr><td><a href="GIObjectInfo.html#VALget_n_signals">get_n_signals</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
 <td><div class="info">
 Obtain the number of signals that this object type has.
+</div>
+</td></tr>
+<tr><td><a href="GIInterfaceInfo.html#VALget_n_signals">get_n_signals</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
+<td><div class="info">
+Obtain the number of signals that this interface type has.
 </div>
 </td></tr>
 <tr><td><a href="GIEnumInfo.html#VALget_n_values">get_n_values</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
@@ -1094,9 +1109,9 @@ Return a GIBaseInfo.t from a GIPropertyInfo, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
-<tr><td><a href="GICallableInfo.html#VALto_functioninfo">to_functioninfo</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
+<tr><td><a href="GIFunctionInfo.html#VALto_callableinfo">to_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
-Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
+Return a GICallableInfo.t from a GIFunctionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>

@@ -75,6 +75,15 @@ Obtain the number of methods that this interface type has.<br>
 Obtain an interface type method at index n .<br>
 </div>
 
+<pre><span id="VALfind_method"><span class="keyword">val</span> find_method</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -> <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Obtain a method of the interface type given a name . NULL will be returned
+    if there's no method available with that name.<br>
+</div>
+
+<pre><span id="VALget_n_signals"><span class="keyword">val</span> get_n_signals</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of signals that this interface type has.<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to interface info.<br>
 </div>

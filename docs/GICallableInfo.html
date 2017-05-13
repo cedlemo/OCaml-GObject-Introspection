@@ -101,6 +101,10 @@ Just cast OCaml Ctypes base info to callable info.<br>
 Just cast OCaml Ctypes callable info to base info<br>
 </div>
 
+<pre><span id="VALadd_unref_finaliser"><span class="keyword">val</span> add_unref_finaliser</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Add unref of the C underlying structure whith Gc.finalise.<br>
+</div>
+
 <pre><span id="VALfrom_baseinfo"><span class="keyword">val</span> from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
@@ -108,26 +112,6 @@ Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
 </div>
 
 <pre><span id="VALto_baseinfo"><span class="keyword">val</span> to_baseinfo</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
-Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
-    ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref.<br>
-</div>
-
-<pre><span id="VALcast_from_functioninfo"><span class="keyword">val</span> cast_from_functioninfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
-Just cast OCaml Ctypes function info to callable info.<br>
-</div>
-
-<pre><span id="VALcast_to_functioninfo"><span class="keyword">val</span> cast_to_functioninfo</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
-Just cast OCaml Ctypes callable info to function info<br>
-</div>
-
-<pre><span id="VALto_functioninfo"><span class="keyword">val</span> to_functioninfo</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
-Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
-    ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref.<br>
-</div>
-
-<pre><span id="VALfrom_functioninfo"><span class="keyword">val</span> from_functioninfo</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Return a GIBaseInfo.t from a GIFunctionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
