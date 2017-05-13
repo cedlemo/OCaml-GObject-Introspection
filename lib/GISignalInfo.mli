@@ -27,6 +27,12 @@ open Ctypes
 type t
 val signalinfo : t structure typ
 
+(*
+  TODO : GSignalFlags	g_signal_info_get_flags ()
+  TODO : GIVFuncInfo *	g_signal_info_get_class_closure ()
+  TODO : gboolean	g_signal_info_true_stops_emit ()
+ *)
+
 (** Just cast OCaml Ctypes base info to signal info. *)
 val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
