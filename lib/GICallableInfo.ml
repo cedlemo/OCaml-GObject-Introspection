@@ -95,24 +95,3 @@ let to_baseinfo info =
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
   info'
-
-let cast_to_functioninfo info =
-  coerce (ptr callableinfo) (ptr GIFunctionInfo.functioninfo) info
-
-let cast_from_functioninfo info =
-  coerce (ptr GIFunctionInfo.functioninfo) (ptr callableinfo) info
-
-let to_functioninfo info =
-  let info' = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref info' in
-  let info'' = cast_to_functioninfo info in
-  GIFunctionInfo.add_unref_finaliser info''
-
-let from_functioninfo info =
-  let info' = GIFunctionInfo.to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref info' in
-  let info'' = cast_from_functioninfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info'' in
-  info''
