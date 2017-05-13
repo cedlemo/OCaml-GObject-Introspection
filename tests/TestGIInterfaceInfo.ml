@@ -24,7 +24,7 @@ let repo = GIRepository.get_default ()
 let typelib = GIRepository.require repo namespace None 0 ()
 let interface_name = "TlsServerConnection"
 
-let get_interface_info () =
+let get_interface_info interface_name =
   match GIRepository.find_by_name repo namespace interface_name with
   | None -> None
   | Some (base_info) ->
@@ -35,7 +35,7 @@ let get_interface_info () =
     | _ -> None
 
 let interface_test fn =
-  match get_interface_info () with
+  match get_interface_info interface_name with
   | None -> assert_equal_string interface_name "No base info found"
   | Some (info) -> fn info
 
@@ -93,6 +93,20 @@ let test_find_method test_ctxt =
       assert_equal_string ("g_tls_server_connection_"^ method_name) symbol
     )
 
+let volume_interface = "Volume"
+
+let volume_interface_test fn =
+  match get_interface_info volume_interface with
+  | None -> assert_equal_string interface_name "No base info found"
+  | Some (info) -> fn info
+
+let test_get_n_signals test_ctxt =
+  volume_interface_test (fun info ->
+      let n = GIInterfaceInfo.get_n_signals info in
+      assert_equal_int 2 n
+    )
+
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
@@ -102,5 +116,6 @@ let tests =
     "GIInterfaceInfo get property" >:: test_get_property;
     "GIInterfaceInfo get n methods" >:: test_get_n_methods;
     "GIInterfaceInfo get method" >:: test_get_method;
-    "GIInterfaceInfo find method" >:: test_find_method
+    "GIInterfaceInfo find method" >:: test_find_method;
+    "GIInterfaceInfo get n signals" >:: test_get_n_signals
   ]
