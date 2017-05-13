@@ -81,3 +81,23 @@ val from_baseinfo:
     GIBaseInfo.baseinfo_unref. *)
 val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
+
+(** Just cast OCaml Ctypes callable info to function info. *)
+val cast_from_callableinfo:
+  GICallableInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes function info to callable info *)
+val cast_to_callableinfo:
+  t structure ptr -> GICallableInfo.t structure ptr
+
+(** Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val from_callableinfo:
+  GICallableInfo.t structure ptr -> t structure ptr
+
+(** Return a GICallableInfo.t from a GIFunctionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref. *)
+val to_callableinfo:
+  t structure ptr -> GICallableInfo.t structure ptr
