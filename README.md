@@ -43,3 +43,39 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GISignalInfo — Struct representing a signal
   * GIVFuncInfo — Struct representing a virtual function
   * GIRegisteredTypeInfo — Struct representing a struct with a GType
+
+## G. Info Structures hierarchy and type coercion functions.
+
+     GIBaseInfo
+       +----GIArgInfo
+       +----GICallableInfo
+             +----GIFunctionInfo
+             +----GISignalInfo
+             +----GIVFuncInfo
+       +----GIConstantInfo
+       +----GIFieldInfo
+       +----GIPropertyInfo
+       +----GIRegisteredTypeInfo
+             +----GIEnumInfo
+             +----GIInterfaceInfo
+             +----GIObjectInfo
+             +----GIStructInfo
+             +----GIUnionInfo
+       +----GITypeInfo
+
+It determines the need to cast structures. For example `GIArgInfo` need only to
+be casted to `GIBaseInfo`.
+
+GIFunctionInfo need to be casted to `GICallableInfo` and to `GIBaseInfo`.
+
+So each module will (except `GIBaseInfo`), will have functions for type coercion
+like :
+
+    GIArgInfo.to_baseinfo
+    GIArgInfo.from_baseinfo
+    GIFunctionInfo.to_baseinfo
+    GIFunctionInfo.from_baseinfo
+    GIFunctionInfo.to_callableinfo
+    GIFunctionInfo.from_callableinfo
+
+
