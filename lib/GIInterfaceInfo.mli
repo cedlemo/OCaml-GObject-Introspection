@@ -57,9 +57,11 @@ val get_method:
 val find_method:
   t structure ptr -> string -> GIFunctionInfo.t structure ptr option
 
+(** Obtain the number of signals that this interface type has. *)
+val get_n_signals:
+  t structure ptr -> int
+
 (*
-  TODO : GIFunctionInfo *	g_interface_info_find_method ()
-  TODO : gint	g_interface_info_get_n_signals ()
   TODO : GISignalInfo *	g_interface_info_get_signal ()
   TODO : GISignalInfo *	g_interface_info_find_signal ()
   TODO : gint	g_interface_info_get_n_vfuncs ()
