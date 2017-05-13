@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
 <link title="GIInterfaceInfo" rel="Chapter" href="GIInterfaceInfo.html">
 <link title="GIObjectInfo" rel="Chapter" href="GIObjectInfo.html">
@@ -78,6 +79,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
 <tr><td><a href="GIPropertyInfo.html#VALadd_unref_finaliser">add_unref_finaliser</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
+<tr><td><a href="GISignalInfo.html#VALadd_unref_finaliser">add_unref_finaliser</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
@@ -186,9 +192,19 @@ Just cast OCaml Ctypes base info to interface info.
 Just cast OCaml Ctypes base info to property info.
 </div>
 </td></tr>
+<tr><td><a href="GISignalInfo.html#VALcast_from_baseinfo">cast_from_baseinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to signal info.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_from_callableinfo">cast_from_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes callable info to function info.
+</div>
+</td></tr>
+<tr><td><a href="GISignalInfo.html#VALcast_from_callableinfo">cast_from_callableinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes callable info to signal info.
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_to_baseinfo">cast_to_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -251,9 +267,19 @@ Just cast OCaml Ctypes interface info to base info
 Just cast OCaml Ctypes property info to base info
 </div>
 </td></tr>
+<tr><td><a href="GISignalInfo.html#VALcast_to_baseinfo">cast_to_baseinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes signal info to base info
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_to_callableinfo">cast_to_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes function info to callable info
+</div>
+</td></tr>
+<tr><td><a href="GISignalInfo.html#VALcast_to_callableinfo">cast_to_callableinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes signal info to callable info
 </div>
 </td></tr>
 <tr><td><a href="GIConstantInfo.html#VALconstantinfo">constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
@@ -397,9 +423,23 @@ Return a GIPropertyInfo.t from a GIBaseInfo.t, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GISignalInfo.html#VALfrom_baseinfo">from_baseinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Return a GISignalInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfrom_callableinfo">from_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GISignalInfo.html#VALfrom_callableinfo">from_callableinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Return a GISignalInfo.t from a GICallableInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
@@ -999,6 +1039,8 @@ Force the namespace namespace_ to be loaded if it isn't already.
 </div>
 </td></tr>
 <tr><td align="left"><br>S</td></tr>
+<tr><td><a href="GISignalInfo.html#VALsignalinfo">signalinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GICallableInfo.html#VALskip_return">skip_return</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 See if a callable's return value is only useful in C.
@@ -1109,9 +1151,23 @@ Return a GIBaseInfo.t from a GIPropertyInfo, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GISignalInfo.html#VALto_baseinfo">to_baseinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t from a GISignalInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALto_callableinfo">to_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GICallableInfo.t from a GIFunctionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GISignalInfo.html#VALto_callableinfo">to_callableinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Return a GICallableInfo.t from a GISignalInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
 </div>
