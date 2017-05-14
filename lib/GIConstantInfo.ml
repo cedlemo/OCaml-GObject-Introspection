@@ -59,7 +59,7 @@ let to_baseinfo info =
 
 let info_free_value =
   foreign "g_constant_info_free_value"
-    (ptr GITypes.argument @-> returning void)
+    (ptr constantinfo @-> ptr GITypes.argument @-> returning void)
 
 let get_value info =
   let get_value_raw =
@@ -68,5 +68,5 @@ let get_value info =
   let arg_ptr = allocate_n GITypes.argument ~count:1 in
   let _ = get_value_raw info arg_ptr in
   let _ = Gc.finalise (fun v ->
-      info_free_value v) arg_ptr in
+      info_free_value info v) arg_ptr in
   arg_ptr
