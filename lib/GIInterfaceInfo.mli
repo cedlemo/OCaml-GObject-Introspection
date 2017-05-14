@@ -77,11 +77,14 @@ val get_n_constants:
 val get_constant:
   t structure ptr -> int -> GIConstantInfo.t structure ptr
 
+(** Returns the layout C structure associated with this GInterface. *)
+val get_iface_struct:
+  t structure ptr -> GIStructInfo.t structure ptr option
+
 (*
   TODO : gint	g_interface_info_get_n_vfuncs ()
   TODO : GIVFuncInfo *	g_interface_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_interface_info_find_vfunc ()
-  TODO : GIStructInfo *	g_interface_info_get_iface_struct ()
 *)
 
 (** Just cast OCaml Ctypes base info to interface info. *)

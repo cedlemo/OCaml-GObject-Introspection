@@ -106,6 +106,15 @@ let get_constant info n =
   else let info' = get_constant_raw info n in
     GIConstantInfo.add_unref_finaliser info'
 
+let get_iface_struct info =
+  let get_iface_struct_raw =
+    foreign "g_interface_info_get_iface_struct"
+      (ptr interfaceinfo @-> returning (ptr_opt GIStructInfo.structinfo)) in
+  match get_iface_struct_raw info with
+  | None -> None
+  | Some info' -> let info'' = GIStructInfo.add_unref_finaliser info' in
+    Some info''
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
