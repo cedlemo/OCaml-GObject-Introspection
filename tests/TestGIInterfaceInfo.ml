@@ -132,6 +132,16 @@ let test_get_n_constants test_ctxt =
       assert_equal_int 0 n
     )
 
+let test_get_iface_struct test_ctxt =
+  volume_interface_test (fun info ->
+      match GIInterfaceInfo.get_iface_struct info with
+      | None -> assert_equal_string "It would be " "great to have something"
+      | Some struct_info -> let base_info = GIStructInfo.to_baseinfo struct_info in
+        match GIBaseInfo.get_name base_info with
+        | None -> assert_equal_string "It should have " "a name"
+        | Some name -> assert_equal_string "VolumeIface" name
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
@@ -145,5 +155,6 @@ let tests =
     "GIInterfaceInfo get n signals" >:: test_get_n_signals;
     "GIInterfaceInfo get signal" >:: test_get_signal;
     "GIInterfaceInfo find signal" >:: test_find_signal;
-    "GIInterfaceInfo get n constants" >:: test_get_n_constants
+    "GIInterfaceInfo get n constants" >:: test_get_n_constants;
+    "GIInterfaceInfo get iface struct" >:: test_get_iface_struct
   ]
