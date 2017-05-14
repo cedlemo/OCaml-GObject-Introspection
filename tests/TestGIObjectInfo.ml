@@ -287,6 +287,17 @@ let test_gtk_window_get_signal test_ctxt =
       | Some name -> assert_equal_string "activate-default" name
     )
 
+let test_gtk_window_find_signal test_ctxt =
+  object_test (fun info ->
+      let signal_name = "activate-default" in
+      match GIObjectInfo.find_signal info signal_name with
+      | None -> assert_equal_string "It should have" " a signal"
+      | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
+        match GIBaseInfo.get_name base_info with
+        | None -> assert_equal_string "It should have " "a name"
+        | Some name -> assert_equal_string signal_name name
+    )
+
 let test_gtk_window_get_n_vfuncs test_ctxt =
   object_test (fun info ->
       let n = GIObjectInfo.get_n_vfuncs info in
@@ -384,6 +395,7 @@ let tests =
     "GIObjectInfo GtkWindow get n properties" >:: test_gtk_window_get_n_properties;
     "GIObjectInfo GtkWindow get n signals" >:: test_gtk_window_get_n_signals;
     "GIObjectInfo GtkWindow get signal" >:: test_gtk_window_get_signal;
+    "GIObjectInfo GtkWindow find signal" >:: test_gtk_window_find_signal;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
     "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
     "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property;
