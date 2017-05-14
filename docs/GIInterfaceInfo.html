@@ -85,6 +85,26 @@ Obtain a method of the interface type given a name . NULL will be returned
 Obtain the number of signals that this interface type has.<br>
 </div>
 
+<pre><span id="VALget_signal"><span class="keyword">val</span> get_signal</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GISignalInfo.html#TYPEt">GISignalInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an interface type signal at index n .<br>
+</div>
+
+<pre><span id="VALfind_signal"><span class="keyword">val</span> find_signal</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -> <a href="GISignalInfo.html#TYPEt">GISignalInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Find a signal of the interface<br>
+</div>
+
+<pre><span id="VALget_n_constants"><span class="keyword">val</span> get_n_constants</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of constants that this interface type has.<br>
+</div>
+
+<pre><span id="VALget_constant"><span class="keyword">val</span> get_constant</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIConstantInfo.html#TYPEt">GIConstantInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an interface type constant at index n .<br>
+</div>
+
+<pre><span id="VALget_iface_struct"><span class="keyword">val</span> get_iface_struct</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEt">GIStructInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Returns the layout C structure associated with this GInterface.<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to interface info.<br>
 </div>
