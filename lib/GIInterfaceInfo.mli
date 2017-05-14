@@ -69,12 +69,18 @@ val get_signal:
 val find_signal:
   t structure ptr -> string -> GISignalInfo.t structure ptr option
 
+(** Obtain the number of constants that this interface type has. *)
+val get_n_constants:
+  t structure ptr -> int
+
+(** Obtain an interface type constant at index n . *)
+val get_constant:
+  t structure ptr -> int -> GIConstantInfo.t structure ptr
+
 (*
   TODO : gint	g_interface_info_get_n_vfuncs ()
   TODO : GIVFuncInfo *	g_interface_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_interface_info_find_vfunc ()
-  TODO : gint	g_interface_info_get_n_constants ()
-  TODO : GIConstantInfo *	g_interface_info_get_constant ()
   TODO : GIStructInfo *	g_interface_info_get_iface_struct ()
 *)
 
