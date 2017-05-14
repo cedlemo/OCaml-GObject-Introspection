@@ -106,6 +106,14 @@ let test_get_n_signals test_ctxt =
       assert_equal_int 2 n
     )
 
+let test_get_signal test_ctxt =
+  volume_interface_test (fun info ->
+      let info' = GIInterfaceInfo.get_signal info 0 in
+      let base_info = GISignalInfo.to_baseinfo info' in
+      match GIBaseInfo.get_name base_info with
+      | None -> assert_equal_string "It should have " "a name"
+      | Some name -> assert_equal_string "changed" name
+    )
 
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
@@ -117,5 +125,6 @@ let tests =
     "GIInterfaceInfo get n methods" >:: test_get_n_methods;
     "GIInterfaceInfo get method" >:: test_get_method;
     "GIInterfaceInfo find method" >:: test_find_method;
-    "GIInterfaceInfo get n signals" >:: test_get_n_signals
+    "GIInterfaceInfo get n signals" >:: test_get_n_signals;
+    "GIInterfaceInfo get signal" >:: test_get_signal
   ]
