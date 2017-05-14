@@ -123,6 +123,14 @@ Obtain an object type property at index n .<br>
 Obtain the number of signals that this object type has.<br>
 </div>
 
+<pre><span id="VALget_signal"><span class="keyword">val</span> get_signal</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GISignalInfo.html#TYPEt">GISignalInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type signal at index n .<br>
+</div>
+
+<pre><span id="VALfind_signal"><span class="keyword">val</span> find_signal</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -> <a href="GISignalInfo.html#TYPEt">GISignalInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Find a signal with a name.<br>
+</div>
+
 <pre><span id="VALget_n_vfuncs"><span class="keyword">val</span> get_n_vfuncs</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
 Obtain the number of virtual functions that this object type has.<br>
 </div>
