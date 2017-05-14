@@ -115,6 +115,17 @@ let test_get_signal test_ctxt =
       | Some name -> assert_equal_string "changed" name
     )
 
+let test_find_signal test_ctxt =
+  volume_interface_test (fun info ->
+      let signal_name = "changed" in
+      match GIInterfaceInfo.find_signal info signal_name with
+      | None -> assert_equal_string interface_name "No base info found"
+      | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
+        match GIBaseInfo.get_name base_info with
+        | None -> assert_equal_string "It should have " "a name"
+        | Some name -> assert_equal_string signal_name name
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
@@ -126,5 +137,6 @@ let tests =
     "GIInterfaceInfo get method" >:: test_get_method;
     "GIInterfaceInfo find method" >:: test_find_method;
     "GIInterfaceInfo get n signals" >:: test_get_n_signals;
-    "GIInterfaceInfo get signal" >:: test_get_signal
+    "GIInterfaceInfo get signal" >:: test_get_signal;
+    "GIInterfaceInfo find signal" >:: test_find_signal
   ]
