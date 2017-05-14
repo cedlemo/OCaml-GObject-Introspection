@@ -132,6 +132,15 @@ let get_signal info n =
   else let info' = get_signal_raw info n in
     GISignalInfo.add_unref_finaliser info'
 
+let find_signal info name =
+  let find_signal_raw =
+    foreign "g_object_info_find_signal"
+      (ptr objectinfo @-> string @-> returning (ptr_opt GISignalInfo.signalinfo)) in
+  match find_signal_raw info name with
+  | None -> None
+  | Some info' -> let info'' = GISignalInfo.add_unref_finaliser info' in
+    Some info''
+
 let get_n_vfuncs =
   foreign "g_object_info_get_n_vfuncs"
     (ptr objectinfo @-> returning int)

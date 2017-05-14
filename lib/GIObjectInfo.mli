@@ -103,6 +103,10 @@ val get_n_signals:
 val get_signal:
   t structure ptr -> int -> GISignalInfo.t structure ptr
 
+(** Find a signal with a name. *)
+val find_signal:
+  t structure ptr -> string -> GISignalInfo.t structure ptr option
+
 (** Obtain the number of virtual functions that this object type has. *)
 val get_n_vfuncs:
   t structure ptr -> int
