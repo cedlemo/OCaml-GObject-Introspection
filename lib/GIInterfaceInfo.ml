@@ -83,6 +83,15 @@ let get_signal info n =
   else let info' = get_signal_raw info n in
     GISignalInfo.add_unref_finaliser info'
 
+let find_signal info name =
+  let find_signal_raw =
+    foreign "g_interface_info_find_signal"
+      (ptr interfaceinfo @-> string @-> returning (ptr_opt GISignalInfo.signalinfo)) in
+  match find_signal_raw info name with
+  | None -> None
+  | Some info' -> let info'' = GISignalInfo.add_unref_finaliser info' in
+    Some info''
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info

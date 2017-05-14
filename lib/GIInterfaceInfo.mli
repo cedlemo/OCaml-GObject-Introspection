@@ -65,9 +65,11 @@ val get_n_signals:
 val get_signal:
   t structure ptr -> int -> GISignalInfo.t structure ptr
 
+(** Find a signal of the interface *)
+val find_signal:
+  t structure ptr -> string -> GISignalInfo.t structure ptr option
+
 (*
-  TODO : GISignalInfo *	g_interface_info_get_signal ()
-  TODO : GISignalInfo *	g_interface_info_find_signal ()
   TODO : gint	g_interface_info_get_n_vfuncs ()
   TODO : GIVFuncInfo *	g_interface_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_interface_info_find_vfunc ()
