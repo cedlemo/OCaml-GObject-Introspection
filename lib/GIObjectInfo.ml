@@ -123,6 +123,15 @@ let get_n_signals =
   foreign "g_object_info_get_n_signals"
     (ptr objectinfo @-> returning int)
 
+let get_signal info n =
+  let get_signal_raw =
+    foreign "g_object_info_get_signal"
+      (ptr objectinfo @-> int @-> returning (ptr GISignalInfo.signalinfo)) in
+  let max = get_n_signals info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_signal_raw info n in
+    GISignalInfo.add_unref_finaliser info'
+
 let get_n_vfuncs =
   foreign "g_object_info_get_n_vfuncs"
     (ptr objectinfo @-> returning int)

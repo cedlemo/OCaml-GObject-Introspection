@@ -99,6 +99,10 @@ val get_property:
 val get_n_signals:
   t structure ptr -> int
 
+(** Obtain an object type signal at index n .*)
+val get_signal:
+  t structure ptr -> int -> GISignalInfo.t structure ptr
+
 (** Obtain the number of virtual functions that this object type has. *)
 val get_n_vfuncs:
   t structure ptr -> int
@@ -149,8 +153,6 @@ val get_get_value_function:
   t structure ptr -> string option
 
 (*
-  TODO : GISignalInfo *	g_object_info_get_signal ()
-  TODO : GISignalInfo *	g_object_info_find_signal ()
   TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
