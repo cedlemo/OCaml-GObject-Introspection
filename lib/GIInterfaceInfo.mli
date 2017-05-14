@@ -61,6 +61,10 @@ val find_method:
 val get_n_signals:
   t structure ptr -> int
 
+(** Obtain an interface type signal at index n . *)
+val get_signal:
+  t structure ptr -> int -> GISignalInfo.t structure ptr
+
 (*
   TODO : GISignalInfo *	g_interface_info_get_signal ()
   TODO : GISignalInfo *	g_interface_info_find_signal ()
