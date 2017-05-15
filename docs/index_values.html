@@ -569,6 +569,21 @@ Obtains the index of the GDestroyNotify argument.
 Obtain the direction of the argument.
 </div>
 </td></tr>
+<tr><td><a href="GIUnionInfo.html#VALget_discriminator">get_discriminator</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Obtain discriminator value assigned for n-th union field, i.e.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALget_discriminator_offset">get_discriminator_offset</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Returns offset of the discriminator field in the structure.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALget_discriminator_type">get_discriminator_type</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Obtain the type information of the union discriminator.
+</div>
+</td></tr>
 <tr><td><a href="GIEnumInfo.html#VALget_error_domain">get_error_domain</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
 <td><div class="info">
 Obtain the string form of the quark for the error domain associated with
@@ -598,6 +613,11 @@ Obtain the GIFunctionInfoFlags for the info .
 <tr><td><a href="GIFieldInfo.html#VALget_flags">get_flags</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td><div class="info">
 Obtain the flags for this GIFieldInfo.
+</div>
+</td></tr>
+<tr><td><a href="GIPropertyInfo.html#VALget_flags">get_flags</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
+<td><div class="info">
+Obtain the flags for this property info.
 </div>
 </td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_fundamental">get_fundamental</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
@@ -786,6 +806,11 @@ Obtain the offset in bits of the field member, this is relative to the
 Obtain the ownership transfer for this argument.
 </div>
 </td></tr>
+<tr><td><a href="GIPropertyInfo.html#VALget_ownership_transfer">get_ownership_transfer</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
+<td><div class="info">
+Obtain the ownership transfer for this property.
+</div>
+</td></tr>
 <tr><td><a href="GITypeInfo.html#VALget_param_type">get_param_type</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Obtain the parameter type n .
@@ -906,6 +931,11 @@ Obtain the type of a field as a GITypeInfo.
 <tr><td><a href="GIConstantInfo.html#VALget_type">get_type</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
 <td><div class="info">
 Obtain the type of the constant as a GITypeInfo.
+</div>
+</td></tr>
+<tr><td><a href="GIPropertyInfo.html#VALget_type">get_type</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
+<td><div class="info">
+Obtain the type information for the property info .
 </div>
 </td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_type_init">get_type_init</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
@@ -1054,6 +1084,10 @@ See if a callable could return NULL.
 <tr><td><a href="GIObjectInfo.html#VALobjectinfo">objectinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>P</td></tr>
+<tr><td><a href="GIArgInfo.html#VALparam_flags_of_int32">param_flags_of_int32</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td></td></tr>
+<tr><td><a href="GIArgInfo.html#VALparam_flags_to_string">param_flags_to_string</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIRepository.html#VALprepend_library_path">prepend_library_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Prepends directory to the search path that is used to search shared

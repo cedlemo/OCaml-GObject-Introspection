@@ -83,6 +83,19 @@ Obtain the type information for method named name .<br>
 Return true if this union contains discriminator field.<br>
 </div>
 
+<pre><span id="VALget_discriminator_offset"><span class="keyword">val</span> get_discriminator_offset</span> : <code class="type"><a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Returns offset of the discriminator field in the structure.<br>
+</div>
+
+<pre><span id="VALget_discriminator_type"><span class="keyword">val</span> get_discriminator_type</span> : <code class="type"><a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">GITypeInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain the type information of the union discriminator.<br>
+</div>
+
+<pre><span id="VALget_discriminator"><span class="keyword">val</span> get_discriminator</span> : <code class="type"><a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIConstantInfo.html#TYPEt">GIConstantInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain discriminator value assigned for n-th union field, i.e. n-th union
+    field is the active one if discriminator contains this constant.<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to union info.<br>
 </div>

@@ -245,7 +245,151 @@ Scope type of a GIArgInfo representing callback, determines how the
 </div>
 
 
-<pre><span id="VALget_scope"><span class="keyword">val</span> get_scope</span> : <code class="type"><a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIArgInfo.html#TYPEscope">scope</a></code></pre>
+<pre><span id="VALget_scope"><span class="keyword">val</span> get_scope</span> : <code class="type"><a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIArgInfo.html#TYPEscope">scope</a></code></pre><br>
+Taken from GObject
+    Through the GParamFlags flag values, certain aspects of parameters can be
+    configured.<br>
+
+<pre><code><span id="TYPEparam_flags"><span class="keyword">type</span> <code class="type"></code>param_flags</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Readable"><span class="constructor">Readable</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the parameter is readable<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Writable"><span class="constructor">Writable</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the parameter is writable<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Readwrite"><span class="constructor">Readwrite</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+alias for G_PARAM_READABLE | G_PARAM_WRITABLE<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Construct"><span class="constructor">Construct</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the parameter will be set upon object construction<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Construct_only"><span class="constructor">Construct_only</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the parameter can only be set upon object construction<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Lax_validation"><span class="constructor">Lax_validation</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+upon parameter conversion (see g_param_value_convert())
+                        strict validation is not required<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Static_name"><span class="constructor">Static_name</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the string used as name when constructing the parameter
+                        is guaranteed to remain valid and unmodified for the
+                        lifetime of the parameter. Since 2.8<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Private"><span class="constructor">Private</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+internal<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Static_nick"><span class="constructor">Static_nick</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the string used as nick when constructing the parameter
+                        is guaranteed to remain valid and unmmodified for the
+                        lifetime of the parameter. Since 2.8<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Static_blurb"><span class="constructor">Static_blurb</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the string used as blurb when constructing the parameter
+                        is guaranteed to remain valid and unmodified for the
+                        lifetime of the parameter. Since 2.8<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Explicit_notify"><span class="constructor">Explicit_notify</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+calls to g_object_set_property() for this property will
+                        not automatically result in a "notify" signal being
+                        emitted: the implementation must call g_object_notify()
+                        themselves in case the property actually changes.
+                        Since: 2.42.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTparam_flags.Deprecated"><span class="constructor">Deprecated</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+the parameter is deprecated and will be removed in a
+                        future version. A warning will be generated if it is
+                        used while running with G_ENABLE_DIAGNOSTIC=1.
+                        Since 2.26<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="VALparam_flags_of_int32"><span class="keyword">val</span> param_flags_of_int32</span> : <code class="type">int32 -> <a href="GIArgInfo.html#TYPEparam_flags">param_flags</a></code></pre>
+<pre><span id="VALparam_flags_to_string"><span class="keyword">val</span> param_flags_to_string</span> : <code class="type"><a href="GIArgInfo.html#TYPEparam_flags">param_flags</a> -> string</code></pre>
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to arg info.<br>
 </div>

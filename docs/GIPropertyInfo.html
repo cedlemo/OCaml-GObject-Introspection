@@ -49,6 +49,20 @@ GIPropertyInfo represents a property. A property belongs to either a
 
 
 <pre><span id="VALpropertyinfo"><span class="keyword">val</span> propertyinfo</span> : <code class="type"><a href="GIPropertyInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.typ</code></pre>
+<pre><span id="VALget_ownership_transfer"><span class="keyword">val</span> get_ownership_transfer</span> : <code class="type"><a href="GIPropertyInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIArgInfo.html#TYPEtransfer">GIArgInfo.transfer</a></code></pre><div class="info ">
+Obtain the ownership transfer for this property. See GITransfer for more
+    information about transfer values.<br>
+</div>
+
+<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIPropertyInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">GITypeInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain the type information for the property info .<br>
+</div>
+
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIPropertyInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIArgInfo.html#TYPEparam_flags">GIArgInfo.param_flags</a></code></pre><div class="info ">
+Obtain the flags for this property info. See GParamFlags for more
+    information about possible flag values.<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIPropertyInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to property info.<br>
 </div>
