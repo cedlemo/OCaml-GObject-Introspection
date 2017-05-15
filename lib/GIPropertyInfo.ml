@@ -29,6 +29,13 @@ let get_ownership_transfer info =
   let transfer = get_ownership_transfer_raw info in
   GIArgInfo.transfer_of_int transfer
 
+let get_type info =
+  let get_type_raw =
+    foreign "g_property_info_get_type"
+      (ptr propertyinfo @-> returning (ptr GITypeInfo.typeinfo)) in
+  let info' = get_type_raw info in
+  GITypeInfo.add_unref_finaliser info'
+
 (* TODO : check that the info can be casted to property info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr propertyinfo) info
