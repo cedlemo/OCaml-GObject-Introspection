@@ -159,6 +159,9 @@ type param_flags =
 val param_flags_of_int32:
   int32 -> param_flags
 
+val param_flags_to_string:
+  param_flags -> string
+
 (*
   TODO : void	g_arg_info_load_type ()
 *)

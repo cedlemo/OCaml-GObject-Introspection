@@ -141,6 +141,20 @@ let param_flags_of_int32 flag =
                                         "should not have been reached"]
     in raise (Failure message)
 
+let param_flags_to_string = function
+  | Readable -> "Readable"
+  | Writable -> "Writable"
+  | Readwrite -> "Readwrite"
+  | Construct -> "Construct"
+  | Construct_only -> "Construct_only"
+  | Lax_validation -> "Lax_validation"
+  | Static_name -> "Static_name"
+  | Private -> "Private"
+  | Static_nick -> "Static_nick"
+  | Static_blurb -> "Static_blurb"
+  | Explicit_notify -> "Explicit_notify"
+  | Deprecated -> "Deprecated"
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info
