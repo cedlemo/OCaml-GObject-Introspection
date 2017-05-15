@@ -79,6 +79,14 @@ Executable "gi_baseinfo_deprecated"
   Install: false
   CompiledObject: best
   BuildDepends: GObjectIntrospection
+
+Executable "gi_baseinfo_discriminated"
+  Path: samples
+  MainIs: gi_baseinfo_discriminated.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
 #
 #   Modules: GObjectIntrospection,
 #            GIFieldInfo,
@@ -116,12 +124,6 @@ Executable "gi_baseinfo_deprecated"
 #   CompiledObject: best
 #   BuildDepends: GObjectIntrospection
 #
-# Executable "gi_baseinfo_print_attributes"
-#   Path: samples
-#   MainIs: gi_baseinfo_print_attributes.ml
-#   Install: false
-#   CompiledObject: best
-#   BuildDepends: GObjectIntrospection
 #
 
 #
