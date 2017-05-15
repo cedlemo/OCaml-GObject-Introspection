@@ -27,6 +27,17 @@ let true_stops_emit =
   foreign "g_signal_info_true_stops_emit"
     (ptr signalinfo @-> returning bool)
 
+type flags =
+  | First
+  | Last
+  | Run_cleanup
+  | No_recurse
+  | Detailed
+  | Action
+  | No_hooks
+  | Must_collect
+  | Deprecated
+
 (* TODO : check that the info can be casted to signal info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr signalinfo) info

@@ -31,10 +31,41 @@ val signalinfo : t structure typ
     of the signal. *)
 val true_stops_emit:
   t structure ptr -> bool
+
+(** The signal flags are used to specify a signal's behaviour, the overall
+    signal description outlines how especially the RUN flags control the stages
+    of a signal emission. *)
+type flags =
+  | First         (** Invoke the object method handler in the first
+                      emission stage. *)
+  | Last          (** Invoke the object method handler in the third
+                      emission stage. *)
+  | Run_cleanup   (** Invoke the object method handler in the last
+                      emission stage. *)
+  | No_recurse    (** Signals being emitted for an object while currently
+                      being in emission for this very object will not be
+                      emitted recursively, but instead cause the first
+                      emission to be restarted. *)
+  | Detailed      (** This signal supports "::detail" appendices to the
+                      signal name upon handler connections and emissions. *)
+  | Action        (** Action signals are signals that may freely be
+                      emitted on alive objects from user code via
+                      g_signal_emit() and friends, without the need of
+                      being embedded into extra code that performs pre or
+                      post emission adjustments on the object. They can
+                      also be thought of as object methods which can be
+                      called generically by third-party code. *)
+  | No_hooks      (** No emissions hooks are supported for this signal. *)
+  | Must_collect  (** Varargs signal emission will always collect the
+                      arguments, even if there are no signal handlers
+                      connected. Since 2.30. *)
+  | Deprecated    (** The signal is deprecated and will be removed in a
+                      future version. A warning will be generated if it is
+                      connected while running with G_ENABLE_DIAGNOSTIC=1.
+                      Since 2.32. *)
 (*
   TODO : GSignalFlags	g_signal_info_get_flags ()
   TODO : GIVFuncInfo *	g_signal_info_get_class_closure ()
-  TODO : gboolean	g_signal_info_true_stops_emit ()
  *)
 
 (** Just cast OCaml Ctypes base info to signal info. *)
