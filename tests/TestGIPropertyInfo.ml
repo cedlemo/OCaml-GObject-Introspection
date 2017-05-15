@@ -72,10 +72,19 @@ let test_get_type test_ctxt =
       assert_equal_string "unknown" type_name
     )
 
+let test_get_flags test_ctxt =
+  property_test (fun info ->
+      let flags = GIPropertyInfo.get_flags info in
+      assert_equal ~printer:(fun f ->
+          GIArgInfo.param_flags_to_string f
+        ) GIArgInfo.Readwrite flags
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
-    "GIInterfaceInfo find from repo" >:: test_get_property_from_repo;
-    "GIInterfaceInfo get ownership transfer" >:: test_get_ownership_transfer;
-    "GIInterfaceInfo get type" >:: test_get_type
+    "GIPropertyInfo find from repo" >:: test_get_property_from_repo;
+    "GIPropertyInfo get ownership transfer" >:: test_get_ownership_transfer;
+    "GIPropertyInfo get type" >:: test_get_type;
+    "GIPropertyInfo get flags" >:: test_get_flags
   ]
