@@ -63,8 +63,11 @@ val is_discriminated:
 val get_discriminator_offset:
   t structure ptr -> int
 
+(** Obtain the type information of the union discriminator. *)
+val get_discriminator_type:
+  t structure ptr -> GITypeInfo.t structure ptr
+
 (*
-  TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
   TODO : GIConstantInfo *	g_union_info_get_discriminator ()
 *)
 

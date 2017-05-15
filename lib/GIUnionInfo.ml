@@ -70,6 +70,13 @@ let is_discriminated =
   foreign "g_union_info_is_discriminated"
     (ptr unioninfo @-> returning bool)
 
+let get_discriminator_type info =
+  let get_discriminator_type_raw =
+    foreign "g_union_info_get_discriminator_type"
+      (ptr unioninfo @-> returning (ptr GITypeInfo.typeinfo)) in
+  let info' = get_discriminator_type_raw info in
+  GITypeInfo.add_unref_finaliser info'
+
 (* TODO : get_discriminator_offset find a test value *)
 let get_discriminator_offset =
   foreign "g_union_info_get_discriminator_offset"
