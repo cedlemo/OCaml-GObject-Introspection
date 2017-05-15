@@ -43,7 +43,14 @@ let signal_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
+let test_true_stops_emit test_ctxt =
+  signal_test (fun info ->
+      let stops = GISignalInfo.true_stops_emit info in
+      assert_equal_boolean false stops
+    )
+
 let tests =
-  "GObject Introspection ObjectInfo tests" >:::
+  "GObject Introspection SignalInfo tests" >:::
   [
+    "GISignalInfo true stops emit" >:: test_true_stops_emit
   ]
