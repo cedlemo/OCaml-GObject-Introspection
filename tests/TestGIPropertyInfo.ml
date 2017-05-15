@@ -54,8 +54,20 @@ let property_test fn =
   | None -> assert_equal_string property_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_ownership_transfer test_ctxt =
+  property_test (fun info ->
+      let transfer = GIPropertyInfo.get_ownership_transfer info in
+      assert_equal ~printer:(fun t ->
+          match t with
+          | GIArgInfo.Nothing -> "nothing"
+          | GIArgInfo.Container -> "container"
+          | GIArgInfo.Everything -> "everything"
+        ) GIArgInfo.Nothing transfer
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
-    "GIInterfaceInfo find from repo" >:: test_get_property_from_repo
+    "GIInterfaceInfo find from repo" >:: test_get_property_from_repo;
+    "GIInterfaceInfo get ownership transfer" >:: test_get_ownership_transfer
   ]
