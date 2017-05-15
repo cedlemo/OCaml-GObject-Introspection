@@ -22,6 +22,13 @@ open Foreign
 type t
 let propertyinfo : t structure typ = structure "GIPropertyInfo"
 
+let get_ownership_transfer info =
+  let get_ownership_transfer_raw =
+    foreign "g_property_info_get_ownership_transfer"
+      (ptr propertyinfo @-> returning int) in
+  let transfer = get_ownership_transfer_raw info in
+  GIArgInfo.transfer_of_int transfer
+
 (* TODO : check that the info can be casted to property info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr propertyinfo) info

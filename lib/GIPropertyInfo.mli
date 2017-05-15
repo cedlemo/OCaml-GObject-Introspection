@@ -25,9 +25,13 @@ open Ctypes
 type t
 val propertyinfo : t structure typ
 
+(** Obtain the ownership transfer for this property. See GITransfer for more
+    information about transfer values. *)
+val get_ownership_transfer:
+  t structure ptr -> GIArgInfo.transfer
+
 (*
   TODO : GParamFlags	g_property_info_get_flags ()
-  TODO : GITransfer	g_property_info_get_ownership_transfer ()
   TODO : GITypeInfo *	g_property_info_get_type ()
 *)
 
