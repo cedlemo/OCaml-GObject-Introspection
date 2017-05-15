@@ -65,9 +65,17 @@ let test_get_ownership_transfer test_ctxt =
         ) GIArgInfo.Nothing transfer
     )
 
+let test_get_type test_ctxt =
+  property_test (fun info ->
+      let info = GIPropertyInfo.get_type info in
+      let type_name = GITypeInfo.to_string info in
+      assert_equal_string "unknown" type_name
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
     "GIInterfaceInfo find from repo" >:: test_get_property_from_repo;
-    "GIInterfaceInfo get ownership transfer" >:: test_get_ownership_transfer
+    "GIInterfaceInfo get ownership transfer" >:: test_get_ownership_transfer;
+    "GIInterfaceInfo get type" >:: test_get_type
   ]
