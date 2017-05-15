@@ -70,6 +70,12 @@ let is_discriminated =
   foreign "g_union_info_is_discriminated"
     (ptr unioninfo @-> returning bool)
 
+(* TODO : get_discriminator_offset find a test value *)
+let get_discriminator_offset =
+  foreign "g_union_info_get_discriminator_offset"
+    (ptr unioninfo @-> returning int)
+
+(* TODO : get_discriminator_type find a test value *)
 let get_discriminator_type info =
   let get_discriminator_type_raw =
     foreign "g_union_info_get_discriminator_type"
@@ -77,17 +83,13 @@ let get_discriminator_type info =
   let info' = get_discriminator_type_raw info in
   GITypeInfo.add_unref_finaliser info'
 
+(* TODO : get_discriminator find a test  *)
 let get_discriminator info n =
   let get_discriminator_raw =
     foreign "g_union_info_get_discriminator"
     (ptr unioninfo @-> int @-> returning (ptr GIConstantInfo.constantinfo)) in
   let info' = get_discriminator_raw info n in
   GIConstantInfo.add_unref_finaliser info'
-
-(* TODO : get_discriminator_offset find a test value *)
-let get_discriminator_offset =
-  foreign "g_union_info_get_discriminator_offset"
-    (ptr unioninfo @-> returning int)
 
 (* TODO : check that the info can be casted to a unioninfo ? *)
 let cast_from_baseinfo info =
