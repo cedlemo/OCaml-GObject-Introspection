@@ -58,8 +58,12 @@ val find_method:
 (** Return true if this union contains discriminator field. *)
 val is_discriminated:
   t structure ptr -> bool
+
+(** Returns offset of the discriminator field in the structure. *)
+val get_discriminator_offset:
+  t structure ptr -> int
+
 (*
-  TODO : gint	g_union_info_get_discriminator_offset ()
   TODO : GITypeInfo *	g_union_info_get_discriminator_type ()
   TODO : GIConstantInfo *	g_union_info_get_discriminator ()
 *)

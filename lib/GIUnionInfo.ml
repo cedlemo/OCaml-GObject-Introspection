@@ -70,6 +70,11 @@ let is_discriminated =
   foreign "g_union_info_is_discriminated"
     (ptr unioninfo @-> returning bool)
 
+(* TODO : get_discriminator_offset find a test value *)
+let get_discriminator_offset =
+  foreign "g_union_info_get_discriminator_offset"
+    (ptr unioninfo @-> returning int)
+
 (* TODO : check that the info can be casted to a unioninfo ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr unioninfo) info
