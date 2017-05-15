@@ -35,6 +35,7 @@ let () =
       TestGIConstantInfo.tests;
       TestGIObjectInfo.tests;
       TestGIInterfaceInfo.tests;
-      TestGIPropertyInfo.tests
+      TestGIPropertyInfo.tests;
+      TestGISignalInfo.tests
     ]
   )
