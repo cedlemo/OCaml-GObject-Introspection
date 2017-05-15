@@ -27,6 +27,10 @@ open Ctypes
 type t
 val signalinfo : t structure typ
 
+(** Obtain if the returning true in the signal handler will stop the emission
+    of the signal. *)
+val true_stops_emit:
+  t structure ptr -> bool
 (*
   TODO : GSignalFlags	g_signal_info_get_flags ()
   TODO : GIVFuncInfo *	g_signal_info_get_class_closure ()

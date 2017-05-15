@@ -23,6 +23,10 @@ type t
 let signalinfo : t structure typ = structure "GISignalInfo"
 
 
+let true_stops_emit =
+  foreign "g_signal_info_true_stops_emit"
+    (ptr signalinfo @-> returning bool)
+
 (* TODO : check that the info can be casted to signal info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr signalinfo) info
