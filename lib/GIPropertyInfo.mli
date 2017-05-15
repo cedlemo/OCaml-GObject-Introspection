@@ -34,9 +34,10 @@ val get_ownership_transfer:
 val get_type:
   t structure ptr -> GITypeInfo.t structure ptr
 
-(*
-  TODO : GParamFlags	g_property_info_get_flags ()
-*)
+(** Obtain the flags for this property info. See GParamFlags for more
+    information about possible flag values. *)
+val get_flags:
+  t structure ptr -> GIArgInfo.param_flags
 
 (** Just cast OCaml Ctypes base info to property info. *)
 val cast_from_baseinfo:

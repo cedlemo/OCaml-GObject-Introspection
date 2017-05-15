@@ -36,6 +36,13 @@ let get_type info =
   let info' = get_type_raw info in
   GITypeInfo.add_unref_finaliser info'
 
+let get_flags info =
+  let get_flags_raw =
+    foreign "g_property_info_get_flags"
+      (ptr propertyinfo @-> returning int32_t) in
+  let flag = get_flags_raw info in
+  GIArgInfo.param_flags_of_int32 flag
+
 (* TODO : check that the info can be casted to property info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr propertyinfo) info
