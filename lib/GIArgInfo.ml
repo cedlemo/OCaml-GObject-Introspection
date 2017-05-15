@@ -54,7 +54,7 @@ type transfer =
   | Everything
 
 let transfer_of_int = function
-| 0 -> Nothing
+  | 0 -> Nothing
   | 1 -> Container
   | 2 -> Everything
   | value -> let message = String.concat " " ["GIArgInfo get_ownership_transfer value";
@@ -110,6 +110,36 @@ let get_scope info =
                                               "should not have been reached"]
     in raise (Failure message)
 
+type param_flags =
+  | Readable
+  | Writable
+  | Readwrite
+  | Construct
+  | Construct_only
+  | Lax_validation
+  | Static_name
+  | Private
+  | Static_nick
+  | Static_blurb
+  | Explicit_notify
+  | Deprecated
+
+let param_flags_of_int32 flag =
+  if flag = (Int32.shift_left (Int32.of_int 1) 0) then Readable
+  else if flag = (Int32.shift_left (Int32.of_int 1) 1) then Writable
+  else if flag = (Int32.logor (Int32.shift_left (Int32.of_int 1) 0) (Int32.shift_left (Int32.of_int 1) 1)) then Readwrite
+  else if flag = (Int32.shift_left (Int32.of_int 1) 2) then Construct
+  else if flag = (Int32.shift_left (Int32.of_int 1) 3) then Construct_only
+  else if flag = (Int32.shift_left (Int32.of_int 1) 4) then Lax_validation
+  else if flag = (Int32.shift_left (Int32.of_int 1) 5) then Static_name
+  else if flag = (Int32.shift_left (Int32.of_int 1) 6) then Static_nick
+  else if flag = (Int32.shift_left (Int32.of_int 1) 7) then Static_blurb
+  else if flag = (Int32.shift_left (Int32.of_int 1) 30) then Explicit_notify
+  else if flag = (Int32.shift_left (Int32.of_int 1) 31) then Deprecated
+  else let message = String.concat " " ["GIArgInfo get_scope value";
+                                        Int32.to_string flag;
+                                        "should not have been reached"]
+    in raise (Failure message)
 
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_from_baseinfo info =
