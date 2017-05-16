@@ -128,6 +128,15 @@ let get_vfunc info n =
   else let info' = get_vfunc_raw info n in
     GIVFuncInfo.add_unref_finaliser info'
 
+let find_vfunc info name =
+  let find_vfunc_raw =
+    foreign "g_interface_info_find_vfunc"
+      (ptr interfaceinfo @-> string @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+  match find_vfunc_raw info name with
+  | None -> None
+  | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+    Some info''
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
