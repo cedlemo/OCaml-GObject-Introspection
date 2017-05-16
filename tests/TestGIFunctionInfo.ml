@@ -54,10 +54,18 @@ let test_get_property test_ctxt =
       | Some _ -> assert_equal_string "It should not " "returns something"
     )
 
+let test_get_vfunc test_ctxt =
+  test_function_info (fun info ->
+      match GIFunctionInfo.get_vfunc info with
+      | None -> assert_equal true true
+      | Some _ -> assert_equal_string "It should not " "returns something"
+    )
+
 let tests =
   "GObject Introspection FunctionInfo tests" >:::
   [
     "GIFunctionInfo get symbol" >:: test_get_symbol;
     "GIFunctionInfo get flags" >:: test_get_flags;
-    "GIFunctionInfo get property" >:: test_get_property
+    "GIFunctionInfo get property" >:: test_get_property;
+    "GIFunctionInfo get vfunc" >:: test_get_vfunc
   ]
