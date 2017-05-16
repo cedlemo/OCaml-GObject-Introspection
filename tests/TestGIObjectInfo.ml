@@ -305,6 +305,15 @@ let test_gtk_window_get_n_vfuncs test_ctxt =
       else assert_equal_int 5 n
     )
 
+let test_gtk_window_get_vfunc test_ctxt =
+  object_test (fun info ->
+      let info' = GIObjectInfo.get_vfunc info 0 in
+      let base_info = GIVFuncInfo.to_baseinfo info' in
+      match GIBaseInfo.get_name base_info with
+      | None -> assert_equal_string "It should have " "a name"
+      | Some name -> assert_equal_string "activate_default" name
+    )
+
 let test_gtk_window_get_class_struct test_ctxt =
   object_test (fun info ->
       match GIObjectInfo.get_class_struct info with
@@ -397,6 +406,7 @@ let tests =
     "GIObjectInfo GtkWindow get signal" >:: test_gtk_window_get_signal;
     "GIObjectInfo GtkWindow find signal" >:: test_gtk_window_find_signal;
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
+    "GIObjectInfo GtkWindow get vfunc" >:: test_gtk_window_get_vfunc;
     "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
     "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property;
     "GIObjectInfo GtkWindow find method using interfaces" >:: test_gtk_window_find_method_using_interfaces;
