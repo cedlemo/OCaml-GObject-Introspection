@@ -154,6 +154,14 @@ let get_vfunc info n =
   else let info' = get_vfunc_raw info n in
     GIVFuncInfo.add_unref_finaliser info'
 
+let find_vfunc info name =
+  let find_vfunc_raw =
+    foreign "g_object_info_find_vfunc"
+      (ptr objectinfo @-> string @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+  match find_vfunc_raw info name with
+  | None -> None
+  | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+    Some info''
 
 let get_class_struct info =
   let get_class_struct_raw =

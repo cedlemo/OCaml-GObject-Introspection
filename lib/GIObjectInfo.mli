@@ -115,6 +115,15 @@ val get_n_vfuncs:
 val get_vfunc:
   t structure ptr -> int -> GIVFuncInfo.t structure ptr
 
+(** Locate a virtual function slot with name name . Note that the namespace for
+    virtuals is distinct from that of methods; there may or may not be a
+    concrete method associated for a virtual. If there is one, it may be
+    retrieved using GIVFuncInfo.get_invoker, otherwise None will be returned.
+    See the documentation for GIVFuncInfo.get_invoker for more information on
+    invoking virtuals. *)
+val find_vfunc:
+  t structure ptr -> string -> GIVFuncInfo.t structure ptr option
+
 (** Every GObject has two structures; an instance structure and a class
     structure. This function returns the metadata for the class structure.
     It returns a GIStructInfo.t or None. *)
@@ -161,8 +170,6 @@ val get_get_value_function:
   t structure ptr -> string option
 
 (*
-  TODO : GIVFuncInfo *	g_object_info_get_vfunc ()
-  TODO : GIVFuncInfo *	g_object_info_find_vfunc ()
   TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
   TODO : GIObjectInfoRefFunction	g_object_info_get_ref_function_pointer ()
   TODO : GIObjectInfoUnrefFunction	g_object_info_get_unref_function_pointer ()
