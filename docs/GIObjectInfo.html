@@ -136,6 +136,19 @@ Find a signal with a name.<br>
 Obtain the number of virtual functions that this object type has.<br>
 </div>
 
+<pre><span id="VALget_vfunc"><span class="keyword">val</span> get_vfunc</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an object type virtual function at index n .<br>
+</div>
+
+<pre><span id="VALfind_vfunc"><span class="keyword">val</span> find_vfunc</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -> <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Locate a virtual function slot with name name . Note that the namespace for
+    virtuals is distinct from that of methods; there may or may not be a
+    concrete method associated for a virtual. If there is one, it may be
+    retrieved using GIVFuncInfo.get_invoker, otherwise None will be returned.
+    See the documentation for GIVFuncInfo.get_invoker for more information on
+    invoking virtuals.<br>
+</div>
+
 <pre><span id="VALget_class_struct"><span class="keyword">val</span> get_class_struct</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEt">GIStructInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
 Every GObject has two structures; an instance structure and a class
     structure. This function returns the metadata for the class structure.
