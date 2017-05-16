@@ -142,6 +142,12 @@ let test_get_iface_struct test_ctxt =
         | Some name -> assert_equal_string "VolumeIface" name
     )
 
+let test_get_n_vfuncs test_ctxt =
+  volume_interface_test (fun info ->
+      let n = GIInterfaceInfo.get_n_vfuncs info in
+      assert_equal_int 21 n
+    )
+
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
@@ -156,5 +162,6 @@ let tests =
     "GIInterfaceInfo get signal" >:: test_get_signal;
     "GIInterfaceInfo find signal" >:: test_find_signal;
     "GIInterfaceInfo get n constants" >:: test_get_n_constants;
-    "GIInterfaceInfo get iface struct" >:: test_get_iface_struct
+    "GIInterfaceInfo get iface struct" >:: test_get_iface_struct;
+    "GIInterfaceInfo get n vfuncs" >:: test_get_n_vfuncs
   ]
