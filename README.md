@@ -37,11 +37,11 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIInterfaceInfo — Struct representing a GInterface
   * GIPropertyInfo — Struct representing a property
   * GISignalInfo — Struct representing a signal
+  * GIVFuncInfo — Struct representing a virtual function
 
   ### Remains
 
   * GICallbackInfo — Struct representing a callback
-  * GIVFuncInfo — Struct representing a virtual function
   * GIRegisteredTypeInfo — Struct representing a struct with a GType
 
 ## G. Info Structures hierarchy and type coercion functions.
