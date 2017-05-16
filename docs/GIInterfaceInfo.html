@@ -11,6 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
 <link title="GIInterfaceInfo" rel="Chapter" href="GIInterfaceInfo.html">
@@ -103,6 +104,19 @@ Obtain an interface type constant at index n .<br>
 
 <pre><span id="VALget_iface_struct"><span class="keyword">val</span> get_iface_struct</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIStructInfo.html#TYPEt">GIStructInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
 Returns the layout C structure associated with this GInterface.<br>
+</div>
+
+<pre><span id="VALget_n_vfuncs"><span class="keyword">val</span> get_n_vfuncs</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> int</code></pre><div class="info ">
+Obtain the number of virtual functions that this interface type has.<br>
+</div>
+
+<pre><span id="VALget_vfunc"><span class="keyword">val</span> get_vfunc</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       int -> <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Obtain an interface type virtual function at index n .<br>
+</div>
+
+<pre><span id="VALfind_vfunc"><span class="keyword">val</span> find_vfunc</span> : <code class="type"><a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -> <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Locate a virtual function slot with name name . See the documentation for
+    g_object_info_find_vfunc() for more information on virtuals.<br>
 </div>
 
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIInterfaceInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

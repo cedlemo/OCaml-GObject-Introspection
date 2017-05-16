@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Conversions.html">
+<link rel="previous" href="GIVFuncInfo.html">
 <link rel="next" href="GIPropertyInfo.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
 <link title="GIInterfaceInfo" rel="Chapter" href="GIInterfaceInfo.html">
@@ -30,7 +31,7 @@
 <link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GISignalInfo</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+<div class="navbar"><a class="pre" href="GIVFuncInfo.html" title="GIVFuncInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;<a class="post" href="GIPropertyInfo.html" title="GIPropertyInfo">Next</a>
 </div>
@@ -61,7 +62,7 @@ Obtain if the returning true in the signal handler will stop the emission
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTflags.First"><span class="constructor">First</span></span></code></td>
+<code><span id="TYPEELTflags.Run_first"><span class="constructor">Run_first</span></span></code></td>
 <td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
 Invoke the object method handler in the first
                       emission stage.<br>
@@ -72,7 +73,7 @@ Invoke the object method handler in the first
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTflags.Last"><span class="constructor">Last</span></span></code></td>
+<code><span id="TYPEELTflags.Run_last"><span class="constructor">Run_last</span></span></code></td>
 <td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
 Invoke the object method handler in the third
                       emission stage.<br>
@@ -172,6 +173,11 @@ The signal flags are used to specify a signal's behaviour, the overall
     of a signal emission.<br>
 </div>
 
+
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GISignalInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GISignalInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
+Obtain the flags for this signal info. See GSignalFlags for more
+    information about possible flag values.<br>
+</div>
 
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GISignalInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to signal info.<br>

@@ -11,6 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
 <link title="GIInterfaceInfo" rel="Chapter" href="GIInterfaceInfo.html">
@@ -132,6 +133,12 @@ Obtain the GIFunctionInfoFlags for the info .<br>
 Obtain the property associated with this GIFunctionInfo. Only
     GIFunctionInfo with the flag GIFunction.Is_getter or GIFunction.Is_setter
     have a property set. For other cases, NULL will be returned.<br>
+</div>
+
+<pre><span id="VALget_vfunc"><span class="keyword">val</span> get_vfunc</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Obtain the virtual function associated with this GIFunctionInfo. Only
+    GIFunctionInfo with the flag Wraps_vfunc has a virtual function set. For
+    other cases, None will be returned.<br>
 </div>
 
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
