@@ -36,9 +36,9 @@ val true_stops_emit:
     signal description outlines how especially the RUN flags control the stages
     of a signal emission. *)
 type flags =
-  | First         (** Invoke the object method handler in the first
+  | Run_first     (** Invoke the object method handler in the first
                       emission stage. *)
-  | Last          (** Invoke the object method handler in the third
+  | Run_last      (** Invoke the object method handler in the third
                       emission stage. *)
   | Run_cleanup   (** Invoke the object method handler in the last
                       emission stage. *)
@@ -63,8 +63,13 @@ type flags =
                       future version. A warning will be generated if it is
                       connected while running with G_ENABLE_DIAGNOSTIC=1.
                       Since 2.32. *)
+
+(** Obtain the flags for this signal info. See GSignalFlags for more
+    information about possible flag values. *)
+val get_flags:
+  t structure ptr -> flags list
+
 (*
-  TODO : GSignalFlags	g_signal_info_get_flags ()
   TODO : GIVFuncInfo *	g_signal_info_get_class_closure ()
  *)
 
