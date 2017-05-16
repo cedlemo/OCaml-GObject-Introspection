@@ -81,8 +81,11 @@ val get_constant:
 val get_iface_struct:
   t structure ptr -> GIStructInfo.t structure ptr option
 
+(** Obtain the number of virtual functions that this interface type has. *)
+val get_n_vfuncs:
+  t structure ptr -> int
+
 (*
-  TODO : gint	g_interface_info_get_n_vfuncs ()
   TODO : GIVFuncInfo *	g_interface_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_interface_info_find_vfunc ()
 *)

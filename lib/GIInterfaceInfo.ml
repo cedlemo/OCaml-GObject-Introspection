@@ -115,6 +115,10 @@ let get_iface_struct info =
   | Some info' -> let info'' = GIStructInfo.add_unref_finaliser info' in
     Some info''
 
+let get_n_vfuncs =
+  foreign "g_interface_info_get_n_vfuncs"
+    (ptr interfaceinfo @-> returning int)
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
