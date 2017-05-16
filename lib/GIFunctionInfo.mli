@@ -52,8 +52,13 @@ val get_flags:
 val get_property:
   t structure ptr -> GIPropertyInfo.t structure ptr option
 
+(** Obtain the virtual function associated with this GIFunctionInfo. Only
+    GIFunctionInfo with the flag Wraps_vfunc has a virtual function set. For
+    other cases, None will be returned. *)
+val get_vfunc:
+  t structure ptr -> GIVFuncInfo.t structure ptr option
+
 (*
-  TODO: GIVFuncInfo *	g_function_info_get_vfunc ()
   gboolean	g_function_info_invoke ()
   GQuark	g_invoke_error_quark ()
 *)

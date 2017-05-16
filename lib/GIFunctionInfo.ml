@@ -66,6 +66,23 @@ let get_property info =
   )
   else None
 
+let get_vfunc info =
+  let flags = get_flags info in
+  let rec has_wraps_vfunc = function
+    | [] -> false
+    | h :: q -> if h == Wraps_vfunc then true
+      else has_wraps_vfunc q
+  in
+  if (has_wraps_vfunc flags) then
+    let get_vfunc_raw =
+      foreign "g_function_info_get_vfunc"
+        (ptr functioninfo @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+    match get_vfunc_raw info with
+    | None -> None
+    | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+      Some info''
+  else None
+
 (* TODO : check that the info can be casted to function info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr functioninfo) info
