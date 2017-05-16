@@ -25,6 +25,15 @@ open Ctypes
 type t
 val vfuncinfo : t structure typ
 
+(*
+  TODO : GIVFuncInfoFlags	g_vfunc_info_get_flags ()
+  TODO : gint	g_vfunc_info_get_offset ()
+  TODO : GISignalInfo *	g_vfunc_info_get_signal ()
+  TODO : GIFunctionInfo *	g_vfunc_info_get_invoker ()
+  TODO : gpointer	g_vfunc_info_get_address ()
+  TODO : gboolean	g_vfunc_info_invoke ()
+ *)
+
 (** Just cast OCaml Ctypes base info to vfunc info. *)
 val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
