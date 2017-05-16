@@ -111,6 +111,10 @@ val find_signal:
 val get_n_vfuncs:
   t structure ptr -> int
 
+(** Obtain an object type virtual function at index n . *)
+val get_vfunc:
+  t structure ptr -> int -> GIVFuncInfo.t structure ptr
+
 (** Every GObject has two structures; an instance structure and a class
     structure. This function returns the metadata for the class structure.
     It returns a GIStructInfo.t or None. *)

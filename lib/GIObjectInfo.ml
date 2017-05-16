@@ -145,6 +145,16 @@ let get_n_vfuncs =
   foreign "g_object_info_get_n_vfuncs"
     (ptr objectinfo @-> returning int)
 
+let get_vfunc info n =
+  let get_vfunc_raw =
+    foreign "g_object_info_get_vfunc"
+      (ptr objectinfo @-> int @-> returning (ptr GIVFuncInfo.vfuncinfo)) in
+  let max = get_n_vfuncs info in
+  if (n < 0 || n >= max)  then raise (Failure "Array Index out of bounds")
+  else let info' = get_vfunc_raw info n in
+    GIVFuncInfo.add_unref_finaliser info'
+
+
 let get_class_struct info =
   let get_class_struct_raw =
     foreign "g_object_info_get_class_struct"
