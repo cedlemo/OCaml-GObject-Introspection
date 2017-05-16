@@ -49,8 +49,29 @@ let test_true_stops_emit test_ctxt =
       assert_equal_boolean false stops
     )
 
+let test_get_flags test_ctxt =
+  signal_test (fun info ->
+      let flags = GISignalInfo.get_flags info in
+      let rec check_flags = function
+        | [] -> ()
+        | f' :: q -> let _ = assert_equal ~printer:(fun f ->
+            match f with
+            | GISignalInfo.Run_first -> "Run_first"
+            | GISignalInfo.Run_last -> "Run_last"
+            | GISignalInfo.Run_cleanup -> "Run_cleanup"
+            | GISignalInfo.No_recurse -> "No_recurse"
+            | GISignalInfo.Detailed -> "Detailed"
+            | GISignalInfo.Action -> "Action"
+            | GISignalInfo.No_hooks -> "No_hooks"
+            | GISignalInfo.Must_collect -> "Must_collect"
+            | GISignalInfo.Deprecated -> "Deprecated"
+          ) GISignalInfo.Run_first f' in check_flags q
+      in check_flags flags
+    )
+
 let tests =
   "GObject Introspection SignalInfo tests" >:::
   [
-    "GISignalInfo true stops emit" >:: test_true_stops_emit
+    "GISignalInfo true stops emit" >:: test_true_stops_emit;
+    "GISignalInfo get flags" >:: test_get_flags
   ]
