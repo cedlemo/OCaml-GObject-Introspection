@@ -119,6 +119,15 @@ let get_n_vfuncs =
   foreign "g_interface_info_get_n_vfuncs"
     (ptr interfaceinfo @-> returning int)
 
+let get_vfunc info n =
+  let get_vfunc_raw =
+    foreign "g_interface_info_get_vfunc"
+      (ptr interfaceinfo @-> int @-> returning (ptr GIVFuncInfo.vfuncinfo)) in
+  let max = get_n_vfuncs info in
+  if (n < 0 || n >= max)  then raise (Failure "Array Index out of bounds")
+  else let info' = get_vfunc_raw info n in
+    GIVFuncInfo.add_unref_finaliser info'
+
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info

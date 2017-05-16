@@ -85,6 +85,10 @@ val get_iface_struct:
 val get_n_vfuncs:
   t structure ptr -> int
 
+(** Obtain an interface type virtual function at index n . *)
+val get_vfunc:
+  t structure ptr -> int -> GIVFuncInfo.t structure ptr
+
 (*
   TODO : GIVFuncInfo *	g_interface_info_get_vfunc ()
   TODO : GIVFuncInfo *	g_interface_info_find_vfunc ()
