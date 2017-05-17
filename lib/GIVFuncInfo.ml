@@ -22,6 +22,10 @@ open Foreign
 type t
 let vfuncinfo : t structure typ = structure "GIVFuncInfo"
 
+let get_offset =
+  foreign "g_vfunc_info_get_offset"
+    (ptr vfuncinfo @-> returning int)
+
 (* TODO : check that the info can be casted to vfunc info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr vfuncinfo) info

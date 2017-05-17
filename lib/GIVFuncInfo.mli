@@ -25,6 +25,10 @@ open Ctypes
 type t
 val vfuncinfo : t structure typ
 
+(** Obtain the offset of the function pointer in the class struct. The value
+    0xFFFF indicates that the struct offset is unknown. *)
+val get_offset:
+  t structure ptr -> int
 (*
   TODO : GIVFuncInfoFlags	g_vfunc_info_get_flags ()
   TODO : gint	g_vfunc_info_get_offset ()
