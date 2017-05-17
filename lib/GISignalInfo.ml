@@ -54,6 +54,15 @@ let get_flags info =
   if ((c_flags land (1 lsl 8)) != 0) then ignore (Deprecated :: flags);
   flags
 
+let get_class_closure info =
+  let get_class_closure_raw =
+    foreign "g_signal_info_get_class_closure"
+      (ptr signalinfo @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+  match get_class_closure_raw info with
+  | None -> None
+  | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+    Some info''
+
 (* TODO : check that the info can be casted to signal info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr signalinfo) info

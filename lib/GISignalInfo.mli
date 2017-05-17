@@ -69,9 +69,11 @@ type flags =
 val get_flags:
   t structure ptr -> flags list
 
-(*
-  TODO : GIVFuncInfo *	g_signal_info_get_class_closure ()
- *)
+(** Obtain the class closure for this signal if one is set. The class closure
+    is a virtual function on the type that the signal belongs to. If the signal
+    lacks a closure NULL will be returned. *)
+val get_class_closure:
+  t structure ptr -> GIVFuncInfo.t structure ptr option
 
 (** Just cast OCaml Ctypes base info to signal info. *)
 val cast_from_baseinfo:
