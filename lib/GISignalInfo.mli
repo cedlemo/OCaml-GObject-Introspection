@@ -71,9 +71,12 @@ val get_flags:
 
 (** Obtain the class closure for this signal if one is set. The class closure
     is a virtual function on the type that the signal belongs to. If the signal
-    lacks a closure NULL will be returned. *)
+    lacks a closure None will be returned.
+    In order to avoid circular call graph between GISignalInfo and GIVFuncInfo,
+    this function will return a GICallableInfo. It is upto the user to use
+    GIVSignalInfo.from_callableinfo in order to have the GIVFuncInfo.*)
 val get_class_closure:
-  t structure ptr -> GIVFuncInfo.t structure ptr option
+  t structure ptr -> GICallableInfo.t structure ptr option
 
 (** Just cast OCaml Ctypes base info to signal info. *)
 val cast_from_baseinfo:

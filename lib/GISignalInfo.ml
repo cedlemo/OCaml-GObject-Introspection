@@ -57,10 +57,10 @@ let get_flags info =
 let get_class_closure info =
   let get_class_closure_raw =
     foreign "g_signal_info_get_class_closure"
-      (ptr signalinfo @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+      (ptr signalinfo @-> returning (ptr_opt GICallableInfo.callableinfo)) in
   match get_class_closure_raw info with
   | None -> None
-  | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = GICallableInfo.add_unref_finaliser info' in
     Some info''
 
 (* TODO : check that the info can be casted to signal info ? *)
