@@ -69,9 +69,17 @@ let test_get_flags test_ctxt =
       in check_flags flags
     )
 
+let test_get_class_closure test_ctxt =
+  signal_test (fun info ->
+      match GISignalInfo.get_class_closure info with
+      | None -> assert_equal_boolean true true
+      | Some info' -> assert_equal_string "Class closure " " found"
+    )
+
 let tests =
   "GObject Introspection SignalInfo tests" >:::
   [
     "GISignalInfo true stops emit" >:: test_true_stops_emit;
-    "GISignalInfo get flags" >:: test_get_flags
+    "GISignalInfo get flags" >:: test_get_flags;
+    "GISingalInfo get class closure" >:: test_get_class_closure
   ]
