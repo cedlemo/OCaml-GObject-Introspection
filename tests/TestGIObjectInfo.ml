@@ -325,6 +325,28 @@ let test_gtk_window_find_vfunc test_ctxt =
         | Some name -> assert_equal_string name vfunc_name
     )
 
+let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
+  object_test (fun info ->
+      let vfunc_name = "activate_default" in
+      let (vfunc, implementor) =
+        GIObjectInfo.find_vfunc_using_interfaces info vfunc_name in
+      let _ = ( match implementor with
+          | None -> assert_equal true true
+          | Some info_implementor ->
+            let base_info = GIObjectInfo.to_baseinfo info_implementor in
+            match GIBaseInfo.get_name base_info with
+            | None -> assert_equal_string "It should " "have a name"
+            | Some name -> assert_equal_string "Window" name
+        )
+      in match vfunc with
+      | None -> assert_equal_string "It should return " " a function info"
+      | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
+        match GIBaseInfo.get_name base_info with
+        | None -> assert_equal_string "It should have " "a name"
+        | Some name -> assert_equal_string name vfunc_name
+     )
+
+
 let test_gtk_window_get_class_struct test_ctxt =
   object_test (fun info ->
       match GIObjectInfo.get_class_struct info with
@@ -419,6 +441,7 @@ let tests =
     "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
     "GIObjectInfo GtkWindow get vfunc" >:: test_gtk_window_get_vfunc;
     "GIObjectInfo GtkWindow find vfunc" >:: test_gtk_window_find_vfunc;
+    "GIObjectInfo GtkWindow find vfunc using interfaces" >:: test_gtk_window_find_vfunc_using_interfaces;
     "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
     "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property;
     "GIObjectInfo GtkWindow find method using interfaces" >:: test_gtk_window_find_method_using_interfaces;
