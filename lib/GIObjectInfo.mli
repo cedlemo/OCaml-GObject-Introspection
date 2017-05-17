@@ -169,13 +169,24 @@ val get_set_value_function:
 val get_get_value_function:
   t structure ptr -> string option
 
+(** Locate a virtual function slot with name name , searching both the object
+    info and any interfaces it implements. Note that the namespace for virtuals
+    is distinct from that of methods; there may or may not be a concrete method
+    associated for a virtual. If there is one, it may be retrieved using
+    g_vfunc_info_get_invoker(), otherwise None will be returned.
+    Note that this function does *not* search parent classes; you will have to
+    chain up if that's desired. *)
+val find_vfunc_using_interfaces:
+  t structure ptr -> string -> (GIVFuncInfo.t structure ptr option *
+                                t structure ptr option)
+
 (*
-  TODO : GIVFuncInfo *	g_object_info_find_vfunc_using_interfaces ()
   TODO : GIObjectInfoRefFunction	g_object_info_get_ref_function_pointer ()
   TODO : GIObjectInfoUnrefFunction	g_object_info_get_unref_function_pointer ()
   TODO : GIObjectInfoSetValueFunction	g_object_info_get_set_value_function_pointer ()
   TODO : GIObjectInfoGetValueFunction	g_object_info_get_get_value_function_pointer ()
 *)
+
 (** Just cast OCaml Ctypes base info to object info. *)
 val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr

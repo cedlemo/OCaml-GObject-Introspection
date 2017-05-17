@@ -226,4 +226,15 @@ let find_method_using_interfaces info name =
     | None -> None
     | Some implementor -> Some (add_unref_finaliser implementor))
 
-
+let find_vfunc_using_interfaces info name =
+  let find_vfunc_using_interfaces_raw =
+    foreign "g_object_info_find_vfunc_using_interfaces"
+    (ptr objectinfo @-> string @-> ptr (ptr objectinfo) @->
+     returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+  let implementor_addr = allocate_n (ptr objectinfo) 1 in
+  match find_vfunc_using_interfaces_raw info name implementor_addr with
+  | None -> (None, None)
+  | Some info' -> (Some info',
+     match coerce (ptr objectinfo) (ptr_opt objectinfo) (!@implementor_addr) with
+    | None -> None
+    | Some implementor -> Some (add_unref_finaliser implementor))
