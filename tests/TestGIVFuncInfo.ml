@@ -39,9 +39,16 @@ let vfunc_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_offset test_ctxt =
+  vfunc_test (fun info ->
+      let offset = GIVFuncInfo.get_offset info in
+      assert_equal_int 0xFFFF offset
+    )
+
 let tests =
   "GObject Introspection VFuncInfo tests" >:::
   [
+    "GIVFuncInfo get offset" >:: test_get_offset
   ]
 
 
