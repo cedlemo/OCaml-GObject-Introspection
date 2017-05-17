@@ -45,10 +45,18 @@ let test_get_offset test_ctxt =
       assert_equal_int 0xFFFF offset
     )
 
+let test_get_signal test_ctxt =
+  vfunc_test (fun info ->
+      match GIVFuncInfo.get_signal info with
+      | None -> assert_equal_boolean true true
+      | Some info' -> assert_equal_string "It should no return " "a callable info"
+    )
+
 let tests =
   "GObject Introspection VFuncInfo tests" >:::
   [
-    "GIVFuncInfo get offset" >:: test_get_offset
+    "GIVFuncInfo get offset" >:: test_get_offset;
+    "GIVFuncInfo get signal" >:: test_get_signal
   ]
 
 
