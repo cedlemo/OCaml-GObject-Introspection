@@ -54,9 +54,12 @@ val get_property:
 
 (** Obtain the virtual function associated with this GIFunctionInfo. Only
     GIFunctionInfo with the flag Wraps_vfunc has a virtual function set. For
-    other cases, None will be returned. *)
+    other cases, None will be returned.
+    In order to avoid circular call graph between GIFunctionInfo and GIVFuncInfo,
+    this function will return a GICallableInfo. It is upto the user to use
+    GIVFuncInfo.from_callableinfo in order to have the GIVFuncInfo.*)
 val get_vfunc:
-  t structure ptr -> GIVFuncInfo.t structure ptr option
+  t structure ptr -> GICallableInfo.t structure ptr option
 
 (*
   gboolean	g_function_info_invoke ()

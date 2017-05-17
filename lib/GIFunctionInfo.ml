@@ -76,10 +76,10 @@ let get_vfunc info =
   if (has_wraps_vfunc flags) then
     let get_vfunc_raw =
       foreign "g_function_info_get_vfunc"
-        (ptr functioninfo @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+        (ptr functioninfo @-> returning (ptr_opt GICallableInfo.callableinfo)) in
     match get_vfunc_raw info with
     | None -> None
-    | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+    | Some info' -> let info'' = GICallableInfo.add_unref_finaliser info' in
       Some info''
   else None
 
