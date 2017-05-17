@@ -29,10 +29,17 @@ val vfuncinfo : t structure typ
     0xFFFF indicates that the struct offset is unknown. *)
 val get_offset:
   t structure ptr -> int
+
+(** Obtain the signal for the virtual function if one is set. The signal comes
+    from the object or interface to which this virtual function belongs.
+    In order to avoid circurlar call graph between GIVFuncInfo and GISignalInfo,
+    this function will return a GICallableInfo. It is upto the user to use
+    GISignalInfo.from_callableinfo in order to have the GISignalInfo.*)
+val get_signal:
+  t structure ptr -> GICallableInfo.t structure ptr option
+
 (*
   TODO : GIVFuncInfoFlags	g_vfunc_info_get_flags ()
-  TODO : gint	g_vfunc_info_get_offset ()
-  TODO : GISignalInfo *	g_vfunc_info_get_signal ()
   TODO : GIFunctionInfo *	g_vfunc_info_get_invoker ()
   TODO : gpointer	g_vfunc_info_get_address ()
   TODO : gboolean	g_vfunc_info_invoke ()

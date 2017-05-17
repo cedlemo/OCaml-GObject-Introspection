@@ -26,6 +26,15 @@ let get_offset =
   foreign "g_vfunc_info_get_offset"
     (ptr vfuncinfo @-> returning int)
 
+let get_signal info =
+  let get_signal_raw =
+    foreign "g_vfunc_info_get_signal"
+      (ptr vfuncinfo @-> returning (ptr_opt GICallableInfo.callableinfo)) in
+  match get_signal_raw info with
+  | None -> None
+  | Some info' -> let info'' = GICallableInfo.add_unref_finaliser info' in
+    Some info''
+
 (* TODO : check that the info can be casted to vfunc info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr vfuncinfo) info
