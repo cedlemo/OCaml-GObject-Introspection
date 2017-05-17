@@ -378,6 +378,12 @@ Locate a virtual function slot with name name .
 Locate a virtual function slot with name name .
 </div>
 </td></tr>
+<tr><td><a href="GIObjectInfo.html#VALfind_vfunc_using_interfaces">find_vfunc_using_interfaces</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Locate a virtual function slot with name name , searching both the object
+    info and any interfaces it implements.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfrom_baseinfo">from_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GIFunctionInfo.t from a GIBaseInfo.t, the underlying C structure
@@ -576,6 +582,11 @@ This function returns the "C prefix", or the C level namespace associated
 <tr><td><a href="GICallableInfo.html#VALget_caller_owns">get_caller_owns</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>
 <td><div class="info">
 See whether the caller owns the return value of this callable.
+</div>
+</td></tr>
+<tr><td><a href="GISignalInfo.html#VALget_class_closure">get_class_closure</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
+<td><div class="info">
+Obtain the class closure for this signal if one is set.
 </div>
 </td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_class_struct">get_class_struct</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
@@ -861,6 +872,11 @@ Obtain the offset in bits of the field member, this is relative to the
     beginning of the struct or union.
 </div>
 </td></tr>
+<tr><td><a href="GIVFuncInfo.html#VALget_offset">get_offset</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
+<td><div class="info">
+Obtain the offset of the function pointer in the class struct.
+</div>
+</td></tr>
 <tr><td><a href="GIArgInfo.html#VALget_ownership_transfer">get_ownership_transfer</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
 Obtain the ownership transfer for this argument.
@@ -945,6 +961,11 @@ Obtain an object type signal at index n .
 <tr><td><a href="GIInterfaceInfo.html#VALget_signal">get_signal</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
 <td><div class="info">
 Obtain an interface type signal at index n .
+</div>
+</td></tr>
+<tr><td><a href="GIVFuncInfo.html#VALget_signal">get_signal</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
+<td><div class="info">
+Obtain the signal for the virtual function if one is set.
 </div>
 </td></tr>
 <tr><td><a href="GIStructInfo.html#VALget_size">get_size</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>

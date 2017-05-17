@@ -89,6 +89,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_get_value_function&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_vfunc_using_interfaces&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option&nbsp;*
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_baseinfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr

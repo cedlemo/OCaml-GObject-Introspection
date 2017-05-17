@@ -179,6 +179,15 @@ Obtain the flags for this signal info. See GSignalFlags for more
     information about possible flag values.<br>
 </div>
 
+<pre><span id="VALget_class_closure"><span class="keyword">val</span> get_class_closure</span> : <code class="type"><a href="GISignalInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">GICallableInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Obtain the class closure for this signal if one is set. The class closure
+    is a virtual function on the type that the signal belongs to. If the signal
+    lacks a closure None will be returned.
+    In order to avoid circular call graph between GISignalInfo and GIVFuncInfo,
+    this function will return a GICallableInfo. It is upto the user to use
+    GIVSignalInfo.from_callableinfo in order to have the GIVFuncInfo.<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GISignalInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to signal info.<br>
 </div>

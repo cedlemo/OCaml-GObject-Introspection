@@ -135,10 +135,13 @@ Obtain the property associated with this GIFunctionInfo. Only
     have a property set. For other cases, NULL will be returned.<br>
 </div>
 
-<pre><span id="VALget_vfunc"><span class="keyword">val</span> get_vfunc</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+<pre><span id="VALget_vfunc"><span class="keyword">val</span> get_vfunc</span> : <code class="type"><a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GICallableInfo.html#TYPEt">GICallableInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
 Obtain the virtual function associated with this GIFunctionInfo. Only
     GIFunctionInfo with the flag Wraps_vfunc has a virtual function set. For
-    other cases, None will be returned.<br>
+    other cases, None will be returned.
+    In order to avoid circular call graph between GIFunctionInfo and GIVFuncInfo,
+    this function will return a GICallableInfo. It is upto the user to use
+    GIVFuncInfo.from_callableinfo in order to have the GIVFuncInfo.<br>
 </div>
 
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIFunctionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

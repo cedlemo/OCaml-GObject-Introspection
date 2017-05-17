@@ -193,6 +193,16 @@ Obtain the symbol name of the function that should be called to convert an
     GIObjectInfo.get_get_value_function.<br>
 </div>
 
+<pre><span id="VALfind_vfunc_using_interfaces"><span class="keyword">val</span> find_vfunc_using_interfaces</span> : <code class="type"><a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       string -><br>       <a href="GIVFuncInfo.html#TYPEt">GIVFuncInfo.t</a> Ctypes.structure Ctypes.ptr option *<br>       <a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Locate a virtual function slot with name name , searching both the object
+    info and any interfaces it implements. Note that the namespace for virtuals
+    is distinct from that of methods; there may or may not be a concrete method
+    associated for a virtual. If there is one, it may be retrieved using
+    g_vfunc_info_get_invoker(), otherwise None will be returned.
+    Note that this function does *not* search parent classes; you will have to
+    chain up if that's desired.<br>
+</div>
+
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIObjectInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to object info.<br>
 </div>
