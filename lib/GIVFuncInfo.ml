@@ -35,6 +35,12 @@ let get_signal info =
   | Some info' -> let info'' = GICallableInfo.add_unref_finaliser info' in
     Some info''
 
+type flags =
+  | Must_chain_up
+  | Must_override
+  | Must_not_override
+  | Throws
+
 (* TODO : check that the info can be casted to vfunc info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr vfuncinfo) info

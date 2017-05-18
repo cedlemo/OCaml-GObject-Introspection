@@ -38,6 +38,12 @@ val get_offset:
 val get_signal:
   t structure ptr -> GICallableInfo.t structure ptr option
 
+type flags =
+  | Must_chain_up     (** chains up to the parent type *)
+  | Must_override     (** overrides *)
+  | Must_not_override (** does not override *)
+  | Throws            (** Includes  a GError *)
+
 (*
   TODO : GIVFuncInfoFlags	g_vfunc_info_get_flags ()
   TODO : GIFunctionInfo *	g_vfunc_info_get_invoker ()
