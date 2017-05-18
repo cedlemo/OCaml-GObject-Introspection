@@ -388,7 +388,7 @@ acronym,abbr
 }
 
 #container.gtk-doc.two_columns .content {
-    width: auto;
+  width: auto;
 }
 
 .keyword { font-weight : bold ; color : #4e9a06 }
@@ -398,10 +398,34 @@ acronym,abbr
 .type { color : #5C6585 }
 .string { color : Maroon }
 .warning { color : Red ; font-weight : bold }
-.info { margin-left : 3em; margin-right: 3em }
+.info {
+  margin-left : 2em;
+  margin-right: 3em ;
+  padding-left: 1em;
+  border-left: 4px solid #a1a39d
+  }
+
 .param_info { margin-top: 4px; margin-left : 3em; margin-right : 3em }
 .code { color : #465F91 ; }
 .typetable { border-style : hidden }
 .paramstable { border-style : hidden ; padding: 5pt 5pt}
+table {
+    border-collapse: collapse;
+}
+tr {
+	margin: 4px;
+	padding-left: 4px;
+	border-left: 4px solid #465F91;
+
+}
+
+tr td.module {
+	padding: 4px;
+	font-weight: bold
+}
+
+tr td div.info {
+	border: none;
+}
 ul.indexlist { margin-left: 0; padding: 4px; list-style-type: none; float:right }
 ul.indexlist li {  margin-left: 0; padding: 4px; float:left;}
