@@ -1,431 +1,136 @@
-body
-{
-  font-family: cantarell, sans-serif;
-  padding: 10px 20px 10px 20px;
-}
-.synopsis, .classsynopsis
-{
-  /* tango:aluminium 1/2 */
-  background: #eeeeec;
-  background: rgba(238, 238, 236, 0.5);
-  border: solid 1px rgb(238, 238, 236);
-  padding: 0.5em;
-}
-.programlisting
-{
-  /* tango:sky blue 0/1 */
-  /* fallback for no rgba support */
-  background: #e6f3ff;
-  border: solid 1px #729fcf;
-  background: rgba(114, 159, 207, 0.1);
-  border: solid 1px rgba(114, 159, 207, 0.2);
-  padding: 0.5em;
-  overflow: auto;
-}
-.variablelist
-{
-  padding: 4px;
-  margin-left: 3em;
-}
-.variablelist td:first-child
-{
-  vertical-align: top;
+body {
+	font-family: cantarell, sans-serif;
+	padding: 3em 6em 3em 6em;
 }
 
-@media screen {
-  table.navigation#top td
-  {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-  .navigation a, .navigation a:visited
-  {
-    /* tango:sky blue 3 */
-    color: #204a87;
-  }
-  .navigation a:hover
-  {
-    /* tango:sky blue 2 */
-    color: #3465a4;
-  }
-  td.shortcuts
-  {
-    /* tango:sky blue 2 */
-    color: #3465a4;
-    font-size: 80%;
-    white-space: nowrap;
-  }
-  td.shortcuts .dim
-  {
-    color: #babdb6;
-  }
-  .navigation .title
-  {
-    text-align: left;
-    max-width: none;
-    margin: 0px;
-    font-weight: normal;
-  }
-
+a, a:visited {
+	text-decoration: none;
+	color: #3465a4;
+}
+a:hover {
+	text-decoration: underline;
+	color: #729fcf;
 }
 
-div.gallery-float
-{
-  float: left;
-  padding: 10px;
-}
-div.gallery-float img
-{
-  border-style: none;
-}
-div.gallery-spacer
-{
-  clear: both;
+h4 {
+	color: #555753;
 }
 
-a, a:visited
-{
-  text-decoration: none;
-  /* tango:sky blue 2 */
-  color: #3465a4;
-}
-a:hover
-{
-  text-decoration: underline;
-  /* tango:sky blue 1 */
-  color: #729fcf;
+hr {
+	color: #d3d7cf;
+	background: #d3d7cf;
+	border: none 0px;
+	height: 1px;
+	clear: both;
+	margin: 2.0em 0em 2.0em 0em;
 }
 
-div.informaltable table
-{
-  border-collapse: separate;
-  border-spacing: 1em 0.5em;
-  border: none;
-}
 
-div.informaltable table td, div.informaltable table th
-{
-  vertical-align: top;
+.keyword {
+	font-weight : bold ;
+	color : #4e9a06
 }
-
-.function_type,
-.variable_type,
-.property_type,
-.signal_type,
-.parameter_name,
-.struct_member_name,
-.union_member_name,
-.define_keyword,
-.datatype_keyword,
-.typedef_keyword
-{
-  text-align: right;
+.keywordsign {
+	color : #4e9a06
 }
-
-/* dim non-primary columns */
-.c_punctuation,
-.function_type,
-.variable_type,
-.property_type,
-.signal_type,
-.define_keyword,
-.datatype_keyword,
-.typedef_keyword,
-.property_flags,
-.signal_flags,
-.parameter_annotations,
-.enum_member_annotations,
-.struct_member_annotations,
-.union_member_annotations
-{
-  color: #888a85;
+.comment {
+	color : #a1a39d
 }
-
-.function_type a,
-.function_type a:visited,
-.function_type a:hover,
-.property_type a,
-.property_type a:visited,
-.property_type a:hover,
-.signal_type a,
-.signal_type a:visited,
-.signal_type a:hover,
-.signal_flags a,
-.signal_flags a:visited,
-.signal_flags a:hover
-{
- color: #729fcf;
+.constructor {
+	color : #ce5c00
 }
-
-td p
-{
-  margin: 0.25em;
+.type {
+	color : #5C6585
 }
-
-div.table table
-{
-  border-collapse: collapse;
-  border-spacing: 0px;
-  /* tango:aluminium 3 */
-  border: solid 1px #babdb6;
+.string {
+	color : Maroon
 }
-
-div.table table td, div.table table th
-{
-  /* tango:aluminium 3 */
-  border: solid 1px #babdb6;
-  padding: 3px;
-  vertical-align: top;
+.warning { color : Red ;
+	font-weight : bold
 }
-
-div.table table th
-{
-  /* tango:aluminium 2 */
-  background-color: #d3d7cf;
-}
-
-h4
-{
-  color: #555753;
-}
-
-hr
-{
-  /* tango:aluminium 1 */
-  color: #d3d7cf;
-  background: #d3d7cf;
-  border: none 0px;
-  height: 1px;
-  clear: both;
-  margin: 2.0em 0em 2.0em 0em;
-}
-
-dl.toc dt
-{
-  padding-bottom: 0.25em;
-}
-
-dl.toc > dd > dl > dt
-{
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-}
-
-dl.toc > dt
-{
-  padding-top: 1em;
-  padding-bottom: 0.5em;
-  font-weight: bold;
-}
-
-.parameter
-{
-  font-style: normal;
-}
-
-.footer
-{
-  padding-top: 3.5em;
-  /* tango:aluminium 3 */
-  color: #babdb6;
-  text-align: center;
-  font-size: 80%;
-}
-
-.informalfigure,
-.figure
-{
-  margin: 1em;
-}
-
-.informalexample,
-.example
-{
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.warning
-{
-  /* tango:orange 0/1 */
-  background: #ffeed9;
-  background: rgba(252, 175, 62, 0.1);
-  border-color: #ffb04f;
-  border-color: rgba(252, 175, 62, 0.2);
-}
-.note
-{
-  /* tango:chameleon 0/0.5 */
-  background: #d8ffb2;
-  background: rgba(138, 226, 52, 0.1);
-  border-color: #abf562;
-  border-color: rgba(138, 226, 52, 0.2);
-}
-div.blockquote
-{
-  border-color: #eeeeec;
-}
-.note, .warning, div.blockquote
-{
-  padding: 0.5em;
-  border-width: 1px;
-  border-style: solid;
-  margin: 2em;
-}
-.note p, .warning p
-{
-  margin: 0;
-}
-
-div.warning h3.title,
-div.note h3.title
-{
-  display: none;
-}
-
-p + div.section
-{
-  margin-top: 1em;
-}
-
-div.refnamediv,
-div.refsynopsisdiv,
-div.refsect1,
-div.refsect2,
-div.toc,
-div.section
-{
-  margin-bottom: 1em;
-}
-
-/* blob links */
-h2 .extralinks, h3 .extralinks
-{
-  float: right;
-  /* tango:aluminium 3 */
-  color: #babdb6;
-  font-size: 80%;
-  font-weight: normal;
-}
-
-.lineart
-{
-  color: #d3d7cf;
-  font-weight: normal;
-}
-
-.annotation
-{
-  /* tango:aluminium 5 */
-  color: #555753;
-  font-weight: normal;
-}
-
-.structfield
-{
-  font-style: normal;
-  font-weight: normal;
-}
-
-acronym,abbr
-{
-  border-bottom: 1px dotted gray;
-}
-
-/* code listings */
-
-.listing_code .programlisting .cbracket   { color: #a40000; } /* tango: scarlet red 3 */
-.listing_code .programlisting .comment    { color: #a1a39d; } /* tango: aluminium 4 */
-.listing_code .programlisting .function   { color: #000000; font-weight: bold; }
-.listing_code .programlisting .function a { color: #11326b; font-weight: bold; } /* tango: sky blue 4 */
-.listing_code .programlisting .keyword    { color: #4e9a06; } /* tango: chameleon 3  */
-.listing_code .programlisting .linenum    { color: #babdb6; } /* tango: aluminium 3 */
-.listing_code .programlisting .normal     { color: #000000; }
-.listing_code .programlisting .number     { color: #75507b; } /* tango: plum 2 */
-.listing_code .programlisting .preproc    { color: #204a87; } /* tango: sky blue 3  */
-.listing_code .programlisting .string     { color: #c17d11; } /* tango: chocolate 2 */
-.listing_code .programlisting .type       { color: #000000; }
-.listing_code .programlisting .type a     { color: #11326b; } /* tango: sky blue 4 */
-.listing_code .programlisting .symbol     { color: #ce5c00; } /* tango: orange 3 */
-
-.listing_frame {
-  /* tango:sky blue 1 */
-  border: solid 1px #729fcf;
-  border: solid 1px rgba(114, 159, 207, 0.2);
-  padding: 0px;
-}
-
-.listing_lines, .listing_code {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 0.5em;
-}
-.listing_lines {
-  /* this just adds visual clutter and
-     takes precious room from small screens */
-  display: none;
-}
-.listing_lines {
-  /* tango:sky blue 0.5 */
-  background: #a6c5e3;
-  background: rgba(114, 159, 207, 0.2);
-  /* tango:aluminium 6 */
-  color: #2e3436;
-}
-.listing_code {
-  /* tango:sky blue 0 */
-  background: #e6f3ff;
-  background: rgba(114, 159, 207, 0.1);
-}
-.listing_code .programlisting {
-  /* override from previous */
-  border: none 0px;
-  padding: 0px;
-  background: none;
-}
-.listing_lines pre, .listing_code pre {
-  margin: 0px;
-}
-
-#container.gtk-doc.two_columns .content {
-  width: auto;
-}
-
-.keyword { font-weight : bold ; color : #4e9a06 }
-.keywordsign { color : #4e9a06 }
-.comment { color : #a1a39d }
-.constructor { color : #ce5c00 }
-.type { color : #5C6585 }
-.string { color : Maroon }
-.warning { color : Red ; font-weight : bold }
 .info {
-  margin-left : 2em;
-  margin-right: 3em ;
-  padding-left: 1em;
-  border-left: 4px solid #a1a39d
-  }
+	margin-left : 2em;
+	margin-right: 3em ;
+	padding-left: 1em;
+	border-left: 4px solid #a1a39d
+}
 
-.param_info { margin-top: 4px; margin-left : 3em; margin-right : 3em }
-.code { color : #465F91 ; }
-.typetable { border-style : hidden }
-.paramstable { border-style : hidden ; padding: 5pt 5pt}
+.param_info {
+	margin-top: 4px;
+	margin-left : 3em;
+	margin-right : 3em
+}
+.code {
+	color : #465F91 ;
+}
+.typetable {
+	border-style : hidden
+}
+.paramstable {
+	border-style : hidden ;
+	padding: 5pt 5pt
+}
 table {
-    border-collapse: collapse;
+	border-collapse: collapse;
 }
 tr {
-	margin: 4px;
-	padding-left: 4px;
-	border-left: 4px solid #465F91;
-
 }
 
 tr td.module {
-	padding: 4px;
-	font-weight: bold
+	padding: 0.4em 1.2em 0.2em 1.8em;
+	font-weight: bold;
+	border-left: 2px solid #465F91;
+	background: rgba(161,163,157,0.6); /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left,
+					    rgba(161,163,157,0.6),
+					    rgba(0, 0, 0, 0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right,
+				       rgba(161,163,157,0.6),
+				       rgba(0, 0, 0, 0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right,
+	                                 rgba(161,163,157,0.6),
+					 rgba(0, 0, 0, 0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right,
+	                            rgba(161,163,157,0.6),
+				    rgba(0, 0, 0, 0)); /* Standard syntax */
 }
-
+tr td.module:hover {
+	background: rgba(0, 0, 0, 0);
+}
+tr td.module a:hover {
+	text-decoration: none;
+}
 tr td div.info {
 	border: none;
 }
-ul.indexlist { margin-left: 0; padding: 4px; list-style-type: none; float:right }
-ul.indexlist li {  margin-left: 0; padding: 4px; float:left;}
+ul.indexlist {
+	margin-left: 0;
+	padding: 4px;
+	list-style-type: none;
+	float:right
+}
+ul.indexlist li {
+	margin-left: 4px;
+	padding: 4px;
+	float:left;
+	border-bottom: 1px solid #a1a39d
+}
+ul.indexlist li:hover {
+	background: rgba(161,163,157,0.6); /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left,
+					    rgba(161,163,157,0.6),
+					    rgba(0, 0, 0, 0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right,
+				       rgba(161,163,157,0.6),
+				       rgba(0, 0, 0, 0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right,
+	                                 rgba(161,163,157,0.6),
+					 rgba(0, 0, 0, 0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right,
+	                            rgba(161,163,157,0.6),
+				    rgba(0, 0, 0, 0)); /* Standard syntax */
+
+}
+ul.indexlist li a:hover {
+	text-decoration: none;
+}
