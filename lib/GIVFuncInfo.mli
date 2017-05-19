@@ -44,8 +44,12 @@ type flags =
   | Must_not_override (** does not override *)
   | Throws            (** Includes  a GError *)
 
+(** Obtain the flags for this virtual function info. See GIVFuncInfoFlags for
+    more information about possible flag values. *)
+val get_flags:
+  t structure ptr -> flags list
+
 (*
-  TODO : GIVFuncInfoFlags	g_vfunc_info_get_flags ()
   TODO : GIFunctionInfo *	g_vfunc_info_get_invoker ()
   TODO : gpointer	g_vfunc_info_get_address ()
   TODO : gboolean	g_vfunc_info_invoke ()
