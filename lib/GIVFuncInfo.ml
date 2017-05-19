@@ -41,6 +41,12 @@ type flags =
   | Must_not_override
   | Throws
 
+let string_of_flags = function
+  | Must_chain_up -> "Must_chain_up"
+  | Must_override -> "Must_override"
+  | Must_not_override -> "Must_not_override"
+  | Throws -> "Throws"
+
 let get_flags info =
   let get_flags_raw =
     foreign "g_vfunc_info_get_flags"

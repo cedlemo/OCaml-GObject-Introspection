@@ -44,6 +44,9 @@ type flags =
   | Must_not_override (** does not override *)
   | Throws            (** Includes  a GError *)
 
+val string_of_flags:
+  flags -> string
+
 (** Obtain the flags for this virtual function info. See GIVFuncInfoFlags for
     more information about possible flag values. *)
 val get_flags:
