@@ -38,11 +38,11 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIPropertyInfo — Struct representing a property
   * GISignalInfo — Struct representing a signal
   * GIVFuncInfo — Struct representing a virtual function
+  * GIRegisteredTypeInfo — Struct representing a struct with a GType
 
   ### Remains
 
   * GICallbackInfo — Struct representing a callback
-  * GIRegisteredTypeInfo — Struct representing a struct with a GType
 
 ## G. Info Structures hierarchy and type coercion functions.
 
