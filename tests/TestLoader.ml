@@ -29,9 +29,20 @@ let test_loader_with_good_namespace test_ctxt =
   | None -> assert_equal false true
   | Some _ -> assert_equal true true
 
+let test_loader namespace fn =
+  match Loader.load namespace () with
+  | None -> assert_equal_string "Please provide " "a good namespace"
+  | Some loader -> fn loader
+
+let test_loader_get_namespace test_ctxt =
+  test_loader "Gtk" (fun loader ->
+      assert_equal_string "Gtk" (Loader.get_namespace loader)
+    )
+
 let tests =
   "GObject Introspection Loader tests" >:::
   [
     "GObject Introspection Loader with bad namespace" >:: test_loader_with_bad_namespace;
-    "GObject Introspection Loader with good namespace" >:: test_loader_with_good_namespace
+    "GObject Introspection Loader with good namespace" >:: test_loader_with_good_namespace;
+    "GObject Introspection Loader get namespace" >:: test_loader_get_namespace
   ]
