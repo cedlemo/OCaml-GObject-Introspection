@@ -26,17 +26,23 @@ let repository : repository typ = ptr void
 type typelib = unit ptr
 let typelib : typelib typ = ptr void
 
+type gerror_t
+let gerror : gerror_t structure typ = structure "GError"
+
 let get_default =
   foreign "g_irepository_get_default" (void @-> returning repository)
 
 let require repo namespace ?version () =
   let require_raw =
   foreign "g_irepository_require"
-    (repository @-> string @-> string_opt @-> int @->  void @-> returning (ptr_opt void)) in
-  match require_raw repo namespace version 0 () with
+    (repository @-> string @-> string_opt @-> int @->  ptr (ptr gerror) @-> returning (ptr_opt void)) in
+  let error_addr = allocate_n (ptr gerror) 1 in
+  match require_raw repo namespace version 0 error_addr with
   | None -> None
-  | Some typelib_ptr -> let typelib_ptr' = coerce (ptr void) (typelib) typelib_ptr in
-    Some typelib_ptr'
+  | Some typelib_ptr -> match coerce (ptr gerror) (ptr_opt gerror) (!@error_addr) with
+    | None ->let typelib_ptr' = coerce (ptr void) (typelib) typelib_ptr in
+      Some typelib_ptr'
+    | Some error -> None
 
 let get_loaded_namespaces repo =
   let get_loaded_namespaces_raw =
