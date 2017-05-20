@@ -136,13 +136,23 @@ val get_shared_library:
 val prepend_library_path:
   string -> unit
 
+type gtype = int
+
+ (** Searches all loaded namespaces for a particular #GType.  Note that
+     in order to locate the metadata, the namespace corresponding to
+     the type must first have been loaded.  There is currently no
+     mechanism for determining the namespace which corresponds to an
+     arbitrary GType - thus, this function will operate most reliably
+     when you know the GType to originate from be from a loaded namespace. *)
+val find_by_gtype:
+  repository -> gtype -> GIBaseInfo.t structure ptr option
+
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
    TODO: GOptionGroup *	g_irepository_get_option_group ()
    TODO: const char *	g_irepository_load_typelib ()
    gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
-   TODO: GIBaseInfo *	g_irepository_find_by_gtype ()
    TODO: GIEnumInfo *	g_irepository_find_by_error_domain ()
    gboolean	g_irepository_dump ()
    void	gi_cclosure_marshal_generic ()
