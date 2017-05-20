@@ -79,3 +79,23 @@ val from_baseinfo:
     GIBaseInfo.baseinfo_unref. *)
 val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
+
+(** Just cast OCaml Ctypes registeredtype info to struct info. *)
+val cast_from_registeredtypeinfo:
+  GIRegisteredTypeInfo.t structure ptr -> t structure ptr
+
+(** Just cast OCaml Ctypes struct info to registeredtype info *)
+val cast_to_registeredtypeinfo:
+  t structure ptr -> GIRegisteredTypeInfo.t structure ptr
+
+(** Return a GIStructInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
+val from_registeredtypeinfo:
+  GIRegisteredTypeInfo.t structure ptr -> t structure ptr
+
+(** Return a GIRegisteredTypeInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
+val to_registeredtypeinfo:
+  t structure ptr -> GIRegisteredTypeInfo.t structure ptr

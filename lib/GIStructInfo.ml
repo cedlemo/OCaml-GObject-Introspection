@@ -98,3 +98,28 @@ let to_baseinfo info =
   let _ = Gc.finalise (fun i ->
       GIBaseInfo.base_info_unref i) info' in
   info'
+
+(* TODO : check that the info can be casted to a structinfo ? *)
+let cast_from_registeredtypeinfo info =
+  coerce (ptr GIRegisteredTypeInfo.registeredtypeinfo) (ptr structinfo) info
+
+let cast_to_registeredtypeinfo info =
+  coerce (ptr structinfo) (ptr GIRegisteredTypeInfo.registeredtypeinfo) info
+
+let from_registeredtypeinfo info =
+  let base_info = GIRegisteredTypeInfo.cast_to_baseinfo info in
+  let _ = GIBaseInfo.base_info_ref base_info in
+  let info' = cast_from_registeredtypeinfo info in
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info' in
+  info'
+
+let to_registeredtypeinfo info =
+  let base_info = cast_to_baseinfo info in
+  let _ = GIBaseInfo.base_info_ref base_info in
+  let info' = cast_to_registeredtypeinfo info in
+  let _ = Gc.finalise (fun i ->
+      let i' = GIRegisteredTypeInfo.cast_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info' in
+  info'
