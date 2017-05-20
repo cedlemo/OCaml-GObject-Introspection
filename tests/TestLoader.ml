@@ -19,7 +19,19 @@
 open TestUtils
 open OUnit2
 
+let test_loader_with_bad_namespace test_ctxt =
+  match Loader.load "bad_namespace" () with
+  | None -> assert_equal true true
+  | Some _ -> assert_equal_string "It should not" "load anything"
+
+let test_loader_with_good_namespace test_ctxt =
+  match Loader.load "Gtk" () with
+  | None -> assert_equal false true
+  | Some _ -> assert_equal true true
+
 let tests =
   "GObject Introspection Loader tests" >:::
   [
+    "GObject Introspection Loader with bad namespace" >:: test_loader_with_bad_namespace;
+    "GObject Introspection Loader with good namespace" >:: test_loader_with_good_namespace
   ]
