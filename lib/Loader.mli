@@ -23,3 +23,6 @@ type t
 
 val load:
   string -> ?version:string -> unit -> t option
+
+val get_namespace:
+  t -> string

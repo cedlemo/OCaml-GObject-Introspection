@@ -33,3 +33,6 @@ let load namespace ?version () =
   match GIRepository.require repo namespace ?version:version () with
   | None -> None
   | Some typelib -> Some {repo; typelib; namespace; version}
+
+let get_namespace repo =
+  repo.namespace
