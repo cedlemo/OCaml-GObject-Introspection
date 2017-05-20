@@ -7,6 +7,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIRegisteredTypeInfo" rel="Chapter" href="GIRegisteredTypeInfo.html">
 <link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
@@ -24,7 +25,8 @@
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
-<link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>Index of values</title>
+<link title="GIRepository" rel="Chapter" href="GIRepository.html">
+<link title="Loader" rel="Chapter" href="Loader.html"><title>Index of values</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
@@ -90,6 +92,11 @@ Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
 <tr><td><a href="GIVFuncInfo.html#VALadd_unref_finaliser">add_unref_finaliser</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
+<td><div class="info">
+Add unref of the C underlying structure whith Gc.finalise.
+</div>
+</td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALadd_unref_finaliser">add_unref_finaliser</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
 <td><div class="info">
 Add unref of the C underlying structure whith Gc.finalise.
 </div>
@@ -208,6 +215,11 @@ Just cast OCaml Ctypes base info to signal info.
 Just cast OCaml Ctypes base info to vfunc info.
 </div>
 </td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALcast_from_baseinfo">cast_from_baseinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes base info to registeredtype info.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_from_callableinfo">cast_from_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes callable info to function info.
@@ -221,6 +233,31 @@ Just cast OCaml Ctypes callable info to signal info.
 <tr><td><a href="GIVFuncInfo.html#VALcast_from_callableinfo">cast_from_callableinfo</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes callable info to vfunc info.
+</div>
+</td></tr>
+<tr><td><a href="GIStructInfo.html#VALcast_from_registeredtypeinfo">cast_from_registeredtypeinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes registeredtype info to struct info.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALcast_from_registeredtypeinfo">cast_from_registeredtypeinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes registeredtype info to union info.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALcast_from_registeredtypeinfo">cast_from_registeredtypeinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes registeredtype info to enum info.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALcast_from_registeredtypeinfo">cast_from_registeredtypeinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes registeredtype info to object info.
+</div>
+</td></tr>
+<tr><td><a href="GIInterfaceInfo.html#VALcast_from_registeredtypeinfo">cast_from_registeredtypeinfo</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes registeredtype info to enum info.
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_to_baseinfo">cast_to_baseinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -293,6 +330,11 @@ Just cast OCaml Ctypes signal info to base info
 Just cast OCaml Ctypes vfunc info to base info
 </div>
 </td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALcast_to_baseinfo">cast_to_baseinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes registeredtype info to base info
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALcast_to_callableinfo">cast_to_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes function info to callable info
@@ -306,6 +348,31 @@ Just cast OCaml Ctypes signal info to callable info
 <tr><td><a href="GIVFuncInfo.html#VALcast_to_callableinfo">cast_to_callableinfo</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
 <td><div class="info">
 Just cast OCaml Ctypes vfunc info to callable info
+</div>
+</td></tr>
+<tr><td><a href="GIStructInfo.html#VALcast_to_registeredtypeinfo">cast_to_registeredtypeinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes struct info to registeredtype info
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALcast_to_registeredtypeinfo">cast_to_registeredtypeinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes union info to registeredtype info
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALcast_to_registeredtypeinfo">cast_to_registeredtypeinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes enum info to registeredtype info
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALcast_to_registeredtypeinfo">cast_to_registeredtypeinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes object info to registeredtype info
+</div>
+</td></tr>
+<tr><td><a href="GIInterfaceInfo.html#VALcast_to_registeredtypeinfo">cast_to_registeredtypeinfo</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
+<td><div class="info">
+Just cast OCaml Ctypes enum info to registeredtype info
 </div>
 </td></tr>
 <tr><td><a href="GIConstantInfo.html#VALconstantinfo">constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
@@ -327,6 +394,11 @@ Compare two GIBaseInfo.
 <tr><td align="left"><br>F</td></tr>
 <tr><td><a href="GIFieldInfo.html#VALfieldinfo">fieldinfo</a> [<a href="GIFieldInfo.html">GIFieldInfo</a>]</td>
 <td></td></tr>
+<tr><td><a href="GIRepository.html#VALfind_by_gtype">find_by_gtype</a> [<a href="GIRepository.html">GIRepository</a>]</td>
+<td><div class="info">
+Searches all loaded namespaces for a particular #GType.
+</div>
+</td></tr>
 <tr><td><a href="GIRepository.html#VALfind_by_name">find_by_name</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Searches for a particular entry in a namespace.
@@ -489,6 +561,13 @@ Return a GIVFuncInfo.t from a GIBaseInfo.t, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALfrom_baseinfo">from_baseinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Return a GIRegisteredTypeInfo.t from a GIBaseInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfrom_callableinfo">from_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
@@ -508,6 +587,41 @@ Return a GISignalInfo.t from a GICallableInfo.t, the underlying C structure
 Return a GIVFuncInfo.t from a GICallableInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIStructInfo.html#VALfrom_registeredtypeinfo">from_registeredtypeinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Return a GIStructInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALfrom_registeredtypeinfo">from_registeredtypeinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Return a GIUnionInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALfrom_registeredtypeinfo">from_registeredtypeinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Return a GIEnumInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALfrom_registeredtypeinfo">from_registeredtypeinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Return a GIObjectInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIInterfaceInfo.html#VALfrom_registeredtypeinfo">from_registeredtypeinfo</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
+<td><div class="info">
+Return a GIInterfaceInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
 </div>
 </td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALfunctioninfo">functioninfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
@@ -686,10 +800,20 @@ Obtain the flags for this property info.
 Obtain the flags for this signal info.
 </div>
 </td></tr>
+<tr><td><a href="GIVFuncInfo.html#VALget_flags">get_flags</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
+<td><div class="info">
+Obtain the flags for this virtual function info.
+</div>
+</td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_fundamental">get_fundamental</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
 <td><div class="info">
 Obtain if the object type is of a fundamental type which is not
     G_TYPE_OBJECT.
+</div>
+</td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALget_g_type">get_g_type</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Obtain the gtype for this registered type or None which a special meaning.
 </div>
 </td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_get_value_function">get_get_value_function</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
@@ -861,6 +985,8 @@ Obtain the number of virtual functions that this interface type has.
 Obtain the name of the info .
 </div>
 </td></tr>
+<tr><td><a href="Loader.html#VALget_namespace">get_namespace</a> [<a href="Loader.html">Loader</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIBaseInfo.html#VALget_namespace">get_namespace</a> [<a href="GIBaseInfo.html">GIBaseInfo</a>]</td>
 <td><div class="info">
 Obtain the namespace of info
@@ -1025,9 +1151,19 @@ Obtain the function which when called will return the GType function for
     which this object type is registered.
 </div>
 </td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALget_type_init">get_type_init</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Obtain the type init function for info .
+</div>
+</td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_type_name">get_type_name</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
 <td><div class="info">
 Obtain the name of the objects class/type.
+</div>
+</td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALget_type_name">get_type_name</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Obtain the type name of the struct within the GObject type system.
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_typelib_path">get_typelib_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -1165,6 +1301,9 @@ Obtain if an argument is only useful in C.
 Obtain if the last element of the array is NULL.
 </div>
 </td></tr>
+<tr><td align="left"><br>L</td></tr>
+<tr><td><a href="Loader.html#VALload">load</a> [<a href="Loader.html">Loader</a>]</td>
+<td></td></tr>
 <tr><td align="left"><br>M</td></tr>
 <tr><td><a href="GIArgInfo.html#VALmay_be_null">may_be_null</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
@@ -1198,6 +1337,8 @@ Prepends directory to the typelib search path.
 <tr><td><a href="GIPropertyInfo.html#VALpropertyinfo">propertyinfo</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>R</td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALregisteredtypeinfo">registeredtypeinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
 <td><div class="info">
 Force the namespace namespace_ to be loaded if it isn't already.
@@ -1218,6 +1359,8 @@ See if a callable's return value is only useful in C.
 Get the name of a baseinfo_type.
 </div>
 </td></tr>
+<tr><td><a href="GIVFuncInfo.html#VALstring_of_flags">string_of_flags</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
+<td></td></tr>
 <tr><td><a href="GITypes.html#VALstring_of_tag">string_of_tag</a> [<a href="GITypes.html">GITypes</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIStructInfo.html#VALstructinfo">structinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
@@ -1330,6 +1473,13 @@ Return a GIBaseInfo.t from a GIVFuncInfo, the underlying C structure
     GIBaseInfo.baseinfo_unref.
 </div>
 </td></tr>
+<tr><td><a href="GIRegisteredTypeInfo.html#VALto_baseinfo">to_baseinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
+<td><div class="info">
+Return a GIBaseInfo.t from a GIRegisteredTypeInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
 <tr><td><a href="GIFunctionInfo.html#VALto_callableinfo">to_callableinfo</a> [<a href="GIFunctionInfo.html">GIFunctionInfo</a>]</td>
 <td><div class="info">
 Return a GICallableInfo.t from a GIFunctionInfo, the underlying C structure
@@ -1349,6 +1499,41 @@ Return a GICallableInfo.t from a GISignalInfo, the underlying C structure
 Return a GICallableInfo.t from a GIVFuncInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIStructInfo.html#VALto_registeredtypeinfo">to_registeredtypeinfo</a> [<a href="GIStructInfo.html">GIStructInfo</a>]</td>
+<td><div class="info">
+Return a GIRegisteredTypeInfo.t form a GIStructInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIUnionInfo.html#VALto_registeredtypeinfo">to_registeredtypeinfo</a> [<a href="GIUnionInfo.html">GIUnionInfo</a>]</td>
+<td><div class="info">
+Return a GIRegisteredTypeInfo.t form a GIUnionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIEnumInfo.html#VALto_registeredtypeinfo">to_registeredtypeinfo</a> [<a href="GIEnumInfo.html">GIEnumInfo</a>]</td>
+<td><div class="info">
+Return a GIRegisteredTypeInfo.t form a GIEnumInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIObjectInfo.html#VALto_registeredtypeinfo">to_registeredtypeinfo</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
+<td><div class="info">
+Return a GIRegisteredTypeInfo.t form a GIObjectInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
+</div>
+</td></tr>
+<tr><td><a href="GIInterfaceInfo.html#VALto_registeredtypeinfo">to_registeredtypeinfo</a> [<a href="GIInterfaceInfo.html">GIInterfaceInfo</a>]</td>
+<td><div class="info">
+Return a GIRegisteredTypeInfo.t form a GIInterfaceInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.
 </div>
 </td></tr>
 <tr><td><a href="GITypeInfo.html#VALto_string">to_string</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>

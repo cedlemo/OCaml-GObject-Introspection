@@ -11,6 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIRegisteredTypeInfo" rel="Chapter" href="GIRegisteredTypeInfo.html">
 <link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
@@ -28,7 +29,8 @@
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
-<link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIUnionInfo</title>
+<link title="GIRepository" rel="Chapter" href="GIRepository.html">
+<link title="Loader" rel="Chapter" href="Loader.html"><title>GIUnionInfo</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="GIEnumInfo.html" title="GIEnumInfo">Previous</a>
@@ -115,5 +117,25 @@ Return a GIUnionInfo.t from a GIBaseInfo.t, the underlying C structure
 Return a GIBaseInfo.t form a GIUnionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIBaseInfo.baseinfo_unref.<br>
+</div>
+
+<pre><span id="VALcast_from_registeredtypeinfo"><span class="keyword">val</span> cast_from_registeredtypeinfo</span> : <code class="type"><a href="GIRegisteredTypeInfo.html#TYPEt">GIRegisteredTypeInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Just cast OCaml Ctypes registeredtype info to union info.<br>
+</div>
+
+<pre><span id="VALcast_to_registeredtypeinfo"><span class="keyword">val</span> cast_to_registeredtypeinfo</span> : <code class="type"><a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIRegisteredTypeInfo.html#TYPEt">GIRegisteredTypeInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Just cast OCaml Ctypes union info to registeredtype info<br>
+</div>
+
+<pre><span id="VALfrom_registeredtypeinfo"><span class="keyword">val</span> from_registeredtypeinfo</span> : <code class="type"><a href="GIRegisteredTypeInfo.html#TYPEt">GIRegisteredTypeInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIUnionInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.<br>
+</div>
+
+<pre><span id="VALto_registeredtypeinfo"><span class="keyword">val</span> to_registeredtypeinfo</span> : <code class="type"><a href="GIUnionInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIRegisteredTypeInfo.html#TYPEt">GIRegisteredTypeInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
+Return a GIRegisteredTypeInfo.t form a GIUnionInfo, the underlying C structure
+    ref count is increased and the value is Gc.finalis"ed" with
+    GIRegisteredTypeInfo.registeredtypeinfo_unref.<br>
 </div>
 </body></html>

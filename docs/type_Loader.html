@@ -25,7 +25,11 @@
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html">
-<link title="Loader" rel="Chapter" href="Loader.html"><title>Conversions</title>
+<link title="Loader" rel="Chapter" href="Loader.html"><title>Loader</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span>&nbsp;&nbsp;<span class="keyword">end</span></code></body></html>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;load&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?version:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Loader</span>.t&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_namespace&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+<span class="keyword">end</span></code></body></html>

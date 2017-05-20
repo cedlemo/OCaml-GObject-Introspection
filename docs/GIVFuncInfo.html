@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Conversions.html">
+<link rel="previous" href="GIRegisteredTypeInfo.html">
 <link rel="next" href="GISignalInfo.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIRegisteredTypeInfo" rel="Chapter" href="GIRegisteredTypeInfo.html">
 <link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
@@ -28,10 +29,11 @@
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
-<link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIVFuncInfo</title>
+<link title="GIRepository" rel="Chapter" href="GIRepository.html">
+<link title="Loader" rel="Chapter" href="Loader.html"><title>GIVFuncInfo</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Conversions.html" title="Conversions">Previous</a>
+<div class="navbar"><a class="pre" href="GIRegisteredTypeInfo.html" title="GIRegisteredTypeInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;<a class="post" href="GISignalInfo.html" title="GISignalInfo">Next</a>
 </div>
@@ -61,6 +63,56 @@ Obtain the signal for the virtual function if one is set. The signal comes
     In order to avoid circular call graph between GIVFuncInfo and GISignalInfo,
     this function will return a GICallableInfo. It is upto the user to use
     GISignalInfo.from_callableinfo in order to have the GISignalInfo.<br>
+</div>
+
+<pre><code><span id="TYPEflags"><span class="keyword">type</span> <code class="type"></code>flags</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTflags.Must_chain_up"><span class="constructor">Must_chain_up</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+chains up to the parent type<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTflags.Must_override"><span class="constructor">Must_override</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+overrides<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTflags.Must_not_override"><span class="constructor">Must_not_override</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+does not override<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTflags.Throws"><span class="constructor">Throws</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Includes  a GError<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_flags"><span class="keyword">val</span> string_of_flags</span> : <code class="type"><a href="GIVFuncInfo.html#TYPEflags">flags</a> -> string</code></pre>
+<pre><span id="VALget_flags"><span class="keyword">val</span> get_flags</span> : <code class="type"><a href="GIVFuncInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -> <a href="GIVFuncInfo.html#TYPEflags">flags</a> list</code></pre><div class="info ">
+Obtain the flags for this virtual function info. See GIVFuncInfoFlags for
+    more information about possible flag values.<br>
 </div>
 
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIVFuncInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">

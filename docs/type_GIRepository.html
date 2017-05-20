@@ -6,6 +6,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIRegisteredTypeInfo" rel="Chapter" href="GIRegisteredTypeInfo.html">
 <link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
@@ -23,7 +24,8 @@
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
-<link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIRepository</title>
+<link title="GIRepository" rel="Chapter" href="GIRepository.html">
+<link title="Loader" rel="Chapter" href="Loader.html"><title>GIRepository</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span>
@@ -32,7 +34,7 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_default&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIRepository</span>.repository
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;require&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIRepository</span>.typelib
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?version:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIRepository</span>.typelib&nbsp;option
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_loaded_namespaces&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_dependencies&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_c_prefix&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
@@ -50,4 +52,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_shared_library&nbsp;:&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;prepend_library_path&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;gtype&nbsp;=&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_by_gtype&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRepository</span>.repository&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRepository</span>.gtype&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
 <span class="keyword">end</span></code></body></html>

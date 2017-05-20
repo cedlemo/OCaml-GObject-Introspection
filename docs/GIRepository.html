@@ -5,11 +5,13 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="GIBaseInfo.html">
+<link rel="next" href="Loader.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Conversions" rel="Chapter" href="Conversions.html">
+<link title="GIRegisteredTypeInfo" rel="Chapter" href="GIRegisteredTypeInfo.html">
 <link title="GIVFuncInfo" rel="Chapter" href="GIVFuncInfo.html">
 <link title="GISignalInfo" rel="Chapter" href="GISignalInfo.html">
 <link title="GIPropertyInfo" rel="Chapter" href="GIPropertyInfo.html">
@@ -27,12 +29,14 @@
 <link title="GIStructInfo" rel="Chapter" href="GIStructInfo.html">
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
-<link title="GIRepository" rel="Chapter" href="GIRepository.html"><title>GIRepository</title>
+<link title="GIRepository" rel="Chapter" href="GIRepository.html">
+<link title="Loader" rel="Chapter" href="Loader.html"><title>GIRepository</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="GIBaseInfo.html" title="GIBaseInfo">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;</div>
+&nbsp;<a class="post" href="Loader.html" title="Loader">Next</a>
+</div>
 <h1>Module <a href="type_GIRepository.html">GIRepository</a></h1>
 
 <pre><span class="keyword">module</span> GIRepository: <code class="code"><span class="keyword">sig</span></code> <a href="GIRepository.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -56,7 +60,7 @@ GIRepository — GObject Introspection repository manager module
 Returns the singleton process-global default GIRepository.<br>
 </div>
 
-<pre><span id="VALrequire"><span class="keyword">val</span> require</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string -> string option -> int -> unit -> <a href="GIRepository.html#TYPEtypelib">typelib</a></code></pre><div class="info ">
+<pre><span id="VALrequire"><span class="keyword">val</span> require</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       string -> ?version:string -> unit -> <a href="GIRepository.html#TYPEtypelib">typelib</a> option</code></pre><div class="info ">
 Force the namespace namespace_ to be loaded if it isn't already. If
     namespace_ is not loaded, this function will search for a ".typelib" file
     using the repository search path. In addition, a version version of
@@ -152,5 +156,17 @@ Prepends directory to the search path that is used to search shared
     loading will fall back to the system library path (ie. LD_LIBRARY_PATH and
     DT_RPATH in ELF systems). See the documentation of your dynamic linker for
     full details.<br>
+</div>
+
+<pre><span id="TYPEgtype"><span class="keyword">type</span> <code class="type"></code>gtype</span> = <code class="type">int</code> </pre>
+
+
+<pre><span id="VALfind_by_gtype"><span class="keyword">val</span> find_by_gtype</span> : <code class="type"><a href="GIRepository.html#TYPErepository">repository</a> -><br>       <a href="GIRepository.html#TYPEgtype">gtype</a> -> <a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr option</code></pre><div class="info ">
+Searches all loaded namespaces for a particular #GType.  Note that
+     in order to locate the metadata, the namespace corresponding to
+     the type must first have been loaded.  There is currently no
+     mechanism for determining the namespace which corresponds to an
+     arbitrary GType - thus, this function will operate most reliably
+     when you know the GType to originate from be from a loaded namespace.<br>
 </div>
 </body></html>
