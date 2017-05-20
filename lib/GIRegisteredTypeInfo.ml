@@ -22,6 +22,10 @@ open Foreign
 type t
 let registeredtypeinfo : t structure typ = structure "GIRegisteredTypeInfo"
 
+let get_type_name =
+  foreign "g_registered_type_info_get_type_name"
+    (ptr registeredtypeinfo @-> returning string_opt)
+
 (* TODO : check that the info can be casted to vfunc info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr registeredtypeinfo) info

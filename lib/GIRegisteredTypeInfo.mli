@@ -31,6 +31,11 @@ open Ctypes
 type t
 val registeredtypeinfo : t structure typ
 
+(** Obtain the type name of the struct within the GObject type system.
+    This type can be passed to g_type_name() to get a #GType. *)
+val get_type_name:
+  t structure ptr -> string option
+
 (** Just cast OCaml Ctypes base info to registeredtype info. *)
 val cast_from_baseinfo:
   GIBaseInfo.t structure ptr -> t structure ptr
