@@ -41,9 +41,15 @@ val get_type_name:
     It means that either there is no type information associated with this @info or
     that the shared library which provides the type_init function for this
     @info cannot be called. *)
-
 val get_g_type:
   t structure ptr -> GIRepository.gtype option
+
+(** Obtain the type init function for info . The type init function is the
+    function which will register the GType within the GObject type system.
+    Usually this is not called by langauge bindings or applications, use
+    GIRegisteredTypeInfo.get_g_type directly instead. *)
+val get_type_init:
+  t structure ptr -> string option
 
 (** Just cast OCaml Ctypes base info to registeredtype info. *)
 val cast_from_baseinfo:

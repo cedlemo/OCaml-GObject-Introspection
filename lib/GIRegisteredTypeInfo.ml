@@ -34,6 +34,10 @@ let get_g_type info =
   if gtype == ( 1 lsl 2 ) then None (* G_TYPE_NONE *)
   else Some gtype
 
+let get_type_init =
+  foreign "g_registered_type_info_get_type_init"
+    (ptr registeredtypeinfo @-> returning string_opt)
+
 (* TODO : check that the info can be casted to vfunc info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr registeredtypeinfo) info
