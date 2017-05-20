@@ -16,28 +16,28 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests;
-      TestGIEnumInfo.tests;
-      TestGICallableInfo.tests;
-      TestGIArgInfo.tests;
-      TestGITypeInfo.tests;
-      TestGIConstantInfo.tests;
-      TestGIObjectInfo.tests;
-      TestGIInterfaceInfo.tests;
-      TestGIPropertyInfo.tests;
-      TestGISignalInfo.tests;
-      TestGIVFuncInfo.tests;
-      TestGIRegisteredTypeInfo.tests
-    ]
-  )
+let get_enum_info repo namespace enum_name =
+  let _ = GIRepository.require repo namespace None 0 () in
+  match GIRepository.find_by_name repo namespace enum_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Enum -> let info = GIEnumInfo.from_baseinfo base_info
+      in Some info
+    | _ -> None
+
+let enum_test fn =
+  let namespace = "Gio" in
+  let repo = GIRepository.get_default () in
+  let enum_name = "ResourceError" in
+  match get_enum_info repo namespace enum_name with
+  | None -> assert_equal_string enum_name "No base info found"
+  | Some (info) -> fn info
+
+let tests =
+  "GObject Introspection GIRegisteredTypeInfo tests" >:::
+  [
+  ]
