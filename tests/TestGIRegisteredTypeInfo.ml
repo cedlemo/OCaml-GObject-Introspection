@@ -37,7 +37,16 @@ let enum_test fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
+let test_get_type_name_from_enum test_ctxt =
+  enum_test (fun info ->
+      let registered = GIEnumInfo.to_registeredtypeinfo info in
+      match  GIRegisteredTypeInfo.get_type_name registered with
+      | None -> assert_equal_string "It should return " "a name"
+      | Some name -> assert_equal_string "GResourceError" name
+    )
+
 let tests =
   "GObject Introspection GIRegisteredTypeInfo tests" >:::
   [
+    "GIRegisteredTypeInfo get type name from enum" >:: test_get_type_name_from_enum
   ]
