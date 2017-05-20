@@ -178,7 +178,6 @@ let test_get_type_init_from_enum test_ctxt =
       | Some name -> assert_equal_string "g_resource_error_get_type" name
     )
 
-
 let tests =
   "GObject Introspection GIRegisteredTypeInfo tests" >:::
   [
