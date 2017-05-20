@@ -45,8 +45,35 @@ let test_get_type_name_from_enum test_ctxt =
       | Some name -> assert_equal_string "GResourceError" name
     )
 
+let get_interface_info repo namespace interface_name =
+  let _ = GIRepository.require repo namespace None 0 () in
+  match GIRepository.find_by_name repo namespace interface_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Interface -> let info = GIInterfaceInfo.from_baseinfo base_info
+      in Some info
+    | _ -> None
+
+let interface_test fn =
+  let namespace = "Gio" in
+  let repo = GIRepository.get_default () in
+  let interface_name = "TlsServerConnection" in
+  match get_interface_info repo namespace interface_name with
+  | None -> assert_equal_string interface_name "No base info found"
+  | Some (info) -> fn info
+
+let test_get_type_name_from_interface test_ctxt =
+  interface_test (fun info ->
+      let registered = GIInterfaceInfo.to_registeredtypeinfo info in
+      match  GIRegisteredTypeInfo.get_type_name registered with
+      | None -> assert_equal_string "It should return " "a name"
+      | Some name -> assert_equal_string "GTlsServerConnection" name
+    )
+
 let tests =
   "GObject Introspection GIRegisteredTypeInfo tests" >:::
   [
-    "GIRegisteredTypeInfo get type name from enum" >:: test_get_type_name_from_enum
+    "GIRegisteredTypeInfo get type name from enum" >:: test_get_type_name_from_enum;
+    "GIRegisteredTypeInfo get type name from interface" >:: test_get_type_name_from_interface
   ]
