@@ -20,7 +20,7 @@ open TestUtils
 open OUnit2
 
 let get_enum_info repo namespace enum_name =
-  let _ = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace () in
   match GIRepository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
@@ -46,7 +46,7 @@ let test_get_type_name_from_enum test_ctxt =
     )
 
 let get_interface_info repo namespace interface_name =
-  let _ = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace () in
   match GIRepository.find_by_name repo namespace interface_name with
   | None -> None
   | Some (base_info) ->
@@ -72,7 +72,7 @@ let test_get_type_name_from_interface test_ctxt =
     )
 
 let get_object_info repo namespace object_name =
-  let _ = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace () in
   match GIRepository.find_by_name repo namespace object_name with
   | None -> None
   | Some (base_info) ->
@@ -98,7 +98,7 @@ let test_get_type_name_from_object test_ctxt =
     )
 
 let get_struct_info repo namespace struct_name =
-  let _ = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace () in
   match GIRepository.find_by_name repo namespace struct_name with
   | None -> None
   | Some (base_info) ->
@@ -124,7 +124,7 @@ let test_get_type_name_from_struct test_ctxt =
     )
 
 let get_union_info repo namespace union_name =
-  let _ = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace () in
   match GIRepository.find_by_name repo namespace union_name with
   | None -> None
   | Some (base_info) ->

@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "GLib"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 let union_name = "Mutex"
 
 let test_from_baseinfo test_ctxt =

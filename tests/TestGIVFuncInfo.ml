@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "Gtk"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 let object_name = "Window"
 let vfunc_name = "activate_default"
 

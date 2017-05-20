@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 let func_name = "signal_name"
 
 let get_callable_info () =

@@ -22,7 +22,7 @@ open Ctypes
 
 let namespace = "GObject"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 let const_name = "SIGNAL_FLAGS_MASK"
 
 let get_constant_info () =

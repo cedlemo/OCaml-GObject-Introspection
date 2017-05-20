@@ -26,12 +26,12 @@ let test_get_default test_ctxt =
 let test_require test_ctxt =
   let repo = GIRepository.get_default () in
   let namespace = "Gio" in
-  let _ = GIRepository.require repo namespace None 0 () in
+  let _ = GIRepository.require repo namespace () in
   assert_equal_boolean true true
 
 let namespace = "Gio"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 
 let test_get_loaded_namespaces test_ctxt =
   let namespaces_check = "GLib GObject Gio" in

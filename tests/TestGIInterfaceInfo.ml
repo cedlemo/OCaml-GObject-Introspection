@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "Gio"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 let interface_name = "TlsServerConnection"
 
 let get_interface_info interface_name =

@@ -21,7 +21,7 @@ open OUnit2
 
 let namespace = "Gtk"
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace None 0 ()
+let typelib = GIRepository.require repo namespace ()
 let property_name = "accept-focus"
 
 let test_get_property_from_repo test_ctxt =
