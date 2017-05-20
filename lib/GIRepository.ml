@@ -29,9 +29,14 @@ let typelib : typelib typ = ptr void
 let get_default =
   foreign "g_irepository_get_default" (void @-> returning repository)
 
-let require =
+let require repo namespace ?version () =
+  let require_raw =
   foreign "g_irepository_require"
-    (repository @-> string @-> string_opt @-> int @->  void @-> returning typelib)
+    (repository @-> string @-> string_opt @-> int @->  void @-> returning (ptr_opt void)) in
+  match require_raw repo namespace version 0 () with
+  | None -> None
+  | Some typelib_ptr -> let typelib_ptr' = coerce (ptr void) (typelib) typelib_ptr in
+    Some typelib_ptr'
 
 let get_loaded_namespaces repo =
   let get_loaded_namespaces_raw =
