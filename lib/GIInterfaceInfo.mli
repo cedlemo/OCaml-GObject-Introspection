@@ -126,13 +126,13 @@ val cast_from_registeredtypeinfo:
 val cast_to_registeredtypeinfo:
   t structure ptr -> GIRegisteredTypeInfo.t structure ptr
 
-(** Return a GIEnumInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+(** Return a GIInterfaceInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val from_registeredtypeinfo:
   GIRegisteredTypeInfo.t structure ptr -> t structure ptr
 
-(** Return a GIRegisteredTypeInfo.t form a GIEnumInfo, the underlying C structure
+(** Return a GIRegisteredTypeInfo.t form a GIInterfaceInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val to_registeredtypeinfo:
