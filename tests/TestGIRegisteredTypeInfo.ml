@@ -123,11 +123,38 @@ let test_get_type_name_from_struct test_ctxt =
       | Some name -> assert_equal_string "GValue" name
     )
 
+let get_union_info repo namespace union_name =
+  let _ = GIRepository.require repo namespace None 0 () in
+  match GIRepository.find_by_name repo namespace union_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Union -> let info = GIUnionInfo.from_baseinfo base_info
+      in Some info
+    | _ -> None
+
+let union_test fn =
+  let namespace = "GLib" in
+  let repo = GIRepository.get_default () in
+  let union_name = "Mutex" in
+  match get_union_info repo namespace union_name with
+  | None -> assert_equal_string union_name "No base info found"
+  | Some (info) -> fn info
+
+let test_get_type_name_from_union test_ctxt =
+  union_test (fun info ->
+      let registered = GIUnionInfo.to_registeredtypeinfo info in
+      match  GIRegisteredTypeInfo.get_type_name registered with
+      | None -> assert_equal_string "No type name" "No type name"
+      | Some name -> assert_equal_string "Mutex" name
+    )
+
 let tests =
   "GObject Introspection GIRegisteredTypeInfo tests" >:::
   [
     "GIRegisteredTypeInfo get type name from enum" >:: test_get_type_name_from_enum;
     "GIRegisteredTypeInfo get type name from interface" >:: test_get_type_name_from_interface;
     "GIRegisteredTypeInfo get type name from object" >:: test_get_type_name_from_object;
-    "GIRegisteredTypeInfo get type name from struct" >:: test_get_type_name_from_struct
+    "GIRegisteredTypeInfo get type name from struct" >:: test_get_type_name_from_struct;
+    "GIRegisteredTypeInfo get type name from union" >:: test_get_type_name_from_union
   ]
