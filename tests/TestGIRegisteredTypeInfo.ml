@@ -162,6 +162,15 @@ let test_get_type_from_enum test_ctxt =
           | Some name -> assert_equal_string "ResourceError" name
     )
 
+let test_get_type_init_from_union test_ctxt =
+  union_test (fun info ->
+      let registered = GIUnionInfo.to_registeredtypeinfo info in
+      match GIRegisteredTypeInfo.get_type_init registered with
+      | None -> assert_equal_string "No type init" "No type init"
+      | Some name -> assert_equal_string "It should not return" name
+    )
+
+
 let tests =
   "GObject Introspection GIRegisteredTypeInfo tests" >:::
   [
@@ -170,5 +179,6 @@ let tests =
     "GIRegisteredTypeInfo get type name from object" >:: test_get_type_name_from_object;
     "GIRegisteredTypeInfo get type name from struct" >:: test_get_type_name_from_struct;
     "GIRegisteredTypeInfo get type name from union" >:: test_get_type_name_from_union;
-    "GIRegisteredTypeInfo get type from enum" >:: test_get_type_from_enum
+    "GIRegisteredTypeInfo get type from enum" >:: test_get_type_from_enum;
+    "GIRegisteredTypeInfo get type init from union" >:: test_get_type_init_from_union
   ]
