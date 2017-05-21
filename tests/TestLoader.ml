@@ -53,6 +53,13 @@ let test_loader_get_version_bad test_ctxt =
   | Some loader -> let v = Loader.get_version loader in
     assert_equal_string "3.0" v
 
+let test_loader_generate_dir test_ctxt =
+test_loader "Gtk" (fun loader ->
+    Loader.generate_dir loader;
+    assert_equal_boolean true (Sys.file_exists "Gtk");
+    assert_equal_boolean true (Sys.is_directory "Gtk");
+    Unix.rmdir "Gtk";
+    )
 
 let tests =
   "GObject Introspection Loader tests" >:::
@@ -61,5 +68,6 @@ let tests =
     "GObject Introspection Loader with good namespace" >:: test_loader_with_good_namespace;
     "GObject Introspection Loader get namespace" >:: test_loader_get_namespace;
     "GObject Introspection Loader get version good" >:: test_loader_get_version_good;
-    "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad
+    "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad;
+    "GObject Introspection Loader generate dir" >:: test_loader_generate_dir
   ]
