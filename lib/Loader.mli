@@ -26,3 +26,6 @@ val load:
 
 val get_namespace:
   t -> string
+
+val get_version:
+  t -> string

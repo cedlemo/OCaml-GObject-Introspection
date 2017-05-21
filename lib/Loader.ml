@@ -25,14 +25,18 @@ type t = {
   repo : GIRepository.repository;
   typelib : GIRepository.typelib;
   namespace : string;
-  version : string option;
+  version : string;
 }
 
 let load namespace ?version () =
   let repo = GIRepository.get_default () in
   match GIRepository.require repo namespace ?version:version () with
   | None -> None
-  | Some typelib -> Some {repo; typelib; namespace; version}
+  | Some typelib -> let version' = GIRepository.get_version repo namespace in
+    Some {repo; typelib; namespace; version = version'}
 
 let get_namespace repo =
   repo.namespace
+
+let get_version repo =
+  repo.version
