@@ -39,10 +39,27 @@ let test_loader_get_namespace test_ctxt =
       assert_equal_string "Gtk" (Loader.get_namespace loader)
     )
 
+let test_loader_get_version_good test_ctxt =
+  let version = "3.0" in
+  match Loader.load "Gtk" ?version:(Some version) () with
+  | None -> assert_equal_string "Please provide " "a good namespace"
+  | Some loader -> let v = Loader.get_version loader in
+    assert_equal_string version v
+
+let test_loader_get_version_bad test_ctxt =
+  let version = "123.0" in
+  match Loader.load "Gtk" ?version:(Some version) () with
+  | None -> assert_equal true true
+  | Some loader -> let v = Loader.get_version loader in
+    assert_equal_string "3.0" v
+
+
 let tests =
   "GObject Introspection Loader tests" >:::
   [
     "GObject Introspection Loader with bad namespace" >:: test_loader_with_bad_namespace;
     "GObject Introspection Loader with good namespace" >:: test_loader_with_good_namespace;
-    "GObject Introspection Loader get namespace" >:: test_loader_get_namespace
+    "GObject Introspection Loader get namespace" >:: test_loader_get_namespace;
+    "GObject Introspection Loader get version good" >:: test_loader_get_version_good;
+    "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad
   ]
