@@ -40,3 +40,6 @@ let get_namespace repo =
 
 let get_version repo =
   repo.version
+
+let generate_dir repo =
+  Unix.mkdir repo.namespace 0o640

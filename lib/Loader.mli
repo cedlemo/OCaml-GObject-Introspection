@@ -29,3 +29,6 @@ val get_namespace:
 
 val get_version:
   t -> string
+
+val generate_dir:
+  t -> unit
