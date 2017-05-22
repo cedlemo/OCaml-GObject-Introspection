@@ -43,3 +43,13 @@ let get_version repo =
 
 let generate_dir repo =
   Unix.mkdir repo.namespace 0o640
+
+(* Module Organisation for namespace
+ * Namespace.ml
+ * Namespace.mli
+ *  - get all the functions of the main module
+ *  - create include with the other modules generated ?
+ * for all struct, unions, enums and object :
+ * namepsace_item_name.ml
+ * namespace_item_name.mli
+ *)
