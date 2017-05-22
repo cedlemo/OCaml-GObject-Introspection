@@ -59,13 +59,17 @@ let generate_dir repo =
  * namespace_item_name.mli
  *)
 
-let generate_main_files repo =
-  let name = repo.namespace ^ ".ml" in
-  let descr = Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name in
-  let ml = { name; descr } in
-  let name = repo.namespace ^ ".mli" in
-  let descr = Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name in
+let file_in_create_append_mode name =
+  Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name
+
+let generate_sources base_name =
+  let name = base_name ^ ".ml" in
+  let descr = file_in_create_append_mode name in
+  let ml = {name; descr} in
+  let name = base_name ^ ".mli" in
+  let descr = file_in_create_append_mode name in
   let mli = {name; descr} in
   {ml; mli}
 
-
+let generate_main_files repo =
+  generate_sources repo.namespace
