@@ -21,6 +21,11 @@ type file = {
   descr : Pervasives.out_channel;
 }
 
+type files = {
+  ml : file;
+  mli : file;
+}
+
 type t = {
   repo : GIRepository.repository;
   typelib : GIRepository.typelib;
@@ -53,3 +58,14 @@ let generate_dir repo =
  * namepsace_item_name.ml
  * namespace_item_name.mli
  *)
+
+let generate_main_files repo =
+  let name = repo.namespace ^ ".ml" in
+  let descr = Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name in
+  let ml = { name; descr } in
+  let name = repo.namespace ^ ".mli" in
+  let descr = Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name in
+  let mli = {name; descr} in
+  {ml; mli}
+
+
