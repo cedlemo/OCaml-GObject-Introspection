@@ -32,4 +32,9 @@
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;load&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?version:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Loader</span>.t&nbsp;option
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_namespace&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_version&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;generate_dir&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;file&nbsp;=&nbsp;{&nbsp;name&nbsp;:&nbsp;string;&nbsp;descr&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;files&nbsp;=&nbsp;{&nbsp;ml&nbsp;:&nbsp;<span class="constructor">Loader</span>.file;&nbsp;mli&nbsp;:&nbsp;<span class="constructor">Loader</span>.file;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;generate_main_files&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Loader</span>.files
 <span class="keyword">end</span></code></body></html>
