@@ -61,6 +61,22 @@ test_loader "Gtk" (fun loader ->
     Unix.rmdir "Gtk";
     )
 
+open Loader
+
+let test_loader_generate_main_files test_ctxt =
+  test_loader "GLib" (fun loader ->
+      let main_files = Loader.generate_main_files loader in
+      let _ = Printf.fprintf main_files.mli.descr "test" in
+      let _ = Printf.fprintf main_files.ml.descr "test" in
+      let test_close_and_remove file =
+        assert_equal_boolean true (Sys.file_exists file.name);
+        Pervasives.close_out file.descr;
+        Sys.remove file.name;
+      in
+      test_close_and_remove main_files.ml;
+      test_close_and_remove main_files.mli;
+    )
+
 let tests =
   "GObject Introspection Loader tests" >:::
   [
@@ -69,5 +85,6 @@ let tests =
     "GObject Introspection Loader get namespace" >:: test_loader_get_namespace;
     "GObject Introspection Loader get version good" >:: test_loader_get_version_good;
     "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad;
-    "GObject Introspection Loader generate dir" >:: test_loader_generate_dir
+    "GObject Introspection Loader generate dir" >:: test_loader_generate_dir;
+    "GObject Introspection Loader generate main files" >:: test_loader_generate_main_files
   ]
