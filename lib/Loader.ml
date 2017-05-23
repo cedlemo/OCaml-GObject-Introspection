@@ -40,14 +40,14 @@ let load namespace ?version () =
   | Some typelib -> let version' = GIRepository.get_version repo namespace in
     Some {repo; typelib; namespace; version = version'}
 
-let get_namespace repo =
-  repo.namespace
+let get_namespace loader =
+  loader.namespace
 
-let get_version repo =
-  repo.version
+let get_version loader =
+  loader.version
 
-let generate_dir repo =
-  Unix.mkdir repo.namespace 0o640
+let generate_dir loader =
+  Unix.mkdir loader.namespace 0o640
 
 (* Module Organisation for namespace
  * Namespace.ml
@@ -71,5 +71,5 @@ let generate_sources base_name =
   let mli = {name; descr} in
   {ml; mli}
 
-let generate_main_files repo =
-  generate_sources repo.namespace
+let generate_main_files loader =
+  generate_sources loader.namespace
