@@ -16,6 +16,9 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+(** Builder : module that will build OCaml binding with CTypes from the
+    GObject-Introspection information. *)
+
 open Ctypes
 open Foreign
 
