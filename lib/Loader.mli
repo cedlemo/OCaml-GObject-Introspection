@@ -46,3 +46,8 @@ type files = {
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
 val generate_main_files:
   t -> files
+
+(** Parse the GI infos and create the corresponding ctypes code *)
+val parse:
+  t -> unit
+
