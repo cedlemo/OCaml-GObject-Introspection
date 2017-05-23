@@ -33,19 +33,9 @@ val get_version:
 val generate_dir:
   t -> unit
 
-type file = {
-  name: string;
-  descr : Pervasives.out_channel;
-}
-
-type files = {
-  ml : file;
-  mli : file;
-}
-
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
 val generate_main_files:
-  t -> files
+  t -> Builder.files
 
 (** Parse the GI infos and create the corresponding ctypes code *)
 val parse:

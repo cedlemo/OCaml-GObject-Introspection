@@ -64,6 +64,7 @@ test_loader "Gtk" (fun loader ->
 open Loader
 
 let test_loader_generate_main_files test_ctxt =
+  let open Builder in
   test_loader "GLib" (fun loader ->
       let main_files = Loader.generate_main_files loader in
       let _ = Printf.fprintf main_files.mli.descr "test" in
