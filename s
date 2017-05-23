@@ -1,0 +1,46 @@
+[1mdiff --git a/lib/Loader.ml b/lib/Loader.ml[m
+[1mindex 7fcb47b..33eba7a 100644[m
+[1m--- a/lib/Loader.ml[m
+[1m+++ b/lib/Loader.ml[m
+[36m@@ -77,7 +77,7 @@[m [mlet generate_main_files loader =[m
+ let parse_invalid_info info =[m
+   ()[m
+ [m
+[31m-let parse_function_info info =[m
+[32m+[m[32mlet parse_function_info info source_files =[m
+   ()[m
+ [m
+ let parse_callback_info info =[m
+[36m@@ -101,7 +101,7 @@[m [mlet parse_object_info info =[m
+ let parse_interface_info info =[m
+   ()[m
+ [m
+[31m-let parse_constant_info info =[m
+[32m+[m[32mlet parse_constant_info info source_files =[m
+   ()[m
+ [m
+ let parse_union_info info =[m
+[36m@@ -132,12 +132,13 @@[m [mlet parse_unresolved_info info =[m
+   ()[m
+ [m
+ let parse loader =[m
+[32m+[m[32m  let main_sources = generate_main_files loader in[m
+   let n = GIRepository.get_n_infos loader.repo loader.namespace in[m
+   for i = 0 to n - 1 do[m
+     let info = GIRepository.get_info loader.repo loader.namespace i in[m
+     match GIBaseInfo.get_type info with[m
+     | GIBaseInfo.Invalid -> parse_invalid_info info[m
+[31m-    | GIBaseInfo.Function -> parse_function_info info[m
+[32m+[m[32m    | GIBaseInfo.Function -> parse_function_info info main_sources[m
+     | GIBaseInfo.Callback -> parse_callback_info info[m
+     | GIBaseInfo.Struct -> parse_struct_info info[m
+     | GIBaseInfo.Boxed -> parse_boxed_info info[m
+[36m@@ -145,7 +146,7 @@[m [mlet parse loader =[m
+     | GIBaseInfo.Flags -> parse_flags_info info[m
+     | GIBaseInfo.Object -> parse_object_info info[m
+     | GIBaseInfo.Interface -> parse_interface_info info[m
+[31m-    | GIBaseInfo.Constant -> parse_constant_info info[m
+[32m+[m[32m    | GIBaseInfo.Constant -> parse_constant_info info main_sources[m
+     | GIBaseInfo.Invalid_0 -> ()[m
+     | GIBaseInfo.Union -> parse_union_info info[m
+     | GIBaseInfo.Value -> parse_value_info info[m

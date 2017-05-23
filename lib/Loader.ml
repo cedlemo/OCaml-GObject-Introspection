@@ -77,7 +77,7 @@ let generate_main_files loader =
 let parse_invalid_info info =
   ()
 
-let parse_function_info info =
+let parse_function_info info source_files =
   ()
 
 let parse_callback_info info =
@@ -101,7 +101,7 @@ let parse_object_info info =
 let parse_interface_info info =
   ()
 
-let parse_constant_info info =
+let parse_constant_info info source_files =
   ()
 
 let parse_union_info info =
@@ -132,12 +132,13 @@ let parse_unresolved_info info =
   ()
 
 let parse loader =
+  let main_sources = generate_main_files loader in
   let n = GIRepository.get_n_infos loader.repo loader.namespace in
   for i = 0 to n - 1 do
     let info = GIRepository.get_info loader.repo loader.namespace i in
     match GIBaseInfo.get_type info with
     | GIBaseInfo.Invalid -> parse_invalid_info info
-    | GIBaseInfo.Function -> parse_function_info info
+    | GIBaseInfo.Function -> parse_function_info info main_sources
     | GIBaseInfo.Callback -> parse_callback_info info
     | GIBaseInfo.Struct -> parse_struct_info info
     | GIBaseInfo.Boxed -> parse_boxed_info info
@@ -145,7 +146,7 @@ let parse loader =
     | GIBaseInfo.Flags -> parse_flags_info info
     | GIBaseInfo.Object -> parse_object_info info
     | GIBaseInfo.Interface -> parse_interface_info info
-    | GIBaseInfo.Constant -> parse_constant_info info
+    | GIBaseInfo.Constant -> parse_constant_info info main_sources
     | GIBaseInfo.Invalid_0 -> ()
     | GIBaseInfo.Union -> parse_union_info info
     | GIBaseInfo.Value -> parse_value_info info
