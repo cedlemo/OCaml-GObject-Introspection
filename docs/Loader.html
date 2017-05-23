@@ -5,6 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="GIRepository.html">
+<link rel="next" href="Builder.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -29,12 +30,14 @@
 <link title="GIFunctionInfo" rel="Chapter" href="GIFunctionInfo.html">
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html">
-<link title="Loader" rel="Chapter" href="Loader.html"><title>Loader</title>
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Builder" rel="Chapter" href="Builder.html"><title>Loader</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="GIRepository.html" title="GIRepository">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;</div>
+&nbsp;<a class="post" href="Builder.html" title="Builder">Next</a>
+</div>
 <h1>Module <a href="type_Loader.html">Loader</a></h1>
 
 <pre><span class="keyword">module</span> Loader: <code class="code"><span class="keyword">sig</span></code> <a href="Loader.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -49,45 +52,11 @@ Generate the files Namespace.ml and Namespace.mli in append mode<br>
 <pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALgenerate_dir"><span class="keyword">val</span> generate_dir</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> unit</code></pre>
-<pre><code><span id="TYPEfile"><span class="keyword">type</span> <code class="type"></code>file</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTfile.name">name</span>&nbsp;: <code class="type">string</code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTfile.descr">descr</span>&nbsp;: <code class="type">Pervasives.out_channel</code>;</code></td>
-
-</tr></table>
-}
-
-
-
-<pre><code><span id="TYPEfiles"><span class="keyword">type</span> <code class="type"></code>files</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTfiles.ml">ml</span>&nbsp;: <code class="type"><a href="Loader.html#TYPEfile">file</a></code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTfiles.mli">mli</span>&nbsp;: <code class="type"><a href="Loader.html#TYPEfile">file</a></code>;</code></td>
-
-</tr></table>
-}
-
-
-
-<pre><span id="VALgenerate_main_files"><span class="keyword">val</span> generate_main_files</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> <a href="Loader.html#TYPEfiles">files</a></code></pre><div class="info ">
+<pre><span id="VALgenerate_main_files"><span class="keyword">val</span> generate_main_files</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> <a href="Builder.html#TYPEfiles">Builder.files</a></code></pre><div class="info ">
 Generate the files Namespace.ml and Namespace.mli in append mode<br>
+</div>
+
+<pre><span id="VALparse"><span class="keyword">val</span> parse</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+Parse the GI infos and create the corresponding ctypes code<br>
 </div>
 </body></html>
