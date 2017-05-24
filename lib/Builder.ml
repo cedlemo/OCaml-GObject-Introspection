@@ -38,6 +38,12 @@ let generate_sources base_name =
   let mli = {name; descr} in
   {ml; mli}
 
+let close_sources source_files =
+  let close_file f =
+    if Sys.file_exists f.name then Pervasives.close_out f.descr in
+  close_file source_files.ml;
+  close_file source_files.mli
+
 let parse_invalid_info info =
   ()
 

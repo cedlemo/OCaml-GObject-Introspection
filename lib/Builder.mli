@@ -35,6 +35,9 @@ type files = {
 val generate_sources:
   string -> files
 
+val close_sources:
+  files -> unit
+
 val parse_invalid_info :
   GIBaseInfo.t structure ptr -> unit
 
