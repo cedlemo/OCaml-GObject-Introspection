@@ -61,6 +61,9 @@ Builder : module that will build OCaml binding with CTypes from the
 </tr></table>
 }
 
+<div class="info ">
+A simple file type that contains the name and the file descriptor.<br>
+</div>
 
 
 <pre><code><span id="TYPEfiles"><span class="keyword">type</span> <code class="type"></code>files</span> = {</code></pre><table class="typetable">
@@ -80,7 +83,21 @@ Builder : module that will build OCaml binding with CTypes from the
 </tr></table>
 }
 
+<div class="info ">
+A type that for OCaml source file. The ml field is for the source code
+    file and the mli field is for the header file.<br>
+</div>
 
+
+<pre><span id="VALgenerate_sources"><span class="keyword">val</span> generate_sources</span> : <code class="type">string -> <a href="Builder.html#TYPEfiles">files</a></code></pre><div class="info ">
+Helper that use the argument as a base name in order to create two files
+    one with the .ml extension and one with the .mli extension in create and
+    append mode. The name and the file descriptor are returned in a files type.<br>
+</div>
+
+<pre><span id="VALclose_sources"><span class="keyword">val</span> close_sources</span> : <code class="type"><a href="Builder.html#TYPEfiles">files</a> -> unit</code></pre><div class="info ">
+Close the two file descriptors in a files type<br>
+</div>
 
 <pre><span id="VALparse_invalid_info"><span class="keyword">val</span> parse_invalid_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
 <pre><span id="VALparse_function_info"><span class="keyword">val</span> parse_function_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> <a href="Builder.html#TYPEfiles">files</a> -> unit</code></pre>

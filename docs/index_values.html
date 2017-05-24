@@ -376,6 +376,11 @@ Just cast OCaml Ctypes object info to registeredtype info
 Just cast OCaml Ctypes enum info to registeredtype info
 </div>
 </td></tr>
+<tr><td><a href="Builder.html#VALclose_sources">close_sources</a> [<a href="Builder.html">Builder</a>]</td>
+<td><div class="info">
+Close the two file descriptors in a files type
+</div>
+</td></tr>
 <tr><td><a href="GIConstantInfo.html#VALconstantinfo">constantinfo</a> [<a href="GIConstantInfo.html">GIConstantInfo</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>E</td></tr>
@@ -657,6 +662,13 @@ Get the next element of a gslist
 <tr><td><a href="Loader.html#VALgenerate_main_files">generate_main_files</a> [<a href="Loader.html">Loader</a>]</td>
 <td><div class="info">
 Generate the files Namespace.ml and Namespace.mli in append mode
+</div>
+</td></tr>
+<tr><td><a href="Builder.html#VALgenerate_sources">generate_sources</a> [<a href="Builder.html">Builder</a>]</td>
+<td><div class="info">
+Helper that use the argument as a base name in order to create two files
+    one with the .ml extension and one with the .mli extension in create and
+    append mode.
 </div>
 </td></tr>
 <tr><td><a href="GIObjectInfo.html#VALget_abstract">get_abstract</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
