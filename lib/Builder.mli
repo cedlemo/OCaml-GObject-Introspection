@@ -22,19 +22,26 @@
 open Ctypes
 open Foreign
 
+(** A simple file type that contains the name and the file descriptor. *)
 type file = {
   name: string;
   descr : Pervasives.out_channel;
 }
 
+(** A type that for OCaml source file. The ml field is for the source code
+    file and the mli field is for the header file.*)
 type files = {
   ml : file;
   mli : file;
 }
 
+(** Helper that use the argument as a base name in order to create two files
+    one with the .ml extension and one with the .mli extension in create and
+    append mode. The name and the file descriptor are returned in a files type. *)
 val generate_sources:
   string -> files
 
+(** Close the two file descriptors in a files type *)
 val close_sources:
   files -> unit
 
