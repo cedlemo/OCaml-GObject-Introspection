@@ -99,7 +99,7 @@ let string_of_baseinfo_type baseinfo_t =
   | Flags -> "flags"
   | Object -> "object"
   | Interface -> "interface"
-  | Constant -> "contant"
+  | Constant -> "constant"
   | Invalid_0 -> "deleted"
   | Union -> "union"
   | Value -> "enum"
