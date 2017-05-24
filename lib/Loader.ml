@@ -79,4 +79,5 @@ let parse loader =
     | GIBaseInfo.Arg -> Builder.parse_arg_info info
     | GIBaseInfo.Type -> Builder.parse_type_info info
     | GIBaseInfo.Unresolved -> Builder.parse_unresolved_info info
-  done
+  done;
+  Builder.close_sources main_sources
