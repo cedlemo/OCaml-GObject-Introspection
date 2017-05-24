@@ -32,6 +32,9 @@ type files = {
   mli : file;
 }
 
+val generate_sources:
+  string -> files
+
 val parse_invalid_info :
   GIBaseInfo.t structure ptr -> unit
 

@@ -49,21 +49,8 @@ let generate_dir loader =
  * namespace_item_name.mli
  *)
 
-let file_in_create_append_mode name =
-  Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name
-
-let generate_sources base_name =
-  let open Builder in
-  let name = base_name ^ ".ml" in
-  let descr = file_in_create_append_mode name in
-  let ml = {name; descr} in
-  let name = base_name ^ ".mli" in
-  let descr = file_in_create_append_mode name in
-  let mli = {name; descr} in
-  {ml; mli}
-
 let generate_main_files loader =
-  generate_sources loader.namespace
+  Builder.generate_sources loader.namespace
 
 let parse loader =
   let open Builder in

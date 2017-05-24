@@ -26,6 +26,18 @@ type files = {
   mli : file;
 }
 
+let file_in_create_append_mode name =
+  Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name
+
+let generate_sources base_name =
+  let name = base_name ^ ".ml" in
+  let descr = file_in_create_append_mode name in
+  let ml = {name; descr} in
+  let name = base_name ^ ".mli" in
+  let descr = file_in_create_append_mode name in
+  let mli = {name; descr} in
+  {ml; mli}
+
 let parse_invalid_info info =
   ()
 
