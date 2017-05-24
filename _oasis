@@ -63,6 +63,13 @@ Document "docs"
     "-docflags '-colorize-code -short-functors -charset utf-8 -css-style ./style.css'"
   XOCamlbuildLibraries: GObjectIntrospection# Library "GObjectIntrospection"
 
+Executable "loader_glib_viewer"
+  Path: samples
+  MainIs: loader_glib_viewer.ml
+  Install: false
+  CompiledObject: best
+  BuildDepends: GObjectIntrospection
+
 Executable "gi_repository"
   Path: samples
   MainIs: gi_repository.ml
