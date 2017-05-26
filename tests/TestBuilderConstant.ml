@@ -19,8 +19,25 @@
 open TestUtils
 open OUnit2
 
+let repo = GIRepository.get_default ()
+let typelib = GIRepository.require repo namespace ()
+
+let get_constant_info namespace const_name =
+  match GIRepository.find_by_name repo namespace const_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Constant -> let const_info = GIConstantInfo.from_baseinfo base_info in
+      Some const_info
+    | _ -> None
+
+let constant_test namespace const_name fn =
+  match get_constant_info namespace const_name with
+  | None -> assert_equal_string const_name "No base info found"
+  | Some (info) -> fn info
+
+
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
   ]
-
