@@ -67,10 +67,10 @@ like :
     GIFunctionInfo.to_callableinfo
     GIFunctionInfo.from_callableinfo
 
-## How the unerlaying C structure allocation/deallocation are handled.
+## How the underlying C structure allocation/deallocation are handled.
 
-When a structure ptr info is returned with full transfert via the C api, each
-OCaml value that wrap then is finalised with `Gc.finalise` for example :
+When a info structure pointer is returned with full transfert via the C api,
+each OCaml value that wrap then is finalised with `Gc.finalise` for example :
 
 
     let get_field info n =
@@ -81,6 +81,7 @@ OCaml value that wrap then is finalised with `Gc.finalise` for example :
       if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
       else let info' = get_field_raw info n in
         GIFieldInfo.add_unref_finaliser info'
+
 
 So when the `info'` is garbage collected, the GIFieldInfo.add_unref_finaliser is
 called. Here is the code of this function :
@@ -98,8 +99,8 @@ When a cast need to be done, each module have the following to functions:
 *  to_baseinfo
 *  from_baseinfo
 
-Those functions allow to transform an OCaml value that represents an GInfo to
-another GIInfo type while the underlaying C structure are ref"ed" and linked to
+Those functions allow to transform an OCaml value that represents an GIInfo to
+another GIInfo type while the underlying C structure are ref"ed" and linked to
 a Gc finaliser that unref them. This should avoid zombies OCaml values (with
 C structure already desallocated) and memory leaks.
 
