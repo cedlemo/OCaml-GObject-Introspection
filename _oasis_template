@@ -30,7 +30,7 @@ Library "GObjectIntrospection"
            GIBaseInfo,
            GIRepository,
            Loader,
-           Builder
+           Builder,
            BuilderConstant
   BuildDepends: ctypes, ctypes.foreign
   CCLib: -Wl,-no-as-needed GOBJ_LIBS
