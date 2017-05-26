@@ -20,7 +20,6 @@ open TestUtils
 open OUnit2
 
 let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace ()
 
 let get_constant_info namespace const_name =
   match GIRepository.find_by_name repo namespace const_name with
@@ -36,8 +35,36 @@ let constant_test namespace const_name fn =
   | None -> assert_equal_string const_name "No base info found"
   | Some (info) -> fn info
 
+let test_append_boolean_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "SOURCE_REMOVE" in
+  let typelib = GIRepository.require repo namespace () in
+  constant_test namespace name (fun info ->
+      let open Builder in
+      let tmp_files = Builder.generate_sources "boolean_constant" in
+      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
+      let _ = BuilderConstant.append_boolean_constant name info descrs in
+      let _ = Builder.close_sources tmp_files in
+      assert_equal_boolean true (Sys.file_exists tmp_files.mli.name);
+      assert_equal_boolean true (Sys.file_exists tmp_files.ml.name);
+      let _ = (let input_ch = open_in tmp_files.mli.name in
+        let line = input_line input_ch in
+        let _ = assert_equal_string "val source_remove : bool" line in
+        close_in input_ch
+        ) in
+
+      let _ = (let input_ch = open_in tmp_files.ml.name in
+        let line = input_line input_ch in
+        let _ = assert_equal_string "let source_remove = false" line in
+        close_in input_ch
+        ) in
+
+     Sys.remove tmp_files.mli.name;
+     Sys.remove tmp_files.ml.name
+    )
 
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
+    "Append boolean constant" >:: test_append_boolean_constant
   ]
