@@ -44,6 +44,11 @@ let close_sources source_files =
   close_file source_files.ml;
   close_file source_files.mli
 
+exception Not_Implemented of string
+
+let raise_not_implemented message =
+  raise (Not_Implemented message)
+
 let parse_invalid_info info =
   ()
 
@@ -72,7 +77,36 @@ let parse_interface_info info =
   ()
 
 let parse_constant_info info source_files =
-  ()
+  match GIBaseInfo.get_name info with
+  | None -> ()
+  | Some name -> let info' = GIConstantInfo.from_baseinfo info in
+    let type_info = GIConstantInfo.get_type info' in
+    let raise_tag_not_implemented loc tag =
+      let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
+      raise_not_implemented m in
+    match GITypeInfo.get_tag type_info with
+    | GITypes.Void as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Boolean as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Int8 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Uint8 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Int16 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Uint16 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Int32 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Uint32 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Int64 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Uint64 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Float as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Double as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Utf8 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Filename as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Array as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.GList as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.GSList as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.GHash as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Error as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
 
 let parse_union_info info =
   ()
