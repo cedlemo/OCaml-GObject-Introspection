@@ -5,6 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Loader.html">
+<link rel="next" href="BuilderConstant.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -30,12 +31,14 @@
 <link title="GIBaseInfo" rel="Chapter" href="GIBaseInfo.html">
 <link title="GIRepository" rel="Chapter" href="GIRepository.html">
 <link title="Loader" rel="Chapter" href="Loader.html">
-<link title="Builder" rel="Chapter" href="Builder.html"><title>Builder</title>
+<link title="Builder" rel="Chapter" href="Builder.html">
+<link title="BuilderConstant" rel="Chapter" href="BuilderConstant.html"><title>Builder</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Loader.html" title="Loader">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;</div>
+&nbsp;<a class="post" href="BuilderConstant.html" title="BuilderConstant">Next</a>
+</div>
 <h1>Module <a href="type_Builder.html">Builder</a></h1>
 
 <pre><span class="keyword">module</span> Builder: <code class="code"><span class="keyword">sig</span></code> <a href="Builder.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
@@ -108,7 +111,11 @@ Close the two file descriptors in a files type<br>
 <pre><span id="VALparse_flags_info"><span class="keyword">val</span> parse_flags_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
 <pre><span id="VALparse_object_info"><span class="keyword">val</span> parse_object_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
 <pre><span id="VALparse_interface_info"><span class="keyword">val</span> parse_interface_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
-<pre><span id="VALparse_constant_info"><span class="keyword">val</span> parse_constant_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> <a href="Builder.html#TYPEfiles">files</a> -> unit</code></pre>
+<pre><span id="VALparse_constant_info"><span class="keyword">val</span> parse_constant_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> <a href="Builder.html#TYPEfiles">files</a> -> unit</code></pre><div class="info ">
+Use a GIConstantInfo in order to generate code with Ctypes. C Constants
+    will be written as module values.<br>
+</div>
+
 <pre><span id="VALparse_union_info"><span class="keyword">val</span> parse_union_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
 <pre><span id="VALparse_value_info"><span class="keyword">val</span> parse_value_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
 <pre><span id="VALparse_signal_info"><span class="keyword">val</span> parse_signal_info</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -> unit</code></pre>
