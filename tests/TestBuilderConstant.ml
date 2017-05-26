@@ -38,7 +38,7 @@ let constant_test namespace const_name fn =
 let test_append_boolean_constant test_ctxt =
   let namespace = "GLib" in
   let name = "SOURCE_REMOVE" in
-  let typelib = GIRepository.require repo namespace () in
+  let _ = GIRepository.require repo namespace () in
   constant_test namespace name (fun info ->
       let open Builder in
       let tmp_files = Builder.generate_sources "boolean_constant" in
