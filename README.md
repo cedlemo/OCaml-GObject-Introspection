@@ -115,3 +115,16 @@ C structure already desallocated) and memory leaks.
 *  http://www.linux-nantes.org/~fmonnier/OCaml/ocaml-wrapping-c.html (old)
 *  https://wiki.haskell.org/GObjectIntrospection
 
+### TODO :
+  test Windows build with appveyor:
+
+  * install MSYS2
+  * install gobject-introspection
+  * install gtk
+  * install opam
+  * install OCaml
+
+#### Resources
+
+  * https://github.com/behdad/harfbuzz/pull/308/commits/610377e89fe6d9c6dc53aca939fe4c2429375fc2
+  * https://project-renard.github.io/doc/development/meeting-log/posts/2016/05/03/windows-build-with-msys2/
