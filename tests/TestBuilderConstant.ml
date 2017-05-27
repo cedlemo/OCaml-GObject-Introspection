@@ -35,61 +35,43 @@ let constant_test namespace const_name fn =
   | None -> assert_equal_string const_name "No base info found"
   | Some (info) -> fn info
 
-let test_append_boolean_constant test_ctxt =
-  let namespace = "GLib" in
-  let name = "SOURCE_REMOVE" in
+let check_file_and_first_line name content =
+  assert_equal_boolean true (Sys.file_exists name);
+  let input_ch = open_in name in
+  let line = input_line input_ch in
+  let _ = assert_equal_string content line in
+  close_in input_ch;
+  Sys.remove name
+
+
+let test_writing_constant namespace name writer mli_content ml_content =
   let _ = GIRepository.require repo namespace () in
   constant_test namespace name (fun info ->
       let open Builder in
-      let tmp_files = Builder.generate_sources "boolean_constant" in
+      let filename = String.concat "_" [namespace; name; "constant"; "test"] in
+      let tmp_files = Builder.generate_sources filename in
       let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
-      let _ = BuilderConstant.append_boolean_constant name info descrs in
+      let _ = writer name info descrs in
       let _ = Builder.close_sources tmp_files in
-      assert_equal_boolean true (Sys.file_exists tmp_files.mli.name);
-      assert_equal_boolean true (Sys.file_exists tmp_files.ml.name);
-      let _ = (let input_ch = open_in tmp_files.mli.name in
-        let line = input_line input_ch in
-        let _ = assert_equal_string "val source_remove : bool" line in
-        close_in input_ch
-        ) in
-
-      let _ = (let input_ch = open_in tmp_files.ml.name in
-        let line = input_line input_ch in
-        let _ = assert_equal_string "let source_remove = false" line in
-        close_in input_ch
-        ) in
-
-     Sys.remove tmp_files.mli.name;
-     Sys.remove tmp_files.ml.name
+      let _ = check_file_and_first_line tmp_files.mli.name mli_content in
+      check_file_and_first_line tmp_files.ml.name ml_content
     )
+
+let test_append_boolean_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "SOURCE_REMOVE" in
+  let writer = BuilderConstant.append_boolean_constant in
+  let mli_content = "val source_remove : bool" in
+  let ml_content = "let source_remove = false" in
+  test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_int8_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT8" in
-  let _ = GIRepository.require repo namespace () in
-  constant_test namespace name (fun info ->
-      let open Builder in
-      let tmp_files = Builder.generate_sources "int8_constant" in
-      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
-      let _ = BuilderConstant.append_int8_constant name info descrs in
-      let _ = Builder.close_sources tmp_files in
-      assert_equal_boolean true (Sys.file_exists tmp_files.mli.name);
-      assert_equal_boolean true (Sys.file_exists tmp_files.ml.name);
-      let _ = (let input_ch = open_in tmp_files.mli.name in
-        let line = input_line input_ch in
-        let _ = assert_equal_string "val maxint8 : int" line in
-        close_in input_ch
-        ) in
-
-      let _ = (let input_ch = open_in tmp_files.ml.name in
-        let line = input_line input_ch in
-        let _ = assert_equal_string "let maxint8 = 127" line in
-        close_in input_ch
-        ) in
-
-     Sys.remove tmp_files.mli.name;
-     Sys.remove tmp_files.ml.name
-    )
+  let writer = BuilderConstant.append_int8_constant in
+  let mli_content = "val maxint8 : int" in
+  let ml_content = "let maxint8 = 127" in
+  test_writing_constant namespace name writer mli_content ml_content
 
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
