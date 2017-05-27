@@ -36,3 +36,12 @@ let append_int8_constant name info source_files =
   let _ = Printf.fprintf mli "val %s : int\n" lower_name in
   let str_value = string_of_int value in
   Printf.fprintf ml "let %s = %s\n" lower_name str_value
+
+let append_uint8_constant name info source_files =
+  let (mli, ml) = source_files in
+  let argument = GIConstantInfo.get_value info in
+  let value = getf (!@argument) GITypes.v_uint8 in
+  let lower_name = String.lowercase_ascii name in
+  let _ = Printf.fprintf mli "val %s : Unsigned.UInt8\n" lower_name in
+  let str_value = Unsigned.UInt8.to_string value in
+  Printf.fprintf ml "let %s = %s\n" lower_name str_value
