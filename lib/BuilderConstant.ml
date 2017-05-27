@@ -27,3 +27,12 @@ let append_boolean_constant name info source_files =
   let _ = Printf.fprintf mli "val %s : bool\n" lower_name in
   let str_value = string_of_bool value in
   Printf.fprintf ml "let %s = %s\n" lower_name str_value
+
+let append_int8_constant name info source_files =
+  let (mli, ml) = source_files in
+  let argument = GIConstantInfo.get_value info in
+  let value = getf (!@argument) GITypes.v_int8 in
+  let lower_name = String.lowercase_ascii name in
+  let _ = Printf.fprintf mli "val %s : int\n" lower_name in
+  let str_value = string_of_int value in
+  Printf.fprintf ml "let %s = %s\n" lower_name str_value

@@ -24,3 +24,6 @@ open Foreign
 
 val append_boolean_constant:
   string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val append_int8_constant:
+  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit

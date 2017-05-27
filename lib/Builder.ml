@@ -89,7 +89,9 @@ let parse_constant_info info source_files =
     | GITypes.Boolean -> let f_descrs = (source_files.mli.descr,
                                          source_files.ml.descr) in
       BuilderConstant.append_boolean_constant name info' f_descrs
-    | GITypes.Int8 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Int8 -> let f_descrs = (source_files.mli.descr,
+                                         source_files.ml.descr) in
+      BuilderConstant.append_int8_constant name info' f_descrs
     | GITypes.Uint8 as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Int16 as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Uint16 as tag -> raise_tag_not_implemented __LOC__ tag
