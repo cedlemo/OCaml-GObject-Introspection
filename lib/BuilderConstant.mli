@@ -30,3 +30,6 @@ val append_int8_constant:
 
 val append_uint8_constant:
   string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val append_int16_constant:
+  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
