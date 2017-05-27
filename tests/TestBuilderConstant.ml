@@ -73,9 +73,19 @@ let test_append_int8_constant test_ctxt =
   let ml_content = "let maxint8 = 127" in
   test_writing_constant namespace name writer mli_content ml_content
 
+let test_append_uint8_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "MAXUINT8" in
+  let writer = BuilderConstant.append_uint8_constant in
+  let mli_content = "val maxuint8 : Unsigned.UInt8" in
+  let ml_content = "let maxuint8 = 255" in
+  test_writing_constant namespace name writer mli_content ml_content
+
+
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
     "Append boolean constant" >:: test_append_boolean_constant;
-    "Append int8 constant" >:: test_append_int8_constant
+    "Append int8 constant" >:: test_append_int8_constant;
+    "Append uint8 constant" >:: test_append_uint8_constant
   ]
