@@ -63,8 +63,37 @@ let test_append_boolean_constant test_ctxt =
      Sys.remove tmp_files.ml.name
     )
 
+let test_append_int8_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "MAXINT8" in
+  let _ = GIRepository.require repo namespace () in
+  constant_test namespace name (fun info ->
+      let open Builder in
+      let tmp_files = Builder.generate_sources "int8_constant" in
+      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
+      let _ = BuilderConstant.append_int8_constant name info descrs in
+      let _ = Builder.close_sources tmp_files in
+      assert_equal_boolean true (Sys.file_exists tmp_files.mli.name);
+      assert_equal_boolean true (Sys.file_exists tmp_files.ml.name);
+      let _ = (let input_ch = open_in tmp_files.mli.name in
+        let line = input_line input_ch in
+        let _ = assert_equal_string "val maxint8 : int" line in
+        close_in input_ch
+        ) in
+
+      let _ = (let input_ch = open_in tmp_files.ml.name in
+        let line = input_line input_ch in
+        let _ = assert_equal_string "let maxint8 = 127" line in
+        close_in input_ch
+        ) in
+
+     Sys.remove tmp_files.mli.name;
+     Sys.remove tmp_files.ml.name
+    )
+
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
-    "Append boolean constant" >:: test_append_boolean_constant
+    "Append boolean constant" >:: test_append_boolean_constant;
+    "Append int8 constant" >:: test_append_int8_constant
   ]
