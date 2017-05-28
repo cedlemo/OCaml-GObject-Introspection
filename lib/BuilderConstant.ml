@@ -81,3 +81,9 @@ let append_uint64_constant name info source_files =
   let field_type = "Unsigned.uint64" in
   let printer = Unsigned.UInt64.to_string in
   append_constant name info source_files field field_type printer
+
+let append_float_constant name info source_files =
+  let field = GITypes.v_float in
+  let field_type = "float" in
+  let printer = string_of_float in
+  append_constant name info source_files field field_type printer
