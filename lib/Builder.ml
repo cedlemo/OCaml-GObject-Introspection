@@ -100,7 +100,8 @@ let parse_constant_info info source_files =
       BuilderConstant.append_uint16_constant name info' f_descrs
     | GITypes.Int32 ->
       BuilderConstant.append_int32_constant name info' f_descrs
-    | GITypes.Uint32 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Uint32 ->
+      BuilderConstant.append_uint32_constant name info' f_descrs
     | GITypes.Int64 as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Uint64 as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Float as tag -> raise_tag_not_implemented __LOC__ tag

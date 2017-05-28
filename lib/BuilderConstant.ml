@@ -64,3 +64,9 @@ let append_int32_constant name info source_files =
   let printer = Int32.to_string in
   append_constant name info source_files field field_type printer
 
+let append_uint32_constant name info source_files =
+  let field = GITypes.v_uint32 in
+  let field_type = "Unsigned.uint32" in
+  let printer = Unsigned.UInt32.to_string in
+  append_constant name info source_files field field_type printer
+
