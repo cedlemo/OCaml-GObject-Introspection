@@ -121,6 +121,14 @@ let test_append_int64_constant test_ctxt =
   let ml_content = "let maxint64 = 9223372036854775807" in
   test_writing_constant namespace name writer mli_content ml_content
 
+let test_append_uint64_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "MAXUINT64" in
+  let writer = BuilderConstant.append_uint64_constant in
+  let mli_content = "val maxuint64 : Unsigned.uint64" in
+  let ml_content = "let maxuint64 = 18446744073709551615" in
+  test_writing_constant namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
@@ -131,5 +139,6 @@ let tests =
     "Append uint 16 constant" >:: test_append_uint16_constant;
     "Append int32 constant" >:: test_append_int32_constant;
     "Append uint32 constant" >:: test_append_uint32_constant;
-    "Append int64 constant" >:: test_append_int64_constant
+    "Append int64 constant" >:: test_append_int64_constant;
+    "Append uint64 constant" >:: test_append_uint64_constant
   ]
