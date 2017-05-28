@@ -52,4 +52,10 @@ let append_int16_constant name info source_files =
   let printer = string_of_int in
   append_constant name info source_files field field_type printer
 
+let append_uint16_constant name info source_files =
+  let field = GITypes.v_uint16 in
+  let field_type = "Unsigned.UInt16" in
+  let printer = Unsigned.UInt16.to_string in
+  append_constant name info source_files field field_type printer
+
 
