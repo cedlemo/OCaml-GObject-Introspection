@@ -84,19 +84,17 @@ let parse_constant_info info source_files =
     let raise_tag_not_implemented loc tag =
       let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
       raise_not_implemented m in
+    let f_descrs = (source_files.mli.descr,
+                    source_files.ml.descr) in
     match GITypeInfo.get_tag type_info with
     | GITypes.Void as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.Boolean -> let f_descrs = (source_files.mli.descr,
-                                         source_files.ml.descr) in
+    | GITypes.Boolean ->
       BuilderConstant.append_boolean_constant name info' f_descrs
-    | GITypes.Int8 -> let f_descrs = (source_files.mli.descr,
-                                      source_files.ml.descr) in
+    | GITypes.Int8 ->
       BuilderConstant.append_int8_constant name info' f_descrs
-    | GITypes.Uint8 -> let f_descrs = (source_files.mli.descr,
-                                       source_files.ml.descr) in
+    | GITypes.Uint8 ->
       BuilderConstant.append_uint8_constant name info' f_descrs
-    | GITypes.Int16 -> let f_descrs = (source_files.mli.descr,
-                                       source_files.ml.descr) in
+    | GITypes.Int16 ->
       BuilderConstant.append_int16_constant name info' f_descrs
     | GITypes.Uint16 as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Int32 as tag -> raise_tag_not_implemented __LOC__ tag
