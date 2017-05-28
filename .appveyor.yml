@@ -5,7 +5,7 @@ platform:
   - x64
 
 install:
-  - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S gobject-introspection gtk3"
+  - C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S mingw/mingw-w64-gobject-introspection mingw/mingw-w64-gtk3"
 
   - ps: iex ((new-object net.webclient).DownloadString("https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/appveyor-install.ps1"))
 
