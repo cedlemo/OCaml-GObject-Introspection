@@ -1,0 +1,7 @@
+os: unstable
+
+platform:
+  - x64
+
+install:
+  - pacman --noconfirm -S mingw-w64-x86_64-gtk3 mingw-w64-x86_64-gtk3
