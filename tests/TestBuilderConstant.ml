@@ -97,6 +97,14 @@ let test_append_uint16_constant test_ctxt =
   let ml_content = "let maxuint16 = 65535" in
   test_writing_constant namespace name writer mli_content ml_content
 
+let test_append_int32_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "MAXINT32" in
+  let writer = BuilderConstant.append_int32_constant in
+  let mli_content = "val maxint32 : Int32" in
+  let ml_content = "let maxint32 = 2147483647" in
+  test_writing_constant namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
@@ -104,5 +112,7 @@ let tests =
     "Append int8 constant" >:: test_append_int8_constant;
     "Append uint8 constant" >:: test_append_uint8_constant;
     "Append int 16 constant" >:: test_append_int16_constant;
-    "Append uint 16 constant" >:: test_append_uint16_constant
+    "Append uint 16 constant" >:: test_append_uint16_constant;
+    "Append int32 constant" >:: test_append_int32_constant
+
   ]
