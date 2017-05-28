@@ -137,8 +137,8 @@ let tests =
     "Append boolean constant" >:: test_append_boolean_constant;
     "Append int8 constant" >:: test_append_int8_constant;
     "Append uint8 constant" >:: test_append_uint8_constant;
-    "Append int 16 constant" >:: test_append_int16_constant;
-    "Append uint 16 constant" >:: test_append_uint16_constant;
+    "Append int16 constant" >:: test_append_int16_constant;
+    "Append uint16 constant" >:: test_append_uint16_constant;
     "Append int32 constant" >:: test_append_int32_constant;
     "Append uint32 constant" >:: test_append_uint32_constant;
     "Append int64 constant" >:: test_append_int64_constant;
