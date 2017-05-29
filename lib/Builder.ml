@@ -111,7 +111,8 @@ let parse_constant_info info source_files =
     | GITypes.Double ->
       BuilderConstant.append_double_constant name info' f_descrs
     | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.Utf8 as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Utf8 ->
+      BuilderConstant.append_string_constant name info' f_descrs
     | GITypes.Filename as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Array as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag

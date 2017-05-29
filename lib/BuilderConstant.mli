@@ -55,3 +55,6 @@ val append_float_constant:
 val append_double_constant:
   string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
+val append_string_constant:
+  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+

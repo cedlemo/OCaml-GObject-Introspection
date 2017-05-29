@@ -93,3 +93,9 @@ let append_double_constant name info source_files =
   let field_type = "float" in
   let printer = string_of_float in
   append_constant name info source_files field field_type printer
+
+let append_string_constant name info source_files =
+  let field = GITypes.v_string in
+  let field_type = "string" in
+  let printer = (fun str -> (("\"" ^ str) ^ "\"")) in
+  append_constant name info source_files field field_type printer
