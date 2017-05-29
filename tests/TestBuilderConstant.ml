@@ -131,6 +131,15 @@ let test_append_uint64_constant test_ctxt =
 
 (* TODO : test_append_gfloat_constant -> find an example *)
 
+(* TODO : fix issue *)
+let test_append_double_constant test_ctxt =
+  let namespace = "GLib" in
+  let name = "E" in
+  let writer = BuilderConstant.append_double_constant in
+  let mli_content = "val e : float" in
+  let ml_content = "let e = 2.718282" in
+  test_writing_constant namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderConstant tests" >:::
   [
@@ -143,4 +152,5 @@ let tests =
     "Append uint32 constant" >:: test_append_uint32_constant;
     "Append int64 constant" >:: test_append_int64_constant;
     "Append uint64 constant" >:: test_append_uint64_constant
+    (* "Append double constant" >:: test_append_double_constant *)
   ]
