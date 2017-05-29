@@ -131,7 +131,6 @@ let test_append_uint64_constant test_ctxt =
 
 (* TODO : test_append_float_constant -> find an example *)
 
-(* TODO : fix issue *)
 let test_append_double_constant test_ctxt =
   let namespace = "GLib" in
   let name = "E" in
