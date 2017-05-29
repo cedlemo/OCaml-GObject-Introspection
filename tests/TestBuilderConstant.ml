@@ -61,72 +61,72 @@ let test_append_boolean_constant test_ctxt =
   let namespace = "GLib" in
   let name = "SOURCE_REMOVE" in
   let writer = BuilderConstant.append_boolean_constant in
-  let mli_content = "val source_remove : bool" in
-  let ml_content = "let source_remove = false" in
+  let mli_content = "val _SOURCE_REMOVE : bool" in
+  let ml_content = "let _SOURCE_REMOVE = false" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_int8_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT8" in
   let writer = BuilderConstant.append_int8_constant in
-  let mli_content = "val maxint8 : int" in
-  let ml_content = "let maxint8 = 127" in
+  let mli_content = "val _MAXINT8 : int" in
+  let ml_content = "let _MAXINT8 = 127" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_uint8_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT8" in
   let writer = BuilderConstant.append_uint8_constant in
-  let mli_content = "val maxuint8 : Unsigned.uint8" in
-  let ml_content = "let maxuint8 = 255" in
+  let mli_content = "val _MAXUINT8 : Unsigned.uint8" in
+  let ml_content = "let _MAXUINT8 = 255" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_int16_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT16" in
   let writer = BuilderConstant.append_int16_constant in
-  let mli_content = "val maxint16 : int" in
-  let ml_content = "let maxint16 = 32767" in
+  let mli_content = "val _MAXINT16 : int" in
+  let ml_content = "let _MAXINT16 = 32767" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_uint16_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT16" in
   let writer = BuilderConstant.append_uint16_constant in
-  let mli_content = "val maxuint16 : Unsigned.uint16" in
-  let ml_content = "let maxuint16 = 65535" in
+  let mli_content = "val _MAXUINT16 : Unsigned.uint16" in
+  let ml_content = "let _MAXUINT16 = 65535" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_int32_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT32" in
   let writer = BuilderConstant.append_int32_constant in
-  let mli_content = "val maxint32 : Int32" in
-  let ml_content = "let maxint32 = 2147483647" in
+  let mli_content = "val _MAXINT32 : Int32" in
+  let ml_content = "let _MAXINT32 = 2147483647" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_uint32_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT32" in
   let writer = BuilderConstant.append_uint32_constant in
-  let mli_content = "val maxuint32 : Unsigned.uint32" in
-  let ml_content = "let maxuint32 = 4294967295" in
+  let mli_content = "val _MAXUINT32 : Unsigned.uint32" in
+  let ml_content = "let _MAXUINT32 = 4294967295" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_int64_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT64" in
   let writer = BuilderConstant.append_int64_constant in
-  let mli_content = "val maxint64 : Int64" in
-  let ml_content = "let maxint64 = 9223372036854775807" in
+  let mli_content = "val _MAXINT64 : Int64" in
+  let ml_content = "let _MAXINT64 = 9223372036854775807" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let test_append_uint64_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT64" in
   let writer = BuilderConstant.append_uint64_constant in
-  let mli_content = "val maxuint64 : Unsigned.uint64" in
-  let ml_content = "let maxuint64 = 18446744073709551615" in
+  let mli_content = "val _MAXUINT64 : Unsigned.uint64" in
+  let ml_content = "let _MAXUINT64 = 18446744073709551615" in
   test_writing_constant namespace name writer mli_content ml_content
 
 (* TODO : test_append_float_constant -> find an example *)
@@ -136,8 +136,8 @@ let test_append_double_constant test_ctxt =
   let namespace = "GLib" in
   let name = "E" in
   let writer = BuilderConstant.append_double_constant in
-  let mli_content = "val e : float" in
-  let ml_content = "let e = 2.718282" in
+  let mli_content = "val _E : float" in
+  let ml_content = "let _E = 2.718282" in
   test_writing_constant namespace name writer mli_content ml_content
 
 let tests =

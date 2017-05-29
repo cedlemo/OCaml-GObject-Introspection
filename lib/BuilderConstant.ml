@@ -23,10 +23,10 @@ let append_constant name info files field field_type printer =
   let (mli, ml) = files in
   let argument = GIConstantInfo.get_value info in
   let value = getf (!@argument) field in
-  let lower_name = String.lowercase_ascii name in
-  let _ = Printf.fprintf mli "val %s : %s\n" lower_name field_type in
+  let modified_name = "_" ^ name in
+  let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = printer value in
-  Printf.fprintf ml "let %s = %s\n" lower_name str_value
+  Printf.fprintf ml "let %s = %s\n" modified_name str_value
 
 let append_boolean_constant name info source_files =
   let field = GITypes.v_boolean in
