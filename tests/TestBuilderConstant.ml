@@ -129,7 +129,7 @@ let test_append_uint64_constant test_ctxt =
   let ml_content = "let maxuint64 = 18446744073709551615" in
   test_writing_constant namespace name writer mli_content ml_content
 
-(* TODO : test_append_gfloat_constant -> find an example *)
+(* TODO : test_append_float_constant -> find an example *)
 
 (* TODO : fix issue *)
 let test_append_double_constant test_ctxt =
