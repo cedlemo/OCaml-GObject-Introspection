@@ -151,6 +151,6 @@ let tests =
     "Append int32 constant" >:: test_append_int32_constant;
     "Append uint32 constant" >:: test_append_uint32_constant;
     "Append int64 constant" >:: test_append_int64_constant;
-    "Append uint64 constant" >:: test_append_uint64_constant
-    (* "Append double constant" >:: test_append_double_constant *)
+    "Append uint64 constant" >:: test_append_uint64_constant;
+    "Append double constant" >:: test_append_double_constant
   ]
