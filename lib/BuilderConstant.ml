@@ -97,5 +97,5 @@ let append_double_constant name info source_files =
 let append_string_constant name info source_files =
   let field = GITypes.v_string in
   let field_type = "string" in
-  let printer = (fun str -> (("\"" ^ str) ^ "\"")) in
+  let printer = (fun str -> (("\"" ^ (String.escaped str)) ^ "\"")) in
   append_constant name info source_files field field_type printer
