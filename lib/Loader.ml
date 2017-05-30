@@ -41,6 +41,9 @@ let set_build_path loader path =
 let get_build_path loader =
   loader.build_path
 
+let get_lib_path loader =
+  String.concat "/" [loader.build_path; loader.namespace; "lib"]
+
 let get_namespace loader =
   loader.namespace
 

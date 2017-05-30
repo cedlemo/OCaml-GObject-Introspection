@@ -43,6 +43,11 @@ val set_build_path:
 val get_build_path:
   t -> string
 
+(** Get the path where the files will be build :
+    build_path/namespace/lib *)
+val get_lib_path:
+  t -> string
+
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
 val generate_main_files:
   t -> Builder.files
