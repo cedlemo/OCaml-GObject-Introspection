@@ -42,7 +42,9 @@
 <h1>Module <a href="type_Loader.html">Loader</a></h1>
 
 <pre><span class="keyword">module</span> Loader: <code class="code"><span class="keyword">sig</span></code> <a href="Loader.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Generate the files Namespace.ml and Namespace.mli in append mode<br>
+Specify the root path where the directories and the files will be created.
+    For example, with path = "toto/titi/tata" , with a namespace of "GLib",
+    then the files will go in "toto/titi/tata/GLib/lib"<br>
 </div>
 <hr width="100%">
 
@@ -53,8 +55,27 @@ Generate the files Namespace.ml and Namespace.mli in append mode<br>
 <pre><span id="VALget_namespace"><span class="keyword">val</span> get_namespace</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALgenerate_dir"><span class="keyword">val</span> generate_dir</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> unit</code></pre>
+<pre><span id="VALset_build_path"><span class="keyword">val</span> set_build_path</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string -> <a href="Loader.html#TYPEt">t</a></code></pre><div class="info ">
+Specify the root path where the directories and the files will be created.
+    For example, with path = "toto/titi/tata" , with a namespace of "GLib",
+    then the files will go in "toto/titi/tata/GLib/lib"<br>
+</div>
+
+<pre><span id="VALget_build_path"><span class="keyword">val</span> get_build_path</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string</code></pre><div class="info ">
+Get the build path of the loader<br>
+</div>
+
+<pre><span id="VALget_lib_path"><span class="keyword">val</span> get_lib_path</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> string</code></pre><div class="info ">
+Get the path where the files will be build :
+    build_path/namespace/lib<br>
+</div>
+
 <pre><span id="VALgenerate_main_files"><span class="keyword">val</span> generate_main_files</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> <a href="Builder.html#TYPEfiles">Builder.files</a></code></pre><div class="info ">
 Generate the files Namespace.ml and Namespace.mli in append mode<br>
+</div>
+
+<pre><span id="VALgenerate_directories"><span class="keyword">val</span> generate_directories</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+Generate the directories build_path/namespace/lib<br>
 </div>
 
 <pre><span id="VALparse"><span class="keyword">val</span> parse</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -> unit</code></pre><div class="info ">

@@ -105,6 +105,28 @@ Add unref of the C underlying structure whith Gc.finalise.
 </td></tr>
 <tr><td><a href="BuilderConstant.html#VALappend_boolean_constant">append_boolean_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
 <td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_double_constant">append_double_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_float_constant">append_float_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_int16_constant">append_int16_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_int32_constant">append_int32_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_int64_constant">append_int64_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_int8_constant">append_int8_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_string_constant">append_string_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_uint16_constant">append_uint16_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_uint32_constant">append_uint32_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_uint64_constant">append_uint64_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderConstant.html#VALappend_uint8_constant">append_uint8_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIArgInfo.html#VALarginfo">arginfo</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GITypes.html#VALargument">argument</a> [<a href="GITypes.html">GITypes</a>]</td>
@@ -662,6 +684,11 @@ Get the next element of a gslist
 </td></tr>
 <tr><td><a href="Loader.html#VALgenerate_dir">generate_dir</a> [<a href="Loader.html">Loader</a>]</td>
 <td></td></tr>
+<tr><td><a href="Loader.html#VALgenerate_directories">generate_directories</a> [<a href="Loader.html">Loader</a>]</td>
+<td><div class="info">
+Generate the directories build_path/namespace/lib
+</div>
+</td></tr>
 <tr><td><a href="Loader.html#VALgenerate_main_files">generate_main_files</a> [<a href="Loader.html">Loader</a>]</td>
 <td><div class="info">
 Generate the files Namespace.ml and Namespace.mli in append mode
@@ -708,6 +735,11 @@ Obtain the array length of the type.
 <tr><td><a href="GITypeInfo.html#VALget_array_type">get_array_type</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
 <td><div class="info">
 Obtain the array type for this type.
+</div>
+</td></tr>
+<tr><td><a href="Loader.html#VALget_build_path">get_build_path</a> [<a href="Loader.html">Loader</a>]</td>
+<td><div class="info">
+Get the build path of the loader
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_c_prefix">get_c_prefix</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -865,6 +897,12 @@ For types which have GITypes.Interface such as GObjects and boxed
 <tr><td><a href="GIObjectInfo.html#VALget_interface">get_interface</a> [<a href="GIObjectInfo.html">GIObjectInfo</a>]</td>
 <td><div class="info">
 Obtain an object type interface at index n .
+</div>
+</td></tr>
+<tr><td><a href="Loader.html#VALget_lib_path">get_lib_path</a> [<a href="Loader.html">Loader</a>]</td>
+<td><div class="info">
+Get the path where the files will be build :
+    build_path/namespace/lib
 </div>
 </td></tr>
 <tr><td><a href="GIRepository.html#VALget_loaded_namespaces">get_loaded_namespaces</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -1416,6 +1454,11 @@ Force the namespace namespace_ to be loaded if it isn't already.
 </div>
 </td></tr>
 <tr><td align="left"><br>S</td></tr>
+<tr><td><a href="Loader.html#VALset_build_path">set_build_path</a> [<a href="Loader.html">Loader</a>]</td>
+<td><div class="info">
+Specify the root path where the directories and the files will be created.
+</div>
+</td></tr>
 <tr><td><a href="GISignalInfo.html#VALsignalinfo">signalinfo</a> [<a href="GISignalInfo.html">GISignalInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GICallableInfo.html#VALskip_return">skip_return</a> [<a href="GICallableInfo.html">GICallableInfo</a>]</td>

@@ -36,6 +36,10 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_namespace&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_version&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;generate_dir&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;set_build_path&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Loader</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_build_path&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_lib_path&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;generate_main_files&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Builder</span>.files
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;generate_directories&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parse&nbsp;:&nbsp;<span class="constructor">Loader</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
 <span class="keyword">end</span></code></body></html>
