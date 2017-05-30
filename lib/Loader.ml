@@ -38,6 +38,9 @@ let set_build_path loader path =
   else let message = "The path does not exist" in
     raise (invalid_arg message)
 
+let get_build_path loader =
+  loader.build_path
+
 let get_namespace loader =
   loader.namespace
 
@@ -58,10 +61,7 @@ let generate_dir loader =
  *)
 
 let generate_main_files loader =
-  let file_name_pattern = match loader.build_path with
-    | None -> loader.namespace
-    | Some path -> String.concat "/" [path; loader.namespace]
-  in
+  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace] in
   Builder.generate_sources file_name_pattern
 
 let parse loader =

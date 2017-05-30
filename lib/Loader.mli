@@ -39,6 +39,10 @@ val generate_dir:
 val set_build_path:
   t -> string -> t
 
+(** Get the build path of the loader *)
+val get_build_path:
+  t -> string
+
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
 val generate_main_files:
   t -> Builder.files
