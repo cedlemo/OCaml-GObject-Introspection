@@ -66,11 +66,12 @@ open Loader
 let test_loader_generate_main_files test_ctxt =
   let open Builder in
   test_loader "GLib" (fun loader ->
+      let _ = Loader.generate_directories loader in
       let main_files = Loader.generate_main_files loader in
       let _ = Printf.fprintf main_files.mli.descr "test" in
       let _ = Printf.fprintf main_files.ml.descr "test" in
       let test_close_and_remove file =
-        assert_equal_boolean true (Sys.file_exists file.name);
+        assert_equal_boolean true (Sys.file_exists (file.name));
         Pervasives.close_out file.descr;
         Sys.remove file.name;
       in
