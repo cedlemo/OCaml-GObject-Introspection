@@ -70,6 +70,7 @@ let generate_main_files loader =
 let generate_directories loader =
   Unix.mkdir ((loader.build_path ^ "/") ^ loader.namespace) 0o777;
   Unix.mkdir (get_lib_path loader) 0o777
+    (* TODO : check if directories already exists *)
 
 let parse loader =
   let open Builder in
