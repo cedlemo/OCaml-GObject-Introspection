@@ -21,7 +21,7 @@ type t = {
   typelib : GIRepository.typelib;
   namespace : string;
   version : string;
-  build_path: string option;
+  build_path: string;
 }
 
 let load namespace ?version () =
@@ -29,12 +29,12 @@ let load namespace ?version () =
   match GIRepository.require repo namespace ?version:version () with
   | None -> None
   | Some typelib -> let version' = GIRepository.get_version repo namespace in
-    Some {repo; typelib; namespace; version = version'; build_path = None}
+    Some {repo; typelib; namespace; version = version'; build_path = "./"}
 
 let set_build_path loader path =
   let exists = Sys.file_exists path in
   let is_dir = Sys.is_directory path in
-  if exists && is_dir then { loader with build_path = Some path }
+  if exists && is_dir then { loader with build_path = path }
   else let message = "The path does not exist" in
     raise (invalid_arg message)
 
@@ -58,7 +58,11 @@ let generate_dir loader =
  *)
 
 let generate_main_files loader =
-  Builder.generate_sources loader.namespace
+  let file_name_pattern = match loader.build_path with
+    | None -> loader.namespace
+    | Some path -> String.concat "/" [path; loader.namespace]
+  in
+  Builder.generate_sources file_name_pattern
 
 let parse loader =
   let open Builder in
