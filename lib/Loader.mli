@@ -52,6 +52,10 @@ val get_lib_path:
 val generate_main_files:
   t -> Builder.files
 
+(** Generate the directories build_path/namespace/lib *)
+val generate_directories:
+  t -> unit
+
 (** Parse the GI infos and create the corresponding ctypes code *)
 val parse:
   t -> unit

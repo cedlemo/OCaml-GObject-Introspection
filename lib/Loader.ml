@@ -29,7 +29,7 @@ let load namespace ?version () =
   match GIRepository.require repo namespace ?version:version () with
   | None -> None
   | Some typelib -> let version' = GIRepository.get_version repo namespace in
-    Some {repo; typelib; namespace; version = version'; build_path = "./"}
+    Some {repo; typelib; namespace; version = version'; build_path = "."}
 
 let set_build_path loader path =
   let exists = Sys.file_exists path in
@@ -51,7 +51,7 @@ let get_version loader =
   loader.version
 
 let generate_dir loader =
-  Unix.mkdir loader.namespace 0o640
+  Unix.mkdir loader.namespace 0o777
 
 (* Module Organisation for namespace
  * Namespace.ml
@@ -64,11 +64,16 @@ let generate_dir loader =
  *)
 
 let generate_main_files loader =
-  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace] in
+  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace;"lib"; loader.namespace] in
   Builder.generate_sources file_name_pattern
+
+let generate_directories loader =
+  Unix.mkdir ((loader.build_path ^ "/") ^ loader.namespace) 0o777;
+  Unix.mkdir (get_lib_path loader) 0o777
 
 let parse loader =
   let open Builder in
+  let _ = generate_directories loader in
   let main_sources = generate_main_files loader in
   let n = GIRepository.get_n_infos loader.repo loader.namespace in
   for i = 0 to n - 1 do
