@@ -33,6 +33,12 @@ val get_version:
 val generate_dir:
   t -> unit
 
+(** Specify the root path where the directories and the files will be created.
+    For example, with path = "toto/titi/tata" , with a namespace of "GLib",
+    then the files will go in "toto/titi/tata/GLib/lib" *)
+val set_build_path:
+  t -> string -> t
+
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
 val generate_main_files:
   t -> Builder.files
