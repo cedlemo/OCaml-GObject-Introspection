@@ -31,7 +31,8 @@ Library "GObjectIntrospection"
            GIRepository,
            Loader,
            Builder,
-           BuilderConstant
+           BuilderConstant,
+           BuilderStruct
   BuildDepends: ctypes, ctypes.foreign
   CCLib: -Wl,-no-as-needed -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread
