@@ -61,8 +61,10 @@ let parse_callback_info info =
 let parse_struct_info info source_files =
   match GIBaseInfo.get_name info with
   | None -> ()
-  | Some name -> let info' = GIStructInfo.from_baseinfo info in
-  ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let info' = GIStructInfo.from_baseinfo info in
+    BuilderStruct.append_ctypes_struct_declaration name f_descrs
 
 let parse_boxed_info info =
   ()

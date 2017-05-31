@@ -21,3 +21,6 @@
 
 open Ctypes
 open Foreign
+
+val append_ctypes_struct_declaration:
+  string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
