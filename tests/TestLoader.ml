@@ -77,7 +77,6 @@ let test_loader_generate_main_files test_ctxt =
       in
       test_close_and_remove main_files.ml;
       test_close_and_remove main_files.mli;
-      (* TODO : remove directories *)
     )
 
 let tests =
