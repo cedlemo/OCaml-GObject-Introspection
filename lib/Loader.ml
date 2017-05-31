@@ -89,7 +89,14 @@ let parse loader =
     | GIBaseInfo.Invalid -> Builder.parse_invalid_info info
     | GIBaseInfo.Function -> Builder.parse_function_info info main_sources
     | GIBaseInfo.Callback -> Builder.parse_callback_info info
-    | GIBaseInfo.Struct -> Builder.parse_struct_info info
+    | GIBaseInfo.Struct -> (
+        match GIBaseInfo.get_name info with
+        | None -> ()
+        | Some name -> let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
+          let struct_sources = Builder.generate_sources file_name_pattern in
+          let _ = Builder.parse_struct_info info struct_sources in
+          Builder.close_sources struct_sources
+      )
     | GIBaseInfo.Boxed -> Builder.parse_boxed_info info
     | GIBaseInfo.Enum -> Builder.parse_enum_info info
     | GIBaseInfo.Flags -> Builder.parse_flags_info info

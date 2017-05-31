@@ -58,7 +58,10 @@ let parse_function_info info source_files =
 let parse_callback_info info =
   ()
 
-let parse_struct_info info =
+let parse_struct_info info source_files =
+  match GIBaseInfo.get_name info with
+  | None -> ()
+  | Some name -> let info' = GIStructInfo.from_baseinfo info in
   ()
 
 let parse_boxed_info info =
