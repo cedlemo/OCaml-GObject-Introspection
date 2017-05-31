@@ -35,8 +35,39 @@ let struct_test namespace struct_name fn =
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> fn info
 
+let file_content_to_string in_ch =
+  let rec read_line acc =
+    try
+      let line = input_line in_ch in read_line (line :: acc)
+    with
+      End_of_file -> acc
+  in let lines = List.rev (read_line []) in
+  String.concat "\n" lines
+
+let check_file_and_content name content =
+  assert_equal_boolean true (Sys.file_exists name);
+  let input_ch = open_in name in
+  let lines = file_content_to_string input_ch in
+  let _ = assert_equal_string content lines in
+  close_in input_ch;
+  Sys.remove name
+
+
+let test_writing_struct namespace name writer mli_content ml_content =
+  let _ = GIRepository.require repo namespace () in
+  struct_test namespace name (fun info ->
+      let open Builder in
+      let filename = String.concat "_" [namespace; name; "struct"; "test"] in
+      let tmp_files = Builder.generate_sources filename in
+      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
+      let _ = writer name info descrs in
+      let _ = Builder.close_sources tmp_files in
+      let _ = check_file_and_content tmp_files.mli.name mli_content in
+      check_file_and_content tmp_files.ml.name ml_content
+    )
+
+
 let tests =
   "GObject Introspection BuilderStruct tests" >:::
   [
   ]
-
