@@ -32,10 +32,11 @@ let load namespace ?version () =
     Some {repo; typelib; namespace; version = version'; build_path = "."}
 
 let dir_exists path =
-  let exists = Sys.file_exists path in
-  let is_dir = Sys.is_directory path in
-  if exists && is_dir then true
-  else false
+  if not (Sys.file_exists path) then
+    false
+  else
+    if Sys.is_directory path then true
+    else false
 
 let set_build_path loader path =
   if dir_exists path then { loader with build_path = path }
@@ -68,13 +69,14 @@ let generate_dir loader =
  *)
 
 let generate_main_files loader =
-  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace;"lib"; loader.namespace] in
+  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; loader.namespace] in
   Builder.generate_sources file_name_pattern
 
 let generate_directories loader =
-  Unix.mkdir ((loader.build_path ^ "/") ^ loader.namespace) 0o777;
-  Unix.mkdir (get_lib_path loader) 0o777
-    (* TODO : check if directories already exists *)
+  let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
+  if not (dir_exists namespace_path) then Unix.mkdir namespace_path 0o777;
+  let lib_path = get_lib_path loader in
+  if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
 let parse loader =
   let open Builder in
