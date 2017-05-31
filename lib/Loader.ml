@@ -31,10 +31,14 @@ let load namespace ?version () =
   | Some typelib -> let version' = GIRepository.get_version repo namespace in
     Some {repo; typelib; namespace; version = version'; build_path = "."}
 
-let set_build_path loader path =
+let dir_exists path =
   let exists = Sys.file_exists path in
   let is_dir = Sys.is_directory path in
-  if exists && is_dir then { loader with build_path = path }
+  if exists && is_dir then true
+  else false
+
+let set_build_path loader path =
+  if dir_exists path then { loader with build_path = path }
   else let message = "The path does not exist" in
     raise (invalid_arg message)
 
