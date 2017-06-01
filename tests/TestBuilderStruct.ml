@@ -66,7 +66,6 @@ let test_writing_struct namespace name writer mli_content ml_content =
       check_file_and_content tmp_files.ml.name ml_content
     )
 
-(* TODO : append_ctypes_struct_declaration test *)
 let test_append_ctypes_struct_declaration test_ctxt =
   let namespace = "GLib" in
   let name = "Array" in
