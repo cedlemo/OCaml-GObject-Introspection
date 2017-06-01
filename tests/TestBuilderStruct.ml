@@ -26,7 +26,7 @@ let get_struct_info namespace struct_name =
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Constant -> let struct_info = GIStructInfo.from_baseinfo base_info in
+    | GIBaseInfo.Struct -> let struct_info = GIStructInfo.from_baseinfo base_info in
       Some struct_info
     | _ -> None
 
@@ -67,7 +67,22 @@ let test_writing_struct namespace name writer mli_content ml_content =
     )
 
 (* TODO : append_ctypes_struct_declaration test *)
+let test_append_ctypes_struct_declaration test_ctxt =
+  let namespace = "GLib" in
+  let name = "Array" in
+  let writer = fun name info descrs ->
+    BuilderStruct.append_ctypes_struct_declaration name descrs in
+  let mli_content = "open Ctypes\n\
+                     type t\n\
+                     val array : t structure typ" in
+  let ml_content = "open Ctypes\n\
+                    open Foreign\n\
+                    type t\n\
+                    let array : t structure typ = structure \"Array\"" in
+  test_writing_struct namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderStruct tests" >:::
   [
+    "BuilderStruct append ctypes struct declaration" >:: test_append_ctypes_struct_declaration
   ]
