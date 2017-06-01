@@ -89,7 +89,9 @@ let parse loader =
     | GIBaseInfo.Invalid -> Builder.parse_invalid_info info
     | GIBaseInfo.Function -> Builder.parse_function_info info main_sources
     | GIBaseInfo.Callback -> Builder.parse_callback_info info
-    | GIBaseInfo.Struct -> (
+    | GIBaseInfo.Struct -> let info' = GIStructInfo.from_baseinfo info in
+      if GIStructInfo.is_gtype_struct info' then ()
+      else (
         match GIBaseInfo.get_name info with
         | None -> ()
         | Some name -> let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
