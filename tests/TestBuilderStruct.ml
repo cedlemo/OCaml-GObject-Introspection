@@ -80,8 +80,19 @@ let test_append_ctypes_struct_declaration test_ctxt =
                     let array : t structure typ = structure \"Array\"" in
   test_writing_struct namespace name writer mli_content ml_content
 
+let test_append_ctypes_struct_fields_declarations test_ctxt =
+  let namespace = "GLib" in
+  let name = "SList" in
+  let writer = BuilderStruct.append_ctypes_struct_fields_declarations in
+  let mli_content = "val data: (unit ptr, t structure) field\n\
+                     val next: (SList.t structure ptr, t structure) field" in
+  let ml_content = "let data = field SList \"data\" (ptr_opt void)\n\
+                    let next = field SList \"next\" (ptr_opt SList.slist)" in
+  test_writing_struct namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderStruct tests" >:::
   [
-    "BuilderStruct append ctypes struct declaration" >:: test_append_ctypes_struct_declaration
+    "BuilderStruct append ctypes struct declaration" >:: test_append_ctypes_struct_declaration;
+    "BuilderStruct append ctypes struct fields declarations" >:: test_append_ctypes_struct_fields_declarations
   ]
