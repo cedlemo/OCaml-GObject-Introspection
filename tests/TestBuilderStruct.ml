@@ -87,7 +87,8 @@ let test_append_ctypes_struct_fields_declarations test_ctxt =
   let mli_content = "val data: (unit ptr, t structure) field\n\
                      val next: (SList.t structure ptr, t structure) field" in
   let ml_content = "let data = field SList \"data\" (ptr_opt void)\n\
-                    let next = field SList \"next\" (ptr_opt SList.slist)" in
+                    let next = field SList \"next\" (ptr_opt SList.slist)\n\
+                    let _ = seal SList" in
   test_writing_struct namespace name writer mli_content ml_content
 
 let tests =

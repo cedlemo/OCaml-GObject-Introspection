@@ -77,4 +77,5 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
   for i = 0 to n - 1 do
     let field_info = GIStructInfo.get_field info i in
     append_ctypes_struct_field_declarations field_info
-  done
+  done;
+  Printf.fprintf ml "let _ = seal %s\n" struct_name
