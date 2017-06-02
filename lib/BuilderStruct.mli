@@ -24,3 +24,7 @@ open Foreign
 
 val append_ctypes_struct_declaration:
   string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val append_ctypes_struct_fields_declarations:
+  string -> GIStructInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
