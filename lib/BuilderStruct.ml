@@ -36,6 +36,7 @@ let append_ctypes_struct_declaration name sources_files =
   Printf.fprintf ml "let %s : t structure typ = structure \"%s\"\n" (String.lowercase_ascii name) name
 
 let append_ctypes_struct_fields_declarations struct_name info sources_files =
+  let ctypes_typ_name = String.lowercase_ascii struct_name in
   let (mli, ml) = sources_files in
   let append_ctypes_struct_field_declarations field_info =
     let base_info = GIFieldInfo.to_baseinfo field_info in
@@ -71,11 +72,11 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
       let (mli_type', ml_type') = if is_pointer then (mli_type ^ " ptr", "ptr_opt " ^ ml_type)
         else (mli_type, ml_type) in
       Printf.fprintf mli "val %s: (%s, t structure) field\n" name mli_type';
-      Printf.fprintf ml "let %s = field %s \"%s\" (%s)\n" name struct_name name ml_type'
+      Printf.fprintf ml "let %s = field %s \"%s\" (%s)\n" name ctypes_typ_name name ml_type'
   in
   let n = GIStructInfo.get_n_fields info in
   for i = 0 to n - 1 do
     let field_info = GIStructInfo.get_field info i in
     append_ctypes_struct_field_declarations field_info
   done;
-  Printf.fprintf ml "let _ = seal %s\n" struct_name
+  Printf.fprintf ml "let _ = seal %s\n" ctypes_typ_name
