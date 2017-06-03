@@ -38,6 +38,9 @@ let is_travis = try
   with
   | _ -> false
 
+let assert_file_exists filename =
+  assert_equal_boolean true (Sys.file_exists filename)
+
 let file_content_to_string in_ch =
   let rec read_line acc =
     try
@@ -48,7 +51,7 @@ let file_content_to_string in_ch =
   String.concat "\n" lines
 
 let check_file_and_content name content =
-  assert_equal_boolean true (Sys.file_exists name);
+  assert_file_exists name;
   let input_ch = open_in name in
   let lines = file_content_to_string input_ch in
   let _ = assert_equal_string content lines in

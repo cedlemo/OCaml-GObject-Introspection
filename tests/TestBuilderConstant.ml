@@ -36,7 +36,7 @@ let constant_test namespace const_name fn =
   | Some (info) -> fn info
 
 let check_file_and_first_line name content =
-  assert_equal_boolean true (Sys.file_exists name);
+  assert_file_exists name;
   let input_ch = open_in name in
   let line = input_line input_ch in
   let _ = assert_equal_string content line in

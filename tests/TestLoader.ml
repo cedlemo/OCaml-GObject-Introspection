@@ -56,7 +56,7 @@ let test_loader_get_version_bad test_ctxt =
 let test_loader_generate_dir test_ctxt =
 test_loader "Gtk" (fun loader ->
     Loader.generate_dir loader;
-    assert_equal_boolean true (Sys.file_exists "Gtk");
+    assert_file_exists "Gtk";
     assert_equal_boolean true (Sys.is_directory "Gtk");
     Unix.rmdir "Gtk";
     )
@@ -71,7 +71,7 @@ let test_loader_generate_main_files test_ctxt =
       let _ = Printf.fprintf main_files.mli.descr "test" in
       let _ = Printf.fprintf main_files.ml.descr "test" in
       let test_close_and_remove file =
-        assert_equal_boolean true (Sys.file_exists (file.name));
+        assert_file_exists file.name;
         Pervasives.close_out file.descr;
         Sys.remove file.name;
       in
