@@ -38,4 +38,20 @@ let is_travis = try
   with
   | _ -> false
 
+let file_content_to_string in_ch =
+  let rec read_line acc =
+    try
+      let line = input_line in_ch in read_line (line :: acc)
+    with
+      End_of_file -> acc
+  in let lines = List.rev (read_line []) in
+  String.concat "\n" lines
+
+let check_file_and_content name content =
+  assert_equal_boolean true (Sys.file_exists name);
+  let input_ch = open_in name in
+  let lines = file_content_to_string input_ch in
+  let _ = assert_equal_string content lines in
+  close_in input_ch;
+  Sys.remove name
 
