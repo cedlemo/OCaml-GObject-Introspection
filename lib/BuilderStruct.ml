@@ -69,7 +69,7 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
       | GITypes.Error -> ("Error.t structure", "Error.error")
       | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
       in
-      let (mli_type', ml_type') = if is_pointer then (mli_type ^ " ptr", "ptr_opt " ^ ml_type)
+      let (mli_type', ml_type') = if is_pointer then (mli_type ^ " ptr", "ptr " ^ ml_type)
         else (mli_type, ml_type) in
       Printf.fprintf mli "val %s: (%s, t structure) field\n" name mli_type';
       Printf.fprintf ml "let %s = field %s \"%s\" (%s)\n" name ctypes_typ_name name ml_type'
