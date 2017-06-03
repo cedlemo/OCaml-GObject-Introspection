@@ -32,7 +32,8 @@ Library "GObjectIntrospection"
            Loader,
            Builder,
            BuilderConstant,
-           BuilderStruct
+           BuilderStruct,
+           BuilderUnion
   BuildDepends: ctypes, ctypes.foreign
   CCLib: -Wl,-no-as-needed GOBJ_LIBS
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter GOBJ_FLAGS
