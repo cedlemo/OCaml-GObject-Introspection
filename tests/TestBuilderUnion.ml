@@ -62,8 +62,21 @@ let test_append_ctypes_union_declaration test_ctxt =
                     let mutex : t union typ = union \"Mutex\"" in
   test_writing_union namespace name writer mli_content ml_content
 
+let test_append_ctypes_union_fields_declarations test_ctxt =
+  let namespace = "GLib" in
+  let name = "Mutex" in
+  let writer = BuilderUnion.append_ctypes_union_fields_declarations in
+  let mli_content = "val p: (unit ptr, t union) field\n\
+                     val i: (Array.t structure, t union) field" in
+  let ml_content = "let p = field mutex \"p\" (ptr void)\n\
+                    let i = field mutex \"i\" (Array.array)\n\
+                    let _ = seal mutex" in
+  test_writing_union namespace name writer mli_content ml_content
+
+
 let tests =
   "GObject Introspection BuilderUnion tests" >:::
   [
     "BuilderStruct append ctypes union declaration" >:: test_append_ctypes_union_declaration;
+    "BuilderStruct append ctypes union fields declarations" >:: test_append_ctypes_union_fields_declarations
   ]
