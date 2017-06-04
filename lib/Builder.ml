@@ -128,7 +128,7 @@ let parse_constant_info info source_files =
     | GITypes.Error as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
 
-let parse_union_info info =
+let parse_union_info info source_files =
   ()
 
 let parse_value_info info =

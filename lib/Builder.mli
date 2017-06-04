@@ -78,7 +78,7 @@ val parse_constant_info :
   GIBaseInfo.t structure ptr -> files -> unit
 
 val parse_union_info :
-  GIBaseInfo.t structure ptr -> unit
+  GIBaseInfo.t structure ptr -> files -> unit
 
 val parse_value_info :
   GIBaseInfo.t structure ptr -> unit

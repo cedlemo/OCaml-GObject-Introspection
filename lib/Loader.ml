@@ -106,7 +106,7 @@ let parse loader =
     | GIBaseInfo.Interface -> Builder.parse_interface_info info
     | GIBaseInfo.Constant -> Builder.parse_constant_info info main_sources
     | GIBaseInfo.Invalid_0 -> ()
-    | GIBaseInfo.Union -> Builder.parse_union_info info
+    | GIBaseInfo.Union -> Builder.parse_union_info info main_sources
     | GIBaseInfo.Value -> Builder.parse_value_info info
     | GIBaseInfo.Signal -> Builder.parse_signal_info info
     | GIBaseInfo.Vfunc -> Builder.parse_vfunc_info info
