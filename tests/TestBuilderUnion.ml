@@ -35,8 +35,35 @@ let union_test namespace union_name fn =
   | None -> assert_equal_string union_name "No base info found"
   | Some (info) -> fn info
 
+let test_writing_union namespace name writer mli_content ml_content =
+  let _ = GIRepository.require repo namespace () in
+  union_test namespace name (fun info ->
+      let open Builder in
+      let filename = String.concat "_" [namespace; name; "union"; "test"] in
+      let tmp_files = Builder.generate_sources filename in
+      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
+      let _ = writer name info descrs in
+      let _ = Builder.close_sources tmp_files in
+      let _ = check_file_and_content tmp_files.mli.name mli_content in
+      TestUtils.check_file_and_content tmp_files.ml.name ml_content
+    )
+
+let test_append_ctypes_union_declaration test_ctxt =
+  let namespace = "GLib" in
+  let name = "Mutex" in
+  let writer = fun name info descrs ->
+    BuilderUnion.append_ctypes_union_declaration name descrs in
+  let mli_content = "open Ctypes\n\
+                     type t\n\
+                     val mutex : t union typ" in
+  let ml_content = "open Ctypes\n\
+                    open Foreign\n\
+                    type t\n\
+                    let mutex : t union typ = union \"Mutex\"" in
+  test_writing_union namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderUnion tests" >:::
   [
+    "BuilderStruct append ctypes union declaration" >:: test_append_ctypes_union_declaration;
   ]
-
