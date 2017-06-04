@@ -35,4 +35,48 @@ let append_ctypes_union_declaration name sources_files =
   Printf.fprintf ml "type t\n";
   Printf.fprintf ml "let %s : t union typ = union \"%s\"\n" (String.lowercase_ascii name) name
 
-
+let append_ctypes_union_fields_declarations struct_name info sources_files =
+  let ctypes_typ_name = String.lowercase_ascii struct_name in
+  let (mli, ml) = sources_files in
+  let append_ctypes_union_field_declarations field_info =
+    let base_info = GIFieldInfo.to_baseinfo field_info in
+    match GIBaseInfo.get_name base_info with
+    | None -> ()
+    | Some name ->
+      let type_info = GIFieldInfo.get_type field_info in
+      let is_pointer = GITypeInfo.is_pointer type_info in
+      let (mli_type, ml_type) = match GITypeInfo.get_tag type_info with
+      | GITypes.Void -> ("unit", "void")
+      | GITypes.Boolean -> ("bool", "bool")
+      | GITypes.Int8 -> ("int", "int8_t")
+      | GITypes.Uint8 -> ("Unsigned.uint8", "uint8_t")
+      | GITypes.Int16 -> ("int", "int16_t")
+      | GITypes.Uint16 -> ("Unsigned.uint16", "uint16_t")
+      | GITypes.Int32 -> ("Int32", "int32_t")
+      | GITypes.Uint32 -> ("Unsigned.uint32", "uint32_t")
+      | GITypes.Int64 -> ("Int64", "int64_t")
+      | GITypes.Uint64 -> ("Unsigned.uint64", "uint64_t")
+      | GITypes.Float -> ("float", "float")
+      | GITypes.Double -> ("float", "double")
+      | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag
+      | GITypes.Utf8 -> ("string", "string")
+      | GITypes.Filename -> ("string", "string")
+      | GITypes.Array -> ("Array.t structure", "Array.array")
+      | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag
+      | GITypes.GList -> ("List.t structure", "List.list")
+      | GITypes.GSList -> ("SList.t structure", "SList.slist")
+      | GITypes.GHash -> ("Hash.t structure", "Hash.ghash")
+      | GITypes.Error -> ("Error.t structure", "Error.error")
+      | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
+      in
+      let (mli_type', ml_type') = if is_pointer then (mli_type ^ " ptr", "ptr " ^ ml_type)
+        else (mli_type, ml_type) in
+      Printf.fprintf mli "val %s: (%s, t union) field\n" name mli_type';
+      Printf.fprintf ml "let %s = field %s \"%s\" (%s)\n" name ctypes_typ_name name ml_type'
+  in
+  let n = GIUnionInfo.get_n_fields info in
+  for i = 0 to n - 1 do
+    let field_info = GIUnionInfo.get_field info i in
+    append_ctypes_union_field_declarations field_info
+  done;
+  Printf.fprintf ml "let _ = seal %s\n" ctypes_typ_name

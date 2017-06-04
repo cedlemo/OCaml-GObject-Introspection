@@ -134,7 +134,8 @@ let parse_union_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = GIUnionInfo.from_baseinfo info in
-    BuilderUnion.append_ctypes_union_declaration name f_descrs
+    BuilderUnion.append_ctypes_union_declaration name f_descrs;
+    BuilderUnion.append_ctypes_union_fields_declarations name info' f_descrs
 
 let parse_value_info info =
   ()

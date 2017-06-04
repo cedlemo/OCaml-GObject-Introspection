@@ -25,4 +25,5 @@ open Foreign
 val append_ctypes_union_declaration:
   string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
-
+val append_ctypes_union_fields_declarations:
+  string -> GIUnionInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
