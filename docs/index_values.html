@@ -28,7 +28,10 @@
 <link title="GIRepository" rel="Chapter" href="GIRepository.html">
 <link title="Loader" rel="Chapter" href="Loader.html">
 <link title="Builder" rel="Chapter" href="Builder.html">
-<link title="BuilderConstant" rel="Chapter" href="BuilderConstant.html"><title>Index of values</title>
+<link title="BuilderConstant" rel="Chapter" href="BuilderConstant.html">
+<link title="BuilderStruct" rel="Chapter" href="BuilderStruct.html">
+<link title="BuilderUnion" rel="Chapter" href="BuilderUnion.html">
+<link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>Index of values</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
@@ -104,6 +107,14 @@ Add unref of the C underlying structure whith Gc.finalise.
 </div>
 </td></tr>
 <tr><td><a href="BuilderConstant.html#VALappend_boolean_constant">append_boolean_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderStruct.html#VALappend_ctypes_struct_declaration">append_ctypes_struct_declaration</a> [<a href="BuilderStruct.html">BuilderStruct</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderStruct.html#VALappend_ctypes_struct_fields_declarations">append_ctypes_struct_fields_declarations</a> [<a href="BuilderStruct.html">BuilderStruct</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderUnion.html#VALappend_ctypes_union_declaration">append_ctypes_union_declaration</a> [<a href="BuilderUnion.html">BuilderUnion</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderUnion.html#VALappend_ctypes_union_fields_declarations">append_ctypes_union_fields_declarations</a> [<a href="BuilderUnion.html">BuilderUnion</a>]</td>
 <td></td></tr>
 <tr><td><a href="BuilderConstant.html#VALappend_double_constant">append_double_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
 <td></td></tr>
@@ -1446,6 +1457,15 @@ Prepends directory to the typelib search path.
 <tr><td><a href="GIPropertyInfo.html#VALpropertyinfo">propertyinfo</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>R</td></tr>
+<tr><td><a href="BuilderUtils.html#VALraise_not_implemented">raise_not_implemented</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderUtils.html#VALraise_tag_not_implemented">raise_tag_not_implemented</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td><div class="info">
+Raise a Not_implemented exception with a string representation of the
+    GITypes.tag, given in argument, that will be appended to the message given
+    in the first argument.
+</div>
+</td></tr>
 <tr><td><a href="GIRegisteredTypeInfo.html#VALregisteredtypeinfo">registeredtypeinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -1661,6 +1681,12 @@ Obtain a string representation of type.
 <td><div class="info">
 Obtain if the returning true in the signal handler will stop the emission
     of the signal.
+</div>
+</td></tr>
+<tr><td><a href="BuilderUtils.html#VALtype_tag_to_ctypes_strings">type_tag_to_ctypes_strings</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td><div class="info">
+Transforms a GITypes.tag to the corresponding types for the mli file and
+    the ml file.
 </div>
 </td></tr>
 <tr><td><a href="GITypeInfo.html#VALtypeinfo">typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
