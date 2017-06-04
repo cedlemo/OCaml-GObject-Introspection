@@ -129,7 +129,12 @@ let parse_constant_info info source_files =
     | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
 
 let parse_union_info info source_files =
-  ()
+  match GIBaseInfo.get_name info with
+  | None -> ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let info' = GIUnionInfo.from_baseinfo info in
+    BuilderUnion.append_ctypes_union_declaration name f_descrs
 
 let parse_value_info info =
   ()
