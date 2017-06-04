@@ -16,11 +16,19 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+(** Raise an Not_implemented exception with the message given in argument. *)
 val raise_not_implemented:
   string -> unit
 
+(** Raise a Not_implemented exception with a string representation of the
+    GITypes.tag, given in argument, that will be appended to the message given
+    in the first argument. *)
 val raise_tag_not_implemented:
   string -> GITypes.tag -> unit
 
+(** Transforms a GITypes.tag to the corresponding types for the mli file and
+    the ml file. For example, the GITypes.Int8 tag returns ("int", "int8_t").
+    The "int" string is used in the OCaml header file for signature while the
+    int8_t is used in OCaml file for Ctypes types usage.*)
 val type_tag_to_ctypes_strings:
   GITypes.tag -> (string * string)
