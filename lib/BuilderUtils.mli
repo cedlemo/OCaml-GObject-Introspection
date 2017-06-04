@@ -16,3 +16,8 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+val raise_not_implemented:
+  string -> unit
+
+val raise_tag_not_implemented:
+  string -> GITypes.tag -> unit

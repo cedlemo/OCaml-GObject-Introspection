@@ -16,14 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-exception Not_Implemented of string
-
-let raise_not_implemented message =
-  raise (Not_Implemented message)
-
-let raise_tag_not_implemented loc tag =
-  let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
-  raise_not_implemented m
+open BuilderUtils
 
 let append_ctypes_union_declaration name sources_files =
   let (mli, ml) = sources_files in
@@ -58,16 +51,16 @@ let append_ctypes_union_fields_declarations struct_name info sources_files =
       | GITypes.Uint64 -> ("Unsigned.uint64", "uint64_t")
       | GITypes.Float -> ("float", "float")
       | GITypes.Double -> ("float", "double")
-      | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag
+      | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag; ("", "")
       | GITypes.Utf8 -> ("string", "string")
       | GITypes.Filename -> ("string", "string")
       | GITypes.Array -> ("Array.t structure", "Array.array")
-      | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag
+      | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag; ("", "")
       | GITypes.GList -> ("List.t structure", "List.list")
       | GITypes.GSList -> ("SList.t structure", "SList.slist")
       | GITypes.GHash -> ("Hash.t structure", "Hash.ghash")
       | GITypes.Error -> ("Error.t structure", "Error.error")
-      | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
+      | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag; ("", "")
       in
       let (mli_type', ml_type') = if is_pointer then (mli_type ^ " ptr", "ptr " ^ ml_type)
         else (mli_type, ml_type) in

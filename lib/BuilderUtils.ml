@@ -16,3 +16,13 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+exception Not_Implemented of string
+
+let raise_not_implemented message =
+  raise (Not_Implemented message)
+
+let raise_tag_not_implemented loc tag =
+  let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
+  raise_not_implemented m
+
+
