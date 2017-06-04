@@ -42,10 +42,10 @@ let type_tag_to_ctypes_strings tag =
   | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag
   | GITypes.Utf8 -> ("string", "string")
   | GITypes.Filename -> ("string", "string")
-  | GITypes.Array -> ("Array.t structure", "Array.array")
+  | GITypes.Array -> ("Array.t structure", "Array.array") (* TODO : this is not GArray, this should find out which Array it is*)
   | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag
   | GITypes.GList -> ("List.t structure", "List.list")
   | GITypes.GSList -> ("SList.t structure", "SList.slist")
-  | GITypes.GHash -> ("Hash.t structure", "Hash.ghash")
+  | GITypes.GHash -> ("Hash.t structure", "Hash.hash")
   | GITypes.Error -> ("Error.t structure", "Error.error")
   | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
