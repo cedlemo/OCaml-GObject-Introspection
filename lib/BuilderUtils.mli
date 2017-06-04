@@ -21,3 +21,6 @@ val raise_not_implemented:
 
 val raise_tag_not_implemented:
   string -> GITypes.tag -> unit
+
+val type_tag_to_ctypes_strings:
+  GITypes.tag -> (string * string)
