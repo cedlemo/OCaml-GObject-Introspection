@@ -12,7 +12,7 @@ build: [
   [make]
 ]
 install: [make "install"]
-remove: ["ocamlfind" "remove" "OCaml-GObject-Introspection"]
+remove: ["ocamlfind" "remove" "OCaml-GLib"]
 depends: [
   "ocamlfind" {build}
 ]
