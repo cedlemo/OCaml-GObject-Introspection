@@ -1,0 +1,6 @@
+(jbuild_version 1)
+
+(alias
+ ((name    runtest)
+  (libraries  (gobject-introspection))
+  (action  (run ${<}))))
