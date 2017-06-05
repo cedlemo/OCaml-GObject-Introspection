@@ -25,6 +25,10 @@ let raise_tag_not_implemented loc tag =
   let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
   raise_not_implemented m
 
+let log_tag_not_implemented loc tag =
+  let m = String.concat ":" ["Not implemented"; loc; GITypes.string_of_tag tag] in
+  print_endline m
+
 let type_tag_to_ctypes_strings tag =
   match tag with
   | GITypes.Void -> ("unit", "void")

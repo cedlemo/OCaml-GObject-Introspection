@@ -26,6 +26,12 @@ val raise_not_implemented:
 val raise_tag_not_implemented:
   string -> GITypes.tag -> unit
 
+(** Log a Not implemented message with a string representation of the
+    GITypes.tag, given in argument, that will be appended to the message given
+    in the first argument. *)
+val log_tag_not_implemented:
+  string -> GITypes.tag -> unit
+
 (** Transforms a GITypes.tag to the corresponding types for the mli file and
     the ml file. For example, the GITypes.Int8 tag returns ("int", "int8_t").
     The "int" string is used in the OCaml header file for signature while the
