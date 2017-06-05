@@ -1,0 +1,18 @@
+opam-version: "1.2"
+name: "OCaml-GObject-Introspection"
+version: "~unknown"
+maintainer: "cedlemo <cedlemo@gmx.com>"
+authors: "cedlemo <cedlemo@gmx.com>"
+homepage: "https://github.com/cedlemo/OCaml-GObject-Introspection"
+bug-reports: "https://github.com/cedlemo/OCaml-GObject-Introspection/issues"
+license: "GPL3"
+dev-repo: "https://github.com/cedlemo/OCaml-GObject-Introspection"
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "OCaml-GObject-Introspection"]
+depends: [
+  "ocamlfind" {build}
+]

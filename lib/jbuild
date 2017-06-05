@@ -1,0 +1,15 @@
+(jbuild_version 1)
+
+(library
+ ((name        gobject-introspection)
+  (public_name gobject-introspection)
+  (libraries (ctypes ctypes.foreign))
+  (c_flags         (:include c_flags.sexp))
+  (c_library_flags (:include c_library_flags.sexp))))
+
+(rule
+ ((targets (c_flags.sexp
+            c_library_flags.sexp))
+  (deps    (config/discover.exe))
+  (action  (run ${<} -ocamlc ${OCAMLC}))))
+
