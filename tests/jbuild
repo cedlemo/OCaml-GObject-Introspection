@@ -1,6 +1,11 @@
 (jbuild_version 1)
 
+(executables
+ ((names (test))
+  (libraries   (GObjectIntrospection oUnit))
+))
+
 (alias
  ((name    runtest)
-  (libraries  (gobject-introspection))
+  (deps    (test.exe))
   (action  (run ${<}))))
