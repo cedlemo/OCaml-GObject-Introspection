@@ -95,9 +95,9 @@ let parse loader =
         match GIBaseInfo.get_name info with
         | None -> ()
         | Some name -> let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
-          let struct_sources = Builder.generate_sources file_name_pattern in
-          let _ = Builder.parse_struct_info info struct_sources in
-          Builder.close_sources struct_sources
+          let sources = Builder.generate_sources file_name_pattern in
+          let _ = Builder.parse_struct_info info sources in
+          Builder.close_sources sources
       )
     | GIBaseInfo.Boxed -> Builder.parse_boxed_info info
     | GIBaseInfo.Enum -> Builder.parse_enum_info info
