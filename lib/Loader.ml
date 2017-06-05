@@ -106,7 +106,14 @@ let parse loader =
     | GIBaseInfo.Interface -> Builder.parse_interface_info info
     | GIBaseInfo.Constant -> Builder.parse_constant_info info main_sources
     | GIBaseInfo.Invalid_0 -> ()
-    | GIBaseInfo.Union -> Builder.parse_union_info info main_sources
+    | GIBaseInfo.Union -> (
+        match GIBaseInfo.get_name info with
+        | None -> ()
+        | Some name -> let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
+          let sources = Builder.generate_sources file_name_pattern in
+          let _ = Builder.parse_union_info info sources in
+          Builder.close_sources sources
+      )
     | GIBaseInfo.Value -> Builder.parse_value_info info
     | GIBaseInfo.Signal -> Builder.parse_signal_info info
     | GIBaseInfo.Vfunc -> Builder.parse_vfunc_info info
