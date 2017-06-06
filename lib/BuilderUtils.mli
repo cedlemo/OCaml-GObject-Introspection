@@ -39,7 +39,7 @@ val log_tag_not_implemented:
 val type_tag_to_ctypes_strings:
   GITypes.tag -> (string * string)
 
-(** Add the line open Ctypes in a file .*)
+(** Add the line "open Ctypes\n" in a file. *)
 val add_open_ctypes:
   Pervasives.out_channel -> unit
 
