@@ -42,6 +42,7 @@ let () =
       TestLoader.tests;
       TestBuilderConstant.tests;
       TestBuilderStruct.tests;
-      TestBuilderUnion.tests
+      TestBuilderUnion.tests;
+      TestBuilderEnum.tests
     ]
   )
