@@ -17,7 +17,7 @@
  *)
 
 (** BuilderStruct : regroups all functions needed to parse and generate the
-    OCaml code for C structures. *)
+    OCaml code for C unions. *)
 
 open Ctypes
 open Foreign
