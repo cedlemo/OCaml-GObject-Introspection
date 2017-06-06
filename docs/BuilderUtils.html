@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="BuilderUnion.html">
+<link rel="previous" href="BuilderEnum.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -34,10 +34,11 @@
 <link title="BuilderConstant" rel="Chapter" href="BuilderConstant.html">
 <link title="BuilderStruct" rel="Chapter" href="BuilderStruct.html">
 <link title="BuilderUnion" rel="Chapter" href="BuilderUnion.html">
+<link title="BuilderEnum" rel="Chapter" href="BuilderEnum.html">
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>BuilderUtils</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="BuilderUnion.html" title="BuilderUnion">Previous</a>
+<div class="navbar"><a class="pre" href="BuilderEnum.html" title="BuilderEnum">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;</div>
 <h1>Module <a href="type_BuilderUtils.html">BuilderUtils</a></h1>
@@ -54,10 +55,24 @@ Raise a Not_implemented exception with a string representation of the
     in the first argument.<br>
 </div>
 
+<pre><span id="VALlog_tag_not_implemented"><span class="keyword">val</span> log_tag_not_implemented</span> : <code class="type">string -> <a href="GITypes.html#TYPEtag">GITypes.tag</a> -> unit</code></pre><div class="info ">
+Log a Not implemented message with a string representation of the
+    GITypes.tag, given in argument, that will be appended to the message given
+    in the first argument.<br>
+</div>
+
 <pre><span id="VALtype_tag_to_ctypes_strings"><span class="keyword">val</span> type_tag_to_ctypes_strings</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> string * string</code></pre><div class="info ">
 Transforms a GITypes.tag to the corresponding types for the mli file and
     the ml file. For example, the GITypes.Int8 tag returns ("int", "int8_t").
     The "int" string is used in the OCaml header file for signature while the
     int8_t is used in OCaml file for Ctypes types usage.<br>
+</div>
+
+<pre><span id="VALadd_open_ctypes"><span class="keyword">val</span> add_open_ctypes</span> : <code class="type">Pervasives.out_channel -> unit</code></pre><div class="info ">
+Add the line "open Ctypes\n" in a file.<br>
+</div>
+
+<pre><span id="VALadd_open_foreign"><span class="keyword">val</span> add_open_foreign</span> : <code class="type">Pervasives.out_channel -> unit</code></pre><div class="info ">
+Add the line "open Foreign\n" in a file.<br>
 </div>
 </body></html>
