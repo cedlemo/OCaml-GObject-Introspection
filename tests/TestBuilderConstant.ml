@@ -101,7 +101,7 @@ let test_append_int32_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT32" in
   let writer = BuilderConstant.append_int32_constant in
-  let mli_content = "val _MAXINT32 : Int32" in
+  let mli_content = "val _MAXINT32 : int32" in
   let ml_content = "let _MAXINT32 = 2147483647" in
   test_writing_constant namespace name writer mli_content ml_content
 
@@ -117,7 +117,7 @@ let test_append_int64_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT64" in
   let writer = BuilderConstant.append_int64_constant in
-  let mli_content = "val _MAXINT64 : Int64" in
+  let mli_content = "val _MAXINT64 : int64" in
   let ml_content = "let _MAXINT64 = 9223372036854775807" in
   test_writing_constant namespace name writer mli_content ml_content
 

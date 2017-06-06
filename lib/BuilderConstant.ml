@@ -60,7 +60,7 @@ let append_uint16_constant name info source_files =
 
 let append_int32_constant name info source_files =
   let field = GITypes.v_int32 in
-  let field_type = "Int32" in
+  let field_type = "int32" in
   let printer = Int32.to_string in
   append_constant name info source_files field field_type printer
 
@@ -72,7 +72,7 @@ let append_uint32_constant name info source_files =
 
 let append_int64_constant name info source_files =
   let field = GITypes.v_int64 in
-  let field_type = "Int64" in
+  let field_type = "int64" in
   let printer = Int64.to_string in
   append_constant name info source_files field field_type printer
 
