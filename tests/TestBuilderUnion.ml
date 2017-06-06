@@ -77,6 +77,6 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
 let tests =
   "GObject Introspection BuilderUnion tests" >:::
   [
-    "BuilderStruct append ctypes union declaration" >:: test_append_ctypes_union_declaration;
-    "BuilderStruct append ctypes union fields declarations" >:: test_append_ctypes_union_fields_declarations
+    "BuilderUnion append ctypes union declaration" >:: test_append_ctypes_union_declaration;
+    "BuilderUnion append ctypes union fields declarations" >:: test_append_ctypes_union_fields_declarations
   ]
