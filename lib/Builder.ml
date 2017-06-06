@@ -46,6 +46,11 @@ let close_sources source_files =
   close_file source_files.ml;
   close_file source_files.mli
 
+let append_open_ctypes_modules (mli_descr, ml_descr) =
+  add_open_ctypes mli_descr;
+  add_open_ctypes ml_descr;
+  add_open_foreign ml_descr
+
 let parse_invalid_info info =
   ()
 
@@ -60,6 +65,7 @@ let parse_struct_info info source_files =
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
+    let _ = append_open_ctypes_modules f_descrs in
     let info' = GIStructInfo.from_baseinfo info in
     BuilderStruct.append_ctypes_struct_declaration name f_descrs;
     BuilderStruct.append_ctypes_struct_fields_declarations name info' f_descrs
@@ -131,6 +137,7 @@ let parse_union_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = GIUnionInfo.from_baseinfo info in
+    let _ = append_open_ctypes_modules f_descrs in
     BuilderUnion.append_ctypes_union_declaration name f_descrs;
     BuilderUnion.append_ctypes_union_fields_declarations name info' f_descrs
 

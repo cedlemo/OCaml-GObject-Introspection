@@ -53,12 +53,9 @@ let test_append_ctypes_union_declaration test_ctxt =
   let name = "Mutex" in
   let writer = fun name info descrs ->
     BuilderUnion.append_ctypes_union_declaration name descrs in
-  let mli_content = "open Ctypes\n\
-                     type t\n\
+  let mli_content = "type t\n\
                      val mutex : t union typ" in
-  let ml_content = "open Ctypes\n\
-                    open Foreign\n\
-                    type t\n\
+  let ml_content = "type t\n\
                     let mutex : t union typ = union \"Mutex\"" in
   test_writing_union namespace name writer mli_content ml_content
 

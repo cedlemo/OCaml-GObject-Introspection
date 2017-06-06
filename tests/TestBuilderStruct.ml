@@ -53,12 +53,9 @@ let test_append_ctypes_struct_declaration test_ctxt =
   let name = "Array" in
   let writer = fun name info descrs ->
     BuilderStruct.append_ctypes_struct_declaration name descrs in
-  let mli_content = "open Ctypes\n\
-                     type t\n\
+  let mli_content = "type t\n\
                      val array : t structure typ" in
-  let ml_content = "open Ctypes\n\
-                    open Foreign\n\
-                    type t\n\
+  let ml_content = "type t\n\
                     let array : t structure typ = structure \"Array\"" in
   test_writing_struct namespace name writer mli_content ml_content
 
