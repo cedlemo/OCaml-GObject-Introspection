@@ -56,3 +56,6 @@ let type_tag_to_ctypes_strings tag =
 
 let add_open_ctypes descr =
    Printf.fprintf descr "open Ctypes\n"
+
+let add_open_foreign descr =
+   Printf.fprintf descr "open Foreign\n"

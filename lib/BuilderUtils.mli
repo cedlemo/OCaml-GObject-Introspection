@@ -42,3 +42,7 @@ val type_tag_to_ctypes_strings:
 (** Add the line open Ctypes in a file .*)
 val add_open_ctypes:
   Pervasives.out_channel -> unit
+
+(** Add the line "open Foreign\n" in a file. *)
+val add_open_foreign:
+  Pervasives.out_channel -> unit
