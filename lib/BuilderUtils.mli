@@ -38,3 +38,7 @@ val log_tag_not_implemented:
     int8_t is used in OCaml file for Ctypes types usage.*)
 val type_tag_to_ctypes_strings:
   GITypes.tag -> (string * string)
+
+(** Add the line open Ctypes in a file .*)
+val add_open_ctypes:
+  Pervasives.out_channel -> unit

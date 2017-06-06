@@ -53,3 +53,6 @@ let type_tag_to_ctypes_strings tag =
   | GITypes.GHash -> ("Hash.t structure", "Hash.hash")
   | GITypes.Error -> ("Error.t structure", "Error.error")
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
+
+let add_open_ctypes descr =
+   Printf.fprintf descr "open Ctypes\n"
