@@ -16,6 +16,8 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open BuilderUtils
+
 type file = {
   name: string;
   descr : Pervasives.out_channel;
@@ -43,11 +45,6 @@ let close_sources source_files =
     if Sys.file_exists f.name then Pervasives.close_out f.descr in
   close_file source_files.ml;
   close_file source_files.mli
-
-exception Not_Implemented of string
-
-let raise_not_implemented message =
-  raise (Not_Implemented message)
 
 let parse_invalid_info info =
   ()
@@ -160,5 +157,3 @@ let parse_type_info info =
 
 let parse_unresolved_info info =
   ()
-
-
