@@ -61,7 +61,7 @@ val parse_boxed_info :
   GIBaseInfo.t structure ptr -> unit
 
 val parse_enum_info :
-  GIBaseInfo.t structure ptr -> unit
+  GIBaseInfo.t structure ptr -> files -> unit
 
 val parse_flags_info :
   GIBaseInfo.t structure ptr -> unit

@@ -100,7 +100,7 @@ let parse loader =
           Builder.close_sources sources
       )
     | GIBaseInfo.Boxed -> Builder.parse_boxed_info info
-    | GIBaseInfo.Enum -> Builder.parse_enum_info info
+    | GIBaseInfo.Enum -> Builder.parse_enum_info info main_sources
     | GIBaseInfo.Flags -> Builder.parse_flags_info info
     | GIBaseInfo.Object -> Builder.parse_object_info info
     | GIBaseInfo.Interface -> Builder.parse_interface_info info

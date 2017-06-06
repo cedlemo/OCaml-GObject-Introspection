@@ -70,7 +70,7 @@ let parse_struct_info info source_files =
 let parse_boxed_info info =
   ()
 
-let parse_enum_info info =
+let parse_enum_info info source_files =
   ()
 
 let parse_flags_info info =
