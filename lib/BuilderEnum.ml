@@ -18,6 +18,9 @@
 
 open BuilderUtils
 
+(* TODO : test,
+ *        finalise the enum declaration
+ *        find the mli signature *)
 let append_ctypes_enum_constants_declarations info (mli, ml) =
   let tag = GIEnumInfo.get_storage_type info in
   let tag_typ = type_tag_to_ctypes_typ_string tag in
