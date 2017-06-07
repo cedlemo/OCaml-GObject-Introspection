@@ -39,6 +39,11 @@ val log_tag_not_implemented:
 val type_tag_to_ctypes_strings:
   GITypes.tag -> (string * string)
 
+(** Get the Ctypes typ representation of a GITypes.tag. For example, if the tag
+    is GITypes.Int8, it will returns "int8_t". *)
+val type_tag_to_ctypes_typ_string:
+  GITypes.tag -> string
+
 (** Add the line "open Ctypes\n" in a file. *)
 val add_open_ctypes:
   Pervasives.out_channel -> unit

@@ -54,6 +54,31 @@ let type_tag_to_ctypes_strings tag =
   | GITypes.Error -> ("Error.t structure", "Error.error")
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
 
+let type_tag_to_ctypes_typ_string tag =
+  match tag with
+  | GITypes.Void -> "void"
+  | GITypes.Boolean -> "bool"
+  | GITypes.Int8 -> "int8_t"
+  | GITypes.Uint8 -> "uint8_t"
+  | GITypes.Int16 -> "int16_t"
+  | GITypes.Uint16 -> "uint16_t"
+  | GITypes.Int32 -> "int32_t"
+  | GITypes.Uint32 -> "uint32_t"
+  | GITypes.Int64 -> "int64_t"
+  | GITypes.Uint64 -> "uint64_t"
+  | GITypes.Float -> "float"
+  | GITypes.Double -> "double"
+  | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ""
+  | GITypes.Utf8 -> "string"
+  | GITypes.Filename -> "string"
+  | GITypes.Array -> "Array.array" (* TODO : this is not GArray, this should find out which Array it is*)
+  | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ""
+  | GITypes.GList -> "List.list"
+  | GITypes.GSList -> "SList.slist"
+  | GITypes.GHash -> "Hash.hash"
+  | GITypes.Error -> "Error.error"
+  | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
+
 let add_open_ctypes descr =
    Printf.fprintf descr "open Ctypes\n"
 
