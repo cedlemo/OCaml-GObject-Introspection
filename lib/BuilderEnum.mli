@@ -22,4 +22,6 @@
 open Ctypes
 open Foreign
 
+val append_ctypes_enum_constants_declarations:
+  GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 

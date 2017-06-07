@@ -18,3 +18,17 @@
 
 open BuilderUtils
 
+let append_ctypes_enum_constants_declarations info (mli, ml) =
+  let tag = GIEnumInfo.get_storage_type info in
+  let tag_typ = type_tag_to_ctypes_typ_string tag in
+  let n = GIEnumInfo.get_n_values info in
+  for i = 0 to n - 1 do
+    match GIEnumInfo.get_value info i with
+    | None -> ()
+    | Some value -> let value_base_info = GIValueInfo.to_baseinfo value in
+      match GIBaseInfo.get_name value_base_info with
+      | None -> ()
+      | Some const_name -> let const_name_low_case = String.lowercase_ascii const_name in
+        if i = 0 then Printf.fprintf ml "let %s = constant \"%s\" %s" const_name_low_case const_name tag_typ
+        else Printf.fprintf ml "and %s = constant \"%s\" %s" const_name_low_case const_name tag_typ
+  done

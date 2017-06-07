@@ -74,7 +74,13 @@ let parse_boxed_info info =
   ()
 
 let parse_enum_info info source_files =
-  ()
+  match GIBaseInfo.get_name info with
+  | None -> ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let _ = append_open_ctypes_modules f_descrs in
+    let info' = GIEnumInfo.from_baseinfo info in
+    BuilderEnum.append_ctypes_enum_constants_declarations info' f_descrs
 
 let parse_flags_info info =
   ()
