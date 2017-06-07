@@ -48,7 +48,7 @@ val get_value:
 val get_error_domain:
   t structure ptr -> string option
 
-(** Obtain the tag of the type used for the enum in the C ABI. This will will
+(** Obtain the tag of the type used for the enum in the C ABI. This will
     be a signed or unsigned integral type.
     Note that in the current implementation the width of the type is computed
     correctly, but the signed or unsigned nature of the type may not match the
