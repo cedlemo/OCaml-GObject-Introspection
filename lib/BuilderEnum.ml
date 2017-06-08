@@ -18,6 +18,11 @@
 
 open BuilderUtils
 
+let base_name_for_enum name =
+  let pattern = Str.regexp "\\(.*\\)\\(Type\\|Flags\\)" in
+  if Str.string_match pattern name 0 then Str.matched_group 1 name
+  else name
+
 let rebuild_c_identifier_for_constant enum_name value_info =
   let base_info = GIValueInfo.to_baseinfo value_info in
   let namespace = GIBaseInfo.get_namespace base_info in
@@ -25,7 +30,7 @@ let rebuild_c_identifier_for_constant enum_name value_info =
   let c_prefix = GIRepository.get_c_prefix repo namespace in
   match GIBaseInfo.get_name base_info with
   | None -> raise (Failure "It should have a name")
-  | Some name -> let lower_case = String.concat "_" [c_prefix; enum_name; name] in
+  | Some name -> let lower_case = String.concat "_" [c_prefix; base_name_for_enum enum_name; name] in
     String.uppercase_ascii lower_case
 
 (* TODO : test,
