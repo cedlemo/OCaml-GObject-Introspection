@@ -48,7 +48,21 @@ let test_writing_enum namespace name writer mli_content ml_content =
       TestUtils.check_file_and_content tmp_files.ml.name ml_content
     )
 
+let test_rebuild_c_identifier_for_constant test_ctxt =
+  enum_test "GLib" "ChecksumType" (fun info ->
+      match GIEnumInfo.get_value info 0 with
+      | None -> assert_equal_string "It should " "have a value"
+      | Some value_info ->
+        let base_info = GIEnumInfo.to_baseinfo info in
+        match GIBaseInfo.get_name base_info with
+        | None -> assert_equal_string "It should " "have a name"
+        | Some name ->
+          let c_identifier = BuilderEnum.rebuild_c_identifier_for_constant name value_info in
+          assert_equal_string "G_CHECKSUM_MD5" c_identifier
+    )
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
+    "BuilderEnum rebuild c identifier for constant" >:: test_rebuild_c_identifier_for_constant
   ]
