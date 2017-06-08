@@ -32,6 +32,6 @@ let append_ctypes_enum_constants_declarations info (mli, ml) =
       match GIBaseInfo.get_name value_base_info with
       | None -> ()
       | Some const_name -> let const_name_low_case = String.lowercase_ascii const_name in
-        if i = 0 then Printf.fprintf ml "let %s = constant \"%s\" %s" const_name_low_case const_name tag_typ
-        else Printf.fprintf ml "and %s = constant \"%s\" %s" const_name_low_case const_name tag_typ
+        if i = 0 then Printf.fprintf ml "let %s = constant \"%s\" %s\n" const_name_low_case const_name tag_typ
+        else Printf.fprintf ml "and %s = constant \"%s\" %s\n" const_name_low_case const_name tag_typ
   done
