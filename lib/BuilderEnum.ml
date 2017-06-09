@@ -33,9 +33,6 @@ let rebuild_c_identifier_for_constant enum_name value_info =
   | Some name -> let lower_case = String.concat "_" [c_prefix; base_name_for_enum enum_name; name] in
     String.uppercase_ascii lower_case
 
-(* TODO : test,
- *        finalise the enum declaration
- *        find the mli signature *)
 let append_ctypes_enum_constants_declarations enum_name info (mli, ml) =
   let tag = GIEnumInfo.get_storage_type info in
   let tag_typ = type_tag_to_ctypes_typ_string tag in
@@ -51,8 +48,7 @@ let append_ctypes_enum_constants_declarations enum_name info (mli, ml) =
         else Printf.fprintf ml "and %s = constant \"%s\" %s\n" const_name c_identifier tag_typ
   done
 
-(* TODO : fix *)
-
+(* TODO : fix , the values are not found it seems*)
 let append_ctypes_enum_declaration enum_name info (mli, ml) =
   let get_variants_and_constants_names () =
     let v_c = [] in
