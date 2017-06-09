@@ -80,7 +80,7 @@ let parse_enum_info info source_files =
                                  source_files.ml.descr) in
     let _ = append_open_ctypes_modules f_descrs in
     let info' = GIEnumInfo.from_baseinfo info in
-    BuilderEnum.append_ctypes_enum_constants_declarations info' f_descrs
+    BuilderEnum.append_ctypes_enum_constants_declarations name info' f_descrs
 
 let parse_flags_info info =
   ()
