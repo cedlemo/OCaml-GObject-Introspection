@@ -61,8 +61,21 @@ let test_rebuild_c_identifier_for_constant test_ctxt =
           assert_equal_string "G_CHECKSUM_MD5" c_identifier
     )
 
+let test_append_ctypes_enum_constants_declarations test_ctxt =
+  let namespace = "GLib" in
+  let name = "ChecksumType" in
+  let writer = BuilderEnum.append_ctypes_enum_constants_declarations in
+  let mli_content = "" in
+  let ml_content = "let md5 = constant \"G_CHECKSUM_MD5\" uint32_t\n\
+                    and sha1 = constant \"G_CHECKSUM_SHA1\" uint32_t\n\
+                    and sha256 = constant \"G_CHECKSUM_SHA256\" uint32_t\n\
+                    and sha512 = constant \"G_CHECKSUM_SHA512\" uint32_t\n\
+                    and sha384 = constant \"G_CHECKSUM_SHA384\" uint32_t" in
+  test_writing_enum namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
-    "BuilderEnum rebuild c identifier for constant" >:: test_rebuild_c_identifier_for_constant
+    "BuilderEnum rebuild c identifier for constant" >:: test_rebuild_c_identifier_for_constant;
+    "BuilderEnum append ctypes enum constants declarations" >:: test_append_ctypes_enum_constants_declarations
   ]
