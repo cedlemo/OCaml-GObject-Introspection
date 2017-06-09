@@ -28,3 +28,6 @@ val rebuild_c_identifier_for_constant:
 val append_ctypes_enum_constants_declarations:
   string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
+val append_ctypes_enum_declaration:
+  string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
