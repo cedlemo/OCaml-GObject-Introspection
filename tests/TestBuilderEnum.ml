@@ -73,9 +73,23 @@ let test_append_ctypes_enum_constants_declarations test_ctxt =
                     and sha384 = constant \"G_CHECKSUM_SHA384\" uint32_t" in
   test_writing_enum namespace name writer mli_content ml_content
 
+let test_append_ctypes_enum_declaration test_ctxt =
+  let namespace = "GLib" in
+  let name = "ChecksumType" in
+  let writer = BuilderEnum.append_ctypes_enum_declaration in
+  let mli_content = "" in
+  let ml_content = "let checksumtype : [`Md5 | `Sha1 | `Sha256 | `Sha512 | `Sha384] typ = enum \"checksumtype\" [\n\
+    `Md5, md5;\n\
+    `Sha1, sha1;\n\
+    `Sha256, sha256;\n\
+    `Sha512, sha512;\n\
+    `Sha384, sha384 ]\n" in
+  test_writing_enum namespace name writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
     "BuilderEnum rebuild c identifier for constant" >:: test_rebuild_c_identifier_for_constant;
-    "BuilderEnum append ctypes enum constants declarations" >:: test_append_ctypes_enum_constants_declarations
+    "BuilderEnum append ctypes enum constants declarations" >:: test_append_ctypes_enum_constants_declarations(*;
+    "BuilderEnum append ctypes enum declaration" >:: test_append_ctypes_enum_declaration*)
   ]
