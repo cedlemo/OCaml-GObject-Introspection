@@ -85,7 +85,14 @@ let test_append_ctypes_enum_declaration test_ctxt =
     `Sha512, sha512;\n\
     `Sha384, sha384\n\
     ]" in
-  test_writing_enum namespace name writer mli_content ml_content
+  let ml_content_travis = "let checksumtype : [`Md5|`Sha1|`Sha256|`Sha512] typ = enum \"checksumtype\" [\n\
+    `Md5, md5;\n\
+    `Sha1, sha1;\n\
+    `Sha256, sha256;\n\
+    `Sha512, sha512;\n\
+    ]" in
+  if is_travis then test_writing_enum namespace name writer mli_content ml_content_travis
+  else test_writing_enum namespace name writer mli_content ml_content
 
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
