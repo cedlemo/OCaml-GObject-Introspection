@@ -58,3 +58,11 @@ let check_file_and_content name content =
   close_in input_ch;
   Sys.remove name
 
+(* TODO : create function test_writing that will replace
+ * - test_writing_constant
+ * - test_writing_enum
+ * - test_writing_union
+ *
+ * use bracket_tmpfile from oUnit2
+ * http://ounit.forge.ocamlcore.org/api-ounit/OUnit2.html#VALbracket_tmpfile
+ *)
