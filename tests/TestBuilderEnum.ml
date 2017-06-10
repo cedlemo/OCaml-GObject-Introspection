@@ -94,7 +94,7 @@ let test_append_ctypes_enum_declaration test_ctxt =
     `Md5, md5;\n\
     `Sha1, sha1;\n\
     `Sha256, sha256;\n\
-    `Sha512, sha512;\n\
+    `Sha512, sha512\n\
     ]" in
   if is_travis then test_writing_enum namespace name writer mli_content ml_content_travis
   else test_writing_enum namespace name writer mli_content ml_content
