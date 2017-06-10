@@ -119,6 +119,10 @@ Add unref of the C underlying structure whith Gc.finalise.
 </td></tr>
 <tr><td><a href="BuilderConstant.html#VALappend_boolean_constant">append_boolean_constant</a> [<a href="BuilderConstant.html">BuilderConstant</a>]</td>
 <td></td></tr>
+<tr><td><a href="BuilderEnum.html#VALappend_ctypes_enum_constants_declarations">append_ctypes_enum_constants_declarations</a> [<a href="BuilderEnum.html">BuilderEnum</a>]</td>
+<td></td></tr>
+<tr><td><a href="BuilderEnum.html#VALappend_ctypes_enum_declaration">append_ctypes_enum_declaration</a> [<a href="BuilderEnum.html">BuilderEnum</a>]</td>
+<td></td></tr>
 <tr><td><a href="BuilderStruct.html#VALappend_ctypes_struct_declaration">append_ctypes_struct_declaration</a> [<a href="BuilderStruct.html">BuilderStruct</a>]</td>
 <td></td></tr>
 <tr><td><a href="BuilderStruct.html#VALappend_ctypes_struct_fields_declarations">append_ctypes_struct_fields_declarations</a> [<a href="BuilderStruct.html">BuilderStruct</a>]</td>
@@ -1484,6 +1488,8 @@ Raise a Not_implemented exception with a string representation of the
     in the first argument.
 </div>
 </td></tr>
+<tr><td><a href="BuilderEnum.html#VALrebuild_c_identifier_for_constant">rebuild_c_identifier_for_constant</a> [<a href="BuilderEnum.html">BuilderEnum</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIRegisteredTypeInfo.html#VALregisteredtypeinfo">registeredtypeinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIRepository.html#VALrequire">require</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -1705,6 +1711,11 @@ Obtain if the returning true in the signal handler will stop the emission
 <td><div class="info">
 Transforms a GITypes.tag to the corresponding types for the mli file and
     the ml file.
+</div>
+</td></tr>
+<tr><td><a href="BuilderUtils.html#VALtype_tag_to_ctypes_typ_string">type_tag_to_ctypes_typ_string</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td><div class="info">
+Get the Ctypes typ representation of a GITypes.tag.
 </div>
 </td></tr>
 <tr><td><a href="GITypeInfo.html#VALtypeinfo">typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>

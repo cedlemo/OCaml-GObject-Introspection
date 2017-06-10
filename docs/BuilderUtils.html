@@ -68,6 +68,11 @@ Transforms a GITypes.tag to the corresponding types for the mli file and
     int8_t is used in OCaml file for Ctypes types usage.<br>
 </div>
 
+<pre><span id="VALtype_tag_to_ctypes_typ_string"><span class="keyword">val</span> type_tag_to_ctypes_typ_string</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> string</code></pre><div class="info ">
+Get the Ctypes typ representation of a GITypes.tag. For example, if the tag
+    is GITypes.Int8, it will returns "int8_t".<br>
+</div>
+
 <pre><span id="VALadd_open_ctypes"><span class="keyword">val</span> add_open_ctypes</span> : <code class="type">Pervasives.out_channel -> unit</code></pre><div class="info ">
 Add the line "open Ctypes\n" in a file.<br>
 </div>
