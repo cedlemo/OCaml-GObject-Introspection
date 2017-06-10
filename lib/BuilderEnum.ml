@@ -48,23 +48,21 @@ let append_ctypes_enum_constants_declarations enum_name info (mli, ml) =
         else Printf.fprintf ml "and %s = constant \"%s\" %s\n" const_name c_identifier tag_typ
   done
 
-(* TODO : fix , the values are not found it seems*)
 let append_ctypes_enum_declaration enum_name info (mli, ml) =
-  let get_variants_and_constants_names () =
-    let v_c = [] in
-    let n = GIEnumInfo.get_n_values info in
-    for i = 0 to n - 1 do
+  let n = GIEnumInfo.get_n_values info in
+  let rec get_variants_and_constants_names i v_c =
+      if i == n then (List.rev v_c)
+      else
       match GIEnumInfo.get_value info i with
-      | None -> ()
+      | None -> get_variants_and_constants_names (i + 1) v_c
       | Some value -> let value_base_info = GIValueInfo.to_baseinfo value in
         match GIBaseInfo.get_name value_base_info with
-        | None -> ()
-        | Some const_name -> ignore((String.capitalize_ascii const_name, const_name) :: v_c)
-    done;
-    v_c in
-  let v_and_c = get_variants_and_constants_names () in
-  Printf.fprintf ml "let %s : [ " (String.lowercase_ascii enum_name);
+        | None -> get_variants_and_constants_names (i + 1) v_c
+        | Some const_name -> get_variants_and_constants_names (i + 1) ((String.capitalize_ascii const_name, const_name) :: v_c)
+  in
+  let v_and_c = get_variants_and_constants_names 0 [] in
+  Printf.fprintf ml "let %s : [" (String.lowercase_ascii enum_name);
   Printf.fprintf ml "%s" (String.concat "|" (List.map (fun (v,c) -> "`" ^ v) v_and_c));
   Printf.fprintf ml "] typ = enum \"%s\" [\n" (String.lowercase_ascii enum_name);
   let str = String.concat ";\n" (List.map (fun (v, c) -> String.concat "" ["`"; v; ", "; c]) v_and_c) in
-  Printf.fprintf ml "%s]\n" str
+  Printf.fprintf ml "%s\n]\n" str
