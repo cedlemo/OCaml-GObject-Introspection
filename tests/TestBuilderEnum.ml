@@ -35,19 +35,6 @@ let enum_test namespace enum_name fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
-let test_writing_enum namespace name writer mli_content ml_content =
-  let _ = GIRepository.require repo namespace () in
-  enum_test namespace name (fun info ->
-      let open Builder in
-      let filename = String.concat "_" [namespace; name; "enum"; "test"] in
-      let tmp_files = Builder.generate_sources filename in
-      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
-      let _ = writer name info descrs in
-      let _ = Builder.close_sources tmp_files in
-      let _ = check_file_and_content tmp_files.mli.name mli_content in
-      TestUtils.check_file_and_content tmp_files.ml.name ml_content
-    )
-
 let test_rebuild_c_identifier_for_constant test_ctxt =
   enum_test "GLib" "ChecksumType" (fun info ->
       match GIEnumInfo.get_value info 0 with
