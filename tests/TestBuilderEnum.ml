@@ -75,8 +75,10 @@ let test_append_ctypes_enum_constants_declarations test_ctxt =
                            and sha1 = constant \"G_CHECKSUM_SHA1\" uint32_t\n\
                            and sha256 = constant \"G_CHECKSUM_SHA256\" uint32_t\n\
                            and sha512 = constant \"G_CHECKSUM_SHA512\" uint32_t" in
-  if is_travis then test_writing_enum namespace name writer mli_content ml_content_travis
-  else test_writing_enum namespace name writer mli_content ml_content
+  enum_test namespace name (fun info ->
+      if is_travis then test_writing info namespace name writer mli_content ml_content_travis
+      else test_writing info namespace name writer mli_content ml_content
+    )
 
 let test_append_ctypes_enum_declaration test_ctxt =
   let namespace = "GLib" in
@@ -96,8 +98,10 @@ let test_append_ctypes_enum_declaration test_ctxt =
     `Sha256, sha256;\n\
     `Sha512, sha512\n\
     ]" in
-  if is_travis then test_writing_enum namespace name writer mli_content ml_content_travis
-  else test_writing_enum namespace name writer mli_content ml_content
+  enum_test namespace name (fun info ->
+      if is_travis then test_writing info namespace name writer mli_content ml_content_travis
+      else test_writing info namespace name writer mli_content ml_content
+    )
 
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
