@@ -58,6 +58,16 @@ let check_file_and_content name content =
   close_in input_ch;
   Sys.remove name
 
+let test_writing info namespace name writer mli_content ml_content =
+      let open Builder in
+      let filename = String.concat "_" [namespace; name; "test"] in
+      let tmp_files = Builder.generate_sources filename in
+      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
+      let _ = writer name info descrs in
+      let _ = Builder.close_sources tmp_files in
+      let _ = check_file_and_content tmp_files.mli.name mli_content in
+      check_file_and_content tmp_files.ml.name ml_content
+
 (* TODO : create function test_writing that will replace
  * - test_writing_constant
  * - test_writing_enum
