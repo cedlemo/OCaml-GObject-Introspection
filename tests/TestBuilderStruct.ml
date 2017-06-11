@@ -35,19 +35,6 @@ let struct_test namespace struct_name fn =
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> fn info
 
-let test_writing_struct namespace name writer mli_content ml_content =
-  let _ = GIRepository.require repo namespace () in
-  struct_test namespace name (fun info ->
-      let open Builder in
-      let filename = String.concat "_" [namespace; name; "struct"; "test"] in
-      let tmp_files = Builder.generate_sources filename in
-      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
-      let _ = writer name info descrs in
-      let _ = Builder.close_sources tmp_files in
-      let _ = check_file_and_content tmp_files.mli.name mli_content in
-      TestUtils.check_file_and_content tmp_files.ml.name ml_content
-    )
-
 let test_append_ctypes_struct_declaration test_ctxt =
   let namespace = "GLib" in
   let name = "Array" in
@@ -57,7 +44,9 @@ let test_append_ctypes_struct_declaration test_ctxt =
                      val array : t structure typ" in
   let ml_content = "type t\n\
                     let array : t structure typ = structure \"Array\"" in
-  test_writing_struct namespace name writer mli_content ml_content
+  struct_test namespace name (fun info ->
+    test_writing info namespace name writer mli_content ml_content
+    )
 
 let test_append_ctypes_struct_fields_declarations test_ctxt =
   let namespace = "GLib" in
@@ -68,7 +57,9 @@ let test_append_ctypes_struct_fields_declarations test_ctxt =
   let ml_content = "let data = field slist \"data\" (ptr void)\n\
                     let next = field slist \"next\" (ptr SList.slist)\n\
                     let _ = seal slist" in
-  test_writing_struct namespace name writer mli_content ml_content
+  struct_test namespace name (fun info ->
+      test_writing info namespace name writer mli_content ml_content
+  )
 
 let tests =
   "GObject Introspection BuilderStruct tests" >:::
