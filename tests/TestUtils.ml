@@ -55,24 +55,15 @@ let check_file_and_content name content =
   let input_ch = open_in name in
   let lines = file_content_to_string input_ch in
   let _ = assert_equal_string content lines in
-  close_in input_ch;
-  Sys.remove name
+  close_in input_ch
 
-let test_writing info namespace name writer mli_content ml_content =
+let test_writing test_ctxt info namespace name writer mli_content ml_content =
       let open Builder in
-      let filename = String.concat "_" [namespace; name; "test"] in
-      let tmp_files = Builder.generate_sources filename in
-      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
+      let (mli_name, mli_descr) = bracket_tmpfile ~suffix:"mli" test_ctxt in
+      let (ml_name, ml_descr) = bracket_tmpfile ~suffix:"ml" test_ctxt in
+      let descrs = (mli_descr, ml_descr) in
       let _ = writer name info descrs in
-      let _ = Builder.close_sources tmp_files in
-      let _ = check_file_and_content tmp_files.mli.name mli_content in
-      check_file_and_content tmp_files.ml.name ml_content
-
-(* TODO : create function test_writing that will replace
- * - test_writing_constant
- * - test_writing_enum
- * - test_writing_union
- *
- * use bracket_tmpfile from oUnit2
- * http://ounit.forge.ocamlcore.org/api-ounit/OUnit2.html#VALbracket_tmpfile
- *)
+      let _ = Pervasives.close_out mli_descr in
+      let _ = Pervasives.close_out ml_descr in
+      let _ = check_file_and_content mli_name mli_content in
+      check_file_and_content ml_name ml_content

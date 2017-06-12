@@ -57,7 +57,9 @@ let test_append_ctypes_union_declaration test_ctxt =
                      val mutex : t union typ" in
   let ml_content = "type t\n\
                     let mutex : t union typ = union \"Mutex\"" in
-  test_writing_union namespace name writer mli_content ml_content
+  union_test namespace name (fun info ->
+      test_writing test_ctxt info namespace name writer mli_content ml_content
+  )
 
 let test_append_ctypes_union_fields_declarations test_ctxt =
   let namespace = "GLib" in
@@ -68,8 +70,9 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
   let ml_content = "let p = field mutex \"p\" (ptr void)\n\
                     let i = field mutex \"i\" (Array.array)\n\
                     let _ = seal mutex" in
-  test_writing_union namespace name writer mli_content ml_content
-
+  union_test namespace name (fun info ->
+      test_writing test_ctxt info namespace name writer mli_content ml_content
+  )
 
 let tests =
   "GObject Introspection BuilderUnion tests" >:::

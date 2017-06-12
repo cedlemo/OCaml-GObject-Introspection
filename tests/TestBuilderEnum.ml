@@ -63,8 +63,8 @@ let test_append_ctypes_enum_constants_declarations test_ctxt =
                            and sha256 = constant \"G_CHECKSUM_SHA256\" uint32_t\n\
                            and sha512 = constant \"G_CHECKSUM_SHA512\" uint32_t" in
   enum_test namespace name (fun info ->
-      if is_travis then test_writing info namespace name writer mli_content ml_content_travis
-      else test_writing info namespace name writer mli_content ml_content
+      if is_travis then test_writing test_ctxt info namespace name writer mli_content ml_content_travis
+      else test_writing test_ctxt info namespace name writer mli_content ml_content
     )
 
 let test_append_ctypes_enum_declaration test_ctxt =
@@ -86,8 +86,8 @@ let test_append_ctypes_enum_declaration test_ctxt =
     `Sha512, sha512\n\
     ]" in
   enum_test namespace name (fun info ->
-      if is_travis then test_writing info namespace name writer mli_content ml_content_travis
-      else test_writing info namespace name writer mli_content ml_content
+      if is_travis then test_writing test_ctxt info namespace name writer mli_content ml_content_travis
+      else test_writing test_ctxt info namespace name writer mli_content ml_content
     )
 
 let tests =
