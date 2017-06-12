@@ -70,7 +70,7 @@ let generate_dir loader =
 
 let generate_main_files loader =
   let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; loader.namespace] in
-  Builder.generate_sources file_name_pattern
+  Builder.generate_ctypes_sources file_name_pattern
 
 let generate_directories loader =
   let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
@@ -95,7 +95,7 @@ let parse loader =
         match GIBaseInfo.get_name info with
         | None -> ()
         | Some name -> let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
-          let sources = Builder.generate_sources file_name_pattern in
+          let sources = Builder.generate_ctypes_sources file_name_pattern in
           let _ = Builder.parse_struct_info info sources in
           Builder.close_sources sources
       )
@@ -110,7 +110,7 @@ let parse loader =
         match GIBaseInfo.get_name info with
         | None -> ()
         | Some name -> let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
-          let sources = Builder.generate_sources file_name_pattern in
+          let sources = Builder.generate_ctypes_sources file_name_pattern in
           let _ = Builder.parse_union_info info sources in
           Builder.close_sources sources
       )

@@ -35,10 +35,16 @@ type files = {
   mli : file;
 }
 
-(** Helper that use the argument as a base name in order to create two files
+(** Helper that uses the argument as a base name in order to create two files
     one with the .ml extension and one with the .mli extension in create and
     append mode. The name and the file descriptor are returned in a files type. *)
 val generate_sources:
+  string -> files
+
+(** Helper that uses generate_sources and that adds "open Ctypes" in the .mli
+    file and "open Ctypes\nopenForeign\n" in the .ml file. *)
+    *)
+val generate_ctypes_sources:
   string -> files
 
 (** Close the two file descriptors in a files type *)
