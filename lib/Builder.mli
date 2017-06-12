@@ -43,7 +43,6 @@ val generate_sources:
 
 (** Helper that uses generate_sources and that adds "open Ctypes" in the .mli
     file and "open Ctypes\nopenForeign\n" in the .ml file. *)
-    *)
 val generate_ctypes_sources:
   string -> files
 

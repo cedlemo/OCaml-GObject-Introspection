@@ -53,7 +53,7 @@ let append_open_ctypes_modules (mli_descr, ml_descr) =
 
 let generate_ctypes_sources base_name =
   let files = generate_sources base_name in
-  let _ = append_opend_ctypes_modules (files.mli.descr, files.ml.descr) in
+  let _ = append_open_ctypes_modules (files.mli.descr, files.ml.descr) in
   files
 
 let parse_invalid_info info =
@@ -70,7 +70,6 @@ let parse_struct_info info source_files =
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
-    let _ = append_open_ctypes_modules f_descrs in
     let info' = GIStructInfo.from_baseinfo info in
     BuilderStruct.append_ctypes_struct_declaration name f_descrs;
     BuilderStruct.append_ctypes_struct_fields_declarations name info' f_descrs
@@ -83,7 +82,6 @@ let parse_enum_info info source_files =
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
-    let _ = append_open_ctypes_modules f_descrs in
     let info' = GIEnumInfo.from_baseinfo info in
     BuilderEnum.append_ctypes_enum_constants_declarations name info' f_descrs;
     BuilderEnum.append_ctypes_enum_declaration name info' f_descrs
@@ -149,7 +147,6 @@ let parse_union_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = GIUnionInfo.from_baseinfo info in
-    let _ = append_open_ctypes_modules f_descrs in
     BuilderUnion.append_ctypes_union_declaration name f_descrs;
     BuilderUnion.append_ctypes_union_fields_declarations name info' f_descrs
 
