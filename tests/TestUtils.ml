@@ -57,7 +57,7 @@ let check_file_and_content name content =
   let _ = assert_equal_string content lines in
   close_in input_ch
 
-let test_writing test_ctxt info namespace name writer mli_content ml_content =
+let test_writing test_ctxt info name writer mli_content ml_content =
       let open Builder in
       let (mli_name, mli_descr) = bracket_tmpfile ~suffix:"mli" test_ctxt in
       let (ml_name, ml_descr) = bracket_tmpfile ~suffix:"ml" test_ctxt in

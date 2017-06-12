@@ -58,7 +58,7 @@ let test_append_ctypes_union_declaration test_ctxt =
   let ml_content = "type t\n\
                     let mutex : t union typ = union \"Mutex\"" in
   union_test namespace name (fun info ->
-      test_writing test_ctxt info namespace name writer mli_content ml_content
+      test_writing test_ctxt info name writer mli_content ml_content
   )
 
 let test_append_ctypes_union_fields_declarations test_ctxt =
@@ -71,7 +71,7 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
                     let i = field mutex \"i\" (Array.array)\n\
                     let _ = seal mutex" in
   union_test namespace name (fun info ->
-      test_writing test_ctxt info namespace name writer mli_content ml_content
+      test_writing test_ctxt info name writer mli_content ml_content
   )
 
 let tests =

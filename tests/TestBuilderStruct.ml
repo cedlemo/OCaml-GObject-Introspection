@@ -45,7 +45,7 @@ let test_append_ctypes_struct_declaration test_ctxt =
   let ml_content = "type t\n\
                     let array : t structure typ = structure \"Array\"" in
   struct_test namespace name (fun info ->
-    test_writing test_ctxt info namespace name writer mli_content ml_content
+    test_writing test_ctxt info name writer mli_content ml_content
     )
 
 let test_append_ctypes_struct_fields_declarations test_ctxt =
@@ -58,7 +58,7 @@ let test_append_ctypes_struct_fields_declarations test_ctxt =
                     let next = field slist \"next\" (ptr SList.slist)\n\
                     let _ = seal slist" in
   struct_test namespace name (fun info ->
-      test_writing test_ctxt info namespace name writer mli_content ml_content
+      test_writing test_ctxt info name writer mli_content ml_content
   )
 
 let tests =
