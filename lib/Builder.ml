@@ -52,9 +52,9 @@ let append_open_ctypes_modules (mli_descr, ml_descr) =
   add_open_foreign ml_descr
 
 let generate_ctypes_sources base_name =
-  let files = generate_sources base_name in
-  let _ = append_open_ctypes_modules (files.mli.descr, files.ml.descr) in
-  files
+  let sources = generate_sources base_name in
+  let _ = append_open_ctypes_modules (sources.mli.descr, sources.ml.descr) in
+  sources
 
 let parse_invalid_info info =
   ()
