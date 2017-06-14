@@ -708,6 +708,12 @@ Get the void ptr data of the current element
 Get the next element of a gslist
 </div>
 </td></tr>
+<tr><td><a href="Builder.html#VALgenerate_ctypes_sources">generate_ctypes_sources</a> [<a href="Builder.html">Builder</a>]</td>
+<td><div class="info">
+Helper that uses generate_sources and that adds "open Ctypes" in the .mli
+    file and "open Ctypes\nopenForeign\n" in the .ml file.
+</div>
+</td></tr>
 <tr><td><a href="Loader.html#VALgenerate_dir">generate_dir</a> [<a href="Loader.html">Loader</a>]</td>
 <td></td></tr>
 <tr><td><a href="Loader.html#VALgenerate_directories">generate_directories</a> [<a href="Loader.html">Loader</a>]</td>
@@ -715,14 +721,14 @@ Get the next element of a gslist
 Generate the directories build_path/namespace/lib
 </div>
 </td></tr>
-<tr><td><a href="Loader.html#VALgenerate_main_files">generate_main_files</a> [<a href="Loader.html">Loader</a>]</td>
+<tr><td><a href="Loader.html#VALgenerate_main_module_files">generate_main_module_files</a> [<a href="Loader.html">Loader</a>]</td>
 <td><div class="info">
 Generate the files Namespace.ml and Namespace.mli in append mode
 </div>
 </td></tr>
 <tr><td><a href="Builder.html#VALgenerate_sources">generate_sources</a> [<a href="Builder.html">Builder</a>]</td>
 <td><div class="info">
-Helper that use the argument as a base name in order to create two files
+Helper that uses the argument as a base name in order to create two files
     one with the .ml extension and one with the .mli extension in create and
     append mode.
 </div>
@@ -1769,6 +1775,9 @@ Get the Ctypes typ representation of a GITypes.tag.
 <tr><td><a href="GIValueInfo.html#VALvalueinfo">valueinfo</a> [<a href="GIValueInfo.html">GIValueInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIVFuncInfo.html#VALvfuncinfo">vfuncinfo</a> [<a href="GIVFuncInfo.html">GIVFuncInfo</a>]</td>
+<td></td></tr>
+<tr><td align="left"><br>W</td></tr>
+<tr><td><a href="BuilderUtils.html#VALwrite_open_module">write_open_module</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
 <td></td></tr>
 </table>
 </body>

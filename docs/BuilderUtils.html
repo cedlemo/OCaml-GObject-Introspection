@@ -72,7 +72,10 @@ Transforms a GITypes.tag to the corresponding types for the mli file and
 Get the Ctypes typ representation of a GITypes.tag. For example, if the tag
     is GITypes.Int8, it will returns "int8_t".<br>
 </div>
+<br>
+Add an open directives in a file for a module name.<br>
 
+<pre><span id="VALwrite_open_module"><span class="keyword">val</span> write_open_module</span> : <code class="type">Pervasives.out_channel -> string -> unit</code></pre>
 <pre><span id="VALadd_open_ctypes"><span class="keyword">val</span> add_open_ctypes</span> : <code class="type">Pervasives.out_channel -> unit</code></pre><div class="info ">
 Add the line "open Ctypes\n" in a file.<br>
 </div>
