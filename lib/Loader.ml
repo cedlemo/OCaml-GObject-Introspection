@@ -59,13 +59,14 @@ let generate_dir loader =
   Unix.mkdir loader.namespace 0o777
 
 (* Module Organisation for namespace
+ * One main module :
  * Namespace.ml
  * Namespace.mli
- *  - get all the functions of the main module
- *  - create include with the other modules generated ?
- * for all struct, unions, enums and object :
- * namepsace_item_name.ml
- * namespace_item_name.mli
+ *  - contains : constants, enums declarations and module function
+ *
+ * Secondary modules for all struct, unions, and object :
+ * item_name.ml
+ * item_name.mli
  *)
 
 let generate_main_module_files loader =
