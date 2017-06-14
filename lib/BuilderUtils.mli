@@ -44,6 +44,11 @@ val type_tag_to_ctypes_strings:
 val type_tag_to_ctypes_typ_string:
   GITypes.tag -> string
 
+(** Add an open directives in a file for a module name.*)
+
+val write_open_module:
+  Pervasives.out_channel -> unit
+
 (** Add the line "open Ctypes\n" in a file. *)
 val add_open_ctypes:
   Pervasives.out_channel -> unit

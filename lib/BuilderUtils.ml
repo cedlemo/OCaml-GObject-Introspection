@@ -79,8 +79,11 @@ let type_tag_to_ctypes_typ_string tag =
   | GITypes.Error -> "Error.error"
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
 
+let write_open_module descr name =
+  Printf.fprintf descr "open %s\n" name
+
 let add_open_ctypes descr =
-   Printf.fprintf descr "open Ctypes\n"
+  write_open_module descr "Ctypes"
 
 let add_open_foreign descr =
-   Printf.fprintf descr "open Foreign\n"
+  write_open_module descr "Foreign"
