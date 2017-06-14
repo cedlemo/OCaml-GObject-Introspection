@@ -16,17 +16,23 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+(** Loader : type and functions in order to read the GObject-Introspection of
+    an instrospectable library and generate Ctypes bindings. *)
 open Ctypes
 open Foreign
 
+(** a Loader.t is a GObject-Instrospection namespace that has been loaded. *)
 type t
 
+(** Load a namespace with an optional version. *)
 val load:
   string -> ?version:string -> unit -> t option
 
+(** Get the namespace of the loader. *)
 val get_namespace:
   t -> string
 
+(** Get the version of the loaded namespace.*)
 val get_version:
   t -> string
 
