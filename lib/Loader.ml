@@ -68,7 +68,7 @@ let generate_dir loader =
  * namespace_item_name.mli
  *)
 
-let generate_main_files loader =
+let generate_main_module_files loader =
   let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; loader.namespace] in
   Builder.generate_ctypes_sources file_name_pattern
 
@@ -85,7 +85,7 @@ let generate_directories loader =
 let parse loader =
   let open Builder in
   let _ = generate_directories loader in
-  let main_sources = generate_main_files loader in
+  let main_sources = generate_main_module_files loader in
   let n = GIRepository.get_n_infos loader.repo loader.namespace in
   for i = 0 to n - 1 do
     let info = GIRepository.get_info loader.repo loader.namespace i in
