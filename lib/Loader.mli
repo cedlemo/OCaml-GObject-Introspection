@@ -49,7 +49,7 @@ val get_lib_path:
   t -> string
 
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
-val generate_main_files:
+val generate_main_module_files:
   t -> Builder.files
 
 (** Generate the directories build_path/namespace/lib *)
