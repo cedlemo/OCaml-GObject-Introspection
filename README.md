@@ -20,8 +20,7 @@ The OCaml bindings to GObject-Introspection with Ctypes.
     *  [Builders Started](#builders-started)
     *  [Builders Next](#builders-next)
 
-## TODOS
-
+*  [TODOs](#todos)
 
 ## Introduction
 

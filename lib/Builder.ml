@@ -87,7 +87,9 @@ let parse_enum_info info source_files =
     BuilderEnum.append_ctypes_enum_declaration name info' f_descrs
 
 let parse_flags_info info =
-  ()
+  match GIBaseInfo.get_name info with
+  | None -> print_endline "No name"
+  | Some name ->  print_endline name
 
 let parse_object_info info =
   ()

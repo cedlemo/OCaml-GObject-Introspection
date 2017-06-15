@@ -1,0 +1,32 @@
+open Ctypes
+open Foreign
+type t
+let scannerconfig : t structure typ = structure "ScannerConfig"
+let cset_skip_characters = field scannerconfig "cset_skip_characters" (ptr string)
+let cset_identifier_first = field scannerconfig "cset_identifier_first" (ptr string)
+let cset_identifier_nth = field scannerconfig "cset_identifier_nth" (ptr string)
+let cpair_comment_single = field scannerconfig "cpair_comment_single" (ptr string)
+let case_sensitive = field scannerconfig "case_sensitive" (uint32_t)
+let skip_comment_multi = field scannerconfig "skip_comment_multi" (uint32_t)
+let skip_comment_single = field scannerconfig "skip_comment_single" (uint32_t)
+let scan_comment_multi = field scannerconfig "scan_comment_multi" (uint32_t)
+let scan_identifier = field scannerconfig "scan_identifier" (uint32_t)
+let scan_identifier_1char = field scannerconfig "scan_identifier_1char" (uint32_t)
+let scan_identifier_NULL = field scannerconfig "scan_identifier_NULL" (uint32_t)
+let scan_symbols = field scannerconfig "scan_symbols" (uint32_t)
+let scan_binary = field scannerconfig "scan_binary" (uint32_t)
+let scan_octal = field scannerconfig "scan_octal" (uint32_t)
+let scan_float = field scannerconfig "scan_float" (uint32_t)
+let scan_hex = field scannerconfig "scan_hex" (uint32_t)
+let scan_hex_dollar = field scannerconfig "scan_hex_dollar" (uint32_t)
+let scan_string_sq = field scannerconfig "scan_string_sq" (uint32_t)
+let scan_string_dq = field scannerconfig "scan_string_dq" (uint32_t)
+let numbers_2_int = field scannerconfig "numbers_2_int" (uint32_t)
+let int_2_float = field scannerconfig "int_2_float" (uint32_t)
+let identifier_2_string = field scannerconfig "identifier_2_string" (uint32_t)
+let char_2_token = field scannerconfig "char_2_token" (uint32_t)
+let symbol_2_token = field scannerconfig "symbol_2_token" (uint32_t)
+let scope_0_fallback = field scannerconfig "scope_0_fallback" (uint32_t)
+let store_int64 = field scannerconfig "store_int64" (uint32_t)
+let padding_dummy = field scannerconfig "padding_dummy" (uint32_t)
+let _ = seal scannerconfig
