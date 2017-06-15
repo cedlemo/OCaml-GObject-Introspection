@@ -5,11 +5,40 @@
 
 The OCaml bindings to GObject-Introspection with Ctypes.
 
-Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
+*  [Introduction](#introduction)
+*  [Ctypes bindings of GObject-Introspection](#ctypes-bindings-of-gobject-introspection)
+  *  [Progress](#progress)
+    *  [Finished](#finished)
+    *  [Remains](#remains)
+  *  [Implementation details](#implementation-details)
+    *  [GObjectIntrospection Info Structures hierarchy and type coercion functions](#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
+    *  [How the underlying C structures allocation and deallocation are handled](#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
+    *  [Resources](#resources)
+*   [GObjectIntrospection Loader](#gobjectintrospection-loader)
+  *  [Loader Implementation](#loader-implementation)
+  *  [Loader Progress](#loader-progress)
+    *  [Builders Started](#builders-started)
+    *  [Builders Next](#builders-next)
 
-## Progress
+## TODOS
 
-  ### Started or finished
+
+## Introduction
+
+There are 2 parts :
+*  the Ctypes bindings to the GObject-Introspection (all the files/modules named
+GISomething).
+*  a Loader module that uses the Ctypes bindings of GObject-Introspection in order
+to automatically generate Ctypes bindings of a GObject-Introspection namespace (`GLib`
+for example.
+
+API Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
+
+## Ctypes bindings of GObject-Introspection
+
+### Progress
+
+  #### Finished
 
   * GIRepository — GObject Introspection repository manager
   * GIBaseInfo — Base struct for all GITypelib structs
@@ -30,11 +59,12 @@ Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
   * GIVFuncInfo — Struct representing a virtual function
   * GIRegisteredTypeInfo — Struct representing a struct with a GType
 
-  ### Remains
+  #### Remains
 
   * GICallbackInfo — Struct representing a callback (no C API for now).
 
-## GObjectIntrospection Info Structures hierarchy and type coercion functions.
+### Implementation details
+#### GObjectIntrospection Info Structures hierarchy and type coercion functions
 
      GIBaseInfo
        +----GIArgInfo
@@ -68,9 +98,9 @@ like :
     GIFunctionInfo.to_callableinfo
     GIFunctionInfo.from_callableinfo
 
-## How the underlying C structure allocation/deallocation are handled.
+#### How the underlying C structures allocation and deallocation are handled
 
-When a info structure pointer is returned with full transfert via the C api,
+When an info structure pointer is returned with full transfert via the C api,
 each OCaml value that wrap then is finalised with `Gc.finalise` for example :
 
 
@@ -84,7 +114,7 @@ each OCaml value that wrap then is finalised with `Gc.finalise` for example :
         GIFieldInfo.add_unref_finaliser info'
 
 
-So when the `info'` is garbage collected, the GIFieldInfo.add_unref_finaliser is
+So when the `info'` is garbage collected, the `GIFieldInfo.add_unref_finaliser` is
 called. Here is the code of this function :
 
 
@@ -100,12 +130,12 @@ When a cast need to be done, each module have the following to functions:
 *  to_baseinfo
 *  from_baseinfo
 
-Those functions allow to transform an OCaml value that represents an GIInfo to
+Those functions allow to transform an OCaml value that represents a GIInfo to
 another GIInfo type while the underlying C structure are ref"ed" and linked to
 a Gc finaliser that unref them. This should avoid zombies OCaml values (with
 C structure already desallocated) and memory leaks.
 
-## Resources
+#### Resources
 
 *  https://ocaml.org/learn/tutorials/calling_c_libraries.html
 *  https://developer.gnome.org/gi/
@@ -116,16 +146,55 @@ C structure already desallocated) and memory leaks.
 *  http://www.linux-nantes.org/~fmonnier/OCaml/ocaml-wrapping-c.html (old)
 *  https://wiki.haskell.org/GObjectIntrospection
 
-### TODO :
-  test Windows build with appveyor:
+## GObjectIntrospection Loader
 
-  * install MSYS2
-  * install gobject-introspection
-  * install gtk
-  * install opam
-  * install OCaml
+The Loader module is used to load a namespace and generate automatically most
+of the Ctypes bindings. Here is the `samples/gi_builder_glib.ml` code :
 
-#### Resources
+```
+let print_infos loader =
+  let namespace = Loader.get_namespace loader in
+  let version = Loader.get_version loader in
+  print_endline (">> " ^ namespace);
+  print_endline ("\t - version :" ^ version)
 
-  * https://github.com/behdad/harfbuzz/pull/308/commits/610377e89fe6d9c6dc53aca939fe4c2429375fc2
-  * https://project-renard.github.io/doc/development/meeting-log/posts/2016/05/03/windows-build-with-msys2/
+let () =
+  match Loader.load "GLib" () with
+  | None -> print_endline "Please check the namespace, something is wrong"
+  | Some loader -> print_infos loader;
+    let loader = Loader.set_build_path loader "samples" in
+    Loader.parse loader
+```
+
+It generates the GLib bindings (not all for now) in `samples/GLib/lib`
+
+### Loader Implementation
+The idea is to iterate through all the toplevel baseinfo of the namespace and
+generate the related Ctypes bindings automatically. The loader use the `Builder`
+module which relies on the `Builder*` modules (BuilderStructure for example).
+
+### Loader Progress
+
+  #### Builders Started
+
+  * Module constants
+  * Structures
+  * Unions
+  * Enumerations
+
+  #### Builders Next
+
+  * Flags (enumerations but handled as list).
+  * Module functions
+
+## TODOS :
+
+  *  test Windows build with appveyor:
+    *  install MSYS2
+    *  install gobject-introspection
+    *  install gtk
+    *  install opam
+    *  install OCaml
+    * resources:
+      * https://github.com/behdad/harfbuzz/pull/308/commits/610377e89fe6d9c6dc53aca939fe4c2429375fc2
+      * https://project-renard.github.io/doc/development/meeting-log/posts/2016/05/03/windows-build-with-msys2/
