@@ -63,11 +63,11 @@ test_loader "Gtk" (fun loader ->
 
 open Loader
 
-let test_loader_generate_main_files test_ctxt =
+let test_loader_generate_main_module_files test_ctxt =
   let open Builder in
   test_loader "GLib" (fun loader ->
       let _ = Loader.generate_directories loader in
-      let main_files = Loader.generate_main_files loader in
+      let main_files = Loader.generate_main_module_files loader in
       let _ = Printf.fprintf main_files.mli.descr "test" in
       let _ = Printf.fprintf main_files.ml.descr "test" in
       let test_close_and_remove file =
@@ -88,5 +88,5 @@ let tests =
     "GObject Introspection Loader get version good" >:: test_loader_get_version_good;
     "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad;
     "GObject Introspection Loader generate dir" >:: test_loader_generate_dir;
-    "GObject Introspection Loader generate main files" >:: test_loader_generate_main_files
+    "GObject Introspection Loader generate main module files" >:: test_loader_generate_main_module_files
   ]
