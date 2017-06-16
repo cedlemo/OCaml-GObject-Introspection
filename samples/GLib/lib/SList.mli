@@ -1,5 +1,5 @@
 open Ctypes
 type t
-val slist : t structure typ
-val data: (unit ptr, t structure) field
-val next: (SList.t structure ptr, t structure) field
+val t_typ : t structure typ
+val f_data: (unit ptr, t structure) field
+val f_next: (SList.t structure ptr, t structure) field

@@ -1,5 +1,4 @@
 open Ctypes
 open Foreign
 type t
-let tree : t structure typ = structure "Tree"
-let _ = seal tree
+let t_typ : t structure typ = structure "Tree"

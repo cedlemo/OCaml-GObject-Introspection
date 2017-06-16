@@ -402,7 +402,7 @@ let _PRIORITY_LOW = 300
 let compile = constant "G_REGEXERROR_COMPILE" uint32_t
 and optimize = constant "G_REGEXERROR_OPTIMIZE" uint32_t
 and replace = constant "G_REGEXERROR_REPLACE" uint32_t
-and match = constant "G_REGEXERROR_MATCH" uint32_t
+and _match = constant "G_REGEXERROR_MATCH" uint32_t
 and internal = constant "G_REGEXERROR_INTERNAL" uint32_t
 and stray_backslash = constant "G_REGEXERROR_STRAY_BACKSLASH" uint32_t
 and missing_control_char = constant "G_REGEXERROR_MISSING_CONTROL_CHAR" uint32_t
@@ -460,7 +460,7 @@ let regexerror : [`Compile|`Optimize|`Replace|`Match|`Internal|`Stray_backslash|
 `Compile, compile;
 `Optimize, optimize;
 `Replace, replace;
-`Match, match;
+`Match, _match;
 `Internal, internal;
 `Stray_backslash, stray_backslash;
 `Missing_control_char, missing_control_char;

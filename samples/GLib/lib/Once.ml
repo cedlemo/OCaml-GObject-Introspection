@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let once : t structure typ = structure "Once"
-let status = field once "status" ()
-let retval = field once "retval" (ptr void)
-let _ = seal once
+let t_typ : t structure typ = structure "Once"
+let f_status = field t_typ "status" ()
+let f_retval = field t_typ "retval" (ptr void)

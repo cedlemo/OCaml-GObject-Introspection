@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let ptrarray : t structure typ = structure "PtrArray"
-let pdata = field ptrarray "pdata" (ptr void)
-let len = field ptrarray "len" (uint32_t)
-let _ = seal ptrarray
+let t_typ : t structure typ = structure "PtrArray"
+let f_pdata = field t_typ "pdata" (ptr void)
+let f_len = field t_typ "len" (uint32_t)

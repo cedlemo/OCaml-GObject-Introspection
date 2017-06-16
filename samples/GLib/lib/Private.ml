@@ -1,8 +1,7 @@
 open Ctypes
 open Foreign
 type t
-let private : t structure typ = structure "Private"
-let p = field private "p" (ptr void)
-let notify = field private "notify" ()
-let future = field private "future" (Array.array)
-let _ = seal private
+let t_typ : t structure typ = structure "Private"
+let f_p = field t_typ "p" (ptr void)
+let f_notify = field t_typ "notify" ()
+let f_future = field t_typ "future" (Array.t_typ)

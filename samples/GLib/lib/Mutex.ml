@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let mutex : t union typ = union "Mutex"
-let p = field mutex "p" (ptr void)
-let i = field mutex "i" (Array.array)
-let _ = seal mutex
+let t_typ : t union typ = union "Mutex"
+let f_p = field t_typ "p" (ptr void)
+let f_i = field t_typ "i" (Array.t_typ)

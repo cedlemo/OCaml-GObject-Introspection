@@ -1,5 +1,4 @@
 open Ctypes
 open Foreign
 type t
-let patternspec : t structure typ = structure "PatternSpec"
-let _ = seal patternspec
+let t_typ : t structure typ = structure "PatternSpec"

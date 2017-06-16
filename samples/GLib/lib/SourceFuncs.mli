@@ -1,9 +1,9 @@
 open Ctypes
 type t
-val sourcefuncs : t structure typ
-val prepare: (, t structure) field
-val check: (, t structure) field
-val dispatch: (unit ptr, t structure) field
-val finalize: (, t structure) field
-val closure_callback: (, t structure) field
-val closure_marshal: (, t structure) field
+val t_typ : t structure typ
+val f_prepare: (, t structure) field
+val f_check: (, t structure) field
+val f_dispatch: (unit ptr, t structure) field
+val f_finalize: (, t structure) field
+val f_closure_callback: (, t structure) field
+val f_closure_marshal: (, t structure) field

@@ -1,6 +1,6 @@
 open Ctypes
 type t
-val private : t structure typ
-val p: (unit ptr, t structure) field
-val notify: (, t structure) field
-val future: (Array.t structure, t structure) field
+val t_typ : t structure typ
+val f_p: (unit ptr, t structure) field
+val f_notify: (, t structure) field
+val f_future: (Array.t structure, t structure) field

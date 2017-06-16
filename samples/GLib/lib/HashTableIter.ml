@@ -1,11 +1,10 @@
 open Ctypes
 open Foreign
 type t
-let hashtableiter : t structure typ = structure "HashTableIter"
-let dummy1 = field hashtableiter "dummy1" (ptr void)
-let dummy2 = field hashtableiter "dummy2" (ptr void)
-let dummy3 = field hashtableiter "dummy3" (ptr void)
-let dummy4 = field hashtableiter "dummy4" (int32_t)
-let dummy5 = field hashtableiter "dummy5" (bool)
-let dummy6 = field hashtableiter "dummy6" (ptr void)
-let _ = seal hashtableiter
+let t_typ : t structure typ = structure "HashTableIter"
+let f_dummy1 = field t_typ "dummy1" (ptr void)
+let f_dummy2 = field t_typ "dummy2" (ptr void)
+let f_dummy3 = field t_typ "dummy3" (ptr void)
+let f_dummy4 = field t_typ "dummy4" (int32_t)
+let f_dummy5 = field t_typ "dummy5" (bool)
+let f_dummy6 = field t_typ "dummy6" (ptr void)

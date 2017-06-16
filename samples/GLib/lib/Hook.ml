@@ -1,13 +1,12 @@
 open Ctypes
 open Foreign
 type t
-let hook : t structure typ = structure "Hook"
-let data = field hook "data" (ptr void)
-let next = field hook "next" (ptr )
-let prev = field hook "prev" (ptr )
-let ref_count = field hook "ref_count" (uint32_t)
-let hook_id = field hook "hook_id" (uint64_t)
-let flags = field hook "flags" (uint32_t)
-let func = field hook "func" (ptr void)
-let destroy = field hook "destroy" ()
-let _ = seal hook
+let t_typ : t structure typ = structure "Hook"
+let f_data = field t_typ "data" (ptr void)
+let f_next = field t_typ "next" (ptr )
+let f_prev = field t_typ "prev" (ptr )
+let f_ref_count = field t_typ "ref_count" (uint32_t)
+let f_hook_id = field t_typ "hook_id" (uint64_t)
+let f_flags = field t_typ "flags" (uint32_t)
+let f_func = field t_typ "func" (ptr void)
+let f_destroy = field t_typ "destroy" ()

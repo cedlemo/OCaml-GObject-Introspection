@@ -1,6 +1,6 @@
 open Ctypes
 type t
-val list : t structure typ
-val data: (unit ptr, t structure) field
-val next: (List.t structure ptr, t structure) field
-val prev: (List.t structure ptr, t structure) field
+val t_typ : t structure typ
+val f_data: (unit ptr, t structure) field
+val f_next: (List.t structure ptr, t structure) field
+val f_prev: (List.t structure ptr, t structure) field

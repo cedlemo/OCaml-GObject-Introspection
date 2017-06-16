@@ -1,10 +1,9 @@
 open Ctypes
 open Foreign
 type t
-let markupparser : t structure typ = structure "MarkupParser"
-let start_element = field markupparser "start_element" ()
-let end_element = field markupparser "end_element" ()
-let text = field markupparser "text" ()
-let passthrough = field markupparser "passthrough" ()
-let error = field markupparser "error" ()
-let _ = seal markupparser
+let t_typ : t structure typ = structure "MarkupParser"
+let f_start_element = field t_typ "start_element" ()
+let f_end_element = field t_typ "end_element" ()
+let f_text = field t_typ "text" ()
+let f_passthrough = field t_typ "passthrough" ()
+let f_error = field t_typ "error" ()

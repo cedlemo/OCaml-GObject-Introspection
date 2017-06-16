@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let rwlock : t structure typ = structure "RWLock"
-let p = field rwlock "p" (ptr void)
-let i = field rwlock "i" (Array.array)
-let _ = seal rwlock
+let t_typ : t structure typ = structure "RWLock"
+let f_p = field t_typ "p" (ptr void)
+let f_i = field t_typ "i" (Array.t_typ)

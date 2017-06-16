@@ -1,8 +1,7 @@
 open Ctypes
 open Foreign
 type t
-let queue : t structure typ = structure "Queue"
-let head = field queue "head" (ptr List.list)
-let tail = field queue "tail" (ptr List.list)
-let length = field queue "length" (uint32_t)
-let _ = seal queue
+let t_typ : t structure typ = structure "Queue"
+let f_head = field t_typ "head" (ptr List.t_typ)
+let f_tail = field t_typ "tail" (ptr List.t_typ)
+let f_length = field t_typ "length" (uint32_t)

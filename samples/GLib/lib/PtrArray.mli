@@ -1,5 +1,5 @@
 open Ctypes
 type t
-val ptrarray : t structure typ
-val pdata: (unit ptr, t structure) field
-val len: (Unsigned.uint32, t structure) field
+val t_typ : t structure typ
+val f_pdata: (unit ptr, t structure) field
+val f_len: (Unsigned.uint32, t structure) field

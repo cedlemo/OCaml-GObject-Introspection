@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let testlogbuffer : t structure typ = structure "TestLogBuffer"
-let data = field testlogbuffer "data" (ptr )
-let msgs = field testlogbuffer "msgs" (ptr SList.slist)
-let _ = seal testlogbuffer
+let t_typ : t structure typ = structure "TestLogBuffer"
+let f_data = field t_typ "data" (ptr )
+let f_msgs = field t_typ "msgs" (ptr SList.t_typ)

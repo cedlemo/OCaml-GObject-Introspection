@@ -1,10 +1,9 @@
 open Ctypes
 open Foreign
 type t
-let node : t structure typ = structure "Node"
-let data = field node "data" (ptr void)
-let next = field node "next" (ptr )
-let prev = field node "prev" (ptr )
-let parent = field node "parent" (ptr )
-let children = field node "children" (ptr )
-let _ = seal node
+let t_typ : t structure typ = structure "Node"
+let f_data = field t_typ "data" (ptr void)
+let f_next = field t_typ "next" (ptr )
+let f_prev = field t_typ "prev" (ptr )
+let f_parent = field t_typ "parent" (ptr )
+let f_children = field t_typ "children" (ptr )

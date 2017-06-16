@@ -1,8 +1,7 @@
 open Ctypes
 open Foreign
 type t
-let threadpool : t structure typ = structure "ThreadPool"
-let func = field threadpool "func" ()
-let user_data = field threadpool "user_data" (ptr void)
-let exclusive = field threadpool "exclusive" (bool)
-let _ = seal threadpool
+let t_typ : t structure typ = structure "ThreadPool"
+let f_func = field t_typ "func" ()
+let f_user_data = field t_typ "user_data" (ptr void)
+let f_exclusive = field t_typ "exclusive" (bool)

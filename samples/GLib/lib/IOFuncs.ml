@@ -1,13 +1,12 @@
 open Ctypes
 open Foreign
 type t
-let iofuncs : t structure typ = structure "IOFuncs"
-let io_read = field iofuncs "io_read" ()
-let io_write = field iofuncs "io_write" ()
-let io_seek = field iofuncs "io_seek" ()
-let io_close = field iofuncs "io_close" ()
-let io_create_watch = field iofuncs "io_create_watch" ()
-let io_free = field iofuncs "io_free" ()
-let io_set_flags = field iofuncs "io_set_flags" ()
-let io_get_flags = field iofuncs "io_get_flags" ()
-let _ = seal iofuncs
+let t_typ : t structure typ = structure "IOFuncs"
+let f_io_read = field t_typ "io_read" ()
+let f_io_write = field t_typ "io_write" ()
+let f_io_seek = field t_typ "io_seek" ()
+let f_io_close = field t_typ "io_close" ()
+let f_io_create_watch = field t_typ "io_create_watch" ()
+let f_io_free = field t_typ "io_free" ()
+let f_io_set_flags = field t_typ "io_set_flags" ()
+let f_io_get_flags = field t_typ "io_get_flags" ()

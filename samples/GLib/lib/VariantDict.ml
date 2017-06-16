@@ -1,5 +1,4 @@
 open Ctypes
 open Foreign
 type t
-let variantdict : t structure typ = structure "VariantDict"
-let _ = seal variantdict
+let t_typ : t structure typ = structure "VariantDict"

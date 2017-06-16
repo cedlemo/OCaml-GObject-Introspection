@@ -1,5 +1,5 @@
 open Ctypes
 type t
-val timeval : t structure typ
-val tv_sec: (int64, t structure) field
-val tv_usec: (int64, t structure) field
+val t_typ : t structure typ
+val f_tv_sec: (int64, t structure) field
+val f_tv_usec: (int64, t structure) field

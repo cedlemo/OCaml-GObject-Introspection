@@ -1,3 +1,3 @@
 open Ctypes
 type t
-val markupparsecontext : t structure typ
+val t_typ : t structure typ

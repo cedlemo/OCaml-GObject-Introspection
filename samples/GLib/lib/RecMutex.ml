@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let recmutex : t structure typ = structure "RecMutex"
-let p = field recmutex "p" (ptr void)
-let i = field recmutex "i" (Array.array)
-let _ = seal recmutex
+let t_typ : t structure typ = structure "RecMutex"
+let f_p = field t_typ "p" (ptr void)
+let f_i = field t_typ "i" (Array.t_typ)

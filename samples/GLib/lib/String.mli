@@ -1,6 +1,6 @@
 open Ctypes
 type t
-val string : t structure typ
-val str: (string ptr, t structure) field
-val len: (Unsigned.uint64, t structure) field
-val allocated_len: (Unsigned.uint64, t structure) field
+val t_typ : t structure typ
+val f_str: (string ptr, t structure) field
+val f_len: (Unsigned.uint64, t structure) field
+val f_allocated_len: (Unsigned.uint64, t structure) field

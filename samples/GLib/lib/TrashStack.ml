@@ -1,6 +1,5 @@
 open Ctypes
 open Foreign
 type t
-let trashstack : t structure typ = structure "TrashStack"
-let next = field trashstack "next" (ptr )
-let _ = seal trashstack
+let t_typ : t structure typ = structure "TrashStack"
+let f_next = field t_typ "next" (ptr )

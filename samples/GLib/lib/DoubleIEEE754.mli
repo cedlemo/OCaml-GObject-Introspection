@@ -1,4 +1,4 @@
 open Ctypes
 type t
-val doubleieee754 : t union typ
-val v_double: (float, t union) field
+val t_typ : t union typ
+val f_v_double: (float, t union) field

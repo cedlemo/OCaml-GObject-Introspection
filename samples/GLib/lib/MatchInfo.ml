@@ -1,5 +1,4 @@
 open Ctypes
 open Foreign
 type t
-let matchinfo : t structure typ = structure "MatchInfo"
-let _ = seal matchinfo
+let t_typ : t structure typ = structure "MatchInfo"

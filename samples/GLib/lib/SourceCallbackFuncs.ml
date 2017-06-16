@@ -1,8 +1,7 @@
 open Ctypes
 open Foreign
 type t
-let sourcecallbackfuncs : t structure typ = structure "SourceCallbackFuncs"
-let ref = field sourcecallbackfuncs "ref" ()
-let unref = field sourcecallbackfuncs "unref" ()
-let get = field sourcecallbackfuncs "get" (ptr void)
-let _ = seal sourcecallbackfuncs
+let t_typ : t structure typ = structure "SourceCallbackFuncs"
+let f_ref = field t_typ "ref" ()
+let f_unref = field t_typ "unref" ()
+let f_get = field t_typ "get" (ptr void)

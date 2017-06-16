@@ -1,5 +1,4 @@
 open Ctypes
 open Foreign
 type t
-let data : t structure typ = structure "Data"
-let _ = seal data
+let t_typ : t structure typ = structure "Data"

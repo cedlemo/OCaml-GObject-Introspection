@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let cond : t structure typ = structure "Cond"
-let p = field cond "p" (ptr void)
-let i = field cond "i" (Array.array)
-let _ = seal cond
+let t_typ : t structure typ = structure "Cond"
+let f_p = field t_typ "p" (ptr void)
+let f_i = field t_typ "i" (Array.t_typ)

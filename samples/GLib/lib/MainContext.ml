@@ -1,5 +1,4 @@
 open Ctypes
 open Foreign
 type t
-let maincontext : t structure typ = structure "MainContext"
-let _ = seal maincontext
+let t_typ : t structure typ = structure "MainContext"

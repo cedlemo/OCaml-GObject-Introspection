@@ -1,5 +1,5 @@
 open Ctypes
 type t
-val debugkey : t structure typ
-val key: (string ptr, t structure) field
-val value: (Unsigned.uint32, t structure) field
+val t_typ : t structure typ
+val f_key: (string ptr, t structure) field
+val f_value: (Unsigned.uint32, t structure) field

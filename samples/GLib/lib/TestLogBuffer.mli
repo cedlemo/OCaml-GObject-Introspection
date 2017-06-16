@@ -1,5 +1,5 @@
 open Ctypes
 type t
-val testlogbuffer : t structure typ
-val data: ( ptr, t structure) field
-val msgs: (SList.t structure ptr, t structure) field
+val t_typ : t structure typ
+val f_data: ( ptr, t structure) field
+val f_msgs: (SList.t structure ptr, t structure) field

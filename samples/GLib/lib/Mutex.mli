@@ -1,5 +1,5 @@
 open Ctypes
 type t
-val mutex : t union typ
-val p: (unit ptr, t union) field
-val i: (Array.t structure, t union) field
+val t_typ : t union typ
+val f_p: (unit ptr, t union) field
+val f_i: (Array.t structure, t union) field

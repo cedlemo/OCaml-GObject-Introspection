@@ -1,7 +1,6 @@
 open Ctypes
 open Foreign
 type t
-let slist : t structure typ = structure "SList"
-let data = field slist "data" (ptr void)
-let next = field slist "next" (ptr SList.slist)
-let _ = seal slist
+let t_typ : t structure typ = structure "SList"
+let f_data = field t_typ "data" (ptr void)
+let f_next = field t_typ "next" (ptr SList.t_typ)

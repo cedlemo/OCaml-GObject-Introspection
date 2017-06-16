@@ -1,4 +1,4 @@
 open Ctypes
 type t
-val trashstack : t structure typ
-val next: ( ptr, t structure) field
+val t_typ : t structure typ
+val f_next: ( ptr, t structure) field

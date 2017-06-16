@@ -1,6 +1,6 @@
 open Ctypes
 type t
-val sourcecallbackfuncs : t structure typ
-val ref: (, t structure) field
-val unref: (, t structure) field
-val get: (unit ptr, t structure) field
+val t_typ : t structure typ
+val f_ref: (, t structure) field
+val f_unref: (, t structure) field
+val f_get: (unit ptr, t structure) field

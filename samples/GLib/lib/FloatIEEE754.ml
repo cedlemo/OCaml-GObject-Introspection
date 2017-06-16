@@ -1,6 +1,5 @@
 open Ctypes
 open Foreign
 type t
-let floatieee754 : t union typ = union "FloatIEEE754"
-let v_float = field floatieee754 "v_float" (float)
-let _ = seal floatieee754
+let t_typ : t union typ = union "FloatIEEE754"
+let f_v_float = field t_typ "v_float" (float)
