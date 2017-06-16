@@ -25,10 +25,10 @@ The OCaml bindings to GObject-Introspection with Ctypes.
 
 There are 2 parts :
 *  the Ctypes bindings to the GObject-Introspection (all the files/modules named
-GISomething).
+*GISomething*).
 *  a Loader module that uses the Ctypes bindings of GObject-Introspection in order
 to automatically generate Ctypes bindings of a GObject-Introspection namespace (`GLib`
-for example.
+for example).
 
 API Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
 
@@ -81,21 +81,22 @@ API Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
              +----GIUnionInfo
        +----GITypeInfo
 
-The hirearchy determines the need to cast structures. For example `GIArgInfo`
+This hierarchy determines the need to cast structures. For example `GIArgInfo`
 need only to be casted to `GIBaseInfo`.
 
 GIFunctionInfo need to be casted to `GICallableInfo` and to `GIBaseInfo`.
 
-So each module will (except `GIBaseInfo`), will have functions for type coercion
-like :
+So each module will (except `GIBaseInfo`), have functions for type coercion
+like:
 
-    GIArgInfo.to_baseinfo
-    GIArgInfo.from_baseinfo
-    GIFunctionInfo.to_baseinfo
-    GIFunctionInfo.from_baseinfo
-    GIFunctionInfo.to_callableinfo
-    GIFunctionInfo.from_callableinfo
-
+```ocaml
+GIArgInfo.to_baseinfo
+GIArgInfo.from_baseinfo
+GIFunctionInfo.to_baseinfo
+GIFunctionInfo.from_baseinfo
+GIFunctionInfo.to_callableinfo
+GIFunctionInfo.from_callableinfo
+```
 #### How the underlying C structures allocation and deallocation are handled
 
 When an info structure pointer is returned with full transfert via the C api,
