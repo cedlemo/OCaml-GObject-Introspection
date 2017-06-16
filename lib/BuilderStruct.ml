@@ -20,9 +20,9 @@ open BuilderUtils
 
 let append_ctypes_struct_declaration name sources_files =
   let (mli, ml) = sources_files in
-  Printf.fprintf mli "type t\n";
+  Printf.fprintf mli "type t\n%!";
   Printf.fprintf mli "val %s : t structure typ\n" (String.lowercase_ascii name);
-  Printf.fprintf ml "type t\n";
+  Printf.fprintf ml "type t\n%!";
   Printf.fprintf ml "let %s : t structure typ = structure \"%s\"\n" (String.lowercase_ascii name) name
 
 let append_ctypes_struct_fields_declarations struct_name info sources_files =
