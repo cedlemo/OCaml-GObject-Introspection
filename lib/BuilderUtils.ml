@@ -46,12 +46,12 @@ let type_tag_to_ctypes_strings tag =
   | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
   | GITypes.Utf8 -> ("string", "string")
   | GITypes.Filename -> ("string", "string")
-  | GITypes.Array -> ("Array.t structure", "Array.array") (* TODO : this is not GArray, this should find out which Array it is*)
+  | GITypes.Array -> ("Array.t structure", "Array.t_typ") (* TODO : this is not GArray, this should find out which Array it is*)
   | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
-  | GITypes.GList -> ("List.t structure", "List.list")
-  | GITypes.GSList -> ("SList.t structure", "SList.slist")
-  | GITypes.GHash -> ("Hash.t structure", "Hash.hash")
-  | GITypes.Error -> ("Error.t structure", "Error.error")
+  | GITypes.GList -> ("List.t structure", "List.t_typ")
+  | GITypes.GSList -> ("SList.t structure", "SList.t_typ")
+  | GITypes.GHash -> ("Hash.t structure", "Hash.t_typ")
+  | GITypes.Error -> ("Error.t structure", "Error.t_typ")
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
 
 let type_tag_to_ctypes_typ_string tag =
@@ -71,12 +71,12 @@ let type_tag_to_ctypes_typ_string tag =
   | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ""
   | GITypes.Utf8 -> "string"
   | GITypes.Filename -> "string"
-  | GITypes.Array -> "Array.array" (* TODO : this is not GArray, this should find out which Array it is*)
+  | GITypes.Array -> "Array.t_typ" (* TODO : this is not GArray, this should find out which Array it is*)
   | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ""
-  | GITypes.GList -> "List.list"
-  | GITypes.GSList -> "SList.slist"
-  | GITypes.GHash -> "Hash.hash"
-  | GITypes.Error -> "Error.error"
+  | GITypes.GList -> "List.t_typ"
+  | GITypes.GSList -> "SList.t_typ"
+  | GITypes.GHash -> "Hash.t_typ"
+  | GITypes.Error -> "Error.t_typ"
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
 
 let write_open_module descr name =
