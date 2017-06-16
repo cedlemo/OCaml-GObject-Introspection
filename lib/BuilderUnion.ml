@@ -48,5 +48,7 @@ let append_ctypes_union_fields_declarations struct_name info sources_files =
   for i = 0 to n - 1 do
     let field_info = GIUnionInfo.get_field info i in
     append_ctypes_union_field_declarations field_info
-  done;
-  Printf.fprintf ml "let _ = seal %s\n" ctypes_typ_name
+  done
+
+let append_ctypes_union_seal ml_descr ctypes_typ_name =
+  Printf.fprintf ml_descr "let _ = seal %s\n" ctypes_typ_name
