@@ -101,26 +101,28 @@ like :
 When an info structure pointer is returned with full transfert via the C api,
 each OCaml value that wrap then is finalised with `Gc.finalise` for example :
 
-
-    let get_field info n =
-      let get_field_raw =
-        foreign "g_struct_info_get_field"
-          (ptr structinfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
-      let max = get_n_fields info in
-      if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
-      else let info' = get_field_raw info n in
-        GIFieldInfo.add_unref_finaliser info'
-
+```ocaml
+let get_field info n =
+  let get_field_raw =
+    foreign "g_struct_info_get_field"
+      (ptr structinfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
+  let max = get_n_fields info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_field_raw info n in
+    GIFieldInfo.add_unref_finaliser info'
+```
 
 So when the `info'` is garbage collected, the `GIFieldInfo.add_unref_finaliser` is
 called. Here is the code of this function :
 
 
-    let add_unref_finaliser info =
-      let _ = Gc.finalise (fun i ->
-          let i' = cast_to_baseinfo i in
-          GIBaseInfo.base_info_unref i') info
-      in info
+```ocaml
+let add_unref_finaliser info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+```
 
 Each info module have this kind of function but the user should not use them.
 When a cast need to be done, each module have the following to functions:
@@ -149,7 +151,7 @@ C structure already desallocated) and memory leaks.
 The Loader module is used to load a namespace and generate automatically most
 of the Ctypes bindings. Here is the `samples/gi_builder_glib.ml` code :
 
-```
+```ocaml
 let print_infos loader =
   let namespace = Loader.get_namespace loader in
   let version = Loader.get_version loader in
