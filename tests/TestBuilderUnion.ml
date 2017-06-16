@@ -65,10 +65,10 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "Mutex" in
   let writer = BuilderUnion.append_ctypes_union_fields_declarations in
-  let mli_content = "val p: (unit ptr, t union) field\n\
-                     val i: (Array.t structure, t union) field" in
-  let ml_content = "let p = field t_typ \"p\" (ptr void)\n\
-                    let i = field t_typ \"i\" (Array.t_typ)" in
+  let mli_content = "val f_p: (unit ptr, t union) field\n\
+                     val f_i: (Array.t structure, t union) field" in
+  let ml_content = "let f_p = field t_typ \"p\" (ptr void)\n\
+                    let f_i = field t_typ \"i\" (Array.t_typ)" in
   union_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
   )

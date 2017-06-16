@@ -40,8 +40,8 @@ let append_ctypes_union_fields_declarations struct_name info sources_files =
       else
       let (mli_type', ml_type') = if is_pointer then (mli_type ^ " ptr", "ptr " ^ ml_type)
         else (mli_type, ml_type) in
-      Printf.fprintf mli "val %s: (%s, t union) field\n" name mli_type';
-      Printf.fprintf ml "let %s = field t_typ \"%s\" (%s)\n" name name ml_type'
+      Printf.fprintf mli "val f_%s: (%s, t union) field\n" name mli_type';
+      Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ml_type'
   in
   let n = GIUnionInfo.get_n_fields info in
   for i = 0 to n - 1 do
