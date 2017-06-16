@@ -54,9 +54,9 @@ let test_append_ctypes_union_declaration test_ctxt =
   let writer = fun name info descrs ->
     BuilderUnion.append_ctypes_union_declaration name descrs in
   let mli_content = "type t\n\
-                     val mutex : t union typ" in
+                     val t_typ : t union typ" in
   let ml_content = "type t\n\
-                    let mutex : t union typ = union \"Mutex\"" in
+                    let t_typ : t union typ = union \"Mutex\"" in
   union_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
   )
@@ -67,8 +67,8 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
   let writer = BuilderUnion.append_ctypes_union_fields_declarations in
   let mli_content = "val p: (unit ptr, t union) field\n\
                      val i: (Array.t structure, t union) field" in
-  let ml_content = "let p = field mutex \"p\" (ptr void)\n\
-                    let i = field mutex \"i\" (Array.array)" in
+  let ml_content = "let p = field t_typ \"p\" (ptr void)\n\
+                    let i = field t_typ \"i\" (Array.t_typ)" in
   union_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
   )

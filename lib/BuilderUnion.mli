@@ -29,4 +29,4 @@ val append_ctypes_union_fields_declarations:
   string -> GIUnionInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_ctypes_union_seal:
-  Pervasives.out_channel -> string -> unit
+  Pervasives.out_channel -> unit
