@@ -19,6 +19,8 @@ The OCaml bindings to GObject-Introspection with Ctypes.
   - [Loader Progress](#loader-progress)
     - [Builders Started](#builders-started)
     - [Builders Next](#builders-next)
+  - [Builder Code rules](#builder-code-rules)
+    - [Structures and Unions](#structures-and-unions)
 - [TODOs](#todos)
 
 ## Introduction
@@ -176,17 +178,25 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 
 ### Loader Progress
 
-  #### Builders Started
+#### Builders Started
 
   * Module constants
   * Structures
   * Unions
   * Enumerations
 
-  #### Builders Next
+#### Builders Next
 
   * Flags (enumerations but handled as list).
   * Module functions
+
+#### Builder Code rules
+
+##### Structures And Unions
+  * For each a module is created in a mli file and a ml file.
+  * the OCaml type is named `MyStructName.t`
+  * the Ctypes typ is named `MyStructName.t_typ`
+  * the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 
 ## TODOS :
 
