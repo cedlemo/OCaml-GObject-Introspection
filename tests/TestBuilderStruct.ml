@@ -41,9 +41,9 @@ let test_append_ctypes_struct_declaration test_ctxt =
   let writer = fun name info descrs ->
     BuilderStruct.append_ctypes_struct_declaration name descrs in
   let mli_content = "type t\n\
-                     val array : t structure typ" in
+                     val t_typ : t structure typ" in
   let ml_content = "type t\n\
-                    let array : t structure typ = structure \"Array\"" in
+                    let t_typ : t structure typ = structure \"Array\"" in
   struct_test namespace name (fun info ->
     test_writing test_ctxt info name writer mli_content ml_content
     )
@@ -54,8 +54,8 @@ let test_append_ctypes_struct_fields_declarations test_ctxt =
   let writer = BuilderStruct.append_ctypes_struct_fields_declarations in
   let mli_content = "val data: (unit ptr, t structure) field\n\
                      val next: (SList.t structure ptr, t structure) field" in
-  let ml_content = "let data = field slist \"data\" (ptr void)\n\
-                    let next = field slist \"next\" (ptr SList.slist)" in
+  let ml_content = "let data = field t_typ \"data\" (ptr void)\n\
+                    let next = field t_typ \"next\" (ptr SList.t_typ)" in
   struct_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
   )
