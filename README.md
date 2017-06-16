@@ -5,22 +5,21 @@
 
 The OCaml bindings to GObject-Introspection with Ctypes.
 
-*  [Introduction](#introduction)
-*  [Ctypes bindings of GObject-Introspection](#ctypes-bindings-of-gobject-introspection)
-  *  [Progress](#progress)
-    *  [Finished](#finished)
-    *  [Remains](#remains)
-  *  [Implementation details](#implementation-details)
-    *  [GObjectIntrospection Info Structures hierarchy and type coercion functions](#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
-    *  [How the underlying C structures allocation and deallocation are handled](#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
-    *  [Resources](#resources)
-*   [GObjectIntrospection Loader](#gobjectintrospection-loader)
-  *  [Loader Implementation](#loader-implementation)
-  *  [Loader Progress](#loader-progress)
-    *  [Builders Started](#builders-started)
-    *  [Builders Next](#builders-next)
-
-*  [TODOs](#todos)
+- [Introduction](#introduction)
+- [Ctypes bindings of GObject-Introspection](#ctypes-bindings-of-gobject-introspection)
+  - [Progress](#progress)
+    - [Finished](#finished)
+    - [Remains](#remains)
+  - [Implementation details](#implementation-details)
+    - [GObjectIntrospection Info Structures hierarchy and type coercion functions](#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
+    - [How the underlying C structures allocation and deallocation are handled](#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
+    - [Resources](#resources)
+- [GObjectIntrospection Loader](#gobjectintrospection-loader)
+  - [Loader Implementation](#loader-implementation)
+  - [Loader Progress](#loader-progress)
+    - [Builders Started](#builders-started)
+    - [Builders Next](#builders-next)
+- [TODOs](#todos)
 
 ## Introduction
 
@@ -188,12 +187,12 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 
 ## TODOS :
 
-  *  test Windows build with appveyor:
-    *  install MSYS2
-    *  install gobject-introspection
-    *  install gtk
-    *  install opam
-    *  install OCaml
+  * test Windows build with appveyor:
+    * install MSYS2
+    * install gobject-introspection
+    * install gtk
+    * install opam
+    * install OCaml
     * resources:
       * https://github.com/behdad/harfbuzz/pull/308/commits/610377e89fe6d9c6dc53aca939fe4c2429375fc2
       * https://project-renard.github.io/doc/development/meeting-log/posts/2016/05/03/windows-build-with-msys2/
