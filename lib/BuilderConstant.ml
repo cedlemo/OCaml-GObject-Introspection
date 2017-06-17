@@ -19,11 +19,14 @@
 open Ctypes
 open Foreign
 
+let bindings_constant_name name =
+  "_" ^ name
+
 let append_constant name info files field field_type printer =
   let (mli, ml) = files in
   let argument = GIConstantInfo.get_value info in
   let value = getf (!@argument) field in
-  let modified_name = "_" ^ name in
+  let modified_name = bindings_constant_name name in
   let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = printer value in
   Printf.fprintf ml "let %s = %s\n" modified_name str_value
