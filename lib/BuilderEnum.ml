@@ -41,7 +41,8 @@ let append_ctypes_enum_constants_declarations enum_name info (mli, ml) =
     match GIEnumInfo.get_value info i with
     | None -> ()
     | Some value -> let value_base_info = GIValueInfo.to_baseinfo value in
-      match GIBaseInfo.get_name value_base_info with
+      if GIBaseInfo.is_deprecated value_base_info then ()
+      else match GIBaseInfo.get_name value_base_info with
       | None -> ()
       | Some const_name -> let const_name = BuilderUtils.ensure_valid_variable_name const_name in
         let c_identifier = rebuild_c_identifier_for_constant enum_name value in
@@ -57,10 +58,12 @@ let append_ctypes_enum_declaration enum_name info (mli, ml) =
       match GIEnumInfo.get_value info i with
       | None -> get_variants_and_constants_names (i + 1) v_c
       | Some value -> let value_base_info = GIValueInfo.to_baseinfo value in
-        match GIBaseInfo.get_name value_base_info with
+      if GIBaseInfo.is_deprecated value_base_info then get_variants_and_constants_names (i + 1) v_c
+      else match GIBaseInfo.get_name value_base_info with
         | None -> get_variants_and_constants_names (i + 1) v_c
-        | Some const_name -> get_variants_and_constants_names (i + 1) ((String.capitalize_ascii const_name,
-                                                                        BuilderUtils.ensure_valid_variable_name const_name) :: v_c)
+        | Some const_name ->
+          get_variants_and_constants_names (i + 1) ((String.capitalize_ascii const_name,
+                                                     BuilderUtils.ensure_valid_variable_name const_name) :: v_c)
   in
   let v_and_c = get_variants_and_constants_names 0 [] in
   Printf.fprintf ml "let %s : [" (String.lowercase_ascii enum_name);
