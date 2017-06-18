@@ -43,7 +43,8 @@ let append_ctypes_enum_constants_declarations enum_name info (mli, ml) =
     | Some value -> let value_base_info = GIValueInfo.to_baseinfo value in
       match GIBaseInfo.get_name value_base_info with
       | None -> ()
-      | Some const_name -> let c_identifier = rebuild_c_identifier_for_constant enum_name value in
+      | Some const_name -> let const_name = BuilderUtils.ensure_valid_variable_name const_name in
+        let c_identifier = rebuild_c_identifier_for_constant enum_name value in
         if i = 0 then Printf.fprintf ml "let %s = constant \"%s\" %s\n" const_name c_identifier tag_typ
         else Printf.fprintf ml "and %s = constant \"%s\" %s\n" const_name c_identifier tag_typ
   done
@@ -58,7 +59,8 @@ let append_ctypes_enum_declaration enum_name info (mli, ml) =
       | Some value -> let value_base_info = GIValueInfo.to_baseinfo value in
         match GIBaseInfo.get_name value_base_info with
         | None -> get_variants_and_constants_names (i + 1) v_c
-        | Some const_name -> get_variants_and_constants_names (i + 1) ((String.capitalize_ascii const_name, const_name) :: v_c)
+        | Some const_name -> get_variants_and_constants_names (i + 1) ((String.capitalize_ascii const_name,
+                                                                        BuilderUtils.ensure_valid_variable_name const_name) :: v_c)
   in
   let v_and_c = get_variants_and_constants_names 0 [] in
   Printf.fprintf ml "let %s : [" (String.lowercase_ascii enum_name);
