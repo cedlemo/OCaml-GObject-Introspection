@@ -50,7 +50,7 @@ let type_tag_to_ctypes_strings tag =
   | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
   | GITypes.GList -> ("List.t structure", "List.t_typ")
   | GITypes.GSList -> ("SList.t structure", "SList.t_typ")
-  | GITypes.GHash -> ("Hash.t structure", "Hash.t_typ")
+  | GITypes.GHash -> ("HashTable.t structure", "HashTable.t_typ")
   | GITypes.Error -> ("Error.t structure", "Error.t_typ")
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
 
@@ -75,7 +75,7 @@ let type_tag_to_ctypes_typ_string tag =
   | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ""
   | GITypes.GList -> "List.t_typ"
   | GITypes.GSList -> "SList.t_typ"
-  | GITypes.GHash -> "Hash.t_typ"
+  | GITypes.GHash -> "HashTable.t_typ"
   | GITypes.Error -> "Error.t_typ"
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
 
