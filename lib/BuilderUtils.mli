@@ -66,3 +66,8 @@ val escape_OCaml_keywords:
     it prepends a "_". *)
 val escape_number_at_beginning:
   string -> string
+
+(** Check if the string given in argument is not an OCaml keyword or does not
+    start with a number. *)
+val ensure_valid_variable_name:
+  string -> string
