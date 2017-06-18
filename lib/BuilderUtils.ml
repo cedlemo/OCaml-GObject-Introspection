@@ -151,3 +151,8 @@ let escape_OCaml_keywords variable_name =
   | "while"
   | "with" -> "_" ^ variable_name
   | _ -> variable_name
+
+let escape_number_at_beginning variable_name =
+  let pattern = Str.regexp "[0-9].*" in
+  if Str.string_match pattern variable_name 0 then "_" ^ variable_name
+  else variable_name
