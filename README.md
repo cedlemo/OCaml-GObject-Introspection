@@ -21,6 +21,9 @@ The OCaml bindings to GObject-Introspection with Ctypes.
     - [Builders Next](#builders-next)
   - [Builder Code rules](#builder-code-rules)
     - [Structures and Unions](#structures-and-unions)
+    - [ Enumerations](#enumerations)
+      - [Simple Enumerations](#simple-enumerations)
+      - [Enumerations for bitwise operations](#enumerations-for-bitwise-operations)
 - [TODOs](#todos)
 
 ## Introduction
@@ -197,6 +200,43 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   * the OCaml type is named `MyStructName.t`
   * the Ctypes typ is named `MyStructName.t_typ`
   * the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
+
+##### Enumerations
+
+###### Simple Enumerations
+  Those enumerations are just build with Ctypes.
+
+  ```C
+  enum letters { A, B, C = 10, D };
+  ```
+  become :
+
+  ```ocaml
+  let _a = constant "A" int64_t
+  and _b = constant "B" int64_t
+  and _c = constant "C" int64_t
+  and _d = constant "D" int64_t
+  ```
+
+  Each OCaml variable name is prefixed with '_' in order to avoid conflict with
+  C names and OCaml keywords.
+
+  ```ocaml
+  let letters = enum "letters" [
+   `A, _a;
+   `B, _b;
+   `C, _c;
+   `D, _d;
+  ] ~unexpected:(fun i -> `Unexpected i)
+  ```
+
+###### Enumerations for bitwise operations
+  The constants of those enumerations are generally used as ORed flags. The idea
+  is to define a type with variants for all the constants that the enums contains.
+  Then create (No checked yet) :
+  *  create a function value_to_list
+  *  create a function list_to_value
+  *  create a view
 
 ## TODOS :
 
