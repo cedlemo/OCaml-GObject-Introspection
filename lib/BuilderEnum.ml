@@ -73,4 +73,4 @@ let append_ctypes_enum_declaration enum_name info (mli, ml) =
   Printf.fprintf ml "%s" (String.concat "|" (List.map (fun (v,c) -> "`" ^ v) v_and_c));
   Printf.fprintf ml "] typ = enum \"%s\" [\n" (String.lowercase_ascii enum_name);
   let str = String.concat ";\n" (List.map (fun (v, c) -> String.concat "" ["`"; v; ", "; c]) v_and_c) in
-  Printf.fprintf ml "%s\n]\n" str
+  Printf.fprintf ml "%s\n] ~unexpected:(fun i -> `Unexpected i)\n" str

@@ -78,13 +78,13 @@ let test_append_ctypes_enum_declaration test_ctxt =
     `Sha256, _sha256;\n\
     `Sha512, _sha512;\n\
     `Sha384, _sha384\n\
-    ]" in
+    ] ~unexpected:(fun i -> `Unexpected i)" in
   let ml_content_travis = "let checksumtype : [`Md5|`Sha1|`Sha256|`Sha512] typ = enum \"checksumtype\" [\n\
     `Md5, _md5;\n\
     `Sha1, _sha1;\n\
     `Sha256, _sha256;\n\
     `Sha512, _sha512\n\
-    ]" in
+    ] ~unexpected:(fun i -> `Unexpected i)" in
   enum_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer mli_content ml_content_travis
       else test_writing test_ctxt info name writer mli_content ml_content
