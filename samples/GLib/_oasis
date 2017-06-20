@@ -14,7 +14,7 @@ Library "GLib"
            AsyncQueue,
            BookmarkFile,
            ByteArray,
-           Bytes,
+           GBytes,
            Checksum,
            Cond,
            Data,
