@@ -83,7 +83,9 @@ let generate_directories loader =
   let lib_path = get_lib_path loader in
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
-let parse loader ?struct_parser () =
+let parse loader
+    ?const_parser
+    ?struct_parser () =
   let open Builder in
   let _ = generate_directories loader in
   let main_sources = generate_main_module_files loader in
@@ -113,7 +115,11 @@ let parse loader ?struct_parser () =
       | GIBaseInfo.Flags -> Builder.parse_flags_info info
       | GIBaseInfo.Object -> Builder.parse_object_info info
       | GIBaseInfo.Interface -> Builder.parse_interface_info info
-      | GIBaseInfo.Constant -> Builder.parse_constant_info info main_sources
+      | GIBaseInfo.Constant -> (
+          match const_parser with
+          | None -> Builder.parse_constant_info info main_sources
+          | Some const_parser_info -> const_parser_info info main_sources
+        )
       | GIBaseInfo.Invalid_0 -> ()
       | GIBaseInfo.Union -> (
           let sources = generate_secondary_module_files loader name in

@@ -63,12 +63,14 @@ val generate_directories:
   t -> unit
 
 (** Parse the GI infos and create the corresponding ctypes code
+  @param const_parser allow user to customize the GIConstantInfo bindings generator
   @param struct_parser allow user to customize the GIStructureInfo bindings
     generator
 
  *)
 val parse:
   t ->
+  ?const_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
   ?struct_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
   unit ->
   unit
