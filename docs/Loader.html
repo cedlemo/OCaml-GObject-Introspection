@@ -93,9 +93,10 @@ Generate the files Namespace.ml and Namespace.mli in append mode<br>
 Generate the directories build_path/namespace/lib<br>
 </div>
 
-<pre><span id="VALparse"><span class="keyword">val</span> parse</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -><br>       ?struct_parser:(<a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>                       <a href="Builder.html#TYPEfiles">Builder.files</a> -> unit) -><br>       unit -> unit</code></pre><div class="info ">
+<pre><span id="VALparse"><span class="keyword">val</span> parse</span> : <code class="type"><a href="Loader.html#TYPEt">t</a> -><br>       ?const_parser:(<a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>                      <a href="Builder.html#TYPEfiles">Builder.files</a> -> unit) -><br>       ?struct_parser:(<a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>                       <a href="Builder.html#TYPEfiles">Builder.files</a> -> unit) -><br>       unit -> unit</code></pre><div class="info ">
 Parse the GI infos and create the corresponding ctypes code<br>
 </div>
+<div class="param_info"><code class="code">const_parser</code> : allow user to customize the GIConstantInfo bindings generator</div>
 <div class="param_info"><code class="code">struct_parser</code> : allow user to customize the GIStructureInfo bindings
     generator</div>
 </body></html>
