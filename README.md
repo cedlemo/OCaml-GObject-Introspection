@@ -169,7 +169,7 @@ let () =
   | None -> print_endline "Please check the namespace, something is wrong"
   | Some loader -> print_infos loader;
     let loader = Loader.set_build_path loader "samples" in
-    Loader.parse loader
+    Loader.parse loader ()
 ```
 
 It generates the GLib bindings (not all for now) in `samples/GLib/lib`
