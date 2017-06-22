@@ -83,7 +83,7 @@ let generate_directories loader =
   let lib_path = get_lib_path loader in
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
-let parse loader =
+let parse loader ?struct_parser () =
   let open Builder in
   let _ = generate_directories loader in
   let main_sources = generate_main_module_files loader in
@@ -101,7 +101,11 @@ let parse loader =
         if GIStructInfo.is_gtype_struct info' then ()
         else (
           let sources = generate_secondary_module_files loader name in
-          let _ = Builder.parse_struct_info info sources in
+          (
+            match struct_parser with
+            | None -> Builder.parse_struct_info info sources;
+            | Some struct_parser_info -> struct_parser_info info sources;
+          );
           Builder.close_sources sources
         )
       | GIBaseInfo.Boxed -> Builder.parse_boxed_info info

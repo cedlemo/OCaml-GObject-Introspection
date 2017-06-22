@@ -64,5 +64,7 @@ val generate_directories:
 
 (** Parse the GI infos and create the corresponding ctypes code *)
 val parse:
-  t -> unit
-
+  t ->
+  ?struct_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
+  unit ->
+  unit
