@@ -204,30 +204,35 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 ##### Enumerations
 
 ###### Simple Enumerations
-  Those enumerations are just build with Ctypes.
+
+  The bindings will use the "unsafe" form. ([ref](https://discuss.ocaml.org/t/ctypes-enum-how-to-make-it-work/456/4?u=cedlemo) ).
 
   ```C
-  enum letters { A, B, C = 10, D };
+  enum letters { AB, CD, EF };
   ```
   become :
 
   ```ocaml
-  let _a = constant "A" int64_t
-  and _b = constant "B" int64_t
-  and _c = constant "C" int64_t
-  and _d = constant "D" int64_t
-  ```
+  type letters =
+  | Ab
+  | Cd
+  | Ef
 
-  Each OCaml variable name is prefixed with '_' in order to avoid conflict with
-  C names and OCaml keywords.
+  letters_of_uint32 = function
+  | 0 -> Ab
+  | 1 -> Cd
+  | 3 -> Ef
+  | _ -> raise (Invalid_argument "Unexpected letters enum value")
 
-  ```ocaml
-  let letters = enum "letters" [
-   `A, _a;
-   `B, _b;
-   `C, _c;
-   `D, _d;
-  ] ~unexpected:(fun i -> `Unexpected i)
+  letters_to_uint32 = function
+  | Ab -> 0
+  | Cd -> 1
+  | Ef -> 2
+
+  let letters = view
+                ~read:letters_of_uint32
+		~write:letters_to_uint32
+		uint32_t
   ```
 
 ###### Enumerations for bitwise operations
