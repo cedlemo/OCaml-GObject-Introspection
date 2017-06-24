@@ -74,3 +74,34 @@ let append_ctypes_enum_declaration enum_name info (mli, ml) =
   Printf.fprintf ml "] typ = enum \"%s\" [\n" (String.lowercase_ascii enum_name);
   let str = String.concat ";\n" (List.map (fun (v, c) -> String.concat "" ["`"; v; ", "; c]) v_and_c) in
   Printf.fprintf ml "%s\n] ~unexpected:(fun i -> `Unexpected i)\n" str
+
+let append_enum_type enum_type_name values_and_variants descr =
+  Printf.fprintf descr "type %s = " enum_type_name;
+  Printf.fprintf descr "%s" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
+
+let get_values_and_variants info =
+  let n = GIEnumInfo.get_n_values info in
+  let rec get_v_and_v i v_v =
+      if i == n then (List.rev v_v)
+      else
+      match GIEnumInfo.get_value info i with
+      | None -> get_v_and_v (i + 1) v_v
+      | Some value_info -> let value_base_info = GIValueInfo.to_baseinfo value_info in
+      if GIBaseInfo.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
+      else match GIBaseInfo.get_name value_base_info with
+        | None -> get_v_and_v (i + 1) v_v
+        | Some const_name ->
+          if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
+          else let value = GIValueInfo.get_value value_info in
+            let variant_name = String.capitalize_ascii const_name in
+            get_v_and_v (i + 1) ((string_of_int value, variant_name) :: v_v)
+  in get_v_and_v 0 []
+
+let append_ctypes_enum_bindings enum_name info (mli, ml) =
+  let enum_type_name = String.lowercase_ascii enum_name in
+  let tags = GIEnumInfo.get_storage_type info in
+  let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+  let values_and_variants = get_values_and_variants info in
+  append_enum_type enum_type_name values_and_variants mli;
+  append_enum_type enum_type_name values_and_variants ml
+
