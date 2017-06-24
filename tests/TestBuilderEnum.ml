@@ -48,41 +48,6 @@ let test_rebuild_c_identifier_for_constant test_ctxt =
           assert_equal_string "G_CHECKSUM_MD5" c_identifier
     )
 
-let enum_to_type = "type checksumtype = Md5| Sha1| Sha256| Sha512 | Sha384"
-let enum_to_type_travis = "type checksumtype = Md5| Sha1| Sha256| Sha512"
-let enum_type_of_value = "let checksumtype_of_unit32 = function\n\
-                          | 0 -> Md5\n\
-                          | 1 -> Sha1\n\
-                          | 2 -> Sha256\n\
-                          | 3 -> Sha512\n\
-                          | 4 -> Sha384\n\
-                          | _ -> raise (Invalid_argument \"Unexpected CheckSumType value\")"
-
-let enum_type_of_value_travis = "let checksumtype_of_unit32 = function\n\
-                                 | 0 -> Md5\n\
-                                 | 1 -> Sha1\n\
-                                 | 2 -> Sha256\n\
-                                 | 3 -> Sha512\n\
-                                 | _ -> raise (Invalid_argument \"Unexpected CheckSumType value\")"
-
-
-let enum_type_to_value = "let checksumtype_to_unit32 = function\n\
-                          | Md5 -> 0\n\
-                          | Sha1 -> 1\n\
-                          | Sha256 -> 2\n\
-                          | Sha512 -> 3\n\
-                          | Sha384 -> 4"
-
-let enum_type_to_value_travis = "let checksumtype_to_unit32 = function\n\
-                                 | Md5 -> 0\n\
-                                 | Sha1 -> 1\n\
-                                 | Sha256 -> 2\n\
-                                 | Sha512 -> 3"
-let enum_type_view = "let checksumtype = view \n\
-                      ~read:checksumtype_of_unit32 \n\
-                      ~write:checksumtype_to_unit32 \n\
-                      uint32_t"
-
 let test_append_ctypes_enum_constants_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "ChecksumType" in
@@ -124,6 +89,41 @@ let test_append_ctypes_enum_declaration test_ctxt =
       if is_travis then test_writing test_ctxt info name writer mli_content ml_content_travis
       else test_writing test_ctxt info name writer mli_content ml_content
     )
+
+let enum_to_type = "type checksumtype = Md5| Sha1| Sha256| Sha512 | Sha384"
+let enum_to_type_travis = "type checksumtype = Md5| Sha1| Sha256| Sha512"
+let enum_type_of_value = "let checksumtype_of_unit32 = function\n\
+                          | 0 -> Md5\n\
+                          | 1 -> Sha1\n\
+                          | 2 -> Sha256\n\
+                          | 3 -> Sha512\n\
+                          | 4 -> Sha384\n\
+                          | _ -> raise (Invalid_argument \"Unexpected CheckSumType value\")"
+
+let enum_type_of_value_travis = "let checksumtype_of_unit32 = function\n\
+                                 | 0 -> Md5\n\
+                                 | 1 -> Sha1\n\
+                                 | 2 -> Sha256\n\
+                                 | 3 -> Sha512\n\
+                                 | _ -> raise (Invalid_argument \"Unexpected CheckSumType value\")"
+
+
+let enum_type_to_value = "let checksumtype_to_unit32 = function\n\
+                          | Md5 -> 0\n\
+                          | Sha1 -> 1\n\
+                          | Sha256 -> 2\n\
+                          | Sha512 -> 3\n\
+                          | Sha384 -> 4"
+
+let enum_type_to_value_travis = "let checksumtype_to_unit32 = function\n\
+                                 | Md5 -> 0\n\
+                                 | Sha1 -> 1\n\
+                                 | Sha256 -> 2\n\
+                                 | Sha512 -> 3"
+let enum_type_view = "let checksumtype = view \n\
+                      ~read:checksumtype_of_unit32 \n\
+                      ~write:checksumtype_to_unit32 \n\
+                      uint32_t"
 
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
