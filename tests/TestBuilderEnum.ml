@@ -90,7 +90,7 @@ let test_append_ctypes_enum_declaration test_ctxt =
       else test_writing test_ctxt info name writer mli_content ml_content
     )
 
-let enum_to_type = "type checksumtype = Md5| Sha1| Sha256| Sha512 | Sha384"
+let enum_to_type = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512 | Sha384"
 let enum_to_type_travis = "type checksumtype = Md5| Sha1| Sha256| Sha512"
 let enum_type_of_value = "let checksumtype_of_unit32 = function\n\
                           | 0 -> Md5\n\
@@ -125,10 +125,27 @@ let enum_type_view = "let checksumtype = view \n\
                       ~write:checksumtype_to_unit32 \n\
                       uint32_t"
 
+let test_append_enum_type test_ctxt =
+  let namespace = "GLib" in
+  let name = "ChecksumType" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let tags = GIEnumInfo.get_storage_type info in
+      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+      let values_and_variants = BuilderEnum.get_values_and_variants info in
+      BuilderEnum.append_enum_type enum_type_name values_and_variants mli;
+      BuilderEnum.append_enum_type enum_type_name values_and_variants ml
+  ) in
+  enum_test namespace name (fun info ->
+      if is_travis then test_writing test_ctxt info name writer enum_to_type_travis enum_to_type_travis
+      else test_writing test_ctxt info name writer enum_to_type enum_to_type
+  )
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
     "BuilderEnum rebuild c identifier for constant" >:: test_rebuild_c_identifier_for_constant;
     "BuilderEnum append ctypes enum constants declarations" >:: test_append_ctypes_enum_constants_declarations;
-    "BuilderEnum append ctypes enum declaration" >:: test_append_ctypes_enum_declaration
+    "BuilderEnum append ctypes enum declaration" >:: test_append_ctypes_enum_declaration;
+    "BuilderEnum append enum type" >:: test_append_enum_type
   ]
