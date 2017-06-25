@@ -48,48 +48,6 @@ let test_rebuild_c_identifier_for_constant test_ctxt =
           assert_equal_string "G_CHECKSUM_MD5" c_identifier
     )
 
-let test_append_ctypes_enum_constants_declarations test_ctxt =
-  let namespace = "GLib" in
-  let name = "ChecksumType" in
-  let writer = BuilderEnum.append_ctypes_enum_constants_declarations in
-  let mli_content = "" in
-  let ml_content = "let _md5 = constant \"G_CHECKSUM_MD5\" uint32_t\n\
-                    and _sha1 = constant \"G_CHECKSUM_SHA1\" uint32_t\n\
-                    and _sha256 = constant \"G_CHECKSUM_SHA256\" uint32_t\n\
-                    and _sha512 = constant \"G_CHECKSUM_SHA512\" uint32_t\n\
-                    and _sha384 = constant \"G_CHECKSUM_SHA384\" uint32_t" in
-  let ml_content_travis = "let _md5 = constant \"G_CHECKSUM_MD5\" uint32_t\n\
-                           and _sha1 = constant \"G_CHECKSUM_SHA1\" uint32_t\n\
-                           and _sha256 = constant \"G_CHECKSUM_SHA256\" uint32_t\n\
-                           and _sha512 = constant \"G_CHECKSUM_SHA512\" uint32_t" in
-  enum_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer mli_content ml_content_travis
-      else test_writing test_ctxt info name writer mli_content ml_content
-    )
-
-let test_append_ctypes_enum_declaration test_ctxt =
-  let namespace = "GLib" in
-  let name = "ChecksumType" in
-  let writer = BuilderEnum.append_ctypes_enum_declaration in
-  let mli_content = "" in
-  let ml_content = "let checksumtype : [`Md5|`Sha1|`Sha256|`Sha512|`Sha384] typ = enum \"checksumtype\" [\n\
-    `Md5, _md5;\n\
-    `Sha1, _sha1;\n\
-    `Sha256, _sha256;\n\
-    `Sha512, _sha512;\n\
-    `Sha384, _sha384\n\
-    ] ~unexpected:(fun i -> `Unexpected i)" in
-  let ml_content_travis = "let checksumtype : [`Md5|`Sha1|`Sha256|`Sha512] typ = enum \"checksumtype\" [\n\
-    `Md5, _md5;\n\
-    `Sha1, _sha1;\n\
-    `Sha256, _sha256;\n\
-    `Sha512, _sha512\n\
-    ] ~unexpected:(fun i -> `Unexpected i)" in
-  enum_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer mli_content ml_content_travis
-      else test_writing test_ctxt info name writer mli_content ml_content
-    )
-
 let enum_to_type = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512 | Sha384"
 let enum_to_type_travis = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512"
 let enum_type_of_value_sig = "val checksumtype_of_value:\n\
@@ -194,9 +152,6 @@ let test_append_enum_view test_ctxt =
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
-    "BuilderEnum rebuild c identifier for constant" >:: test_rebuild_c_identifier_for_constant;
-    "BuilderEnum append ctypes enum constants declarations" >:: test_append_ctypes_enum_constants_declarations;
-    "BuilderEnum append ctypes enum declaration" >:: test_append_ctypes_enum_declaration;
     "BuilderEnum append enum type" >:: test_append_enum_type;
     "BuilderEnum append enum view reader" >:: test_append_enum_view_reader;
     "BuilderEnum append enum view writer" >:: test_append_enum_view_writer;
