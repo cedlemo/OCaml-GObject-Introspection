@@ -126,6 +126,8 @@ let enum_type_to_value_travis = "let checksumtype_to_value = function\n\
                                  | Sha256 -> 2\n\
                                  | Sha512 -> 3\n"
 
+let enum_type_view_sig = "val checksumtype : checksumtype typ"
+
 let enum_type_view = "let checksumtype = view \n\
                       ~read:checksumtype_of_value \n\
                       ~write:checksumtype_to_value \n\
@@ -175,6 +177,20 @@ let test_append_enum_view_writer test_ctxt =
       else test_writing test_ctxt info name writer enum_type_to_value_sig enum_type_to_value
   )
 
+let test_append_enum_view test_ctxt =
+  let namespace = "GLib" in
+  let name = "ChecksumType" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let tags = GIEnumInfo.get_storage_type info in
+      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+      BuilderEnum.append_enum_view enum_type_name ctypes_typ (mli, ml)
+  ) in
+  enum_test namespace name (fun info ->
+      if is_travis then test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
+      else test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
+  )
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
@@ -183,5 +199,6 @@ let tests =
     "BuilderEnum append ctypes enum declaration" >:: test_append_ctypes_enum_declaration;
     "BuilderEnum append enum type" >:: test_append_enum_type;
     "BuilderEnum append enum view reader" >:: test_append_enum_view_reader;
-    "BuilderEnum append enum view writer" >:: test_append_enum_view_writer
+    "BuilderEnum append enum view writer" >:: test_append_enum_view_writer;
+    "BuilderEnum append enum view" >:: test_append_enum_view
   ]
