@@ -34,6 +34,9 @@ val append_ctypes_enum_declaration:
 val append_enum_type:
   string -> (string * string) list -> Pervasives.out_channel -> unit
 
+val append_enum_view_reader:
+  string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
 val get_values_and_variants:
   GIEnumInfo.t structure ptr -> (string * string) list
 
