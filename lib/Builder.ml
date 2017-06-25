@@ -83,8 +83,7 @@ let parse_enum_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = GIEnumInfo.from_baseinfo info in
-    BuilderEnum.append_ctypes_enum_constants_declarations name info' f_descrs;
-    BuilderEnum.append_ctypes_enum_declaration name info' f_descrs
+    BuilderEnum.append_ctypes_enum_bindings name info' f_descrs
 
 let parse_flags_info info =
   match GIBaseInfo.get_name info with

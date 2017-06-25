@@ -25,12 +25,6 @@ open Foreign
 val rebuild_c_identifier_for_constant:
   string -> GIValueInfo.t structure ptr -> string
 
-val append_ctypes_enum_constants_declarations:
-  string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
-
-val append_ctypes_enum_declaration:
-  string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
-
 val append_enum_type:
   string -> (string * string) list -> Pervasives.out_channel -> unit
 
