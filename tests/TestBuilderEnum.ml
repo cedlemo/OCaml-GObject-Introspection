@@ -96,18 +96,18 @@ let enum_type_of_value_sig = "val checksumtype_of_value:\n\
                               Unsigned.uint32 -> checksumtype"
 
 let enum_type_of_value = "let checksumtype_of_value = function\n\
-                          | 0 -> Md5 \n\
-                          | 1 -> Sha1 \n\
-                          | 2 -> Sha256 \n\
-                          | 3 -> Sha512 \n\
-                          | 4 -> Sha384 \n\
+                          | 0 -> Md5\n\
+                          | 1 -> Sha1\n\
+                          | 2 -> Sha256\n\
+                          | 3 -> Sha512\n\
+                          | 4 -> Sha384\n\
                           | _ -> raise (Invalid_argument \"Unexpected ChecksumType value\")"
 
 let enum_type_of_value_travis = "let checksumtype_of_value = function\n\
-                                 | 0 -> Md5 \n\
-                                 | 1 -> Sha1 \n\
-                                 | 2 -> Sha256 \n\
-                                 | 3 -> Sha512 \n\
+                                 | 0 -> Md5\n\
+                                 | 1 -> Sha1\n\
+                                 | 2 -> Sha256\n\
+                                 | 3 -> Sha512\n\
                                  | _ -> raise (Invalid_argument \"Unexpected ChecksumType value\")"
 
 
