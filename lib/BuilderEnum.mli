@@ -40,6 +40,9 @@ val append_enum_view_reader:
 val append_enum_view_writer:
   string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
+val append_enum_view:
+  string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
 val get_values_and_variants:
   GIEnumInfo.t structure ptr -> (string * string) list
 

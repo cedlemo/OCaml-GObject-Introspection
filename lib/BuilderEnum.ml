@@ -92,6 +92,13 @@ let append_enum_view_writer enum_name enum_type_name ocaml_type values_and_varia
   Printf.fprintf ml "%s" (String.concat "| " (List.map (fun (x, v) ->
       String.concat "" [v; " -> "; x; "\n"] ) values_and_variants))
 
+let append_enum_view enum_type_name ctypes_typ (mli, ml) =
+  Printf.fprintf mli "val %s : %s typ" enum_type_name enum_type_name;
+  Printf.fprintf ml "let %s = view \n" enum_type_name;
+  Printf.fprintf ml "~read:%s_of_value \n" enum_type_name;
+  Printf.fprintf ml "~write:%s_to_value \n" enum_type_name;
+  Printf.fprintf ml "%s\n" ctypes_typ
+
 let get_values_and_variants info =
   let n = GIEnumInfo.get_n_values info in
   let rec get_v_and_v i v_v =
@@ -118,5 +125,6 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
   append_enum_type enum_type_name values_and_variants mli;
   append_enum_type enum_type_name values_and_variants ml;
   append_enum_view_reader enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml)
+  append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+  append_enum_view enum_type_name ctypes_typ (mli, ml)
 
