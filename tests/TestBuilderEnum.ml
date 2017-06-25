@@ -91,7 +91,7 @@ let test_append_ctypes_enum_declaration test_ctxt =
     )
 
 let enum_to_type = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512 | Sha384"
-let enum_to_type_travis = "type checksumtype = Md5| Sha1| Sha256| Sha512"
+let enum_to_type_travis = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512"
 let enum_type_of_value = "let checksumtype_of_unit32 = function\n\
                           | 0 -> Md5\n\
                           | 1 -> Sha1\n\
