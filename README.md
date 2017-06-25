@@ -244,6 +244,9 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   *  create a view
 
 ## TODOS :
+  * Enumeration :
+    Try to find a way to deal with int, uint32 uint64 ?? or at least with
+    the type of the enum. Don't assume its type. See GIValueInfo too.
 
   * test Windows build with appveyor:
     * install MSYS2
