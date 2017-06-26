@@ -53,20 +53,20 @@ let enum_to_type_travis = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512"
 let enum_type_of_value_sig = "val checksumtype_of_value:\n\
                               Unsigned.uint32 -> checksumtype"
 
-let enum_type_of_value = "let checksumtype_of_value = function\n\
-                          | Unsigned.UInt32.of_int64 0 -> Md5\n\
-                          | Unsigned.UInt32.of_int64 1 -> Sha1\n\
-                          | Unsigned.UInt32.of_int64 2 -> Sha256\n\
-                          | Unsigned.UInt32.of_int64 3 -> Sha512\n\
-                          | Unsigned.UInt32.of_int64 4 -> Sha384\n\
-                          | _ -> raise (Invalid_argument \"Unexpected ChecksumType value\")"
+let enum_type_of_value = "let checksumtype_of_value v =\n\
+                          if v = Unsigned.UInt32.of_int64 0 then Md5\n\
+                          else if v = Unsigned.UInt32.of_int64 1 then Sha1\n\
+                          else if v = Unsigned.UInt32.of_int64 2 then Sha256\n\
+                          else if v = Unsigned.UInt32.of_int64 3 then Sha512\n\
+                          else if v = Unsigned.UInt32.of_int64 4 then Sha384\n\
+                          else raise (Invalid_argument \"Unexpected ChecksumType value\")"
 
-let enum_type_of_value_travis = "let checksumtype_of_value = function\n\
-                                 | Unsigned.UInt32.of_int64 0 -> Md5\n\
-                                 | Unsigned.UInt32.of_int64 1 -> Sha1\n\
-                                 | Unsigned.UInt32.of_int64 2 -> Sha256\n\
-                                 | Unsigned.UInt32.of_int64 3 -> Sha512\n\
-                                 | _ -> raise (Invalid_argument \"Unexpected ChecksumType value\")"
+let enum_type_of_value_travis = "let checksumtype_of_value v =\n\
+                                 if v = Unsigned.UInt32.of_int64 0 then Md5\n\
+                                 else if v = Unsigned.UInt32.of_int64 1 then Sha1\n\
+                                 else if v = Unsigned.UInt32.of_int64 2 then Sha256\n\
+                                 else if v = Unsigned.UInt32.of_int64 3 then Sha512\n\
+                                 else raise (Invalid_argument \"Unexpected ChecksumType value\")"
 
 
 let enum_type_to_value_sig = "val checksumtype_to_value:\n\

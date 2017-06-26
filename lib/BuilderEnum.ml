@@ -43,10 +43,10 @@ let value_info_to_enum_type_conversion ocaml_type value =
 
 let append_enum_view_reader enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_of_value:\n%s -> %s\n" enum_type_name ocaml_type enum_type_name;
-  Printf.fprintf ml "let %s_of_value = function\n| " enum_type_name;
-  Printf.fprintf ml "%s" (String.concat "| " (List.map (fun (x, v) ->
-      String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " -> "; v; "\n"] ) values_and_variants));
-  Printf.fprintf ml "| _ -> raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
+  Printf.fprintf ml "let %s_of_value v =\nif v = " enum_type_name;
+  Printf.fprintf ml "%s" (String.concat "else if v = " (List.map (fun (x, v) ->
+      String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " then "; v; "\n"] ) values_and_variants));
+  Printf.fprintf ml "else raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
 
 let append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_to_value:\n%s -> %s\n" enum_type_name enum_type_name ocaml_type;
