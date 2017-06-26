@@ -145,8 +145,7 @@ let test_append_enum_view test_ctxt =
       BuilderEnum.append_enum_view enum_type_name ctypes_typ (mli, ml)
   ) in
   enum_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
-      else test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
+      test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
 let tests =
