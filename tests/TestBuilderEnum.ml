@@ -82,7 +82,7 @@ let enum_type_to_value_travis = "let checksumtype_to_value = function\n\
                                  | Md5 -> 0\n\
                                  | Sha1 -> 1\n\
                                  | Sha256 -> 2\n\
-                                 | Sha512 -> 3\n"
+                                 | Sha512 -> 3"
 
 let enum_type_view_sig = "val checksumtype : checksumtype typ"
 
