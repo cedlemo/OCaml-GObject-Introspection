@@ -21,7 +21,7 @@ The OCaml bindings to GObject-Introspection with Ctypes.
     - [Builders Next](#builders-next)
   - [Builder Code rules](#builder-code-rules)
     - [Structures and Unions](#structures-and-unions)
-    - [ Enumerations](#enumerations)
+    - [Enumerations](#enumerations)
       - [Simple Enumerations](#simple-enumerations)
       - [Enumerations for bitwise operations](#enumerations-for-bitwise-operations)
 - [TODOs](#todos)
@@ -244,9 +244,6 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   *  create a view
 
 ## TODOS :
-  * Enumeration :
-    Try to find a way to deal with int, uint32 uint64 ?? or at least with
-    the type of the enum. Don't assume its type. See GIValueInfo too.
 
   * test Windows build with appveyor:
     * install MSYS2
