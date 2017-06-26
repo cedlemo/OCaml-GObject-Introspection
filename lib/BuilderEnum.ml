@@ -37,18 +37,22 @@ let append_enum_type enum_type_name values_and_variants descr =
   Printf.fprintf descr "type %s = " enum_type_name;
   Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
 
+let value_info_to_enum_type_conversion ocaml_type value =
+  if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32.of_int64 " ^ value
+  else "Int32.of_int " ^ value
+
 let append_enum_view_reader enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_of_value:\n%s -> %s\n" enum_type_name ocaml_type enum_type_name;
   Printf.fprintf ml "let %s_of_value = function\n| " enum_type_name;
   Printf.fprintf ml "%s" (String.concat "| " (List.map (fun (x, v) ->
-      String.concat "" [x; " -> "; v; "\n"] ) values_and_variants));
+      String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " -> "; v; "\n"] ) values_and_variants));
   Printf.fprintf ml "| _ -> raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
 
 let append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_to_value:\n%s -> %s\n" enum_type_name enum_type_name ocaml_type;
   Printf.fprintf ml "let %s_to_value = function\n| " enum_type_name;
   Printf.fprintf ml "%s" (String.concat "| " (List.map (fun (x, v) ->
-      String.concat "" [v; " -> "; x; "\n"] ) values_and_variants))
+      String.concat "" [v; " -> "; value_info_to_enum_type_conversion ocaml_type x; "\n"] ) values_and_variants))
 
 let append_enum_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf mli "val %s : %s typ\n" enum_type_name enum_type_name;

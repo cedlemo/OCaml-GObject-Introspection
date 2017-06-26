@@ -54,35 +54,35 @@ let enum_type_of_value_sig = "val checksumtype_of_value:\n\
                               Unsigned.uint32 -> checksumtype"
 
 let enum_type_of_value = "let checksumtype_of_value = function\n\
-                          | 0 -> Md5\n\
-                          | 1 -> Sha1\n\
-                          | 2 -> Sha256\n\
-                          | 3 -> Sha512\n\
-                          | 4 -> Sha384\n\
+                          | Unsigned.UInt32.of_int64 0 -> Md5\n\
+                          | Unsigned.UInt32.of_int64 1 -> Sha1\n\
+                          | Unsigned.UInt32.of_int64 2 -> Sha256\n\
+                          | Unsigned.UInt32.of_int64 3 -> Sha512\n\
+                          | Unsigned.UInt32.of_int64 4 -> Sha384\n\
                           | _ -> raise (Invalid_argument \"Unexpected ChecksumType value\")"
 
 let enum_type_of_value_travis = "let checksumtype_of_value = function\n\
-                                 | 0 -> Md5\n\
-                                 | 1 -> Sha1\n\
-                                 | 2 -> Sha256\n\
-                                 | 3 -> Sha512\n\
+                                 | Unsigned.UInt32.of_int64 0 -> Md5\n\
+                                 | Unsigned.UInt32.of_int64 1 -> Sha1\n\
+                                 | Unsigned.UInt32.of_int64 2 -> Sha256\n\
+                                 | Unsigned.UInt32.of_int64 3 -> Sha512\n\
                                  | _ -> raise (Invalid_argument \"Unexpected ChecksumType value\")"
 
 
 let enum_type_to_value_sig = "val checksumtype_to_value:\n\
                               checksumtype -> Unsigned.uint32"
 let enum_type_to_value = "let checksumtype_to_value = function\n\
-                          | Md5 -> 0\n\
-                          | Sha1 -> 1\n\
-                          | Sha256 -> 2\n\
-                          | Sha512 -> 3\n\
-                          | Sha384 -> 4"
+                          | Md5 -> Unsigned.UInt32.of_int64 0\n\
+                          | Sha1 -> Unsigned.UInt32.of_int64 1\n\
+                          | Sha256 -> Unsigned.UInt32.of_int64 2\n\
+                          | Sha512 -> Unsigned.UInt32.of_int64 3\n\
+                          | Sha384 -> Unsigned.UInt32.of_int64 4"
 
 let enum_type_to_value_travis = "let checksumtype_to_value = function\n\
-                                 | Md5 -> 0\n\
-                                 | Sha1 -> 1\n\
-                                 | Sha256 -> 2\n\
-                                 | Sha512 -> 3"
+                                 | Md5 -> Unsigned.UInt32.of_int64 0\n\
+                                 | Sha1 -> Unsigned.UInt32.of_int64 1\n\
+                                 | Sha256 -> Unsigned.UInt32.of_int64 2\n\
+                                 | Sha512 -> Unsigned.UInt32.of_int64 3"
 
 let enum_type_view_sig = "val checksumtype : checksumtype typ"
 
