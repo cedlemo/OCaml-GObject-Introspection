@@ -24,7 +24,7 @@ let valueinfo : t structure typ = structure "GIValueInfo"
 
 let get_value =
   foreign "g_value_info_get_value"
-    (ptr valueinfo @-> returning int)
+    (ptr valueinfo @-> returning int64_t)
 
 (* TODO : check that the info can be casted to a valueinfo ? *)
 let cast_from_baseinfo info =

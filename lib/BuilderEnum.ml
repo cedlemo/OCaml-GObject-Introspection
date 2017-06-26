@@ -72,7 +72,7 @@ let get_values_and_variants info =
           if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
           else let value = GIValueInfo.get_value value_info in
             let variant_name = String.capitalize_ascii const_name in
-            get_v_and_v (i + 1) ((string_of_int value, variant_name) :: v_v)
+            get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
   in get_v_and_v 0 []
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =

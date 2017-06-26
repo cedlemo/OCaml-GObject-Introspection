@@ -62,7 +62,7 @@ let test_get_value test_ctxt =
       match GIEnumInfo.get_value info 1 with
       | None -> assert_equal_string "No value " "found"
       | Some value -> let value' = GIValueInfo.get_value value in
-        let _ = assert_equal_int 1 value' in
+        let _ = assert_equal 1 (Int64.to_int value') in
         let base = GIValueInfo.to_baseinfo value in
         match GIBaseInfo.get_name base with
         | None -> ()

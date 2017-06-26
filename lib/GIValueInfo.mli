@@ -26,7 +26,7 @@ val valueinfo : t structure typ
 
 (** Obtain the enumeration value of the GIValueInfo. *)
 val get_value:
-  t structure ptr -> int
+  t structure ptr -> int64
 
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_from_baseinfo:
