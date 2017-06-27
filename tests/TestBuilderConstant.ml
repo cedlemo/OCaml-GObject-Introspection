@@ -91,7 +91,7 @@ let test_append_int32_constant test_ctxt =
   let name = "MAXINT32" in
   let writer = BuilderConstant.append_int32_constant in
   let mli_content = "val _MAXINT32 : int32" in
-  let ml_content = "let _MAXINT32 = 2147483647" in
+  let ml_content = "let _MAXINT32 = Int32.of_string \"2147483647\"" in
   constant_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
     )
@@ -101,7 +101,7 @@ let test_append_uint32_constant test_ctxt =
   let name = "MAXUINT32" in
   let writer = BuilderConstant.append_uint32_constant in
   let mli_content = "val _MAXUINT32 : Unsigned.uint32" in
-  let ml_content = "let _MAXUINT32 = 4294967295" in
+  let ml_content = "let _MAXUINT32 = Unsigned.UInt32.of_string \"4294967295\"" in
   constant_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
     )
