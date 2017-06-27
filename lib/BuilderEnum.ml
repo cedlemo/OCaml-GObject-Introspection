@@ -39,7 +39,8 @@ let append_enum_type enum_type_name values_and_variants descr =
 
 let value_info_to_enum_type_conversion ocaml_type value =
   if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32.of_int " ^ value
-  else "Int32.of_int " ^ value
+  else if (String.get value 0 = '-') then String.concat "" ["Int32.of_int "; "("; value; ")"]
+  else  "Int32.of_int " ^ value
 
 let append_enum_view_reader enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_of_value:\n%s -> %s\n" enum_type_name ocaml_type enum_type_name;
