@@ -31,6 +31,15 @@ let append_constant name info files field field_type printer =
   let str_value = printer value in
   Printf.fprintf ml "let %s = %s\n" modified_name str_value
 
+let append_constant_64_bits name info files field field_type type_module printer =
+  let (mli, ml) = files in
+  let argument = GIConstantInfo.get_value info in
+  let value = getf (!@argument) field in
+  let modified_name = bindings_constant_name name in
+  let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
+  let str_value = printer value in
+  Printf.fprintf ml "let %s = %s.of_string \"%s\"\n" modified_name type_module str_value
+
 let append_boolean_constant name info source_files =
   let field = GITypes.v_boolean in
   let field_type = "bool" in
@@ -77,13 +86,13 @@ let append_int64_constant name info source_files =
   let field = GITypes.v_int64 in
   let field_type = "int64" in
   let printer = Int64.to_string in
-  append_constant name info source_files field field_type printer
+  append_constant_64_bits name info source_files field field_type "Int64" printer
 
 let append_uint64_constant name info source_files =
   let field = GITypes.v_uint64 in
   let field_type = "Unsigned.uint64" in
   let printer = Unsigned.UInt64.to_string in
-  append_constant name info source_files field field_type printer
+  append_constant_64_bits name info source_files field field_type "Unsigned.UInt64" printer
 
 let append_float_constant name info source_files =
   let field = GITypes.v_float in
