@@ -47,7 +47,7 @@ let append_constant_of_31_or_less_bits name info files field field_type type_mod
   let modified_name = bindings_constant_name name in
   let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = printer value in
-  Printf.fprintf ml "let %s = %s.of_int \"%s\"\n" modified_name type_module str_value
+  Printf.fprintf ml "let %s = %s.of_int %s\n" modified_name type_module str_value
 
 let append_boolean_constant name info source_files =
   let field = GITypes.v_boolean in
@@ -65,7 +65,7 @@ let append_uint8_constant name info source_files =
   let field = GITypes.v_uint8 in
   let field_type = "Unsigned.uint8" in
   let printer = Unsigned.UInt8.to_string in
-  append_constant name info source_files field field_type printer
+  append_constant_of_31_or_less_bits name info source_files field field_type "Unsigned.UInt8" printer
 
 let append_int16_constant name info source_files =
   let field = GITypes.v_int16 in
@@ -77,7 +77,7 @@ let append_uint16_constant name info source_files =
   let field = GITypes.v_uint16 in
   let field_type = "Unsigned.uint16" in
   let printer = Unsigned.UInt16.to_string in
-  append_constant name info source_files field field_type printer
+  append_constant_of_31_or_less_bits name info source_files field field_type "Unsigned.UInt16" printer
 
 let append_int32_constant name info source_files =
   let field = GITypes.v_int32 in

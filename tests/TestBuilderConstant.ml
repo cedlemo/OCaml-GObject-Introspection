@@ -60,7 +60,7 @@ let test_append_uint8_constant test_ctxt =
   let name = "MAXUINT8" in
   let writer = BuilderConstant.append_uint8_constant in
   let mli_content = "val _MAXUINT8 : Unsigned.uint8" in
-  let ml_content = "let _MAXUINT8 = 255" in
+  let ml_content = "let _MAXUINT8 = Unsigned.UInt8.of_int 255" in
   constant_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
     )
@@ -81,7 +81,7 @@ let test_append_uint16_constant test_ctxt =
   let name = "MAXUINT16" in
   let writer = BuilderConstant.append_uint16_constant in
   let mli_content = "val _MAXUINT16 : Unsigned.uint16" in
-  let ml_content = "let _MAXUINT16 = 65535" in
+  let ml_content = "let _MAXUINT16 = Unsigned.UInt16.of_int 65535" in
   constant_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
     )
