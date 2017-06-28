@@ -205,11 +205,40 @@ let flags_type_view = "let optionflags = view\n\
                        ~read:optionflags_list_of_value\n\
                        ~write:optionflags_list_to_value\n\
                        uint32_t"
+let get_flags_info namespace enum_name =
+  match GIRepository.find_by_name repo namespace enum_name with
+  | None -> None
+  | Some (base_info) ->
+    match GIBaseInfo.get_type base_info with
+    | GIBaseInfo.Flags -> let info = GIEnumInfo.from_baseinfo base_info in
+      Some info
+    | _ -> None
+
+let flags_test namespace enum_name fn =
+  match get_flags_info namespace enum_name with
+  | None -> assert_equal_string enum_name "No base info found"
+  | Some (info) -> fn info
+
+let test_append_enum_flags_type test_ctxt =
+  let namespace = "GLib" in
+  let name = "OptionFlags" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let values_and_variants = BuilderEnum.get_values_and_variants info in
+      BuilderEnum.append_enum_type enum_type_name values_and_variants mli;
+      BuilderEnum.append_enum_type enum_type_name values_and_variants ml
+  ) in
+  flags_test namespace name (fun info ->
+      test_writing test_ctxt info name writer flags_to_type flags_to_type
+  )
+
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
     "BuilderEnum append enum type" >:: test_append_enum_type;
     "BuilderEnum append enum view reader" >:: test_append_enum_view_reader;
     "BuilderEnum append enum view writer" >:: test_append_enum_view_writer;
-    "BuilderEnum append enum view" >:: test_append_enum_view
+    "BuilderEnum append enum view" >:: test_append_enum_view;
+    "BuilderEnum append enum flags type" >:: test_append_enum_flags_type
   ]
