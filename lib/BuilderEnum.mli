@@ -31,7 +31,7 @@ val append_enum_type:
 val append_enum_of_value_fn:
   string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
-val append_enum_view_writer:
+val append_enum_to_value_fn:
   string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_enum_view:

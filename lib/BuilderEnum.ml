@@ -49,7 +49,7 @@ let append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_varia
       String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " then "; v; "\n"] ) values_and_variants));
   Printf.fprintf ml "else raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
 
-let append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
+let append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_to_value:\n%s -> %s\n" enum_type_name enum_type_name ocaml_type;
   Printf.fprintf ml "let %s_to_value = function\n| " enum_type_name;
   Printf.fprintf ml "%s" (String.concat "| " (List.map (fun (x, v) ->
@@ -88,6 +88,6 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
   append_enum_type enum_type_name values_and_variants mli;
   append_enum_type enum_type_name values_and_variants ml;
   append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+  append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_enum_view enum_type_name ctypes_typ (mli, ml)
 
