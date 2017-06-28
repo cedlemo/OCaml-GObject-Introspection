@@ -148,6 +148,63 @@ let test_append_enum_view test_ctxt =
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
+let flags_to_type = "type optionflags = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias"
+
+let flags_of_value_sig = "val optionflags_of_value:\n\
+                          Unsigned.uint32 -> optionflags"
+let flags_of_value = "let optionflags_of_value f =\n\
+                      if v = Unsigned.UInt32.of_int 0 then None\n\
+                      else if v = Unsigned.UInt32.of_int 1 then Hidden\n\
+                      else if v = Unsigned.UInt32.of_int 2 then In_main\n\
+                      else if v = Unsigned.UInt32.of_int 4 then Reverse\n\
+                      else if v = Unsigned.UInt32.of_int 8 then No_arg\n\
+                      else if v = Unsigned.UInt32.of_int 16 then Filename\n\
+                      else if v = Unsigned.UInt32.of_int 32 then Optional_arg\n\
+                      else if v = Unsigned.UInt32.of_int 64 then Noalias\n\
+                      else raise (Invalid_argument \"Unexpected OptionFlags value\")"
+
+let flags_to_value_sig = "val optionflags_to_value:\n\
+                          optionflags -> Unsigned.uint32"
+let flags_to_value = "let optionflags_to_value = function\n\
+                      | None -> Unsigned.UInt32.of_int 0\n\
+                      | In_main -> Unsigned.UInt32.of_int 1\n\
+                      | Hidden -> Unsigned.UInt32.of_int 2\n\
+                      | Reverse -> Unsigned.UInt32.of_int 4\n\
+                      | No_arg -> Unsigned.UInt32.of_int 8\n\
+                      | Filename -> Unsigned.UInt32.of_int 16\n\
+                      | Optional_arg -> Unsigned.UInt32.of_int 32\n\
+                      | Noalias -> Unsigned.UInt32.of_int 64"
+
+
+let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
+                                    optionflags list -> Unsigned.uint32"
+let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
+                                  let rec xor_flags l acc =\n\
+                                  | [] -> acc\n\
+                                  | f :: q -> let v = optionflags_to_value f in\n\
+                                    let acc' = acc lor v in\n\
+                                    xor_flags q acc'
+                                  in\n\
+                                  xor_flags flags 0"
+let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
+                                    Unsigned.uint32 -> optionflags list"
+let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
+                                let flags = [] in\n\
+                                if ((v land 0) != 0) then ignore (None :: flags);\n\
+                                if ((v land 1) != 0) then ignore (Hidden :: flags);\n\
+                                if ((v land 2) != 0) then ignore (In_main :: flags);\n\
+                                if ((v land 4) != 0) then ignore (Reverse :: flags);\n\
+                                if ((v land 8) != 0) then ignore (No_arg :: flags);\n\
+                                if ((v land 16) != 0) then ignore (Filename :: flags);\n\
+                                if ((v land 32) != 0) then ignore (Optional_arg :: flags);\n\
+                                if ((v land 64) != 0) then ignore (Noalias :: flags);\n\
+                                flags"
+
+let flags_type_view_sig = "val optionflags : optionflags typ"
+let flags_type_view = "let optionflags = view\n\
+                       ~read:optionflags_list_of_value\n\
+                       ~write:optionflags_list_to_value\n\
+                       uint32_t"
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
