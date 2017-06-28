@@ -152,7 +152,7 @@ let flags_to_type = "type optionflags = None | Hidden | In_main | Reverse | No_a
 
 let flags_of_value_sig = "val optionflags_of_value:\n\
                           Unsigned.uint32 -> optionflags"
-let flags_of_value = "let optionflags_of_value f =\n\
+let flags_of_value = "let optionflags_of_value v =\n\
                       if v = Unsigned.UInt32.of_int 0 then None\n\
                       else if v = Unsigned.UInt32.of_int 1 then Hidden\n\
                       else if v = Unsigned.UInt32.of_int 2 then In_main\n\
@@ -232,6 +232,20 @@ let test_append_enum_flags_type test_ctxt =
       test_writing test_ctxt info name writer flags_to_type flags_to_type
   )
 
+let test_append_enum_flags_of_value test_ctxt =
+  let namespace = "GLib" in
+  let name = "OptionFlags" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let tags = GIEnumInfo.get_storage_type info in
+      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+      let values_and_variants = BuilderEnum.get_values_and_variants info in
+      BuilderEnum.append_enum_view_reader name enum_type_name ocaml_type values_and_variants (mli, ml)
+  ) in
+  flags_test namespace name (fun info ->
+      test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
+  )
+
 
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
@@ -240,5 +254,6 @@ let tests =
     "BuilderEnum append enum view reader" >:: test_append_enum_view_reader;
     "BuilderEnum append enum view writer" >:: test_append_enum_view_writer;
     "BuilderEnum append enum view" >:: test_append_enum_view;
-    "BuilderEnum append enum flags type" >:: test_append_enum_flags_type
+    "BuilderEnum append enum flags type" >:: test_append_enum_flags_type;
+    "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value
   ]
