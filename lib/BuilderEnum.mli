@@ -28,7 +28,7 @@ val rebuild_c_identifier_for_constant:
 val append_enum_type:
   string -> (string * string) list -> Pervasives.out_channel -> unit
 
-val append_enum_view_reader:
+val append_enum_of_value_fn:
   string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_enum_view_writer:

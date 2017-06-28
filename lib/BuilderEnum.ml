@@ -42,7 +42,7 @@ let value_info_to_enum_type_conversion ocaml_type value =
   else if (String.get value 0 = '-') then String.concat "" ["Int32.of_int "; "("; value; ")"]
   else  "Int32.of_int " ^ value
 
-let append_enum_view_reader enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
+let append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_of_value:\n%s -> %s\n" enum_type_name ocaml_type enum_type_name;
   Printf.fprintf ml "let %s_of_value v =\nif v = " enum_type_name;
   Printf.fprintf ml "%s" (String.concat "else if v = " (List.map (fun (x, v) ->
@@ -87,7 +87,7 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
   let values_and_variants = get_values_and_variants info in
   append_enum_type enum_type_name values_and_variants mli;
   append_enum_type enum_type_name values_and_variants ml;
-  append_enum_view_reader enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+  append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_enum_view_writer enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_enum_view enum_type_name ctypes_typ (mli, ml)
 

@@ -105,7 +105,7 @@ let test_append_enum_type test_ctxt =
       else test_writing test_ctxt info name writer enum_to_type enum_to_type
   )
 
-let test_append_enum_view_reader test_ctxt =
+let test_append_enum_of_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
@@ -113,7 +113,7 @@ let test_append_enum_view_reader test_ctxt =
       let tags = GIEnumInfo.get_storage_type info in
       let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
       let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_view_reader name enum_type_name ocaml_type values_and_variants (mli, ml)
+      BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   enum_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer enum_type_of_value_sig enum_type_of_value_travis
@@ -232,7 +232,7 @@ let test_append_enum_flags_type test_ctxt =
       test_writing test_ctxt info name writer flags_to_type flags_to_type
   )
 
-let test_append_enum_flags_of_value test_ctxt =
+let test_append_enum_flags_of_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
@@ -240,20 +240,33 @@ let test_append_enum_flags_of_value test_ctxt =
       let tags = GIEnumInfo.get_storage_type info in
       let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
       let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_view_reader name enum_type_name ocaml_type values_and_variants (mli, ml)
+      BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   flags_test namespace name (fun info ->
       test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
   )
 
+let test_append_enum_flags_to_value test_ctxt =
+  let namespace = "GLib" in
+  let name = "OptionFlags" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let tags = GIEnumInfo.get_storage_type info in
+      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+      let values_and_variants = BuilderEnum.get_values_and_variants info in
+      BuilderEnum.append_enum_view_writer name enum_type_name ocaml_type values_and_variants (mli, ml)
+  ) in
+  flags_test namespace name (fun info ->
+      test_writing test_ctxt info name writer flags_to_value_sig flags_to_value
+  )
 
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
     "BuilderEnum append enum type" >:: test_append_enum_type;
-    "BuilderEnum append enum view reader" >:: test_append_enum_view_reader;
+    "BuilderEnum append enum view reader" >:: test_append_enum_of_value_fn;
     "BuilderEnum append enum view writer" >:: test_append_enum_view_writer;
     "BuilderEnum append enum view" >:: test_append_enum_view;
     "BuilderEnum append enum flags type" >:: test_append_enum_flags_type;
-    "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value
+    "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value_fn
   ]
