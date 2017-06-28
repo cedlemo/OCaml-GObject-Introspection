@@ -167,8 +167,8 @@ let flags_to_value_sig = "val optionflags_to_value:\n\
                           optionflags -> Unsigned.uint32"
 let flags_to_value = "let optionflags_to_value = function\n\
                       | None -> Unsigned.UInt32.of_int 0\n\
-                      | In_main -> Unsigned.UInt32.of_int 1\n\
-                      | Hidden -> Unsigned.UInt32.of_int 2\n\
+                      | Hidden -> Unsigned.UInt32.of_int 1\n\
+                      | In_main -> Unsigned.UInt32.of_int 2\n\
                       | Reverse -> Unsigned.UInt32.of_int 4\n\
                       | No_arg -> Unsigned.UInt32.of_int 8\n\
                       | Filename -> Unsigned.UInt32.of_int 16\n\
@@ -246,7 +246,7 @@ let test_append_enum_flags_of_value_fn test_ctxt =
       test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
   )
 
-let test_append_enum_flags_to_value test_ctxt =
+let test_append_enum_flags_to_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
@@ -268,5 +268,6 @@ let tests =
     "BuilderEnum append enum view writer" >:: test_append_enum_to_value_fn;
     "BuilderEnum append enum view" >:: test_append_enum_view;
     "BuilderEnum append enum flags type" >:: test_append_enum_flags_type;
-    "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value_fn
+    "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value_fn;
+    "BuilderEnum append enum flags to value" >:: test_append_enum_flags_to_value_fn
   ]
