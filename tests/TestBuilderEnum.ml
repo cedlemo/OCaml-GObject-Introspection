@@ -149,6 +149,7 @@ let test_append_enum_view test_ctxt =
   )
 
 let flags_to_type = "type optionflags = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias"
+let flags_to_type_travis = "type optionflags = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias"
 
 let flags_of_value_sig = "val optionflags_of_value:\n\
                           Unsigned.uint32 -> optionflags"
@@ -163,6 +164,16 @@ let flags_of_value = "let optionflags_of_value v =\n\
                       else if v = Unsigned.UInt32.of_int 64 then Noalias\n\
                       else raise (Invalid_argument \"Unexpected OptionFlags value\")"
 
+let flags_of_value_travis = "let optionflags_of_value v =\n\
+                             if v = Unsigned.UInt32.of_int 1 then Hidden\n\
+                             else if v = Unsigned.UInt32.of_int 2 then In_main\n\
+                             else if v = Unsigned.UInt32.of_int 4 then Reverse\n\
+                             else if v = Unsigned.UInt32.of_int 8 then No_arg\n\
+                             else if v = Unsigned.UInt32.of_int 16 then Filename\n\
+                             else if v = Unsigned.UInt32.of_int 32 then Optional_arg\n\
+                             else if v = Unsigned.UInt32.of_int 64 then Noalias\n\
+                             else raise (Invalid_argument \"Unexpected OptionFlags value\")"
+
 let flags_to_value_sig = "val optionflags_to_value:\n\
                           optionflags -> Unsigned.uint32"
 let flags_to_value = "let optionflags_to_value = function\n\
@@ -174,6 +185,15 @@ let flags_to_value = "let optionflags_to_value = function\n\
                       | Filename -> Unsigned.UInt32.of_int 16\n\
                       | Optional_arg -> Unsigned.UInt32.of_int 32\n\
                       | Noalias -> Unsigned.UInt32.of_int 64"
+
+let flags_to_value_travis = "let optionflags_to_value = function\n\
+                             | Hidden -> Unsigned.UInt32.of_int 1\n\
+                             | In_main -> Unsigned.UInt32.of_int 2\n\
+                             | Reverse -> Unsigned.UInt32.of_int 4\n\
+                             | No_arg -> Unsigned.UInt32.of_int 8\n\
+                             | Filename -> Unsigned.UInt32.of_int 16\n\
+                             | Optional_arg -> Unsigned.UInt32.of_int 32\n\
+                             | Noalias -> Unsigned.UInt32.of_int 64"
 
 
 let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
@@ -199,6 +219,17 @@ let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 if ((v land 32) != 0) then ignore (Optional_arg :: flags);\n\
                                 if ((v land 64) != 0) then ignore (Noalias :: flags);\n\
                                 flags"
+
+let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
+                                       let flags = [] in\n\
+                                       if ((v land 1) != 0) then ignore (Hidden :: flags);\n\
+                                       if ((v land 2) != 0) then ignore (In_main :: flags);\n\
+                                       if ((v land 4) != 0) then ignore (Reverse :: flags);\n\
+                                       if ((v land 8) != 0) then ignore (No_arg :: flags);\n\
+                                       if ((v land 16) != 0) then ignore (Filename :: flags);\n\
+                                       if ((v land 32) != 0) then ignore (Optional_arg :: flags);\n\
+                                       if ((v land 64) != 0) then ignore (Noalias :: flags);\n\
+                                       flags"
 
 let flags_type_view_sig = "val optionflags : optionflags typ"
 let flags_type_view = "let optionflags = view\n\
@@ -229,7 +260,8 @@ let test_append_enum_flags_type test_ctxt =
       BuilderEnum.append_enum_type enum_type_name values_and_variants ml
   ) in
   flags_test namespace name (fun info ->
-      test_writing test_ctxt info name writer flags_to_type flags_to_type
+      if is_travis then test_writing test_ctxt info name writer flags_to_type_travis flags_to_type_travis
+      else test_writing test_ctxt info name writer flags_to_type flags_to_type
   )
 
 let test_append_enum_flags_of_value_fn test_ctxt =
@@ -243,7 +275,8 @@ let test_append_enum_flags_of_value_fn test_ctxt =
       BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   flags_test namespace name (fun info ->
-      test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
+      if is_travis then test_writing test_ctxt info name writer flags_of_value_sig flags_of_value_travis
+      else test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
   )
 
 let test_append_enum_flags_to_value_fn test_ctxt =
@@ -257,8 +290,9 @@ let test_append_enum_flags_to_value_fn test_ctxt =
       BuilderEnum.append_enum_to_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   flags_test namespace name (fun info ->
-      test_writing test_ctxt info name writer flags_to_value_sig flags_to_value
-  )
+      if is_travis then test_writing test_ctxt info name writer flags_to_value_sig flags_to_value_travis
+      else test_writing test_ctxt info name writer flags_to_value_sig flags_to_value
+)
 
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
