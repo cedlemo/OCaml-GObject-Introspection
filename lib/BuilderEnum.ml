@@ -91,3 +91,13 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
   append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_enum_view enum_type_name ctypes_typ (mli, ml)
 
+let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) =
+  Printf.fprintf mli "val %s_list_to_value:\n%s list -> %s\n" enum_type_name enum_type_name ocaml_type;
+  Printf.fprintf ml "let %s_list_to_value flags =\n\
+                                  let rec xor_flags l acc =\n\
+                                  | [] -> acc\n\
+                                  | f :: q -> let v = %s_to_value f in\n\
+                                    let acc' = acc lor v in\n\
+                                    xor_flags q acc'
+                                  in\n\
+                                  xor_flags flags 0" enum_type_name enum_type_name
