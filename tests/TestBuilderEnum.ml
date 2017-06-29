@@ -200,36 +200,39 @@ let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
                                     optionflags list -> Unsigned.uint32"
 let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
                                   let rec xor_flags l acc =\n\
+                                  match l with\n\
                                   | [] -> acc\n\
                                   | f :: q -> let v = optionflags_to_value f in\n\
                                     let acc' = acc lor v in\n\
-                                    xor_flags q acc'
+                                    xor_flags q acc'\n\
                                   in\n\
                                   xor_flags flags 0"
 let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
                                     Unsigned.uint32 -> optionflags list"
 let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 let flags = [] in\n\
-                                if ((v land 0) != 0) then ignore (None :: flags);\n\
-                                if ((v land 1) != 0) then ignore (Hidden :: flags);\n\
-                                if ((v land 2) != 0) then ignore (In_main :: flags);\n\
-                                if ((v land 4) != 0) then ignore (Reverse :: flags);\n\
-                                if ((v land 8) != 0) then ignore (No_arg :: flags);\n\
-                                if ((v land 16) != 0) then ignore (Filename :: flags);\n\
-                                if ((v land 32) != 0) then ignore (Optional_arg :: flags);\n\
-                                if ((v land 64) != 0) then ignore (Noalias :: flags);\n\
-                                flags"
+                                Unsigned.UInt32.(\n\
+                                if ((v logand (of_int 0)) != zero) then ignore (None :: flags);\n\
+                                if ((v logand (of_int 1)) != zero) then ignore (Hidden :: flags);\n\
+                                if ((v logand (of_int 2)) != zero) then ignore (In_main :: flags);\n\
+                                if ((v logand (of_int 4)) != zero) then ignore (Reverse :: flags);\n\
+                                if ((v logand (of_int 8)) != zero) then ignore (No_arg :: flags);\n\
+                                if ((v logand (of_int 16)) != zero) then ignore (Filename :: flags);\n\
+                                if ((v logand (of_int 32)) != zero) then ignore (Optional_arg :: flags);\n\
+                                if ((v logand (of_int 64)) != zero) then ignore (Noalias :: flags);\n\
+                                ) flags"
 
 let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
                                        let flags = [] in\n\
-                                       if ((v land 1) != 0) then ignore (Hidden :: flags);\n\
-                                       if ((v land 2) != 0) then ignore (In_main :: flags);\n\
-                                       if ((v land 4) != 0) then ignore (Reverse :: flags);\n\
-                                       if ((v land 8) != 0) then ignore (No_arg :: flags);\n\
-                                       if ((v land 16) != 0) then ignore (Filename :: flags);\n\
-                                       if ((v land 32) != 0) then ignore (Optional_arg :: flags);\n\
-                                       if ((v land 64) != 0) then ignore (Noalias :: flags);\n\
-                                       flags"
+                                       Unsigned.UInt32.(\n\
+                                       if ((v logand (of_int 1)) != zero) then ignore (Hidden :: flags);\n\
+                                       if ((v logand (of_int 2)) != zero) then ignore (In_main :: flags);\n\
+                                       if ((v logand (of_int 4)) != zero) then ignore (Reverse :: flags);\n\
+                                       if ((v logand (of_int 8)) != zero) then ignore (No_arg :: flags);\n\
+                                       if ((v logand (of_int 16)) != zero) then ignore (Filename :: flags);\n\
+                                       if ((v logand (of_int 32)) != zero) then ignore (Optional_arg :: flags);\n\
+                                       if ((v logand (of_int 64)) != zero) then ignore (Noalias :: flags);\n\
+                                       ) flags"
 
 let flags_type_view_sig = "val optionflags : optionflags typ"
 let flags_type_view = "let optionflags = view\n\
@@ -307,6 +310,21 @@ let test_append_enum_flags_list_to_value_fn test_ctxt =
       test_writing test_ctxt info name writer flags_type_list_to_value_sig flags_type_list_to_value
   )
 
+let test_append_enum_flags_list_of_value_fn test_ctxt =
+  let namespace = "GLib" in
+  let name = "OptionFlags" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let tags = GIEnumInfo.get_storage_type info in
+      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+      let values_and_variants = BuilderEnum.get_values_and_variants info in
+      BuilderEnum.append_flags_list_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
+  ) in
+  flags_test namespace name (fun info ->
+      if is_travis then test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value_travis
+      else test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value
+  )
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
@@ -317,5 +335,6 @@ let tests =
     "BuilderEnum append enum flags type" >:: test_append_enum_flags_type;
     "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value_fn;
     "BuilderEnum append enum flags to value" >:: test_append_enum_flags_to_value_fn;
-    "BuilderEnum append enum flags list to value" >:: test_append_enum_flags_list_to_value_fn
+    "BuilderEnum append enum flags list to value" >:: test_append_enum_flags_list_to_value_fn;
+    "BuilderEnum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn
   ]
