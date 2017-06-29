@@ -65,19 +65,19 @@ let append_enum_view enum_type_name ctypes_typ (mli, ml) =
 let get_values_and_variants info =
   let n = GIEnumInfo.get_n_values info in
   let rec get_v_and_v i v_v =
-      if i == n then (List.rev v_v)
-      else
+    if i == n then (List.rev v_v)
+    else
       match GIEnumInfo.get_value info i with
       | None -> get_v_and_v (i + 1) v_v
       | Some value_info -> let value_base_info = GIValueInfo.to_baseinfo value_info in
-      if GIBaseInfo.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
-      else match GIBaseInfo.get_name value_base_info with
-        | None -> get_v_and_v (i + 1) v_v
-        | Some const_name ->
-          if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
-          else let value = GIValueInfo.get_value value_info in
-            let variant_name = String.capitalize_ascii const_name in
-            get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
+        if GIBaseInfo.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
+        else match GIBaseInfo.get_name value_base_info with
+          | None -> get_v_and_v (i + 1) v_v
+          | Some const_name ->
+            if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
+            else let value = GIValueInfo.get_value value_info in
+              let variant_name = String.capitalize_ascii const_name in
+              get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
   in get_v_and_v 0 []
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
@@ -94,10 +94,26 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
 let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) =
   Printf.fprintf mli "val %s_list_to_value:\n%s list -> %s\n" enum_type_name enum_type_name ocaml_type;
   Printf.fprintf ml "let %s_list_to_value flags =\n\
-                                  let rec xor_flags l acc =\n\
-                                  | [] -> acc\n\
-                                  | f :: q -> let v = %s_to_value f in\n\
-                                    let acc' = acc lor v in\n\
-                                    xor_flags q acc'
-                                  in\n\
-                                  xor_flags flags 0" enum_type_name enum_type_name
+                       let rec xor_flags l acc =\n\
+                         match l with\n\
+                         | [] -> acc\n\
+                         | f :: q -> let v = %s_to_value f in\n\
+                         let acc' = acc lor v in\n\
+                         xor_flags q acc'\n\
+                       in\n\
+                       xor_flags flags 0" enum_type_name enum_type_name
+
+let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
+  Printf.fprintf mli "val %s_list_of_value:\n%s -> %s list\n" enum_type_name ocaml_type enum_type_name;
+  Printf.fprintf ml "let %s_list_of_value v =\n\
+                     let flags = [] in\n" enum_type_name;
+  if ocaml_type = "Unsigned.uint32" then Printf.fprintf ml "Unsigned.UInt32.(\n"
+  else Printf.fprintf ml "Int32.(\n";
+  Printf.fprintf ml "%s\n) flags" (String.concat "\n" (List.map (fun (x,v) ->
+        String.concat "" ["if ((v logand (of_int ";
+                          x;
+                          ")) != zero) then ignore (";
+                          v;
+                          " :: flags);"]
+
+    ) values_and_variants))
