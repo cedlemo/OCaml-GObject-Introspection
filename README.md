@@ -240,10 +240,56 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 ###### Enumerations for bitwise operations
   The constants of those enumerations are generally used as ORed flags. The idea
   is to define a type with variants for all the constants that the enums contains.
-  Then create (No checked yet) :
-  *  create a function value_to_list
-  *  create a function list_to_value
-  *  create a view
+
+  ```C
+  enum letters { AB, CD, EF };
+  ```
+  become :
+
+  ```ocaml
+  type letters =
+  | Ab
+  | Cd
+  | Ef
+
+  (* Unsigned.uint32 -> letters *)
+  let letters_of_value v =
+    if v = Unsigned.UInt32.of_int 0 then Ab
+    else if v = Unsigned.UInt32.of_int 1 then Cd
+    else if v = Unsigned.UInt32.of_int 2 then Ef
+    else raise (Invalid_argument \"Unexpected Letter value\")"
+
+  (* letters -> Unsigned.uint32 *)
+  let letters_to_value = function
+  | Ab -> Unsigned.UInt32.of_int 0
+  | Cd -> Unsigned.UInt32.of_int 1
+  | Ef -> Unsigned.UInt32.of_int 2
+
+  (* letters list -> Unsigned.uint32*)
+  let letters_list_to_value flags =
+    let rec xor_flags l acc =
+    match l with
+    | [] -> acc
+    | f :: q -> let v = optionflags_to_value f in
+      let acc' = acc lor v in
+      xor_flags q acc'
+    in
+    xor_flags flags 0
+
+  (* Unsigned.uint32 -> letters list *)
+   let letters_list_of_value v =
+     let flags = [] in
+     Unsigned.UInt32.(
+       if ((v logand (of_int 0)) != zero) then ignore (Ab :: flags);
+       if ((v logand (of_int 1)) != zero) then ignore (Cd :: flags);
+       if ((v logand (of_int 2)) != zero) then ignore (Ef :: flags);
+       ) flags
+
+  let letters = view
+                ~read:letters_list_of_value
+		~write:letters_list_to_value
+		uint32_t
+  ```
 
 ## TODOS :
 
