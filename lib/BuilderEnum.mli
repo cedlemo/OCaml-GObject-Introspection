@@ -48,3 +48,6 @@ val append_flags_list_to_value_fn:
 
 val append_flags_list_of_value_fn:
   string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val append_flags_view:
+  string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit

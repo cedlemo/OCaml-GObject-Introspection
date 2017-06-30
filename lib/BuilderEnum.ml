@@ -117,3 +117,10 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
                           " :: flags);"]
 
     ) values_and_variants))
+
+let append_flags_view enum_type_name ctypes_typ (mli, ml) =
+  Printf.fprintf mli "val %s : %s typ\n" enum_type_name enum_type_name;
+  Printf.fprintf ml "let %s = view \n" enum_type_name;
+  Printf.fprintf ml "~read:%s_list_of_value \n" enum_type_name;
+  Printf.fprintf ml "~write:%s_list_to_value \n" enum_type_name;
+  Printf.fprintf ml "%s\n" ctypes_typ
