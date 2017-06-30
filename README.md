@@ -218,16 +218,18 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   | Cd
   | Ef
 
-  letters_of_uint32 = function
-  | 0 -> Ab
-  | 1 -> Cd
-  | 3 -> Ef
-  | _ -> raise (Invalid_argument "Unexpected letters enum value")
+  (* Unsigned.uint32 -> letters *)
+  letters_of_value v =
+    if v = Unsigned.UInt32.of_int 0 then Ab
+    else if v = Unsigned.UInt32.of_int 1 then Cd
+    else if v = Unsigned.UInt32.of_int 2 then Ef
+    else raise (Invalid_argument \"Unexpected OptionFlags value\")"
 
-  letters_to_uint32 = function
-  | Ab -> 0
-  | Cd -> 1
-  | Ef -> 2
+  (* letters -> Unsigned.uint32 *)
+  letters_to_value v =
+  | Ab -> Unsigned.UInt32.of_int 0
+  | Cd -> Unsigned.UInt32.of_int 1
+  | Ef -> Unsigned.UInt32.of_int 2
 
   let letters = view
                 ~read:letters_of_uint32
