@@ -325,6 +325,20 @@ let test_append_enum_flags_list_of_value_fn test_ctxt =
       else test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value
   )
 
+let test_append_flags_view test_ctxt =
+  let namespace = "GLib" in
+  let name = "ChecksumType" in
+  let writer = (fun name info (mli, ml) ->
+      let enum_type_name = String.lowercase_ascii name in
+      let tags = GIEnumInfo.get_storage_type info in
+      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+      BuilderEnum.append_flags_view enum_type_name ctypes_typ (mli, ml)
+  ) in
+  enum_test namespace name (fun info ->
+      test_writing test_ctxt info name writer flags_type_view_sig flags_type_view
+  )
+
+
 let tests =
   "GObject Introspection BuilderEnum tests" >:::
   [
