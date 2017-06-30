@@ -17,7 +17,8 @@
  *)
 
 (** BuilderEnum : regroups all functions needed to parse and generate the
-    OCaml code for C enums. *)
+    OCaml code for C enums. Flags are enums for which the constants can be
+    OR"ed". *)
 
 open Ctypes
 open Foreign
