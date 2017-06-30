@@ -101,7 +101,7 @@ let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) 
                          let acc' = acc lor v in\n\
                          xor_flags q acc'\n\
                        in\n\
-                       xor_flags flags 0" enum_type_name enum_type_name
+                       xor_flags flags 0\n" enum_type_name enum_type_name
 
 let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_list_of_value:\n%s -> %s list\n" enum_type_name ocaml_type enum_type_name;
@@ -109,7 +109,7 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
                      let flags = [] in\n" enum_type_name;
   if ocaml_type = "Unsigned.uint32" then Printf.fprintf ml "Unsigned.UInt32.(\n"
   else Printf.fprintf ml "Int32.(\n";
-  Printf.fprintf ml "%s\n) flags" (String.concat "\n" (List.map (fun (x,v) ->
+  Printf.fprintf ml "%s\n) flags\n" (String.concat "\n" (List.map (fun (x,v) ->
         String.concat "" ["if ((v logand (of_int ";
                           x;
                           ")) != zero) then ignore (";
