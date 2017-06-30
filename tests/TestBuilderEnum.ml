@@ -199,19 +199,20 @@ let flags_to_value_travis = "let optionflags_to_value = function\n\
 let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
                                     optionflags list -> Unsigned.uint32"
 let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
+                                  let open Unsigned.UInt32 in\n\
                                   let rec xor_flags l acc =\n\
                                   match l with\n\
                                   | [] -> acc\n\
                                   | f :: q -> let v = optionflags_to_value f in\n\
-                                    let acc' = acc lor v in\n\
+                                    let acc' = logor acc v in\n\
                                     xor_flags q acc'\n\
                                   in\n\
-                                  xor_flags flags 0"
+                                  xor_flags flags zero"
 let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
                                     Unsigned.uint32 -> optionflags list"
 let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
+                                let open Unsigned.UInt32 in\n\
                                 let flags = [] in\n\
-                                Unsigned.UInt32.(\n\
                                 if ((v logand (of_int 0)) != zero) then ignore (None :: flags);\n\
                                 if ((v logand (of_int 1)) != zero) then ignore (Hidden :: flags);\n\
                                 if ((v logand (of_int 2)) != zero) then ignore (In_main :: flags);\n\
@@ -220,7 +221,7 @@ let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 if ((v logand (of_int 16)) != zero) then ignore (Filename :: flags);\n\
                                 if ((v logand (of_int 32)) != zero) then ignore (Optional_arg :: flags);\n\
                                 if ((v logand (of_int 64)) != zero) then ignore (Noalias :: flags);\n\
-                                ) flags"
+                                flags"
 
 let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
                                        let flags = [] in\n\

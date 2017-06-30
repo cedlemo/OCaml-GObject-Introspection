@@ -93,23 +93,25 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
 
 let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) =
   Printf.fprintf mli "val %s_list_to_value:\n%s list -> %s\n" enum_type_name enum_type_name ocaml_type;
+  let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let %s_list_to_value flags =\n\
+                       let open %s in\n\
                        let rec xor_flags l acc =\n\
                          match l with\n\
                          | [] -> acc\n\
                          | f :: q -> let v = %s_to_value f in\n\
-                         let acc' = acc lor v in\n\
+                         let acc' = logor acc v in\n\
                          xor_flags q acc'\n\
                        in\n\
-                       xor_flags flags 0\n" enum_type_name enum_type_name
+                       xor_flags flags zero\n" enum_type_name constant_type enum_type_name
 
 let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_list_of_value:\n%s -> %s list\n" enum_type_name ocaml_type enum_type_name;
+  let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let %s_list_of_value v =\n\
-                     let flags = [] in\n" enum_type_name;
-  if ocaml_type = "Unsigned.uint32" then Printf.fprintf ml "Unsigned.UInt32.(\n"
-  else Printf.fprintf ml "Int32.(\n";
-  Printf.fprintf ml "%s\n) flags\n" (String.concat "\n" (List.map (fun (x,v) ->
+                     let open %s in\n\
+                     let flags = [] in\n" enum_type_name constant_type;
+  Printf.fprintf ml "%s\nflags\n" (String.concat "\n" (List.map (fun (x,v) ->
         String.concat "" ["if ((v logand (of_int ";
                           x;
                           ")) != zero) then ignore (";
