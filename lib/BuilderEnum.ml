@@ -124,3 +124,16 @@ let append_flags_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf ml "~read:%s_list_of_value \n" enum_type_name;
   Printf.fprintf ml "~write:%s_list_to_value \n" enum_type_name;
   Printf.fprintf ml "%s\n" ctypes_typ
+
+let append_ctypes_flags_bindings enum_name info (mli, ml) =
+  let enum_type_name = String.lowercase_ascii enum_name in
+  let tags = GIEnumInfo.get_storage_type info in
+  let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
+  let values_and_variants = get_values_and_variants info in
+  append_enum_type enum_type_name values_and_variants mli;
+  append_enum_type enum_type_name values_and_variants ml;
+  append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+  append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+  append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+  append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml);
+  append_flags_view enum_type_name ctypes_typ (mli, ml)

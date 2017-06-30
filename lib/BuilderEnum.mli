@@ -52,3 +52,6 @@ val append_flags_list_of_value_fn:
 
 val append_flags_view:
   string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val append_ctypes_flags_bindings:
+  string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
