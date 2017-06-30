@@ -223,17 +223,17 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
     if v = Unsigned.UInt32.of_int 0 then Ab
     else if v = Unsigned.UInt32.of_int 1 then Cd
     else if v = Unsigned.UInt32.of_int 2 then Ef
-    else raise (Invalid_argument \"Unexpected OptionFlags value\")"
+    else raise (Invalid_argument \"Unexpected Letters value\")"
 
   (* letters -> Unsigned.uint32 *)
-  letters_to_value v =
+  letters_to_value = function
   | Ab -> Unsigned.UInt32.of_int 0
   | Cd -> Unsigned.UInt32.of_int 1
   | Ef -> Unsigned.UInt32.of_int 2
 
   let letters = view
-                ~read:letters_of_uint32
-		~write:letters_to_uint32
+                ~read:letters_of_value
+		~write:letters_to_value
 		uint32_t
   ```
 
