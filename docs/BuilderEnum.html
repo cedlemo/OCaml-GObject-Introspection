@@ -47,10 +47,20 @@
 
 <pre><span class="keyword">module</span> BuilderEnum: <code class="code"><span class="keyword">sig</span></code> <a href="BuilderEnum.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
 BuilderEnum : regroups all functions needed to parse and generate the
-    OCaml code for C enums.<br>
+    OCaml code for C enums. Flags are enums for which the constants can be
+    OR"ed".<br>
 </div>
 <hr width="100%">
 
 <pre><span id="VALrebuild_c_identifier_for_constant"><span class="keyword">val</span> rebuild_c_identifier_for_constant</span> : <code class="type">string -> <a href="GIValueInfo.html#TYPEt">GIValueInfo.t</a> Ctypes.structure Ctypes.ptr -> string</code></pre>
-<pre><span id="VALappend_ctypes_enum_constants_declarations"><span class="keyword">val</span> append_ctypes_enum_constants_declarations</span> : <code class="type">string -><br>       <a href="GIEnumInfo.html#TYPEt">GIEnumInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
-<pre><span id="VALappend_ctypes_enum_declaration"><span class="keyword">val</span> append_ctypes_enum_declaration</span> : <code class="type">string -><br>       <a href="GIEnumInfo.html#TYPEt">GIEnumInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre></body></html>
+<pre><span id="VALappend_enum_type"><span class="keyword">val</span> append_enum_type</span> : <code class="type">string -> (string * string) list -> Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_enum_of_value_fn"><span class="keyword">val</span> append_enum_of_value_fn</span> : <code class="type">string -><br>       string -><br>       string -><br>       (string * string) list -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_enum_to_value_fn"><span class="keyword">val</span> append_enum_to_value_fn</span> : <code class="type">string -><br>       string -><br>       string -><br>       (string * string) list -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_enum_view"><span class="keyword">val</span> append_enum_view</span> : <code class="type">string -> string -> Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALget_values_and_variants"><span class="keyword">val</span> get_values_and_variants</span> : <code class="type"><a href="GIEnumInfo.html#TYPEt">GIEnumInfo.t</a> Ctypes.structure Ctypes.ptr -> (string * string) list</code></pre>
+<pre><span id="VALappend_ctypes_enum_bindings"><span class="keyword">val</span> append_ctypes_enum_bindings</span> : <code class="type">string -><br>       <a href="GIEnumInfo.html#TYPEt">GIEnumInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_flags_types"><span class="keyword">val</span> append_flags_types</span> : <code class="type">string -> (string * string) list -> Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_flags_list_to_value_fn"><span class="keyword">val</span> append_flags_list_to_value_fn</span> : <code class="type">string -><br>       string -> string -> Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_flags_list_of_value_fn"><span class="keyword">val</span> append_flags_list_of_value_fn</span> : <code class="type">string -><br>       string -><br>       string -><br>       (string * string) list -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_flags_view"><span class="keyword">val</span> append_flags_view</span> : <code class="type">string -> string -> Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre>
+<pre><span id="VALappend_ctypes_flags_bindings"><span class="keyword">val</span> append_ctypes_flags_bindings</span> : <code class="type">string -><br>       <a href="GIEnumInfo.html#TYPEt">GIEnumInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre></body></html>
