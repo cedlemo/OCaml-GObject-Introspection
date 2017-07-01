@@ -95,8 +95,13 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
   append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_enum_view enum_type_name ctypes_typ (mli, ml)
 
+let append_flags_types enum_type_name values_and_variants descr =
+  Printf.fprintf descr "type %s = " enum_type_name;
+  Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants));
+  Printf.fprintf descr "type %s_list = %s list\n" enum_type_name enum_type_name
+
 let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) =
-  Printf.fprintf mli "val %s_list_to_value:\n%s list -> %s\n" enum_type_name enum_type_name ocaml_type;
+  Printf.fprintf mli "val %s_list_to_value:\n%s_list -> %s\n" enum_type_name enum_type_name ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let %s_list_to_value flags =\n\
                        let open %s in\n\
@@ -110,7 +115,7 @@ let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) 
                        logor_flags flags zero\n" enum_type_name constant_type enum_type_name
 
 let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
-  Printf.fprintf mli "val %s_list_of_value:\n%s -> %s list\n" enum_type_name ocaml_type enum_type_name;
+  Printf.fprintf mli "val %s_list_of_value:\n%s -> %s_list\n" enum_type_name ocaml_type enum_type_name;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let %s_list_of_value v =\n\
                      let open %s in\n\
@@ -125,8 +130,8 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
     ) values_and_variants))
 
 let append_flags_view enum_type_name ctypes_typ (mli, ml) =
-  Printf.fprintf mli "val %s : %s typ\n" enum_type_name enum_type_name;
-  Printf.fprintf ml "let %s = view \n" enum_type_name;
+  Printf.fprintf mli "val %s_list : %s typ\n" enum_type_name enum_type_name;
+  Printf.fprintf ml "let %s_list = view \n" enum_type_name;
   Printf.fprintf ml "~read:%s_list_of_value \n" enum_type_name;
   Printf.fprintf ml "~write:%s_list_to_value \n" enum_type_name;
   Printf.fprintf ml "%s\n" ctypes_typ
@@ -136,8 +141,8 @@ let append_ctypes_flags_bindings enum_name info (mli, ml) =
   let tags = GIEnumInfo.get_storage_type info in
   let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
   let values_and_variants = get_values_and_variants info in
-  append_enum_type enum_type_name values_and_variants mli;
-  append_enum_type enum_type_name values_and_variants ml;
+  append_flags_types enum_type_name values_and_variants mli;
+  append_flags_types enum_type_name values_and_variants ml;
   append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
   append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);

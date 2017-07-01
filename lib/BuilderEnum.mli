@@ -44,6 +44,9 @@ val get_values_and_variants:
 val append_ctypes_enum_bindings:
   string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
+val append_flags_types:
+  string -> (string * string) list -> Pervasives.out_channel -> unit
+
 val append_flags_list_to_value_fn:
   string -> string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 

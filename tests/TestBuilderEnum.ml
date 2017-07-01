@@ -148,8 +148,10 @@ let test_append_enum_view test_ctxt =
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
-let flags_to_type = "type optionflags = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias"
-let flags_to_type_travis = "type optionflags = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias"
+let flags_to_type = "type optionflags = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+                     type optionflags_list = optionflags list"
+let flags_to_type_travis = "type optionflags = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+                            type optionflags_list = optionflags list"
 
 let flags_of_value_sig = "val optionflags_of_value:\n\
                           Unsigned.uint32 -> optionflags"
@@ -197,7 +199,7 @@ let flags_to_value_travis = "let optionflags_to_value = function\n\
 
 
 let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
-                                    optionflags list -> Unsigned.uint32"
+                                    optionflags_list -> Unsigned.uint32"
 let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
                                   let open Unsigned.UInt32 in\n\
                                   let rec logor_flags l acc =\n\
@@ -209,7 +211,7 @@ let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
                                   in\n\
                                   logor_flags flags zero"
 let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
-                                    Unsigned.uint32 -> optionflags list"
+                                    Unsigned.uint32 -> optionflags_list"
 let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 let open Unsigned.UInt32 in\n\
                                 let flags = [] in\n\
@@ -235,8 +237,8 @@ let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
                                        if ((logand v (of_int 64)) != zero) then ignore (Noalias :: flags);\n\
                                        flags"
 
-let flags_type_view_sig = "val optionflags : optionflags typ"
-let flags_type_view = "let optionflags = view\n\
+let flags_type_view_sig = "val optionflags_list : optionflags_list typ"
+let flags_type_view = "let optionflags_list = view\n\
                        ~read:optionflags_list_of_value\n\
                        ~write:optionflags_list_to_value\n\
                        uint32_t"
@@ -254,14 +256,14 @@ let flags_test namespace enum_name fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
-let test_append_enum_flags_type test_ctxt =
+let test_append_flags_types test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
       let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_type enum_type_name values_and_variants mli;
-      BuilderEnum.append_enum_type enum_type_name values_and_variants ml
+      BuilderEnum.append_flags_types enum_type_name values_and_variants mli;
+      BuilderEnum.append_flags_types enum_type_name values_and_variants ml
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_to_type_travis flags_to_type_travis
@@ -347,7 +349,7 @@ let tests =
     "BuilderEnum append enum view reader" >:: test_append_enum_of_value_fn;
     "BuilderEnum append enum view writer" >:: test_append_enum_to_value_fn;
     "BuilderEnum append enum view" >:: test_append_enum_view;
-    "BuilderEnum append enum flags type" >:: test_append_enum_flags_type;
+    "BuilderEnum append enum flags type" >:: test_append_flags_types;
     "BuilderEnum append enum flags of value" >:: test_append_enum_flags_of_value_fn;
     "BuilderEnum append enum flags to value" >:: test_append_enum_flags_to_value_fn;
     "BuilderEnum append enum flags list to value" >:: test_append_enum_flags_list_to_value_fn;
