@@ -231,6 +231,7 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   | Cd -> Unsigned.UInt32.of_int 1
   | Ef -> Unsigned.UInt32.of_int 2
 
+  (* val letters = letters typ *)
   let letters = view
                 ~read:letters_of_value
 		~write:letters_to_value
@@ -252,6 +253,8 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   | Cd
   | Ef
 
+  type letters_list = letters list
+
   (* Unsigned.uint32 -> letters *)
   let letters_of_value v =
     if v = Unsigned.UInt32.of_int 0 then Ab
@@ -265,30 +268,31 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   | Cd -> Unsigned.UInt32.of_int 1
   | Ef -> Unsigned.UInt32.of_int 2
 
-  (* letters list -> Unsigned.uint32*)
+  (* letters_list -> Unsigned.uint32*)
   let letters_list_to_value flags =
-    let rec xor_flags l acc =
+    let rec logor_flags l acc =
     match l with
     | [] -> acc
     | f :: q -> let v = optionflags_to_value f in
-      let acc' = acc lor v in
-      xor_flags q acc'
+      let acc' = logor acc v in
+      logor_flags q acc'
     in
-    xor_flags flags 0
+    logor_flags flags 0
 
-  (* Unsigned.uint32 -> letters list *)
+  (* Unsigned.uint32 -> letters_list *)
    let letters_list_of_value v =
+     let open Unsigned.UInt32 in
      let flags = [] in
-     Unsigned.UInt32.(
-       if ((v logand (of_int 0)) != zero) then ignore (Ab :: flags);
-       if ((v logand (of_int 1)) != zero) then ignore (Cd :: flags);
-       if ((v logand (of_int 2)) != zero) then ignore (Ef :: flags);
-       ) flags
+       if ((logand v (of_int 0)) != zero) then ignore (Ab :: flags);
+       if ((logand v (of_int 1)) != zero) then ignore (Cd :: flags);
+       if ((logand v (of_int 2)) != zero) then ignore (Ef :: flags);
+       flags
 
-  let letters = view
-                ~read:letters_list_of_value
-		~write:letters_list_to_value
-		uint32_t
+  (* val letters_list = letters_list typ *)
+  let letters_list = view
+                     ~read:letters_list_of_value
+		     ~write:letters_list_to_value
+		     uint32_t
   ```
 
 ## TODOS :
