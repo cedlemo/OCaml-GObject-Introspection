@@ -200,14 +200,14 @@ let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
                                     optionflags list -> Unsigned.uint32"
 let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
                                   let open Unsigned.UInt32 in\n\
-                                  let rec xor_flags l acc =\n\
+                                  let rec logor_flags l acc =\n\
                                   match l with\n\
                                   | [] -> acc\n\
                                   | f :: q -> let v = optionflags_to_value f in\n\
                                     let acc' = logor acc v in\n\
-                                    xor_flags q acc'\n\
+                                    logor_flags q acc'\n\
                                   in\n\
-                                  xor_flags flags zero"
+                                  logor_flags flags zero"
 let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
                                     Unsigned.uint32 -> optionflags list"
 let flags_type_list_of_value = "let optionflags_list_of_value v =\n\

@@ -96,14 +96,14 @@ let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) 
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let %s_list_to_value flags =\n\
                        let open %s in\n\
-                       let rec xor_flags l acc =\n\
+                       let rec logor_flags l acc =\n\
                          match l with\n\
                          | [] -> acc\n\
                          | f :: q -> let v = %s_to_value f in\n\
                          let acc' = logor acc v in\n\
-                         xor_flags q acc'\n\
+                         logor_flags q acc'\n\
                        in\n\
-                       xor_flags flags zero\n" enum_type_name constant_type enum_type_name
+                       logor_flags flags zero\n" enum_type_name constant_type enum_type_name
 
 let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val %s_list_of_value:\n%s -> %s list\n" enum_type_name ocaml_type enum_type_name;
