@@ -29,7 +29,7 @@ type files = {
 }
 
 let file_in_create_append_mode name =
-  Pervasives.open_out_gen [Open_append; Open_creat] 0o666 name
+  Pervasives.open_out_gen [Open_trunc; Open_append; Open_creat] 0o666 name
 
 let generate_sources base_name =
   let name = base_name ^ ".ml" in
