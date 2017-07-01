@@ -88,6 +88,9 @@ let add_open_ctypes descr =
 let add_open_foreign descr =
   write_open_module descr "Foreign"
 
+let add_empty_line descr =
+  Printf.fprintf descr "%s" "\n"
+
 let escape_OCaml_keywords variable_name =
   match variable_name with
   | "and"
