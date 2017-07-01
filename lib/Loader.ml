@@ -85,7 +85,9 @@ let generate_directories loader =
 
 let parse loader
     ?const_parser
-    ?struct_parser () =
+    ?struct_parser
+    ?union_parser
+    () =
   let open Builder in
   let _ = generate_directories loader in
   let main_sources = generate_main_module_files loader in
@@ -123,7 +125,10 @@ let parse loader
       | GIBaseInfo.Invalid_0 -> ()
       | GIBaseInfo.Union -> (
           let sources = generate_secondary_module_files loader name in
-          let _ = Builder.parse_union_info info sources in
+          let _ = ( match union_parser with
+            | None -> Builder.parse_union_info info sources
+            | Some union_parser_fn -> union_parser_fn info sources
+          ) in
           Builder.close_sources sources
         )
       | GIBaseInfo.Value -> Builder.parse_value_info info
