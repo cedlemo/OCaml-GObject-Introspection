@@ -65,6 +65,8 @@ val generate_directories:
 (** Parse the GI infos and create the corresponding ctypes code
   @param const_parser allows user to customize the GIConstantInfo bindings generator.
   @param enum_parser allows user to customize the GIEnumInfo bindings generator.
+  @param flags_parser allows user to customize the GIEnumInfo bindings generator
+    for Enum used as flags (Ored).
   @param struct_parser allows user to customize the GIStructureInfo bindings
     generator.
   @param union_parser allows user to customize the GIUnionInfo bindings generator.
@@ -73,6 +75,7 @@ val parse:
   t ->
   ?const_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
   ?enum_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
+  ?flags_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
   ?struct_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
   ?union_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
   unit ->

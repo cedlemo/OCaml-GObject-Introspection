@@ -86,6 +86,7 @@ let generate_directories loader =
 let parse loader
     ?const_parser
     ?enum_parser
+    ?flags_parser
     ?struct_parser
     ?union_parser
     () =
@@ -119,7 +120,11 @@ let parse loader
           | None -> Builder.parse_enum_info info main_sources
           | Some enum_parser_fn -> enum_parser_fn info main_sources
         )
-      | GIBaseInfo.Flags -> Builder.parse_flags_info info main_sources
+      | GIBaseInfo.Flags -> (
+          match flags_parser with
+          | None -> Builder.parse_flags_info info main_sources
+          | Some flags_parser_fn -> flags_parser_fn info main_sources
+        )
       | GIBaseInfo.Object -> Builder.parse_object_info info
       | GIBaseInfo.Interface -> Builder.parse_interface_info info
       | GIBaseInfo.Constant -> (
