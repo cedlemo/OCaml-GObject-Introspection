@@ -37,6 +37,10 @@ let append_enum_type enum_type_name values_and_variants descr =
   Printf.fprintf descr "type %s = " enum_type_name;
   Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
 
+let negative_int_in_parentheses value =
+  if (String.get value 0 = '-') then String.concat "" ["("; value; ")"]
+  else value
+
 let value_info_to_enum_type_conversion ocaml_type value =
   if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32.of_int " ^ value
   else if (String.get value 0 = '-') then String.concat "" ["Int32.of_int "; "("; value; ")"]
@@ -113,7 +117,7 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
                      let flags = [] in\n" enum_type_name constant_type;
   Printf.fprintf ml "%s\nflags\n" (String.concat "\n" (List.map (fun (x,v) ->
         String.concat "" ["if ((logand v (of_int ";
-                          x;
+                          negative_int_in_parentheses x;
                           ")) != zero) then ignore (";
                           v;
                           " :: flags);"]
