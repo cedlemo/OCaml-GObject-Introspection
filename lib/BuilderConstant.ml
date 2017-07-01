@@ -91,11 +91,15 @@ let append_uint32_constant name info source_files =
   let printer = Unsigned.UInt32.to_string in
   append_constant_of_32_or_more_bits name info source_files field field_type "Unsigned.UInt32" printer
 
-let append_int64_constant name info source_files =
+let append_int64_constant name info (mli, ml) =
   let field = GITypes.v_int64 in
   let field_type = "int64" in
-  let printer = Int64.to_string in
-  append_constant_of_32_or_more_bits name info source_files field field_type "Int64" printer
+  let argument = GIConstantInfo.get_value info in
+  let value = getf (!@argument) field in
+  let modified_name = bindings_constant_name name in
+  let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
+  let str_value = Int64.to_string value in
+  Printf.fprintf ml "let %s = %sL\n" modified_name str_value
 
 let append_uint64_constant name info source_files =
   let field = GITypes.v_uint64 in

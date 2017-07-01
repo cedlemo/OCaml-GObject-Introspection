@@ -111,7 +111,7 @@ let test_append_int64_constant test_ctxt =
   let name = "MAXINT64" in
   let writer = BuilderConstant.append_int64_constant in
   let mli_content = "val _MAXINT64 : int64" in
-  let ml_content = "let _MAXINT64 = Int64.of_string \"9223372036854775807\"" in
+  let ml_content = "let _MAXINT64 = 9223372036854775807L" in
   constant_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
     )
