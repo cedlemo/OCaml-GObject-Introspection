@@ -59,15 +59,25 @@ val parse_function_info :
 val parse_callback_info :
   GIBaseInfo.t structure ptr -> unit
 
+(** Use GIStructureInfo in order to generate Ctypes bindings.
+  - For each structure, a module is created in a StructureName.mli file and a StructureName.ml file.
+  - the OCaml type is named `StructureName.t`
+  - the Ctypes typ is named `StructureName.t_typ`
+  - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
+*)
 val parse_struct_info :
   GIBaseInfo.t structure ptr -> files -> unit
 
 val parse_boxed_info :
   GIBaseInfo.t structure ptr -> unit
 
+(** Use GIEnumInfo in order to generate Ctypes bindings.
+    It creates an enumname view and all the conversion functions. *)
 val parse_enum_info :
   GIBaseInfo.t structure ptr -> files -> unit
 
+(** Use GIEnumInfo in order to generate Ctypes bindings.
+    It creates an enumname_list view and all the conversion functions. *)
 val parse_flags_info :
   GIBaseInfo.t structure ptr -> files -> unit
 
@@ -82,6 +92,12 @@ val parse_interface_info :
 val parse_constant_info :
   GIBaseInfo.t structure ptr -> files -> unit
 
+(** Use GIUnionInfo in order to generate Ctypes bindings.
+  - For each union, a module is created in a UnionName.mli file and a UnionName.ml file.
+  - the OCaml type is named `UnionName.t`
+  - the Ctypes typ is named `UnionName.t_typ`
+  - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
+*)
 val parse_union_info :
   GIBaseInfo.t structure ptr -> files -> unit
 
