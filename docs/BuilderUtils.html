@@ -44,11 +44,15 @@
 <h1>Module <a href="type_BuilderUtils.html">BuilderUtils</a></h1>
 
 <pre><span class="keyword">module</span> BuilderUtils: <code class="code"><span class="keyword">sig</span></code> <a href="BuilderUtils.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Raise an Not_implemented exception with the message given in argument.<br>
+BuilderUtils module : Regroups a set of functions needed in almost all the
+    Builder* modules.<br>
 </div>
 <hr width="100%">
 
-<pre><span id="VALraise_not_implemented"><span class="keyword">val</span> raise_not_implemented</span> : <code class="type">string -> unit</code></pre>
+<pre><span id="VALraise_not_implemented"><span class="keyword">val</span> raise_not_implemented</span> : <code class="type">string -> unit</code></pre><div class="info ">
+Raise an Not_implemented exception with the message given in argument.<br>
+</div>
+
 <pre><span id="VALraise_tag_not_implemented"><span class="keyword">val</span> raise_tag_not_implemented</span> : <code class="type">string -> <a href="GITypes.html#TYPEtag">GITypes.tag</a> -> unit</code></pre><div class="info ">
 Raise a Not_implemented exception with a string representation of the
     GITypes.tag, given in argument, that will be appended to the message given
