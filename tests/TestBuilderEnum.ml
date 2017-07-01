@@ -224,8 +224,8 @@ let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 flags"
 
 let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
+                                       let open Unsigned.UInt32 in\n\
                                        let flags = [] in\n\
-                                       Unsigned.UInt32.(\n\
                                        if ((v logand (of_int 1)) != zero) then ignore (Hidden :: flags);\n\
                                        if ((v logand (of_int 2)) != zero) then ignore (In_main :: flags);\n\
                                        if ((v logand (of_int 4)) != zero) then ignore (Reverse :: flags);\n\
@@ -233,7 +233,7 @@ let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
                                        if ((v logand (of_int 16)) != zero) then ignore (Filename :: flags);\n\
                                        if ((v logand (of_int 32)) != zero) then ignore (Optional_arg :: flags);\n\
                                        if ((v logand (of_int 64)) != zero) then ignore (Noalias :: flags);\n\
-                                       ) flags"
+                                       flags"
 
 let flags_type_view_sig = "val optionflags : optionflags typ"
 let flags_type_view = "let optionflags = view\n\
