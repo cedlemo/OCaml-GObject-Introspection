@@ -16,6 +16,9 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+(** BuilderUtils module : Regroups a set of functions needed in almost all the
+    Builder* modules. *)
+
 (** Raise an Not_implemented exception with the message given in argument. *)
 val raise_not_implemented:
   string -> unit
