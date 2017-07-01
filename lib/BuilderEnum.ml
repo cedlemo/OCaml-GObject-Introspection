@@ -112,7 +112,7 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
                      let open %s in\n\
                      let flags = [] in\n" enum_type_name constant_type;
   Printf.fprintf ml "%s\nflags\n" (String.concat "\n" (List.map (fun (x,v) ->
-        String.concat "" ["if ((v logand (of_int ";
+        String.concat "" ["if ((logand v (of_int ";
                           x;
                           ")) != zero) then ignore (";
                           v;
