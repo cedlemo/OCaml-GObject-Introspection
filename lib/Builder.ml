@@ -62,7 +62,14 @@ let parse_invalid_info info =
   ()
 
 let parse_function_info info source_files =
-  ()
+  match GIBaseInfo.get_name info with
+  | None -> ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let info' = GIFunctionInfo.from_baseinfo info in
+    BuilderFunction.append_ctypes_function_bindings name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
 
 let parse_callback_info info =
   ()
