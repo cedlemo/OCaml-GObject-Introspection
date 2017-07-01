@@ -75,7 +75,6 @@ let test_append_int16_constant test_ctxt =
       test_writing test_ctxt info name writer mli_content ml_content
     )
 
-
 let test_append_uint16_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT16" in
