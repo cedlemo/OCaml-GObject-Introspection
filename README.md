@@ -301,11 +301,6 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
     * since the C enum constants values are 32 bits or unsigned 32 bits, maybe
       I should generate from string because a MAXINT value can occurs and
       Int32.of_int MAX_C_INT will fail while Int32.of_string "MAX_C_INT" will not
-    * finish the flags implementation
-       * flags to list
-       * flags of list
-       * view
-       * in Builder use it
   * test Windows build with appveyor:
     * install MSYS2
     * install gobject-introspection
