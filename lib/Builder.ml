@@ -49,7 +49,9 @@ let close_sources source_files =
 let append_open_ctypes_modules (mli_descr, ml_descr) =
   add_open_ctypes mli_descr;
   add_open_ctypes ml_descr;
-  add_open_foreign ml_descr
+  add_open_foreign ml_descr;
+  add_empty_line mli_descr;
+  add_empty_line ml_descr
 
 let generate_ctypes_sources base_name =
   let sources = generate_sources base_name in
@@ -72,7 +74,9 @@ let parse_struct_info info source_files =
                                  source_files.ml.descr) in
     let info' = GIStructInfo.from_baseinfo info in
     BuilderStruct.append_ctypes_struct_declaration name f_descrs;
-    BuilderStruct.append_ctypes_struct_fields_declarations name info' f_descrs
+    BuilderStruct.append_ctypes_struct_fields_declarations name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
 
 let parse_boxed_info info =
   ()
@@ -83,7 +87,9 @@ let parse_enum_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = GIEnumInfo.from_baseinfo info in
-    BuilderEnum.append_ctypes_enum_bindings name info' f_descrs
+    BuilderEnum.append_ctypes_enum_bindings name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
 
 let parse_flags_info info source_files =
   match GIBaseInfo.get_name info with
@@ -91,7 +97,9 @@ let parse_flags_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = GIEnumInfo.from_baseinfo info in
-    BuilderEnum.append_ctypes_flags_bindings name info' f_descrs
+    BuilderEnum.append_ctypes_flags_bindings name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
 
 let parse_object_info info =
   ()
@@ -109,7 +117,7 @@ let parse_constant_info info source_files =
       raise_not_implemented m in
     let f_descrs = (source_files.mli.descr,
                     source_files.ml.descr) in
-    match GITypeInfo.get_tag type_info with
+    let _ = match GITypeInfo.get_tag type_info with
     | GITypes.Void as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Boolean ->
       BuilderConstant.append_boolean_constant name info' f_descrs
@@ -144,6 +152,9 @@ let parse_constant_info info source_files =
     | GITypes.GHash as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Error as tag -> raise_tag_not_implemented __LOC__ tag
     | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
+    in
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
 
 let parse_union_info info source_files =
   match GIBaseInfo.get_name info with
@@ -152,7 +163,9 @@ let parse_union_info info source_files =
                                  source_files.ml.descr) in
     let info' = GIUnionInfo.from_baseinfo info in
     BuilderUnion.append_ctypes_union_declaration name f_descrs;
-    BuilderUnion.append_ctypes_union_fields_declarations name info' f_descrs
+    BuilderUnion.append_ctypes_union_fields_declarations name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
 
 let parse_value_info info =
   ()
