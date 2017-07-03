@@ -22,5 +22,8 @@
 open Ctypes
 open Foreign
 
+val get_arguments_types:
+  GICallableInfo.t structure ptr -> (string * string) list option
+
 val append_ctypes_function_bindings:
   string -> GIFunctionInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
