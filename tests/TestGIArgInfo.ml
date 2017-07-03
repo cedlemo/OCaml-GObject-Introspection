@@ -113,6 +113,13 @@ let test_get_scope test_ctxt =
         ) GIArgInfo.Invalid scope
     )
 
+let test_get_type test_ctxt =
+  arg_test (fun info ->
+        let type_info = GIArgInfo.get_type info in
+        let type_name = GITypeInfo.to_string type_info in
+        assert_equal_string "unknown" type_name
+      )
+
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
@@ -125,5 +132,6 @@ let tests =
     "GIArgInfo is optional" >:: test_is_optional;
     "GIArgInfo is return value" >:: test_is_return_value;
     "GIArgInfo is skip" >:: test_is_skip;
-    "GIArgInfo get scope" >:: test_get_scope
+    "GIArgInfo get scope" >:: test_get_scope;
+    "GIArgInfo get type" >:: test_get_type
   ]
