@@ -162,6 +162,9 @@ val param_flags_of_int32:
 val param_flags_to_string:
   param_flags -> string
 
+val get_type:
+  t structure ptr -> GITypeInfo.t structure ptr
+
 (*
   TODO : void	g_arg_info_load_type ()
 *)

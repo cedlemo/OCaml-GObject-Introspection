@@ -155,6 +155,13 @@ let param_flags_to_string = function
   | Explicit_notify -> "Explicit_notify"
   | Deprecated -> "Deprecated"
 
+let get_type info =
+  let get_type_raw =
+    foreign "g_arg_info_get_type"
+      (ptr arginfo @-> returning (ptr GITypeInfo.typeinfo)) in
+  let info' = get_type_raw info in
+  GITypeInfo.add_unref_finaliser info'
+
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_from_baseinfo info =
   coerce (ptr GIBaseInfo.baseinfo) (ptr arginfo) info
