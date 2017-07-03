@@ -31,6 +31,7 @@
 <link title="BuilderStruct" rel="Chapter" href="BuilderStruct.html">
 <link title="BuilderUnion" rel="Chapter" href="BuilderUnion.html">
 <link title="BuilderEnum" rel="Chapter" href="BuilderEnum.html">
+<link title="BuilderFunction" rel="Chapter" href="BuilderFunction.html">
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>GIArgInfo</title>
 </head>
 <body>
@@ -68,6 +69,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Deprecated</span>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;param_flags_of_int32&nbsp;:&nbsp;int32&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIArgInfo</span>.param_flags
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;param_flags_to_string&nbsp;:&nbsp;<span class="constructor">GIArgInfo</span>.param_flags&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GITypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_baseinfo&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIArgInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr

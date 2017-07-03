@@ -36,6 +36,7 @@
 <link title="BuilderStruct" rel="Chapter" href="BuilderStruct.html">
 <link title="BuilderUnion" rel="Chapter" href="BuilderUnion.html">
 <link title="BuilderEnum" rel="Chapter" href="BuilderEnum.html">
+<link title="BuilderFunction" rel="Chapter" href="BuilderFunction.html">
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>GIArgInfo</title>
 </head>
 <body>
@@ -399,6 +400,7 @@ the parameter is deprecated and will be removed in a
 
 <pre><span id="VALparam_flags_of_int32"><span class="keyword">val</span> param_flags_of_int32</span> : <code class="type">int32 -> <a href="GIArgInfo.html#TYPEparam_flags">param_flags</a></code></pre>
 <pre><span id="VALparam_flags_to_string"><span class="keyword">val</span> param_flags_to_string</span> : <code class="type"><a href="GIArgInfo.html#TYPEparam_flags">param_flags</a> -> string</code></pre>
+<pre><span id="VALget_type"><span class="keyword">val</span> get_type</span> : <code class="type"><a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GITypeInfo.html#TYPEt">GITypeInfo.t</a> Ctypes.structure Ctypes.ptr</code></pre>
 <pre><span id="VALcast_from_baseinfo"><span class="keyword">val</span> cast_from_baseinfo</span> : <code class="type"><a href="GIBaseInfo.html#TYPEt">GIBaseInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       <a href="GIArgInfo.html#TYPEt">t</a> Ctypes.structure Ctypes.ptr</code></pre><div class="info ">
 Just cast OCaml Ctypes base info to arg info.<br>
 </div>
