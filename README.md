@@ -297,7 +297,6 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 
 ## TODOS :
 
-  * Implement GIArgInfo.get_type (usefull for function bindings)
   * Create test in Samples/GLib/tests
     * for enum and flags
 
