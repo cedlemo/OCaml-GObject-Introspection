@@ -192,5 +192,3 @@ val from_baseinfo:
     GIBaseInfo.baseinfo_unref. *)
 val to_baseinfo:
   t structure ptr -> GIBaseInfo.t structure ptr
-
-
