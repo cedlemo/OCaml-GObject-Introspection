@@ -16,34 +16,12 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open TestUtils
 open OUnit2
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      TestGIRepository.tests;
-      TestGIBaseInfo.tests;
-      TestGIFunctionInfo.tests;
-      TestGIStructInfo.tests;
-      TestGIUnionInfo.tests;
-      TestGIFieldInfo.tests;
-      TestGIEnumInfo.tests;
-      TestGICallableInfo.tests;
-      TestGIArgInfo.tests;
-      TestGITypeInfo.tests;
-      TestGIConstantInfo.tests;
-      TestGIObjectInfo.tests;
-      TestGIInterfaceInfo.tests;
-      TestGIPropertyInfo.tests;
-      TestGISignalInfo.tests;
-      TestGIVFuncInfo.tests;
-      TestGIRegisteredTypeInfo.tests;
-      TestLoader.tests;
-      TestBuilderConstant.tests;
-      TestBuilderStruct.tests;
-      TestBuilderUnion.tests;
-      TestBuilderEnum.tests;
-      TestBuilderFunction.tests
-    ]
-  )
+let repo = GIRepository.get_default ()
+
+let tests =
+  "GObject Introspection BuilderFunction tests" >:::
+  [
+  ]
