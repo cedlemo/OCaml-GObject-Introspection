@@ -36,6 +36,16 @@ let get_arguments_types callable =
       | _ -> None
   in parse_args 0 []
 
+let get_return_types callable =
+  if GICallableInfo.skip_return callable then Some ("unit", "void")
+  else let ret = GICallableInfo.get_return_type callable in
+    let tag = GITypeInfo.get_tag ret in
+    let (ocaml_type, ctypes_typ) = type_tag_to_ctypes_strings tag in
+    if ocaml_type = "" || ctypes_typ = "" then None
+    else match GICallableInfo.get_caller_owns callable with
+      | GIArgInfo.Nothing -> Some (ocaml_type, ctypes_typ)
+      | _ -> None
+
 let append_ctypes_function_bindings name info (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
   Printf.fprintf mli "(* %s *)" symbol;
