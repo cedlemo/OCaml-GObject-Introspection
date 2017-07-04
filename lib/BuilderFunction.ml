@@ -25,7 +25,7 @@ open BuilderUtils
 let get_arguments_types callable =
   let n = GICallableInfo.get_n_args callable in
   let rec parse_args index args_types =
-    if index = n then Some args_types
+    if index = n then Some (List.rev args_types)
     else let arg = GICallableInfo.get_arg callable index in
       match GIArgInfo.get_direction arg with
       | GIArgInfo.In -> let type_info = GIArgInfo.get_type arg in
@@ -37,4 +37,6 @@ let get_arguments_types callable =
   in parse_args 0 []
 
 let append_ctypes_function_bindings name info (mli, ml) =
-  ()
+  let symbol = GIFunctionInfo.get_symbol info in
+  Printf.fprintf mli "(* %s *)" symbol;
+  Printf.fprintf ml "(* %s *)" symbol
