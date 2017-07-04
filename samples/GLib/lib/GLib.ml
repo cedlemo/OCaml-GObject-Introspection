@@ -2390,498 +2390,972 @@ uint32_t
 
 let _WIN32_MSG_HANDLE = Int32.of_string "19981206"
 
-(* g_access *)
-(* g_ascii_digit_value *)
-(* g_ascii_dtostr *)
-(* g_ascii_formatd *)
-(* g_ascii_strcasecmp *)
-(* g_ascii_strdown *)
-(* g_ascii_strncasecmp *)
-(* g_ascii_strtod *)
-(* g_ascii_strtoll *)
-(* g_ascii_strtoull *)
-(* g_ascii_strup *)
-(* g_ascii_tolower *)
-(* g_ascii_toupper *)
-(* g_ascii_xdigit_value *)
-(* g_assert_warning *)
-(* g_assertion_message *)
-(* g_assertion_message_cmpstr *)
-(* g_assertion_message_error *)
-(* g_atexit *)
-(* g_atomic_int_add *)
-(* g_atomic_int_and *)
-(* g_atomic_int_compare_and_exchange *)
-(* g_atomic_int_dec_and_test *)
-(* g_atomic_int_exchange_and_add *)
-(* g_atomic_int_get *)
-(* g_atomic_int_inc *)
-(* g_atomic_int_or *)
-(* g_atomic_int_set *)
-(* g_atomic_int_xor *)
-(* g_atomic_pointer_add *)
-(* g_atomic_pointer_and *)
-(* g_atomic_pointer_compare_and_exchange *)
-(* g_atomic_pointer_get *)
-(* g_atomic_pointer_or *)
-(* g_atomic_pointer_set *)
-(* g_atomic_pointer_xor *)
-(* g_base64_decode *)
-(* g_base64_decode_inplace *)
-(* g_base64_decode_step *)
-(* g_base64_encode *)
-(* g_base64_encode_close *)
-(* g_base64_encode_step *)
-(* g_basename *)
-(* g_bit_lock *)
-(* g_bit_nth_lsf *)
-(* g_bit_nth_msf *)
-(* g_bit_storage *)
-(* g_bit_trylock *)
-(* g_bit_unlock *)
-(* g_bookmark_file_error_quark *)
-(* g_build_filenamev *)
-(* g_build_pathv *)
-(* g_byte_array_free *)
-(* g_byte_array_free_to_bytes *)
-(* g_byte_array_new *)
-(* g_byte_array_new_take *)
-(* g_byte_array_unref *)
-(* g_chdir *)
-(* glib_check_version *)
-(* g_checksum_type_get_length *)
-(* g_child_watch_add_full *)
-(* g_child_watch_source_new *)
-(* g_clear_error *)
-(* g_close *)
-(* g_compute_checksum_for_bytes *)
-(* g_compute_checksum_for_data *)
-(* g_compute_checksum_for_string *)
-(* g_compute_hmac_for_bytes *)
-(* g_compute_hmac_for_data *)
-(* g_compute_hmac_for_string *)
-(* g_convert *)
-(* g_convert_error_quark *)
-(* g_convert_with_fallback *)
-(* g_convert_with_iconv *)
-(* g_datalist_clear *)
-(* g_datalist_get_data *)
-(* g_datalist_get_flags *)
-(* g_datalist_id_get_data *)
-(* g_datalist_id_remove_no_notify *)
-(* g_datalist_id_replace_data *)
-(* g_datalist_id_set_data_full *)
-(* g_datalist_init *)
-(* g_datalist_set_flags *)
-(* g_datalist_unset_flags *)
-(* g_dataset_destroy *)
-(* g_dataset_id_get_data *)
-(* g_dataset_id_remove_no_notify *)
-(* g_dataset_id_set_data_full *)
-(* g_date_get_days_in_month *)
-(* g_date_get_monday_weeks_in_year *)
-(* g_date_get_sunday_weeks_in_year *)
-(* g_date_is_leap_year *)
-(* g_date_strftime *)
-(* g_date_time_compare *)
-(* g_date_time_equal *)
-(* g_date_time_hash *)
-(* g_date_valid_day *)
-(* g_date_valid_dmy *)
-(* g_date_valid_julian *)
-(* g_date_valid_month *)
-(* g_date_valid_weekday *)
-(* g_date_valid_year *)
-(* g_dcgettext *)
-(* g_dgettext *)
-(* g_dir_make_tmp *)
-(* g_direct_equal *)
-(* g_direct_hash *)
-(* g_dngettext *)
-(* g_double_equal *)
-(* g_double_hash *)
-(* g_dpgettext *)
-(* g_dpgettext2 *)
-(* g_environ_getenv *)
-(* g_environ_setenv *)
-(* g_environ_unsetenv *)
-(* g_file_error_from_errno *)
-(* g_file_error_quark *)
-(* g_file_get_contents *)
-(* g_file_open_tmp *)
-(* g_file_read_link *)
-(* g_file_set_contents *)
-(* g_file_test *)
-(* g_filename_display_basename *)
-(* g_filename_display_name *)
-(* g_filename_from_uri *)
-(* g_filename_from_utf8 *)
-(* g_filename_to_uri *)
-(* g_filename_to_utf8 *)
-(* g_find_program_in_path *)
-(* g_format_size *)
-(* g_format_size_for_display *)
-(* g_format_size_full *)
-(* g_free *)
-(* g_get_application_name *)
-(* g_get_charset *)
-(* g_get_codeset *)
-(* g_get_current_dir *)
-(* g_get_current_time *)
-(* g_get_environ *)
-(* g_get_filename_charsets *)
-(* g_get_home_dir *)
-(* g_get_host_name *)
-(* g_get_language_names *)
-(* g_get_locale_variants *)
-(* g_get_monotonic_time *)
-(* g_get_num_processors *)
-(* g_get_prgname *)
-(* g_get_real_name *)
-(* g_get_real_time *)
-(* g_get_system_config_dirs *)
-(* g_get_system_data_dirs *)
-(* g_get_tmp_dir *)
-(* g_get_user_cache_dir *)
-(* g_get_user_config_dir *)
-(* g_get_user_data_dir *)
-(* g_get_user_name *)
-(* g_get_user_runtime_dir *)
-(* g_get_user_special_dir *)
-(* g_getenv *)
-(* g_hash_table_add *)
-(* g_hash_table_contains *)
-(* g_hash_table_destroy *)
-(* g_hash_table_insert *)
-(* g_hash_table_lookup *)
-(* g_hash_table_lookup_extended *)
-(* g_hash_table_remove *)
-(* g_hash_table_remove_all *)
-(* g_hash_table_replace *)
-(* g_hash_table_size *)
-(* g_hash_table_steal *)
-(* g_hash_table_steal_all *)
-(* g_hash_table_unref *)
-(* g_hook_destroy *)
-(* g_hook_destroy_link *)
-(* g_hook_free *)
-(* g_hook_insert_before *)
-(* g_hook_prepend *)
-(* g_hook_unref *)
-(* g_hostname_is_ascii_encoded *)
-(* g_hostname_is_ip_address *)
-(* g_hostname_is_non_ascii *)
-(* g_hostname_to_ascii *)
-(* g_hostname_to_unicode *)
-(* g_iconv *)
-(* g_idle_add_full *)
-(* g_idle_remove_by_data *)
-(* g_idle_source_new *)
-(* g_int64_equal *)
-(* g_int64_hash *)
-(* g_int_equal *)
-(* g_int_hash *)
-(* g_intern_static_string *)
-(* g_intern_string *)
-(* g_io_add_watch_full *)
-(* g_io_channel_error_from_errno *)
-(* g_io_channel_error_quark *)
-(* g_io_create_watch *)
-(* g_key_file_error_quark *)
-(* g_listenv *)
-(* g_locale_from_utf8 *)
-(* g_locale_to_utf8 *)
-(* g_log_default_handler *)
-(* g_log_remove_handler *)
-(* g_log_set_always_fatal *)
-(* g_log_set_fatal_mask *)
-(* g_log_set_handler_full *)
-(* g_log_set_writer_func *)
-(* g_log_structured_array *)
-(* g_log_variant *)
-(* g_log_writer_default *)
-(* g_log_writer_format_fields *)
-(* g_log_writer_is_journald *)
-(* g_log_writer_journald *)
-(* g_log_writer_standard_streams *)
-(* g_log_writer_supports_color *)
-(* g_main_context_default *)
-(* g_main_context_get_thread_default *)
-(* g_main_context_ref_thread_default *)
-(* g_main_current_source *)
-(* g_main_depth *)
-(* g_malloc *)
-(* g_malloc0 *)
-(* g_malloc0_n *)
-(* g_malloc_n *)
-(* g_markup_error_quark *)
-(* g_markup_escape_text *)
-(* g_mem_is_system_malloc *)
-(* g_mem_profile *)
-(* g_mem_set_vtable *)
-(* g_memdup *)
-(* g_mkdir_with_parents *)
-(* g_nullify_pointer *)
-(* g_on_error_query *)
-(* g_on_error_stack_trace *)
-(* g_once_init_enter *)
-(* g_once_init_leave *)
-(* g_option_error_quark *)
-(* g_parse_debug_string *)
-(* g_path_get_basename *)
-(* g_path_get_dirname *)
-(* g_path_is_absolute *)
-(* g_path_skip_root *)
-(* g_pattern_match *)
-(* g_pattern_match_simple *)
-(* g_pattern_match_string *)
-(* g_pointer_bit_lock *)
-(* g_pointer_bit_trylock *)
-(* g_pointer_bit_unlock *)
-(* g_poll *)
-(* g_propagate_error *)
-(* g_quark_from_static_string *)
-(* g_quark_from_string *)
-(* g_quark_to_string *)
-(* g_quark_try_string *)
-(* g_random_double *)
-(* g_random_double_range *)
-(* g_random_int *)
-(* g_random_int_range *)
-(* g_random_set_seed *)
-(* g_realloc *)
-(* g_realloc_n *)
-(* g_regex_check_replacement *)
-(* g_regex_error_quark *)
-(* g_regex_escape_nul *)
-(* g_regex_escape_string *)
-(* g_regex_match_simple *)
-(* g_regex_split_simple *)
-(* g_reload_user_special_dirs_cache *)
-(* g_rmdir *)
-(* g_sequence_get *)
-(* g_sequence_move *)
-(* g_sequence_move_range *)
-(* g_sequence_remove *)
-(* g_sequence_remove_range *)
-(* g_sequence_set *)
-(* g_sequence_swap *)
-(* g_set_application_name *)
-(* g_set_error_literal *)
-(* g_set_prgname *)
-(* g_setenv *)
-(* g_shell_error_quark *)
-(* g_shell_parse_argv *)
-(* g_shell_quote *)
-(* g_shell_unquote *)
-(* g_slice_alloc *)
-(* g_slice_alloc0 *)
-(* g_slice_copy *)
-(* g_slice_free1 *)
-(* g_slice_free_chain_with_offset *)
-(* g_slice_get_config *)
-(* g_slice_get_config_state *)
-(* g_slice_set_config *)
-(* g_source_remove *)
-(* g_source_remove_by_funcs_user_data *)
-(* g_source_remove_by_user_data *)
-(* g_source_set_name_by_id *)
-(* g_spaced_primes_closest *)
-(* g_spawn_async *)
-(* g_spawn_async_with_pipes *)
-(* g_spawn_check_exit_status *)
-(* g_spawn_close_pid *)
-(* g_spawn_command_line_async *)
-(* g_spawn_command_line_sync *)
-(* g_spawn_error_quark *)
-(* g_spawn_exit_error_quark *)
-(* g_spawn_sync *)
-(* g_stpcpy *)
-(* g_str_equal *)
-(* g_str_has_prefix *)
-(* g_str_has_suffix *)
-(* g_str_hash *)
-(* g_str_is_ascii *)
-(* g_str_match_string *)
-(* g_str_to_ascii *)
-(* g_str_tokenize_and_fold *)
-(* g_strcanon *)
-(* g_strcasecmp *)
-(* g_strchomp *)
-(* g_strchug *)
-(* g_strcmp0 *)
-(* g_strcompress *)
-(* g_strdelimit *)
-(* g_strdown *)
-(* g_strdup *)
-(* g_strerror *)
-(* g_strescape *)
-(* g_strfreev *)
-(* g_string_new *)
-(* g_string_new_len *)
-(* g_string_sized_new *)
-(* g_strip_context *)
-(* g_strjoinv *)
-(* g_strlcat *)
-(* g_strlcpy *)
-(* g_strncasecmp *)
-(* g_strndup *)
-(* g_strnfill *)
-(* g_strreverse *)
-(* g_strrstr *)
-(* g_strrstr_len *)
-(* g_strsignal *)
-(* g_strstr_len *)
-(* g_strtod *)
-(* g_strup *)
-(* g_strv_contains *)
-(* g_strv_get_type *)
-(* g_strv_length *)
-(* g_test_add_data_func *)
-(* g_test_add_data_func_full *)
-(* g_test_add_func *)
-(* g_test_assert_expected_messages_internal *)
-(* g_test_bug *)
-(* g_test_bug_base *)
-(* g_test_expect_message *)
-(* g_test_fail *)
-(* g_test_failed *)
-(* g_test_get_dir *)
-(* g_test_incomplete *)
-(* g_test_log_type_name *)
-(* g_test_queue_destroy *)
-(* g_test_queue_free *)
-(* g_test_rand_double *)
-(* g_test_rand_double_range *)
-(* g_test_rand_int *)
-(* g_test_rand_int_range *)
-(* g_test_run *)
-(* g_test_run_suite *)
-(* g_test_set_nonfatal_assertions *)
-(* g_test_skip *)
-(* g_test_subprocess *)
-(* g_test_timer_elapsed *)
-(* g_test_timer_last *)
-(* g_test_timer_start *)
-(* g_test_trap_assertions *)
-(* g_test_trap_fork *)
-(* g_test_trap_has_passed *)
-(* g_test_trap_reached_timeout *)
-(* g_test_trap_subprocess *)
-(* g_thread_error_quark *)
-(* g_thread_exit *)
-(* g_thread_pool_get_max_idle_time *)
-(* g_thread_pool_get_max_unused_threads *)
-(* g_thread_pool_get_num_unused_threads *)
-(* g_thread_pool_set_max_idle_time *)
-(* g_thread_pool_set_max_unused_threads *)
-(* g_thread_pool_stop_unused_threads *)
-(* g_thread_self *)
-(* g_thread_yield *)
-(* g_time_val_from_iso8601 *)
-(* g_timeout_add_full *)
-(* g_timeout_add_seconds_full *)
-(* g_timeout_source_new *)
-(* g_timeout_source_new_seconds *)
-(* g_trash_stack_height *)
-(* g_trash_stack_peek *)
-(* g_trash_stack_pop *)
-(* g_trash_stack_push *)
-(* g_try_malloc *)
-(* g_try_malloc0 *)
-(* g_try_malloc0_n *)
-(* g_try_malloc_n *)
-(* g_try_realloc *)
-(* g_try_realloc_n *)
-(* g_ucs4_to_utf16 *)
-(* g_ucs4_to_utf8 *)
-(* g_unichar_break_type *)
-(* g_unichar_combining_class *)
-(* g_unichar_compose *)
-(* g_unichar_decompose *)
-(* g_unichar_digit_value *)
-(* g_unichar_fully_decompose *)
-(* g_unichar_get_mirror_char *)
-(* g_unichar_get_script *)
-(* g_unichar_isalnum *)
-(* g_unichar_isalpha *)
-(* g_unichar_iscntrl *)
-(* g_unichar_isdefined *)
-(* g_unichar_isdigit *)
-(* g_unichar_isgraph *)
-(* g_unichar_islower *)
-(* g_unichar_ismark *)
-(* g_unichar_isprint *)
-(* g_unichar_ispunct *)
-(* g_unichar_isspace *)
-(* g_unichar_istitle *)
-(* g_unichar_isupper *)
-(* g_unichar_iswide *)
-(* g_unichar_iswide_cjk *)
-(* g_unichar_isxdigit *)
-(* g_unichar_iszerowidth *)
-(* g_unichar_to_utf8 *)
-(* g_unichar_tolower *)
-(* g_unichar_totitle *)
-(* g_unichar_toupper *)
-(* g_unichar_type *)
-(* g_unichar_validate *)
-(* g_unichar_xdigit_value *)
-(* g_unicode_canonical_decomposition *)
-(* g_unicode_canonical_ordering *)
-(* g_unicode_script_from_iso15924 *)
-(* g_unicode_script_to_iso15924 *)
-(* g_unix_error_quark *)
-(* g_unix_fd_add_full *)
-(* g_unix_fd_source_new *)
-(* g_unix_open_pipe *)
-(* g_unix_set_fd_nonblocking *)
-(* g_unix_signal_add_full *)
-(* g_unix_signal_source_new *)
-(* g_unlink *)
-(* g_unsetenv *)
-(* g_uri_escape_string *)
-(* g_uri_list_extract_uris *)
-(* g_uri_parse_scheme *)
-(* g_uri_unescape_segment *)
-(* g_uri_unescape_string *)
-(* g_usleep *)
-(* g_utf16_to_ucs4 *)
-(* g_utf16_to_utf8 *)
-(* g_utf8_casefold *)
-(* g_utf8_collate *)
-(* g_utf8_collate_key *)
-(* g_utf8_collate_key_for_filename *)
-(* g_utf8_find_next_char *)
-(* g_utf8_find_prev_char *)
-(* g_utf8_get_char *)
-(* g_utf8_get_char_validated *)
-(* g_utf8_make_valid *)
-(* g_utf8_normalize *)
-(* g_utf8_offset_to_pointer *)
-(* g_utf8_pointer_to_offset *)
-(* g_utf8_prev_char *)
-(* g_utf8_strchr *)
-(* g_utf8_strdown *)
-(* g_utf8_strlen *)
-(* g_utf8_strncpy *)
-(* g_utf8_strrchr *)
-(* g_utf8_strreverse *)
-(* g_utf8_strup *)
-(* g_utf8_substring *)
-(* g_utf8_to_ucs4 *)
-(* g_utf8_to_ucs4_fast *)
-(* g_utf8_to_utf16 *)
-(* g_utf8_validate *)
-(* g_uuid_string_is_valid *)
-(* g_uuid_string_random *)
-(* g_variant_get_gtype *)
-(* g_variant_is_object_path *)
-(* g_variant_is_signature *)
-(* g_variant_parse *)
-(* g_variant_parse_error_print_context *)
-(* g_variant_parse_error_quark *)
-(* g_variant_parser_get_error_quark *)
-(* g_variant_type_checked_ *)
-(* g_variant_type_string_is_valid *)
-(* g_variant_type_string_scan *)
+let access =
+foreign "g_access" (string @-> int32_t @-> returning int32_t)
+
+let ascii_digit_value =
+foreign "g_ascii_digit_value" (int8_t @-> returning int32_t)
+
+
+
+let ascii_strcasecmp =
+foreign "g_ascii_strcasecmp" (string @-> string @-> returning int32_t)
+
+
+let ascii_strncasecmp =
+foreign "g_ascii_strncasecmp" (string @-> string @-> uint64_t @-> returning int32_t)
+
+
+
+
+
+let ascii_tolower =
+foreign "g_ascii_tolower" (int8_t @-> returning int8_t)
+
+let ascii_toupper =
+foreign "g_ascii_toupper" (int8_t @-> returning int8_t)
+
+let ascii_xdigit_value =
+foreign "g_ascii_xdigit_value" (int8_t @-> returning int32_t)
+
+let assert_warning =
+foreign "g_assert_warning" (string @-> string @-> int32_t @-> string @-> string @-> returning void)
+
+let assertion_message =
+foreign "g_assertion_message" (string @-> string @-> int32_t @-> string @-> string @-> returning void)
+
+let assertion_message_cmpstr =
+foreign "g_assertion_message_cmpstr" (string @-> string @-> int32_t @-> string @-> string @-> string @-> string @-> string @-> returning void)
+
+let assertion_message_error =
+foreign "g_assertion_message_error" (string @-> string @-> int32_t @-> string @-> string @-> Error.t_typ @-> uint32_t @-> int32_t @-> returning void)
+
+
+let atomic_int_add =
+foreign "g_atomic_int_add" (int32_t @-> int32_t @-> returning int32_t)
+
+let atomic_int_and =
+foreign "g_atomic_int_and" (uint32_t @-> uint32_t @-> returning uint32_t)
+
+let atomic_int_compare_and_exchange =
+foreign "g_atomic_int_compare_and_exchange" (int32_t @-> int32_t @-> int32_t @-> returning bool)
+
+let atomic_int_dec_and_test =
+foreign "g_atomic_int_dec_and_test" (int32_t @-> returning bool)
+
+let atomic_int_exchange_and_add =
+foreign "g_atomic_int_exchange_and_add" (int32_t @-> int32_t @-> returning int32_t)
+
+let atomic_int_get =
+foreign "g_atomic_int_get" (int32_t @-> returning int32_t)
+
+let atomic_int_inc =
+foreign "g_atomic_int_inc" (int32_t @-> returning void)
+
+let atomic_int_or =
+foreign "g_atomic_int_or" (uint32_t @-> uint32_t @-> returning uint32_t)
+
+let atomic_int_set =
+foreign "g_atomic_int_set" (int32_t @-> int32_t @-> returning void)
+
+let atomic_int_xor =
+foreign "g_atomic_int_xor" (uint32_t @-> uint32_t @-> returning uint32_t)
+
+let atomic_pointer_add =
+foreign "g_atomic_pointer_add" (void @-> int64_t @-> returning int64_t)
+
+let atomic_pointer_and =
+foreign "g_atomic_pointer_and" (void @-> uint64_t @-> returning uint64_t)
+
+let atomic_pointer_compare_and_exchange =
+foreign "g_atomic_pointer_compare_and_exchange" (void @-> void @-> void @-> returning bool)
+
+let atomic_pointer_get =
+foreign "g_atomic_pointer_get" (void @-> returning void)
+
+let atomic_pointer_or =
+foreign "g_atomic_pointer_or" (void @-> uint64_t @-> returning uint64_t)
+
+let atomic_pointer_set =
+foreign "g_atomic_pointer_set" (void @-> void @-> returning void)
+
+let atomic_pointer_xor =
+foreign "g_atomic_pointer_xor" (void @-> uint64_t @-> returning uint64_t)
+
+
+
+
+
+
+
+let basename =
+foreign "g_basename" (string @-> returning string)
+
+let bit_lock =
+foreign "g_bit_lock" (int32_t @-> int32_t @-> returning void)
+
+let bit_nth_lsf =
+foreign "g_bit_nth_lsf" (uint64_t @-> int32_t @-> returning int32_t)
+
+let bit_nth_msf =
+foreign "g_bit_nth_msf" (uint64_t @-> int32_t @-> returning int32_t)
+
+let bit_storage =
+foreign "g_bit_storage" (uint64_t @-> returning uint32_t)
+
+let bit_trylock =
+foreign "g_bit_trylock" (int32_t @-> int32_t @-> returning bool)
+
+let bit_unlock =
+foreign "g_bit_unlock" (int32_t @-> int32_t @-> returning void)
+
+let bookmark_file_error_quark =
+foreign "g_bookmark_file_error_quark" ( @-> returning uint32_t)
+
+
+
+let byte_array_free =
+foreign "g_byte_array_free" (Array.t_typ @-> bool @-> returning uint8_t)
+
+
+
+
+let byte_array_unref =
+foreign "g_byte_array_unref" (Array.t_typ @-> returning void)
+
+let chdir =
+foreign "g_chdir" (string @-> returning int32_t)
+
+let check_version =
+foreign "glib_check_version" (uint32_t @-> uint32_t @-> uint32_t @-> returning string)
+
+
+
+
+let clear_error =
+foreign "g_clear_error" ( @-> returning void)
+
+let close =
+foreign "g_close" (int32_t @-> returning bool)
+
+
+
+
+
+
+
+
+let convert_error_quark =
+foreign "g_convert_error_quark" ( @-> returning uint32_t)
+
+
+
+
+
+
+
+
+
+
+
+
+
+let dataset_destroy =
+foreign "g_dataset_destroy" (void @-> returning void)
+
+let dataset_id_get_data =
+foreign "g_dataset_id_get_data" (void @-> uint32_t @-> returning void)
+
+let dataset_id_remove_no_notify =
+foreign "g_dataset_id_remove_no_notify" (void @-> uint32_t @-> returning void)
+
+
+
+let date_get_monday_weeks_in_year =
+foreign "g_date_get_monday_weeks_in_year" (uint16_t @-> returning uint8_t)
+
+let date_get_sunday_weeks_in_year =
+foreign "g_date_get_sunday_weeks_in_year" (uint16_t @-> returning uint8_t)
+
+let date_is_leap_year =
+foreign "g_date_is_leap_year" (uint16_t @-> returning bool)
+
+
+let date_time_compare =
+foreign "g_date_time_compare" (void @-> void @-> returning int32_t)
+
+let date_time_equal =
+foreign "g_date_time_equal" (void @-> void @-> returning bool)
+
+let date_time_hash =
+foreign "g_date_time_hash" (void @-> returning uint32_t)
+
+let date_valid_day =
+foreign "g_date_valid_day" (uint8_t @-> returning bool)
+
+
+let date_valid_julian =
+foreign "g_date_valid_julian" (uint32_t @-> returning bool)
+
+
+
+let date_valid_year =
+foreign "g_date_valid_year" (uint16_t @-> returning bool)
+
+let dcgettext =
+foreign "g_dcgettext" (string @-> string @-> int32_t @-> returning string)
+
+let dgettext =
+foreign "g_dgettext" (string @-> string @-> returning string)
+
+
+let direct_equal =
+foreign "g_direct_equal" (void @-> void @-> returning bool)
+
+let direct_hash =
+foreign "g_direct_hash" (void @-> returning uint32_t)
+
+let dngettext =
+foreign "g_dngettext" (string @-> string @-> string @-> uint64_t @-> returning string)
+
+let double_equal =
+foreign "g_double_equal" (void @-> void @-> returning bool)
+
+let double_hash =
+foreign "g_double_hash" (void @-> returning uint32_t)
+
+let dpgettext =
+foreign "g_dpgettext" (string @-> string @-> uint64_t @-> returning string)
+
+let dpgettext2 =
+foreign "g_dpgettext2" (string @-> string @-> string @-> returning string)
+
+let environ_getenv =
+foreign "g_environ_getenv" (Array.t_typ @-> string @-> returning string)
+
+
+
+
+let file_error_quark =
+foreign "g_file_error_quark" ( @-> returning uint32_t)
+
+
+
+
+let file_set_contents =
+foreign "g_file_set_contents" (string @-> Array.t_typ @-> int64_t @-> returning bool)
+
+
+
+
+
+
+
+
+
+
+
+
+let free =
+foreign "g_free" (void @-> returning void)
+
+let get_application_name =
+foreign "g_get_application_name" ( @-> returning string)
+
+
+
+
+
+
+let get_filename_charsets =
+foreign "g_get_filename_charsets" (string @-> returning bool)
+
+let get_home_dir =
+foreign "g_get_home_dir" ( @-> returning string)
+
+let get_host_name =
+foreign "g_get_host_name" ( @-> returning string)
+
+let get_language_names =
+foreign "g_get_language_names" ( @-> returning Array.t_typ)
+
+
+let get_monotonic_time =
+foreign "g_get_monotonic_time" ( @-> returning int64_t)
+
+let get_num_processors =
+foreign "g_get_num_processors" ( @-> returning uint32_t)
+
+let get_prgname =
+foreign "g_get_prgname" ( @-> returning string)
+
+let get_real_name =
+foreign "g_get_real_name" ( @-> returning string)
+
+let get_real_time =
+foreign "g_get_real_time" ( @-> returning int64_t)
+
+let get_system_config_dirs =
+foreign "g_get_system_config_dirs" ( @-> returning Array.t_typ)
+
+let get_system_data_dirs =
+foreign "g_get_system_data_dirs" ( @-> returning Array.t_typ)
+
+let get_tmp_dir =
+foreign "g_get_tmp_dir" ( @-> returning string)
+
+let get_user_cache_dir =
+foreign "g_get_user_cache_dir" ( @-> returning string)
+
+let get_user_config_dir =
+foreign "g_get_user_config_dir" ( @-> returning string)
+
+let get_user_data_dir =
+foreign "g_get_user_data_dir" ( @-> returning string)
+
+let get_user_name =
+foreign "g_get_user_name" ( @-> returning string)
+
+let get_user_runtime_dir =
+foreign "g_get_user_runtime_dir" ( @-> returning string)
+
+
+let getenv =
+foreign "g_getenv" (string @-> returning string)
+
+let hash_table_add =
+foreign "g_hash_table_add" (HashTable.t_typ @-> void @-> returning bool)
+
+let hash_table_contains =
+foreign "g_hash_table_contains" (HashTable.t_typ @-> void @-> returning bool)
+
+let hash_table_destroy =
+foreign "g_hash_table_destroy" (HashTable.t_typ @-> returning void)
+
+let hash_table_insert =
+foreign "g_hash_table_insert" (HashTable.t_typ @-> void @-> void @-> returning bool)
+
+let hash_table_lookup =
+foreign "g_hash_table_lookup" (HashTable.t_typ @-> void @-> returning void)
+
+
+let hash_table_remove =
+foreign "g_hash_table_remove" (HashTable.t_typ @-> void @-> returning bool)
+
+let hash_table_remove_all =
+foreign "g_hash_table_remove_all" (HashTable.t_typ @-> returning void)
+
+let hash_table_replace =
+foreign "g_hash_table_replace" (HashTable.t_typ @-> void @-> void @-> returning bool)
+
+let hash_table_size =
+foreign "g_hash_table_size" (HashTable.t_typ @-> returning uint32_t)
+
+let hash_table_steal =
+foreign "g_hash_table_steal" (HashTable.t_typ @-> void @-> returning bool)
+
+let hash_table_steal_all =
+foreign "g_hash_table_steal_all" (HashTable.t_typ @-> returning void)
+
+let hash_table_unref =
+foreign "g_hash_table_unref" (HashTable.t_typ @-> returning void)
+
+
+
+
+
+
+
+let hostname_is_ascii_encoded =
+foreign "g_hostname_is_ascii_encoded" (string @-> returning bool)
+
+let hostname_is_ip_address =
+foreign "g_hostname_is_ip_address" (string @-> returning bool)
+
+let hostname_is_non_ascii =
+foreign "g_hostname_is_non_ascii" (string @-> returning bool)
+
+
+
+
+
+let idle_remove_by_data =
+foreign "g_idle_remove_by_data" (void @-> returning bool)
+
+
+let int64_equal =
+foreign "g_int64_equal" (void @-> void @-> returning bool)
+
+let int64_hash =
+foreign "g_int64_hash" (void @-> returning uint32_t)
+
+let int_equal =
+foreign "g_int_equal" (void @-> void @-> returning bool)
+
+let int_hash =
+foreign "g_int_hash" (void @-> returning uint32_t)
+
+let intern_static_string =
+foreign "g_intern_static_string" (string @-> returning string)
+
+let intern_string =
+foreign "g_intern_string" (string @-> returning string)
+
+
+
+let io_channel_error_quark =
+foreign "g_io_channel_error_quark" ( @-> returning uint32_t)
+
+
+let key_file_error_quark =
+foreign "g_key_file_error_quark" ( @-> returning uint32_t)
+
+
+
+
+
+let log_remove_handler =
+foreign "g_log_remove_handler" (string @-> uint32_t @-> returning void)
+
+
+
+
+
+
+
+
+
+let log_writer_is_journald =
+foreign "g_log_writer_is_journald" (int32_t @-> returning bool)
+
+
+
+let log_writer_supports_color =
+foreign "g_log_writer_supports_color" (int32_t @-> returning bool)
+
+
+
+
+
+let main_depth =
+foreign "g_main_depth" ( @-> returning int32_t)
+
+let malloc =
+foreign "g_malloc" (uint64_t @-> returning void)
+
+let malloc0 =
+foreign "g_malloc0" (uint64_t @-> returning void)
+
+let malloc0_n =
+foreign "g_malloc0_n" (uint64_t @-> uint64_t @-> returning void)
+
+let malloc_n =
+foreign "g_malloc_n" (uint64_t @-> uint64_t @-> returning void)
+
+let markup_error_quark =
+foreign "g_markup_error_quark" ( @-> returning uint32_t)
+
+
+let mem_is_system_malloc =
+foreign "g_mem_is_system_malloc" ( @-> returning bool)
+
+let mem_profile =
+foreign "g_mem_profile" ( @-> returning void)
+
+
+let memdup =
+foreign "g_memdup" (void @-> uint32_t @-> returning void)
+
+let mkdir_with_parents =
+foreign "g_mkdir_with_parents" (string @-> int32_t @-> returning int32_t)
+
+let nullify_pointer =
+foreign "g_nullify_pointer" (void @-> returning void)
+
+let on_error_query =
+foreign "g_on_error_query" (string @-> returning void)
+
+let on_error_stack_trace =
+foreign "g_on_error_stack_trace" (string @-> returning void)
+
+let once_init_enter =
+foreign "g_once_init_enter" (void @-> returning bool)
+
+let once_init_leave =
+foreign "g_once_init_leave" (void @-> uint64_t @-> returning void)
+
+let option_error_quark =
+foreign "g_option_error_quark" ( @-> returning uint32_t)
+
+let parse_debug_string =
+foreign "g_parse_debug_string" (string @-> Array.t_typ @-> uint32_t @-> returning uint32_t)
+
+
+
+let path_is_absolute =
+foreign "g_path_is_absolute" (string @-> returning bool)
+
+let path_skip_root =
+foreign "g_path_skip_root" (string @-> returning string)
+
+
+let pattern_match_simple =
+foreign "g_pattern_match_simple" (string @-> string @-> returning bool)
+
+
+let pointer_bit_lock =
+foreign "g_pointer_bit_lock" (void @-> int32_t @-> returning void)
+
+let pointer_bit_trylock =
+foreign "g_pointer_bit_trylock" (void @-> int32_t @-> returning bool)
+
+let pointer_bit_unlock =
+foreign "g_pointer_bit_unlock" (void @-> int32_t @-> returning void)
+
+
+
+let quark_from_static_string =
+foreign "g_quark_from_static_string" (string @-> returning uint32_t)
+
+let quark_from_string =
+foreign "g_quark_from_string" (string @-> returning uint32_t)
+
+let quark_to_string =
+foreign "g_quark_to_string" (uint32_t @-> returning string)
+
+let quark_try_string =
+foreign "g_quark_try_string" (string @-> returning uint32_t)
+
+let random_double =
+foreign "g_random_double" ( @-> returning double)
+
+let random_double_range =
+foreign "g_random_double_range" (double @-> double @-> returning double)
+
+let random_int =
+foreign "g_random_int" ( @-> returning uint32_t)
+
+let random_int_range =
+foreign "g_random_int_range" (int32_t @-> int32_t @-> returning int32_t)
+
+let random_set_seed =
+foreign "g_random_set_seed" (uint32_t @-> returning void)
+
+let realloc =
+foreign "g_realloc" (void @-> uint64_t @-> returning void)
+
+let realloc_n =
+foreign "g_realloc_n" (void @-> uint64_t @-> uint64_t @-> returning void)
+
+
+let regex_error_quark =
+foreign "g_regex_error_quark" ( @-> returning uint32_t)
+
+
+
+
+
+let reload_user_special_dirs_cache =
+foreign "g_reload_user_special_dirs_cache" ( @-> returning void)
+
+let rmdir =
+foreign "g_rmdir" (string @-> returning int32_t)
+
+
+
+
+
+
+
+
+let set_application_name =
+foreign "g_set_application_name" (string @-> returning void)
+
+
+let set_prgname =
+foreign "g_set_prgname" (string @-> returning void)
+
+let setenv =
+foreign "g_setenv" (string @-> string @-> bool @-> returning bool)
+
+let shell_error_quark =
+foreign "g_shell_error_quark" ( @-> returning uint32_t)
+
+
+
+
+let slice_alloc =
+foreign "g_slice_alloc" (uint64_t @-> returning void)
+
+let slice_alloc0 =
+foreign "g_slice_alloc0" (uint64_t @-> returning void)
+
+let slice_copy =
+foreign "g_slice_copy" (uint64_t @-> void @-> returning void)
+
+let slice_free1 =
+foreign "g_slice_free1" (uint64_t @-> void @-> returning void)
+
+let slice_free_chain_with_offset =
+foreign "g_slice_free_chain_with_offset" (uint64_t @-> void @-> uint64_t @-> returning void)
+
+
+
+
+let source_remove =
+foreign "g_source_remove" (uint32_t @-> returning bool)
+
+
+let source_remove_by_user_data =
+foreign "g_source_remove_by_user_data" (void @-> returning bool)
+
+let source_set_name_by_id =
+foreign "g_source_set_name_by_id" (uint32_t @-> string @-> returning void)
+
+let spaced_primes_closest =
+foreign "g_spaced_primes_closest" (uint32_t @-> returning uint32_t)
+
+
+
+let spawn_check_exit_status =
+foreign "g_spawn_check_exit_status" (int32_t @-> returning bool)
+
+let spawn_close_pid =
+foreign "g_spawn_close_pid" (int32_t @-> returning void)
+
+let spawn_command_line_async =
+foreign "g_spawn_command_line_async" (string @-> returning bool)
+
+
+let spawn_error_quark =
+foreign "g_spawn_error_quark" ( @-> returning uint32_t)
+
+let spawn_exit_error_quark =
+foreign "g_spawn_exit_error_quark" ( @-> returning uint32_t)
+
+
+
+let str_equal =
+foreign "g_str_equal" (void @-> void @-> returning bool)
+
+let str_has_prefix =
+foreign "g_str_has_prefix" (string @-> string @-> returning bool)
+
+let str_has_suffix =
+foreign "g_str_has_suffix" (string @-> string @-> returning bool)
+
+let str_hash =
+foreign "g_str_hash" (void @-> returning uint32_t)
+
+let str_is_ascii =
+foreign "g_str_is_ascii" (string @-> returning bool)
+
+let str_match_string =
+foreign "g_str_match_string" (string @-> string @-> bool @-> returning bool)
+
+
+
+
+let strcasecmp =
+foreign "g_strcasecmp" (string @-> string @-> returning int32_t)
+
+
+
+let strcmp0 =
+foreign "g_strcmp0" (string @-> string @-> returning int32_t)
+
+
+
+
+
+let strerror =
+foreign "g_strerror" (int32_t @-> returning string)
+
+
+let strfreev =
+foreign "g_strfreev" (string @-> returning void)
+
+
+
+
+let strip_context =
+foreign "g_strip_context" (string @-> string @-> returning string)
+
+
+let strlcat =
+foreign "g_strlcat" (string @-> string @-> uint64_t @-> returning uint64_t)
+
+let strlcpy =
+foreign "g_strlcpy" (string @-> string @-> uint64_t @-> returning uint64_t)
+
+let strncasecmp =
+foreign "g_strncasecmp" (string @-> string @-> uint32_t @-> returning int32_t)
+
+
+
+
+
+
+let strsignal =
+foreign "g_strsignal" (int32_t @-> returning string)
+
+
+
+
+let strv_contains =
+foreign "g_strv_contains" (string @-> string @-> returning bool)
+
+
+let strv_length =
+foreign "g_strv_length" (string @-> returning uint32_t)
+
+
+
+
+let test_assert_expected_messages_internal =
+foreign "g_test_assert_expected_messages_internal" (string @-> string @-> int32_t @-> string @-> returning void)
+
+let test_bug =
+foreign "g_test_bug" (string @-> returning void)
+
+let test_bug_base =
+foreign "g_test_bug_base" (string @-> returning void)
+
+
+let test_fail =
+foreign "g_test_fail" ( @-> returning void)
+
+let test_failed =
+foreign "g_test_failed" ( @-> returning bool)
+
+
+let test_incomplete =
+foreign "g_test_incomplete" (string @-> returning void)
+
+
+
+let test_queue_free =
+foreign "g_test_queue_free" (void @-> returning void)
+
+let test_rand_double =
+foreign "g_test_rand_double" ( @-> returning double)
+
+let test_rand_double_range =
+foreign "g_test_rand_double_range" (double @-> double @-> returning double)
+
+let test_rand_int =
+foreign "g_test_rand_int" ( @-> returning int32_t)
+
+let test_rand_int_range =
+foreign "g_test_rand_int_range" (int32_t @-> int32_t @-> returning int32_t)
+
+let test_run =
+foreign "g_test_run" ( @-> returning int32_t)
+
+
+let test_set_nonfatal_assertions =
+foreign "g_test_set_nonfatal_assertions" ( @-> returning void)
+
+let test_skip =
+foreign "g_test_skip" (string @-> returning void)
+
+let test_subprocess =
+foreign "g_test_subprocess" ( @-> returning bool)
+
+let test_timer_elapsed =
+foreign "g_test_timer_elapsed" ( @-> returning double)
+
+let test_timer_last =
+foreign "g_test_timer_last" ( @-> returning double)
+
+let test_timer_start =
+foreign "g_test_timer_start" ( @-> returning void)
+
+let test_trap_assertions =
+foreign "g_test_trap_assertions" (string @-> string @-> int32_t @-> string @-> uint64_t @-> string @-> returning void)
+
+
+let test_trap_has_passed =
+foreign "g_test_trap_has_passed" ( @-> returning bool)
+
+let test_trap_reached_timeout =
+foreign "g_test_trap_reached_timeout" ( @-> returning bool)
+
+
+let thread_error_quark =
+foreign "g_thread_error_quark" ( @-> returning uint32_t)
+
+let thread_exit =
+foreign "g_thread_exit" (void @-> returning void)
+
+let thread_pool_get_max_idle_time =
+foreign "g_thread_pool_get_max_idle_time" ( @-> returning uint32_t)
+
+let thread_pool_get_max_unused_threads =
+foreign "g_thread_pool_get_max_unused_threads" ( @-> returning int32_t)
+
+let thread_pool_get_num_unused_threads =
+foreign "g_thread_pool_get_num_unused_threads" ( @-> returning uint32_t)
+
+let thread_pool_set_max_idle_time =
+foreign "g_thread_pool_set_max_idle_time" (uint32_t @-> returning void)
+
+let thread_pool_set_max_unused_threads =
+foreign "g_thread_pool_set_max_unused_threads" (int32_t @-> returning void)
+
+let thread_pool_stop_unused_threads =
+foreign "g_thread_pool_stop_unused_threads" ( @-> returning void)
+
+
+let thread_yield =
+foreign "g_thread_yield" ( @-> returning void)
+
+
+
+
+
+
+
+
+
+
+let try_malloc =
+foreign "g_try_malloc" (uint64_t @-> returning void)
+
+let try_malloc0 =
+foreign "g_try_malloc0" (uint64_t @-> returning void)
+
+let try_malloc0_n =
+foreign "g_try_malloc0_n" (uint64_t @-> uint64_t @-> returning void)
+
+let try_malloc_n =
+foreign "g_try_malloc_n" (uint64_t @-> uint64_t @-> returning void)
+
+let try_realloc =
+foreign "g_try_realloc" (void @-> uint64_t @-> returning void)
+
+let try_realloc_n =
+foreign "g_try_realloc_n" (void @-> uint64_t @-> uint64_t @-> returning void)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let unix_error_quark =
+foreign "g_unix_error_quark" ( @-> returning uint32_t)
+
+
+
+let unix_open_pipe =
+foreign "g_unix_open_pipe" (int32_t @-> int32_t @-> returning bool)
+
+let unix_set_fd_nonblocking =
+foreign "g_unix_set_fd_nonblocking" (int32_t @-> bool @-> returning bool)
+
+
+
+let unlink =
+foreign "g_unlink" (string @-> returning int32_t)
+
+let unsetenv =
+foreign "g_unsetenv" (string @-> returning void)
+
+
+
+
+
+
+let usleep =
+foreign "g_usleep" (uint64_t @-> returning void)
+
+
+
+
+let utf8_collate =
+foreign "g_utf8_collate" (string @-> string @-> returning int32_t)
+
+
+
+
+
+
+
+
+
+
+let utf8_pointer_to_offset =
+foreign "g_utf8_pointer_to_offset" (string @-> string @-> returning int64_t)
+
+
+
+
+let utf8_strlen =
+foreign "g_utf8_strlen" (string @-> int64_t @-> returning int64_t)
+
+
+
+
+
+
+
+
+
+
+let uuid_string_is_valid =
+foreign "g_uuid_string_is_valid" (string @-> returning bool)
+
+
+
+let variant_is_object_path =
+foreign "g_variant_is_object_path" (string @-> returning bool)
+
+let variant_is_signature =
+foreign "g_variant_is_signature" (string @-> returning bool)
+
+
+
+let variant_parse_error_quark =
+foreign "g_variant_parse_error_quark" ( @-> returning uint32_t)
+
+let variant_parser_get_error_quark =
+foreign "g_variant_parser_get_error_quark" ( @-> returning uint32_t)
+
+
+let variant_type_string_is_valid =
+foreign "g_variant_type_string_is_valid" (string @-> returning bool)
+
+

@@ -703,498 +703,972 @@ val variantparseerror : variantparseerror typ
 
 val _WIN32_MSG_HANDLE : int32
 
-(* g_access *)
-(* g_ascii_digit_value *)
-(* g_ascii_dtostr *)
-(* g_ascii_formatd *)
-(* g_ascii_strcasecmp *)
-(* g_ascii_strdown *)
-(* g_ascii_strncasecmp *)
-(* g_ascii_strtod *)
-(* g_ascii_strtoll *)
-(* g_ascii_strtoull *)
-(* g_ascii_strup *)
-(* g_ascii_tolower *)
-(* g_ascii_toupper *)
-(* g_ascii_xdigit_value *)
-(* g_assert_warning *)
-(* g_assertion_message *)
-(* g_assertion_message_cmpstr *)
-(* g_assertion_message_error *)
-(* g_atexit *)
-(* g_atomic_int_add *)
-(* g_atomic_int_and *)
-(* g_atomic_int_compare_and_exchange *)
-(* g_atomic_int_dec_and_test *)
-(* g_atomic_int_exchange_and_add *)
-(* g_atomic_int_get *)
-(* g_atomic_int_inc *)
-(* g_atomic_int_or *)
-(* g_atomic_int_set *)
-(* g_atomic_int_xor *)
-(* g_atomic_pointer_add *)
-(* g_atomic_pointer_and *)
-(* g_atomic_pointer_compare_and_exchange *)
-(* g_atomic_pointer_get *)
-(* g_atomic_pointer_or *)
-(* g_atomic_pointer_set *)
-(* g_atomic_pointer_xor *)
-(* g_base64_decode *)
-(* g_base64_decode_inplace *)
-(* g_base64_decode_step *)
-(* g_base64_encode *)
-(* g_base64_encode_close *)
-(* g_base64_encode_step *)
-(* g_basename *)
-(* g_bit_lock *)
-(* g_bit_nth_lsf *)
-(* g_bit_nth_msf *)
-(* g_bit_storage *)
-(* g_bit_trylock *)
-(* g_bit_unlock *)
-(* g_bookmark_file_error_quark *)
-(* g_build_filenamev *)
-(* g_build_pathv *)
-(* g_byte_array_free *)
-(* g_byte_array_free_to_bytes *)
-(* g_byte_array_new *)
-(* g_byte_array_new_take *)
-(* g_byte_array_unref *)
-(* g_chdir *)
-(* glib_check_version *)
-(* g_checksum_type_get_length *)
-(* g_child_watch_add_full *)
-(* g_child_watch_source_new *)
-(* g_clear_error *)
-(* g_close *)
-(* g_compute_checksum_for_bytes *)
-(* g_compute_checksum_for_data *)
-(* g_compute_checksum_for_string *)
-(* g_compute_hmac_for_bytes *)
-(* g_compute_hmac_for_data *)
-(* g_compute_hmac_for_string *)
-(* g_convert *)
-(* g_convert_error_quark *)
-(* g_convert_with_fallback *)
-(* g_convert_with_iconv *)
-(* g_datalist_clear *)
-(* g_datalist_get_data *)
-(* g_datalist_get_flags *)
-(* g_datalist_id_get_data *)
-(* g_datalist_id_remove_no_notify *)
-(* g_datalist_id_replace_data *)
-(* g_datalist_id_set_data_full *)
-(* g_datalist_init *)
-(* g_datalist_set_flags *)
-(* g_datalist_unset_flags *)
-(* g_dataset_destroy *)
-(* g_dataset_id_get_data *)
-(* g_dataset_id_remove_no_notify *)
-(* g_dataset_id_set_data_full *)
-(* g_date_get_days_in_month *)
-(* g_date_get_monday_weeks_in_year *)
-(* g_date_get_sunday_weeks_in_year *)
-(* g_date_is_leap_year *)
-(* g_date_strftime *)
-(* g_date_time_compare *)
-(* g_date_time_equal *)
-(* g_date_time_hash *)
-(* g_date_valid_day *)
-(* g_date_valid_dmy *)
-(* g_date_valid_julian *)
-(* g_date_valid_month *)
-(* g_date_valid_weekday *)
-(* g_date_valid_year *)
-(* g_dcgettext *)
-(* g_dgettext *)
-(* g_dir_make_tmp *)
-(* g_direct_equal *)
-(* g_direct_hash *)
-(* g_dngettext *)
-(* g_double_equal *)
-(* g_double_hash *)
-(* g_dpgettext *)
-(* g_dpgettext2 *)
-(* g_environ_getenv *)
-(* g_environ_setenv *)
-(* g_environ_unsetenv *)
-(* g_file_error_from_errno *)
-(* g_file_error_quark *)
-(* g_file_get_contents *)
-(* g_file_open_tmp *)
-(* g_file_read_link *)
-(* g_file_set_contents *)
-(* g_file_test *)
-(* g_filename_display_basename *)
-(* g_filename_display_name *)
-(* g_filename_from_uri *)
-(* g_filename_from_utf8 *)
-(* g_filename_to_uri *)
-(* g_filename_to_utf8 *)
-(* g_find_program_in_path *)
-(* g_format_size *)
-(* g_format_size_for_display *)
-(* g_format_size_full *)
-(* g_free *)
-(* g_get_application_name *)
-(* g_get_charset *)
-(* g_get_codeset *)
-(* g_get_current_dir *)
-(* g_get_current_time *)
-(* g_get_environ *)
-(* g_get_filename_charsets *)
-(* g_get_home_dir *)
-(* g_get_host_name *)
-(* g_get_language_names *)
-(* g_get_locale_variants *)
-(* g_get_monotonic_time *)
-(* g_get_num_processors *)
-(* g_get_prgname *)
-(* g_get_real_name *)
-(* g_get_real_time *)
-(* g_get_system_config_dirs *)
-(* g_get_system_data_dirs *)
-(* g_get_tmp_dir *)
-(* g_get_user_cache_dir *)
-(* g_get_user_config_dir *)
-(* g_get_user_data_dir *)
-(* g_get_user_name *)
-(* g_get_user_runtime_dir *)
-(* g_get_user_special_dir *)
-(* g_getenv *)
-(* g_hash_table_add *)
-(* g_hash_table_contains *)
-(* g_hash_table_destroy *)
-(* g_hash_table_insert *)
-(* g_hash_table_lookup *)
-(* g_hash_table_lookup_extended *)
-(* g_hash_table_remove *)
-(* g_hash_table_remove_all *)
-(* g_hash_table_replace *)
-(* g_hash_table_size *)
-(* g_hash_table_steal *)
-(* g_hash_table_steal_all *)
-(* g_hash_table_unref *)
-(* g_hook_destroy *)
-(* g_hook_destroy_link *)
-(* g_hook_free *)
-(* g_hook_insert_before *)
-(* g_hook_prepend *)
-(* g_hook_unref *)
-(* g_hostname_is_ascii_encoded *)
-(* g_hostname_is_ip_address *)
-(* g_hostname_is_non_ascii *)
-(* g_hostname_to_ascii *)
-(* g_hostname_to_unicode *)
-(* g_iconv *)
-(* g_idle_add_full *)
-(* g_idle_remove_by_data *)
-(* g_idle_source_new *)
-(* g_int64_equal *)
-(* g_int64_hash *)
-(* g_int_equal *)
-(* g_int_hash *)
-(* g_intern_static_string *)
-(* g_intern_string *)
-(* g_io_add_watch_full *)
-(* g_io_channel_error_from_errno *)
-(* g_io_channel_error_quark *)
-(* g_io_create_watch *)
-(* g_key_file_error_quark *)
-(* g_listenv *)
-(* g_locale_from_utf8 *)
-(* g_locale_to_utf8 *)
-(* g_log_default_handler *)
-(* g_log_remove_handler *)
-(* g_log_set_always_fatal *)
-(* g_log_set_fatal_mask *)
-(* g_log_set_handler_full *)
-(* g_log_set_writer_func *)
-(* g_log_structured_array *)
-(* g_log_variant *)
-(* g_log_writer_default *)
-(* g_log_writer_format_fields *)
-(* g_log_writer_is_journald *)
-(* g_log_writer_journald *)
-(* g_log_writer_standard_streams *)
-(* g_log_writer_supports_color *)
-(* g_main_context_default *)
-(* g_main_context_get_thread_default *)
-(* g_main_context_ref_thread_default *)
-(* g_main_current_source *)
-(* g_main_depth *)
-(* g_malloc *)
-(* g_malloc0 *)
-(* g_malloc0_n *)
-(* g_malloc_n *)
-(* g_markup_error_quark *)
-(* g_markup_escape_text *)
-(* g_mem_is_system_malloc *)
-(* g_mem_profile *)
-(* g_mem_set_vtable *)
-(* g_memdup *)
-(* g_mkdir_with_parents *)
-(* g_nullify_pointer *)
-(* g_on_error_query *)
-(* g_on_error_stack_trace *)
-(* g_once_init_enter *)
-(* g_once_init_leave *)
-(* g_option_error_quark *)
-(* g_parse_debug_string *)
-(* g_path_get_basename *)
-(* g_path_get_dirname *)
-(* g_path_is_absolute *)
-(* g_path_skip_root *)
-(* g_pattern_match *)
-(* g_pattern_match_simple *)
-(* g_pattern_match_string *)
-(* g_pointer_bit_lock *)
-(* g_pointer_bit_trylock *)
-(* g_pointer_bit_unlock *)
-(* g_poll *)
-(* g_propagate_error *)
-(* g_quark_from_static_string *)
-(* g_quark_from_string *)
-(* g_quark_to_string *)
-(* g_quark_try_string *)
-(* g_random_double *)
-(* g_random_double_range *)
-(* g_random_int *)
-(* g_random_int_range *)
-(* g_random_set_seed *)
-(* g_realloc *)
-(* g_realloc_n *)
-(* g_regex_check_replacement *)
-(* g_regex_error_quark *)
-(* g_regex_escape_nul *)
-(* g_regex_escape_string *)
-(* g_regex_match_simple *)
-(* g_regex_split_simple *)
-(* g_reload_user_special_dirs_cache *)
-(* g_rmdir *)
-(* g_sequence_get *)
-(* g_sequence_move *)
-(* g_sequence_move_range *)
-(* g_sequence_remove *)
-(* g_sequence_remove_range *)
-(* g_sequence_set *)
-(* g_sequence_swap *)
-(* g_set_application_name *)
-(* g_set_error_literal *)
-(* g_set_prgname *)
-(* g_setenv *)
-(* g_shell_error_quark *)
-(* g_shell_parse_argv *)
-(* g_shell_quote *)
-(* g_shell_unquote *)
-(* g_slice_alloc *)
-(* g_slice_alloc0 *)
-(* g_slice_copy *)
-(* g_slice_free1 *)
-(* g_slice_free_chain_with_offset *)
-(* g_slice_get_config *)
-(* g_slice_get_config_state *)
-(* g_slice_set_config *)
-(* g_source_remove *)
-(* g_source_remove_by_funcs_user_data *)
-(* g_source_remove_by_user_data *)
-(* g_source_set_name_by_id *)
-(* g_spaced_primes_closest *)
-(* g_spawn_async *)
-(* g_spawn_async_with_pipes *)
-(* g_spawn_check_exit_status *)
-(* g_spawn_close_pid *)
-(* g_spawn_command_line_async *)
-(* g_spawn_command_line_sync *)
-(* g_spawn_error_quark *)
-(* g_spawn_exit_error_quark *)
-(* g_spawn_sync *)
-(* g_stpcpy *)
-(* g_str_equal *)
-(* g_str_has_prefix *)
-(* g_str_has_suffix *)
-(* g_str_hash *)
-(* g_str_is_ascii *)
-(* g_str_match_string *)
-(* g_str_to_ascii *)
-(* g_str_tokenize_and_fold *)
-(* g_strcanon *)
-(* g_strcasecmp *)
-(* g_strchomp *)
-(* g_strchug *)
-(* g_strcmp0 *)
-(* g_strcompress *)
-(* g_strdelimit *)
-(* g_strdown *)
-(* g_strdup *)
-(* g_strerror *)
-(* g_strescape *)
-(* g_strfreev *)
-(* g_string_new *)
-(* g_string_new_len *)
-(* g_string_sized_new *)
-(* g_strip_context *)
-(* g_strjoinv *)
-(* g_strlcat *)
-(* g_strlcpy *)
-(* g_strncasecmp *)
-(* g_strndup *)
-(* g_strnfill *)
-(* g_strreverse *)
-(* g_strrstr *)
-(* g_strrstr_len *)
-(* g_strsignal *)
-(* g_strstr_len *)
-(* g_strtod *)
-(* g_strup *)
-(* g_strv_contains *)
-(* g_strv_get_type *)
-(* g_strv_length *)
-(* g_test_add_data_func *)
-(* g_test_add_data_func_full *)
-(* g_test_add_func *)
-(* g_test_assert_expected_messages_internal *)
-(* g_test_bug *)
-(* g_test_bug_base *)
-(* g_test_expect_message *)
-(* g_test_fail *)
-(* g_test_failed *)
-(* g_test_get_dir *)
-(* g_test_incomplete *)
-(* g_test_log_type_name *)
-(* g_test_queue_destroy *)
-(* g_test_queue_free *)
-(* g_test_rand_double *)
-(* g_test_rand_double_range *)
-(* g_test_rand_int *)
-(* g_test_rand_int_range *)
-(* g_test_run *)
-(* g_test_run_suite *)
-(* g_test_set_nonfatal_assertions *)
-(* g_test_skip *)
-(* g_test_subprocess *)
-(* g_test_timer_elapsed *)
-(* g_test_timer_last *)
-(* g_test_timer_start *)
-(* g_test_trap_assertions *)
-(* g_test_trap_fork *)
-(* g_test_trap_has_passed *)
-(* g_test_trap_reached_timeout *)
-(* g_test_trap_subprocess *)
-(* g_thread_error_quark *)
-(* g_thread_exit *)
-(* g_thread_pool_get_max_idle_time *)
-(* g_thread_pool_get_max_unused_threads *)
-(* g_thread_pool_get_num_unused_threads *)
-(* g_thread_pool_set_max_idle_time *)
-(* g_thread_pool_set_max_unused_threads *)
-(* g_thread_pool_stop_unused_threads *)
-(* g_thread_self *)
-(* g_thread_yield *)
-(* g_time_val_from_iso8601 *)
-(* g_timeout_add_full *)
-(* g_timeout_add_seconds_full *)
-(* g_timeout_source_new *)
-(* g_timeout_source_new_seconds *)
-(* g_trash_stack_height *)
-(* g_trash_stack_peek *)
-(* g_trash_stack_pop *)
-(* g_trash_stack_push *)
-(* g_try_malloc *)
-(* g_try_malloc0 *)
-(* g_try_malloc0_n *)
-(* g_try_malloc_n *)
-(* g_try_realloc *)
-(* g_try_realloc_n *)
-(* g_ucs4_to_utf16 *)
-(* g_ucs4_to_utf8 *)
-(* g_unichar_break_type *)
-(* g_unichar_combining_class *)
-(* g_unichar_compose *)
-(* g_unichar_decompose *)
-(* g_unichar_digit_value *)
-(* g_unichar_fully_decompose *)
-(* g_unichar_get_mirror_char *)
-(* g_unichar_get_script *)
-(* g_unichar_isalnum *)
-(* g_unichar_isalpha *)
-(* g_unichar_iscntrl *)
-(* g_unichar_isdefined *)
-(* g_unichar_isdigit *)
-(* g_unichar_isgraph *)
-(* g_unichar_islower *)
-(* g_unichar_ismark *)
-(* g_unichar_isprint *)
-(* g_unichar_ispunct *)
-(* g_unichar_isspace *)
-(* g_unichar_istitle *)
-(* g_unichar_isupper *)
-(* g_unichar_iswide *)
-(* g_unichar_iswide_cjk *)
-(* g_unichar_isxdigit *)
-(* g_unichar_iszerowidth *)
-(* g_unichar_to_utf8 *)
-(* g_unichar_tolower *)
-(* g_unichar_totitle *)
-(* g_unichar_toupper *)
-(* g_unichar_type *)
-(* g_unichar_validate *)
-(* g_unichar_xdigit_value *)
-(* g_unicode_canonical_decomposition *)
-(* g_unicode_canonical_ordering *)
-(* g_unicode_script_from_iso15924 *)
-(* g_unicode_script_to_iso15924 *)
-(* g_unix_error_quark *)
-(* g_unix_fd_add_full *)
-(* g_unix_fd_source_new *)
-(* g_unix_open_pipe *)
-(* g_unix_set_fd_nonblocking *)
-(* g_unix_signal_add_full *)
-(* g_unix_signal_source_new *)
-(* g_unlink *)
-(* g_unsetenv *)
-(* g_uri_escape_string *)
-(* g_uri_list_extract_uris *)
-(* g_uri_parse_scheme *)
-(* g_uri_unescape_segment *)
-(* g_uri_unescape_string *)
-(* g_usleep *)
-(* g_utf16_to_ucs4 *)
-(* g_utf16_to_utf8 *)
-(* g_utf8_casefold *)
-(* g_utf8_collate *)
-(* g_utf8_collate_key *)
-(* g_utf8_collate_key_for_filename *)
-(* g_utf8_find_next_char *)
-(* g_utf8_find_prev_char *)
-(* g_utf8_get_char *)
-(* g_utf8_get_char_validated *)
-(* g_utf8_make_valid *)
-(* g_utf8_normalize *)
-(* g_utf8_offset_to_pointer *)
-(* g_utf8_pointer_to_offset *)
-(* g_utf8_prev_char *)
-(* g_utf8_strchr *)
-(* g_utf8_strdown *)
-(* g_utf8_strlen *)
-(* g_utf8_strncpy *)
-(* g_utf8_strrchr *)
-(* g_utf8_strreverse *)
-(* g_utf8_strup *)
-(* g_utf8_substring *)
-(* g_utf8_to_ucs4 *)
-(* g_utf8_to_ucs4_fast *)
-(* g_utf8_to_utf16 *)
-(* g_utf8_validate *)
-(* g_uuid_string_is_valid *)
-(* g_uuid_string_random *)
-(* g_variant_get_gtype *)
-(* g_variant_is_object_path *)
-(* g_variant_is_signature *)
-(* g_variant_parse *)
-(* g_variant_parse_error_print_context *)
-(* g_variant_parse_error_quark *)
-(* g_variant_parser_get_error_quark *)
-(* g_variant_type_checked_ *)
-(* g_variant_type_string_is_valid *)
-(* g_variant_type_string_scan *)
+val access:
+string -> int32 -> int32
+
+val ascii_digit_value:
+int -> int32
+
+(* Not implemented g_ascii_dtostr return type not handled *)
+(* Not implemented g_ascii_formatd return type not handled *)
+val ascii_strcasecmp:
+string -> string -> int32
+
+(* Not implemented g_ascii_strdown return type not handled *)
+val ascii_strncasecmp:
+string -> string -> Unsigned.uint64 -> int32
+
+(* Not implemented g_ascii_strtod argument types not handled *)
+(* Not implemented g_ascii_strtoll argument types not handled *)
+(* Not implemented g_ascii_strtoull argument types not handled *)
+(* Not implemented g_ascii_strup return type not handled *)
+val ascii_tolower:
+int -> int
+
+val ascii_toupper:
+int -> int
+
+val ascii_xdigit_value:
+int -> int32
+
+val assert_warning:
+string -> string -> int32 -> string -> string -> unit
+
+val assertion_message:
+string -> string -> int32 -> string -> string -> unit
+
+val assertion_message_cmpstr:
+string -> string -> int32 -> string -> string -> string -> string -> string -> unit
+
+val assertion_message_error:
+string -> string -> int32 -> string -> string -> Error.t structure -> Unsigned.uint32 -> int32 -> unit
+
+(* Not implemented g_atexit argument types not handled *)
+val atomic_int_add:
+int32 -> int32 -> int32
+
+val atomic_int_and:
+Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32
+
+val atomic_int_compare_and_exchange:
+int32 -> int32 -> int32 -> bool
+
+val atomic_int_dec_and_test:
+int32 -> bool
+
+val atomic_int_exchange_and_add:
+int32 -> int32 -> int32
+
+val atomic_int_get:
+int32 -> int32
+
+val atomic_int_inc:
+int32 -> unit
+
+val atomic_int_or:
+Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32
+
+val atomic_int_set:
+int32 -> int32 -> unit
+
+val atomic_int_xor:
+Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32
+
+val atomic_pointer_add:
+unit -> int64 -> int64
+
+val atomic_pointer_and:
+unit -> Unsigned.uint64 -> Unsigned.uint64
+
+val atomic_pointer_compare_and_exchange:
+unit -> unit -> unit -> bool
+
+val atomic_pointer_get:
+unit -> unit
+
+val atomic_pointer_or:
+unit -> Unsigned.uint64 -> Unsigned.uint64
+
+val atomic_pointer_set:
+unit -> unit -> unit
+
+val atomic_pointer_xor:
+unit -> Unsigned.uint64 -> Unsigned.uint64
+
+(* Not implemented g_base64_decode argument types not handled *)
+(* Not implemented g_base64_decode_inplace argument types not handled *)
+(* Not implemented g_base64_decode_step argument types not handled *)
+(* Not implemented g_base64_encode return type not handled *)
+(* Not implemented g_base64_encode_close argument types not handled *)
+(* Not implemented g_base64_encode_step argument types not handled *)
+val basename:
+string -> string
+
+val bit_lock:
+int32 -> int32 -> unit
+
+val bit_nth_lsf:
+Unsigned.uint64 -> int32 -> int32
+
+val bit_nth_msf:
+Unsigned.uint64 -> int32 -> int32
+
+val bit_storage:
+Unsigned.uint64 -> Unsigned.uint32
+
+val bit_trylock:
+int32 -> int32 -> bool
+
+val bit_unlock:
+int32 -> int32 -> unit
+
+val bookmark_file_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_build_filenamev return type not handled *)
+(* Not implemented g_build_pathv return type not handled *)
+val byte_array_free:
+Array.t structure -> bool -> Unsigned.uint8
+
+(* Not implemented g_byte_array_free_to_bytes return type not handled *)
+(* Not implemented g_byte_array_new return type not handled *)
+(* Not implemented g_byte_array_new_take return type not handled *)
+val byte_array_unref:
+Array.t structure -> unit
+
+val chdir:
+string -> int32
+
+val check_version:
+Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32 -> string
+
+(* Not implemented g_checksum_type_get_length argument types not handled *)
+(* Not implemented g_child_watch_add_full argument types not handled *)
+(* Not implemented g_child_watch_source_new return type not handled *)
+val clear_error:
+ -> unit
+
+val close:
+int32 -> bool
+
+(* Not implemented g_compute_checksum_for_bytes argument types not handled *)
+(* Not implemented g_compute_checksum_for_data argument types not handled *)
+(* Not implemented g_compute_checksum_for_string argument types not handled *)
+(* Not implemented g_compute_hmac_for_bytes argument types not handled *)
+(* Not implemented g_compute_hmac_for_data argument types not handled *)
+(* Not implemented g_compute_hmac_for_string argument types not handled *)
+(* Not implemented g_convert argument types not handled *)
+val convert_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_convert_with_fallback return type not handled *)
+(* Not implemented g_convert_with_iconv argument types not handled *)
+(* Not implemented g_datalist_clear argument types not handled *)
+(* Not implemented g_datalist_get_data argument types not handled *)
+(* Not implemented g_datalist_get_flags argument types not handled *)
+(* Not implemented g_datalist_id_get_data argument types not handled *)
+(* Not implemented g_datalist_id_remove_no_notify argument types not handled *)
+(* Not implemented g_datalist_id_replace_data argument types not handled *)
+(* Not implemented g_datalist_id_set_data_full argument types not handled *)
+(* Not implemented g_datalist_init argument types not handled *)
+(* Not implemented g_datalist_set_flags argument types not handled *)
+(* Not implemented g_datalist_unset_flags argument types not handled *)
+val dataset_destroy:
+unit -> unit
+
+val dataset_id_get_data:
+unit -> Unsigned.uint32 -> unit
+
+val dataset_id_remove_no_notify:
+unit -> Unsigned.uint32 -> unit
+
+(* Not implemented g_dataset_id_set_data_full argument types not handled *)
+(* Not implemented g_date_get_days_in_month argument types not handled *)
+val date_get_monday_weeks_in_year:
+Unsigned.uint16 -> Unsigned.uint8
+
+val date_get_sunday_weeks_in_year:
+Unsigned.uint16 -> Unsigned.uint8
+
+val date_is_leap_year:
+Unsigned.uint16 -> bool
+
+(* Not implemented g_date_strftime argument types not handled *)
+val date_time_compare:
+unit -> unit -> int32
+
+val date_time_equal:
+unit -> unit -> bool
+
+val date_time_hash:
+unit -> Unsigned.uint32
+
+val date_valid_day:
+Unsigned.uint8 -> bool
+
+(* Not implemented g_date_valid_dmy argument types not handled *)
+val date_valid_julian:
+Unsigned.uint32 -> bool
+
+(* Not implemented g_date_valid_month argument types not handled *)
+(* Not implemented g_date_valid_weekday argument types not handled *)
+val date_valid_year:
+Unsigned.uint16 -> bool
+
+val dcgettext:
+string -> string -> int32 -> string
+
+val dgettext:
+string -> string -> string
+
+(* Not implemented g_dir_make_tmp return type not handled *)
+val direct_equal:
+unit -> unit -> bool
+
+val direct_hash:
+unit -> Unsigned.uint32
+
+val dngettext:
+string -> string -> string -> Unsigned.uint64 -> string
+
+val double_equal:
+unit -> unit -> bool
+
+val double_hash:
+unit -> Unsigned.uint32
+
+val dpgettext:
+string -> string -> Unsigned.uint64 -> string
+
+val dpgettext2:
+string -> string -> string -> string
+
+val environ_getenv:
+Array.t structure -> string -> string
+
+(* Not implemented g_environ_setenv return type not handled *)
+(* Not implemented g_environ_unsetenv return type not handled *)
+(* Not implemented g_file_error_from_errno return type not handled *)
+val file_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_file_get_contents argument types not handled *)
+(* Not implemented g_file_open_tmp argument types not handled *)
+(* Not implemented g_file_read_link return type not handled *)
+val file_set_contents:
+string -> Array.t structure -> int64 -> bool
+
+(* Not implemented g_file_test argument types not handled *)
+(* Not implemented g_filename_display_basename return type not handled *)
+(* Not implemented g_filename_display_name return type not handled *)
+(* Not implemented g_filename_from_uri argument types not handled *)
+(* Not implemented g_filename_from_utf8 argument types not handled *)
+(* Not implemented g_filename_to_uri return type not handled *)
+(* Not implemented g_filename_to_utf8 argument types not handled *)
+(* Not implemented g_find_program_in_path return type not handled *)
+(* Not implemented g_format_size return type not handled *)
+(* Not implemented g_format_size_for_display return type not handled *)
+(* Not implemented g_format_size_full argument types not handled *)
+val free:
+unit -> unit
+
+val get_application_name:
+ -> string
+
+(* Not implemented g_get_charset argument types not handled *)
+(* Not implemented g_get_codeset return type not handled *)
+(* Not implemented g_get_current_dir return type not handled *)
+(* Not implemented g_get_current_time argument types not handled *)
+(* Not implemented g_get_environ return type not handled *)
+val get_filename_charsets:
+string -> bool
+
+val get_home_dir:
+ -> string
+
+val get_host_name:
+ -> string
+
+val get_language_names:
+ -> Array.t structure
+
+(* Not implemented g_get_locale_variants return type not handled *)
+val get_monotonic_time:
+ -> int64
+
+val get_num_processors:
+ -> Unsigned.uint32
+
+val get_prgname:
+ -> string
+
+val get_real_name:
+ -> string
+
+val get_real_time:
+ -> int64
+
+val get_system_config_dirs:
+ -> Array.t structure
+
+val get_system_data_dirs:
+ -> Array.t structure
+
+val get_tmp_dir:
+ -> string
+
+val get_user_cache_dir:
+ -> string
+
+val get_user_config_dir:
+ -> string
+
+val get_user_data_dir:
+ -> string
+
+val get_user_name:
+ -> string
+
+val get_user_runtime_dir:
+ -> string
+
+(* Not implemented g_get_user_special_dir argument types not handled *)
+val getenv:
+string -> string
+
+val hash_table_add:
+HashTable.t structure -> unit -> bool
+
+val hash_table_contains:
+HashTable.t structure -> unit -> bool
+
+val hash_table_destroy:
+HashTable.t structure -> unit
+
+val hash_table_insert:
+HashTable.t structure -> unit -> unit -> bool
+
+val hash_table_lookup:
+HashTable.t structure -> unit -> unit
+
+(* Not implemented g_hash_table_lookup_extended argument types not handled *)
+val hash_table_remove:
+HashTable.t structure -> unit -> bool
+
+val hash_table_remove_all:
+HashTable.t structure -> unit
+
+val hash_table_replace:
+HashTable.t structure -> unit -> unit -> bool
+
+val hash_table_size:
+HashTable.t structure -> Unsigned.uint32
+
+val hash_table_steal:
+HashTable.t structure -> unit -> bool
+
+val hash_table_steal_all:
+HashTable.t structure -> unit
+
+val hash_table_unref:
+HashTable.t structure -> unit
+
+(* Not implemented g_hook_destroy argument types not handled *)
+(* Not implemented g_hook_destroy_link argument types not handled *)
+(* Not implemented g_hook_free argument types not handled *)
+(* Not implemented g_hook_insert_before argument types not handled *)
+(* Not implemented g_hook_prepend argument types not handled *)
+(* Not implemented g_hook_unref argument types not handled *)
+val hostname_is_ascii_encoded:
+string -> bool
+
+val hostname_is_ip_address:
+string -> bool
+
+val hostname_is_non_ascii:
+string -> bool
+
+(* Not implemented g_hostname_to_ascii return type not handled *)
+(* Not implemented g_hostname_to_unicode return type not handled *)
+(* Not implemented g_iconv argument types not handled *)
+(* Not implemented g_idle_add_full argument types not handled *)
+val idle_remove_by_data:
+unit -> bool
+
+(* Not implemented g_idle_source_new return type not handled *)
+val int64_equal:
+unit -> unit -> bool
+
+val int64_hash:
+unit -> Unsigned.uint32
+
+val int_equal:
+unit -> unit -> bool
+
+val int_hash:
+unit -> Unsigned.uint32
+
+val intern_static_string:
+string -> string
+
+val intern_string:
+string -> string
+
+(* Not implemented g_io_add_watch_full argument types not handled *)
+(* Not implemented g_io_channel_error_from_errno return type not handled *)
+val io_channel_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_io_create_watch argument types not handled *)
+val key_file_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_listenv return type not handled *)
+(* Not implemented g_locale_from_utf8 argument types not handled *)
+(* Not implemented g_locale_to_utf8 argument types not handled *)
+(* Not implemented g_log_default_handler argument types not handled *)
+val log_remove_handler:
+string -> Unsigned.uint32 -> unit
+
+(* Not implemented g_log_set_always_fatal argument types not handled *)
+(* Not implemented g_log_set_fatal_mask argument types not handled *)
+(* Not implemented g_log_set_handler_full argument types not handled *)
+(* Not implemented g_log_set_writer_func argument types not handled *)
+(* Not implemented g_log_structured_array argument types not handled *)
+(* Not implemented g_log_variant argument types not handled *)
+(* Not implemented g_log_writer_default argument types not handled *)
+(* Not implemented g_log_writer_format_fields argument types not handled *)
+val log_writer_is_journald:
+int32 -> bool
+
+(* Not implemented g_log_writer_journald argument types not handled *)
+(* Not implemented g_log_writer_standard_streams argument types not handled *)
+val log_writer_supports_color:
+int32 -> bool
+
+(* Not implemented g_main_context_default return type not handled *)
+(* Not implemented g_main_context_get_thread_default return type not handled *)
+(* Not implemented g_main_context_ref_thread_default return type not handled *)
+(* Not implemented g_main_current_source return type not handled *)
+val main_depth:
+ -> int32
+
+val malloc:
+Unsigned.uint64 -> unit
+
+val malloc0:
+Unsigned.uint64 -> unit
+
+val malloc0_n:
+Unsigned.uint64 -> Unsigned.uint64 -> unit
+
+val malloc_n:
+Unsigned.uint64 -> Unsigned.uint64 -> unit
+
+val markup_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_markup_escape_text return type not handled *)
+val mem_is_system_malloc:
+ -> bool
+
+val mem_profile:
+ -> unit
+
+(* Not implemented g_mem_set_vtable argument types not handled *)
+val memdup:
+unit -> Unsigned.uint32 -> unit
+
+val mkdir_with_parents:
+string -> int32 -> int32
+
+val nullify_pointer:
+unit -> unit
+
+val on_error_query:
+string -> unit
+
+val on_error_stack_trace:
+string -> unit
+
+val once_init_enter:
+unit -> bool
+
+val once_init_leave:
+unit -> Unsigned.uint64 -> unit
+
+val option_error_quark:
+ -> Unsigned.uint32
+
+val parse_debug_string:
+string -> Array.t structure -> Unsigned.uint32 -> Unsigned.uint32
+
+(* Not implemented g_path_get_basename return type not handled *)
+(* Not implemented g_path_get_dirname return type not handled *)
+val path_is_absolute:
+string -> bool
+
+val path_skip_root:
+string -> string
+
+(* Not implemented g_pattern_match argument types not handled *)
+val pattern_match_simple:
+string -> string -> bool
+
+(* Not implemented g_pattern_match_string argument types not handled *)
+val pointer_bit_lock:
+unit -> int32 -> unit
+
+val pointer_bit_trylock:
+unit -> int32 -> bool
+
+val pointer_bit_unlock:
+unit -> int32 -> unit
+
+(* Not implemented g_poll argument types not handled *)
+(* Not implemented g_propagate_error argument types not handled *)
+val quark_from_static_string:
+string -> Unsigned.uint32
+
+val quark_from_string:
+string -> Unsigned.uint32
+
+val quark_to_string:
+Unsigned.uint32 -> string
+
+val quark_try_string:
+string -> Unsigned.uint32
+
+val random_double:
+ -> float
+
+val random_double_range:
+float -> float -> float
+
+val random_int:
+ -> Unsigned.uint32
+
+val random_int_range:
+int32 -> int32 -> int32
+
+val random_set_seed:
+Unsigned.uint32 -> unit
+
+val realloc:
+unit -> Unsigned.uint64 -> unit
+
+val realloc_n:
+unit -> Unsigned.uint64 -> Unsigned.uint64 -> unit
+
+(* Not implemented g_regex_check_replacement argument types not handled *)
+val regex_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_regex_escape_nul return type not handled *)
+(* Not implemented g_regex_escape_string return type not handled *)
+(* Not implemented g_regex_match_simple argument types not handled *)
+(* Not implemented g_regex_split_simple argument types not handled *)
+val reload_user_special_dirs_cache:
+ -> unit
+
+val rmdir:
+string -> int32
+
+(* Not implemented g_sequence_get argument types not handled *)
+(* Not implemented g_sequence_move argument types not handled *)
+(* Not implemented g_sequence_move_range argument types not handled *)
+(* Not implemented g_sequence_remove argument types not handled *)
+(* Not implemented g_sequence_remove_range argument types not handled *)
+(* Not implemented g_sequence_set argument types not handled *)
+(* Not implemented g_sequence_swap argument types not handled *)
+val set_application_name:
+string -> unit
+
+(* Not implemented g_set_error_literal argument types not handled *)
+val set_prgname:
+string -> unit
+
+val setenv:
+string -> string -> bool -> bool
+
+val shell_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_shell_parse_argv argument types not handled *)
+(* Not implemented g_shell_quote return type not handled *)
+(* Not implemented g_shell_unquote return type not handled *)
+val slice_alloc:
+Unsigned.uint64 -> unit
+
+val slice_alloc0:
+Unsigned.uint64 -> unit
+
+val slice_copy:
+Unsigned.uint64 -> unit -> unit
+
+val slice_free1:
+Unsigned.uint64 -> unit -> unit
+
+val slice_free_chain_with_offset:
+Unsigned.uint64 -> unit -> Unsigned.uint64 -> unit
+
+(* Not implemented g_slice_get_config argument types not handled *)
+(* Not implemented g_slice_get_config_state argument types not handled *)
+(* Not implemented g_slice_set_config argument types not handled *)
+val source_remove:
+Unsigned.uint32 -> bool
+
+(* Not implemented g_source_remove_by_funcs_user_data argument types not handled *)
+val source_remove_by_user_data:
+unit -> bool
+
+val source_set_name_by_id:
+Unsigned.uint32 -> string -> unit
+
+val spaced_primes_closest:
+Unsigned.uint32 -> Unsigned.uint32
+
+(* Not implemented g_spawn_async argument types not handled *)
+(* Not implemented g_spawn_async_with_pipes argument types not handled *)
+val spawn_check_exit_status:
+int32 -> bool
+
+val spawn_close_pid:
+int32 -> unit
+
+val spawn_command_line_async:
+string -> bool
+
+(* Not implemented g_spawn_command_line_sync argument types not handled *)
+val spawn_error_quark:
+ -> Unsigned.uint32
+
+val spawn_exit_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_spawn_sync argument types not handled *)
+(* Not implemented g_stpcpy return type not handled *)
+val str_equal:
+unit -> unit -> bool
+
+val str_has_prefix:
+string -> string -> bool
+
+val str_has_suffix:
+string -> string -> bool
+
+val str_hash:
+unit -> Unsigned.uint32
+
+val str_is_ascii:
+string -> bool
+
+val str_match_string:
+string -> string -> bool -> bool
+
+(* Not implemented g_str_to_ascii return type not handled *)
+(* Not implemented g_str_tokenize_and_fold argument types not handled *)
+(* Not implemented g_strcanon return type not handled *)
+val strcasecmp:
+string -> string -> int32
+
+(* Not implemented g_strchomp return type not handled *)
+(* Not implemented g_strchug return type not handled *)
+val strcmp0:
+string -> string -> int32
+
+(* Not implemented g_strcompress return type not handled *)
+(* Not implemented g_strdelimit return type not handled *)
+(* Not implemented g_strdown return type not handled *)
+(* Not implemented g_strdup return type not handled *)
+val strerror:
+int32 -> string
+
+(* Not implemented g_strescape return type not handled *)
+val strfreev:
+string -> unit
+
+(* Not implemented g_string_new return type not handled *)
+(* Not implemented g_string_new_len return type not handled *)
+(* Not implemented g_string_sized_new return type not handled *)
+val strip_context:
+string -> string -> string
+
+(* Not implemented g_strjoinv return type not handled *)
+val strlcat:
+string -> string -> Unsigned.uint64 -> Unsigned.uint64
+
+val strlcpy:
+string -> string -> Unsigned.uint64 -> Unsigned.uint64
+
+val strncasecmp:
+string -> string -> Unsigned.uint32 -> int32
+
+(* Not implemented g_strndup return type not handled *)
+(* Not implemented g_strnfill return type not handled *)
+(* Not implemented g_strreverse return type not handled *)
+(* Not implemented g_strrstr return type not handled *)
+(* Not implemented g_strrstr_len return type not handled *)
+val strsignal:
+int32 -> string
+
+(* Not implemented g_strstr_len return type not handled *)
+(* Not implemented g_strtod argument types not handled *)
+(* Not implemented g_strup return type not handled *)
+val strv_contains:
+string -> string -> bool
+
+(* Not implemented g_strv_get_type return type not handled *)
+val strv_length:
+string -> Unsigned.uint32
+
+(* Not implemented g_test_add_data_func argument types not handled *)
+(* Not implemented g_test_add_data_func_full argument types not handled *)
+(* Not implemented g_test_add_func argument types not handled *)
+val test_assert_expected_messages_internal:
+string -> string -> int32 -> string -> unit
+
+val test_bug:
+string -> unit
+
+val test_bug_base:
+string -> unit
+
+(* Not implemented g_test_expect_message argument types not handled *)
+val test_fail:
+ -> unit
+
+val test_failed:
+ -> bool
+
+(* Not implemented g_test_get_dir argument types not handled *)
+val test_incomplete:
+string -> unit
+
+(* Not implemented g_test_log_type_name argument types not handled *)
+(* Not implemented g_test_queue_destroy argument types not handled *)
+val test_queue_free:
+unit -> unit
+
+val test_rand_double:
+ -> float
+
+val test_rand_double_range:
+float -> float -> float
+
+val test_rand_int:
+ -> int32
+
+val test_rand_int_range:
+int32 -> int32 -> int32
+
+val test_run:
+ -> int32
+
+(* Not implemented g_test_run_suite argument types not handled *)
+val test_set_nonfatal_assertions:
+ -> unit
+
+val test_skip:
+string -> unit
+
+val test_subprocess:
+ -> bool
+
+val test_timer_elapsed:
+ -> float
+
+val test_timer_last:
+ -> float
+
+val test_timer_start:
+ -> unit
+
+val test_trap_assertions:
+string -> string -> int32 -> string -> Unsigned.uint64 -> string -> unit
+
+(* Not implemented g_test_trap_fork argument types not handled *)
+val test_trap_has_passed:
+ -> bool
+
+val test_trap_reached_timeout:
+ -> bool
+
+(* Not implemented g_test_trap_subprocess argument types not handled *)
+val thread_error_quark:
+ -> Unsigned.uint32
+
+val thread_exit:
+unit -> unit
+
+val thread_pool_get_max_idle_time:
+ -> Unsigned.uint32
+
+val thread_pool_get_max_unused_threads:
+ -> int32
+
+val thread_pool_get_num_unused_threads:
+ -> Unsigned.uint32
+
+val thread_pool_set_max_idle_time:
+Unsigned.uint32 -> unit
+
+val thread_pool_set_max_unused_threads:
+int32 -> unit
+
+val thread_pool_stop_unused_threads:
+ -> unit
+
+(* Not implemented g_thread_self return type not handled *)
+val thread_yield:
+ -> unit
+
+(* Not implemented g_time_val_from_iso8601 argument types not handled *)
+(* Not implemented g_timeout_add_full argument types not handled *)
+(* Not implemented g_timeout_add_seconds_full argument types not handled *)
+(* Not implemented g_timeout_source_new return type not handled *)
+(* Not implemented g_timeout_source_new_seconds return type not handled *)
+(* Not implemented g_trash_stack_height argument types not handled *)
+(* Not implemented g_trash_stack_peek argument types not handled *)
+(* Not implemented g_trash_stack_pop argument types not handled *)
+(* Not implemented g_trash_stack_push argument types not handled *)
+val try_malloc:
+Unsigned.uint64 -> unit
+
+val try_malloc0:
+Unsigned.uint64 -> unit
+
+val try_malloc0_n:
+Unsigned.uint64 -> Unsigned.uint64 -> unit
+
+val try_malloc_n:
+Unsigned.uint64 -> Unsigned.uint64 -> unit
+
+val try_realloc:
+unit -> Unsigned.uint64 -> unit
+
+val try_realloc_n:
+unit -> Unsigned.uint64 -> Unsigned.uint64 -> unit
+
+(* Not implemented g_ucs4_to_utf16 argument types not handled *)
+(* Not implemented g_ucs4_to_utf8 argument types not handled *)
+(* Not implemented g_unichar_break_type argument types not handled *)
+(* Not implemented g_unichar_combining_class argument types not handled *)
+(* Not implemented g_unichar_compose argument types not handled *)
+(* Not implemented g_unichar_decompose argument types not handled *)
+(* Not implemented g_unichar_digit_value argument types not handled *)
+(* Not implemented g_unichar_fully_decompose argument types not handled *)
+(* Not implemented g_unichar_get_mirror_char argument types not handled *)
+(* Not implemented g_unichar_get_script argument types not handled *)
+(* Not implemented g_unichar_isalnum argument types not handled *)
+(* Not implemented g_unichar_isalpha argument types not handled *)
+(* Not implemented g_unichar_iscntrl argument types not handled *)
+(* Not implemented g_unichar_isdefined argument types not handled *)
+(* Not implemented g_unichar_isdigit argument types not handled *)
+(* Not implemented g_unichar_isgraph argument types not handled *)
+(* Not implemented g_unichar_islower argument types not handled *)
+(* Not implemented g_unichar_ismark argument types not handled *)
+(* Not implemented g_unichar_isprint argument types not handled *)
+(* Not implemented g_unichar_ispunct argument types not handled *)
+(* Not implemented g_unichar_isspace argument types not handled *)
+(* Not implemented g_unichar_istitle argument types not handled *)
+(* Not implemented g_unichar_isupper argument types not handled *)
+(* Not implemented g_unichar_iswide argument types not handled *)
+(* Not implemented g_unichar_iswide_cjk argument types not handled *)
+(* Not implemented g_unichar_isxdigit argument types not handled *)
+(* Not implemented g_unichar_iszerowidth argument types not handled *)
+(* Not implemented g_unichar_to_utf8 argument types not handled *)
+(* Not implemented g_unichar_tolower argument types not handled *)
+(* Not implemented g_unichar_totitle argument types not handled *)
+(* Not implemented g_unichar_toupper argument types not handled *)
+(* Not implemented g_unichar_type argument types not handled *)
+(* Not implemented g_unichar_validate argument types not handled *)
+(* Not implemented g_unichar_xdigit_value argument types not handled *)
+(* Not implemented g_unicode_canonical_decomposition argument types not handled *)
+(* Not implemented g_unicode_canonical_ordering argument types not handled *)
+(* Not implemented g_unicode_script_from_iso15924 return type not handled *)
+(* Not implemented g_unicode_script_to_iso15924 argument types not handled *)
+val unix_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_unix_fd_add_full argument types not handled *)
+(* Not implemented g_unix_fd_source_new argument types not handled *)
+val unix_open_pipe:
+int32 -> int32 -> bool
+
+val unix_set_fd_nonblocking:
+int32 -> bool -> bool
+
+(* Not implemented g_unix_signal_add_full argument types not handled *)
+(* Not implemented g_unix_signal_source_new return type not handled *)
+val unlink:
+string -> int32
+
+val unsetenv:
+string -> unit
+
+(* Not implemented g_uri_escape_string return type not handled *)
+(* Not implemented g_uri_list_extract_uris return type not handled *)
+(* Not implemented g_uri_parse_scheme return type not handled *)
+(* Not implemented g_uri_unescape_segment return type not handled *)
+(* Not implemented g_uri_unescape_string return type not handled *)
+val usleep:
+Unsigned.uint64 -> unit
+
+(* Not implemented g_utf16_to_ucs4 argument types not handled *)
+(* Not implemented g_utf16_to_utf8 argument types not handled *)
+(* Not implemented g_utf8_casefold return type not handled *)
+val utf8_collate:
+string -> string -> int32
+
+(* Not implemented g_utf8_collate_key return type not handled *)
+(* Not implemented g_utf8_collate_key_for_filename return type not handled *)
+(* Not implemented g_utf8_find_next_char return type not handled *)
+(* Not implemented g_utf8_find_prev_char return type not handled *)
+(* Not implemented g_utf8_get_char return type not handled *)
+(* Not implemented g_utf8_get_char_validated return type not handled *)
+(* Not implemented g_utf8_make_valid return type not handled *)
+(* Not implemented g_utf8_normalize argument types not handled *)
+(* Not implemented g_utf8_offset_to_pointer return type not handled *)
+val utf8_pointer_to_offset:
+string -> string -> int64
+
+(* Not implemented g_utf8_prev_char return type not handled *)
+(* Not implemented g_utf8_strchr argument types not handled *)
+(* Not implemented g_utf8_strdown return type not handled *)
+val utf8_strlen:
+string -> int64 -> int64
+
+(* Not implemented g_utf8_strncpy return type not handled *)
+(* Not implemented g_utf8_strrchr argument types not handled *)
+(* Not implemented g_utf8_strreverse return type not handled *)
+(* Not implemented g_utf8_strup return type not handled *)
+(* Not implemented g_utf8_substring return type not handled *)
+(* Not implemented g_utf8_to_ucs4 argument types not handled *)
+(* Not implemented g_utf8_to_ucs4_fast argument types not handled *)
+(* Not implemented g_utf8_to_utf16 argument types not handled *)
+(* Not implemented g_utf8_validate argument types not handled *)
+val uuid_string_is_valid:
+string -> bool
+
+(* Not implemented g_uuid_string_random return type not handled *)
+(* Not implemented g_variant_get_gtype return type not handled *)
+val variant_is_object_path:
+string -> bool
+
+val variant_is_signature:
+string -> bool
+
+(* Not implemented g_variant_parse argument types not handled *)
+(* Not implemented g_variant_parse_error_print_context return type not handled *)
+val variant_parse_error_quark:
+ -> Unsigned.uint32
+
+val variant_parser_get_error_quark:
+ -> Unsigned.uint32
+
+(* Not implemented g_variant_type_checked_ return type not handled *)
+val variant_type_string_is_valid:
+string -> bool
+
+(* Not implemented g_variant_type_string_scan argument types not handled *)
