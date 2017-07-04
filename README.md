@@ -297,9 +297,11 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 
 ## TODOS :
 
+  * Write down the process to function bindings generation then implement it.
+  * Fix the issue with empty lines
   * Create test in Samples/GLib/tests
     * for enum and flags
-
+  * Move the explanations in the Wiki of github and clean the README.
   * test Windows build with appveyor:
     * install MSYS2
     * install gobject-introspection
