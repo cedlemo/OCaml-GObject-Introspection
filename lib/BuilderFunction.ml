@@ -48,5 +48,15 @@ let get_return_types callable =
 
 let append_ctypes_function_bindings name info (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
-  Printf.fprintf mli "(* %s *)" symbol;
-  Printf.fprintf ml "(* %s *)" symbol
+  let callable = GIFunctionInfo.to_callableinfo info in
+  match get_arguments_types callable with
+  | None -> Printf.fprintf mli "(* Not implemented %s argument types not handled *)" symbol
+  | Some args -> match get_return_types callable with
+    | None -> Printf.fprintf mli "(* Not implemented %s return type not handled *)" symbol
+    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli "val %s:\n" name;
+      Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
+      Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+      Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      Printf.fprintf mli " -> %s\n" ocaml_ret;
+      Printf.fprintf ml " @-> returning %s)\n" ctypes_ret
+
