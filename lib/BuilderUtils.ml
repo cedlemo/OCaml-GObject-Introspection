@@ -79,6 +79,32 @@ let type_tag_to_ctypes_typ_string tag =
   | GITypes.Error -> "Error.t_typ"
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
 
+let type_tag_to_ocaml_type_string tag =
+  match tag with
+  | GITypes.Void -> "unit"
+  | GITypes.Boolean -> "bool"
+  | GITypes.Int8 -> "int"
+  | GITypes.Uint8 -> "Unsigned.uint8"
+  | GITypes.Int16 -> "int"
+  | GITypes.Uint16 -> "Unsigned.uint16"
+  | GITypes.Int32 -> "int32"
+  | GITypes.Uint32 -> "Unsigned.uint32"
+  | GITypes.Int64 -> "int64"
+  | GITypes.Uint64 -> "Unsigned.uint64"
+  | GITypes.Float -> "float"
+  | GITypes.Double -> "float"
+  | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ""
+  | GITypes.Utf8 -> "string"
+  | GITypes.Filename -> "string"
+  | GITypes.Array -> "Array.t" (* TODO : this is not GArray, this should find out which Array it is*)
+  | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ""
+  | GITypes.GList -> "List.t"
+  | GITypes.GSList -> "SList.t"
+  | GITypes.GHash -> "HashTable.t"
+  | GITypes.Error -> "Error.t"
+  | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
+
+
 let write_open_module descr name =
   Printf.fprintf descr "open %s\n" name
 

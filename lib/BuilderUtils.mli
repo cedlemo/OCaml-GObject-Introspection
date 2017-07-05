@@ -47,6 +47,11 @@ val type_tag_to_ctypes_strings:
 val type_tag_to_ctypes_typ_string:
   GITypes.tag -> string
 
+(** Get the OCaml type representation for a GITypes.tag. For example, if the tag
+    is GITypes.Int8, it will returns "int". *)
+val type_tag_to_ocaml_type_string:
+  GITypes.tag -> string
+
 (** Add an open directives in a file for a module name.*)
 
 val write_open_module:
