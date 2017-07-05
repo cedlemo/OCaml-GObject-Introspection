@@ -47,13 +47,31 @@ let get_return_types callable =
       | GIArgInfo.Nothing -> Some (ocaml_type, ctypes_typ)
       | _ -> None
 
+(* Build function bindings :
+ * - get the GICallableInfo
+ * - find out the numbers of arguments
+ *   - for each argument :
+ *     - get the direction :
+ *       - in
+ *       - out
+ *       - in/out
+ *     - get the transfert method
+ *       - nothing
+ *       - container
+ *       - everything
+ *     - get the GITypeInfo
+ *       - get the Tag (scalar data or complex data)
+ *     - find out if it is a pointer
+ *)
 let append_ctypes_function_bindings name info (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
   let callable = GIFunctionInfo.to_callableinfo info in
   match get_arguments_types callable with
-  | None -> Printf.fprintf mli "(* Not implemented %s argument types not handled *)" symbol
+  | None -> Printf.fprintf mli "(* Not implemented %s argument types not handled *)" symbol;
+    Printf.fprintf ml "(* Not implemented %s argument types not handled *)" symbol
   | Some args -> match get_return_types callable with
-    | None -> Printf.fprintf mli "(* Not implemented %s return type not handled *)" symbol
+    | None -> Printf.fprintf mli "(* Not implemented %s return type not handled *)" symbol;
+      Printf.fprintf ml "(* Not implemented %s argument types not handled *)" symbol
     | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli "val %s:\n" name;
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
