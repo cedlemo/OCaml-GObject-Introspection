@@ -823,7 +823,7 @@ val bit_unlock:
 int32 -> int32 -> unit
 
 val bookmark_file_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_build_filenamev return type not handled *)
 (* Not implemented g_build_pathv return type not handled *)
@@ -846,7 +846,7 @@ Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32 -> string
 (* Not implemented g_child_watch_add_full argument types not handled *)
 (* Not implemented g_child_watch_source_new return type not handled *)
 val clear_error:
- -> unit
+unit -> unit
 
 val close:
 int32 -> bool
@@ -859,7 +859,7 @@ int32 -> bool
 (* Not implemented g_compute_hmac_for_string argument types not handled *)
 (* Not implemented g_convert argument types not handled *)
 val convert_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_convert_with_fallback return type not handled *)
 (* Not implemented g_convert_with_iconv argument types not handled *)
@@ -950,7 +950,7 @@ Array.t structure -> string -> string
 (* Not implemented g_environ_unsetenv return type not handled *)
 (* Not implemented g_file_error_from_errno return type not handled *)
 val file_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_file_get_contents argument types not handled *)
 (* Not implemented g_file_open_tmp argument types not handled *)
@@ -973,7 +973,7 @@ val free:
 unit -> unit
 
 val get_application_name:
- -> string
+unit -> string
 
 (* Not implemented g_get_charset argument types not handled *)
 (* Not implemented g_get_codeset return type not handled *)
@@ -984,53 +984,53 @@ val get_filename_charsets:
 string -> bool
 
 val get_home_dir:
- -> string
+unit -> string
 
 val get_host_name:
- -> string
+unit -> string
 
 val get_language_names:
- -> Array.t structure
+unit -> Array.t structure
 
 (* Not implemented g_get_locale_variants return type not handled *)
 val get_monotonic_time:
- -> int64
+unit -> int64
 
 val get_num_processors:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val get_prgname:
- -> string
+unit -> string
 
 val get_real_name:
- -> string
+unit -> string
 
 val get_real_time:
- -> int64
+unit -> int64
 
 val get_system_config_dirs:
- -> Array.t structure
+unit -> Array.t structure
 
 val get_system_data_dirs:
- -> Array.t structure
+unit -> Array.t structure
 
 val get_tmp_dir:
- -> string
+unit -> string
 
 val get_user_cache_dir:
- -> string
+unit -> string
 
 val get_user_config_dir:
- -> string
+unit -> string
 
 val get_user_data_dir:
- -> string
+unit -> string
 
 val get_user_name:
- -> string
+unit -> string
 
 val get_user_runtime_dir:
- -> string
+unit -> string
 
 (* Not implemented g_get_user_special_dir argument types not handled *)
 val getenv:
@@ -1117,11 +1117,11 @@ string -> string
 (* Not implemented g_io_add_watch_full argument types not handled *)
 (* Not implemented g_io_channel_error_from_errno return type not handled *)
 val io_channel_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_io_create_watch argument types not handled *)
 val key_file_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_listenv return type not handled *)
 (* Not implemented g_locale_from_utf8 argument types not handled *)
@@ -1151,7 +1151,7 @@ int32 -> bool
 (* Not implemented g_main_context_ref_thread_default return type not handled *)
 (* Not implemented g_main_current_source return type not handled *)
 val main_depth:
- -> int32
+unit -> int32
 
 val malloc:
 Unsigned.uint64 -> unit
@@ -1166,14 +1166,14 @@ val malloc_n:
 Unsigned.uint64 -> Unsigned.uint64 -> unit
 
 val markup_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_markup_escape_text return type not handled *)
 val mem_is_system_malloc:
- -> bool
+unit -> bool
 
 val mem_profile:
- -> unit
+unit -> unit
 
 (* Not implemented g_mem_set_vtable argument types not handled *)
 val memdup:
@@ -1198,7 +1198,7 @@ val once_init_leave:
 unit -> Unsigned.uint64 -> unit
 
 val option_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val parse_debug_string:
 string -> Array.t structure -> Unsigned.uint32 -> Unsigned.uint32
@@ -1240,13 +1240,13 @@ val quark_try_string:
 string -> Unsigned.uint32
 
 val random_double:
- -> float
+unit -> float
 
 val random_double_range:
 float -> float -> float
 
 val random_int:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val random_int_range:
 int32 -> int32 -> int32
@@ -1262,14 +1262,14 @@ unit -> Unsigned.uint64 -> Unsigned.uint64 -> unit
 
 (* Not implemented g_regex_check_replacement argument types not handled *)
 val regex_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_regex_escape_nul return type not handled *)
 (* Not implemented g_regex_escape_string return type not handled *)
 (* Not implemented g_regex_match_simple argument types not handled *)
 (* Not implemented g_regex_split_simple argument types not handled *)
 val reload_user_special_dirs_cache:
- -> unit
+unit -> unit
 
 val rmdir:
 string -> int32
@@ -1292,7 +1292,7 @@ val setenv:
 string -> string -> bool -> bool
 
 val shell_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_shell_parse_argv argument types not handled *)
 (* Not implemented g_shell_quote return type not handled *)
@@ -1341,10 +1341,10 @@ string -> bool
 
 (* Not implemented g_spawn_command_line_sync argument types not handled *)
 val spawn_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val spawn_exit_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_spawn_sync argument types not handled *)
 (* Not implemented g_stpcpy return type not handled *)
@@ -1436,10 +1436,10 @@ string -> unit
 
 (* Not implemented g_test_expect_message argument types not handled *)
 val test_fail:
- -> unit
+unit -> unit
 
 val test_failed:
- -> bool
+unit -> bool
 
 (* Not implemented g_test_get_dir argument types not handled *)
 val test_incomplete:
@@ -1451,64 +1451,64 @@ val test_queue_free:
 unit -> unit
 
 val test_rand_double:
- -> float
+unit -> float
 
 val test_rand_double_range:
 float -> float -> float
 
 val test_rand_int:
- -> int32
+unit -> int32
 
 val test_rand_int_range:
 int32 -> int32 -> int32
 
 val test_run:
- -> int32
+unit -> int32
 
 (* Not implemented g_test_run_suite argument types not handled *)
 val test_set_nonfatal_assertions:
- -> unit
+unit -> unit
 
 val test_skip:
 string -> unit
 
 val test_subprocess:
- -> bool
+unit -> bool
 
 val test_timer_elapsed:
- -> float
+unit -> float
 
 val test_timer_last:
- -> float
+unit -> float
 
 val test_timer_start:
- -> unit
+unit -> unit
 
 val test_trap_assertions:
 string -> string -> int32 -> string -> Unsigned.uint64 -> string -> unit
 
 (* Not implemented g_test_trap_fork argument types not handled *)
 val test_trap_has_passed:
- -> bool
+unit -> bool
 
 val test_trap_reached_timeout:
- -> bool
+unit -> bool
 
 (* Not implemented g_test_trap_subprocess argument types not handled *)
 val thread_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val thread_exit:
 unit -> unit
 
 val thread_pool_get_max_idle_time:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val thread_pool_get_max_unused_threads:
- -> int32
+unit -> int32
 
 val thread_pool_get_num_unused_threads:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val thread_pool_set_max_idle_time:
 Unsigned.uint32 -> unit
@@ -1517,11 +1517,11 @@ val thread_pool_set_max_unused_threads:
 int32 -> unit
 
 val thread_pool_stop_unused_threads:
- -> unit
+unit -> unit
 
 (* Not implemented g_thread_self return type not handled *)
 val thread_yield:
- -> unit
+unit -> unit
 
 (* Not implemented g_time_val_from_iso8601 argument types not handled *)
 (* Not implemented g_timeout_add_full argument types not handled *)
@@ -1589,7 +1589,7 @@ unit -> Unsigned.uint64 -> Unsigned.uint64 -> unit
 (* Not implemented g_unicode_script_from_iso15924 return type not handled *)
 (* Not implemented g_unicode_script_to_iso15924 argument types not handled *)
 val unix_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_unix_fd_add_full argument types not handled *)
 (* Not implemented g_unix_fd_source_new argument types not handled *)
@@ -1662,10 +1662,10 @@ string -> bool
 (* Not implemented g_variant_parse argument types not handled *)
 (* Not implemented g_variant_parse_error_print_context return type not handled *)
 val variant_parse_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 val variant_parser_get_error_quark:
- -> Unsigned.uint32
+unit -> Unsigned.uint32
 
 (* Not implemented g_variant_type_checked_ return type not handled *)
 val variant_type_string_is_valid:
