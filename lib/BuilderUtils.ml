@@ -54,6 +54,37 @@ let type_tag_to_ctypes_strings tag =
   | GITypes.Error -> ("Error.t structure", "Error.t_typ")
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
 
+
+type type_strings = { ocaml : string;
+                       ctypes : string; }
+
+type type_bindings = Not_implemented of string | Types of type_strings
+
+let type_tag_to_type_bindings = function
+  | GITypes.Void -> Types { ocaml = "unit"; ctypes = "void" }
+  | GITypes.Boolean -> Types { ocaml = "bool"; ctypes = "bool"}
+  | GITypes.Int8 -> Types { ocaml = "int"; ctypes = "int8_t"}
+  | GITypes.Uint8 -> Types { ocaml = "Unsigned.uint8"; ctypes = "uint8_t"}
+  | GITypes.Int16 -> Types { ocaml = "int"; ctypes = "int16_t"}
+  | GITypes.Uint16 -> Types { ocaml = "Unsigned.uint16"; ctypes = "uint16_t"}
+  | GITypes.Int32 -> Types { ocaml = "int32"; ctypes = "int32_t"}
+  | GITypes.Uint32 -> Types { ocaml = "Unsigned.uint32"; ctypes = "uint32_t"}
+  | GITypes.Int64 -> Types { ocaml = "int64"; ctypes = "int64_t"}
+  | GITypes.Uint64 -> Types { ocaml = "Unsigned.uint64"; ctypes = "uint64_t"}
+  | GITypes.Float -> Types { ocaml = "float"; ctypes = "float"}
+  | GITypes.Double -> Types { ocaml = "float"; ctypes = "double"}
+  | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Utf8 -> Types { ocaml = "string"; ctypes = "string"}
+  | GITypes.Filename -> Types { ocaml = "string"; ctypes = "string"}
+  | GITypes.Array -> Types { ocaml = "Array.t structure"; ctypes = "Array.t_typ"} (* TODO : this is not GArray, this should find out which Array it is*)
+  | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.GList -> Types { ocaml = "List.t structure"; ctypes = "List.t_typ"}
+  | GITypes.GSList -> Types { ocaml = "SList.t structure"; ctypes = "SList.t_typ"}
+  | GITypes.GHash -> Types { ocaml = "HashTable.t structure"; ctypes = "HashTable.t_typ"}
+  | GITypes.Error -> Types { ocaml = "Error.t structure"; ctypes = "Error.t_typ"}
+  | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
+
+
 let type_tag_to_ctypes_typ_string tag =
   match tag with
   | GITypes.Void -> "void"
@@ -104,7 +135,15 @@ let type_tag_to_ocaml_type_string tag =
   | GITypes.Error -> "Error.t"
   | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
 
-
+(* let type_info_to_bindings_types type_info =
+  let tag = GITypeInfo.get_tag type_info in
+  match type_tag_to_ocaml_type_string tag with
+   | None -> None
+   | Some ocaml_type -> match type_tag_to_ctypes_typ_string tag with
+   | None -> None
+   | Some ctypes_typ -> check_is_pointer type_info (ocaml_type, ctypes_typ) |>
+   check_is_optional type_info
+   *)
 let write_open_module descr name =
   Printf.fprintf descr "open %s\n" name
 
