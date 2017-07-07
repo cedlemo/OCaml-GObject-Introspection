@@ -53,7 +53,6 @@ val type_tag_to_ocaml_type_string:
   GITypes.tag -> string
 
 (** Add an open directives in a file for a module name.*)
-
 val write_open_module:
   Pervasives.out_channel -> string -> unit
 
