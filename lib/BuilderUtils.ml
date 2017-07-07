@@ -58,9 +58,9 @@ let type_tag_to_ctypes_strings tag =
 type type_strings = { ocaml : string;
                       ctypes : string }
 
-type type_bindings = Not_implemented of string | Types of type_strings
+type bindings_types = Not_implemented of string | Types of type_strings
 
-let type_tag_to_type_bindings = function
+let type_tag_to_bindings_types = function
   | GITypes.Void -> Types { ocaml = "unit"; ctypes = "void" }
   | GITypes.Boolean -> Types { ocaml = "bool"; ctypes = "bool"}
   | GITypes.Int8 -> Types { ocaml = "int"; ctypes = "int8_t"}

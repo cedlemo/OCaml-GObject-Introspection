@@ -57,12 +57,12 @@ type type_strings = { ocaml : string;
                       ctypes : string }
 
 (** Type strings representation for GITypes tag both implemented or not. *)
-type type_bindings = Not_implemented of string | Types of type_strings
+type bindings_types = Not_implemented of string | Types of type_strings
 
 (** Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
     if implemented. Returns Not_implemented with the tag name if not implemented. *)
-val type_tag_to_type_bindings:
-  GITypes.tag -> type_bindings
+val type_tag_to_bindings_types:
+  GITypes.tag -> bindings_types
 
 (** Add an open directives in a file for a module name.*)
 val write_open_module:
