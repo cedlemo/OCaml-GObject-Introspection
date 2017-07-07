@@ -56,7 +56,7 @@ let type_tag_to_ctypes_strings tag =
 
 
 type type_strings = { ocaml : string;
-                       ctypes : string; }
+                      ctypes : string }
 
 type type_bindings = Not_implemented of string | Types of type_strings
 
