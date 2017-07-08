@@ -29,11 +29,14 @@ let get_arguments_types callable =
          if index = n then Some (List.rev args_types)
          else let arg = GICallableInfo.get_arg callable index in
            match GIArgInfo.get_direction arg with
-           | GIArgInfo.In -> let type_info = GIArgInfo.get_type arg in
-             let tag = GITypeInfo.get_tag type_info in
-             let (ocaml_type, ctypes_typ) = type_tag_to_ctypes_strings tag in
-             if ocaml_type = "" || ctypes_typ = "" then None
-             else parse_args (index + 1) ((ocaml_type, ctypes_typ) :: args_types)
+           | GIArgInfo.In -> (
+               let type_info = GIArgInfo.get_type arg in
+               let tag = GITypeInfo.get_tag type_info in
+               match BuilderUtils.type_tag_to_bindings_types tag with
+               | BuilderUtils.Not_implemented tag_name -> None
+               | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+                 parse_args (index + 1) ((ocaml_type, ctypes_typ) :: args_types)
+             )
            | _ -> None
     in parse_args 0 []
 
