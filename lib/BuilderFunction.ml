@@ -18,6 +18,14 @@
 
 open BuilderUtils
 
+type argument = | Arg_in of BuilderUtils.type_strings
+                | Arg_out of { pre : string; types : BuilderUtils.type_strings; post : string }
+                | Arg_in_out of { pre : string; types : BuilderUtils.type_strings; post : string }
+
+type arguments = | Not_implemented of string
+                 | List of argument list
+
+
 (* Returns None if there is an out or in/out argument,
  * else returns (string list, string list) whch correspond to
  * the ocaml types of the args for the mli file and the Ctypes for
