@@ -86,14 +86,17 @@ let get_values_and_variants info =
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
   let enum_type_name = String.lowercase_ascii enum_name in
-  let tags = GIEnumInfo.get_storage_type info in
-  let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-  let values_and_variants = get_values_and_variants info in
-  append_enum_type enum_type_name values_and_variants mli;
-  append_enum_type enum_type_name values_and_variants ml;
-  append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_enum_view enum_type_name ctypes_typ (mli, ml)
+  let tag = GIEnumInfo.get_storage_type info in
+  match BuilderUtils.type_tag_to_bindings_types tag with
+  | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
+    Printf.fprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
+  | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
+    let values_and_variants = get_values_and_variants info in
+    append_enum_type enum_type_name values_and_variants mli;
+    append_enum_type enum_type_name values_and_variants ml;
+    append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+    append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+    append_enum_view enum_type_name ctypes_typ (mli, ml)
 
 let append_flags_types enum_type_name values_and_variants descr =
   Printf.fprintf descr "type %s = " enum_type_name;
@@ -138,13 +141,16 @@ let append_flags_view enum_type_name ctypes_typ (mli, ml) =
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
   let enum_type_name = String.lowercase_ascii enum_name in
-  let tags = GIEnumInfo.get_storage_type info in
-  let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-  let values_and_variants = get_values_and_variants info in
-  append_flags_types enum_type_name values_and_variants mli;
-  append_flags_types enum_type_name values_and_variants ml;
-  append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-  append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml);
-  append_flags_view enum_type_name ctypes_typ (mli, ml)
+  let tag = GIEnumInfo.get_storage_type info in
+  match BuilderUtils.type_tag_to_bindings_types tag with
+  | Not_implemented tag_name -> Printf.fprintf mli "(* TODO flags %s : %s tag not implemented *)" enum_name tag_name;
+    Printf.fprintf ml "(* TODO flags %s : %s tag not implemented *)" enum_name tag_name
+  | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
+    let values_and_variants = get_values_and_variants info in
+    append_flags_types enum_type_name values_and_variants mli;
+    append_flags_types enum_type_name values_and_variants ml;
+    append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+    append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+    append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
+    append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml);
+    append_flags_view enum_type_name ctypes_typ (mli, ml)
