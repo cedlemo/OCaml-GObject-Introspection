@@ -77,10 +77,64 @@ Transforms a GITypes.tag to the corresponding types for the mli file and
 Get the Ctypes typ representation of a GITypes.tag. For example, if the tag
     is GITypes.Int8, it will returns "int8_t".<br>
 </div>
-<br>
-Add an open directives in a file for a module name.<br>
 
-<pre><span id="VALwrite_open_module"><span class="keyword">val</span> write_open_module</span> : <code class="type">Pervasives.out_channel -> string -> unit</code></pre>
+<pre><span id="VALtype_tag_to_ocaml_type_string"><span class="keyword">val</span> type_tag_to_ocaml_type_string</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> string</code></pre><div class="info ">
+Get the OCaml type representation for a GITypes.tag. For example, if the tag
+    is GITypes.Int8, it will returns "int".<br>
+</div>
+
+<pre><code><span id="TYPEtype_strings"><span class="keyword">type</span> <code class="type"></code>type_strings</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtype_strings.ocaml">ocaml</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtype_strings.ctypes">ctypes</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr></table>
+}
+
+<div class="info ">
+Type strings representation used in the bindings for a GITypes tag.<br>
+</div>
+
+
+<pre><code><span id="TYPEbindings_types"><span class="keyword">type</span> <code class="type"></code>bindings_types</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbindings_types.Not_implemented"><span class="constructor">Not_implemented</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbindings_types.Types"><span class="constructor">Types</span></span> <span class="keyword">of</span> <code class="type"><a href="BuilderUtils.html#TYPEtype_strings">type_strings</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Type strings representation for GITypes tag both implemented or not.<br>
+</div>
+
+
+<pre><span id="VALtype_tag_to_bindings_types"><span class="keyword">val</span> type_tag_to_bindings_types</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> <a href="BuilderUtils.html#TYPEbindings_types">bindings_types</a></code></pre><div class="info ">
+Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
+    if implemented. Returns Not_implemented with the tag name if not implemented.<br>
+</div>
+
+<pre><span id="VALwrite_open_module"><span class="keyword">val</span> write_open_module</span> : <code class="type">Pervasives.out_channel -> string -> unit</code></pre><div class="info ">
+Add an open directives in a file for a module name.<br>
+</div>
+
 <pre><span id="VALadd_open_ctypes"><span class="keyword">val</span> add_open_ctypes</span> : <code class="type">Pervasives.out_channel -> unit</code></pre><div class="info ">
 Add the line "open Ctypes\n" in a file.<br>
 </div>

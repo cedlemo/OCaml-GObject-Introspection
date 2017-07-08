@@ -36,9 +36,22 @@
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;argument&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Arg_in</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderUtils</span>.type_strings
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Arg_out</span>&nbsp;<span class="keyword">of</span>&nbsp;{&nbsp;pre&nbsp;:&nbsp;string;&nbsp;types&nbsp;:&nbsp;<span class="constructor">BuilderUtils</span>.type_strings;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;:&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Arg_in_out</span>&nbsp;<span class="keyword">of</span>&nbsp;{&nbsp;pre&nbsp;:&nbsp;string;&nbsp;types&nbsp;:&nbsp;<span class="constructor">BuilderUtils</span>.type_strings;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;:&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;arguments&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Not_implemented</span>&nbsp;<span class="keyword">of</span>&nbsp;string
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">List</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderFunction</span>.argument&nbsp;list
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_arguments_types&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;*&nbsp;string)&nbsp;list&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_return_types&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;string)&nbsp;option
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;append_ctypes_function_bindings&nbsp;:
 &nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>

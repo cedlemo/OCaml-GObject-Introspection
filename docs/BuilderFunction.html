@@ -52,5 +52,60 @@ BuilderFunction : regroups all functions needed to parse and generate the
 </div>
 <hr width="100%">
 
+<pre><code><span id="TYPEargument"><span class="keyword">type</span> <code class="type"></code>argument</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTargument.Arg_in"><span class="constructor">Arg_in</span></span> <span class="keyword">of</span> <code class="type"><a href="BuilderUtils.html#TYPEtype_strings">BuilderUtils.type_strings</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTargument.Arg_out"><span class="constructor">Arg_out</span></span> <span class="keyword">of</span> <code class="type">{<br>        pre : string;<br>        types : <a href="BuilderUtils.html#TYPEtype_strings">BuilderUtils.type_strings</a>;<br>        post : string;<br>     }</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTargument.Arg_in_out"><span class="constructor">Arg_in_out</span></span> <span class="keyword">of</span> <code class="type">{<br>        pre : string;<br>        types : <a href="BuilderUtils.html#TYPEtype_strings">BuilderUtils.type_strings</a>;<br>        post : string;<br>     }</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Each argument of a function can be represented with this type based on the
+    direction of the argument. The Arg_in form is the simpler. The two other forms need to
+    provide in the ml file some pre code and post code for the implementation of
+    the ctypes bindings.<br>
+</div>
+
+
+<pre><code><span id="TYPEarguments"><span class="keyword">type</span> <code class="type"></code>arguments</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarguments.Not_implemented"><span class="constructor">Not_implemented</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarguments.List"><span class="constructor">List</span></span> <span class="keyword">of</span> <code class="type"><a href="BuilderFunction.html#TYPEargument">argument</a> list</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+The set of arguments of a function. The full set of the arguments must be
+    parsed before knowing if we can implement the function hence the Not_implemented
+    variant.<br>
+</div>
+
+
 <pre><span id="VALget_arguments_types"><span class="keyword">val</span> get_arguments_types</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">GICallableInfo.t</a> Ctypes.structure Ctypes.ptr -> (string * string) list option</code></pre>
+<pre><span id="VALget_return_types"><span class="keyword">val</span> get_return_types</span> : <code class="type"><a href="GICallableInfo.html#TYPEt">GICallableInfo.t</a> Ctypes.structure Ctypes.ptr -> (string * string) option</code></pre>
 <pre><span id="VALappend_ctypes_function_bindings"><span class="keyword">val</span> append_ctypes_function_bindings</span> : <code class="type">string -><br>       <a href="GIFunctionInfo.html#TYPEt">GIFunctionInfo.t</a> Ctypes.structure Ctypes.ptr -><br>       Pervasives.out_channel * Pervasives.out_channel -> unit</code></pre></body></html>

@@ -1204,6 +1204,8 @@ Retrieve an arbitrary attribute associated with the return value.
 Obtain the return type of a callable item as a GITypeInfo.
 </div>
 </td></tr>
+<tr><td><a href="BuilderFunction.html#VALget_return_types">get_return_types</a> [<a href="BuilderFunction.html">BuilderFunction</a>]</td>
+<td></td></tr>
 <tr><td><a href="GIArgInfo.html#VALget_scope">get_scope</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIRepository.html#VALget_search_path">get_search_path</a> [<a href="GIRepository.html">GIRepository</a>]</td>
@@ -1796,6 +1798,12 @@ Obtain if the returning true in the signal handler will stop the emission
     of the signal.
 </div>
 </td></tr>
+<tr><td><a href="BuilderUtils.html#VALtype_tag_to_bindings_types">type_tag_to_bindings_types</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td><div class="info">
+Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
+    if implemented.
+</div>
+</td></tr>
 <tr><td><a href="BuilderUtils.html#VALtype_tag_to_ctypes_strings">type_tag_to_ctypes_strings</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
 <td><div class="info">
 Transforms a GITypes.tag to the corresponding types for the mli file and
@@ -1805,6 +1813,11 @@ Transforms a GITypes.tag to the corresponding types for the mli file and
 <tr><td><a href="BuilderUtils.html#VALtype_tag_to_ctypes_typ_string">type_tag_to_ctypes_typ_string</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
 <td><div class="info">
 Get the Ctypes typ representation of a GITypes.tag.
+</div>
+</td></tr>
+<tr><td><a href="BuilderUtils.html#VALtype_tag_to_ocaml_type_string">type_tag_to_ocaml_type_string</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td><div class="info">
+Get the OCaml type representation for a GITypes.tag.
 </div>
 </td></tr>
 <tr><td><a href="GITypeInfo.html#VALtypeinfo">typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>
@@ -1861,7 +1874,10 @@ Get the Ctypes typ representation of a GITypes.tag.
 <td></td></tr>
 <tr><td align="left"><br>W</td></tr>
 <tr><td><a href="BuilderUtils.html#VALwrite_open_module">write_open_module</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Add an open directives in a file for a module name.
+</div>
+</td></tr>
 </table>
 </body>
 </html>
