@@ -52,9 +52,10 @@ let get_return_types callable =
   if GICallableInfo.skip_return callable then Some ("unit", "void")
   else let ret = GICallableInfo.get_return_type callable in
     let tag = GITypeInfo.get_tag ret in
-    let (ocaml_type, ctypes_typ) = type_tag_to_ctypes_strings tag in
-    if ocaml_type = "" || ctypes_typ = "" then None
-    else match GICallableInfo.get_caller_owns callable with
+    match BuilderUtils.type_tag_to_bindings_types tag with
+    | BuilderUtils.Not_implemented tag_name -> None
+    | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+      match GICallableInfo.get_caller_owns callable with
       | GIArgInfo.Nothing -> Some (ocaml_type, ctypes_typ)
       | _ -> None
 
