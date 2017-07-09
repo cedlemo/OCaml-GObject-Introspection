@@ -298,8 +298,6 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 ## TODOS :
 
   * Write down the process to function bindings generation then implement it.
-    * replace BuilderUtils.type_tag_to_ctypes_strings by type_tag_to_bindings_types in BuilderEnum tests
-    * delete old BuilderUtils.type_tag_to_ctypes* forms.
   * Fix the issue with empty lines
   * Create test in Samples/GLib/tests
     * for enum and flags
