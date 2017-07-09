@@ -18,6 +18,7 @@
 
 open TestUtils
 open OUnit2
+open BuilderUtils
 
 let repo = GIRepository.get_default ()
 
@@ -110,10 +111,12 @@ let test_append_enum_of_value_fn test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        let values_and_variants = BuilderEnum.get_values_and_variants info in
+        BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   enum_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer enum_type_of_value_sig enum_type_of_value_travis
@@ -125,10 +128,12 @@ let test_append_enum_to_value_fn test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_to_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        let values_and_variants = BuilderEnum.get_values_and_variants info in
+        BuilderEnum.append_enum_to_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   enum_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer enum_type_to_value_sig enum_type_to_value_travis
@@ -140,9 +145,11 @@ let test_append_enum_view test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      BuilderEnum.append_enum_view enum_type_name ctypes_typ (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        BuilderEnum.append_enum_view enum_type_name ctypes_typ (mli, ml)
   ) in
   enum_test namespace name (fun info ->
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
@@ -275,10 +282,12 @@ let test_append_enum_flags_of_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        let values_and_variants = BuilderEnum.get_values_and_variants info in
+        BuilderEnum.append_enum_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_of_value_sig flags_of_value_travis
@@ -290,10 +299,12 @@ let test_append_enum_flags_to_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_enum_to_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        let values_and_variants = BuilderEnum.get_values_and_variants info in
+        BuilderEnum.append_enum_to_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_to_value_sig flags_to_value_travis
@@ -305,9 +316,11 @@ let test_append_enum_flags_list_to_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      BuilderEnum.append_flags_list_to_value_fn name enum_type_name ocaml_type (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        BuilderEnum.append_flags_list_to_value_fn name enum_type_name ocaml_type (mli, ml)
   ) in
   flags_test namespace name (fun info ->
       test_writing test_ctxt info name writer flags_type_list_to_value_sig flags_type_list_to_value
@@ -318,10 +331,12 @@ let test_append_enum_flags_list_of_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      let values_and_variants = BuilderEnum.get_values_and_variants info in
-      BuilderEnum.append_flags_list_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        let values_and_variants = BuilderEnum.get_values_and_variants info in
+        BuilderEnum.append_flags_list_of_value_fn name enum_type_name ocaml_type values_and_variants (mli, ml)
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value_travis
@@ -333,9 +348,11 @@ let test_append_flags_view test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tags = GIEnumInfo.get_storage_type info in
-      let (ocaml_type, ctypes_typ) = BuilderUtils.type_tag_to_ctypes_strings tags in
-      BuilderEnum.append_flags_view enum_type_name ctypes_typ (mli, ml)
+      let tag = GIEnumInfo.get_storage_type info in
+      match BuilderUtils.type_tag_to_bindings_types tag with
+      | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
+      | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        BuilderEnum.append_flags_view enum_type_name ctypes_typ (mli, ml)
   ) in
   enum_test namespace name (fun info ->
       test_writing test_ctxt info name writer flags_type_view_sig flags_type_view
