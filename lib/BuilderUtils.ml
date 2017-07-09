@@ -16,45 +16,6 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-exception Not_Implemented of string
-
-let raise_not_implemented message =
-  raise (Not_Implemented message)
-
-let raise_tag_not_implemented loc tag =
-  let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
-  raise_not_implemented m
-
-let log_tag_not_implemented loc tag =
-  let m = String.concat ":" ["Not implemented"; loc; GITypes.string_of_tag tag] in
-  print_endline m
-
-let type_tag_to_ctypes_strings tag =
-  match tag with
-  | GITypes.Void -> ("unit", "void")
-  | GITypes.Boolean -> ("bool", "bool")
-  | GITypes.Int8 -> ("int", "int8_t")
-  | GITypes.Uint8 -> ("Unsigned.uint8", "uint8_t")
-  | GITypes.Int16 -> ("int", "int16_t")
-  | GITypes.Uint16 -> ("Unsigned.uint16", "uint16_t")
-  | GITypes.Int32 -> ("int32", "int32_t")
-  | GITypes.Uint32 -> ("Unsigned.uint32", "uint32_t")
-  | GITypes.Int64 -> ("int64", "int64_t")
-  | GITypes.Uint64 -> ("Unsigned.uint64", "uint64_t")
-  | GITypes.Float -> ("float", "float")
-  | GITypes.Double -> ("float", "double")
-  | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
-  | GITypes.Utf8 -> ("string", "string")
-  | GITypes.Filename -> ("string", "string")
-  | GITypes.Array -> ("Array.t structure", "Array.t_typ") (* TODO : this is not GArray, this should find out which Array it is*)
-  | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
-  | GITypes.GList -> ("List.t structure", "List.t_typ")
-  | GITypes.GSList -> ("SList.t structure", "SList.t_typ")
-  | GITypes.GHash -> ("HashTable.t structure", "HashTable.t_typ")
-  | GITypes.Error -> ("Error.t structure", "Error.t_typ")
-  | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ("", "")
-
-
 type type_strings = { ocaml : string;
                       ctypes : string }
 
@@ -84,56 +45,6 @@ let type_tag_to_bindings_types = function
   | GITypes.Error -> Types { ocaml = "Error.t structure"; ctypes = "Error.t_typ"}
   | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
 
-
-let type_tag_to_ctypes_typ_string tag =
-  match tag with
-  | GITypes.Void -> "void"
-  | GITypes.Boolean -> "bool"
-  | GITypes.Int8 -> "int8_t"
-  | GITypes.Uint8 -> "uint8_t"
-  | GITypes.Int16 -> "int16_t"
-  | GITypes.Uint16 -> "uint16_t"
-  | GITypes.Int32 -> "int32_t"
-  | GITypes.Uint32 -> "uint32_t"
-  | GITypes.Int64 -> "int64_t"
-  | GITypes.Uint64 -> "uint64_t"
-  | GITypes.Float -> "float"
-  | GITypes.Double -> "double"
-  | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ""
-  | GITypes.Utf8 -> "string"
-  | GITypes.Filename -> "string"
-  | GITypes.Array -> "Array.t_typ" (* TODO : this is not GArray, this should find out which Array it is*)
-  | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ""
-  | GITypes.GList -> "List.t_typ"
-  | GITypes.GSList -> "SList.t_typ"
-  | GITypes.GHash -> "HashTable.t_typ"
-  | GITypes.Error -> "Error.t_typ"
-  | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
-
-let type_tag_to_ocaml_type_string tag =
-  match tag with
-  | GITypes.Void -> "unit"
-  | GITypes.Boolean -> "bool"
-  | GITypes.Int8 -> "int"
-  | GITypes.Uint8 -> "Unsigned.uint8"
-  | GITypes.Int16 -> "int"
-  | GITypes.Uint16 -> "Unsigned.uint16"
-  | GITypes.Int32 -> "int32"
-  | GITypes.Uint32 -> "Unsigned.uint32"
-  | GITypes.Int64 -> "int64"
-  | GITypes.Uint64 -> "Unsigned.uint64"
-  | GITypes.Float -> "float"
-  | GITypes.Double -> "float"
-  | GITypes.GType as tag -> log_tag_not_implemented __LOC__ tag; ""
-  | GITypes.Utf8 -> "string"
-  | GITypes.Filename -> "string"
-  | GITypes.Array -> "Array.t" (* TODO : this is not GArray, this should find out which Array it is*)
-  | GITypes.Interface as tag -> log_tag_not_implemented __LOC__ tag; ""
-  | GITypes.GList -> "List.t"
-  | GITypes.GSList -> "SList.t"
-  | GITypes.GHash -> "HashTable.t"
-  | GITypes.Error -> "Error.t"
-  | GITypes.Unichar as tag -> log_tag_not_implemented __LOC__ tag; ""
 
 (* let type_info_to_bindings_types type_info =
   let tag = GITypeInfo.get_tag type_info in
