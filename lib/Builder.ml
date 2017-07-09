@@ -119,13 +119,15 @@ let parse_constant_info info source_files =
   | None -> ()
   | Some name -> let info' = GIConstantInfo.from_baseinfo info in
     let type_info = GIConstantInfo.get_type info' in
-    let raise_tag_not_implemented loc tag =
-      let m = String.concat ":" [loc; GITypes.string_of_tag tag] in
-      raise_not_implemented m in
+    let not_implemented_todo_comments tag (mli, ml) =
+      let tag_name = GITypes.string_of_tag tag in
+      Printf.fprintf mli "(* TODO : constant %s type not implemented for %s *)" name tag_name;
+      Printf.fprintf mli "(* TODO : constant %s type not implemented for %s *)" name tag_name
+    in
     let f_descrs = (source_files.mli.descr,
                     source_files.ml.descr) in
     let _ = match GITypeInfo.get_tag type_info with
-    | GITypes.Void as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Void as tag -> not_implemented_todo_comments tag f_descrs
     | GITypes.Boolean ->
       BuilderConstant.append_boolean_constant name info' f_descrs
     | GITypes.Int8 ->
@@ -148,17 +150,17 @@ let parse_constant_info info source_files =
       BuilderConstant.append_float_constant name info' f_descrs
     | GITypes.Double ->
       BuilderConstant.append_double_constant name info' f_descrs
-    | GITypes.GType as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.GType as tag -> not_implemented_todo_comments tag f_descrs
     | GITypes.Utf8 ->
       BuilderConstant.append_string_constant name info' f_descrs
-    | GITypes.Filename as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.Array as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.Interface as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.GList as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.GSList as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.GHash as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.Error as tag -> raise_tag_not_implemented __LOC__ tag
-    | GITypes.Unichar as tag -> raise_tag_not_implemented __LOC__ tag
+    | GITypes.Filename as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.Array as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.Interface as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.GList as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.GSList as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.GHash as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.Error as tag -> not_implemented_todo_comments tag f_descrs
+    | GITypes.Unichar as tag -> not_implemented_todo_comments tag f_descrs
     in
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
