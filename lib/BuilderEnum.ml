@@ -38,7 +38,7 @@ let append_enum_type enum_type_name values_and_variants descr =
   Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
 
 let negative_int_in_parentheses value =
-  if (String.get value 0 = '-') then String.concat "" ["("; value; ")"]
+  if (String.get value 0 = '-') then String.concat " " ["("; value; ")"]
   else value
 
 let value_info_to_enum_type_conversion ocaml_type value =
@@ -124,12 +124,11 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
                      let open %s in\n\
                      let flags = [] in\n" enum_type_name constant_type;
   Printf.fprintf ml "%s\nflags\n" (String.concat "\n" (List.map (fun (x,v) ->
-        String.concat "" ["if ((logand v (of_int ";
+        String.concat " " ["if ((logand v (of_int";
                           negative_int_in_parentheses x;
                           ")) != zero) then ignore (";
                           v;
-                          " :: flags);"]
-
+                          ":: flags );"]
     ) values_and_variants))
 
 let append_flags_view enum_type_name ctypes_typ (mli, ml) =
@@ -143,8 +142,10 @@ let append_ctypes_flags_bindings enum_name info (mli, ml) =
   let enum_type_name = String.lowercase_ascii enum_name in
   let tag = GIEnumInfo.get_storage_type info in
   match BuilderUtils.type_tag_to_bindings_types tag with
-  | Not_implemented tag_name -> Printf.fprintf mli "(* TODO flags %s : %s tag not implemented *)" enum_name tag_name;
-    Printf.fprintf ml "(* TODO flags %s : %s tag not implemented *)" enum_name tag_name
+  | Not_implemented tag_name -> (
+      Printf.fprintf mli "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name;
+      Printf.fprintf ml "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name
+    )
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
     let values_and_variants = get_values_and_variants info in
     append_flags_types enum_type_name values_and_variants mli;
