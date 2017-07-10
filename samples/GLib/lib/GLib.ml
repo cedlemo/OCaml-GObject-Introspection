@@ -35,17 +35,17 @@ let asciitype_to_value = function
 let asciitype_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Alnum :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Alpha :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Cntrl :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Digit :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Graph :: flags);
-if ((logand v (of_int 32)) != zero) then ignore (Lower :: flags);
-if ((logand v (of_int 64)) != zero) then ignore (Print :: flags);
-if ((logand v (of_int 128)) != zero) then ignore (Punct :: flags);
-if ((logand v (of_int 256)) != zero) then ignore (Space :: flags);
-if ((logand v (of_int 512)) != zero) then ignore (Upper :: flags);
-if ((logand v (of_int 1024)) != zero) then ignore (Xdigit :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Alnum :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Alpha :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Cntrl :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Digit :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Graph :: flags );
+if ((logand v (of_int 32 )) != zero) then ignore ( Lower :: flags );
+if ((logand v (of_int 64 )) != zero) then ignore ( Print :: flags );
+if ((logand v (of_int 128 )) != zero) then ignore ( Punct :: flags );
+if ((logand v (of_int 256 )) != zero) then ignore ( Space :: flags );
+if ((logand v (of_int 512 )) != zero) then ignore ( Upper :: flags );
+if ((logand v (of_int 1024 )) != zero) then ignore ( Xdigit :: flags );
 flags
 let asciitype_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -328,11 +328,11 @@ let filetest_to_value = function
 let filetest_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Is_regular :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Is_symlink :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Is_dir :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Is_executable :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Exists :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Is_regular :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Is_symlink :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Is_dir :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Is_executable :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Exists :: flags );
 flags
 let filetest_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -363,9 +363,9 @@ let formatsizeflags_to_value = function
 let formatsizeflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 0)) != zero) then ignore (Default :: flags);
-if ((logand v (of_int 1)) != zero) then ignore (Long_format :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Iec_units :: flags);
+if ((logand v (of_int 0 )) != zero) then ignore ( Default :: flags );
+if ((logand v (of_int 1 )) != zero) then ignore ( Long_format :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Iec_units :: flags );
 flags
 let formatsizeflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -444,9 +444,9 @@ let hookflagmask_to_value = function
 let hookflagmask_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Active :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (In_call :: flags);
-if ((logand v (of_int 15)) != zero) then ignore (Mask :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Active :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( In_call :: flags );
+if ((logand v (of_int 15 )) != zero) then ignore ( Mask :: flags );
 flags
 let hookflagmask_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -514,12 +514,12 @@ let iocondition_to_value = function
 let iocondition_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (In :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Out :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Pri :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Err :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Hup :: flags);
-if ((logand v (of_int 32)) != zero) then ignore (Nval :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( In :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Out :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Pri :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Err :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Hup :: flags );
+if ((logand v (of_int 32 )) != zero) then ignore ( Nval :: flags );
 flags
 let iocondition_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -579,15 +579,15 @@ let ioflags_to_value = function
 let ioflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Append :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Nonblock :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Is_readable :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Is_writable :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Is_writeable :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Is_seekable :: flags);
-if ((logand v (of_int 31)) != zero) then ignore (Mask :: flags);
-if ((logand v (of_int 31)) != zero) then ignore (Get_mask :: flags);
-if ((logand v (of_int 3)) != zero) then ignore (Set_mask :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Append :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Nonblock :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Is_readable :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Is_writable :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Is_writeable :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Is_seekable :: flags );
+if ((logand v (of_int 31 )) != zero) then ignore ( Mask :: flags );
+if ((logand v (of_int 31 )) != zero) then ignore ( Get_mask :: flags );
+if ((logand v (of_int 3 )) != zero) then ignore ( Set_mask :: flags );
 flags
 let ioflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -706,9 +706,9 @@ let keyfileflags_to_value = function
 let keyfileflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 0)) != zero) then ignore (None :: flags);
-if ((logand v (of_int 1)) != zero) then ignore (Keep_comments :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Keep_translations :: flags);
+if ((logand v (of_int 0 )) != zero) then ignore ( None :: flags );
+if ((logand v (of_int 1 )) != zero) then ignore ( Keep_comments :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Keep_translations :: flags );
 flags
 let keyfileflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -765,15 +765,15 @@ let loglevelflags_to_value = function
 let loglevelflags_list_of_value v =
 let open Int32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Flag_recursion :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Flag_fatal :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Level_error :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Level_critical :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Level_warning :: flags);
-if ((logand v (of_int 32)) != zero) then ignore (Level_message :: flags);
-if ((logand v (of_int 64)) != zero) then ignore (Level_info :: flags);
-if ((logand v (of_int 128)) != zero) then ignore (Level_debug :: flags);
-if ((logand v (of_int (-4))) != zero) then ignore (Level_mask :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Flag_recursion :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Flag_fatal :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Level_error :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Level_critical :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Level_warning :: flags );
+if ((logand v (of_int 32 )) != zero) then ignore ( Level_message :: flags );
+if ((logand v (of_int 64 )) != zero) then ignore ( Level_info :: flags );
+if ((logand v (of_int 128 )) != zero) then ignore ( Level_debug :: flags );
+if ((logand v (of_int ( -4 ) )) != zero) then ignore ( Level_mask :: flags );
 flags
 let loglevelflags_list_to_value flags =
 let open Int32 in
@@ -855,12 +855,12 @@ let markupcollecttype_to_value = function
 let markupcollecttype_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 0)) != zero) then ignore (Invalid :: flags);
-if ((logand v (of_int 1)) != zero) then ignore (String :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Strdup :: flags);
-if ((logand v (of_int 3)) != zero) then ignore (Boolean :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Tristate :: flags);
-if ((logand v (of_int 65536)) != zero) then ignore (Optional :: flags);
+if ((logand v (of_int 0 )) != zero) then ignore ( Invalid :: flags );
+if ((logand v (of_int 1 )) != zero) then ignore ( String :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Strdup :: flags );
+if ((logand v (of_int 3 )) != zero) then ignore ( Boolean :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Tristate :: flags );
+if ((logand v (of_int 65536 )) != zero) then ignore ( Optional :: flags );
 flags
 let markupcollecttype_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -916,10 +916,10 @@ let markupparseflags_to_value = function
 let markupparseflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Do_not_use_this_unsupported_flag :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Treat_cdata_as_text :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Prefix_error_position :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Ignore_qualified :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Do_not_use_this_unsupported_flag :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Treat_cdata_as_text :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Prefix_error_position :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Ignore_qualified :: flags );
 flags
 let markupparseflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1044,14 +1044,14 @@ let optionflags_to_value = function
 let optionflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 0)) != zero) then ignore (None :: flags);
-if ((logand v (of_int 1)) != zero) then ignore (Hidden :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (In_main :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Reverse :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (No_arg :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Filename :: flags);
-if ((logand v (of_int 32)) != zero) then ignore (Optional_arg :: flags);
-if ((logand v (of_int 64)) != zero) then ignore (Noalias :: flags);
+if ((logand v (of_int 0 )) != zero) then ignore ( None :: flags );
+if ((logand v (of_int 1 )) != zero) then ignore ( Hidden :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( In_main :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Reverse :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( No_arg :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Filename :: flags );
+if ((logand v (of_int 32 )) != zero) then ignore ( Optional_arg :: flags );
+if ((logand v (of_int 64 )) != zero) then ignore ( Noalias :: flags );
 flags
 let optionflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1134,24 +1134,24 @@ let regexcompileflags_to_value = function
 let regexcompileflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Caseless :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Multiline :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Dotall :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Extended :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Anchored :: flags);
-if ((logand v (of_int 32)) != zero) then ignore (Dollar_endonly :: flags);
-if ((logand v (of_int 512)) != zero) then ignore (Ungreedy :: flags);
-if ((logand v (of_int 2048)) != zero) then ignore (Raw :: flags);
-if ((logand v (of_int 4096)) != zero) then ignore (No_auto_capture :: flags);
-if ((logand v (of_int 8192)) != zero) then ignore (Optimize :: flags);
-if ((logand v (of_int 262144)) != zero) then ignore (Firstline :: flags);
-if ((logand v (of_int 524288)) != zero) then ignore (Dupnames :: flags);
-if ((logand v (of_int 1048576)) != zero) then ignore (Newline_cr :: flags);
-if ((logand v (of_int 2097152)) != zero) then ignore (Newline_lf :: flags);
-if ((logand v (of_int 3145728)) != zero) then ignore (Newline_crlf :: flags);
-if ((logand v (of_int 5242880)) != zero) then ignore (Newline_anycrlf :: flags);
-if ((logand v (of_int 8388608)) != zero) then ignore (Bsr_anycrlf :: flags);
-if ((logand v (of_int 33554432)) != zero) then ignore (Javascript_compat :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Caseless :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Multiline :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Dotall :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Extended :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Anchored :: flags );
+if ((logand v (of_int 32 )) != zero) then ignore ( Dollar_endonly :: flags );
+if ((logand v (of_int 512 )) != zero) then ignore ( Ungreedy :: flags );
+if ((logand v (of_int 2048 )) != zero) then ignore ( Raw :: flags );
+if ((logand v (of_int 4096 )) != zero) then ignore ( No_auto_capture :: flags );
+if ((logand v (of_int 8192 )) != zero) then ignore ( Optimize :: flags );
+if ((logand v (of_int 262144 )) != zero) then ignore ( Firstline :: flags );
+if ((logand v (of_int 524288 )) != zero) then ignore ( Dupnames :: flags );
+if ((logand v (of_int 1048576 )) != zero) then ignore ( Newline_cr :: flags );
+if ((logand v (of_int 2097152 )) != zero) then ignore ( Newline_lf :: flags );
+if ((logand v (of_int 3145728 )) != zero) then ignore ( Newline_crlf :: flags );
+if ((logand v (of_int 5242880 )) != zero) then ignore ( Newline_anycrlf :: flags );
+if ((logand v (of_int 8388608 )) != zero) then ignore ( Bsr_anycrlf :: flags );
+if ((logand v (of_int 33554432 )) != zero) then ignore ( Javascript_compat :: flags );
 flags
 let regexcompileflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1329,21 +1329,21 @@ let regexmatchflags_to_value = function
 let regexmatchflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 16)) != zero) then ignore (Anchored :: flags);
-if ((logand v (of_int 128)) != zero) then ignore (Notbol :: flags);
-if ((logand v (of_int 256)) != zero) then ignore (Noteol :: flags);
-if ((logand v (of_int 1024)) != zero) then ignore (Notempty :: flags);
-if ((logand v (of_int 32768)) != zero) then ignore (Partial :: flags);
-if ((logand v (of_int 1048576)) != zero) then ignore (Newline_cr :: flags);
-if ((logand v (of_int 2097152)) != zero) then ignore (Newline_lf :: flags);
-if ((logand v (of_int 3145728)) != zero) then ignore (Newline_crlf :: flags);
-if ((logand v (of_int 4194304)) != zero) then ignore (Newline_any :: flags);
-if ((logand v (of_int 5242880)) != zero) then ignore (Newline_anycrlf :: flags);
-if ((logand v (of_int 8388608)) != zero) then ignore (Bsr_anycrlf :: flags);
-if ((logand v (of_int 16777216)) != zero) then ignore (Bsr_any :: flags);
-if ((logand v (of_int 32768)) != zero) then ignore (Partial_soft :: flags);
-if ((logand v (of_int 134217728)) != zero) then ignore (Partial_hard :: flags);
-if ((logand v (of_int 268435456)) != zero) then ignore (Notempty_atstart :: flags);
+if ((logand v (of_int 16 )) != zero) then ignore ( Anchored :: flags );
+if ((logand v (of_int 128 )) != zero) then ignore ( Notbol :: flags );
+if ((logand v (of_int 256 )) != zero) then ignore ( Noteol :: flags );
+if ((logand v (of_int 1024 )) != zero) then ignore ( Notempty :: flags );
+if ((logand v (of_int 32768 )) != zero) then ignore ( Partial :: flags );
+if ((logand v (of_int 1048576 )) != zero) then ignore ( Newline_cr :: flags );
+if ((logand v (of_int 2097152 )) != zero) then ignore ( Newline_lf :: flags );
+if ((logand v (of_int 3145728 )) != zero) then ignore ( Newline_crlf :: flags );
+if ((logand v (of_int 4194304 )) != zero) then ignore ( Newline_any :: flags );
+if ((logand v (of_int 5242880 )) != zero) then ignore ( Newline_anycrlf :: flags );
+if ((logand v (of_int 8388608 )) != zero) then ignore ( Bsr_anycrlf :: flags );
+if ((logand v (of_int 16777216 )) != zero) then ignore ( Bsr_any :: flags );
+if ((logand v (of_int 32768 )) != zero) then ignore ( Partial_soft :: flags );
+if ((logand v (of_int 134217728 )) != zero) then ignore ( Partial_hard :: flags );
+if ((logand v (of_int 268435456 )) != zero) then ignore ( Notempty_atstart :: flags );
 flags
 let regexmatchflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1520,16 +1520,16 @@ let spawnflags_to_value = function
 let spawnflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 0)) != zero) then ignore (Default :: flags);
-if ((logand v (of_int 1)) != zero) then ignore (Leave_descriptors_open :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Do_not_reap_child :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Search_path :: flags);
-if ((logand v (of_int 8)) != zero) then ignore (Stdout_to_dev_null :: flags);
-if ((logand v (of_int 16)) != zero) then ignore (Stderr_to_dev_null :: flags);
-if ((logand v (of_int 32)) != zero) then ignore (Child_inherits_stdin :: flags);
-if ((logand v (of_int 64)) != zero) then ignore (File_and_argv_zero :: flags);
-if ((logand v (of_int 128)) != zero) then ignore (Search_path_from_envp :: flags);
-if ((logand v (of_int 256)) != zero) then ignore (Cloexec_pipes :: flags);
+if ((logand v (of_int 0 )) != zero) then ignore ( Default :: flags );
+if ((logand v (of_int 1 )) != zero) then ignore ( Leave_descriptors_open :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Do_not_reap_child :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Search_path :: flags );
+if ((logand v (of_int 8 )) != zero) then ignore ( Stdout_to_dev_null :: flags );
+if ((logand v (of_int 16 )) != zero) then ignore ( Stderr_to_dev_null :: flags );
+if ((logand v (of_int 32 )) != zero) then ignore ( Child_inherits_stdin :: flags );
+if ((logand v (of_int 64 )) != zero) then ignore ( File_and_argv_zero :: flags );
+if ((logand v (of_int 128 )) != zero) then ignore ( Search_path_from_envp :: flags );
+if ((logand v (of_int 256 )) != zero) then ignore ( Cloexec_pipes :: flags );
 flags
 let spawnflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1616,9 +1616,9 @@ let testsubprocessflags_to_value = function
 let testsubprocessflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Stdin :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Stdout :: flags);
-if ((logand v (of_int 4)) != zero) then ignore (Stderr :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Stdin :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Stdout :: flags );
+if ((logand v (of_int 4 )) != zero) then ignore ( Stderr :: flags );
 flags
 let testsubprocessflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1649,9 +1649,9 @@ let testtrapflags_to_value = function
 let testtrapflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 128)) != zero) then ignore (Silence_stdout :: flags);
-if ((logand v (of_int 256)) != zero) then ignore (Silence_stderr :: flags);
-if ((logand v (of_int 512)) != zero) then ignore (Inherit_stdin :: flags);
+if ((logand v (of_int 128 )) != zero) then ignore ( Silence_stdout :: flags );
+if ((logand v (of_int 256 )) != zero) then ignore ( Silence_stderr :: flags );
+if ((logand v (of_int 512 )) != zero) then ignore ( Inherit_stdin :: flags );
 flags
 let testtrapflags_list_to_value flags =
 let open Unsigned.UInt32 in
@@ -1769,12 +1769,12 @@ let traverseflags_to_value = function
 let traverseflags_list_of_value v =
 let open Unsigned.UInt32 in
 let flags = [] in
-if ((logand v (of_int 1)) != zero) then ignore (Leaves :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Non_leaves :: flags);
-if ((logand v (of_int 3)) != zero) then ignore (All :: flags);
-if ((logand v (of_int 3)) != zero) then ignore (Mask :: flags);
-if ((logand v (of_int 1)) != zero) then ignore (Leafs :: flags);
-if ((logand v (of_int 2)) != zero) then ignore (Non_leafs :: flags);
+if ((logand v (of_int 1 )) != zero) then ignore ( Leaves :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Non_leaves :: flags );
+if ((logand v (of_int 3 )) != zero) then ignore ( All :: flags );
+if ((logand v (of_int 3 )) != zero) then ignore ( Mask :: flags );
+if ((logand v (of_int 1 )) != zero) then ignore ( Leafs :: flags );
+if ((logand v (of_int 2 )) != zero) then ignore ( Non_leafs :: flags );
 flags
 let traverseflags_list_to_value flags =
 let open Unsigned.UInt32 in

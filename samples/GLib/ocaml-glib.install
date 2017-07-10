@@ -1,4 +1,0 @@
-lib: [
-  "_build/install/default/lib/ocaml-glib/META" {"META"}
-  "_build/install/default/lib/ocaml-glib/opam" {"opam"}
-]

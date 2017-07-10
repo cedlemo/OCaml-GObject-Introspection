@@ -2,5 +2,5 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val f_msgs: (SList.t structure ptr, t structure) field
+(* TODO Struct field TestLogBuffer : interface tag not implemented *)val f_msgs: (SList.t structure ptr, t structure) field
 
