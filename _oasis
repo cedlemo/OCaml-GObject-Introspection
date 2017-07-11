@@ -37,7 +37,7 @@ Library "GObjectIntrospection"
            BuilderEnum,
            BuilderFunction,
            BuilderUtils
-  BuildDepends: ctypes, ctypes.foreign
+  BuildDepends: ctypes, ctypes.foreign, str
   CCLib: -Wl,-no-as-needed -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter -pthread
          -I/usr/include/gobject-introspection-1.0

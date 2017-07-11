@@ -37,7 +37,7 @@ Library "GObjectIntrospection"
            BuilderEnum,
            BuilderFunction,
            BuilderUtils
-  BuildDepends: ctypes, ctypes.foreign
+  BuildDepends: ctypes, ctypes.foreign, str
   CCLib: -Wl,-no-as-needed GOBJ_LIBS
   CCOpt: -O2 -Wall -Wextra -Wno-unused-parameter GOBJ_FLAGS
 
