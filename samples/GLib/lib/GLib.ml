@@ -2515,13 +2515,13 @@ foreign "g_bookmark_file_error_quark" (void @-> returning uint32_t)
 (* Not implemented g_build_filenamev argument types not handled *)
 (* Not implemented g_build_pathv argument types not handled *)
 let byte_array_free =
-foreign "g_byte_array_free" (Array.t_typ @-> bool @-> returning uint8_t)
+foreign "g_byte_array_free" (ByteArray.t_typ @-> bool @-> returning uint8_t)
 
 (* Not implemented g_byte_array_free_to_bytes argument types not handled *)
 (* Not implemented g_byte_array_new argument types not handled *)
 (* Not implemented g_byte_array_new_take argument types not handled *)
 let byte_array_unref =
-foreign "g_byte_array_unref" (Array.t_typ @-> returning void)
+foreign "g_byte_array_unref" (ByteArray.t_typ @-> returning void)
 
 let chdir =
 foreign "g_chdir" (string @-> returning int32_t)
@@ -2630,9 +2630,7 @@ foreign "g_dpgettext" (string @-> string @-> uint64_t @-> returning string)
 let dpgettext2 =
 foreign "g_dpgettext2" (string @-> string @-> string @-> returning string)
 
-let environ_getenv =
-foreign "g_environ_getenv" (Array.t_typ @-> string @-> returning string)
-
+(* Not implemented g_environ_getenv argument types not handled *)
 (* Not implemented g_environ_setenv argument types not handled *)
 (* Not implemented g_environ_unsetenv argument types not handled *)
 (* Not implemented g_file_error_from_errno argument types not handled *)
@@ -2642,9 +2640,7 @@ foreign "g_file_error_quark" (void @-> returning uint32_t)
 (* Not implemented g_file_get_contents argument types not handled *)
 (* Not implemented g_file_open_tmp argument types not handled *)
 (* Not implemented g_file_read_link argument types not handled *)
-let file_set_contents =
-foreign "g_file_set_contents" (string @-> Array.t_typ @-> int64_t @-> returning bool)
-
+(* Not implemented g_file_set_contents argument types not handled *)
 (* Not implemented g_file_test argument types not handled *)
 (* Not implemented g_filename_display_basename argument types not handled *)
 (* Not implemented g_filename_display_name argument types not handled *)
@@ -2676,9 +2672,7 @@ foreign "g_get_home_dir" (void @-> returning string)
 let get_host_name =
 foreign "g_get_host_name" (void @-> returning string)
 
-let get_language_names =
-foreign "g_get_language_names" (void @-> returning Array.t_typ)
-
+(* Not implemented g_get_language_names argument types not handled *)
 (* Not implemented g_get_locale_variants argument types not handled *)
 let get_monotonic_time =
 foreign "g_get_monotonic_time" (void @-> returning int64_t)
@@ -2695,12 +2689,8 @@ foreign "g_get_real_name" (void @-> returning string)
 let get_real_time =
 foreign "g_get_real_time" (void @-> returning int64_t)
 
-let get_system_config_dirs =
-foreign "g_get_system_config_dirs" (void @-> returning Array.t_typ)
-
-let get_system_data_dirs =
-foreign "g_get_system_data_dirs" (void @-> returning Array.t_typ)
-
+(* Not implemented g_get_system_config_dirs argument types not handled *)
+(* Not implemented g_get_system_data_dirs argument types not handled *)
 let get_tmp_dir =
 foreign "g_get_tmp_dir" (void @-> returning string)
 
@@ -2887,9 +2877,7 @@ foreign "g_once_init_leave" (void @-> uint64_t @-> returning void)
 let option_error_quark =
 foreign "g_option_error_quark" (void @-> returning uint32_t)
 
-let parse_debug_string =
-foreign "g_parse_debug_string" (string @-> Array.t_typ @-> uint32_t @-> returning uint32_t)
-
+(* Not implemented g_parse_debug_string argument types not handled *)
 (* Not implemented g_path_get_basename argument types not handled *)
 (* Not implemented g_path_get_dirname argument types not handled *)
 let path_is_absolute =

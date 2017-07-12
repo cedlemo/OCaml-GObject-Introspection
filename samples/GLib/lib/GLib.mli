@@ -798,7 +798,7 @@ unit -> Unsigned.uint64 -> Unsigned.uint64
 (* Not implemented g_base64_decode argument types not handled *)
 (* Not implemented g_base64_decode_inplace argument types not handled *)
 (* Not implemented g_base64_decode_step argument types not handled *)
-(* Not implemented g_base64_encode return type not handled *)
+(* Not implemented g_base64_encode argument types not handled *)
 (* Not implemented g_base64_encode_close argument types not handled *)
 (* Not implemented g_base64_encode_step argument types not handled *)
 val basename:
@@ -825,16 +825,16 @@ int32 -> int32 -> unit
 val bookmark_file_error_quark:
 unit -> Unsigned.uint32
 
-(* Not implemented g_build_filenamev return type not handled *)
-(* Not implemented g_build_pathv return type not handled *)
+(* Not implemented g_build_filenamev argument types not handled *)
+(* Not implemented g_build_pathv argument types not handled *)
 val byte_array_free:
-Array.t structure -> bool -> Unsigned.uint8
+ByteArray.t structure -> bool -> Unsigned.uint8
 
 (* Not implemented g_byte_array_free_to_bytes return type not handled *)
 (* Not implemented g_byte_array_new return type not handled *)
-(* Not implemented g_byte_array_new_take return type not handled *)
+(* Not implemented g_byte_array_new_take argument types not handled *)
 val byte_array_unref:
-Array.t structure -> unit
+ByteArray.t structure -> unit
 
 val chdir:
 string -> int32
@@ -943,11 +943,9 @@ string -> string -> Unsigned.uint64 -> string
 val dpgettext2:
 string -> string -> string -> string
 
-val environ_getenv:
-Array.t structure -> string -> string
-
-(* Not implemented g_environ_setenv return type not handled *)
-(* Not implemented g_environ_unsetenv return type not handled *)
+(* Not implemented g_environ_getenv argument types not handled *)
+(* Not implemented g_environ_setenv argument types not handled *)
+(* Not implemented g_environ_unsetenv argument types not handled *)
 (* Not implemented g_file_error_from_errno return type not handled *)
 val file_error_quark:
 unit -> Unsigned.uint32
@@ -955,9 +953,7 @@ unit -> Unsigned.uint32
 (* Not implemented g_file_get_contents argument types not handled *)
 (* Not implemented g_file_open_tmp argument types not handled *)
 (* Not implemented g_file_read_link return type not handled *)
-val file_set_contents:
-string -> Array.t structure -> int64 -> bool
-
+(* Not implemented g_file_set_contents argument types not handled *)
 (* Not implemented g_file_test argument types not handled *)
 (* Not implemented g_filename_display_basename return type not handled *)
 (* Not implemented g_filename_display_name return type not handled *)
@@ -989,9 +985,7 @@ unit -> string
 val get_host_name:
 unit -> string
 
-val get_language_names:
-unit -> Array.t structure
-
+(* Not implemented g_get_language_names return type not handled *)
 (* Not implemented g_get_locale_variants return type not handled *)
 val get_monotonic_time:
 unit -> int64
@@ -1008,12 +1002,8 @@ unit -> string
 val get_real_time:
 unit -> int64
 
-val get_system_config_dirs:
-unit -> Array.t structure
-
-val get_system_data_dirs:
-unit -> Array.t structure
-
+(* Not implemented g_get_system_config_dirs return type not handled *)
+(* Not implemented g_get_system_data_dirs return type not handled *)
 val get_tmp_dir:
 unit -> string
 
@@ -1200,9 +1190,7 @@ unit -> Unsigned.uint64 -> unit
 val option_error_quark:
 unit -> Unsigned.uint32
 
-val parse_debug_string:
-string -> Array.t structure -> Unsigned.uint32 -> Unsigned.uint32
-
+(* Not implemented g_parse_debug_string argument types not handled *)
 (* Not implemented g_path_get_basename return type not handled *)
 (* Not implemented g_path_get_dirname return type not handled *)
 val path_is_absolute:
@@ -1265,7 +1253,7 @@ val regex_error_quark:
 unit -> Unsigned.uint32
 
 (* Not implemented g_regex_escape_nul return type not handled *)
-(* Not implemented g_regex_escape_string return type not handled *)
+(* Not implemented g_regex_escape_string argument types not handled *)
 (* Not implemented g_regex_match_simple argument types not handled *)
 (* Not implemented g_regex_split_simple argument types not handled *)
 val reload_user_special_dirs_cache:
