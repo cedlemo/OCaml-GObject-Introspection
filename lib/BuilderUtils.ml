@@ -35,6 +35,31 @@ let type_tag_to_bindings_types = function
   | GITypes.Float -> Types { ocaml = "float"; ctypes = "float"}
   | GITypes.Double -> Types { ocaml = "float"; ctypes = "double"}
   | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Utf8 as tag-> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Filename as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Array as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.GList as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.GSList as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.GHash as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Error as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
+
+let type_info_to_bindings_types type_info =
+  match GITypeInfo.get_tag type_info with
+  | GITypes.Void -> Types { ocaml = "unit"; ctypes = "void" }
+  | GITypes.Boolean -> Types { ocaml = "bool"; ctypes = "bool"}
+  | GITypes.Int8 -> Types { ocaml = "int"; ctypes = "int8_t"}
+  | GITypes.Uint8 -> Types { ocaml = "Unsigned.uint8"; ctypes = "uint8_t"}
+  | GITypes.Int16 -> Types { ocaml = "int"; ctypes = "int16_t"}
+  | GITypes.Uint16 -> Types { ocaml = "Unsigned.uint16"; ctypes = "uint16_t"}
+  | GITypes.Int32 -> Types { ocaml = "int32"; ctypes = "int32_t"}
+  | GITypes.Uint32 -> Types { ocaml = "Unsigned.uint32"; ctypes = "uint32_t"}
+  | GITypes.Int64 -> Types { ocaml = "int64"; ctypes = "int64_t"}
+  | GITypes.Uint64 -> Types { ocaml = "Unsigned.uint64"; ctypes = "uint64_t"}
+  | GITypes.Float -> Types { ocaml = "float"; ctypes = "float"}
+  | GITypes.Double -> Types { ocaml = "float"; ctypes = "double"}
+  | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
   | GITypes.Utf8 -> Types { ocaml = "string"; ctypes = "string"}
   | GITypes.Filename -> Types { ocaml = "string"; ctypes = "string"}
   | GITypes.Array -> Types { ocaml = "Array.t structure"; ctypes = "Array.t_typ"} (* TODO : this is not GArray, this should find out which Array it is*)

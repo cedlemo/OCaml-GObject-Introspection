@@ -16,6 +16,8 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open Ctypes
+
 (** BuilderUtils module : Regroups a set of functions needed in almost all the
     Builder* modules. *)
 
@@ -27,9 +29,15 @@ type type_strings = { ocaml : string;
 type bindings_types = Not_implemented of string | Types of type_strings
 
 (** Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
-    if implemented. Returns Not_implemented with the tag name if not implemented. *)
+    if implemented. Returns Not_implemented with the tag name if not implemented.
+    This is for simple scalar type (ie. with BuilderEnum.get_storage_type) .*)
 val type_tag_to_bindings_types:
   GITypes.tag -> bindings_types
+
+(** Obtain from a GITypeInfo.t the type strings to use in bindings.
+    Returns Not_implemented with the tag name if not implemented. *)
+val type_info_to_bindings_types:
+  GITypeInfo.t structure ptr -> bindings_types
 
 (** Add an open directives in a file for a module name.*)
 val write_open_module:
