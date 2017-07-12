@@ -1,6 +1,7 @@
 <html><head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -35,25 +36,25 @@
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>BuilderFunction</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;argument&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Arg_in</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderUtils</span>.type_strings
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Arg_out</span>&nbsp;<span class="keyword">of</span>&nbsp;{&nbsp;pre&nbsp;:&nbsp;string;&nbsp;types&nbsp;:&nbsp;<span class="constructor">BuilderUtils</span>.type_strings;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;:&nbsp;string;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Arg_in_out</span>&nbsp;<span class="keyword">of</span>&nbsp;{&nbsp;pre&nbsp;:&nbsp;string;&nbsp;types&nbsp;:&nbsp;<span class="constructor">BuilderUtils</span>.type_strings;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;:&nbsp;string;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;arguments&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Not_implemented</span>&nbsp;<span class="keyword">of</span>&nbsp;string
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">List</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderFunction</span>.argument&nbsp;list
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_arguments_types&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;*&nbsp;string)&nbsp;list&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_return_types&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;string)&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;append_ctypes_function_bindings&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;*&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;argument&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Arg_in</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderUtils</span>.type_strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Arg_out</span>&nbsp;<span class="keyword">of</span>&nbsp;{&nbsp;pre&nbsp;:&nbsp;string;&nbsp;types&nbsp;:&nbsp;<span class="constructor">BuilderUtils</span>.type_strings;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;:&nbsp;string;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Arg_in_out</span>&nbsp;<span class="keyword">of</span>&nbsp;{&nbsp;pre&nbsp;:&nbsp;string;&nbsp;types&nbsp;:&nbsp;<span class="constructor">BuilderUtils</span>.type_strings;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post&nbsp;:&nbsp;string;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;arguments&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Not_implemented</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">List</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderFunction</span>.argument&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_arguments_types&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;(string&nbsp;*&nbsp;string)&nbsp;list&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_return_types&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GICallableInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string&nbsp;*&nbsp;string)&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;append_ctypes_function_bindings&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;*&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
 <span class="keyword">end</span></code></body></html>

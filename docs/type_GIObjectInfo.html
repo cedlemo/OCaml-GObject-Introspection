@@ -1,6 +1,7 @@
 <html><head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -35,96 +36,96 @@
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>GIObjectInfo</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;objectinfo&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_abstract&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_fundamental&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_parent&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type_name&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type_init&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_constants&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_constant&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIConstantInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_fields&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_field&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_interfaces&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_interface&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIInterfaceInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_methods&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_method&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_method&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_properties&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_property&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_signals&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_signal&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GISignalInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_signal&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GISignalInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_vfuncs&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_vfunc&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_vfunc&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_class_struct&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIStructInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_method_using_interfaces&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option&nbsp;*
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_ref_function&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_unref_function&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_set_value_function&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_get_value_function&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_vfunc_using_interfaces&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option&nbsp;*
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_to_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;from_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_registeredtypeinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_to_registeredtypeinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;from_registeredtypeinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_registeredtypeinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;objectinfo&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_abstract&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_fundamental&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_parent&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type_name&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type_init&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_constants&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_constant&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIConstantInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_fields&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_field&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFieldInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_interfaces&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_interface&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIInterfaceInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_methods&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_method&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_method&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_properties&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_property&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_signals&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_signal&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GISignalInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_signal&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GISignalInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_n_vfuncs&nbsp;:&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_vfunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_vfunc&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_class_struct&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIStructInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_method_using_interfaces&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIFunctionInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_ref_function&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_unref_function&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_set_value_function&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_get_value_function&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;find_vfunc_using_interfaces&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIVFuncInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_to_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;from_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_registeredtypeinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_to_registeredtypeinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;from_registeredtypeinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_registeredtypeinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIObjectInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIRegisteredTypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
 <span class="keyword">end</span></code></body></html>

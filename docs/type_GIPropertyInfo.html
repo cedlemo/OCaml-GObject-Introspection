@@ -1,6 +1,7 @@
 <html><head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -35,29 +36,29 @@
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>GIPropertyInfo</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;propertyinfo&nbsp;:&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_ownership_transfer&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIArgInfo</span>.transfer
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GITypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_flags&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIArgInfo</span>.param_flags
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_to_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_unref_finaliser&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;from_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_baseinfo&nbsp;:
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;propertyinfo&nbsp;:&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_ownership_transfer&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIArgInfo</span>.transfer<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GITypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_flags&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GIArgInfo</span>.param_flags<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_from_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cast_to_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_unref_finaliser&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;from_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_baseinfo&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIPropertyInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GIBaseInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
 <span class="keyword">end</span></code></body></html>

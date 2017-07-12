@@ -2,6 +2,7 @@
 <head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -1469,13 +1470,6 @@ Obtain if the last element of the array is NULL.
 Load a namespace with an optional version.
 </div>
 </td></tr>
-<tr><td><a href="BuilderUtils.html#VALlog_tag_not_implemented">log_tag_not_implemented</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td><div class="info">
-Log a Not implemented message with a string representation of the
-    GITypes.tag, given in argument, that will be appended to the message given
-    in the first argument.
-</div>
-</td></tr>
 <tr><td align="left"><br>M</td></tr>
 <tr><td><a href="GIArgInfo.html#VALmay_be_null">may_be_null</a> [<a href="GIArgInfo.html">GIArgInfo</a>]</td>
 <td><div class="info">
@@ -1567,18 +1561,6 @@ Prepends directory to the typelib search path.
 <tr><td><a href="GIPropertyInfo.html#VALpropertyinfo">propertyinfo</a> [<a href="GIPropertyInfo.html">GIPropertyInfo</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>R</td></tr>
-<tr><td><a href="BuilderUtils.html#VALraise_not_implemented">raise_not_implemented</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td><div class="info">
-Raise an Not_implemented exception with the message given in argument.
-</div>
-</td></tr>
-<tr><td><a href="BuilderUtils.html#VALraise_tag_not_implemented">raise_tag_not_implemented</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td><div class="info">
-Raise a Not_implemented exception with a string representation of the
-    GITypes.tag, given in argument, that will be appended to the message given
-    in the first argument.
-</div>
-</td></tr>
 <tr><td><a href="BuilderEnum.html#VALrebuild_c_identifier_for_constant">rebuild_c_identifier_for_constant</a> [<a href="BuilderEnum.html">BuilderEnum</a>]</td>
 <td></td></tr>
 <tr><td><a href="GIRegisteredTypeInfo.html#VALregisteredtypeinfo">registeredtypeinfo</a> [<a href="GIRegisteredTypeInfo.html">GIRegisteredTypeInfo</a>]</td>
@@ -1798,26 +1780,15 @@ Obtain if the returning true in the signal handler will stop the emission
     of the signal.
 </div>
 </td></tr>
+<tr><td><a href="BuilderUtils.html#VALtype_info_to_bindings_types">type_info_to_bindings_types</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
+<td><div class="info">
+Obtain from a GITypeInfo.t the type strings to use in bindings.
+</div>
+</td></tr>
 <tr><td><a href="BuilderUtils.html#VALtype_tag_to_bindings_types">type_tag_to_bindings_types</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
 <td><div class="info">
 Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
     if implemented.
-</div>
-</td></tr>
-<tr><td><a href="BuilderUtils.html#VALtype_tag_to_ctypes_strings">type_tag_to_ctypes_strings</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td><div class="info">
-Transforms a GITypes.tag to the corresponding types for the mli file and
-    the ml file.
-</div>
-</td></tr>
-<tr><td><a href="BuilderUtils.html#VALtype_tag_to_ctypes_typ_string">type_tag_to_ctypes_typ_string</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td><div class="info">
-Get the Ctypes typ representation of a GITypes.tag.
-</div>
-</td></tr>
-<tr><td><a href="BuilderUtils.html#VALtype_tag_to_ocaml_type_string">type_tag_to_ocaml_type_string</a> [<a href="BuilderUtils.html">BuilderUtils</a>]</td>
-<td><div class="info">
-Get the OCaml type representation for a GITypes.tag.
 </div>
 </td></tr>
 <tr><td><a href="GITypeInfo.html#VALtypeinfo">typeinfo</a> [<a href="GITypeInfo.html">GITypeInfo</a>]</td>

@@ -1,6 +1,7 @@
 <html><head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -35,24 +36,20 @@
 <link title="BuilderUtils" rel="Chapter" href="BuilderUtils.html"><title>BuilderUtils</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;raise_not_implemented&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;raise_tag_not_implemented&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;log_tag_not_implemented&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_tag_to_ctypes_strings&nbsp;:&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;*&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_tag_to_ctypes_typ_string&nbsp;:&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_tag_to_ocaml_type_string&nbsp;:&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;type_strings&nbsp;=&nbsp;{&nbsp;ocaml&nbsp;:&nbsp;string;&nbsp;ctypes&nbsp;:&nbsp;string;&nbsp;}
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;bindings_types&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Not_implemented</span>&nbsp;<span class="keyword">of</span>&nbsp;string
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Types</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderUtils</span>.type_strings
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_tag_to_bindings_types&nbsp;:&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">BuilderUtils</span>.bindings_types
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;write_open_module&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_open_ctypes&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_open_foreign&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_empty_line&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;escape_OCaml_keywords&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_number_at_beginning&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;escape_number_at_beginning&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ensure_valid_variable_name&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;type_strings&nbsp;=&nbsp;{&nbsp;ocaml&nbsp;:&nbsp;string;&nbsp;ctypes&nbsp;:&nbsp;string;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;bindings_types&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Not_implemented</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Types</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">BuilderUtils</span>.type_strings<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_tag_to_bindings_types&nbsp;:&nbsp;<span class="constructor">GITypes</span>.tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">BuilderUtils</span>.bindings_types<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_info_to_bindings_types&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">GITypeInfo</span>.t&nbsp;<span class="constructor">Ctypes</span>.structure&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">BuilderUtils</span>.bindings_types<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;write_open_module&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_open_ctypes&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_open_foreign&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_empty_line&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;escape_OCaml_keywords&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;has_number_at_beginning&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;escape_number_at_beginning&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ensure_valid_variable_name&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
 <span class="keyword">end</span></code></body></html>

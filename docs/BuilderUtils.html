@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="BuilderFunction.html">
 <link rel="Up" href="index.html">
@@ -49,39 +50,9 @@ BuilderUtils module : Regroups a set of functions needed in almost all the
     Builder* modules.<br>
 </div>
 <hr width="100%">
-
-<pre><span id="VALraise_not_implemented"><span class="keyword">val</span> raise_not_implemented</span> : <code class="type">string -> unit</code></pre><div class="info ">
-Raise an Not_implemented exception with the message given in argument.<br>
-</div>
-
-<pre><span id="VALraise_tag_not_implemented"><span class="keyword">val</span> raise_tag_not_implemented</span> : <code class="type">string -> <a href="GITypes.html#TYPEtag">GITypes.tag</a> -> unit</code></pre><div class="info ">
-Raise a Not_implemented exception with a string representation of the
-    GITypes.tag, given in argument, that will be appended to the message given
-    in the first argument.<br>
-</div>
-
-<pre><span id="VALlog_tag_not_implemented"><span class="keyword">val</span> log_tag_not_implemented</span> : <code class="type">string -> <a href="GITypes.html#TYPEtag">GITypes.tag</a> -> unit</code></pre><div class="info ">
-Log a Not implemented message with a string representation of the
-    GITypes.tag, given in argument, that will be appended to the message given
-    in the first argument.<br>
-</div>
-
-<pre><span id="VALtype_tag_to_ctypes_strings"><span class="keyword">val</span> type_tag_to_ctypes_strings</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> string * string</code></pre><div class="info ">
-Transforms a GITypes.tag to the corresponding types for the mli file and
-    the ml file. For example, the GITypes.Int8 tag returns ("int", "int8_t").
-    The "int" string is used in the OCaml header file for signature while the
-    int8_t is used in OCaml file for Ctypes types usage.<br>
-</div>
-
-<pre><span id="VALtype_tag_to_ctypes_typ_string"><span class="keyword">val</span> type_tag_to_ctypes_typ_string</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> string</code></pre><div class="info ">
-Get the Ctypes typ representation of a GITypes.tag. For example, if the tag
-    is GITypes.Int8, it will returns "int8_t".<br>
-</div>
-
-<pre><span id="VALtype_tag_to_ocaml_type_string"><span class="keyword">val</span> type_tag_to_ocaml_type_string</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> string</code></pre><div class="info ">
-Get the OCaml type representation for a GITypes.tag. For example, if the tag
-    is GITypes.Int8, it will returns "int".<br>
-</div>
+<br>
+BuilderUtils module : Regroups a set of functions needed in almost all the
+    Builder* modules.<br>
 
 <pre><code><span id="TYPEtype_strings"><span class="keyword">type</span> <code class="type"></code>type_strings</span> = {</code></pre><table class="typetable">
 <tr>
@@ -128,7 +99,13 @@ Type strings representation for GITypes tag both implemented or not.<br>
 
 <pre><span id="VALtype_tag_to_bindings_types"><span class="keyword">val</span> type_tag_to_bindings_types</span> : <code class="type"><a href="GITypes.html#TYPEtag">GITypes.tag</a> -> <a href="BuilderUtils.html#TYPEbindings_types">bindings_types</a></code></pre><div class="info ">
 Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
-    if implemented. Returns Not_implemented with the tag name if not implemented.<br>
+    if implemented. Returns Not_implemented with the tag name if not implemented.
+    This is for simple scalar type (ie. with BuilderEnum.get_storage_type) .<br>
+</div>
+
+<pre><span id="VALtype_info_to_bindings_types"><span class="keyword">val</span> type_info_to_bindings_types</span> : <code class="type"><a href="GITypeInfo.html#TYPEt">GITypeInfo.t</a> Ctypes.structure Ctypes.ptr -> <a href="BuilderUtils.html#TYPEbindings_types">bindings_types</a></code></pre><div class="info ">
+Obtain from a GITypeInfo.t the type strings to use in bindings.
+    Returns Not_implemented with the tag name if not implemented.<br>
 </div>
 
 <pre><span id="VALwrite_open_module"><span class="keyword">val</span> write_open_module</span> : <code class="type">Pervasives.out_channel -> string -> unit</code></pre><div class="info ">
