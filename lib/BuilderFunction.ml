@@ -39,8 +39,7 @@ let get_arguments_types callable =
            match GIArgInfo.get_direction arg with
            | GIArgInfo.In -> (
                let type_info = GIArgInfo.get_type arg in
-               let tag = GITypeInfo.get_tag type_info in
-               match BuilderUtils.type_tag_to_bindings_types tag with
+               match BuilderUtils.type_info_to_bindings_types type_info with
                | BuilderUtils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                  parse_args (index + 1) ((ocaml_type, ctypes_typ) :: args_types)
@@ -51,8 +50,7 @@ let get_arguments_types callable =
 let get_return_types callable =
   if GICallableInfo.skip_return callable then Some ("unit", "void")
   else let ret = GICallableInfo.get_return_type callable in
-    let tag = GITypeInfo.get_tag ret in
-    match BuilderUtils.type_tag_to_bindings_types tag with
+    match BuilderUtils.type_info_to_bindings_types ret with
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match GICallableInfo.get_caller_owns callable with

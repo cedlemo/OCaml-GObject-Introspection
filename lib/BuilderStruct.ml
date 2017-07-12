@@ -39,8 +39,7 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
     | Some name ->
       let type_info = GIFieldInfo.get_type field_info in
       let is_pointer = GITypeInfo.is_pointer type_info in
-      let tag = GITypeInfo.get_tag type_info in
-      match BuilderUtils.type_tag_to_bindings_types tag with
+      match BuilderUtils.type_info_to_bindings_types type_info with
       | Not_implemented tag_name -> Printf.fprintf mli "(* TODO Struct field %s : %s tag not implemented *)" struct_name tag_name;
         Printf.fprintf ml "(* TODO Struct field %s : %s tag not implemented *)" struct_name tag_name
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
