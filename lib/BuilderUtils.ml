@@ -62,7 +62,15 @@ let type_info_to_bindings_types type_info =
   | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
   | GITypes.Utf8 -> Types { ocaml = "string"; ctypes = "string"}
   | GITypes.Filename -> Types { ocaml = "string"; ctypes = "string"}
-  | GITypes.Array -> Types { ocaml = "Array.t structure"; ctypes = "Array.t_typ"} (* TODO : this is not GArray, this should find out which Array it is*)
+  | GITypes.Array -> (
+    match GITypeInfo.get_array_type type_info with
+    | None -> Not_implemented ("Bad Array type for GITypes.Array tag")
+    | Some array_type -> match array_type with
+      | GITypes.C -> Not_implemented ("C Array type for GITypes.Array tag")
+      | GITypes.Array -> Types { ocaml = "Array.t structure"; ctypes = "Array.t_typ"}
+      | GITypes.Ptr_array -> Types { ocaml = "PtrArray.t structure"; ctypes = "PtrArray.t_typ"}
+      | GITypes.Byte_array -> Types { ocaml = "ByteArray.t structure"; ctypes = "ByteArray.t_typ"}
+  )
   | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
   | GITypes.GList -> Types { ocaml = "List.t structure"; ctypes = "List.t_typ"}
   | GITypes.GSList -> Types { ocaml = "SList.t structure"; ctypes = "SList.t_typ"}
