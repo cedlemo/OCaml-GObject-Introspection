@@ -78,16 +78,6 @@ let type_info_to_bindings_types type_info =
   | GITypes.Error -> Types { ocaml = "Error.t structure"; ctypes = "Error.t_typ"}
   | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
 
-
-(* let type_info_to_bindings_types type_info =
-  let tag = GITypeInfo.get_tag type_info in
-  match type_tag_to_ocaml_type_string tag with
-   | None -> None
-   | Some ocaml_type -> match type_tag_to_ctypes_typ_string tag with
-   | None -> None
-   | Some ctypes_typ -> check_is_pointer type_info (ocaml_type, ctypes_typ) |>
-   check_is_optional type_info
-   *)
 let write_open_module descr name =
   Printf.fprintf descr "open %s\n" name
 
