@@ -297,6 +297,12 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 
 ## TODOS :
 
+  * for GObject-Introspection, I need
+    * C array views
+    * GArray views
+    * one view for element types `GITypeInfo.get_param_type info 0`
+    * how to handle this and the GLib2 builder.
+
   * Write down the process to function bindings generation then implement it.
   * Fix the issue with empty lines
   * Create test in Samples/GLib/tests
