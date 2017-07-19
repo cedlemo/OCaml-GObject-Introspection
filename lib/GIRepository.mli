@@ -136,7 +136,8 @@ val get_shared_library:
 val prepend_library_path:
   string -> unit
 
-type gtype = int
+type gtype = int64
+val gtype: int64 typ
 
  (** Searches all loaded namespaces for a particular #GType.  Note that
      in order to locate the metadata, the namespace corresponding to

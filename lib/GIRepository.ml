@@ -120,13 +120,14 @@ let prepend_library_path=
   foreign "g_irepository_prepend_library_path"
     (string @-> returning void)
 
-type gtype = int
+type gtype = int64
+let gtype : gtype typ = int64_t
 
-let find_by_gtype repo gtype =
+let find_by_gtype repo gtyp =
   let find_by_gtype_raw =
     foreign "g_irepository_find_by_gtype"
-      (repository @-> int @-> returning (ptr_opt GIBaseInfo.baseinfo)) in
-  match find_by_gtype_raw repo gtype with
+      (repository @-> gtype @-> returning (ptr_opt GIBaseInfo.baseinfo)) in
+  match find_by_gtype_raw repo gtyp with
   | None -> None
   | Some info -> let _ = Gc.finalise (fun i -> GIBaseInfo.base_info_unref i) info
     in Some info
