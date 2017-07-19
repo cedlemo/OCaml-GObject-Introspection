@@ -18,6 +18,7 @@
 
 open TestUtils
 open OUnit2
+open GObjectIntrospection
 open BuilderUtils
 
 let repo = GIRepository.get_default ()

@@ -18,6 +18,7 @@
 
 open TestUtils
 open OUnit2
+open GObjectIntrospection
 
 let namespace = "Gtk"
 let repo = GIRepository.get_default ()

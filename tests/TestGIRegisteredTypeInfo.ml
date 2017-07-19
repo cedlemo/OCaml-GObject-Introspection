@@ -18,6 +18,7 @@
 
 open TestUtils
 open OUnit2
+open GObjectIntrospection
 
 let get_enum_info repo namespace enum_name =
   let _ = GIRepository.require repo namespace () in
@@ -161,6 +162,8 @@ let test_get_type_from_enum test_ctxt =
           | None -> assert_equal_string "It should return " "a name"
           | Some name -> assert_equal_string "ResourceError" name
     )
+
+  (* TODO create a GType module GType.t GType.of_int64 , GType.to_int64, GType.typ *)
 
 let test_get_type_init_from_union test_ctxt =
   union_test (fun info ->

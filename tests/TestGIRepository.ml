@@ -18,6 +18,7 @@
 
 open OUnit2
 open TestUtils
+open GObjectIntrospection
 
 let test_get_default test_ctxt =
   let _ = GIRepository.get_default () in
