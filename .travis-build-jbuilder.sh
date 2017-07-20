@@ -7,5 +7,6 @@ opam install ounit
 opam install oasis
 opam install ctypes
 opam install ctypes-foreign
+opam install jbuilder
 sh .travis-gobject-introspection.sh
 jbuilder runtest
