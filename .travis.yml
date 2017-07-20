@@ -2,7 +2,7 @@ language: c
 dist: trusty
 sudo: required
 # install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
-script: bash -ex .travis-build.sh
+script: bash -ex .travis-build-jbuilder.sh
 env:
    - OCAML_VERSION=4.03 TRAVIS_TESTS=true
    - OCAML_VERSION=4.04 TRAVIS_TESTS=true
