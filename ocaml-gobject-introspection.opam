@@ -7,12 +7,8 @@ homepage: "https://github.com/cedlemo/OCaml-GObject-Introspection"
 bug-reports: "https://github.com/cedlemo/OCaml-GObject-Introspection/issues"
 license: "GPL3"
 dev-repo: "https://github.com/cedlemo/OCaml-GObject-Introspection"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "OCaml-GObject-Introspection"]
+build: [["jbuilder" "build" "-p" name "-j" jobs]]
+build-test: [["jbuilder" "runtest" "-p" name "-j" jobs]]
 depends: [
-  "ocamlfind" {build}
+  "jbuilder" {build}
 ]
