@@ -14,4 +14,7 @@ depends: [
   "ctypes"
   "ctypes-foreign"
   "ounit"
+  "base"
+  "stdio"
+  "configurator"
 ]
