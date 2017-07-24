@@ -297,6 +297,9 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
 
 ## TODOS :
 
+  * Find the problem with jbuilder and Travis. Why can I run the tests under
+    ArchLinux but not on Travis
+
   * for GObject-Introspection, I need
     * C array views
     * GArray views
