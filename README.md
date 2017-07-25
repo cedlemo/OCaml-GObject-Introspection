@@ -5,305 +5,36 @@
 
 The OCaml bindings to GObject-Introspection with Ctypes.
 
-- [Introduction](#introduction)
+The idea is to use the GObject-Introspection information in order to generate a
+configurable loader that will be able to construct automatically most of the
+Ctypes bindings of any C GObject libraries (not all but at least a big part).
+
+## Wiki :
+
+https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
+
+###  table of content.
+
+- [Introduction](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction)
 - [Ctypes bindings of GObject-Introspection](wiki/Ctypes-bindings-of-GObject-Introspection#finished)
   - [Implementation details](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#implementation-details)
     - [GObjectIntrospection Info Structures hierarchy and type coercion functions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
     - [How the underlying C structures allocation and deallocation are handled](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
-    - [Resources](#resources)
   - [Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#progress)
     - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#finished)
     - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#remains)
-- [GObjectIntrospection Loader](#gobjectintrospection-loader)
-  - [Loader Implementation](#loader-implementation)
-  - [Loader Progress](#loader-progress)
-    - [Builders Started](#builders-started)
-    - [Builders Next](#builders-next)
-  - [Builder Code rules](#builder-code-rules)
-    - [Structures and Unions](#structures-and-unions)
-    - [Enumerations](#enumerations)
-      - [Simple Enumerations](#simple-enumerations)
-      - [Enumerations for bitwise operations](#enumerations-for-bitwise-operations)
-- [TODOs](#todos)
-
-## Introduction
-
-There are 2 parts :
-*  the Ctypes bindings to the GObject-Introspection (all the files/modules named
-*GISomething*).
-*  a Loader module that uses the Ctypes bindings of GObject-Introspection in order
-to automatically generate Ctypes bindings of a GObject-Introspection namespace (`GLib`
-for example).
-
-API Documentation : https://cedlemo.github.io/OCaml-GObject-Introspection/.
-
-## Ctypes bindings of GObject-Introspection
-
-### Progress
-
-  #### Finished
-
-  * GIRepository — GObject Introspection repository manager
-  * GIBaseInfo — Base struct for all GITypelib structs
-  * GIFunctionInfo — Struct representing a function
-  * GIStructInfo — Struct representing a C structure
-  * GIFieldInfo — Struct representing a struct or union field
-  * GIUnionInfo — Struct representing a union.
-  * GIEnumInfo — Structs representing an enumeration and its values
-  * GIValueInfo — Struct representing a value
-  * GICallableInfo — Struct representing a callable
-  * GIArgInfo — Struct representing an argument
-  * GITypeInfo — Struct representing a type
-  * GIConstantInfo — Struct representing a constant
-  * GIObjectInfo — Struct representing a GObject
-  * GIInterfaceInfo — Struct representing a GInterface
-  * GIPropertyInfo — Struct representing a property
-  * GISignalInfo — Struct representing a signal
-  * GIVFuncInfo — Struct representing a virtual function
-  * GIRegisteredTypeInfo — Struct representing a struct with a GType
-
-  #### Remains
-
-  * GICallbackInfo — Struct representing a callback (no C API for now).
-
-### Implementation details
-#### GObjectIntrospection Info Structures hierarchy and type coercion functions
-
-     GIBaseInfo
-       +----GIArgInfo
-       +----GICallableInfo
-             +----GIFunctionInfo
-             +----GISignalInfo
-             +----GIVFuncInfo
-       +----GIConstantInfo
-       +----GIFieldInfo
-       +----GIPropertyInfo
-       +----GIRegisteredTypeInfo
-             +----GIEnumInfo
-             +----GIInterfaceInfo
-             +----GIObjectInfo
-             +----GIStructInfo
-             +----GIUnionInfo
-       +----GITypeInfo
-
-This hierarchy determines the need to cast structures. For example `GIArgInfo`
-need only to be casted to `GIBaseInfo`.
-
-GIFunctionInfo need to be casted to `GICallableInfo` and to `GIBaseInfo`.
-
-So each module will (except `GIBaseInfo`), have functions for type coercion
-like:
-
-```ocaml
-GIArgInfo.to_baseinfo
-GIArgInfo.from_baseinfo
-GIFunctionInfo.to_baseinfo
-GIFunctionInfo.from_baseinfo
-GIFunctionInfo.to_callableinfo
-GIFunctionInfo.from_callableinfo
-```
-#### How the underlying C structures allocation and deallocation are handled
-
-When an info structure pointer is returned with full transfert via the C api,
-each OCaml value that wrap then is finalised with `Gc.finalise` for example :
-
-```ocaml
-let get_field info n =
-  let get_field_raw =
-    foreign "g_struct_info_get_field"
-      (ptr structinfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
-  let max = get_n_fields info in
-  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
-  else let info' = get_field_raw info n in
-    GIFieldInfo.add_unref_finaliser info'
-```
-
-So when the `info'` is garbage collected, the `GIFieldInfo.add_unref_finaliser` is
-called. Here is the code of this function :
-
-
-```ocaml
-let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info
-  in info
-```
-
-Each info module have this kind of function but the user should not use them.
-When a cast need to be done, each module have the following to functions:
-
-*  to_baseinfo
-*  from_baseinfo
-
-Those functions allow to transform an OCaml value that represents a GIInfo to
-another GIInfo type while the underlying C structure are ref"ed" and linked to
-a Gc finaliser that unref them. This should avoid zombies OCaml values (with
-C structure already desallocated) and memory leaks.
-
-#### Resources
-
-*  https://ocaml.org/learn/tutorials/calling_c_libraries.html
-*  https://developer.gnome.org/gi/
-*  https://developer.gnome.org/gi/1.52/GIRepository.html
-*  https://ocaml.org/learn/tutorials/objects.html
-*  http://caml.inria.fr/pub/docs/manual-ocaml/index.html
-*  http://caml.inria.fr/pub/docs/manual-ocaml/intfc.html
-*  http://www.linux-nantes.org/~fmonnier/OCaml/ocaml-wrapping-c.html (old)
-*  https://wiki.haskell.org/GObjectIntrospection
-
-## GObjectIntrospection Loader
-
-The Loader module is used to load a namespace and generate automatically most
-of the Ctypes bindings. Here is the `samples/gi_builder_glib.ml` code :
-
-```ocaml
-let print_infos loader =
-  let namespace = Loader.get_namespace loader in
-  let version = Loader.get_version loader in
-  print_endline (">> " ^ namespace);
-  print_endline ("\t - version :" ^ version)
-
-let () =
-  match Loader.load "GLib" () with
-  | None -> print_endline "Please check the namespace, something is wrong"
-  | Some loader -> print_infos loader;
-    let loader = Loader.set_build_path loader "samples" in
-    Loader.parse loader ()
-```
-
-It generates the GLib bindings (not all for now) in `samples/GLib/lib`
-
-### Loader Implementation
-The idea is to iterate through all the toplevel baseinfo of the namespace and
-generate the related Ctypes bindings automatically. The loader use the `Builder`
-module which relies on the `Builder*` modules (BuilderStructure for example).
-
-### Loader Progress
-
-#### Builders Started
-
-  * Module constants
-  * Structures
-  * Unions
-  * Enumerations
-  * Flags (enumerations but handled as list).
-
-#### Builders Next
-
-  * Module functions
-
-#### Builder Code rules
-
-##### Module constants
-
-There are 2 kinds of constants described by a `GIConstantInfo`:
-  * the ones that are directly in the main namespace.
-  * the ones that are related to an object or an interface.
-
- The firsts, the module constants, are generated in the core.mli and core.ml
- files. They can be used with `GLib.Core.a_constant` for example.
- The seconds will be generated in the files of the object or of the interface.
-
-##### Structures And Unions
-  * For each a module is created in a mli file and a ml file.
-  * the OCaml type is named `MyStructName.t`
-  * the Ctypes typ is named `MyStructName.t_typ`
-  * the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
-
-##### Enumerations
-
-###### Simple Enumerations
-
-  The bindings will use the "unsafe" form. ([ref](https://discuss.ocaml.org/t/ctypes-enum-how-to-make-it-work/456/4?u=cedlemo) ).
-
-  ```C
-  enum letters { AB, CD, EF };
-  ```
-  become :
-
-  ```ocaml
-  type letters =
-  | Ab
-  | Cd
-  | Ef
-
-  (* Unsigned.uint32 -> letters *)
-  letters_of_value v =
-    if v = Unsigned.UInt32.of_int 0 then Ab
-    else if v = Unsigned.UInt32.of_int 1 then Cd
-    else if v = Unsigned.UInt32.of_int 2 then Ef
-    else raise (Invalid_argument \"Unexpected Letters value\")"
-
-  (* letters -> Unsigned.uint32 *)
-  letters_to_value = function
-  | Ab -> Unsigned.UInt32.of_int 0
-  | Cd -> Unsigned.UInt32.of_int 1
-  | Ef -> Unsigned.UInt32.of_int 2
-
-  (* val letters = letters typ *)
-  let letters = view
-                ~read:letters_of_value
-		~write:letters_to_value
-		uint32_t
-  ```
-
-###### Enumerations for bitwise operations
-  The constants of those enumerations are generally used as ORed flags. The idea
-  is to define a type with variants for all the constants that the enums contains.
-
-  ```C
-  enum letters { AB, CD, EF };
-  ```
-  become :
-
-  ```ocaml
-  type letters =
-  | Ab
-  | Cd
-  | Ef
-
-  type letters_list = letters list
-
-  (* Unsigned.uint32 -> letters *)
-  let letters_of_value v =
-    if v = Unsigned.UInt32.of_int 0 then Ab
-    else if v = Unsigned.UInt32.of_int 1 then Cd
-    else if v = Unsigned.UInt32.of_int 2 then Ef
-    else raise (Invalid_argument \"Unexpected Letter value\")"
-
-  (* letters -> Unsigned.uint32 *)
-  let letters_to_value = function
-  | Ab -> Unsigned.UInt32.of_int 0
-  | Cd -> Unsigned.UInt32.of_int 1
-  | Ef -> Unsigned.UInt32.of_int 2
-
-  (* letters_list -> Unsigned.uint32*)
-  let letters_list_to_value flags =
-    let rec logor_flags l acc =
-    match l with
-    | [] -> acc
-    | f :: q -> let v = optionflags_to_value f in
-      let acc' = logor acc v in
-      logor_flags q acc'
-    in
-    logor_flags flags 0
-
-  (* Unsigned.uint32 -> letters_list *)
-   let letters_list_of_value v =
-     let open Unsigned.UInt32 in
-     let flags = [] in
-       if ((logand v (of_int 0)) != zero) then ignore (Ab :: flags);
-       if ((logand v (of_int 1)) != zero) then ignore (Cd :: flags);
-       if ((logand v (of_int 2)) != zero) then ignore (Ef :: flags);
-       flags
-
-  (* val letters_list = letters_list typ *)
-  let letters_list = view
-                     ~read:letters_list_of_value
-		     ~write:letters_list_to_value
-		     uint32_t
-  ```
+  - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#resources)
+- [GObjectIntrospection Loader](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.)
+  - [Loader Implementation](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#loader-implementation)
+  - [Loader Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#loader-progress)
+    - [Builders Started](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#builders-started)
+    - [Builders Next](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#builders-next)
+  - [Builder Code rules](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#builder-code-rules)
+    - [Module constants](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#module-constants)
+    - [Structures and Unions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#structures-and-unions)
+    - [Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#enumerations)
+      - [Simple Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#simple-enumerations)
+      - [Flags : enumerations for bitwise operations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#flags--enumerations-for-bitwise-operations)
 
 ## TODOS :
 
@@ -320,7 +51,6 @@ There are 2 kinds of constants described by a `GIConstantInfo`:
   * Fix the issue with empty lines
   * Create test in Samples/GLib/tests
     * for enum and flags
-  * Move the explanations in the Wiki of github and clean the README.
   * test Windows build with appveyor:
     * install MSYS2
     * install gobject-introspection
