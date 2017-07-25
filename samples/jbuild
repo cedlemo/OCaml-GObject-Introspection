@@ -1,0 +1,6 @@
+(jbuild_version 1)
+
+(executables
+ ((names (gi_builder_glib))
+  (libraries (GObjectIntrospection)))
+)
