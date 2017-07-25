@@ -38,6 +38,8 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
+  * Update the GLib loader code example in the wiki.
+
   * Find the problem with jbuilder and Travis. Why can I run the tests under
     ArchLinux but not on Travis
 
