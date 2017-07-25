@@ -70,7 +70,7 @@ let generate_dir loader =
  *)
 
 let generate_main_module_files loader =
-  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; loader.namespace] in
+  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; "core"] in
   Builder.generate_ctypes_sources file_name_pattern
 
 let generate_secondary_module_files loader name =
