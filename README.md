@@ -187,13 +187,23 @@ module which relies on the `Builder*` modules (BuilderStructure for example).
   * Structures
   * Unions
   * Enumerations
+  * Flags (enumerations but handled as list).
 
 #### Builders Next
 
-  * Flags (enumerations but handled as list).
   * Module functions
 
 #### Builder Code rules
+
+##### Module constants
+
+There are 2 kinds of constants described by a `GIConstantInfo`:
+  * the ones that are directly in the main namespace.
+  * the ones that are related to an object or an interface.
+
+ The firsts, the module constants, are generated in the core.mli and core.ml
+ files. They can be used with `GLib.Core.a_constant` for example.
+ The seconds will be generated in the files of the object or of the interface.
 
 ##### Structures And Unions
   * For each a module is created in a mli file and a ml file.
