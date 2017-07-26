@@ -9,6 +9,9 @@ The idea is to use the GObject-Introspection information in order to generate a
 configurable loader that will be able to construct automatically most of the
 Ctypes bindings of any C GObject libraries (not all but at least a big part).
 
+Given that GObjectIntrospection relies on GLib2, the GLib2 bindings will be build
+here.
+
 ## Wiki :
 
 https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
@@ -38,8 +41,6 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
-  * Update the GLib loader code example in the wiki.
-
   * Find the problem with jbuilder and Travis. Why can I run the tests under
     ArchLinux but not on Travis
 
@@ -50,7 +51,6 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
     * how to handle this and the GLib2 builder.
 
   * Write down the process to function bindings generation then implement it.
-  * Fix the issue with empty lines
   * Create test in Samples/GLib/tests
     * for enum and flags
   * test Windows build with appveyor:
