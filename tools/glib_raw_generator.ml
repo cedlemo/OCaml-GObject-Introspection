@@ -10,5 +10,5 @@ let () =
   match GI.Loader.load "GLib" () with
   | None -> print_endline "Please check the namespace, something is wrong"
   | Some loader -> print_infos loader;
-    let loader = GI.Loader.set_build_path loader "../lib/" in
+    let loader = GI.Loader.set_build_path loader "lib/" in
     GI.Loader.parse loader ()
