@@ -60,8 +60,8 @@ let generate_dir loader =
 
 (* Module Organisation for namespace
  * One main module :
- * Namespace.ml
- * Namespace.mli
+ * core.ml
+ * core.mli
  *  - contains : constants, enums declarations and module function
  *
  * Secondary modules for all struct, unions, and object :
