@@ -1,5 +1,10 @@
 module GI = GObjectIntrospection
 
+(* Generate the raw bindings of GLib 2 in lib/GLib
+ * build with jbuilder build tools/glib_raw_generator.exe
+ * launch _build/default/tools/glib_raw_generator.exe
+ *)
+
 let print_infos loader =
   let namespace = GI.Loader.get_namespace loader in
   let version = GI.Loader.get_version loader in
