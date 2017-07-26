@@ -1,0 +1,11 @@
+(jbuild_version 1)
+
+(executables
+ ((names (test))
+  (libraries   (GLib oUnit ctypes ctypes.foreign))
+))
+
+(alias
+ ((name    runtest)
+  (deps    (test.exe))
+  (action  (run ${<}))))
