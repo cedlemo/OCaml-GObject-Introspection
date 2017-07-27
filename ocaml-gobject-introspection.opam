@@ -8,7 +8,7 @@ bug-reports: "https://github.com/cedlemo/OCaml-GObject-Introspection/issues"
 license: "GPL3"
 dev-repo: "https://github.com/cedlemo/OCaml-GObject-Introspection"
 build: [["jbuilder" "build" "-p" name "-j" jobs]]
-build-test: [["jbuilder" "runtest"]]
+build-test: [["jbuilder" "runtest" "-p" name "-j" jobs]]]]
 depends: [
   "jbuilder" {build}
   "ctypes"
