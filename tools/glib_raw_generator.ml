@@ -1,6 +1,7 @@
 module GI = GObjectIntrospection
 
-(* Generate the raw bindings of GLib 2 in lib/GLib
+(* This tool is used to  generate the raw bindings of GLib 2 in
+ * the OCaml-glib package
  * build with jbuilder build tools/glib_raw_generator.exe
  * launch _build/default/tools/glib_raw_generator.exe
  *)
@@ -15,5 +16,5 @@ let () =
   match GI.Loader.load "GLib" () with
   | None -> print_endline "Please check the namespace, something is wrong"
   | Some loader -> print_infos loader;
-    let loader = GI.Loader.set_build_path loader "lib/" in
+    let loader = GI.Loader.set_build_path loader "tools/" in
     GI.Loader.parse loader ()
