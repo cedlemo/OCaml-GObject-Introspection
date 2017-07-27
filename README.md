@@ -9,9 +9,6 @@ The idea is to use the GObject-Introspection information in order to generate a
 configurable loader that will be able to construct automatically most of the
 Ctypes bindings of any C GObject libraries (not all but at least a big part).
 
-Given that GObjectIntrospection relies on GLib2, the GLib2 bindings will be build
-here.
-
 ## Wiki :
 
 https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
