@@ -33,15 +33,12 @@ let append_ctypes_union_fields_declarations union_name info sources_files =
     | None -> ()
     | Some name ->
       let type_info = GIFieldInfo.get_type field_info in
-      let is_pointer = GITypeInfo.is_pointer type_info in
       match BuilderUtils.type_info_to_bindings_types type_info with
       | Not_implemented tag_name -> Printf.fprintf mli "(* TODO Union field %s : %s tag not implemented *)" union_name tag_name;
         Printf.fprintf ml "(* TODO Union field %s : %s tag not implemented *)" union_name tag_name
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
-        let (ocaml_type', ctypes_typ') = if is_pointer then (ocaml_type ^ " ptr", "ptr " ^ ctypes_typ)
-          else (ocaml_type, ctypes_typ) in
-      Printf.fprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type';
-      Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ'
+      Printf.fprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type;
+      Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ
   in
   let n = GIUnionInfo.get_n_fields info in
   for i = 0 to n - 1 do

@@ -26,8 +26,8 @@ let append_ctypes_struct_declaration name sources_files =
   Printf.fprintf ml "let t_typ : t structure typ = structure \"%s\"\n" name
 
 let handle_recursive_structure structure_name (ocaml_type, ctypes_typ) =
-  if (structure_name ^ ".t structure") = ocaml_type && (structure_name ^ ".t_typ") = ctypes_typ then
-    ("t structure", "t_typ")
+  if (structure_name ^ ".t structure") = ocaml_type then ("t structure", "t_typ")
+  else if (structure_name ^ ".t structure ptr") = ocaml_type then ("t structure ptr", "ptr t_typ")
   else (ocaml_type, ctypes_typ)
 
 let append_ctypes_struct_fields_declarations struct_name info sources_files =
@@ -38,16 +38,13 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
     | None -> ()
     | Some name ->
       let type_info = GIFieldInfo.get_type field_info in
-      let is_pointer = GITypeInfo.is_pointer type_info in
       match BuilderUtils.type_info_to_bindings_types type_info with
       | Not_implemented tag_name -> Printf.fprintf mli "(* TODO Struct field %s : %s tag not implemented *)" struct_name tag_name;
         Printf.fprintf ml "(* TODO Struct field %s : %s tag not implemented *)" struct_name tag_name
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
-        let (ocaml_type'', ctypes_typ'') = if is_pointer then (ocaml_type' ^ " ptr", "ptr " ^ ctypes_typ')
-          else (ocaml_type, ctypes_typ) in
-        Printf.fprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type'';
-        Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ''
+        Printf.fprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type';
+        Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ'
   in
   let n = GIStructInfo.get_n_fields info in
   for i = 0 to n - 1 do
