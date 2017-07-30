@@ -87,5 +87,5 @@ let append_ctypes_function_bindings name info (mli, ml) =
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
       Printf.fprintf mli " -> %s\n" ocaml_ret;
-      Printf.fprintf ml " @-> returning %s)\n" ctypes_ret
+      Printf.fprintf ml " @-> returning (%s))\n" ctypes_ret
 
