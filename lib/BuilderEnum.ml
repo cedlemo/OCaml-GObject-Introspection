@@ -121,15 +121,18 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
   Printf.fprintf mli "val %s_list_of_value:\n%s -> %s_list\n" enum_type_name ocaml_type enum_type_name;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let %s_list_of_value v =\n\
-                     let open %s in\n\
-                     let flags = [] in\n" enum_type_name constant_type;
-  Printf.fprintf ml "%s\nflags\n" (String.concat "\n" (List.map (fun (x,v) ->
-        String.concat " " ["if ((logand v (of_int";
-                          negative_int_in_parentheses x;
-                          ")) != zero) then ignore (";
-                          v;
-                          ":: flags );"]
-    ) values_and_variants))
+                     let open %s in\n" enum_type_name constant_type;
+  Printf.fprintf ml "let all_flags = [%s]\n" (String.concat "; " (List.map (fun (x,v) ->
+    String.concat " " ["("; negative_int_in_parentheses x; ","; v; ")"]) values_and_variants));
+    Printf.fprintf ml "%s" "in\n\
+                           let rec build_flags_list allf acc =\n\
+                             match allf with\n\
+                             | [] -> acc\n\
+                             | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)\n\
+                             else build_flags_list q acc\n\
+                           in build_flags_list all_flags []\n"
+(* TODO: factorize, there is no need to rewrite each time build_flags_list. It
+ * can be added once in core.ml of the lib. *)
 
 let append_flags_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf mli "val %s_list : %s_list typ\n" enum_type_name enum_type_name;
