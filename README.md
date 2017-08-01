@@ -40,6 +40,10 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
+  * Update test in TestBuilderEnum of append_flags_list_of_value_fn
+  * handle simple functions for struct, unions.
+  * start supporting Interface.
+
   * Find the problem with jbuilder and Travis. Why can I run the tests under
     ArchLinux but not on Travis
 
@@ -50,8 +54,7 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
     * how to handle this and the GLib2 builder.
 
   * Write down the process to function bindings generation then implement it.
-  * Create test in Samples/GLib/tests
-    * for enum and flags
+
   * test Windows build with appveyor:
     * install MSYS2
     * install gobject-introspection
