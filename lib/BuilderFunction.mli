@@ -45,3 +45,6 @@ val get_return_types:
 
 val append_ctypes_function_bindings:
   string -> GIFunctionInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val append_ctypes_method_bindings:
+  string -> GIFunctionInfo.t structure ptr -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit

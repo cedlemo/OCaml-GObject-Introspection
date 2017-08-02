@@ -91,3 +91,50 @@ let append_ctypes_function_bindings name info (mli, ml) =
       Printf.fprintf mli " -> %s\n" ocaml_ret;
       Printf.fprintf ml " @-> returning (%s))\n" ctypes_ret
 
+(* For the methods arguments, we have to check is the argument is of the same
+ * type of the container (object, structure or union). *)
+let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_typ) =
+  if (container_name ^ ".t structure") = ocaml_type then ("t structure", "t_typ")
+  else if (container_name ^ ".t structure ptr") = ocaml_type then ("t structure ptr", "ptr t_typ")
+  else (ocaml_type, ctypes_typ)
+
+(* Given that method (GIFunction with method flags) of a container (object,
+ * structure, union ... ) has at least the container type as argument,
+ * when GObjectIntrospection returns no arguments, we just need to add the
+ * container types.*)
+let get_method_arguments_types callable container =
+  let n = GICallableInfo.get_n_args callable in
+  let rec parse_args index args_types =
+    if index = n then Some (List.rev args_types)
+    else let arg = GICallableInfo.get_arg callable index in
+    match GIArgInfo.get_direction arg with
+           | GIArgInfo.In -> (
+             let type_info = GIArgInfo.get_type arg in
+             match BuilderUtils.type_info_to_bindings_types type_info with
+               | BuilderUtils.Not_implemented tag_name -> None
+               | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+                   let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
+                   parse_args (index + 1) (types :: args_types)
+                   )
+               | _ -> None
+                   in parse_args 0 [("t structure ptr", "ptr t_typ")]
+
+let append_ctypes_method_bindings name info container (mli, ml) =
+  let symbol = GIFunctionInfo.get_symbol info in
+  let name = (if name = "" then symbol else name) in
+  let callable = GIFunctionInfo.to_callableinfo info in
+  match get_method_arguments_types callable container with
+  | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
+    BuilderUtils.add_comments mli coms;
+    BuilderUtils.add_comments ml coms
+  | Some args -> match get_return_types callable with
+    | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
+      BuilderUtils.add_comments mli coms;
+      BuilderUtils.add_comments ml coms
+    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli "val %s:\n" name;
+      Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
+      Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+      Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      Printf.fprintf mli " -> %s\n" ocaml_ret;
+      Printf.fprintf ml " @-> returning (%s))\n" ctypes_ret
+
