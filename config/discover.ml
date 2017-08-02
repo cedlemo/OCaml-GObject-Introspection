@@ -33,5 +33,5 @@ let () =
     let _ = print_endline (Sexp.to_string (sexp_of_list sexp_of_string conf.cflags)) in
     let _ = print_endline "==================== Configurator ================" in
 
-    write_sexp "c_flags.sexp"         (sexp_of_list sexp_of_string conf.libs);
+    write_sexp "c_flags.sexp"         (sexp_of_list sexp_of_string conf.cflags);
     write_sexp "c_library_flags.sexp" (sexp_of_list sexp_of_string conf.cflags))
