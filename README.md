@@ -40,8 +40,14 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
-  * Update test in TestBuilderEnum of append_flags_list_of_value_fn
   * handle simple functions for struct, unions.
+    * started see why GLib2 can not be compiled :
+     ```
+     File "lib/Rand.ml", line 9, characters 45-51:
+     Error: This expression has type t Ctypes.structure Ctypes_static.ptr -> float
+     but an expression was expected of type
+     'a Ctypes.typ = 'a Ctypes_static.typ
+      ```
   * start supporting Interface.
 
   * Find the problem with jbuilder and Travis. Why can I run the tests under
