@@ -397,10 +397,6 @@ let _GINTPTR_FORMAT = "li"
 
 let _GINTPTR_MODIFIER = "l"
 
-let _GNUC_FUNCTION = ""
-
-let _GNUC_PRETTY_FUNCTION = ""
-
 let _GSIZE_FORMAT = "lu"
 
 let _GSIZE_MODIFIER = "l"
@@ -1612,42 +1608,6 @@ let testsubprocessflags_list = view
 ~write:testsubprocessflags_list_to_value 
 uint32_t
 
-type testtrapflags = Silence_stdout | Silence_stderr | Inherit_stdin
-type testtrapflags_list = testtrapflags list
-let testtrapflags_of_value v =
-if v = Unsigned.UInt32.of_int 128 then Silence_stdout
-else if v = Unsigned.UInt32.of_int 256 then Silence_stderr
-else if v = Unsigned.UInt32.of_int 512 then Inherit_stdin
-else raise (Invalid_argument "Unexpected TestTrapFlags value")
-let testtrapflags_to_value = function
-| Silence_stdout -> Unsigned.UInt32.of_int 128
-| Silence_stderr -> Unsigned.UInt32.of_int 256
-| Inherit_stdin -> Unsigned.UInt32.of_int 512
-let testtrapflags_list_of_value v =
-let open Unsigned.UInt32 in
-let all_flags = [( 128 , Silence_stdout ); ( 256 , Silence_stderr ); ( 512 , Inherit_stdin )]
-in
-let rec build_flags_list allf acc =
-match allf with
-| [] -> acc
-| (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)
-else build_flags_list q acc
-in build_flags_list all_flags []
-let testtrapflags_list_to_value flags =
-let open Unsigned.UInt32 in
-let rec logor_flags l acc =
-match l with
-| [] -> acc
-| f :: q -> let v = testtrapflags_to_value f in
-let acc' = logor acc v in
-logor_flags q acc'
-in
-logor_flags flags zero
-let testtrapflags_list = view 
-~read:testtrapflags_list_of_value 
-~write:testtrapflags_list_to_value 
-uint32_t
-
 type threaderror = Thread_error_again
 let threaderror_of_value v =
 if v = Unsigned.UInt32.of_int 0 then Thread_error_again
@@ -2417,8 +2377,6 @@ foreign "g_assertion_message_cmpstr" (string @-> string @-> int32_t @-> string @
 let assertion_message_error =
 foreign "g_assertion_message_error" (string @-> string @-> int32_t @-> string @-> string @-> ptr Error.t_typ @-> uint32_t @-> int32_t @-> returning (void))
 
-(* Not implemented g_atexit argument types not handled . *)
-
 let atomic_int_add =
 foreign "g_atomic_int_add" (ptr int32_t @-> int32_t @-> returning (int32_t))
 
@@ -2430,9 +2388,6 @@ foreign "g_atomic_int_compare_and_exchange" (ptr int32_t @-> int32_t @-> int32_t
 
 let atomic_int_dec_and_test =
 foreign "g_atomic_int_dec_and_test" (ptr int32_t @-> returning (bool))
-
-let atomic_int_exchange_and_add =
-foreign "g_atomic_int_exchange_and_add" (ptr int32_t @-> int32_t @-> returning (int32_t))
 
 let atomic_int_get =
 foreign "g_atomic_int_get" (ptr int32_t @-> returning (int32_t))
@@ -2481,9 +2436,6 @@ foreign "g_atomic_pointer_xor" (ptr void @-> uint64_t @-> returning (uint64_t))
 (* Not implemented g_base64_encode_close argument types not handled . *)
 
 (* Not implemented g_base64_encode_step argument types not handled . *)
-
-let basename =
-foreign "g_basename" (string @-> returning (string))
 
 let bit_lock =
 foreign "g_bit_lock" (ptr int32_t @-> int32_t @-> returning (void))
@@ -2694,8 +2646,6 @@ foreign "g_file_error_quark" (void @-> returning (uint32_t))
 (* Not implemented g_find_program_in_path return type not handled . *)
 
 (* Not implemented g_format_size return type not handled . *)
-
-(* Not implemented g_format_size_for_display return type not handled . *)
 
 (* Not implemented g_format_size_full argument types not handled . *)
 
@@ -2937,14 +2887,6 @@ foreign "g_markup_error_quark" (void @-> returning (uint32_t))
 
 (* Not implemented g_markup_escape_text return type not handled . *)
 
-let mem_is_system_malloc =
-foreign "g_mem_is_system_malloc" (void @-> returning (bool))
-
-let mem_profile =
-foreign "g_mem_profile" (void @-> returning (void))
-
-(* Not implemented g_mem_set_vtable argument types not handled . *)
-
 let memdup =
 foreign "g_memdup" (ptr void @-> uint32_t @-> returning (ptr void))
 
@@ -3171,9 +3113,6 @@ foreign "g_str_match_string" (string @-> string @-> bool @-> returning (bool))
 
 (* Not implemented g_strcanon return type not handled . *)
 
-let strcasecmp =
-foreign "g_strcasecmp" (string @-> string @-> returning (int32_t))
-
 (* Not implemented g_strchomp return type not handled . *)
 
 (* Not implemented g_strchug return type not handled . *)
@@ -3184,8 +3123,6 @@ foreign "g_strcmp0" (string @-> string @-> returning (int32_t))
 (* Not implemented g_strcompress return type not handled . *)
 
 (* Not implemented g_strdelimit return type not handled . *)
-
-(* Not implemented g_strdown return type not handled . *)
 
 (* Not implemented g_strdup return type not handled . *)
 
@@ -3214,9 +3151,6 @@ foreign "g_strlcat" (string @-> string @-> uint64_t @-> returning (uint64_t))
 let strlcpy =
 foreign "g_strlcpy" (string @-> string @-> uint64_t @-> returning (uint64_t))
 
-let strncasecmp =
-foreign "g_strncasecmp" (string @-> string @-> uint32_t @-> returning (int32_t))
-
 (* Not implemented g_strndup return type not handled . *)
 
 (* Not implemented g_strnfill return type not handled . *)
@@ -3233,8 +3167,6 @@ foreign "g_strsignal" (int32_t @-> returning (string))
 (* Not implemented g_strstr_len return type not handled . *)
 
 (* Not implemented g_strtod argument types not handled . *)
-
-(* Not implemented g_strup return type not handled . *)
 
 let strv_contains =
 foreign "g_strv_contains" (string @-> string @-> returning (bool))
@@ -3317,8 +3249,6 @@ foreign "g_test_timer_start" (void @-> returning (void))
 let test_trap_assertions =
 foreign "g_test_trap_assertions" (string @-> string @-> int32_t @-> string @-> uint64_t @-> string @-> returning (void))
 
-(* Not implemented g_test_trap_fork argument types not handled . *)
-
 let test_trap_has_passed =
 foreign "g_test_trap_has_passed" (void @-> returning (bool))
 
@@ -3365,14 +3295,6 @@ foreign "g_thread_yield" (void @-> returning (void))
 (* Not implemented g_timeout_source_new return type not handled . *)
 
 (* Not implemented g_timeout_source_new_seconds return type not handled . *)
-
-(* Not implemented g_trash_stack_height argument types not handled . *)
-
-(* Not implemented g_trash_stack_peek argument types not handled . *)
-
-(* Not implemented g_trash_stack_pop argument types not handled . *)
-
-(* Not implemented g_trash_stack_push argument types not handled . *)
 
 let try_malloc =
 foreign "g_try_malloc" (uint64_t @-> returning (ptr void))
@@ -3459,8 +3381,6 @@ foreign "g_try_realloc_n" (ptr void @-> uint64_t @-> uint64_t @-> returning (ptr
 (* Not implemented g_unichar_validate argument types not handled . *)
 
 (* Not implemented g_unichar_xdigit_value argument types not handled . *)
-
-(* Not implemented g_unicode_canonical_decomposition argument types not handled . *)
 
 (* Not implemented g_unicode_canonical_ordering argument types not handled . *)
 
@@ -3580,9 +3500,6 @@ foreign "g_variant_is_signature" (string @-> returning (bool))
 
 let variant_parse_error_quark =
 foreign "g_variant_parse_error_quark" (void @-> returning (uint32_t))
-
-let variant_parser_get_error_quark =
-foreign "g_variant_parser_get_error_quark" (void @-> returning (uint32_t))
 
 (* Not implemented g_variant_type_checked_ return type not handled . *)
 
