@@ -222,28 +222,25 @@ let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
                                     Unsigned.uint32 -> optionflags_list"
 let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 let open Unsigned.UInt32 in\n\
-                                let flags = [] in\n\
-                                if ((logand v (of_int 0 )) != zero) then ignore ( None :: flags );\n\
-                                if ((logand v (of_int 1 )) != zero) then ignore ( Hidden :: flags );\n\
-                                if ((logand v (of_int 2 )) != zero) then ignore ( In_main :: flags );\n\
-                                if ((logand v (of_int 4 )) != zero) then ignore ( Reverse :: flags );\n\
-                                if ((logand v (of_int 8 )) != zero) then ignore ( No_arg :: flags );\n\
-                                if ((logand v (of_int 16 )) != zero) then ignore ( Filename :: flags );\n\
-                                if ((logand v (of_int 32 )) != zero) then ignore ( Optional_arg :: flags );\n\
-                                if ((logand v (of_int 64 )) != zero) then ignore ( Noalias :: flags );\n\
-                                flags"
+                                let all_flags = [( 0 , None ); ( 1 , Hidden ); ( 2 , In_main ); ( 4 , Reverse ); ( 8 , No_arg ); ( 16 , Filename ); ( 32 , Optional_arg ); ( 64 , Noalias )]\n\
+                                in\n\
+                                let rec build_flags_list allf acc =\n\
+                                match allf with\n\
+                                | [] -> acc\n\
+                                | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)\n\
+                                else build_flags_list q acc\n\
+                                in build_flags_list all_flags []"
 
 let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
-                                       let open Unsigned.UInt32 in\n\
-                                       let flags = [] in\n\
-                                       if ((logand v (of_int 1 )) != zero) then ignore ( Hidden :: flags );\n\
-                                       if ((logand v (of_int 2 )) != zero) then ignore ( In_main :: flags );\n\
-                                       if ((logand v (of_int 4 )) != zero) then ignore ( Reverse :: flags );\n\
-                                       if ((logand v (of_int 8 )) != zero) then ignore ( No_arg :: flags );\n\
-                                       if ((logand v (of_int 16 )) != zero) then ignore ( Filename :: flags );\n\
-                                       if ((logand v (of_int 32 )) != zero) then ignore ( Optional_arg :: flags );\n\
-                                       if ((logand v (of_int 64 )) != zero) then ignore ( Noalias :: flags );\n\
-                                       flags"
+                                let open Unsigned.UInt32 in\n\
+                                let all_flags = [( 1 , Hidden ); ( 2 , In_main ); ( 4 , Reverse ); ( 8 , No_arg ); ( 16 , Filename ); ( 32 , Optional_arg ); ( 64 , Noalias )]\n\
+                                in\n\
+                                let rec build_flags_list allf acc =\n\
+                                match allf with\n\
+                                | [] -> acc\n\
+                                | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)\n\
+                                else build_flags_list q acc\n\
+                                in build_flags_list all_flags []"
 
 let flags_type_view_sig = "val optionflags_list : optionflags_list typ"
 let flags_type_view = "let optionflags_list = view\n\
