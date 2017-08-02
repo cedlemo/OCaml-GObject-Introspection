@@ -77,11 +77,13 @@ let append_ctypes_function_bindings name info (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
   let callable = GIFunctionInfo.to_callableinfo info in
   match get_arguments_types callable with
-  | None -> Printf.fprintf mli "(* Not implemented %s argument types not handled *)" symbol;
-    Printf.fprintf ml "(* Not implemented %s argument types not handled *)" symbol
+  | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
+    BuilderUtils.add_comments mli coms;
+    BuilderUtils.add_comments ml coms
   | Some args -> match get_return_types callable with
-    | None -> Printf.fprintf mli "(* Not implemented %s return type not handled *)" symbol;
-      Printf.fprintf ml "(* Not implemented %s argument types not handled *)" symbol
+    | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
+      BuilderUtils.add_comments mli coms;
+      BuilderUtils.add_comments ml coms
     | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli "val %s:\n" name;
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));

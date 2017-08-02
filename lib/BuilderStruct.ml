@@ -39,8 +39,9 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
     | Some name ->
       let type_info = GIFieldInfo.get_type field_info in
       match BuilderUtils.type_info_to_bindings_types type_info with
-      | Not_implemented tag_name -> Printf.fprintf mli "(* TODO Struct field %s : %s tag not implemented *)" struct_name tag_name;
-        Printf.fprintf ml "(* TODO Struct field %s : %s tag not implemented *)" struct_name tag_name
+      | Not_implemented tag_name -> let coms = Printf.sprintf "TODO Struct field %s : %s tag not implemented" struct_name tag_name in
+        BuilderUtils.add_comments mli coms;
+        BuilderUtils.add_comments ml coms
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
         Printf.fprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type';

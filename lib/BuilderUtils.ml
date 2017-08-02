@@ -95,6 +95,9 @@ let add_open_foreign descr =
 let add_empty_line descr =
   Printf.fprintf descr "%s" "\n"
 
+let add_comments descr information =
+  Printf.fprintf descr "(* %s . *)\n" information
+
 let escape_OCaml_keywords variable_name =
   match variable_name with
   | "and"
