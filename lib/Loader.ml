@@ -99,49 +99,53 @@ let parse loader
     match GIBaseInfo.get_name info with
     | None -> ()
     | Some name ->
-      match GIBaseInfo.get_type info with
+      if GIBaseInfo.is_deprecated info then
+        let coms = Printf.sprintf " !!! DEPRECATED : %s" name in
+        BuilderUtils.add_comments main_sources.mli.descr coms
+      else
+        match GIBaseInfo.get_type info with
       | GIBaseInfo.Invalid -> Builder.parse_invalid_info info
       | GIBaseInfo.Function -> Builder.parse_function_info info main_sources
       | GIBaseInfo.Callback -> Builder.parse_callback_info info
       | GIBaseInfo.Struct -> let info' = GIStructInfo.from_baseinfo info in
-        if GIStructInfo.is_gtype_struct info' then ()
-        else (
-          let sources = generate_secondary_module_files loader name in
-          (
-            match struct_parser with
+      if GIStructInfo.is_gtype_struct info' then ()
+      else (
+        let sources = generate_secondary_module_files loader name in
+        (
+          match struct_parser with
             | None -> Builder.parse_struct_info info sources;
             | Some struct_parser_info -> struct_parser_info info sources;
-          );
+      );
           Builder.close_sources sources
         )
-      | GIBaseInfo.Boxed -> Builder.parse_boxed_info info
+            | GIBaseInfo.Boxed -> Builder.parse_boxed_info info
       | GIBaseInfo.Enum -> (
-          match enum_parser with
+        match enum_parser with
           | None -> Builder.parse_enum_info info main_sources
           | Some enum_parser_fn -> enum_parser_fn info main_sources
-        )
-      | GIBaseInfo.Flags -> (
-          match flags_parser with
+      )
+          | GIBaseInfo.Flags -> (
+            match flags_parser with
           | None -> Builder.parse_flags_info info main_sources
           | Some flags_parser_fn -> flags_parser_fn info main_sources
-        )
-      | GIBaseInfo.Object -> Builder.parse_object_info info
+      )
+          | GIBaseInfo.Object -> Builder.parse_object_info info
       | GIBaseInfo.Interface -> Builder.parse_interface_info info
       | GIBaseInfo.Constant -> (
-          match const_parser with
+        match const_parser with
           | None -> Builder.parse_constant_info info main_sources
           | Some const_parser_info -> const_parser_info info main_sources
-        )
-      | GIBaseInfo.Invalid_0 -> ()
-      | GIBaseInfo.Union -> (
-          let sources = generate_secondary_module_files loader name in
-          let _ = ( match union_parser with
+          )
+          | GIBaseInfo.Invalid_0 -> ()
+          | GIBaseInfo.Union -> (
+            let sources = generate_secondary_module_files loader name in
+            let _ = ( match union_parser with
             | None -> Builder.parse_union_info info sources
             | Some union_parser_fn -> union_parser_fn info sources
           ) in
-          Builder.close_sources sources
-        )
-      | GIBaseInfo.Value -> Builder.parse_value_info info
+            Builder.close_sources sources
+            )
+            | GIBaseInfo.Value -> Builder.parse_value_info info
       | GIBaseInfo.Signal -> Builder.parse_signal_info info
       | GIBaseInfo.Vfunc -> Builder.parse_vfunc_info info
       | GIBaseInfo.Property -> Builder.parse_property_info info
