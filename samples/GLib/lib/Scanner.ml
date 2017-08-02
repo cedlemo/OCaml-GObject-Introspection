@@ -24,4 +24,32 @@ let f_text_end = field t_typ "text_end" (string)
 let f_buffer = field t_typ "buffer" (string)
 let f_scope_id = field t_typ "scope_id" (uint32_t)
 (* TODO Struct field Scanner : interface tag not implemented . *)
+let cur_line =
+foreign "g_scanner_cur_line" (ptr t_typ @-> returning (uint32_t))
+let cur_position =
+foreign "g_scanner_cur_position" (ptr t_typ @-> returning (uint32_t))
+(* Not implemented g_scanner_cur_token return type not handled . *)
+let destroy =
+foreign "g_scanner_destroy" (ptr t_typ @-> returning (void))
+let eof =
+foreign "g_scanner_eof" (ptr t_typ @-> returning (bool))
+(* Not implemented g_scanner_get_next_token return type not handled . *)
+let input_file =
+foreign "g_scanner_input_file" (ptr t_typ @-> int32_t @-> returning (void))
+let input_text =
+foreign "g_scanner_input_text" (ptr t_typ @-> string @-> uint32_t @-> returning (void))
+let lookup_symbol =
+foreign "g_scanner_lookup_symbol" (ptr t_typ @-> string @-> returning (ptr void))
+(* Not implemented g_scanner_peek_next_token return type not handled . *)
+let scope_add_symbol =
+foreign "g_scanner_scope_add_symbol" (ptr t_typ @-> uint32_t @-> string @-> ptr void @-> returning (void))
+let scope_lookup_symbol =
+foreign "g_scanner_scope_lookup_symbol" (ptr t_typ @-> uint32_t @-> string @-> returning (ptr void))
+let scope_remove_symbol =
+foreign "g_scanner_scope_remove_symbol" (ptr t_typ @-> uint32_t @-> string @-> returning (void))
+let set_scope =
+foreign "g_scanner_set_scope" (ptr t_typ @-> uint32_t @-> returning (uint32_t))
+let sync_file_offset =
+foreign "g_scanner_sync_file_offset" (ptr t_typ @-> returning (void))
+(* Not implemented g_scanner_unexp_token argument types not handled . *)
 
