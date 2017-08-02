@@ -2,10 +2,10 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val f_cset_skip_characters: (string ptr, t structure) field
-val f_cset_identifier_first: (string ptr, t structure) field
-val f_cset_identifier_nth: (string ptr, t structure) field
-val f_cpair_comment_single: (string ptr, t structure) field
+val f_cset_skip_characters: (string, t structure) field
+val f_cset_identifier_first: (string, t structure) field
+val f_cset_identifier_nth: (string, t structure) field
+val f_cpair_comment_single: (string, t structure) field
 val f_case_sensitive: (Unsigned.uint32, t structure) field
 val f_skip_comment_multi: (Unsigned.uint32, t structure) field
 val f_skip_comment_single: (Unsigned.uint32, t structure) field

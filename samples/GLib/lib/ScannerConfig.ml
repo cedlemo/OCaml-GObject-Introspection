@@ -3,10 +3,10 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "ScannerConfig"
-let f_cset_skip_characters = field t_typ "cset_skip_characters" (ptr string)
-let f_cset_identifier_first = field t_typ "cset_identifier_first" (ptr string)
-let f_cset_identifier_nth = field t_typ "cset_identifier_nth" (ptr string)
-let f_cpair_comment_single = field t_typ "cpair_comment_single" (ptr string)
+let f_cset_skip_characters = field t_typ "cset_skip_characters" (string)
+let f_cset_identifier_first = field t_typ "cset_identifier_first" (string)
+let f_cset_identifier_nth = field t_typ "cset_identifier_nth" (string)
+let f_cpair_comment_single = field t_typ "cpair_comment_single" (string)
 let f_case_sensitive = field t_typ "case_sensitive" (uint32_t)
 let f_skip_comment_multi = field t_typ "skip_comment_multi" (uint32_t)
 let f_skip_comment_single = field t_typ "skip_comment_single" (uint32_t)
