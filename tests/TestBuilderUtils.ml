@@ -36,11 +36,20 @@ let test_escape_number_at_beginning test_ctxt =
   let escaped = BuilderUtils.escape_number_at_beginning "3D" in
   assert_equal_string "_3D" escaped
 
+let test_ensure_valid_variable_name test_ctxt =
+  let rec test = function
+    | [] -> ()
+    | h :: q -> let reference = "_" ^ h in
+    let escaped = BuilderUtils.ensure_valid_variable_name h in
+    assert_equal_string reference escaped
+  in test ["end"; "int"; "double"; "3D"]
+
 let tests =
   "GObject Introspection BuilderUtils tests" >:::
   [
     "Test escape OCaml keywords" >:: test_escape_OCaml_keywords;
     "Test escape OCaml types" >:: test_escape_OCaml_types;
     "Test escape Ctypes types" >:: test_escape_Ctypes_types;
-    "Test escape number at beginning" >:: test_escape_number_at_beginning
+    "Test escape number at beginning" >:: test_escape_number_at_beginning;
+    "Test ensure valid variable name" >:: test_ensure_valid_variable_name
   ]
