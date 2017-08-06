@@ -28,9 +28,14 @@ let test_escape_OCaml_types test_ctxt =
   let escaped = BuilderUtils.escape_OCaml_types "int" in
   assert_equal_string "_int" escaped
 
+let test_escape_Ctypes_types test_ctxt =
+  let escaped = BuilderUtils.escape_Ctypes_types "double" in
+  assert_equal_string "_double" escaped
+
 let tests =
   "GObject Introspection BuilderUtils tests" >:::
   [
     "Test escape OCaml keywords" >:: test_escape_OCaml_keywords;
-    "Test escape OCaml types" >:: test_escape_OCaml_types
+    "Test escape OCaml types" >:: test_escape_OCaml_types;
+    "Test escape Ctypes types" >:: test_escape_Ctypes_types
   ]
