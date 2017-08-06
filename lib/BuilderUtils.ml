@@ -213,5 +213,7 @@ let escape_Ctypes_types name =
   | _ -> name
 
 let ensure_valid_variable_name name =
-  let n = escape_OCaml_keywords name in
-  escape_number_at_beginning n
+  escape_OCaml_keywords name
+  |> escape_OCaml_types
+  |> escape_Ctypes_types
+  |> escape_number_at_beginning

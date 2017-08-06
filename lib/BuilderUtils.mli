@@ -83,7 +83,11 @@ val has_number_at_beginning:
 val escape_number_at_beginning:
   string -> string
 
-(** Check if the string given in argument is not an OCaml keyword or does not
-    start with a number. *)
+(** Check if the string given in argument
+    is not an OCaml keyword ,
+    is not an OCaml type name,
+    is not a Ctypes type name,
+    or does not start with a number.
+    If so, prepends "_" to the name. *)
 val ensure_valid_variable_name:
   string -> string
