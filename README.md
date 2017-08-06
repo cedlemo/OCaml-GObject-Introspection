@@ -48,6 +48,8 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
      but an expression was expected of type
      'a Ctypes.typ = 'a Ctypes_static.typ
       ```
+     -> solution : use BuilderUtils.ensure_valid_variable_name in BuilderFunction
+
   * start supporting Interface.
 
   * Find the problem with jbuilder and Travis. Why can I run the tests under
