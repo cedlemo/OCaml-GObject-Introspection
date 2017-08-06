@@ -32,10 +32,15 @@ let test_escape_Ctypes_types test_ctxt =
   let escaped = BuilderUtils.escape_Ctypes_types "double" in
   assert_equal_string "_double" escaped
 
+let test_escape_number_at_beginning test_ctxt =
+  let escaped = BuilderUtils.escape_number_at_beginning "3D" in
+  assert_equal_string "_3D" escaped
+
 let tests =
   "GObject Introspection BuilderUtils tests" >:::
   [
     "Test escape OCaml keywords" >:: test_escape_OCaml_keywords;
     "Test escape OCaml types" >:: test_escape_OCaml_types;
-    "Test escape Ctypes types" >:: test_escape_Ctypes_types
+    "Test escape Ctypes types" >:: test_escape_Ctypes_types;
+    "Test escape number at beginning" >:: test_escape_number_at_beginning
   ]
