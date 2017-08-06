@@ -170,6 +170,48 @@ let escape_number_at_beginning variable_name =
   if has_number_at_beginning variable_name then "_" ^ variable_name
   else variable_name
 
+let escape_OCaml_types name =
+  match name with
+  | "int"
+  | "float"
+  | "list"
+  | "string"
+  | "char"
+  | "array" -> "_" ^ name
+  | _ -> name
+
+(* Taken from https://realworldocaml.org/v1/en/html/foreign-function-interface.html. *)
+let escape_Ctypes_types name =
+  match name with
+  | "void"
+  | "char"
+  | "schar"
+  | "short"
+  | "int"
+  | "long"
+  | "llong"
+  | "nativeint"
+  | "int8_t"
+  | "int16_t"
+  | "int32_t"
+  | "int64_t"
+  | "uchar"
+  | "uchar"
+  | "uint8_t"
+  | "uint16_t"
+  | "uint32_t"
+  | "uint64_t"
+  | "size_t"
+  | "ushort"
+  | "uint"
+  | "ulong"
+  | "ullong"
+  | "float"
+  | "double"
+  | "complex32"
+  | "complex64" -> "_" ^ name
+  | _ -> name
+
 let ensure_valid_variable_name name =
   let n = escape_OCaml_keywords name in
   escape_number_at_beginning n
