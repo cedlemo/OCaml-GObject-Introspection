@@ -20,7 +20,12 @@ open TestUtils
 open OUnit2
 open GObjectIntrospection
 
+let test_escape_OCaml_keywords test_ctxt =
+  let escaped = BuilderUtils.escape_OCaml_keywords "end" in
+  assert_equal_string "_end" escaped
+
 let tests =
   "GObject Introspection BuilderUtils tests" >:::
   [
+    "Test escape OCaml keywords" >:: test_escape_OCaml_keywords
   ]
