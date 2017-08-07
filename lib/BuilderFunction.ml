@@ -55,7 +55,8 @@ let get_return_types callable =
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match GICallableInfo.get_caller_owns callable with
       | GIArgInfo.Nothing -> Some (ocaml_type, ctypes_typ)
-      | _ -> None
+      | GIArgInfo.Container -> Some (ocaml_type, ctypes_typ)
+      | GIArgInfo.Everything -> Some (ocaml_type, ctypes_typ)
 
 (* Build function bindings :
  * - get the GICallableInfo
