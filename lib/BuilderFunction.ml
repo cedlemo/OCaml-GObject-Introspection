@@ -122,6 +122,18 @@ let get_method_arguments_types callable container =
                | _ -> None
                    in parse_args 0 [("t structure ptr", "ptr t_typ")]
 
+let get_method_return_types callable container =
+  if GICallableInfo.skip_return callable then Some ("unit", "void")
+  else let ret = GICallableInfo.get_return_type callable in
+    match BuilderUtils.type_info_to_bindings_types ret with
+    | BuilderUtils.Not_implemented tag_name -> None
+    | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+      match GICallableInfo.get_caller_owns callable with
+      | GIArgInfo.Nothing -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+      | GIArgInfo.Container -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+      | GIArgInfo.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+
+
 let append_ctypes_method_bindings raw_name info container (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
   let name = BuilderUtils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
@@ -130,7 +142,7 @@ let append_ctypes_method_bindings raw_name info container (mli, ml) =
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
     BuilderUtils.add_comments mli coms;
     BuilderUtils.add_comments ml coms
-  | Some args -> match get_return_types callable with
+  | Some args -> match get_method_return_types callable container with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
       BuilderUtils.add_comments mli coms;
       BuilderUtils.add_comments ml coms
