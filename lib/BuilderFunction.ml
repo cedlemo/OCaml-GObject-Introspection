@@ -73,8 +73,10 @@ let get_return_types callable =
  *       - get the Tag (scalar data or complex data)
  *     - find out if it is a pointer
  *)
-let append_ctypes_function_bindings name info (mli, ml) =
+
+let append_ctypes_function_bindings raw_name info (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
+  let name = BuilderUtils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = GIFunctionInfo.to_callableinfo info in
   match get_arguments_types callable with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
@@ -119,9 +121,9 @@ let get_method_arguments_types callable container =
                | _ -> None
                    in parse_args 0 [("t structure ptr", "ptr t_typ")]
 
-let append_ctypes_method_bindings name info container (mli, ml) =
+let append_ctypes_method_bindings raw_name info container (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
-  let name = BuilderUtils.ensure_valid_variable_name (if name = "" then symbol else name) in
+  let name = BuilderUtils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = GIFunctionInfo.to_callableinfo info in
   match get_method_arguments_types callable container with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
