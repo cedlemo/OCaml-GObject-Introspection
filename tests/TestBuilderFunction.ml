@@ -59,9 +59,25 @@ let test_get_return_types test_ctx =
         assert_equal_string "int32_t" ctypes_type
     )
 
+let test_escape_bad_function_name test_ctxt =
+  let container = "Rand" in
+  match GIRepository.find_by_name repo namespace container with
+  | None -> assert_equal_string name " should return an I info"
+  | Some rand_info -> let struct_info = GIStructInfo.from_baseinfo rand_info in
+  let method_info = GIStructInfo.get_method struct_info 0 in
+  let mli_content = "val _double:\n\
+                     t structure ptr -> float" in
+  let ml_content = "let _double =\n\
+                    foreign \"g_rand_double\" (ptr t_typ @-> returning (double))" in
+  let writer = fun name info (mli, ml) ->
+    BuilderFunction.append_ctypes_method_bindings name info container (mli, ml)
+  in
+  TestUtils.test_writing test_ctxt method_info "double" writer mli_content ml_content
+
 let tests =
   "GObject Introspection BuilderFunction tests" >:::
   [
     "BuilderFunction get arguments ctypes" >:: test_get_arguments_types;
-    "BuilderFunction get return types" >:: test_get_return_types
+    "BuilderFunction get return types" >:: test_get_return_types;
+    "BuilderFunction escape bad function name" >:: test_escape_bad_function_name
   ]
