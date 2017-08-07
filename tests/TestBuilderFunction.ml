@@ -25,7 +25,7 @@ let namespace = "GLib"
 let typelib = GIRepository.require repo namespace ()
 let name = "ascii_strncasecmp"
 
-let get_function_info () =
+let get_function_info name () =
   match GIRepository.find_by_name repo namespace name with
   | None -> None
   | Some (base_info) -> match GIBaseInfo.get_type base_info with
@@ -33,13 +33,13 @@ let get_function_info () =
       Some info
     | _ -> None
 
-let test_function_info fn =
-  match get_function_info () with
+let test_function_info name fn =
+  match get_function_info name () with
   | None -> assert_equal_string name "No base info found"
   | Some info -> fn info
 
 let test_get_arguments_types test_ctx =
-  test_function_info (fun info ->
+  test_function_info name (fun info ->
       let callable = GIFunctionInfo.to_callableinfo info in
       match BuilderFunction.get_arguments_types callable with
       | None -> assert_equal_string "It should returns " "Ctypes arguments"
@@ -50,7 +50,7 @@ let test_get_arguments_types test_ctx =
     )
 
 let test_get_return_types test_ctx =
-  test_function_info (fun info ->
+  test_function_info name (fun info ->
       let callable = GIFunctionInfo.to_callableinfo info in
       match BuilderFunction.get_return_types callable with
       | None -> assert_equal_string "It should returns " "the return value ocaml and ctypes types"
