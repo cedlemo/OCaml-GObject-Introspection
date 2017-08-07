@@ -121,7 +121,7 @@ let get_method_arguments_types callable container =
 
 let append_ctypes_method_bindings name info container (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in
-  let name = (if name = "" then symbol else name) in
+  let name = BuilderUtils.ensure_valid_variable_name (if name = "" then symbol else name) in
   let callable = GIFunctionInfo.to_callableinfo info in
   match get_method_arguments_types callable container with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
