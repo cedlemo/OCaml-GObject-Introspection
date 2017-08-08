@@ -24,7 +24,7 @@ let () =
          let gobject = Option.value (C.Pkg_config.query pc ~package:"gobject-introspection-1.0") ~default in
          let  module P = C.Pkg_config in
          { libs = libffi.P.libs @ gobject.P.libs ;
-           cflags = ((libffi.P.libs @ gobject.P.libs) @ libffi.P.cflags) @ gobject.P.cflags }
+           cflags = libffi.P.cflags @ gobject.P.cflags }
     in
     let _ = print_endline "==================== Configurator ================" in
     let _ = print_endline ">>>>>>>>>>>>>>>>>>>>> libs : <<<<<<<<<<<<<<<<<<<<<<" in
@@ -34,4 +34,4 @@ let () =
     let _ = print_endline "==================== Configurator ================" in
 
     write_sexp "c_flags.sexp"         (sexp_of_list sexp_of_string conf.cflags);
-    write_sexp "c_library_flags.sexp" (sexp_of_list sexp_of_string conf.cflags))
+    write_sexp "c_library_flags.sexp" (sexp_of_list sexp_of_string conf.libs))
