@@ -8,7 +8,7 @@ let write_sexp fn sexp =
 let () =
   C.main ~name:"GObject-Introspection" (fun c ->
     let default : C.Pkg_config.package_conf =
-      { libs   = ["-lgirepository-1.0"; "-lgobject-2.0"; "-lglib-2.0"]
+      { libs   = ["-lgirepository-1.0"; "-lgobject-2.0"; "-lglib-2.0"; "-lffi"]
       ; cflags = ["-O2"; "-Wall"; "-Wextra"; "-Wno-unused-parameter"; "-pthread";
                   "-I/usr/include/gobject-introspection-1.0";
                   "-I/usr/lib/libffi-3.2.1/include";
