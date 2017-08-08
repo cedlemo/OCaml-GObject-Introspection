@@ -16,11 +16,19 @@ let () =
                   "-I/usr/lib/glib-2.0/include"]
       }
     in
+    let default_ffi : C.Pkg_config.package_conf =
+      { libs   = ["-lffi"] ;
+        cflags = ["-O2"; "-Wall"; "-Wextra"; "-Wno-unused-parameter";
+                  "-I/usr/lib/libffi-3.2.1/include";
+                  "-I/usr/include/x86_64-linux-gnu"; (* default ubuntu *)
+                  "-I/usr/include"] (* default ubuntu *)
+      }
+    in
     let conf =
       match C.Pkg_config.get c with
       | None -> default
       | Some pc ->
-         let libffi = Option.value_exn (C.Pkg_config.query pc ~package:"libffi") in
+         let libffi = Option.value (C.Pkg_config.query pc ~package:"libffi") ~default:default_ffi in
          let gobject = Option.value (C.Pkg_config.query pc ~package:"gobject-introspection-1.0") ~default in
          let  module P = C.Pkg_config in
          { libs = libffi.P.libs @ gobject.P.libs ;
