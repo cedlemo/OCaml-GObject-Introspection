@@ -91,6 +91,10 @@ let append_ctypes_function_bindings raw_name info (mli, ml) =
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      if GICallableInfo.can_throw_gerror callable then (
+        Printf.fprintf mli " -> %s" "Error.t structure ptr ptr option";
+        Printf.fprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+      );
       Printf.fprintf mli " -> %s\n" ocaml_ret;
       Printf.fprintf ml " @-> returning (%s))\n" ctypes_ret
 
@@ -150,6 +154,10 @@ let append_ctypes_method_bindings raw_name info container (mli, ml) =
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      if GICallableInfo.can_throw_gerror callable then (
+        Printf.fprintf mli " -> %s" "Error.t structure ptr ptr option";
+        Printf.fprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+      );
       Printf.fprintf mli " -> %s\n" ocaml_ret;
       Printf.fprintf ml " @-> returning (%s))\n" ctypes_ret
 
