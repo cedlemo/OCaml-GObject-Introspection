@@ -39,7 +39,8 @@ let get_arguments_types callable =
            match GIArgInfo.get_direction arg with
            | GIArgInfo.In -> (
                let type_info = GIArgInfo.get_type arg in
-               match BuilderUtils.type_info_to_bindings_types type_info with
+               let may_be_null = GIArgInfo.may_be_null arg in
+               match BuilderUtils.type_info_to_bindings_types type_info may_be_null with
                | BuilderUtils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                  parse_args (index + 1) ((ocaml_type, ctypes_typ) :: args_types)
@@ -50,7 +51,8 @@ let get_arguments_types callable =
 let get_return_types callable =
   if GICallableInfo.skip_return callable then Some ("unit", "void")
   else let ret = GICallableInfo.get_return_type callable in
-    match BuilderUtils.type_info_to_bindings_types ret with
+    let may_be_null = GICallableInfo.may_return_null callable in
+    match BuilderUtils.type_info_to_bindings_types ret may_be_null with
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match GICallableInfo.get_caller_owns callable with
@@ -117,7 +119,8 @@ let get_method_arguments_types callable container =
     match GIArgInfo.get_direction arg with
            | GIArgInfo.In -> (
              let type_info = GIArgInfo.get_type arg in
-             match BuilderUtils.type_info_to_bindings_types type_info with
+             let may_be_null = GIArgInfo.may_be_null arg in
+             match BuilderUtils.type_info_to_bindings_types type_info may_be_null with
                | BuilderUtils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                    let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
@@ -129,7 +132,8 @@ let get_method_arguments_types callable container =
 let get_method_return_types callable container =
   if GICallableInfo.skip_return callable then Some ("unit", "void")
   else let ret = GICallableInfo.get_return_type callable in
-    match BuilderUtils.type_info_to_bindings_types ret with
+    let may_be_null = GICallableInfo.may_return_null callable in
+    match BuilderUtils.type_info_to_bindings_types ret may_be_null with
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match GICallableInfo.get_caller_owns callable with

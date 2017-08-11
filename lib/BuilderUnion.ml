@@ -33,7 +33,7 @@ let append_ctypes_union_fields_declarations union_name info sources_files =
     | None -> ()
     | Some name ->
       let type_info = GIFieldInfo.get_type field_info in
-      match BuilderUtils.type_info_to_bindings_types type_info with
+      match BuilderUtils.type_info_to_bindings_types type_info false with
       | Not_implemented tag_name -> let coms = Printf.sprintf "TODO Union field %s : %s tag not implemented" union_name tag_name in
         BuilderUtils.add_comments mli coms;
         BuilderUtils.add_comments ml coms
