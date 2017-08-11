@@ -199,7 +199,6 @@ let escape_Ctypes_types name =
   | "int32_t"
   | "int64_t"
   | "uchar"
-  | "uchar"
   | "uint8_t"
   | "uint16_t"
   | "uint32_t"
