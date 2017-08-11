@@ -37,16 +37,18 @@ type flags =
 let get_flags info =
   let get_flags_raw =
     foreign "g_function_info_get_flags"
-      (ptr functioninfo @-> returning int)
-  in let flags = [] in
-  let c_flags = get_flags_raw info in
-  if ((c_flags land (1 lsl 0)) != 0) then ignore (Is_method :: flags);
-  if ((c_flags land (1 lsl 1)) != 0) then ignore (Is_constructor :: flags);
-  if ((c_flags land (1 lsl 2)) != 0) then ignore (Is_getter :: flags);
-  if ((c_flags land (1 lsl 3)) != 0) then ignore (Is_setter :: flags);
-  if ((c_flags land (1 lsl 4)) != 0) then ignore (Wraps_vfunc :: flags);
-  if ((c_flags land (1 lsl 5)) != 0) then ignore (Throws :: flags);
-  flags
+      (ptr functioninfo @-> returning uint32_t)
+  in
+  let v = get_flags_raw info in
+  let open Unsigned.UInt32 in
+  let all_flags = [( 1, Is_method ); ( 2, Is_constructor ); ( 4 , Is_getter ); ( 8 , Is_setter ); ( 16 , Wraps_vfunc ); (32, Throws)]
+  in
+  let rec build_flags_list allf acc =
+    match allf with
+    | [] -> acc
+    | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)
+    else build_flags_list q acc
+  in build_flags_list all_flags []
 
 let get_property info =
   let flags = get_flags info in
