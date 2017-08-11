@@ -42,15 +42,9 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
   * handle simple functions for struct, unions.
     * started
-    * In toplevel functions check that they are not methods (for example,
-      ```
-      val byte_array_new:
-      unit -> ByteArray.t structure ptr
-      ```
-      should not be in Core.mli
-
     * check if the arg or ret types can be null (if ptr by default, assume
       that yes) and use `ptr option`
+      almost done -> need to test
   * start supporting Interface.
 
   * Find the problem with jbuilder and Travis. Why can I run the tests under
