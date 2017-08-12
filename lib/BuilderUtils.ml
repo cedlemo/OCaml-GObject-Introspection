@@ -68,8 +68,12 @@ let type_info_to_bindings_types type_info maybe_null =
   | GITypes.Float -> Types (check_if_pointer ("float", "float"))
   | GITypes.Double -> Types (check_if_pointer ("float", "double"))
   | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Utf8 -> Types { ocaml = "string"; ctypes = "string"}
-  | GITypes.Filename -> Types { ocaml = "string"; ctypes = "string"}
+  | GITypes.Utf8 -> if maybe_null then Types {ocaml = "string option";
+                                              ctypes = "string_opt"}
+    else Types {ocaml = "string"; ctypes = "string"}
+  | GITypes.Filename -> if maybe_null then Types {ocaml = "string option";
+                                                  ctypes = "string_opt"}
+    else Types {ocaml = "string"; ctypes = "string"}
   | GITypes.Array -> (
     match GITypeInfo.get_array_type type_info with
     | None -> Not_implemented ("Bad Array type for GITypes.Array tag")
