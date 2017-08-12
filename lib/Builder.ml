@@ -64,8 +64,17 @@ let parse_invalid_info info =
 let parse_function_info info source_files =
   match GIBaseInfo.get_name info with
   | None -> ()
-  | Some name -> let info' = GIFunctionInfo.from_baseinfo info in
-    let flags = GIFunctionInfo.get_flags info' in
+  | Some name -> let _ = match GIBaseInfo.get_container info with
+   | None -> ()
+   | Some container -> match GIBaseInfo.get_name container with
+     | None -> ()
+     | Some container_name -> print_endline (String.concat " " ["Container :";
+                                                                container_name;
+                                                                "function";
+                                                                name])
+     in
+     let info' = GIFunctionInfo.from_baseinfo info in
+     let flags = GIFunctionInfo.get_flags info' in
     let rec search = function
       | [] -> true
       | f :: q -> if f == GIFunctionInfo.Is_method then false

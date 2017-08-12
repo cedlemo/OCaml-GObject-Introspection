@@ -55,6 +55,12 @@ val get_namespace:
 val is_deprecated:
   t structure ptr -> bool
 
+(** Obtain the container of the info . The container is the parent GIBaseInfo.
+    For instance, the parent of a GIFunctionInfo is an GIObjectInfo or
+    GIInterfaceInfo. *)
+val get_container:
+  t structure ptr -> t structure ptr option
+
 type baseinfo_type =
   | Invalid (** invalid type *)
   | Function (** function, see GIFunctionInfo *)
@@ -93,7 +99,6 @@ val get_type:
   TODO : GITypelib *	g_base_info_get_typelib ()
   TODO : const gchar *	g_base_info_get_attribute ()
   TODO : gboolean	g_base_info_iterate_attributes ()
-  TODO : GIBaseInfo *	g_base_info_get_container ()
 *)
 
 val add_unref_finaliser:

@@ -124,6 +124,14 @@ let add_unref_finaliser info =
     ) info in
   info
 
+let get_container info =
+  let get_container_raw =
+  foreign "g_base_info_get_container"
+  (ptr baseinfo @-> returning (ptr_opt baseinfo)) in
+  match get_container_raw info with
+  | None -> None
+  | Some container_info -> Some (add_unref_finaliser container_info)
+
 (** GIRealInfo private struct only used to check ref_count and memory leaks *)
 (* type realinfo
 let realinfo : realinfo structure typ = structure "GIRealInfo"
