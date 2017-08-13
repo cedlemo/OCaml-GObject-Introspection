@@ -40,6 +40,12 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
+  * In BuilderFunction when I parse the argument functions, try to get the more
+    information from GIArgInfo coercion to GIBaseInfo.
+      it seems I can get the name of the parameter like in the C code.
+      I should try to use the GIBaseInfo.get_type.
+      How can I found that the requested value is an enum or some ored flags in
+      order to use the views I created ?
   * handle simple functions for struct, unions.
     * started
   * start supporting Interface.
