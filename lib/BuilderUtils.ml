@@ -16,9 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-module Option : sig
-  val value : default:'a -> 'a option -> 'a
-end = struct
+module Option = struct
   let value ~default value_or_none =
     match value_or_none with
       | None -> default
