@@ -38,6 +38,9 @@ let get_arguments_types callable =
          else let arg = GICallableInfo.get_arg callable index in
            match GIArgInfo.get_direction arg with
            | GIArgInfo.In -> (
+               let b = GIArgInfo.to_baseinfo arg in
+               let name = BuilderUtils.Option.value ~default:"nope" (GIBaseInfo.get_name b) in
+               let _ = print_endline name in
                let type_info = GIArgInfo.get_type arg in
                let may_be_null = GIArgInfo.may_be_null arg in
                match BuilderUtils.type_info_to_bindings_types type_info may_be_null with
@@ -118,6 +121,9 @@ let get_method_arguments_types callable container =
     else let arg = GICallableInfo.get_arg callable index in
     match GIArgInfo.get_direction arg with
            | GIArgInfo.In -> (
+               let b = GIArgInfo.to_baseinfo arg in
+               let name = BuilderUtils.Option.value ~default:"nope" (GIBaseInfo.get_name b) in
+               let _ = print_endline name in
              let type_info = GIArgInfo.get_type arg in
              let may_be_null = GIArgInfo.may_be_null arg in
              match BuilderUtils.type_info_to_bindings_types type_info may_be_null with
