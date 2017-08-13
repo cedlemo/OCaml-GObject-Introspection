@@ -21,6 +21,11 @@ open Ctypes
 (** BuilderUtils module : Regroups a set of functions needed in almost all the
     Builder* modules. *)
 
+(** Helper to write clean code with optional values. *)
+module Option : sig
+  val value : default:'a -> 'a option -> 'a
+end
+
 (** Type strings representation used in the bindings for a GITypes tag. *)
 type type_strings = { ocaml : string;
                       ctypes : string }
