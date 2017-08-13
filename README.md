@@ -42,9 +42,6 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
   * handle simple functions for struct, unions.
     * started
-    * check if the arg or ret types can be null (if ptr by default, assume
-      that yes) and use `ptr option`
-      almost done -> need to test
   * start supporting Interface.
 
   * Find the problem with jbuilder and Travis. Why can I run the tests under
