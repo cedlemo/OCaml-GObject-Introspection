@@ -45,7 +45,9 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
       it seems I can get the name of the parameter like in the C code.
       I should try to use the GIBaseInfo.get_type.
       How can I found that the requested value is an enum or some ored flags in
-      order to use the views I created ?
+      order to use the views I created ? : use the GITypeInfo of GIArInfo and
+      GITypeInfo.get_interface. When it returns something, use GIBaseInfo.get_type
+      and add the views.
   * handle simple functions for struct, unions.
     * started
   * start supporting Interface.
