@@ -11,6 +11,10 @@ The idea is to use the GObject-Introspection information in order to generate a
 configurable loader that will be able to construct automatically most of the
 Ctypes bindings of any C GObject libraries (not all but at least a big part).
 
+For now, GObject-Introspection is used to generate/bootstrap GLib2 OCaml bindings.
+Those bindings are used to test the `GObject-Introspection.Loader` module and will
+be a dependency to GObject-Introspection. ( https://github.com/cedlemo/OCaml-GLib2 )
+
 ## Wiki :
 
 https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
