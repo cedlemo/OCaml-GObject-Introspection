@@ -61,41 +61,77 @@ let type_info_to_bindings_types type_info maybe_null =
             ctypes = "ptr " ^ ctypes_t}
     else {ocaml = ocaml_t; ctypes = ctypes_t}
   in
-  match GITypeInfo.get_tag type_info with
-  | GITypes.Void -> Types (check_if_pointer ("unit", "void"))
-  | GITypes.Boolean -> Types (check_if_pointer ("bool", "bool"))
-  | GITypes.Int8 -> Types (check_if_pointer ("int", "int8_t"))
-  | GITypes.Uint8 -> Types (check_if_pointer ("Unsigned.uint8", "uint8_t"))
-  | GITypes.Int16 -> Types (check_if_pointer ("int", "int16_t"))
-  | GITypes.Uint16 -> Types (check_if_pointer ("Unsigned.uint16", "uint16_t"))
-  | GITypes.Int32 -> Types (check_if_pointer ("int32", "int32_t"))
-  | GITypes.Uint32 -> Types (check_if_pointer ("Unsigned.uint32", "uint32_t"))
-  | GITypes.Int64 -> Types (check_if_pointer ("int64", "int64_t"))
-  | GITypes.Uint64 -> Types (check_if_pointer ("Unsigned.uint64", "uint64_t"))
-  | GITypes.Float -> Types (check_if_pointer ("float", "float"))
-  | GITypes.Double -> Types (check_if_pointer ("float", "double"))
-  | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Utf8 -> if maybe_null then Types {ocaml = "string option";
-                                              ctypes = "string_opt"}
-    else Types {ocaml = "string"; ctypes = "string"}
-  | GITypes.Filename -> if maybe_null then Types {ocaml = "string option";
-                                                  ctypes = "string_opt"}
-    else Types {ocaml = "string"; ctypes = "string"}
-  | GITypes.Array -> (
-    match GITypeInfo.get_array_type type_info with
-    | None -> Not_implemented ("Bad Array type for GITypes.Array tag")
-    | Some array_type -> match array_type with
-      | GITypes.C -> Not_implemented ("C Array type for GITypes.Array tag")
-      | GITypes.Array -> Types (check_if_pointer ("Array.t structure", "Array.t_typ"))
-      | GITypes.Ptr_array -> Types (check_if_pointer ("PtrArray.t structure", "PtrArray.t_typ"))
-      | GITypes.Byte_array -> Types (check_if_pointer ("ByteArray.t structure", "ByteArray.t_typ"))
-  )
-  | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.GList -> Types (check_if_pointer ("List.t structure", "List.t_typ"))
-  | GITypes.GSList -> Types (check_if_pointer ("SList.t structure", "SList.t_typ"))
-  | GITypes.GHash -> Types (check_if_pointer ("HashTable.t structure", "HashTable.t_typ"))
-  | GITypes.Error -> Types (check_if_pointer ("Error.t structure", "Error.t_typ"))
-  | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
+  match GITypeInfo.get_interface type_info with
+  | None -> (
+    match GITypeInfo.get_tag type_info with
+    | GITypes.Void -> Types (check_if_pointer ("unit", "void"))
+    | GITypes.Boolean -> Types (check_if_pointer ("bool", "bool"))
+    | GITypes.Int8 -> Types (check_if_pointer ("int", "int8_t"))
+    | GITypes.Uint8 -> Types (check_if_pointer ("Unsigned.uint8", "uint8_t"))
+    | GITypes.Int16 -> Types (check_if_pointer ("int", "int16_t"))
+    | GITypes.Uint16 -> Types (check_if_pointer ("Unsigned.uint16", "uint16_t"))
+    | GITypes.Int32 -> Types (check_if_pointer ("int32", "int32_t"))
+    | GITypes.Uint32 -> Types (check_if_pointer ("Unsigned.uint32", "uint32_t"))
+    | GITypes.Int64 -> Types (check_if_pointer ("int64", "int64_t"))
+    | GITypes.Uint64 -> Types (check_if_pointer ("Unsigned.uint64", "uint64_t"))
+    | GITypes.Float -> Types (check_if_pointer ("float", "float"))
+    | GITypes.Double -> Types (check_if_pointer ("float", "double"))
+    | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
+    | GITypes.Utf8 -> if maybe_null then Types {ocaml = "string option";
+                                                ctypes = "string_opt"}
+      else Types {ocaml = "string"; ctypes = "string"}
+    | GITypes.Filename -> if maybe_null then Types {ocaml = "string option";
+                                                    ctypes = "string_opt"}
+      else Types {ocaml = "string"; ctypes = "string"}
+    | GITypes.Array -> (
+      match GITypeInfo.get_array_type type_info with
+      | None -> Not_implemented ("Bad Array type for GITypes.Array tag")
+      | Some array_type ->
+        match array_type with
+        | GITypes.C -> Not_implemented ("C Array type for GITypes.Array tag")
+        | GITypes.Array -> Types (check_if_pointer ("Array.t structure", "Array.t_typ"))
+        | GITypes.Ptr_array -> Types (check_if_pointer ("PtrArray.t structure", "PtrArray.t_typ"))
+        | GITypes.Byte_array -> Types (check_if_pointer ("ByteArray.t structure", "ByteArray.t_typ"))
+      )
+    | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
+    | GITypes.GList -> Types (check_if_pointer ("List.t structure", "List.t_typ"))
+    | GITypes.GSList -> Types (check_if_pointer ("SList.t structure", "SList.t_typ"))
+    | GITypes.GHash -> Types (check_if_pointer ("HashTable.t structure", "HashTable.t_typ"))
+    | GITypes.Error -> Types (check_if_pointer ("Error.t structure", "Error.t_typ"))
+    | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
+    )
+  | Some interface ->
+      match GIBaseInfo.get_type interface with
+      | Invalid as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Function as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Callback as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Struct as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Boxed as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Enum as t -> (
+        match GIBaseInfo.get_name interface with
+        | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+        | Some name -> let view_name = String.lowercase_ascii name in
+        Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
+      )
+      | Flags as t -> (
+        match GIBaseInfo.get_name interface with
+        | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+        | Some name -> let view_name = (String.lowercase_ascii name) ^ "_list" in
+        Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
+      )
+      | Object as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Interface as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Constant as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Invalid_0 as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Union as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Value as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Signal as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Vfunc as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Property as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Field as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Arg as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Type as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Unresolved as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
 
 let write_open_module descr name =
   Printf.fprintf descr "open %s\n" name
