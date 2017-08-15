@@ -3,6 +3,7 @@
 (executables
  ((names (test))
   (libraries   (GObjectIntrospection oUnit ctypes ctypes.foreign))
+  (flags (-ccopt ("-Wl,-no-as-needed")))
 ))
 
 (alias
