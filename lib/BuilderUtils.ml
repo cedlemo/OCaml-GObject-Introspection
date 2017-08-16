@@ -109,7 +109,7 @@ let type_info_to_bindings_types type_info maybe_null =
         match GIBaseInfo.get_name interface with
         | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
         | Some name ->
-        Types (check_if_pointer (Printf.sprintf "%s.t" name, Printf.sprintf "%s.t_typ" name))
+        Types (check_if_pointer (Printf.sprintf "%s.t structure" name, Printf.sprintf "%s.t_typ" name))
       )
       | Boxed as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
       | Enum as t -> (
