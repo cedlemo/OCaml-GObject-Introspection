@@ -44,6 +44,11 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
+  * naming convention :
+    * module : https://discuss.ocaml.org/t/capitalized-underscore-vs-camelcase/502
+      * use Capitalized_underscore
+    * opam naming convention :
+      * remove capitalized letters ?
   * handle simple functions for struct, unions.
     * started
   * start supporting Interface.
