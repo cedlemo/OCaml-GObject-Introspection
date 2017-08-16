@@ -105,7 +105,12 @@ let type_info_to_bindings_types type_info maybe_null =
       | Invalid as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
       | Function as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
       | Callback as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Struct as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Struct as t -> (
+        match GIBaseInfo.get_name interface with
+        | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+        | Some name ->
+        Types (check_if_pointer (Printf.sprintf "%s.t" name, Printf.sprintf "%s.t_typ" name))
+      )
       | Boxed as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
       | Enum as t -> (
         match GIBaseInfo.get_name interface with
