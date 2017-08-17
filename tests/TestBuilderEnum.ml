@@ -37,19 +37,6 @@ let enum_test namespace enum_name fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
-let test_rebuild_c_identifier_for_constant test_ctxt =
-  enum_test "GLib" "ChecksumType" (fun info ->
-      match GIEnumInfo.get_value info 0 with
-      | None -> assert_equal_string "It should " "have a value"
-      | Some value_info ->
-        let base_info = GIEnumInfo.to_baseinfo info in
-        match GIBaseInfo.get_name base_info with
-        | None -> assert_equal_string "It should " "have a name"
-        | Some name ->
-          let c_identifier = BuilderEnum.rebuild_c_identifier_for_constant name value_info in
-          assert_equal_string "G_CHECKSUM_MD5" c_identifier
-    )
-
 let enum_to_type = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512 | Sha384"
 let enum_to_type_travis = "type checksumtype = Md5 | Sha1 | Sha256 | Sha512"
 let enum_type_of_value_sig = "val checksumtype_of_value:\n\
