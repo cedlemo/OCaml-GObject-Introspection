@@ -18,21 +18,6 @@
 
 open BuilderUtils
 
-let base_name_for_enum name =
-  let pattern = Str.regexp "\\(.*\\)\\(Type\\|Flags\\)" in
-  if Str.string_match pattern name 0 then Str.matched_group 1 name
-  else name
-
-let rebuild_c_identifier_for_constant enum_name value_info =
-  let base_info = GIValueInfo.to_baseinfo value_info in
-  let namespace = GIBaseInfo.get_namespace base_info in
-  let repo = GIRepository.get_default () in
-  let c_prefix = GIRepository.get_c_prefix repo namespace in
-  match GIBaseInfo.get_name base_info with
-  | None -> raise (Failure "It should have a name")
-  | Some name -> let lower_case = String.concat "_" [c_prefix; base_name_for_enum enum_name; name] in
-    String.uppercase_ascii lower_case
-
 let append_enum_type enum_type_name values_and_variants descr =
   Printf.fprintf descr "type %s = " enum_type_name;
   Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))

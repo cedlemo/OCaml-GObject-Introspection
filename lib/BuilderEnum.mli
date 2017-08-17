@@ -23,9 +23,6 @@
 open Ctypes
 open Foreign
 
-val rebuild_c_identifier_for_constant:
-  string -> GIValueInfo.t structure ptr -> string
-
 val append_enum_type:
   string -> (string * string) list -> Pervasives.out_channel -> unit
 
