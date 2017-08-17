@@ -38,6 +38,11 @@ val append_enum_view:
 val get_values_and_variants:
   GIEnumInfo.t structure ptr -> (string * string) list
 
+(** This function returns from an enum name, its type name which is its view
+    name as well.*)
+val get_enum_type_name:
+    string -> string
+
 val append_ctypes_enum_bindings:
   string -> GIEnumInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
