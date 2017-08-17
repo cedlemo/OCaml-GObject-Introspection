@@ -127,7 +127,7 @@ let append_flags_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf ml "%s\n" ctypes_typ
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
-  let enum_type_name = String.lowercase_ascii enum_name in
+  let enum_type_name = BuilderUtils.get_enum_type_name enum_name in
   let tag = GIEnumInfo.get_storage_type info in
   match BuilderUtils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> (
