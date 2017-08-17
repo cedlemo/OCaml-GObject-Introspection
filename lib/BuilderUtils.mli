@@ -96,3 +96,8 @@ val escape_number_at_beginning:
     If so, prepends "_" to the name. *)
 val ensure_valid_variable_name:
   string -> string
+
+(** This function returns from an enum name, its type name which is its view
+    name as well.*)
+val get_enum_type_name:
+    string -> string

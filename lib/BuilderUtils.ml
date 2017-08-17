@@ -271,3 +271,6 @@ let ensure_valid_variable_name name =
   |> escape_OCaml_types
   |> escape_Ctypes_types
   |> escape_number_at_beginning
+
+let get_enum_type_name enum_name =
+  String.lowercase_ascii enum_name

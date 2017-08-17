@@ -69,11 +69,8 @@ let get_values_and_variants info =
               get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
   in get_v_and_v 0 []
 
-let get_enum_type_name enum_name =
-  String.lowercase_ascii enum_name
-
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
-  let enum_type_name = get_enum_type_name enum_name in
+  let enum_type_name = BuilderUtils.get_enum_type_name enum_name in
   let tag = GIEnumInfo.get_storage_type info in
   match BuilderUtils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
