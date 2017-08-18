@@ -1,12 +1,12 @@
 
 let () =
   let namespace = "GLib" in
-  let repo = GIRepository.get_default () in
-  match GIRepository.require repo namespace () with
+  let repo = Repository.get_default () in
+  match Repository.require repo namespace () with
   | None -> print_endline "Please provide a good namespace"
-  | Some _ -> let n = GIRepository.get_n_infos repo namespace in
+  | Some _ -> let n = Repository.get_n_infos repo namespace in
     for i = 0 to n - 1 do
-      let info = GIRepository.get_info repo namespace i in
+      let info = Repository.get_info repo namespace i in
       let name = match GIBaseInfo.get_name info with
         | None -> "Anonymous"
         | Some name -> name

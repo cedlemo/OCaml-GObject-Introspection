@@ -18,7 +18,7 @@
 
 let print_info repo namespace n =
   let message =
-    let info =  GIRepository.get_info repo namespace n in
+    let info =  Repository.get_info repo namespace n in
     let name = match GIBaseInfo.get_name info with
       | None -> "Anonymous"
       | Some name -> name in String.concat " " ["GIBaseInfo number";
@@ -28,9 +28,9 @@ let print_info repo namespace n =
 
 let () =
   let namespace = "Gtk" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace () in
-  let n = GIRepository.get_n_infos repo namespace in
+  let repo = Repository.get_default () in
+  let _ = Repository.require repo namespace () in
+  let n = Repository.get_n_infos repo namespace in
   for i = 0 to (n - 1) do
     print_info repo namespace i;
   done

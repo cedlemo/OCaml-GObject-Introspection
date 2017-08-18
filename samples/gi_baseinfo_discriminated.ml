@@ -18,11 +18,11 @@
 
 let () =
   let namespace = "Gtk" in
-  let repo = GIRepository.get_default () in
-  let _ = GIRepository.require repo namespace () in
-  let n = GIRepository.get_n_infos repo namespace in
+  let repo = Repository.get_default () in
+  let _ = Repository.require repo namespace () in
+  let n = Repository.get_n_infos repo namespace in
   for i = 0 to (n - 1) do
-    let info =  GIRepository.get_info repo namespace i in
+    let info =  Repository.get_info repo namespace i in
     match GIBaseInfo.get_type info with
     | GIBaseInfo.Union -> let info' = GIUnionInfo.from_baseinfo info in
       if GIUnionInfo.is_discriminated info' then
