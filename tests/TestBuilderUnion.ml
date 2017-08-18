@@ -20,10 +20,10 @@ open TestUtils
 open OUnit2
 open GObjectIntrospection
 
-let repo = GIRepository.get_default ()
+let repo = Repository.get_default ()
 
 let get_union_info namespace union_name =
-  match GIRepository.find_by_name repo namespace union_name with
+  match Repository.find_by_name repo namespace union_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
@@ -37,7 +37,7 @@ let union_test namespace union_name fn =
   | Some (info) -> fn info
 
 let test_writing_union namespace name writer mli_content ml_content =
-  let _ = GIRepository.require repo namespace () in
+  let _ = Repository.require repo namespace () in
   union_test namespace name (fun info ->
       let open Builder in
       let filename = String.concat "_" [namespace; name; "union"; "test"] in

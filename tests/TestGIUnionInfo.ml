@@ -21,12 +21,12 @@ open OUnit2
 open GObjectIntrospection
 
 let namespace = "GLib"
-let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace ()
+let repo = Repository.get_default ()
+let typelib = Repository.require repo namespace ()
 let union_name = "Mutex"
 
 let test_from_baseinfo test_ctxt =
-  match GIRepository.find_by_name repo namespace union_name with
+  match Repository.find_by_name repo namespace union_name with
   | None -> assert_equal_string union_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match GIBaseInfo.get_type base_info with
@@ -34,7 +34,7 @@ let test_from_baseinfo test_ctxt =
       | _ -> false )
 
 let get_union_info () =
-  match GIRepository.find_by_name repo namespace union_name with
+  match Repository.find_by_name repo namespace union_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with

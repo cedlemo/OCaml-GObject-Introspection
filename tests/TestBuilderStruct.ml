@@ -20,10 +20,10 @@ open TestUtils
 open OUnit2
 open GObjectIntrospection
 
-let repo = GIRepository.get_default ()
+let repo = Repository.get_default ()
 
 let get_struct_info namespace struct_name =
-  match GIRepository.find_by_name repo namespace struct_name with
+  match Repository.find_by_name repo namespace struct_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with

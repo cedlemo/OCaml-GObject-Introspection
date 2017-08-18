@@ -20,13 +20,13 @@ open TestUtils
 open OUnit2
 open GObjectIntrospection
 
-let repo = GIRepository.get_default ()
+let repo = Repository.get_default ()
 let namespace = "GLib"
-let typelib = GIRepository.require repo namespace ()
+let typelib = Repository.require repo namespace ()
 let name = "ascii_strncasecmp"
 
 let get_function_info name () =
-  match GIRepository.find_by_name repo namespace name with
+  match Repository.find_by_name repo namespace name with
   | None -> None
   | Some (base_info) -> match GIBaseInfo.get_type base_info with
     | GIBaseInfo.Function -> let info = GIFunctionInfo.from_baseinfo base_info in
@@ -61,7 +61,7 @@ let test_get_return_types test_ctx =
 
 let test_escape_bad_function_name test_ctxt =
   let container = "Rand" in
-  match GIRepository.find_by_name repo namespace container with
+  match Repository.find_by_name repo namespace container with
   | None -> assert_equal_string name " should return an I info"
   | Some rand_info -> let struct_info = GIStructInfo.from_baseinfo rand_info in
   let method_info = GIStructInfo.get_method struct_info 0 in

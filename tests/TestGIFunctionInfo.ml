@@ -21,12 +21,12 @@ open OUnit2
 open GObjectIntrospection
 
 let namespace = "GObject"
-let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace ()
+let repo = Repository.get_default ()
+let typelib = Repository.require repo namespace ()
 let name = "signal_name"
 
 let get_function_info () =
-  match GIRepository.find_by_name repo namespace name with
+  match Repository.find_by_name repo namespace name with
   | None -> None
   | Some (base_info) -> match GIBaseInfo.get_type base_info with
     | GIBaseInfo.Function -> let info = GIFunctionInfo.from_baseinfo base_info in

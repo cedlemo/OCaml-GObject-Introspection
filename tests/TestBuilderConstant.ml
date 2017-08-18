@@ -20,10 +20,10 @@ open TestUtils
 open OUnit2
 open GObjectIntrospection
 
-let repo = GIRepository.get_default ()
+let repo = Repository.get_default ()
 
 let get_constant_info namespace const_name =
-  match GIRepository.find_by_name repo namespace const_name with
+  match Repository.find_by_name repo namespace const_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with

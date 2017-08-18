@@ -21,10 +21,10 @@ open OUnit2
 open GObjectIntrospection
 open BuilderUtils
 
-let repo = GIRepository.get_default ()
+let repo = Repository.get_default ()
 
 let get_enum_info namespace enum_name =
-  match GIRepository.find_by_name repo namespace enum_name with
+  match Repository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
@@ -235,7 +235,7 @@ let flags_type_view = "let optionflags_list = view\n\
                        ~write:optionflags_list_to_value\n\
                        uint32_t"
 let get_flags_info namespace enum_name =
-  match GIRepository.find_by_name repo namespace enum_name with
+  match Repository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with

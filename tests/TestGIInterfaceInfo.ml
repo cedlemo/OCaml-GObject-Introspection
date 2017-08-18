@@ -21,12 +21,12 @@ open OUnit2
 open GObjectIntrospection
 
 let namespace = "Gio"
-let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace ()
+let repo = Repository.get_default ()
+let typelib = Repository.require repo namespace ()
 let interface_name = "TlsServerConnection"
 
 let get_interface_info interface_name =
-  match GIRepository.find_by_name repo namespace interface_name with
+  match Repository.find_by_name repo namespace interface_name with
   | None -> None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with

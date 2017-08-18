@@ -21,12 +21,12 @@ open OUnit2
 open GObjectIntrospection
 
 let namespace = "GObject"
-let repo = GIRepository.get_default ()
-let typelib = GIRepository.require repo namespace ()
+let repo = Repository.get_default ()
+let typelib = Repository.require repo namespace ()
 let fn_name = "signal_list_ids"
 
 let get_type_info () =
-  match GIRepository.find_by_name repo namespace fn_name with
+  match Repository.find_by_name repo namespace fn_name with
   | None -> assert_equal_string fn_name "No base info found"; None
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
@@ -106,7 +106,7 @@ type_test (fun info ->
 
 let test_get_interface test_ctxt =
   let name = "type_class_ref" in
-  match GIRepository.find_by_name repo namespace name with
+  match Repository.find_by_name repo namespace name with
   | None -> assert_equal_string fn_name "No base info found"
   | Some (base_info) ->
     match GIBaseInfo.get_type base_info with
