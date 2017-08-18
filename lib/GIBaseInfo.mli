@@ -20,7 +20,7 @@
 open Ctypes
 
 (** GIBaseInfo is the common base struct of all other *Info structs accessible
-    through the GIRepository API. All other structs can be casted to a
+    through the Repository API. All other structs can be casted to a
     GIBaseInfo *)
 type t
 val baseinfo : t structure typ

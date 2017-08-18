@@ -29,7 +29,7 @@ let get_type_name =
 let get_g_type info =
   let get_g_type_raw =
     foreign "g_registered_type_info_get_g_type"
-      (ptr registeredtypeinfo @-> returning GIRepository.gtype) in
+      (ptr registeredtypeinfo @-> returning Repository.gtype) in
   let gtype = get_g_type_raw info in
   if gtype == (Int64.shift_left (Int64.of_int 1) 2) then None (* G_TYPE_NONE *)
   else Some gtype

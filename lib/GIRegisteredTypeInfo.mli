@@ -42,7 +42,7 @@ val get_type_name:
     that the shared library which provides the type_init function for this
     @info cannot be called. *)
 val get_g_type:
-  t structure ptr -> GIRepository.gtype option
+  t structure ptr -> Repository.gtype option
 
 (** Obtain the type init function for info . The type init function is the
     function which will register the GType within the GObject type system.

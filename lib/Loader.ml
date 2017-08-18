@@ -17,18 +17,18 @@
  *)
 
 type t = {
-  repo : GIRepository.repository;
-  typelib : GIRepository.typelib;
+  repo : Repository.repository;
+  typelib : Repository.typelib;
   namespace : string;
   version : string;
   build_path: string;
 }
 
 let load namespace ?version () =
-  let repo = GIRepository.get_default () in
-  match GIRepository.require repo namespace ?version:version () with
+  let repo = Repository.get_default () in
+  match Repository.require repo namespace ?version:version () with
   | None -> None
-  | Some typelib -> let version' = GIRepository.get_version repo namespace in
+  | Some typelib -> let version' = Repository.get_version repo namespace in
     Some {repo; typelib; namespace; version = version'; build_path = "."}
 
 let dir_exists path =
@@ -93,9 +93,9 @@ let parse loader
   let open Builder in
   let _ = generate_directories loader in
   let main_sources = generate_main_module_files loader in
-  let n = GIRepository.get_n_infos loader.repo loader.namespace in
+  let n = Repository.get_n_infos loader.repo loader.namespace in
   for i = 0 to n - 1 do
-    let info = GIRepository.get_info loader.repo loader.namespace i in
+    let info = Repository.get_info loader.repo loader.namespace i in
     match GIBaseInfo.get_name info with
     | None -> ()
     | Some name ->
