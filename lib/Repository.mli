@@ -16,15 +16,15 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIRepository — GObject Introspection repository manager module
-  GIRepository is used to manage repositories of namespaces. Namespaces are
+(** Repository — GObject Introspection repository manager module
+  Repository is used to manage repositories of namespaces. Namespaces are
   represented on disk by type libraries (.typelib files).
 *)
 
 open Ctypes
 
-(** GIRepository — GObject Introspection repository manager module
-  GIRepository is used to manage repositories of namespaces. Namespaces are
+(** Repository — GObject Introspection repository manager module
+  Repository is used to manage repositories of namespaces. Namespaces are
   represented on disk by type libraries (.typelib files).
 *)
 
@@ -32,7 +32,7 @@ type repository
 
 type typelib
 
-(** Returns the singleton process-global default GIRepository. *)
+(** Returns the singleton process-global default Repository. *)
 val get_default:
   unit -> repository
 
@@ -52,8 +52,8 @@ val get_loaded_namespaces:
 (** Return an list of all (transitive) versioned dependencies for namespace_ .
     Returned strings are of the form namespace-version.
     Note: namespace_ must have already been loaded using a function such as
-    GIRepository.require before calling this function. To get only the immediate
-    dependencies for namespace_ , use GIRepository.get_immediate_dependencies.
+    Repository.require before calling this function. To get only the immediate
+    dependencies for namespace_ , use Repository.get_immediate_dependencies.
  *)
 val get_dependencies:
   repository -> string -> string list
@@ -62,14 +62,14 @@ val get_dependencies:
     with the given introspection namespace. Each C symbol starts with this
     prefix, as well each GType in the library.
     Note: The namespace must have already been loaded using a function such as
-    GIRepository.require before calling this function. *)
+    Repository.require before calling this function. *)
 val get_c_prefix:
   repository -> string -> string
 
 (** This function returns the loaded version associated with the given
     namespace namespace_ .
     Note: The namespace must have already been loaded using a function such as
-    GIRepository.require before calling this function. *)
+    Repository.require before calling this function. *)
 val get_version:
   repository -> string -> string
 
@@ -84,19 +84,19 @@ val get_typelib_path:
 val enumerate_versions:
   repository -> string -> string list
 
-(** Returns the current search path GIRepository will use when loading typelib
+(** Returns the current search path Repository will use when loading typelib
     files. The list is internal to GIRespository and should not be freed, nor
     should its string elements. *)
 val get_search_path:
   unit -> string list
 
 (** Prepends directory to the typelib search path. See
-    GIRepository.get_search_path. *)
+    Repository.get_search_path. *)
 val prepend_search_path:
   string -> unit
 
 (** Searches for a particular entry in a namespace. Before calling this
-    function for a particular namespace, you must call GIRepository.require
+    function for a particular namespace, you must call Repository.require
     once to load the namespace, or otherwise ensure the namespace has already
     been loaded.*)
 val find_by_name:
@@ -110,7 +110,7 @@ val get_n_infos:
 
 (** This function returns a particular metadata entry in the given namespace
     namespace_ . The namespace must have already been loaded before calling
-    this function. See GIRepository.get_n_infos to find the maximum number of
+    this function. See Repository.get_n_infos to find the maximum number of
     entries. *)
 val get_info:
   repository -> string -> int -> GIBaseInfo.t structure ptr
@@ -120,14 +120,14 @@ val get_info:
     shared library path associated, in which case this function will return
     NULL.
     Note: The namespace must have already been loaded using a function such as
-    GIRepository.require before calling this function. *)
+    Repository.require before calling this function. *)
 val get_shared_library:
   repository -> string -> string option
 
 (** Prepends directory to the search path that is used to search shared
     libraries referenced by imported namespaces. Multiple calls to this
     function all contribute to the final list of paths. The list of paths is
-    unique and shared for all GIRepository instances across the process, but it
+    unique and shared for all Repository instances across the process, but it
     doesn't affect namespaces imported before the call.
     If the library is not found in the directories configured in this way,
     loading will fall back to the system library path (ie. LD_LIBRARY_PATH and
