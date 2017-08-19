@@ -1,0 +1,665 @@
+<html>
+  <head>
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="header">
+      <h1>
+        <a href="index.html">
+          <span class="dirname">lib/</span>GIBaseInfo.ml
+        </a>
+      </h1>
+      <h2>44.62%</h2>
+    </div>
+    <div id="navbar">
+      <span class="unvisited" style="top:33.17%"></span>
+      <span class="unvisited" style="top:34.17%"></span>
+      <span class="unvisited" style="top:35.18%"></span>
+      <span class="unvisited" style="top:38.19%"></span>
+      <span class="unvisited" style="top:39.20%"></span>
+      <span class="unvisited" style="top:39.70%"></span>
+      <span class="unvisited" style="top:40.20%"></span>
+      <span class="unvisited" style="top:41.21%"></span>
+      <span class="unvisited" style="top:41.71%"></span>
+      <span class="unvisited" style="top:42.21%"></span>
+      <span class="unvisited" style="top:42.71%"></span>
+      <span class="unvisited" style="top:43.22%"></span>
+      <span class="unvisited" style="top:44.72%"></span>
+      <span class="unvisited" style="top:46.23%"></span>
+      <span class="unvisited" style="top:46.73%"></span>
+      <span class="unvisited" style="top:47.24%"></span>
+      <span class="unvisited" style="top:47.74%"></span>
+      <span class="unvisited" style="top:48.24%"></span>
+      <span class="unvisited" style="top:48.74%"></span>
+      <span class="unvisited" style="top:49.25%"></span>
+      <span class="unvisited" style="top:49.75%"></span>
+      <span class="unvisited" style="top:50.25%"></span>
+      <span class="unvisited" style="top:50.75%"></span>
+      <span class="unvisited" style="top:51.26%"></span>
+      <span class="unvisited" style="top:51.76%"></span>
+      <span class="unvisited" style="top:52.26%"></span>
+      <span class="unvisited" style="top:52.76%"></span>
+      <span class="unvisited" style="top:53.27%"></span>
+      <span class="unvisited" style="top:53.77%"></span>
+      <span class="unvisited" style="top:54.27%"></span>
+      <span class="unvisited" style="top:54.77%"></span>
+      <span class="unvisited" style="top:55.28%"></span>
+      <span class="unvisited" style="top:55.78%"></span>
+      <span class="unvisited" style="top:56.28%"></span>
+      <span class="unvisited" style="top:66.83%"></span>
+    </div>
+    <div id="report">
+      <div id="lines-layer">
+        <pre>
+<a id="L1"></a><span > </span>
+<a id="L2"></a><span > </span>
+<a id="L3"></a><span > </span>
+<a id="L4"></a><span > </span>
+<a id="L5"></a><span > </span>
+<a id="L6"></a><span > </span>
+<a id="L7"></a><span > </span>
+<a id="L8"></a><span > </span>
+<a id="L9"></a><span > </span>
+<a id="L10"></a><span > </span>
+<a id="L11"></a><span > </span>
+<a id="L12"></a><span > </span>
+<a id="L13"></a><span > </span>
+<a id="L14"></a><span > </span>
+<a id="L15"></a><span > </span>
+<a id="L16"></a><span > </span>
+<a id="L17"></a><span > </span>
+<a id="L18"></a><span > </span>
+<a id="L19"></a><span > </span>
+<a id="L20"></a><span > </span>
+<a id="L21"></a><span > </span>
+<a id="L22"></a><span > </span>
+<a id="L23"></a><span > </span>
+<a id="L24"></a><span > </span>
+<a id="L25"></a><span > </span>
+<a id="L26"></a><span class="visited"> </span>
+<a id="L27"></a><span > </span>
+<a id="L28"></a><span > </span>
+<a id="L29"></a><span class="visited"> </span>
+<a id="L30"></a><span > </span>
+<a id="L31"></a><span > </span>
+<a id="L32"></a><span class="visited"> </span>
+<a id="L33"></a><span > </span>
+<a id="L34"></a><span > </span>
+<a id="L35"></a><span class="visited"> </span>
+<a id="L36"></a><span > </span>
+<a id="L37"></a><span > </span>
+<a id="L38"></a><span class="visited"> </span>
+<a id="L39"></a><span > </span>
+<a id="L40"></a><span > </span>
+<a id="L41"></a><span class="visited"> </span>
+<a id="L42"></a><span > </span>
+<a id="L43"></a><span > </span>
+<a id="L44"></a><span > </span>
+<a id="L45"></a><span > </span>
+<a id="L46"></a><span > </span>
+<a id="L47"></a><span > </span>
+<a id="L48"></a><span > </span>
+<a id="L49"></a><span > </span>
+<a id="L50"></a><span > </span>
+<a id="L51"></a><span > </span>
+<a id="L52"></a><span > </span>
+<a id="L53"></a><span > </span>
+<a id="L54"></a><span > </span>
+<a id="L55"></a><span > </span>
+<a id="L56"></a><span > </span>
+<a id="L57"></a><span > </span>
+<a id="L58"></a><span > </span>
+<a id="L59"></a><span > </span>
+<a id="L60"></a><span > </span>
+<a id="L61"></a><span > </span>
+<a id="L62"></a><span > </span>
+<a id="L63"></a><span > </span>
+<a id="L64"></a><span > </span>
+<a id="L65"></a><span class="visited"> </span>
+<a id="L66"></a><span class="unvisited"> </span>
+<a id="L67"></a><span class="visited"> </span>
+<a id="L68"></a><span class="unvisited"> </span>
+<a id="L69"></a><span class="visited"> </span>
+<a id="L70"></a><span class="unvisited"> </span>
+<a id="L71"></a><span class="visited"> </span>
+<a id="L72"></a><span class="visited"> </span>
+<a id="L73"></a><span class="visited"> </span>
+<a id="L74"></a><span class="visited"> </span>
+<a id="L75"></a><span class="visited"> </span>
+<a id="L76"></a><span class="unvisited"> </span>
+<a id="L77"></a><span class="visited"> </span>
+<a id="L78"></a><span class="unvisited"> </span>
+<a id="L79"></a><span class="unvisited"> </span>
+<a id="L80"></a><span class="unvisited"> </span>
+<a id="L81"></a><span class="visited"> </span>
+<a id="L82"></a><span class="unvisited"> </span>
+<a id="L83"></a><span class="unvisited"> </span>
+<a id="L84"></a><span class="unvisited"> </span>
+<a id="L85"></a><span class="unvisited"> </span>
+<a id="L86"></a><span class="unvisited"> </span>
+<a id="L87"></a><span > </span>
+<a id="L88"></a><span > </span>
+<a id="L89"></a><span class="unvisited"> </span>
+<a id="L90"></a><span > </span>
+<a id="L91"></a><span > </span>
+<a id="L92"></a><span class="unvisited"> </span>
+<a id="L93"></a><span class="unvisited"> </span>
+<a id="L94"></a><span class="unvisited"> </span>
+<a id="L95"></a><span class="unvisited"> </span>
+<a id="L96"></a><span class="unvisited"> </span>
+<a id="L97"></a><span class="unvisited"> </span>
+<a id="L98"></a><span class="unvisited"> </span>
+<a id="L99"></a><span class="unvisited"> </span>
+<a id="L100"></a><span class="unvisited"> </span>
+<a id="L101"></a><span class="unvisited"> </span>
+<a id="L102"></a><span class="unvisited"> </span>
+<a id="L103"></a><span class="unvisited"> </span>
+<a id="L104"></a><span class="unvisited"> </span>
+<a id="L105"></a><span class="unvisited"> </span>
+<a id="L106"></a><span class="unvisited"> </span>
+<a id="L107"></a><span class="unvisited"> </span>
+<a id="L108"></a><span class="unvisited"> </span>
+<a id="L109"></a><span class="unvisited"> </span>
+<a id="L110"></a><span class="unvisited"> </span>
+<a id="L111"></a><span class="unvisited"> </span>
+<a id="L112"></a><span class="unvisited"> </span>
+<a id="L113"></a><span > </span>
+<a id="L114"></a><span > </span>
+<a id="L115"></a><span class="visited"> </span>
+<a id="L116"></a><span class="visited"> </span>
+<a id="L117"></a><span > </span>
+<a id="L118"></a><span class="visited"> </span>
+<a id="L119"></a><span class="visited"> </span>
+<a id="L120"></a><span > </span>
+<a id="L121"></a><span > </span>
+<a id="L122"></a><span class="visited"> </span>
+<a id="L123"></a><span class="visited"> </span>
+<a id="L124"></a><span > </span>
+<a id="L125"></a><span class="visited"> </span>
+<a id="L126"></a><span > </span>
+<a id="L127"></a><span > </span>
+<a id="L128"></a><span class="visited"> </span>
+<a id="L129"></a><span class="visited"> </span>
+<a id="L130"></a><span > </span>
+<a id="L131"></a><span class="visited"> </span>
+<a id="L132"></a><span class="visited"> </span>
+<a id="L133"></a><span class="unvisited"> </span>
+<a id="L134"></a><span > </span>
+<a id="L135"></a><span > </span>
+<a id="L136"></a><span > </span>
+<a id="L137"></a><span > </span>
+<a id="L138"></a><span > </span>
+<a id="L139"></a><span > </span>
+<a id="L140"></a><span > </span>
+<a id="L141"></a><span > </span>
+<a id="L142"></a><span > </span>
+<a id="L143"></a><span > </span>
+<a id="L144"></a><span > </span>
+<a id="L145"></a><span > </span>
+<a id="L146"></a><span > </span>
+<a id="L147"></a><span > </span>
+<a id="L148"></a><span > </span>
+<a id="L149"></a><span > </span>
+<a id="L150"></a><span > </span>
+<a id="L151"></a><span > </span>
+<a id="L152"></a><span > </span>
+<a id="L153"></a><span > </span>
+<a id="L154"></a><span > </span>
+<a id="L155"></a><span > </span>
+<a id="L156"></a><span > </span>
+<a id="L157"></a><span > </span>
+<a id="L158"></a><span > </span>
+<a id="L159"></a><span > </span>
+<a id="L160"></a><span > </span>
+<a id="L161"></a><span > </span>
+<a id="L162"></a><span > </span>
+<a id="L163"></a><span > </span>
+<a id="L164"></a><span > </span>
+<a id="L165"></a><span > </span>
+<a id="L166"></a><span > </span>
+<a id="L167"></a><span > </span>
+<a id="L168"></a><span > </span>
+<a id="L169"></a><span > </span>
+<a id="L170"></a><span > </span>
+<a id="L171"></a><span > </span>
+<a id="L172"></a><span > </span>
+<a id="L173"></a><span > </span>
+<a id="L174"></a><span > </span>
+<a id="L175"></a><span > </span>
+<a id="L176"></a><span > </span>
+<a id="L177"></a><span > </span>
+<a id="L178"></a><span > </span>
+<a id="L179"></a><span > </span>
+<a id="L180"></a><span > </span>
+<a id="L181"></a><span > </span>
+<a id="L182"></a><span > </span>
+<a id="L183"></a><span > </span>
+<a id="L184"></a><span > </span>
+<a id="L185"></a><span > </span>
+<a id="L186"></a><span > </span>
+<a id="L187"></a><span > </span>
+<a id="L188"></a><span > </span>
+<a id="L189"></a><span > </span>
+<a id="L190"></a><span > </span>
+<a id="L191"></a><span > </span>
+<a id="L192"></a><span > </span>
+<a id="L193"></a><span > </span>
+<a id="L194"></a><span > </span>
+<a id="L195"></a><span > </span>
+<a id="L196"></a><span > </span>
+<a id="L197"></a><span > </span>
+<a id="L198"></a><span > </span>
+<a id="L199"></a><span > </span>
+</pre>
+      </div>
+      <div id="text-layer">
+        <pre id="line-numbers">
+<a href="#L1">  1</a>
+<a href="#L2">  2</a>
+<a href="#L3">  3</a>
+<a href="#L4">  4</a>
+<a href="#L5">  5</a>
+<a href="#L6">  6</a>
+<a href="#L7">  7</a>
+<a href="#L8">  8</a>
+<a href="#L9">  9</a>
+<a href="#L10"> 10</a>
+<a href="#L11"> 11</a>
+<a href="#L12"> 12</a>
+<a href="#L13"> 13</a>
+<a href="#L14"> 14</a>
+<a href="#L15"> 15</a>
+<a href="#L16"> 16</a>
+<a href="#L17"> 17</a>
+<a href="#L18"> 18</a>
+<a href="#L19"> 19</a>
+<a href="#L20"> 20</a>
+<a href="#L21"> 21</a>
+<a href="#L22"> 22</a>
+<a href="#L23"> 23</a>
+<a href="#L24"> 24</a>
+<a href="#L25"> 25</a>
+<a href="#L26"> 26</a>
+<a href="#L27"> 27</a>
+<a href="#L28"> 28</a>
+<a href="#L29"> 29</a>
+<a href="#L30"> 30</a>
+<a href="#L31"> 31</a>
+<a href="#L32"> 32</a>
+<a href="#L33"> 33</a>
+<a href="#L34"> 34</a>
+<a href="#L35"> 35</a>
+<a href="#L36"> 36</a>
+<a href="#L37"> 37</a>
+<a href="#L38"> 38</a>
+<a href="#L39"> 39</a>
+<a href="#L40"> 40</a>
+<a href="#L41"> 41</a>
+<a href="#L42"> 42</a>
+<a href="#L43"> 43</a>
+<a href="#L44"> 44</a>
+<a href="#L45"> 45</a>
+<a href="#L46"> 46</a>
+<a href="#L47"> 47</a>
+<a href="#L48"> 48</a>
+<a href="#L49"> 49</a>
+<a href="#L50"> 50</a>
+<a href="#L51"> 51</a>
+<a href="#L52"> 52</a>
+<a href="#L53"> 53</a>
+<a href="#L54"> 54</a>
+<a href="#L55"> 55</a>
+<a href="#L56"> 56</a>
+<a href="#L57"> 57</a>
+<a href="#L58"> 58</a>
+<a href="#L59"> 59</a>
+<a href="#L60"> 60</a>
+<a href="#L61"> 61</a>
+<a href="#L62"> 62</a>
+<a href="#L63"> 63</a>
+<a href="#L64"> 64</a>
+<a href="#L65"> 65</a>
+<a href="#L66"> 66</a>
+<a href="#L67"> 67</a>
+<a href="#L68"> 68</a>
+<a href="#L69"> 69</a>
+<a href="#L70"> 70</a>
+<a href="#L71"> 71</a>
+<a href="#L72"> 72</a>
+<a href="#L73"> 73</a>
+<a href="#L74"> 74</a>
+<a href="#L75"> 75</a>
+<a href="#L76"> 76</a>
+<a href="#L77"> 77</a>
+<a href="#L78"> 78</a>
+<a href="#L79"> 79</a>
+<a href="#L80"> 80</a>
+<a href="#L81"> 81</a>
+<a href="#L82"> 82</a>
+<a href="#L83"> 83</a>
+<a href="#L84"> 84</a>
+<a href="#L85"> 85</a>
+<a href="#L86"> 86</a>
+<a href="#L87"> 87</a>
+<a href="#L88"> 88</a>
+<a href="#L89"> 89</a>
+<a href="#L90"> 90</a>
+<a href="#L91"> 91</a>
+<a href="#L92"> 92</a>
+<a href="#L93"> 93</a>
+<a href="#L94"> 94</a>
+<a href="#L95"> 95</a>
+<a href="#L96"> 96</a>
+<a href="#L97"> 97</a>
+<a href="#L98"> 98</a>
+<a href="#L99"> 99</a>
+<a href="#L100">100</a>
+<a href="#L101">101</a>
+<a href="#L102">102</a>
+<a href="#L103">103</a>
+<a href="#L104">104</a>
+<a href="#L105">105</a>
+<a href="#L106">106</a>
+<a href="#L107">107</a>
+<a href="#L108">108</a>
+<a href="#L109">109</a>
+<a href="#L110">110</a>
+<a href="#L111">111</a>
+<a href="#L112">112</a>
+<a href="#L113">113</a>
+<a href="#L114">114</a>
+<a href="#L115">115</a>
+<a href="#L116">116</a>
+<a href="#L117">117</a>
+<a href="#L118">118</a>
+<a href="#L119">119</a>
+<a href="#L120">120</a>
+<a href="#L121">121</a>
+<a href="#L122">122</a>
+<a href="#L123">123</a>
+<a href="#L124">124</a>
+<a href="#L125">125</a>
+<a href="#L126">126</a>
+<a href="#L127">127</a>
+<a href="#L128">128</a>
+<a href="#L129">129</a>
+<a href="#L130">130</a>
+<a href="#L131">131</a>
+<a href="#L132">132</a>
+<a href="#L133">133</a>
+<a href="#L134">134</a>
+<a href="#L135">135</a>
+<a href="#L136">136</a>
+<a href="#L137">137</a>
+<a href="#L138">138</a>
+<a href="#L139">139</a>
+<a href="#L140">140</a>
+<a href="#L141">141</a>
+<a href="#L142">142</a>
+<a href="#L143">143</a>
+<a href="#L144">144</a>
+<a href="#L145">145</a>
+<a href="#L146">146</a>
+<a href="#L147">147</a>
+<a href="#L148">148</a>
+<a href="#L149">149</a>
+<a href="#L150">150</a>
+<a href="#L151">151</a>
+<a href="#L152">152</a>
+<a href="#L153">153</a>
+<a href="#L154">154</a>
+<a href="#L155">155</a>
+<a href="#L156">156</a>
+<a href="#L157">157</a>
+<a href="#L158">158</a>
+<a href="#L159">159</a>
+<a href="#L160">160</a>
+<a href="#L161">161</a>
+<a href="#L162">162</a>
+<a href="#L163">163</a>
+<a href="#L164">164</a>
+<a href="#L165">165</a>
+<a href="#L166">166</a>
+<a href="#L167">167</a>
+<a href="#L168">168</a>
+<a href="#L169">169</a>
+<a href="#L170">170</a>
+<a href="#L171">171</a>
+<a href="#L172">172</a>
+<a href="#L173">173</a>
+<a href="#L174">174</a>
+<a href="#L175">175</a>
+<a href="#L176">176</a>
+<a href="#L177">177</a>
+<a href="#L178">178</a>
+<a href="#L179">179</a>
+<a href="#L180">180</a>
+<a href="#L181">181</a>
+<a href="#L182">182</a>
+<a href="#L183">183</a>
+<a href="#L184">184</a>
+<a href="#L185">185</a>
+<a href="#L186">186</a>
+<a href="#L187">187</a>
+<a href="#L188">188</a>
+<a href="#L189">189</a>
+<a href="#L190">190</a>
+<a href="#L191">191</a>
+<a href="#L192">192</a>
+<a href="#L193">193</a>
+<a href="#L194">194</a>
+<a href="#L195">195</a>
+<a href="#L196">196</a>
+<a href="#L197">197</a>
+<a href="#L198">198</a>
+<a href="#L199">199</a>
+</pre>
+        <pre id="code">
+(*
+ * Copyright 2017 Cedric LE MOIGNE, cedlemo@gmx.com
+ * This file is part of OCaml-GObject-Introspection.
+ *
+ * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * OCaml-GObject-Introspection is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OCaml-GObject-Introspection.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ *)
+
+open Ctypes
+open Foreign
+
+type t
+let baseinfo : t structure typ = structure "GIBaseInfo"
+
+let base_info_ref =
+  <span data-count="5">f</span>oreign "g_base_info_ref" (ptr baseinfo @-&gt; returning (ptr baseinfo))
+
+let base_info_unref =
+  <span data-count="5">f</span>oreign "g_base_info_unref" (ptr baseinfo @-&gt; returning void)
+
+let get_name =
+  <span data-count="5">f</span>oreign "g_base_info_get_name" (ptr baseinfo @-&gt; returning string_opt)
+
+let equal =
+  <span data-count="5">f</span>oreign "g_base_info_equal" (ptr baseinfo @-&gt; ptr baseinfo @-&gt; returning bool)
+
+let get_namespace =
+  <span data-count="5">f</span>oreign "g_base_info_get_namespace" (ptr baseinfo @-&gt; returning string)
+
+let is_deprecated =
+  <span data-count="5">f</span>oreign "g_base_info_is_deprecated" (ptr baseinfo @-&gt; returning bool)
+
+type baseinfo_type =
+  | Invalid
+  | Function
+  | Callback
+  | Struct
+  | Boxed
+  | Enum
+  | Flags
+  | Object
+  | Interface
+  | Constant
+  | Invalid_0
+  | Union
+  | Value
+  | Signal
+  | Vfunc
+  | Property
+  | Field
+  | Arg
+  | Type
+  | Unresolved
+
+let baseinfo_type_of_int = <span data-count="5">f</span>unction
+  | <span data-count="0">0</span> -&gt; Invalid
+  | <span data-count="34">1</span> -&gt; Function
+  | <span data-count="0">2</span> -&gt; Callback
+  | <span data-count="16">3</span> -&gt; Struct
+  | <span data-count="0">4</span> -&gt; Boxed
+  | <span data-count="13">5</span> -&gt; Enum
+  | <span data-count="5">6</span> -&gt; Flags
+  | <span data-count="55">7</span> -&gt; Object
+  | <span data-count="16">8</span> -&gt; Interface
+  | <span data-count="13">9</span> -&gt; Constant
+  | <span data-count="0">1</span>0 -&gt; Invalid_0
+  | <span data-count="19">1</span>1 -&gt; Union
+  | <span data-count="0">1</span>2 -&gt; Value
+  | <span data-count="0">1</span>3 -&gt; Signal
+  | <span data-count="0">1</span>4 -&gt; Vfunc
+  | <span data-count="1">1</span>5 -&gt; Property
+  | <span data-count="0">1</span>6 -&gt; Field
+  | <span data-count="0">1</span>7 -&gt; Arg
+  | <span data-count="0">1</span>8 -&gt; Type
+  | <span data-count="0">1</span>9 -&gt; Unresolved
+  | <span data-count="0">v</span>alue  -&gt; let message = <span data-count="0">S</span>tring.concat " " ["GIBaseInfo baseinfo_type value";
+                                               string_of_int value;
+                                               "should not have been reached"]
+    in <span data-count="0">r</span>aise (Failure message)
+
+let string_of_baseinfo_type baseinfo_t =
+  <span data-count="0">m</span>atch baseinfo_t with
+  | <span data-count="0">I</span>nvalid -&gt; "invalid"
+  | <span data-count="0">F</span>unction -&gt; "function"
+  | <span data-count="0">C</span>allback -&gt; "callback"
+  | <span data-count="0">S</span>truct -&gt; "struct"
+  | <span data-count="0">B</span>oxed -&gt; "boxed"
+  | <span data-count="0">E</span>num -&gt; "enum"
+  | <span data-count="0">F</span>lags -&gt; "flags"
+  | <span data-count="0">O</span>bject -&gt; "object"
+  | <span data-count="0">I</span>nterface -&gt; "interface"
+  | <span data-count="0">C</span>onstant -&gt; "constant"
+  | <span data-count="0">I</span>nvalid_0 -&gt; "deleted"
+  | <span data-count="0">U</span>nion -&gt; "union"
+  | <span data-count="0">V</span>alue -&gt; "enum"
+  | <span data-count="0">S</span>ignal -&gt; "signal"
+  | <span data-count="0">V</span>func -&gt; "virtual"
+  | <span data-count="0">P</span>roperty -&gt; "GObject"
+  | <span data-count="0">F</span>ield -&gt; "struct"
+  | <span data-count="0">A</span>rg -&gt; "argument"
+  | <span data-count="0">T</span>ype -&gt; "type"
+  | <span data-count="0">U</span>nresolved -&gt; "unresolved"
+
+let get_type info =
+  <span data-count="172">l</span>et get_type_raw =
+    <span data-count="172">f</span>oreign "g_base_info_get_type"
+      (ptr baseinfo @-&gt; returning int)
+  in <span data-count="172">l</span>et value = <span data-count="172">g</span>et_type_raw info in
+  <span data-count="172">b</span>aseinfo_type_of_int value
+
+let add_unref_finaliser info =
+  <span data-count="4">l</span>et _ = <span data-count="4">G</span>c.finalise (fun i -&gt;
+      <span data-count="3">b</span>ase_info_unref i
+    ) info in
+  <span data-count="4">i</span>nfo
+
+let get_container info =
+  <span data-count="1">l</span>et get_container_raw =
+  <span data-count="1">f</span>oreign "g_base_info_get_container"
+  (ptr baseinfo @-&gt; returning (ptr_opt baseinfo)) in
+  <span data-count="1">m</span>atch get_container_raw info with
+  | <span data-count="1">N</span>one -&gt; None
+  | <span data-count="0">S</span>ome container_info -&gt; Some (add_unref_finaliser container_info)
+
+(** GIRealInfo private struct only used to check ref_count and memory leaks *)
+(* type realinfo
+let realinfo : realinfo structure typ = structure "GIRealInfo"
+let girealinfo_type = field realinfo "type" (int32_t)
+let girealinfo_ref_count = field realinfo "ref_count" (int)
+let () = seal realinfo
+
+let realinfo_of_baseinfo info =
+  coerce (ptr baseinfo) (ptr realinfo) info
+
+let get_ref_count info =
+  let realinfo = realinfo_of_baseinfo info in
+  getf (!@realinfo) girealinfo_ref_count
+
+let ref_count_file = (Sys.getcwd ()) ^ "/ref_count.log"
+   *)
+(* http://stackoverflow.com/questions/8090490/how-to-implement-appendfile-function *)
+(*
+let write_ref_count_log message =
+  let oc = open_out_gen [Open_wronly; Open_append; Open_creat; Open_text] 0o640 ref_count_file in
+  let _ = output_string oc message in
+  close_out oc
+
+let base_info_ref info =
+  let base_info_ref_raw =
+    foreign "g_base_info_ref" (ptr baseinfo @-&gt; returning (ptr baseinfo))
+  in
+  let ref_count = get_ref_count info in
+  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
+  let name = match get_name info with
+    | None -&gt; "No name"
+    | Some str -&gt; str
+  in
+  let message = String.concat " " ["++ Ref count";
+                                   Nativeint.to_string addr;
+                                   string_of_int ref_count;
+                                   "ref to  ";
+                                   string_of_int (ref_count + 1);
+                                   name;
+                                   "\n"] in
+  let _ = write_ref_count_log message in
+  base_info_ref_raw info
+*)
+
+(*
+let base_info_unref info =
+  let base_info_unref_raw =
+    foreign "g_base_info_unref" (ptr baseinfo @-&gt; returning void)
+  in
+  let ref_count = get_ref_count info in
+  let addr = raw_address_of_ptr (coerce (ptr baseinfo) (ptr void) info) in
+  let name = match get_name info with
+    | None -&gt; "No name"
+    | Some str -&gt; str
+  in
+  let message = String.concat " " ["-- Ref count";
+                                   Nativeint.to_string addr;
+                                   string_of_int ref_count;
+                                   "unref to";
+                                   string_of_int (ref_count - 1);
+                                   name;
+                                   "\n"] in
+  let _ = write_ref_count_log message in
+  base_info_unref_raw info
+*)
+</pre>
+      </div>
+    </div>
+    <div id="footer">Generated on 2017-08-19 21:25:19 by <a href="https://github.com/aantron/bisect_ppx">Bisect_ppx</a> 1.3.0</div>
+    <script src="coverage.js"></script>
+  </body>
+</html>
