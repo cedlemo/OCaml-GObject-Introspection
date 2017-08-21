@@ -75,7 +75,7 @@ val get_n_constants:
 
 (** Obtain an interface type constant at index n . *)
 val get_constant:
-  t structure ptr -> int -> GIConstantInfo.t structure ptr
+  t structure ptr -> int -> Constant_info.t structure ptr
 
 (** Returns the layout C structure associated with this GInterface. *)
 val get_iface_struct:

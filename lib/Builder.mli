@@ -87,7 +87,7 @@ val parse_object_info :
 val parse_interface_info :
   Base_info.t structure ptr -> unit
 
-(** Use a GIConstantInfo in order to generate code with Ctypes. C Constants
+(** Use a Constant_info in order to generate code with Ctypes. C Constants
     will be written as module values. *)
 val parse_constant_info :
   Base_info.t structure ptr -> files -> unit

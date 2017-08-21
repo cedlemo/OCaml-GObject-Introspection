@@ -24,7 +24,7 @@ let bindings_constant_name name =
 
 let append_constant name info files field field_type printer =
   let (mli, ml) = files in
-  let argument = GIConstantInfo.get_value info in
+  let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
   let modified_name = bindings_constant_name name in
   let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
@@ -33,7 +33,7 @@ let append_constant name info files field field_type printer =
 
 let append_constant_of_32_or_more_bits name info files field field_type type_module printer =
   let (mli, ml) = files in
-  let argument = GIConstantInfo.get_value info in
+  let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
   let modified_name = bindings_constant_name name in
   let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
@@ -42,7 +42,7 @@ let append_constant_of_32_or_more_bits name info files field field_type type_mod
 
 let append_constant_of_31_or_less_bits name info files field field_type type_module printer =
   let (mli, ml) = files in
-  let argument = GIConstantInfo.get_value info in
+  let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
   let modified_name = bindings_constant_name name in
   let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in
@@ -94,7 +94,7 @@ let append_uint32_constant name info source_files =
 let append_int64_constant name info (mli, ml) =
   let field = GITypes.v_int64 in
   let field_type = "int64" in
-  let argument = GIConstantInfo.get_value info in
+  let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
   let modified_name = bindings_constant_name name in
   let _ = Printf.fprintf mli "val %s : %s\n" modified_name field_type in

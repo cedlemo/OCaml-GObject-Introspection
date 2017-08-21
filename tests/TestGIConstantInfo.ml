@@ -31,7 +31,7 @@ let get_constant_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Constant -> let const_info = GIConstantInfo.from_baseinfo base_info in
+    | Base_info.Constant -> let const_info = Constant_info.from_baseinfo base_info in
       Some const_info
     | _ -> None
 
@@ -42,7 +42,7 @@ let constant_test fn =
 
 let test_get_type test_ctxt =
   constant_test (fun info ->
-      let type_info = GIConstantInfo.get_type info in
+      let type_info = Constant_info.get_type info in
       let str = GITypeInfo.to_string type_info in
       assert_equal_string "unknown" str ;
       let tag = GITypeInfo.get_tag type_info in
@@ -53,9 +53,9 @@ let test_get_type test_ctxt =
 
 let test_get_value test_ctxt =
   constant_test (fun info ->
-      let type_info = GIConstantInfo.get_type info in
+      let type_info = Constant_info.get_type info in
       match GITypeInfo.get_tag type_info with
-      | GITypes.Int32 -> let argument = GIConstantInfo.get_value info in
+      | GITypes.Int32 -> let argument = Constant_info.get_value info in
         let value = getf (!@argument) GITypes.v_int32 in
         assert_equal_int 511 (Int32.to_int value)
       | _ -> assert_equal_string "The tag should be " "Int32"
@@ -64,6 +64,6 @@ let test_get_value test_ctxt =
 let tests =
   "GObject Introspection ConstantInfo tests" >:::
   [
-    "GIConstantInfo get type" >:: test_get_type;
-    "GIConstantInfo get value" >:: test_get_value
+    "Constant_info get type" >:: test_get_type;
+    "Constant_info get value" >:: test_get_value
   ]

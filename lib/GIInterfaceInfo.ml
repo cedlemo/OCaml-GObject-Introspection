@@ -100,11 +100,11 @@ let get_n_constants =
 let get_constant info n =
   let get_constant_raw =
     foreign "g_interface_info_get_constant"
-      (ptr interfaceinfo @-> int @-> returning (ptr GIConstantInfo.constantinfo)) in
+      (ptr interfaceinfo @-> int @-> returning (ptr Constant_info.constantinfo)) in
   let max = get_n_constants info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_constant_raw info n in
-    GIConstantInfo.add_unref_finaliser info'
+    Constant_info.add_unref_finaliser info'
 
 let get_iface_struct info =
   let get_iface_struct_raw =

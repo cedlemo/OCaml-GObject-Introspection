@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let constantinfo: t structure typ = structure "GIConstantInfo"
+let constantinfo: t structure typ = structure "Constant_info"
 
 let get_type info =
   let get_type_raw =

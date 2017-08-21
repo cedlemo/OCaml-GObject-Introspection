@@ -26,38 +26,38 @@ val bindings_constant_name:
   string -> string
 
 val append_boolean_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_int8_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_uint8_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_int16_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_uint16_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_int32_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_uint32_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_int64_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_uint64_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_float_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_double_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_string_constant:
-  string -> GIConstantInfo.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 

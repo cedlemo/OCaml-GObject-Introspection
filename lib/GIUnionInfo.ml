@@ -87,9 +87,9 @@ let get_discriminator_type info =
 let get_discriminator info n =
   let get_discriminator_raw =
     foreign "g_union_info_get_discriminator"
-    (ptr unioninfo @-> int @-> returning (ptr GIConstantInfo.constantinfo)) in
+    (ptr unioninfo @-> int @-> returning (ptr Constant_info.constantinfo)) in
   let info' = get_discriminator_raw info n in
-  GIConstantInfo.add_unref_finaliser info'
+  Constant_info.add_unref_finaliser info'
 
 (* TODO : check that the info can be casted to a unioninfo ? *)
 let cast_from_baseinfo info =

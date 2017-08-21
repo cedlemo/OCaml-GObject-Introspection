@@ -16,12 +16,12 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIConstantInfo — Struct representing a constant *)
+(** Constant_info — Struct representing a constant *)
 
 open Ctypes
 
-(** GIConstantInfo represents a constant. A constant has a type associated
-    which can be obtained by calling GIConstantInfo.get_type and a value, which
+(** Constant_info represents a constant. A constant has a type associated
+    which can be obtained by calling Constant_info.get_type and a value, which
     can be obtained by calling GIConstant.get_value. *)
 type t
 val constantinfo : t structure typ
@@ -42,21 +42,21 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIConstantInfo.t from a Base_info.t, the underlying C structure
+(** Return a Constant_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t form a GIConstantInfo, the underlying C structure
+(** Return a Base_info.t form a Constant_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
   t structure ptr -> Base_info.t structure ptr
 
-(** Obtain the value associated with the GIConstantInfo and store it in the
+(** Obtain the value associated with the Constant_info and store it in the
     value parameter. argument needs to be allocated before passing it in. The
     size of the constant value stored in argument will be returned. Free the
-    value with GIConstantInfo.free_value. *)
+    value with Constant_info.free_value. *)
 val get_value:
   t structure ptr -> GITypes.argument_t union ptr

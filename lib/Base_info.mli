@@ -71,7 +71,7 @@ type baseinfo_type =
   | Flags (** flags, see GIEnumInfo *)
   | Object (** object, see GIObjectInfo *)
   | Interface (** interface, see GIInterfaceInfo *)
-  | Constant (** contant, see GIConstantInfo *)
+  | Constant (** contant, see Constant_info *)
   | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
   | Union (** union, see GIUnionInfo *)
   | Value (** enum value, see GIValueInfo *)

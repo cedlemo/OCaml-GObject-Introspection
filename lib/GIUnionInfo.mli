@@ -70,7 +70,7 @@ val get_discriminator_type:
 (** Obtain discriminator value assigned for n-th union field, i.e. n-th union
     field is the active one if discriminator contains this constant. *)
 val get_discriminator:
-  t structure ptr -> int -> GIConstantInfo.t structure ptr
+  t structure ptr -> int -> Constant_info.t structure ptr
 
 (** Just cast OCaml Ctypes base info to union info. *)
 val cast_from_baseinfo:

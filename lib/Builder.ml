@@ -135,8 +135,8 @@ let parse_interface_info info =
 let parse_constant_info info source_files =
   match Base_info.get_name info with
   | None -> ()
-  | Some name -> let info' = GIConstantInfo.from_baseinfo info in
-    let type_info = GIConstantInfo.get_type info' in
+  | Some name -> let info' = Constant_info.from_baseinfo info in
+    let type_info = Constant_info.get_type info' in
     let not_implemented_todo_comments tag (mli, ml) =
       let tag_name = GITypes.string_of_tag tag in
       Printf.fprintf mli "(* TODO : constant %s type not implemented for %s *)" name tag_name;

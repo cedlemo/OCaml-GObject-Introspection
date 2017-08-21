@@ -23,7 +23,7 @@ open Ctypes
 (** GITypeInfo represents a type. You can retrieve a type info from an argument
     (see Arg_info), a function return value (see GIFunctionInfo), a field
     (see GIFieldInfo), a property (see GIPropertyInfo), a constant
-    (see GIConstantInfo) or for a union discriminator (see GIUnionInfo).
+    (see Constant_info) or for a union discriminator (see GIUnionInfo).
     A type can either be a of a basic type which is a standard C primitive type
     or an interface type. For interface types you need to call
     GITypeInfo.get_interface to get a reference to the base info for that
