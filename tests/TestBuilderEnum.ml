@@ -28,7 +28,7 @@ let get_enum_info namespace enum_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Enum -> let enum_info = GIEnumInfo.from_baseinfo base_info in
+    | Base_info.Enum -> let enum_info = Enum_info.from_baseinfo base_info in
       Some enum_info
     | _ -> None
 
@@ -99,7 +99,7 @@ let test_append_enum_of_value_fn test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -116,7 +116,7 @@ let test_append_enum_to_value_fn test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -133,7 +133,7 @@ let test_append_enum_view test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -239,7 +239,7 @@ let get_flags_info namespace enum_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Flags -> let info = GIEnumInfo.from_baseinfo base_info in
+    | Base_info.Flags -> let info = Enum_info.from_baseinfo base_info in
       Some info
     | _ -> None
 
@@ -267,7 +267,7 @@ let test_append_enum_flags_of_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -284,7 +284,7 @@ let test_append_enum_flags_to_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -301,7 +301,7 @@ let test_append_enum_flags_list_to_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -316,7 +316,7 @@ let test_append_enum_flags_list_of_value_fn test_ctxt =
   let name = "OptionFlags" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -333,7 +333,7 @@ let test_append_flags_view test_ctxt =
   let name = "ChecksumType" in
   let writer = (fun name info (mli, ml) ->
       let enum_type_name = String.lowercase_ascii name in
-      let tag = GIEnumInfo.get_storage_type info in
+      let tag = Enum_info.get_storage_type info in
       match BuilderUtils.type_tag_to_bindings_types tag with
       | BuilderUtils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | BuilderUtils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->

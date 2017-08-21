@@ -16,14 +16,14 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIEnumInfo — Structs representing an enumeration and its values *)
+(** Enum_info — Structs representing an enumeration and its values *)
 
 open Ctypes
 
-(** A GIEnumInfo represents an enumeration and a GIValueInfo struct represents
-    a value of an enumeration. The GIEnumInfo contains a set of values and a
-    type The GIValueInfo is fetched by calling GIEnumInfo.get_value on a
-    GIEnumInfo.*)
+(** A Enum_info represents an enumeration and a GIValueInfo struct represents
+    a value of an enumeration. The Enum_info contains a set of values and a
+    type The GIValueInfo is fetched by calling Enum_info.get_value on a
+    Enum_info.*)
 type t
 val enuminfo : t structure typ
 
@@ -64,13 +64,13 @@ val cast_from_baseinfo:
 val cast_to_baseinfo:
   t structure ptr -> Base_info.t structure ptr
 
-(** Return a GIEnumInfo.t from a Base_info.t, the underlying C structure
+(** Return a Enum_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t form a GIEnumInfo, the underlying C structure
+(** Return a Base_info.t form a Enum_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
@@ -84,13 +84,13 @@ val cast_from_registeredtypeinfo:
 val cast_to_registeredtypeinfo:
   t structure ptr -> GIRegisteredTypeInfo.t structure ptr
 
-(** Return a GIEnumInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+(** Return a Enum_info.t from a GIRegisteredTypeInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val from_registeredtypeinfo:
   GIRegisteredTypeInfo.t structure ptr -> t structure ptr
 
-(** Return a GIRegisteredTypeInfo.t form a GIEnumInfo, the underlying C structure
+(** Return a GIRegisteredTypeInfo.t form a Enum_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val to_registeredtypeinfo:

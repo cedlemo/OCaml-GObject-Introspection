@@ -154,7 +154,7 @@ val find_by_gtype:
    TODO: const char *	g_irepository_load_typelib ()
    gboolean	g_irepository_is_registered ()
    TODO: GITypelib *	g_irepository_require_private ()
-   TODO: GIEnumInfo *	g_irepository_find_by_error_domain ()
+   TODO: Enum_info *	g_irepository_find_by_error_domain ()
    gboolean	g_irepository_dump ()
    void	gi_cclosure_marshal_generic ()
 *)

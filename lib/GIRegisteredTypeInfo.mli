@@ -22,7 +22,7 @@ open Ctypes
 open Foreign
 
 (** GIRegisteredTypeInfo represents an entity with a GType associated. Could be
-    either a GIEnumInfo, GIInterfaceInfo, GIObjectInfo, GIStructInfo or a
+    either a Enum_info, GIInterfaceInfo, GIObjectInfo, GIStructInfo or a
     GIUnionInfo.
     A registered type info struct has a name and a type function. To get the
     name call GIRegisteredTypeInfo.get_type_name. Most users want to call

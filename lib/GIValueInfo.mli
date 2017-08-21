@@ -20,7 +20,7 @@
 
 open Ctypes
 
-(** Represents a enum value of a GIEnumInfo.*)
+(** Represents a enum value of a Enum_info.*)
 type t
 val valueinfo : t structure typ
 

@@ -52,11 +52,11 @@ let append_enum_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf ml "%s\n" ctypes_typ
 
 let get_values_and_variants info =
-  let n = GIEnumInfo.get_n_values info in
+  let n = Enum_info.get_n_values info in
   let rec get_v_and_v i v_v =
     if i == n then (List.rev v_v)
     else
-      match GIEnumInfo.get_value info i with
+      match Enum_info.get_value info i with
       | None -> get_v_and_v (i + 1) v_v
       | Some value_info -> let value_base_info = GIValueInfo.to_baseinfo value_info in
         if Base_info.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
@@ -71,7 +71,7 @@ let get_values_and_variants info =
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
   let enum_type_name = BuilderUtils.get_enum_type_name enum_name in
-  let tag = GIEnumInfo.get_storage_type info in
+  let tag = Enum_info.get_storage_type info in
   match BuilderUtils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
     Printf.fprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
@@ -128,7 +128,7 @@ let append_flags_view enum_type_name ctypes_typ (mli, ml) =
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
   let enum_type_name = BuilderUtils.get_enum_type_name enum_name in
-  let tag = GIEnumInfo.get_storage_type info in
+  let tag = Enum_info.get_storage_type info in
   match BuilderUtils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> (
       Printf.fprintf mli "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name;

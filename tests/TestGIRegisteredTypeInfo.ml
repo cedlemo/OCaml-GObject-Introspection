@@ -26,7 +26,7 @@ let get_enum_info repo namespace enum_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Enum -> let info = GIEnumInfo.from_baseinfo base_info
+    | Base_info.Enum -> let info = Enum_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -40,7 +40,7 @@ let enum_test fn =
 
 let test_get_type_name_from_enum test_ctxt =
   enum_test (fun info ->
-      let registered = GIEnumInfo.to_registeredtypeinfo info in
+      let registered = Enum_info.to_registeredtypeinfo info in
       match  GIRegisteredTypeInfo.get_type_name registered with
       | None -> assert_equal_string "It should return " "a name"
       | Some name -> assert_equal_string "GResourceError" name
@@ -152,7 +152,7 @@ let test_get_type_name_from_union test_ctxt =
 
 let test_get_type_from_enum test_ctxt =
   enum_test (fun info ->
-      let registered = GIEnumInfo.to_registeredtypeinfo info in
+      let registered = Enum_info.to_registeredtypeinfo info in
       match  GIRegisteredTypeInfo.get_g_type registered with
       | None -> assert_equal_string "It should return " "a type"
       | Some gtype -> let repo = Repository.get_default () in
@@ -175,7 +175,7 @@ let test_get_type_init_from_union test_ctxt =
 
 let test_get_type_init_from_enum test_ctxt =
   enum_test (fun info ->
-      let registered = GIEnumInfo.to_registeredtypeinfo info in
+      let registered = Enum_info.to_registeredtypeinfo info in
       match GIRegisteredTypeInfo.get_type_init registered with
       | None -> assert_equal_string "It should have a " "type init"
       | Some name -> assert_equal_string "g_resource_error_get_type" name

@@ -30,7 +30,7 @@ let get_enum_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Enum -> let info = GIEnumInfo.from_baseinfo base_info
+    | Base_info.Enum -> let info = Enum_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -41,26 +41,26 @@ let enum_test fn =
 
 let test_get_n_values test_ctxt =
   enum_test (fun info ->
-      let n_values = GIEnumInfo.get_n_values info in
+      let n_values = Enum_info.get_n_values info in
       assert_equal_int 2 n_values
     )
 
 let test_get_n_methods test_ctxt =
   enum_test (fun info ->
-      let n_methods = GIEnumInfo.get_n_methods info in
+      let n_methods = Enum_info.get_n_methods info in
       assert_equal_int 1 n_methods
     )
 
 let test_get_method test_ctxt =
   enum_test (fun info ->
-      let m = GIEnumInfo.get_method info 0 in
+      let m = Enum_info.get_method info 0 in
       let name = GIFunctionInfo.get_symbol m in
       assert_equal_string "g_resource_error_quark" name
     )
 
 let test_get_value test_ctxt =
   enum_test (fun info ->
-      match GIEnumInfo.get_value info 1 with
+      match Enum_info.get_value info 1 with
       | None -> assert_equal_string "No value " "found"
       | Some value -> let value' = GIValueInfo.get_value value in
         let _ = assert_equal 1 (Int64.to_int value') in
@@ -72,25 +72,25 @@ let test_get_value test_ctxt =
 
 let test_get_error_domain test_ctxt =
   enum_test (fun info ->
-      match GIEnumInfo.get_error_domain info with
+      match Enum_info.get_error_domain info with
       | None -> assert_equal_boolean true false
       | Some error_domain -> assert_equal_string "g-resource-error-quark" error_domain
     )
 
 let test_get_storage_type test_ctxt =
   enum_test (fun info ->
-      match GIEnumInfo.get_storage_type info with
+      match Enum_info.get_storage_type info with
       | GITypes.Uint32 -> assert_equal true true
       | _ -> assert_equal_string "bad " "type"
     )
 
 let tests =
-  "GObject Introspection GIEnumInfo tests" >:::
+  "GObject Introspection Enum_info tests" >:::
   [
-    "GIEnumInfo get n values" >:: test_get_n_values;
-    "GIEnumInfo get n methods" >:: test_get_n_methods;
-    "GIEnumInfo get method" >:: test_get_method;
-    "GIEnumInfo get value" >:: test_get_value;
-    "GIEnumInfo get error domain" >:: test_get_error_domain;
-    "GIEnumInfo get storage type" >:: test_get_storage_type
+    "Enum_info get n values" >:: test_get_n_values;
+    "Enum_info get n methods" >:: test_get_n_methods;
+    "Enum_info get method" >:: test_get_method;
+    "Enum_info get value" >:: test_get_value;
+    "Enum_info get error domain" >:: test_get_error_domain;
+    "Enum_info get storage type" >:: test_get_storage_type
   ]
