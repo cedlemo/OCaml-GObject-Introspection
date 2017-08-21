@@ -44,73 +44,6 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
 ## TODOS :
 
-  * naming convention :
-    * module : https://discuss.ocaml.org/t/capitalized-underscore-vs-camelcase/502
-      * use Capitalized_underscore
-	* done:
-
-	  * Repository.mli
-	  * Repository.ml
-
-	* remains:
-
-          * BuilderConstant.ml
-          * BuilderConstant.mli
-          * BuilderEnum.ml
-          * BuilderEnum.mli
-          * BuilderFunction.ml
-          * BuilderFunction.mli
-          * Builder.ml
-          * Builder.mli
-          * BuilderStruct.ml
-          * BuilderStruct.mli
-          * BuilderUnion.ml
-          * BuilderUnion.mli
-          * BuilderUtils.ml
-          * BuilderUtils.mli
-          * Conversions.ml
-          * GIArgInfo.ml
-          * GIArgInfo.mli
-          * GIBaseInfo.ml
-          * GIBaseInfo.mli
-          * GICallableInfo.ml
-          * GICallableInfo.mli
-          * GIConstantInfo.ml
-          * GIConstantInfo.mli
-          * GIEnumInfo.ml
-          * GIEnumInfo.mli
-          * GIFieldInfo.ml
-          * GIFieldInfo.mli
-          * GIFunctionInfo.ml
-          * GIFunctionInfo.mli
-          * GIInterfaceInfo.ml
-          * GIInterfaceInfo.mli
-          * GIObjectInfo.ml
-          * GIObjectInfo.mli
-          * GIPropertyInfo.ml
-          * GIPropertyInfo.mli
-          * GIRegisteredTypeInfo.ml
-          * GIRegisteredTypeInfo.mli
-          * GISignalInfo.ml
-          * GISignalInfo.mli
-          * GIStructInfo.ml
-          * GIStructInfo.mli
-          * GITypeInfo.ml
-          * GITypeInfo.mli
-          * GITypes.ml
-          * GITypes.mli
-          * GIUnionInfo.ml
-          * GIUnionInfo.mli
-          * GIValueInfo.ml
-          * GIValueInfo.mli
-          * GIVFuncInfo.ml
-          * GIVFuncInfo.mli
-          * jbuild
-          * Loader.ml
-          * Loader.mli
-
-    * opam naming convention :
-      * remove capitalized letters ?
   * handle simple functions for struct, unions.
     * started
 
@@ -126,12 +59,3 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 
   * Write down the process to function bindings generation then implement it.
 
-  * test Windows build with appveyor:
-    * install MSYS2
-    * install gobject-introspection
-    * install gtk
-    * install opam
-    * install OCaml
-    * resources:
-      * https://github.com/behdad/harfbuzz/pull/308/commits/610377e89fe6d9c6dc53aca939fe4c2429375fc2
-      * https://project-renard.github.io/doc/development/meeting-log/posts/2016/05/03/windows-build-with-msys2/
