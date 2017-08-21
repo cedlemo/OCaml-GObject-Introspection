@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let baseinfo : t structure typ = structure "GIBaseInfo"
+let baseinfo : t structure typ = structure "Base_info"
 
 let base_info_ref =
   foreign "g_base_info_ref" (ptr baseinfo @-> returning (ptr baseinfo))
@@ -83,7 +83,7 @@ let baseinfo_type_of_int = function
   | 17 -> Arg
   | 18 -> Type
   | 19 -> Unresolved
-  | value  -> let message = String.concat " " ["GIBaseInfo baseinfo_type value";
+  | value  -> let message = String.concat " " ["Base_info baseinfo_type value";
                                                string_of_int value;
                                                "should not have been reached"]
     in raise (Failure message)

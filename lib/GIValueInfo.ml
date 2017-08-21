@@ -28,28 +28,28 @@ let get_value =
 
 (* TODO : check that the info can be casted to a valueinfo ? *)
 let cast_from_baseinfo info =
-  coerce (ptr GIBaseInfo.baseinfo) (ptr valueinfo) info
+  coerce (ptr Base_info.baseinfo) (ptr valueinfo) info
 
 let cast_to_baseinfo info =
-  coerce (ptr valueinfo) (ptr GIBaseInfo.baseinfo) info
+  coerce (ptr valueinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info
+      Base_info.base_info_unref i') info
   in info
 
 let from_baseinfo info =
-  let _ = GIBaseInfo.base_info_ref info in
+  let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
+      Base_info.base_info_unref i') info' in
   info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref info' in
+  let _ = Base_info.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
-      GIBaseInfo.base_info_unref i) info' in
+      Base_info.base_info_unref i) info' in
   info'

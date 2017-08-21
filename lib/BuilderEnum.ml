@@ -59,8 +59,8 @@ let get_values_and_variants info =
       match GIEnumInfo.get_value info i with
       | None -> get_v_and_v (i + 1) v_v
       | Some value_info -> let value_base_info = GIValueInfo.to_baseinfo value_info in
-        if GIBaseInfo.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
-        else match GIBaseInfo.get_name value_base_info with
+        if Base_info.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
+        else match Base_info.get_name value_base_info with
           | None -> get_v_and_v (i + 1) v_v
           | Some const_name ->
             if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v

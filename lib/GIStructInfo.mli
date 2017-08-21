@@ -68,17 +68,17 @@ val find_method:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIStructInfo.t from a GIBaseInfo.t, the underlying C structure
+(** Return a GIStructInfo.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
-(** Return a GIBaseInfo.t form a GIStructInfo, the underlying C structure
+(** Return a Base_info.t form a GIStructInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Just cast OCaml Ctypes registeredtype info to struct info. *)
 val cast_from_registeredtypeinfo:

@@ -39,7 +39,7 @@ val get_fundamental:
 
 (** Obtain the parent of the object type.*)
 val get_parent:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Obtain the name of the objects class/type. *)
 val get_type_name:
@@ -189,23 +189,23 @@ val find_vfunc_using_interfaces:
 
 (** Just cast OCaml Ctypes base info to object info. *)
 val cast_from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes object info to base info *)
 val cast_to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
-(** Return a GIObjectInfo.t from a GIBaseInfo.t, the underlying C structure
+(** Return a GIObjectInfo.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
-(** Return a GIBaseInfo.t from a GIObjectInfo, the underlying C structure
+(** Return a Base_info.t from a GIObjectInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Just cast OCaml Ctypes registeredtype info to object info. *)
 val cast_from_registeredtypeinfo:

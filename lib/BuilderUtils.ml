@@ -101,42 +101,42 @@ let type_info_to_bindings_types type_info maybe_null =
     | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
     )
   | Some interface ->
-      match GIBaseInfo.get_type interface with
-      | Invalid as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Function as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Callback as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      match Base_info.get_type interface with
+      | Invalid as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Function as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Callback as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Struct as t -> (
-        match GIBaseInfo.get_name interface with
-        | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+        match Base_info.get_name interface with
+        | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name ->
         Types (check_if_pointer (Printf.sprintf "%s.t structure" name, Printf.sprintf "%s.t_typ" name))
       )
-      | Boxed as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Boxed as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Enum as t -> (
-        match GIBaseInfo.get_name interface with
-        | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+        match Base_info.get_name interface with
+        | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name -> let view_name = String.lowercase_ascii name in
         Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
       )
       | Flags as t -> (
-        match GIBaseInfo.get_name interface with
-        | None -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+        match Base_info.get_name interface with
+        | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name -> let view_name = (String.lowercase_ascii name) ^ "_list" in
         Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
       )
-      | Object as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Interface as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Constant as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Invalid_0 as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Union as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Value as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Signal as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Vfunc as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Property as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Field as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Arg as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Type as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
-      | Unresolved as t -> Not_implemented (GIBaseInfo.string_of_baseinfo_type t)
+      | Object as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Interface as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Constant as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Invalid_0 as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Union as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Value as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Signal as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Vfunc as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Property as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Field as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Arg as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Type as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
+      | Unresolved as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
 
 let write_open_module descr name =
   Printf.fprintf descr "open %s\n" name

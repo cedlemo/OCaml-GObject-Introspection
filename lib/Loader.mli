@@ -73,10 +73,10 @@ val generate_directories:
  *)
 val parse:
   t ->
-  ?const_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
-  ?enum_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
-  ?flags_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
-  ?struct_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
-  ?union_parser:(GIBaseInfo.t structure ptr -> Builder.files -> unit) ->
+  ?const_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
+  ?enum_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
+  ?flags_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
+  ?struct_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
+  ?union_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
   unit ->
   unit

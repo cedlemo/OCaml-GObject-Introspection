@@ -51,13 +51,13 @@ val close_sources:
   files -> unit
 
 val parse_invalid_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_function_info :
-  GIBaseInfo.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> files -> unit
 
 val parse_callback_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 (** Use GIStructureInfo in order to generate Ctypes bindings.
   - For each structure, a module is created in a StructureName.mli file and a StructureName.ml file.
@@ -66,31 +66,31 @@ val parse_callback_info :
   - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 *)
 val parse_struct_info :
-  GIBaseInfo.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> files -> unit
 
 val parse_boxed_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 (** Use GIEnumInfo in order to generate Ctypes bindings.
     It creates an enumname view and all the conversion functions. *)
 val parse_enum_info :
-  GIBaseInfo.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> files -> unit
 
 (** Use GIEnumInfo in order to generate Ctypes bindings.
     It creates an enumname_list view and all the conversion functions. *)
 val parse_flags_info :
-  GIBaseInfo.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> files -> unit
 
 val parse_object_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_interface_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 (** Use a GIConstantInfo in order to generate code with Ctypes. C Constants
     will be written as module values. *)
 val parse_constant_info :
-  GIBaseInfo.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> files -> unit
 
 (** Use GIUnionInfo in order to generate Ctypes bindings.
   - For each union, a module is created in a UnionName.mli file and a UnionName.ml file.
@@ -99,28 +99,28 @@ val parse_constant_info :
   - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 *)
 val parse_union_info :
-  GIBaseInfo.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> files -> unit
 
 val parse_value_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_signal_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_vfunc_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_property_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_field_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_arg_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_type_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit
 
 val parse_unresolved_info :
-  GIBaseInfo.t structure ptr -> unit
+  Base_info.t structure ptr -> unit

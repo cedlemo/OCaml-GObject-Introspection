@@ -62,11 +62,11 @@ let parse_invalid_info info =
   ()
 
 let parse_function_info info source_files =
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> ()
-  | Some name -> let _ = match GIBaseInfo.get_container info with
+  | Some name -> let _ = match Base_info.get_container info with
    | None -> ()
-   | Some container -> match GIBaseInfo.get_name container with
+   | Some container -> match Base_info.get_name container with
      | None -> ()
      | Some container_name -> print_endline (String.concat " " ["Container :";
                                                                 container_name;
@@ -92,7 +92,7 @@ let parse_callback_info info =
   ()
 
 let parse_struct_info info source_files =
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
@@ -107,7 +107,7 @@ let parse_boxed_info info =
   ()
 
 let parse_enum_info info source_files =
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
@@ -117,7 +117,7 @@ let parse_enum_info info source_files =
     add_empty_line source_files.ml.descr
 
 let parse_flags_info info source_files =
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
@@ -133,7 +133,7 @@ let parse_interface_info info =
   ()
 
 let parse_constant_info info source_files =
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> ()
   | Some name -> let info' = GIConstantInfo.from_baseinfo info in
     let type_info = GIConstantInfo.get_type info' in
@@ -184,7 +184,7 @@ let parse_constant_info info source_files =
     add_empty_line source_files.ml.descr
 
 let parse_union_info info source_files =
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in

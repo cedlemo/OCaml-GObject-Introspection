@@ -33,9 +33,9 @@ let get_fundamental =
 let get_parent info =
   let get_parent_raw =
     foreign "g_object_info_get_parent"
-      (ptr objectinfo @-> returning (ptr GIBaseInfo.baseinfo)) in
+      (ptr objectinfo @-> returning (ptr Base_info.baseinfo)) in
   let info' = get_parent_raw info in
-  GIBaseInfo.add_unref_finaliser info'
+  Base_info.add_unref_finaliser info'
 
 let get_type_name =
   foreign "g_object_info_get_type_name"
@@ -190,27 +190,27 @@ let get_get_value_function =
 
 (* TODO : check that the info can be casted to object info ? *)
 let cast_from_baseinfo info =
-  coerce (ptr GIBaseInfo.baseinfo) (ptr objectinfo) info
+  coerce (ptr Base_info.baseinfo) (ptr objectinfo) info
 
 let cast_to_baseinfo info =
-  coerce (ptr objectinfo) (ptr GIBaseInfo.baseinfo) info
+  coerce (ptr objectinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info
+      Base_info.base_info_unref i') info
   in info
 
 let from_baseinfo info =
-  let _ = GIBaseInfo.base_info_ref info in
+  let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
   add_unref_finaliser info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref info' in
+  let _ = Base_info.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
-      GIBaseInfo.base_info_unref i) info' in
+      Base_info.base_info_unref i) info' in
   info'
 
 let find_method_using_interfaces info name =
@@ -248,18 +248,18 @@ let cast_to_registeredtypeinfo info =
 
 let from_registeredtypeinfo info =
   let base_info = GIRegisteredTypeInfo.cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref base_info in
+  let _ = Base_info.base_info_ref base_info in
   let info' = cast_from_registeredtypeinfo info in
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
+      Base_info.base_info_unref i') info' in
   info'
 
 let to_registeredtypeinfo info =
   let base_info = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref base_info in
+  let _ = Base_info.base_info_ref base_info in
   let info' = cast_to_registeredtypeinfo info in
   let _ = Gc.finalise (fun i ->
       let i' = GIRegisteredTypeInfo.cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
+      Base_info.base_info_unref i') info' in
   info'

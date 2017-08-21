@@ -34,7 +34,7 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
   let (mli, ml) = sources_files in
   let append_ctypes_struct_field_declarations field_info =
     let base_info = GIFieldInfo.to_baseinfo field_info in
-    match GIBaseInfo.get_name base_info with
+    match Base_info.get_name base_info with
     | None -> ()
     | Some name ->
       let type_info = GIFieldInfo.get_type field_info in
@@ -58,7 +58,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources_files =
   for i = 0 to n - 1 do
     let method_info = GIStructInfo.get_method info i in
     let base_info = GIFunctionInfo.to_baseinfo method_info in
-    match GIBaseInfo.get_name base_info with
+    match Base_info.get_name base_info with
     | None -> ()
     | Some name ->
         BuilderFunction.append_ctypes_method_bindings name method_info struct_name sources_files

@@ -34,7 +34,7 @@ val get_n_prerequisites:
 
 (** Obtain an interface type prerequisites index n . *)
 val get_prerequisite:
-  t structure ptr -> int -> GIBaseInfo.t structure ptr
+  t structure ptr -> int -> Base_info.t structure ptr
 
 (** Obtain the number of properties that this interface type has.*)
 val get_n_properties:
@@ -96,27 +96,27 @@ val find_vfunc:
 
 (** Just cast OCaml Ctypes base info to interface info. *)
 val cast_from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes interface info to base info *)
 val cast_to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Add unref of the C underlying structure whith Gc.finalise. *)
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIInterfaceInfo.t from a GIBaseInfo.t, the underlying C structure
+(** Return a GIInterfaceInfo.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
-(** Return a GIBaseInfo.t from a GIInterfaceInfo, the underlying C structure
+(** Return a Base_info.t from a GIInterfaceInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Just cast OCaml Ctypes registeredtype info to enum info. *)
 val cast_from_registeredtypeinfo:

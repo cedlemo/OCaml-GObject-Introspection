@@ -100,7 +100,7 @@ val prepend_search_path:
     once to load the namespace, or otherwise ensure the namespace has already
     been loaded.*)
 val find_by_name:
-  repository -> string -> string -> GIBaseInfo.t structure ptr option
+  repository -> string -> string -> Base_info.t structure ptr option
 
 (** This function returns the number of metadata entries in given namespace
     namespace_ . The namespace must have already been loaded before calling
@@ -113,7 +113,7 @@ val get_n_infos:
     this function. See Repository.get_n_infos to find the maximum number of
     entries. *)
 val get_info:
-  repository -> string -> int -> GIBaseInfo.t structure ptr
+  repository -> string -> int -> Base_info.t structure ptr
 
 (** This function returns a comma-separated list of paths to the shared C
     libraries associated with the given namespace namespace_ . There may be no
@@ -146,7 +146,7 @@ val gtype: int64 typ
      arbitrary GType - thus, this function will operate most reliably
      when you know the GType to originate from be from a loaded namespace. *)
 val find_by_gtype:
-  repository -> gtype -> GIBaseInfo.t structure ptr option
+  repository -> gtype -> Base_info.t structure ptr option
 
 (*
    gchar **	g_irepository_get_immediate_dependencies ()

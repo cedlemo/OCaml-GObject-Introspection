@@ -60,27 +60,27 @@ val get_flags:
 
 (** Just cast OCaml Ctypes base info to vfunc info. *)
 val cast_from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes vfunc info to base info *)
 val cast_to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Add unref of the C underlying structure whith Gc.finalise. *)
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIVFuncInfo.t from a GIBaseInfo.t, the underlying C structure
+(** Return a GIVFuncInfo.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val from_baseinfo:
-  GIBaseInfo.t structure ptr -> t structure ptr
+  Base_info.t structure ptr -> t structure ptr
 
-(** Return a GIBaseInfo.t from a GIVFuncInfo, the underlying C structure
+(** Return a Base_info.t from a GIVFuncInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val to_baseinfo:
-  t structure ptr -> GIBaseInfo.t structure ptr
+  t structure ptr -> Base_info.t structure ptr
 
 (** Just cast OCaml Ctypes callable info to vfunc info. *)
 val cast_from_callableinfo:
@@ -92,12 +92,12 @@ val cast_to_callableinfo:
 
 (** Return a GIVFuncInfo.t from a GICallableInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val from_callableinfo:
   GICallableInfo.t structure ptr -> t structure ptr
 
 (** Return a GICallableInfo.t from a GIVFuncInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
-    GIBaseInfo.baseinfo_unref. *)
+    Base_info.baseinfo_unref. *)
 val to_callableinfo:
   t structure ptr -> GICallableInfo.t structure ptr

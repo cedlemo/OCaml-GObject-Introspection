@@ -60,23 +60,23 @@ let get_array_type info =
 let get_interface info =
   let get_interface_raw =
     foreign "g_type_info_get_interface"
-      (ptr typeinfo @-> returning (ptr_opt GIBaseInfo.baseinfo)) in
+      (ptr typeinfo @-> returning (ptr_opt Base_info.baseinfo)) in
   match get_interface_raw info with
   | None -> None
-  | Some info' -> let info'' = GIBaseInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Base_info.add_unref_finaliser info' in
     Some info''
 
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_from_baseinfo info =
-  coerce (ptr GIBaseInfo.baseinfo) (ptr typeinfo) info
+  coerce (ptr Base_info.baseinfo) (ptr typeinfo) info
 
 let cast_to_baseinfo info =
-  coerce (ptr typeinfo) (ptr GIBaseInfo.baseinfo) info
+  coerce (ptr typeinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info
+      Base_info.base_info_unref i') info
   in info
 
 let get_param_type info n =
@@ -89,13 +89,13 @@ let get_param_type info n =
     add_unref_finaliser param_type
 
 let from_baseinfo info =
-  let _ = GIBaseInfo.base_info_ref info in
+  let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
   add_unref_finaliser info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref info' in
+  let _ = Base_info.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
-      GIBaseInfo.base_info_unref i) info' in
+      Base_info.base_info_unref i) info' in
   info'

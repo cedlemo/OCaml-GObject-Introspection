@@ -29,11 +29,11 @@ let get_n_prerequisites =
 let get_prerequisite info n =
   let get_prerequisite_raw =
     foreign "g_interface_info_get_prerequisite"
-      (ptr interfaceinfo @-> int @-> returning (ptr GIBaseInfo.baseinfo)) in
+      (ptr interfaceinfo @-> int @-> returning (ptr Base_info.baseinfo)) in
   let max = get_n_prerequisites info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_prerequisite_raw info n in
-    GIBaseInfo.add_unref_finaliser info'
+    Base_info.add_unref_finaliser info'
 
 let get_n_properties =
   foreign "g_interface_info_get_n_properties"
@@ -139,27 +139,27 @@ let find_vfunc info name =
 
 (* TODO : check that the info can be casted to interface info ? *)
 let cast_from_baseinfo info =
-  coerce (ptr GIBaseInfo.baseinfo) (ptr interfaceinfo) info
+  coerce (ptr Base_info.baseinfo) (ptr interfaceinfo) info
 
 let cast_to_baseinfo info =
-  coerce (ptr interfaceinfo) (ptr GIBaseInfo.baseinfo) info
+  coerce (ptr interfaceinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info
+      Base_info.base_info_unref i') info
   in info
 
 let from_baseinfo info =
-  let _ = GIBaseInfo.base_info_ref info in
+  let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
   add_unref_finaliser info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref info' in
+  let _ = Base_info.base_info_ref info' in
   let _ = Gc.finalise (fun i ->
-      GIBaseInfo.base_info_unref i) info' in
+      Base_info.base_info_unref i) info' in
   info'
 
 (* TODO : check that the info can be casted to a interfaceinfo ? *)
@@ -171,18 +171,18 @@ let cast_to_registeredtypeinfo info =
 
 let from_registeredtypeinfo info =
   let base_info = GIRegisteredTypeInfo.cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref base_info in
+  let _ = Base_info.base_info_ref base_info in
   let info' = cast_from_registeredtypeinfo info in
   let _ = Gc.finalise (fun i ->
       let i' = cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
+      Base_info.base_info_unref i') info' in
   info'
 
 let to_registeredtypeinfo info =
   let base_info = cast_to_baseinfo info in
-  let _ = GIBaseInfo.base_info_ref base_info in
+  let _ = Base_info.base_info_ref base_info in
   let info' = cast_to_registeredtypeinfo info in
   let _ = Gc.finalise (fun i ->
       let i' = GIRegisteredTypeInfo.cast_to_baseinfo i in
-      GIBaseInfo.base_info_unref i') info' in
+      Base_info.base_info_unref i') info' in
   info'

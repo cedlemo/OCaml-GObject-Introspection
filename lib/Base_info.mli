@@ -16,20 +16,20 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIBaseInfo — Base struct for all GITypelib structs *)
+(** Base_info — Base struct for all GITypelib structs *)
 open Ctypes
 
-(** GIBaseInfo is the common base struct of all other *Info structs accessible
+(** Base_info is the common base struct of all other *Info structs accessible
     through the Repository API. All other structs can be casted to a
-    GIBaseInfo *)
+    Base_info *)
 type t
 val baseinfo : t structure typ
 
-(** Increases the reference count of underlying GIBaseInfo *info. *)
+(** Increases the reference count of underlying Base_info *info. *)
 val base_info_ref:
   t structure ptr -> t structure ptr
 
-(** Decreases the reference count of underlying GIBaseInfo *info . When its
+(** Decreases the reference count of underlying Base_info *info . When its
     reference count drops to 0, the info is freed. *)
 val base_info_unref:
   t structure ptr -> unit
@@ -40,10 +40,10 @@ val base_info_unref:
 val get_name:
   t structure ptr -> string option
 
-(** Compare two GIBaseInfo.
+(** Compare two Base_info.
     Using pointer comparison is not practical since many functions return
-    different instances of GIBaseInfo that refers to the same part of the
-    TypeLib; use this function instead to do GIBaseInfo comparisons. *)
+    different instances of Base_info that refers to the same part of the
+    TypeLib; use this function instead to do Base_info comparisons. *)
 val equal:
   t structure ptr -> t structure ptr -> bool
 
@@ -55,7 +55,7 @@ val get_namespace:
 val is_deprecated:
   t structure ptr -> bool
 
-(** Obtain the container of the info . The container is the parent GIBaseInfo.
+(** Obtain the container of the info . The container is the parent Base_info.
     For instance, the parent of a GIFunctionInfo is an GIObjectInfo or
     GIInterfaceInfo. *)
 val get_container:
@@ -91,11 +91,11 @@ val baseinfo_type_of_int:
 val string_of_baseinfo_type:
   baseinfo_type -> string
 
-(** Obtain the info type of the GIBaseInfo. *)
+(** Obtain the info type of the Base_info. *)
 val get_type:
   t structure ptr -> baseinfo_type
 (*
-  GIBaseInfo *	g_info_new ()
+  Base_info *	g_info_new ()
   TODO : GITypelib *	g_base_info_get_typelib ()
   TODO : const gchar *	g_base_info_get_attribute ()
   TODO : gboolean	g_base_info_iterate_attributes ()
