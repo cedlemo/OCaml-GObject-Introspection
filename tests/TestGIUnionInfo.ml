@@ -74,14 +74,14 @@ let test_get_n_methods test_ctxt =
 let test_get_field test_ctxt =
   union_test (fun info ->
     let field = GIUnionInfo.get_field info 0 in
-      let flags = GIFieldInfo.get_flags field in
+      let flags = Field_info.get_flags field in
       let rec check_flags = function
         | [] -> ()
         | f' :: q -> let _ = assert_equal ~printer:(fun f ->
             match f with
-            | GIFieldInfo.Is_readable -> "readable"
-            | GIFieldInfo.Is_writable -> "writable"
-          ) GIFieldInfo.Is_readable f' in check_flags q
+            | Field_info.Is_readable -> "readable"
+            | Field_info.Is_writable -> "writable"
+          ) Field_info.Is_readable f' in check_flags q
       in check_flags flags
     )
 

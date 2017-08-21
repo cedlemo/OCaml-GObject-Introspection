@@ -33,11 +33,11 @@ let handle_recursive_structure structure_name (ocaml_type, ctypes_typ) =
 let append_ctypes_struct_fields_declarations struct_name info sources_files =
   let (mli, ml) = sources_files in
   let append_ctypes_struct_field_declarations field_info =
-    let base_info = GIFieldInfo.to_baseinfo field_info in
+    let base_info = Field_info.to_baseinfo field_info in
     match Base_info.get_name base_info with
     | None -> ()
     | Some name ->
-      let type_info = GIFieldInfo.get_type field_info in
+      let type_info = Field_info.get_type field_info in
       match BuilderUtils.type_info_to_bindings_types type_info false with
       | Not_implemented tag_name -> let coms = Printf.sprintf "TODO Struct field %s : %s tag not implemented" struct_name tag_name in
         BuilderUtils.add_comments mli coms;

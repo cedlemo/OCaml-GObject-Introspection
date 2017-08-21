@@ -78,7 +78,7 @@ type baseinfo_type =
   | Signal (** signal, see GISignalInfo *)
   | Vfunc (** virtual function, see GIVFuncInfo *)
   | Property (** GObject property, see GIPropertyInfo *)
-  | Field (** struct or union field, see GIFieldInfo *)
+  | Field (** struct or union field, see Field_info *)
   | Arg (** argument of a function or callback, see Arg_info *)
   | Type (** type information, see GITypeInfo *)
   | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)

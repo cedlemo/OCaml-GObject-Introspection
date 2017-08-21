@@ -64,7 +64,7 @@ val get_n_fields:
 
 (** Obtain an object type field at index n . *)
 val get_field:
-  t structure ptr -> int -> GIFieldInfo.t structure ptr
+  t structure ptr -> int -> Field_info.t structure ptr
 
 (** Obtain the number of interfaces that this object type has. *)
 val get_n_interfaces:

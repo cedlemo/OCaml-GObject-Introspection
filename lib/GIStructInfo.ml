@@ -49,11 +49,11 @@ let get_n_methods =
 let get_field info n =
   let get_field_raw =
     foreign "g_struct_info_get_field"
-      (ptr structinfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
+      (ptr structinfo @-> int @-> returning (ptr Field_info.fieldinfo)) in
   let max = get_n_fields info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_field_raw info n in
-    GIFieldInfo.add_unref_finaliser info'
+    Field_info.add_unref_finaliser info'
 
 let get_method info n =
   let get_method_raw =

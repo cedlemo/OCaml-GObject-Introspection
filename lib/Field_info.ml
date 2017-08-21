@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let fieldinfo : t structure typ = structure "GIFieldInfo"
+let fieldinfo : t structure typ = structure "Field_info"
 
 type flags =
   | Is_readable
