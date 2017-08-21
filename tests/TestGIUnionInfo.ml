@@ -29,16 +29,16 @@ let test_from_baseinfo test_ctxt =
   match Repository.find_by_name repo namespace union_name with
   | None -> assert_equal_string union_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
-      match GIBaseInfo.get_type base_info with
-      | GIBaseInfo.Union -> true
+      match Base_info.get_type base_info with
+      | Base_info.Union -> true
       | _ -> false )
 
 let get_union_info () =
   match Repository.find_by_name repo namespace union_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Union -> let union_info = GIUnionInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Union -> let union_info = GIUnionInfo.from_baseinfo base_info in
       Some union_info
     | _ -> None
 

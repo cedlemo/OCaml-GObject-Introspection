@@ -26,8 +26,8 @@ let get_union_info namespace union_name =
   match Repository.find_by_name repo namespace union_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Union -> let union_info = GIUnionInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Union -> let union_info = GIUnionInfo.from_baseinfo base_info in
       Some union_info
     | _ -> None
 

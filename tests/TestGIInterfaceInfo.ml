@@ -29,8 +29,8 @@ let get_interface_info interface_name =
   match Repository.find_by_name repo namespace interface_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Interface ->
+    match Base_info.get_type base_info with
+    | Base_info.Interface ->
       let interface_info = GIInterfaceInfo.from_baseinfo base_info in
       Some interface_info
     | _ -> None
@@ -49,7 +49,7 @@ let test_get_n_prerequisites test_ctxt =
 let test_get_prerequisite test_ctxt =
   interface_test (fun info ->
       let info' = GIInterfaceInfo.get_prerequisite info 0 in
-      match GIBaseInfo.get_name info' with
+      match Base_info.get_name info' with
       | None -> assert_equal_string "It should have " " a name"
       | Some name -> assert_equal_string "TlsConnection" name
     )
@@ -64,7 +64,7 @@ let test_get_property test_ctxt =
 interface_test (fun info ->
       let info' = GIInterfaceInfo.get_property info 0 in
       let base_info = GIPropertyInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info with
+      match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " " a name"
       | Some name -> assert_equal_string "authentication-mode" name
     )
@@ -79,7 +79,7 @@ let test_get_method test_ctxt =
   interface_test (fun info ->
       let info' = GIInterfaceInfo.get_method info 0 in
       let base_info = GIFunctionInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info with
+      match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " " a name"
       | Some name -> assert_equal_string "new" name
     )
@@ -111,7 +111,7 @@ let test_get_signal test_ctxt =
   volume_interface_test (fun info ->
       let info' = GIInterfaceInfo.get_signal info 0 in
       let base_info = GISignalInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info with
+      match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "changed" name
     )
@@ -122,7 +122,7 @@ let test_find_signal test_ctxt =
       match GIInterfaceInfo.find_signal info signal_name with
       | None -> assert_equal_string interface_name "No base info found"
       | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
-        match GIBaseInfo.get_name base_info with
+        match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string signal_name name
     )
@@ -138,7 +138,7 @@ let test_get_iface_struct test_ctxt =
       match GIInterfaceInfo.get_iface_struct info with
       | None -> assert_equal_string "It would be " "great to have something"
       | Some struct_info -> let base_info = GIStructInfo.to_baseinfo struct_info in
-        match GIBaseInfo.get_name base_info with
+        match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string "VolumeIface" name
     )
@@ -153,7 +153,7 @@ let test_get_vfunc test_ctxt =
   volume_interface_test (fun info ->
       let info' = GIInterfaceInfo.get_vfunc info 0 in
       let base_info = GIVFuncInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info with
+      match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "can_eject" name
     )
@@ -164,7 +164,7 @@ let test_find_vfunc test_ctxt =
       match GIInterfaceInfo.find_vfunc info vfunc_name with
       | None -> assert_equal_string interface_name "No base info found"
       | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
-        match GIBaseInfo.get_name base_info with
+        match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string name vfunc_name
     )

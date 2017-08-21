@@ -29,8 +29,8 @@ let get_arg_info () =
   match Repository.find_by_name repo namespace func_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function -> let callable_info = GICallableInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Function -> let callable_info = GICallableInfo.from_baseinfo base_info
       in let info = GICallableInfo.get_arg callable_info 0 in Some info
     | _ -> None
 

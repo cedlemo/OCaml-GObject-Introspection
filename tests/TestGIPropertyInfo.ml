@@ -29,13 +29,13 @@ let test_get_property_from_repo test_ctxt =
   match Repository.find_by_name repo namespace "Window" with
   | None -> assert_equal_string property_name "No base info found"
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> (
+    match Base_info.get_type base_info with
+    | Base_info.Object -> (
         let info = GIObjectInfo.from_baseinfo base_info in
         let prop = GIObjectInfo.get_property info 0 in
         let base_prop = GIPropertyInfo.to_baseinfo prop in
-        match  GIBaseInfo.get_type base_prop with
-        | GIBaseInfo.Property -> assert_equal true true
+        match  Base_info.get_type base_prop with
+        | Base_info.Property -> assert_equal true true
         | _ -> assert_equal_string "It should be a" "Property info"
       )
     | _ -> assert_equal_string property_name "No base info found"
@@ -44,8 +44,8 @@ let get_property_info () =
   match Repository.find_by_name repo namespace "Window" with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let info = GIObjectInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Object -> let info = GIObjectInfo.from_baseinfo base_info in
         let prop = GIObjectInfo.get_property info 0 in
         Some prop
     | _ -> None

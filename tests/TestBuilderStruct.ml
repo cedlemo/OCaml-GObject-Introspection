@@ -26,8 +26,8 @@ let get_struct_info namespace struct_name =
   match Repository.find_by_name repo namespace struct_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Struct -> let struct_info = GIStructInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Struct -> let struct_info = GIStructInfo.from_baseinfo base_info in
       Some struct_info
     | _ -> None
 

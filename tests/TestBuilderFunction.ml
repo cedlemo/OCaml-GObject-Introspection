@@ -28,8 +28,8 @@ let name = "ascii_strncasecmp"
 let get_function_info name () =
   match Repository.find_by_name repo namespace name with
   | None -> None
-  | Some (base_info) -> match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function -> let info = GIFunctionInfo.from_baseinfo base_info in
+  | Some (base_info) -> match Base_info.get_type base_info with
+    | Base_info.Function -> let info = GIFunctionInfo.from_baseinfo base_info in
       Some info
     | _ -> None
 

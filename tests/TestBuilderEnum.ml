@@ -27,8 +27,8 @@ let get_enum_info namespace enum_name =
   match Repository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Enum -> let enum_info = GIEnumInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Enum -> let enum_info = GIEnumInfo.from_baseinfo base_info in
       Some enum_info
     | _ -> None
 
@@ -238,8 +238,8 @@ let get_flags_info namespace enum_name =
   match Repository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Flags -> let info = GIEnumInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Flags -> let info = GIEnumInfo.from_baseinfo base_info in
       Some info
     | _ -> None
 

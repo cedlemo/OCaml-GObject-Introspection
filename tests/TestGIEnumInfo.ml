@@ -29,8 +29,8 @@ let get_enum_info () =
   match Repository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Enum -> let info = GIEnumInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Enum -> let info = GIEnumInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -65,7 +65,7 @@ let test_get_value test_ctxt =
       | Some value -> let value' = GIValueInfo.get_value value in
         let _ = assert_equal 1 (Int64.to_int value') in
         let base = GIValueInfo.to_baseinfo value in
-        match GIBaseInfo.get_name base with
+        match Base_info.get_name base with
         | None -> ()
         | Some name -> assert_equal_string "internal" name
     )

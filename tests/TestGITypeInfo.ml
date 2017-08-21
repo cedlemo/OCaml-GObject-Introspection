@@ -29,8 +29,8 @@ let get_type_info () =
   match Repository.find_by_name repo namespace fn_name with
   | None -> assert_equal_string fn_name "No base info found"; None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function ->
+    match Base_info.get_type base_info with
+    | Base_info.Function ->
       let callable_info = GICallableInfo.from_baseinfo base_info in
       let type_info = GICallableInfo.get_return_type callable_info in
       Some type_info
@@ -109,14 +109,14 @@ let test_get_interface test_ctxt =
   match Repository.find_by_name repo namespace name with
   | None -> assert_equal_string fn_name "No base info found"
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Function ->
+    match Base_info.get_type base_info with
+    | Base_info.Function ->
       (
         let callable_info = GICallableInfo.from_baseinfo base_info in
         let type_info = GICallableInfo.get_return_type callable_info in
         match GITypeInfo.get_interface type_info with
         | None -> assert_equal_string "It should " "have an interface"
-        | Some interface -> match GIBaseInfo.get_name interface with
+        | Some interface -> match Base_info.get_name interface with
           | None -> assert_equal_string "It should " "have a name"
           | Some interface_name -> assert_equal_string "TypeClass" interface_name
       )

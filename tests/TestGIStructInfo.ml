@@ -29,16 +29,16 @@ let test_baseinfo_get_type test_ctxt =
   match Repository.find_by_name repo namespace struct_name with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
-      match GIBaseInfo.get_type base_info with
-      | GIBaseInfo.Struct -> true
+      match Base_info.get_type base_info with
+      | Base_info.Struct -> true
       | _ -> false)
 
 let get_struct_info () =
   match Repository.find_by_name repo namespace struct_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Struct -> Some (GIStructInfo.from_baseinfo base_info)
+    match Base_info.get_type base_info with
+    | Base_info.Struct -> Some (GIStructInfo.from_baseinfo base_info)
     | _ -> None
 
 let struct_test fn =

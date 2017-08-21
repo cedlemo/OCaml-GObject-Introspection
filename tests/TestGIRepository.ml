@@ -77,7 +77,7 @@ let test_find_by_name test_ctxt =
   let info_name = "Application" in
   match Repository.find_by_name repo namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
-  | Some (base_info) -> match GIBaseInfo.get_name base_info with
+  | Some (base_info) -> match Base_info.get_name base_info with
     | None -> assert_equal_string info_name "No name found"
     | Some name -> assert_equal_string info_name name
 
@@ -95,7 +95,7 @@ let test_get_info_out_of_bounds test_ctxt =
 let test_get_info test_ctxt =
   let info_name = "Action" in
   let info = Repository.get_info repo namespace 0 in
-  match GIBaseInfo.get_name info with
+  match Base_info.get_name info with
   | None -> assert_equal_string info_name "No name found"
   | Some name -> assert_equal_string info_name name
 

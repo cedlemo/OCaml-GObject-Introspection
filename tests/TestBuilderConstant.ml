@@ -26,8 +26,8 @@ let get_constant_info namespace const_name =
   match Repository.find_by_name repo namespace const_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Constant -> let const_info = GIConstantInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Constant -> let const_info = GIConstantInfo.from_baseinfo base_info in
       Some const_info
     | _ -> None
 

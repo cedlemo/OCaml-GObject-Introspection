@@ -25,8 +25,8 @@ let get_enum_info repo namespace enum_name =
   match Repository.find_by_name repo namespace enum_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Enum -> let info = GIEnumInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Enum -> let info = GIEnumInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -51,8 +51,8 @@ let get_interface_info repo namespace interface_name =
   match Repository.find_by_name repo namespace interface_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Interface -> let info = GIInterfaceInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Interface -> let info = GIInterfaceInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -77,8 +77,8 @@ let get_object_info repo namespace object_name =
   match Repository.find_by_name repo namespace object_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let info = GIObjectInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Object -> let info = GIObjectInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -103,8 +103,8 @@ let get_struct_info repo namespace struct_name =
   match Repository.find_by_name repo namespace struct_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Struct -> let info = GIStructInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Struct -> let info = GIStructInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -129,8 +129,8 @@ let get_union_info repo namespace union_name =
   match Repository.find_by_name repo namespace union_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Union -> let info = GIUnionInfo.from_baseinfo base_info
+    match Base_info.get_type base_info with
+    | Base_info.Union -> let info = GIUnionInfo.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -158,7 +158,7 @@ let test_get_type_from_enum test_ctxt =
       | Some gtype -> let repo = Repository.get_default () in
         match Repository.find_by_gtype repo gtype with
         | None -> assert_equal_string "It should return " "a base info"
-        | Some base_info -> match GIBaseInfo.get_name base_info with
+        | Some base_info -> match Base_info.get_name base_info with
           | None -> assert_equal_string "It should return " "a name"
           | Some name -> assert_equal_string "ResourceError" name
     )

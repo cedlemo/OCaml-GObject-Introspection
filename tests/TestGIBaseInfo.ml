@@ -28,31 +28,31 @@ let callback_name = "BusNameAppearedCallback"
 
 let test_equal test_ctxt =
   let rand_info = Repository.get_info repo namespace 10 in
-  match GIBaseInfo.get_name rand_info with
+  match Base_info.get_name rand_info with
   | None -> assert_equal_string "Base Info " "has no name"
   | Some info_name ->
     match Repository.find_by_name repo namespace info_name with
     | None -> assert_equal_string info_name "No base info found"
-    | Some (info) -> let is_equal = GIBaseInfo.equal rand_info info in
+    | Some (info) -> let is_equal = Base_info.equal rand_info info in
       assert_equal_boolean true is_equal
 
 let test_get_namespace test_ctxt =
   match Repository.find_by_name repo namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
-  | Some (base_info) -> let info_namespace = GIBaseInfo.get_namespace base_info
+  | Some (base_info) -> let info_namespace = Base_info.get_namespace base_info
   in assert_equal_string namespace info_namespace
 
 let test_is_deprecated test_ctxt =
   match Repository.find_by_name repo namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
-  | Some (base_info) -> let is_deprecated = GIBaseInfo.is_deprecated base_info in
+  | Some (base_info) -> let is_deprecated = Base_info.is_deprecated base_info in
     assert_equal_boolean false is_deprecated
 
 let test_get_container test_ctxt =
   match Repository.find_by_name repo namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some base_info -> (
-      match GIBaseInfo.get_container base_info with
+      match Base_info.get_container base_info with
     | None -> assert_equal_boolean true true
     | Some container -> assert_equal_string "It should not " "return a container here"
   )
@@ -60,8 +60,8 @@ let test_get_container test_ctxt =
 let tests =
   "GObject Introspection BaseInfo tests" >:::
     [
-      "GIBaseInfo equal" >:: test_equal;
-      "GIBaseInfo get namespace" >:: test_get_namespace;
-      "GIBaseInfo is deprecated" >:: test_is_deprecated;
-      "GIBaseInfo get_container" >:: test_get_container
+      "Base_info equal" >:: test_equal;
+      "Base_info get namespace" >:: test_get_namespace;
+      "Base_info is deprecated" >:: test_is_deprecated;
+      "Base_info get_container" >:: test_get_container
     ]

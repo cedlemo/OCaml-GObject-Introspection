@@ -30,8 +30,8 @@ let get_vfunc_info () =
   match Repository.find_by_name repo namespace object_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
       GIObjectInfo.find_vfunc object_info vfunc_name
     | _ -> None
 

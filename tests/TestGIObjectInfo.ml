@@ -29,16 +29,16 @@ let test_from_baseinfo test_ctxt =
   match Repository.find_by_name repo namespace object_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
-      match GIBaseInfo.get_type base_info with
-      | GIBaseInfo.Object -> true
+      match Base_info.get_type base_info with
+      | Base_info.Object -> true
       | _ -> false )
 
 let get_object_info () =
   match Repository.find_by_name repo namespace object_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
       Some object_info
     | _ -> None
 
@@ -62,7 +62,7 @@ let test_get_fundamental test_ctxt =
 let test_get_parent test_ctxt =
   object_test (fun info ->
       let parent = GIObjectInfo.get_parent info in
-      match GIBaseInfo.get_name parent with
+      match Base_info.get_name parent with
       | None -> assert_equal_string "It should have " "a name"
       | Some parent_name -> assert_equal_string "Object" parent_name
     )
@@ -156,16 +156,16 @@ let test_gtk_window_from_baseinfo test_ctxt =
   match Repository.find_by_name repo namespace object_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
-      match GIBaseInfo.get_type base_info with
-      | GIBaseInfo.Object -> true
+      match Base_info.get_type base_info with
+      | Base_info.Object -> true
       | _ -> false )
 
 let get_object_info () =
   match Repository.find_by_name repo namespace object_name with
   | None -> None
   | Some (base_info) ->
-    match GIBaseInfo.get_type base_info with
-    | GIBaseInfo.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
+    match Base_info.get_type base_info with
+    | Base_info.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
       Some object_info
     | _ -> None
 
@@ -189,7 +189,7 @@ let test_gtk_window_get_fundamental test_ctxt =
 let test_gtk_window_get_parent test_ctxt =
   object_test (fun info ->
       let parent = GIObjectInfo.get_parent info in
-      match GIBaseInfo.get_name parent with
+      match Base_info.get_name parent with
       | None -> assert_equal_string "It should have " "a name"
       | Some parent_name -> assert_equal_string "Bin" parent_name
     )
@@ -228,7 +228,7 @@ let test_gtk_window_get_interface test_ctxt =
    object_test (fun info ->
       let info' = GIObjectInfo.get_interface info 0 in
       let base_info' = GIInterfaceInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info' with
+      match Base_info.get_name base_info' with
       | None -> assert_equal_string "It should have" " a name"
       | Some interface_name -> assert_equal_string "ImplementorIface" interface_name
     )
@@ -267,7 +267,7 @@ let test_gtk_window_get_property test_ctxt =
   object_test (fun info ->
       let prop = GIObjectInfo.get_property info 0 in
       let base_prop = GIPropertyInfo.to_baseinfo prop in
-      match GIBaseInfo.get_name base_prop with
+      match Base_info.get_name base_prop with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "accept-focus" name
     )
@@ -283,7 +283,7 @@ let test_gtk_window_get_signal test_ctxt =
   object_test (fun info ->
       let info' = GIObjectInfo.get_signal info 0 in
       let base_info = GISignalInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info with
+      match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "activate-default" name
     )
@@ -294,7 +294,7 @@ let test_gtk_window_find_signal test_ctxt =
       match GIObjectInfo.find_signal info signal_name with
       | None -> assert_equal_string "It should have" " a signal"
       | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
-        match GIBaseInfo.get_name base_info with
+        match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string signal_name name
     )
@@ -310,7 +310,7 @@ let test_gtk_window_get_vfunc test_ctxt =
   object_test (fun info ->
       let info' = GIObjectInfo.get_vfunc info 0 in
       let base_info = GIVFuncInfo.to_baseinfo info' in
-      match GIBaseInfo.get_name base_info with
+      match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "activate_default" name
     )
@@ -321,7 +321,7 @@ let test_gtk_window_find_vfunc test_ctxt =
       match GIObjectInfo.find_vfunc info vfunc_name with
       | None -> assert_equal_string object_name "No base info found"
       | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
-        match GIBaseInfo.get_name base_info with
+        match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string name vfunc_name
     )
@@ -335,14 +335,14 @@ let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
           | None -> assert_equal true true
           | Some info_implementor ->
             let base_info = GIObjectInfo.to_baseinfo info_implementor in
-            match GIBaseInfo.get_name base_info with
+            match Base_info.get_name base_info with
             | None -> assert_equal_string "It should " "have a name"
             | Some name -> assert_equal_string "Window" name
         )
       in match vfunc with
       | None -> assert_equal_string "It should return " " a function info"
       | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
-        match GIBaseInfo.get_name base_info with
+        match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string name vfunc_name
      )
@@ -365,7 +365,7 @@ let test_gtk_window_find_method_using_interfaces test_ctxt =
           | None -> assert_equal true true
           | Some info_implementor ->
             let base_info = GIObjectInfo.to_baseinfo info_implementor in
-            match GIBaseInfo.get_name base_info with
+            match Base_info.get_name base_info with
             | None -> assert_equal_string "It should " "have a name"
             | Some name -> assert_equal_string "Window" name
         )
