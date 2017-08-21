@@ -17,18 +17,18 @@
  *)
 
 let get_info_strings info n=
-  ["GIBaseInfo -> number:";
+  ["Base_info -> number:";
   string_of_int n;
   "name:";
-  GIBaseInfo.get_name info;
+  Base_info.get_name info;
   "type:";
-  let t = GIBaseInfo.get_type info in
-  GIBaseInfo.baseinfo_type_get_name t]
+  let t = Base_info.get_type info in
+  Base_info.baseinfo_type_get_name t]
 
 let print_info repo namespace n =
   let message =
   match Repository.get_info repo namespace n with
-  | None -> String.concat " " ["GIBaseInfo number"; string_of_int n; "unable to be loaded"]
+  | None -> String.concat " " ["Base_info number"; string_of_int n; "unable to be loaded"]
   | Some (info) -> String.concat " " (get_info_strings info n)
   in print_endline message
 

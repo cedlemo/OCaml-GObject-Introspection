@@ -23,10 +23,10 @@ let () =
   let n = Repository.get_n_infos repo namespace in
   for i = 0 to (n - 1) do
     let info =  Repository.get_info repo namespace i in
-    match GIBaseInfo.get_type info with
-    | GIBaseInfo.Union -> let info' = GIUnionInfo.from_baseinfo info in
+    match Base_info.get_type info with
+    | Base_info.Union -> let info' = GIUnionInfo.from_baseinfo info in
       if GIUnionInfo.is_discriminated info' then
-        let message = ( match GIBaseInfo.get_name info with
+        let message = ( match Base_info.get_name info with
         | None -> String.concat " " ["Anonymous";
                                      "Index";
                                      string_of_int i;

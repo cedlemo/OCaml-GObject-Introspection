@@ -24,11 +24,11 @@ let () =
   for i = 0 to (n - 1) do
     print_endline (String.concat "/" ["\t\t"; string_of_int i; string_of_int n]);
     let info = Repository.get_info repo namespace i in
-    if GIBaseInfo.is_deprecated info then
-        let name = (match GIBaseInfo.get_name info with
+    if Base_info.is_deprecated info then
+        let name = (match Base_info.get_name info with
           | None -> "No name"
           | Some str -> str ) in
-        let message = String.concat " " ["GIBaseInfo number";
+        let message = String.concat " " ["Base_info number";
                                          string_of_int i;
                                          name]
         in print_endline message;

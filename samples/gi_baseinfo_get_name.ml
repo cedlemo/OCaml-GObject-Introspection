@@ -19,9 +19,9 @@
 let print_info repo namespace n =
   let message =
     let info =  Repository.get_info repo namespace n in
-    let name = match GIBaseInfo.get_name info with
+    let name = match Base_info.get_name info with
       | None -> "Anonymous"
-      | Some name -> name in String.concat " " ["GIBaseInfo number";
+      | Some name -> name in String.concat " " ["Base_info number";
                                                 string_of_int n;
                                                 name]
   in print_endline message
