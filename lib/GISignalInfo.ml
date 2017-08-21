@@ -57,10 +57,10 @@ let get_flags info =
 let get_class_closure info =
   let get_class_closure_raw =
     foreign "g_signal_info_get_class_closure"
-      (ptr signalinfo @-> returning (ptr_opt GICallableInfo.callableinfo)) in
+      (ptr signalinfo @-> returning (ptr_opt Callable_info.callableinfo)) in
   match get_class_closure_raw info with
   | None -> None
-  | Some info' -> let info'' = GICallableInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Callable_info.add_unref_finaliser info' in
     Some info''
 
 (* TODO : check that the info can be casted to signal info ? *)
@@ -89,19 +89,19 @@ let to_baseinfo info =
   info'
 
 let cast_from_callableinfo info =
-  coerce (ptr GICallableInfo.callableinfo) (ptr signalinfo) info
+  coerce (ptr Callable_info.callableinfo) (ptr signalinfo) info
 
 let cast_to_callableinfo info =
-  coerce (ptr signalinfo) (ptr GICallableInfo.callableinfo) info
+  coerce (ptr signalinfo) (ptr Callable_info.callableinfo) info
 
 let to_callableinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
   let info'' = cast_to_callableinfo info in
-  GICallableInfo.add_unref_finaliser info''
+  Callable_info.add_unref_finaliser info''
 
 let from_callableinfo info =
-  let info' = GICallableInfo.cast_to_baseinfo info in
+  let info' = Callable_info.cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
   let info'' = cast_from_callableinfo info in
   let _ = Gc.finalise (fun i ->

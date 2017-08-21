@@ -31,8 +31,8 @@ let get_type_info () =
   | Some (base_info) ->
     match Base_info.get_type base_info with
     | Base_info.Function ->
-      let callable_info = GICallableInfo.from_baseinfo base_info in
-      let type_info = GICallableInfo.get_return_type callable_info in
+      let callable_info = Callable_info.from_baseinfo base_info in
+      let type_info = Callable_info.get_return_type callable_info in
       Some type_info
     | _ -> None
 
@@ -112,8 +112,8 @@ let test_get_interface test_ctxt =
     match Base_info.get_type base_info with
     | Base_info.Function ->
       (
-        let callable_info = GICallableInfo.from_baseinfo base_info in
-        let type_info = GICallableInfo.get_return_type callable_info in
+        let callable_info = Callable_info.from_baseinfo base_info in
+        let type_info = Callable_info.get_return_type callable_info in
         match GITypeInfo.get_interface type_info with
         | None -> assert_equal_string "It should " "have an interface"
         | Some interface -> match Base_info.get_name interface with

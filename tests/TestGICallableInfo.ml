@@ -30,7 +30,7 @@ let get_callable_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Function -> let info = GICallableInfo.from_baseinfo base_info
+    | Base_info.Function -> let info = Callable_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -41,44 +41,44 @@ let callable_test fn =
 
 let test_can_throw_gerror test_ctxt =
   callable_test (fun info ->
-      let throw_error = GICallableInfo.can_throw_gerror info in
+      let throw_error = Callable_info.can_throw_gerror info in
       assert_equal_boolean false throw_error
     )
 
 let test_get_n_args test_ctxt =
   callable_test (fun info ->
-      let n = GICallableInfo.get_n_args info in
+      let n = Callable_info.get_n_args info in
       assert_equal_int 1 n
     )
 
 let test_get_return_attribute test_ctxt =
   callable_test (fun info ->
-      match GICallableInfo.get_return_attribute info with
+      match Callable_info.get_return_attribute info with
       | None -> assert_equal_boolean true true
       | Some attribute -> assert_equal_string "This should not return a string" attribute
     )
 
 let test_is_method test_ctxt =
   callable_test (fun info ->
-      let is_method = GICallableInfo.is_method info in
+      let is_method = Callable_info.is_method info in
       assert_equal_boolean false is_method
     )
 
 let test_may_return_null test_ctxt =
   callable_test (fun info ->
-      let may_return_null = GICallableInfo.may_return_null info in
+      let may_return_null = Callable_info.may_return_null info in
       assert_equal_boolean false may_return_null
     )
 
 let test_skip_return test_ctxt =
   callable_test (fun info ->
-      let skip_return = GICallableInfo.skip_return info in
+      let skip_return = Callable_info.skip_return info in
       assert_equal_boolean false skip_return
     )
 
 let test_get_caller_owns test_ctxt =
   callable_test (fun info ->
-      let transfer = GICallableInfo.get_caller_owns info in
+      let transfer = Callable_info.get_caller_owns info in
       assert_equal ~printer:(fun t ->
           match t with
           | Arg_info.Nothing -> "nothing"
@@ -90,11 +90,11 @@ let test_get_caller_owns test_ctxt =
 let tests =
   "GObject Introspection CallableInfo tests" >:::
   [
-    "GICallableInfo can throw gerror" >:: test_can_throw_gerror;
-    "GICallableInfo get n args" >:: test_get_n_args;
-    "GICallableInfo get return attribute" >:: test_get_return_attribute;
-    "GICallableInfo is method" >:: test_is_method;
-    "GICallableInfo may return null" >:: test_may_return_null;
-    "GICallableInfo skip return" >:: test_skip_return;
-    "GICallableInfo get caller owns" >:: test_get_caller_owns
+    "Callable_info can throw gerror" >:: test_can_throw_gerror;
+    "Callable_info get n args" >:: test_get_n_args;
+    "Callable_info get return attribute" >:: test_get_return_attribute;
+    "Callable_info is method" >:: test_is_method;
+    "Callable_info may return null" >:: test_may_return_null;
+    "Callable_info skip return" >:: test_skip_return;
+    "Callable_info get caller owns" >:: test_get_caller_owns
   ]

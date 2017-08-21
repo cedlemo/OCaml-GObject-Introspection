@@ -48,11 +48,11 @@ let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
  * the ocaml types of the args for the mli file and the Ctypes for
  * the args for the ml file and the Ctypes functions binding *)
 let get_arguments_types callable =
-  let n = GICallableInfo.get_n_args callable in
+  let n = Callable_info.get_n_args callable in
   if n = 0 then Some [("unit", "void")]
   else let rec parse_args index args_types =
          if index = n then Some (List.rev args_types)
-         else let arg = GICallableInfo.get_arg callable index in
+         else let arg = Callable_info.get_arg callable index in
            match Arg_info.get_direction arg with
            | Arg_info.In -> (
                let type_info = Arg_info.get_type arg in
@@ -67,13 +67,13 @@ let get_arguments_types callable =
     in parse_args 0 []
 
 let get_return_types callable =
-  if GICallableInfo.skip_return callable then Some ("unit", "void")
-  else let ret = GICallableInfo.get_return_type callable in
-    let may_be_null = GICallableInfo.may_return_null callable in
+  if Callable_info.skip_return callable then Some ("unit", "void")
+  else let ret = Callable_info.get_return_type callable in
+    let may_be_null = Callable_info.may_return_null callable in
     match BuilderUtils.type_info_to_bindings_types ret may_be_null with
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-      match GICallableInfo.get_caller_owns callable with
+      match Callable_info.get_caller_owns callable with
       | Arg_info.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
       Some types
       | Arg_info.Container -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
@@ -83,7 +83,7 @@ let get_return_types callable =
 
 
 (* Build function bindings :
- * - get the GICallableInfo
+ * - get the Callable_info
  * - find out the numbers of arguments
  *   - for each argument :
  *     - get the direction :
@@ -115,7 +115,7 @@ let append_ctypes_function_bindings raw_name info (mli, ml) =
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
-      if GICallableInfo.can_throw_gerror callable then (
+      if Callable_info.can_throw_gerror callable then (
         Printf.fprintf mli " -> %s" "Error.t structure ptr ptr option";
         Printf.fprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
       );
@@ -134,10 +134,10 @@ let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_ty
  * when GObjectIntrospection returns no arguments, we just need to add the
  * container types.*)
 let get_method_arguments_types callable container =
-  let n = GICallableInfo.get_n_args callable in
+  let n = Callable_info.get_n_args callable in
   let rec parse_args index args_types =
     if index = n then Some (List.rev args_types)
-    else let arg = GICallableInfo.get_arg callable index in
+    else let arg = Callable_info.get_arg callable index in
     match Arg_info.get_direction arg with
            | Arg_info.In -> (
              let type_info = Arg_info.get_type arg in
@@ -152,13 +152,13 @@ let get_method_arguments_types callable container =
                    in parse_args 0 [("t structure ptr", "ptr t_typ")]
 
 let get_method_return_types callable container =
-  if GICallableInfo.skip_return callable then Some ("unit", "void")
-  else let ret = GICallableInfo.get_return_type callable in
-    let may_be_null = GICallableInfo.may_return_null callable in
+  if Callable_info.skip_return callable then Some ("unit", "void")
+  else let ret = Callable_info.get_return_type callable in
+    let may_be_null = Callable_info.may_return_null callable in
     match BuilderUtils.type_info_to_bindings_types ret may_be_null with
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-      match GICallableInfo.get_caller_owns callable with
+      match Callable_info.get_caller_owns callable with
       | Arg_info.Nothing -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
       | Arg_info.Container -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
       | Arg_info.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
@@ -179,7 +179,7 @@ let append_ctypes_method_bindings raw_name info container (mli, ml) =
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       Printf.fprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
-      if GICallableInfo.can_throw_gerror callable then (
+      if Callable_info.can_throw_gerror callable then (
         Printf.fprintf mli " -> %s" "Error.t structure ptr ptr option";
         Printf.fprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
       );

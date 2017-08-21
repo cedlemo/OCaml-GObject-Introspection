@@ -22,7 +22,7 @@ open Ctypes
 open Foreign
 
 type t
-let callableinfo : t structure typ = structure "GICallableInfo"
+let callableinfo : t structure typ = structure "Callable_info"
 
 let can_throw_gerror =
   foreign "g_callable_info_can_throw_gerror"

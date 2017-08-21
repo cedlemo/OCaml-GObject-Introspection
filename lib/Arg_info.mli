@@ -21,7 +21,7 @@
 open Ctypes
 
 (** Arg_info represents an argument. An argument is always part of a
-    GICallableInfo. *)
+    Callable_info. *)
 type t
 val arginfo : t structure typ
 

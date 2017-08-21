@@ -20,9 +20,9 @@
 
 open Ctypes
 
-(** GISignalInfo represents a signal. It's a sub-struct of GICallableInfo and
+(** GISignalInfo represents a signal. It's a sub-struct of Callable_info and
     contains a set of flags and a class closure.
-    See GICallableInfo for information on how to retreive arguments and other
+    See Callable_info for information on how to retreive arguments and other
     metadata from the signal. *)
 type t
 val signalinfo : t structure typ
@@ -73,10 +73,10 @@ val get_flags:
     is a virtual function on the type that the signal belongs to. If the signal
     lacks a closure None will be returned.
     In order to avoid circular call graph between GISignalInfo and GIVFuncInfo,
-    this function will return a GICallableInfo. It is upto the user to use
+    this function will return a Callable_info. It is upto the user to use
     GIVSignalInfo.from_callableinfo in order to have the GIVFuncInfo.*)
 val get_class_closure:
-  t structure ptr -> GICallableInfo.t structure ptr option
+  t structure ptr -> Callable_info.t structure ptr option
 
 (** Just cast OCaml Ctypes base info to signal info. *)
 val cast_from_baseinfo:
@@ -104,21 +104,21 @@ val to_baseinfo:
 
 (** Just cast OCaml Ctypes callable info to signal info. *)
 val cast_from_callableinfo:
-  GICallableInfo.t structure ptr -> t structure ptr
+  Callable_info.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes signal info to callable info *)
 val cast_to_callableinfo:
-  t structure ptr -> GICallableInfo.t structure ptr
+  t structure ptr -> Callable_info.t structure ptr
 
-(** Return a GISignalInfo.t from a GICallableInfo.t, the underlying C structure
+(** Return a GISignalInfo.t from a Callable_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_callableinfo:
-  GICallableInfo.t structure ptr -> t structure ptr
+  Callable_info.t structure ptr -> t structure ptr
 
-(** Return a GICallableInfo.t from a GISignalInfo, the underlying C structure
+(** Return a Callable_info.t from a GISignalInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_callableinfo:
-  t structure ptr -> GICallableInfo.t structure ptr
+  t structure ptr -> Callable_info.t structure ptr
 

@@ -33,10 +33,10 @@ val get_offset:
 (** Obtain the signal for the virtual function if one is set. The signal comes
     from the object or interface to which this virtual function belongs.
     In order to avoid circular call graph between GIVFuncInfo and GISignalInfo,
-    this function will return a GICallableInfo. It is upto the user to use
+    this function will return a Callable_info. It is upto the user to use
     GISignalInfo.from_callableinfo in order to have the GISignalInfo.*)
 val get_signal:
-  t structure ptr -> GICallableInfo.t structure ptr option
+  t structure ptr -> Callable_info.t structure ptr option
 
 type flags =
   | Must_chain_up     (** chains up to the parent type *)
@@ -84,20 +84,20 @@ val to_baseinfo:
 
 (** Just cast OCaml Ctypes callable info to vfunc info. *)
 val cast_from_callableinfo:
-  GICallableInfo.t structure ptr -> t structure ptr
+  Callable_info.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes vfunc info to callable info *)
 val cast_to_callableinfo:
-  t structure ptr -> GICallableInfo.t structure ptr
+  t structure ptr -> Callable_info.t structure ptr
 
-(** Return a GIVFuncInfo.t from a GICallableInfo.t, the underlying C structure
+(** Return a GIVFuncInfo.t from a Callable_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_callableinfo:
-  GICallableInfo.t structure ptr -> t structure ptr
+  Callable_info.t structure ptr -> t structure ptr
 
-(** Return a GICallableInfo.t from a GIVFuncInfo, the underlying C structure
+(** Return a Callable_info.t from a GIVFuncInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_callableinfo:
-  t structure ptr -> GICallableInfo.t structure ptr
+  t structure ptr -> Callable_info.t structure ptr

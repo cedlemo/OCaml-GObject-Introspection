@@ -23,7 +23,7 @@ open Ctypes
 (** GIFunctionInfo represents a function, method or constructor. To find out
     what kind of entity a GIFunctionInfo represents, call
     GIFunctionInfo.get_flags.
-    See also GICallableInfo for information on how to retreive arguments and
+    See also Callable_info for information on how to retreive arguments and
     other metadata. *)
 type t
 val functioninfo : t structure typ
@@ -56,10 +56,10 @@ val get_property:
     GIFunctionInfo with the flag Wraps_vfunc has a virtual function set. For
     other cases, None will be returned.
     In order to avoid circular call graph between GIFunctionInfo and GIVFuncInfo,
-    this function will return a GICallableInfo. It is upto the user to use
+    this function will return a Callable_info. It is upto the user to use
     GIVFuncInfo.from_callableinfo in order to have the GIVFuncInfo.*)
 val get_vfunc:
-  t structure ptr -> GICallableInfo.t structure ptr option
+  t structure ptr -> Callable_info.t structure ptr option
 
 (*
   gboolean	g_function_info_invoke ()
@@ -92,20 +92,20 @@ val to_baseinfo:
 
 (** Just cast OCaml Ctypes callable info to function info. *)
 val cast_from_callableinfo:
-  GICallableInfo.t structure ptr -> t structure ptr
+  Callable_info.t structure ptr -> t structure ptr
 
 (** Just cast OCaml Ctypes function info to callable info *)
 val cast_to_callableinfo:
-  t structure ptr -> GICallableInfo.t structure ptr
+  t structure ptr -> Callable_info.t structure ptr
 
-(** Return a GIFunctionInfo.t from a GICallableInfo.t, the underlying C structure
+(** Return a GIFunctionInfo.t from a Callable_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_callableinfo:
-  GICallableInfo.t structure ptr -> t structure ptr
+  Callable_info.t structure ptr -> t structure ptr
 
-(** Return a GICallableInfo.t from a GIFunctionInfo, the underlying C structure
+(** Return a Callable_info.t from a GIFunctionInfo, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_callableinfo:
-  t structure ptr -> GICallableInfo.t structure ptr
+  t structure ptr -> Callable_info.t structure ptr

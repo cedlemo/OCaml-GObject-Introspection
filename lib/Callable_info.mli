@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GICallableInfo — Struct representing a callable. *)
+(** Callable_info — Struct representing a callable. *)
 
 open Ctypes
 
-(** GICallableInfo represents an entity which is callable. Currently a function
+(** Callable_info represents an entity which is callable. Currently a function
     (GIFunctionInfo), virtual function, (GIVFuncInfo) or callback
     (GICallbackInfo).
     A callable has a list of arguments (Arg_info), a return type, direction
@@ -43,7 +43,7 @@ val get_return_attribute:
 (** Determines if the callable info is a method. For GIVFuncInfos,
     GICallbackInfos, and GISignalInfos, this is always true. Otherwise, this
     looks at the GIFunctionInfo.Is_method flag on the GIFunctionInfo.
-    Concretely, this function returns whether GICallableInfo.get_n_args matches
+    Concretely, this function returns whether Callable_info.get_n_args matches
     the number of arguments in the raw C method. For methods, there is one more
     C argument than is exposed by introspection: the "self" or "this" object. *)
 val is_method:

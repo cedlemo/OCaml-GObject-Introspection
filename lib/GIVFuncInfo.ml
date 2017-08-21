@@ -29,10 +29,10 @@ let get_offset =
 let get_signal info =
   let get_signal_raw =
     foreign "g_vfunc_info_get_signal"
-      (ptr vfuncinfo @-> returning (ptr_opt GICallableInfo.callableinfo)) in
+      (ptr vfuncinfo @-> returning (ptr_opt Callable_info.callableinfo)) in
   match get_signal_raw info with
   | None -> None
-  | Some info' -> let info'' = GICallableInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Callable_info.add_unref_finaliser info' in
     Some info''
 
 type flags =
@@ -85,19 +85,19 @@ let to_baseinfo info =
   info'
 
 let cast_from_callableinfo info =
-  coerce (ptr GICallableInfo.callableinfo) (ptr vfuncinfo) info
+  coerce (ptr Callable_info.callableinfo) (ptr vfuncinfo) info
 
 let cast_to_callableinfo info =
-  coerce (ptr vfuncinfo) (ptr GICallableInfo.callableinfo) info
+  coerce (ptr vfuncinfo) (ptr Callable_info.callableinfo) info
 
 let to_callableinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
   let info'' = cast_to_callableinfo info in
-  GICallableInfo.add_unref_finaliser info''
+  Callable_info.add_unref_finaliser info''
 
 let from_callableinfo info =
-  let info' = GICallableInfo.cast_to_baseinfo info in
+  let info' = Callable_info.cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
   let info'' = cast_from_callableinfo info in
   let _ = Gc.finalise (fun i ->
