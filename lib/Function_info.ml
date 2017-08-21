@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let functioninfo : t structure typ = structure "GIFunctionInfo"
+let functioninfo : t structure typ = structure "Function_info"
 
 let get_symbol =
   foreign "g_function_info_get_symbol"

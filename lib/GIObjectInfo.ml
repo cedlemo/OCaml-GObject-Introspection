@@ -91,19 +91,19 @@ let get_n_methods =
 let get_method info n =
   let get_method_raw =
     foreign "g_object_info_get_method"
-      (ptr objectinfo @-> int @-> returning (ptr GIFunctionInfo.functioninfo)) in
+      (ptr objectinfo @-> int @-> returning (ptr Function_info.functioninfo)) in
   let max = get_n_methods info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_method_raw info n in
-    GIFunctionInfo.add_unref_finaliser info'
+    Function_info.add_unref_finaliser info'
 
 let find_method info name =
   let find_method_raw =
     foreign "g_object_info_find_method"
-      (ptr objectinfo @-> string @-> returning (ptr_opt GIFunctionInfo.functioninfo)) in
+      (ptr objectinfo @-> string @-> returning (ptr_opt Function_info.functioninfo)) in
   match find_method_raw info name with
   | None -> None
-  | Some info' -> let info'' = GIFunctionInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Function_info.add_unref_finaliser info' in
     Some info''
 
 let get_n_properties =
@@ -217,7 +217,7 @@ let find_method_using_interfaces info name =
   let find_method_using_interfaces_raw =
     foreign "g_object_info_find_method_using_interfaces"
     (ptr objectinfo @-> string @-> ptr (ptr objectinfo) @->
-     returning (ptr_opt GIFunctionInfo.functioninfo)) in
+     returning (ptr_opt Function_info.functioninfo)) in
   let implementor_addr = allocate_n (ptr objectinfo) 1 in
   match find_method_using_interfaces_raw info name implementor_addr with
   | None -> (None, None)

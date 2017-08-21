@@ -80,12 +80,12 @@ val get_n_methods:
 
 (** Obtain an object type method at index n . *)
 val get_method:
-  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+  t structure ptr -> int -> Function_info.t structure ptr
 
 (** Obtain a method of the object type given a name . None will be returned if
     there's no method available with that name. *)
 val find_method:
-  t structure ptr -> string -> GIFunctionInfo.t structure ptr option
+  t structure ptr -> string -> Function_info.t structure ptr option
 
 (** Obtain the number of properties that this object type has. *)
 val get_n_properties:
@@ -136,7 +136,7 @@ val get_class_struct:
     Note that this function does *not* search parent classes; you will have to
     chain up if that's desired. *)
 val find_method_using_interfaces:
-  t structure ptr -> string -> (GIFunctionInfo.t structure ptr option *
+  t structure ptr -> string -> (Function_info.t structure ptr option *
                                 t structure ptr option)
 
 (** Obtain the symbol name of the function that should be called to ref this

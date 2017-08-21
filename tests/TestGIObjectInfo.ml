@@ -107,7 +107,7 @@ let test_get_n_methods test_ctxt =
 let test_get_method test_ctxt =
   object_test (fun info ->
       let m = GIObjectInfo.get_method info 0 in
-      let m_name = GIFunctionInfo.get_symbol m in
+      let m_name = Function_info.get_symbol m in
       assert_equal_string "gdk_display_get_default" m_name
     )
 
@@ -116,7 +116,7 @@ let test_find_method test_ctxt =
       let m_name = "get_default" in
       match GIObjectInfo.find_method info m_name with
       | None -> assert_equal_string "It should find " "a method"
-      | Some info' -> let symbol = GIFunctionInfo.get_symbol info' in
+      | Some info' -> let symbol = Function_info.get_symbol info' in
         assert_equal_string ("gdk_display_" ^ m_name) symbol
     )
 
@@ -243,7 +243,7 @@ let test_gtk_window_get_n_methods test_ctxt =
 let test_gtk_window_get_method test_ctxt =
   object_test (fun info ->
       let m = GIObjectInfo.get_method info 0 in
-      let m_name = GIFunctionInfo.get_symbol m in
+      let m_name = Function_info.get_symbol m in
       assert_equal_string "gtk_window_new" m_name
     )
 
@@ -252,7 +252,7 @@ let test_gtk_window_find_method test_ctxt =
       let m_name = "new" in
       match GIObjectInfo.find_method info m_name with
       | None -> assert_equal_string "It should find " "a method"
-      | Some info' -> let symbol = GIFunctionInfo.get_symbol info' in
+      | Some info' -> let symbol = Function_info.get_symbol info' in
         assert_equal_string ("gtk_window_" ^ m_name) symbol
     )
 
@@ -371,7 +371,7 @@ let test_gtk_window_find_method_using_interfaces test_ctxt =
         )
       in match meth with
       | None -> assert_equal_string "It should return " " a function info"
-      | Some info' -> let symbol = GIFunctionInfo.get_symbol info' in
+      | Some info' -> let symbol = Function_info.get_symbol info' in
         assert_equal_string ("gtk_window_" ^ method_name) symbol
      )
 

@@ -53,7 +53,7 @@ val get_flags:
   t structure ptr -> flags list
 
 (*
-  TODO : GIFunctionInfo *	g_vfunc_info_get_invoker ()
+  TODO : Function_info *	g_vfunc_info_get_invoker ()
   TODO : gpointer	g_vfunc_info_get_address ()
   TODO : gboolean	g_vfunc_info_invoke ()
  *)

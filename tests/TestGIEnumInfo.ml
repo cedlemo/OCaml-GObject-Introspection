@@ -54,7 +54,7 @@ let test_get_n_methods test_ctxt =
 let test_get_method test_ctxt =
   enum_test (fun info ->
       let m = Enum_info.get_method info 0 in
-      let name = GIFunctionInfo.get_symbol m in
+      let name = Function_info.get_symbol m in
       assert_equal_string "g_resource_error_quark" name
     )
 

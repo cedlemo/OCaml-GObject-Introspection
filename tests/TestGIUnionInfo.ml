@@ -97,7 +97,7 @@ let test_get_field_out_of_bounds test_ctxt =
 let test_get_method test_ctxt =
   union_test (fun info ->
     let m = GIUnionInfo.get_method info 0 in
-    let symbol = GIFunctionInfo.get_symbol m in
+    let symbol = Function_info.get_symbol m in
     assert_equal_string "g_mutex_clear" symbol
   )
 
@@ -115,7 +115,7 @@ let test_find_method test_ctxt =
   union_test (fun info ->
       match GIUnionInfo.find_method info function_name with
       | None -> assert_equal_boolean true false
-      | Some m -> let symbol = GIFunctionInfo.get_symbol m in
+      | Some m -> let symbol = Function_info.get_symbol m in
         assert_equal_string ("g_mutex_" ^ function_name) symbol
     )
 

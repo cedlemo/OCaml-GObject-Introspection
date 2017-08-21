@@ -58,20 +58,20 @@ let get_field info n =
 let get_method info n =
   let get_method_raw =
     foreign "g_struct_info_get_method"
-      (ptr structinfo @-> int @-> returning (ptr GIFunctionInfo.functioninfo)) in
+      (ptr structinfo @-> int @-> returning (ptr Function_info.functioninfo)) in
   let max = get_n_methods info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_method_raw info n in
-    GIFunctionInfo.add_unref_finaliser info'
+    Function_info.add_unref_finaliser info'
 
 let find_method info name =
   let find_method_raw =
     foreign "g_struct_info_find_method"
-    (ptr structinfo @-> string @-> returning (ptr_opt GIFunctionInfo.functioninfo))
+    (ptr structinfo @-> string @-> returning (ptr_opt Function_info.functioninfo))
   in match find_method_raw info name with
   | None -> None
   | Some info' ->
-    let fn_info = GIFunctionInfo.add_unref_finaliser info' in
+    let fn_info = Function_info.add_unref_finaliser info' in
     Some fn_info
 
 (* TODO : check that the info can be casted to a structinfo ? *)

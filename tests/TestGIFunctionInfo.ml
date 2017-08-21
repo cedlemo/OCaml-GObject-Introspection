@@ -29,7 +29,7 @@ let get_function_info () =
   match Repository.find_by_name repo namespace name with
   | None -> None
   | Some (base_info) -> match Base_info.get_type base_info with
-    | Base_info.Function -> let info = GIFunctionInfo.from_baseinfo base_info in
+    | Base_info.Function -> let info = Function_info.from_baseinfo base_info in
       Some info
     | _ -> None
 
@@ -40,24 +40,24 @@ let test_function_info fn =
 
 let test_get_symbol test_ctxt =
   test_function_info (fun info ->
-      assert_equal "g_signal_name" (GIFunctionInfo.get_symbol info)
+      assert_equal "g_signal_name" (Function_info.get_symbol info)
     )
 
 let test_get_flags test_ctxt =
   test_function_info (fun info ->
-      assert_equal [] (GIFunctionInfo.get_flags info)
+      assert_equal [] (Function_info.get_flags info)
     )
 
 let test_get_property test_ctxt =
   test_function_info (fun info ->
-      match GIFunctionInfo.get_property info with
+      match Function_info.get_property info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "returns something"
     )
 
 let test_get_vfunc test_ctxt =
   test_function_info (fun info ->
-      match GIFunctionInfo.get_vfunc info with
+      match Function_info.get_vfunc info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "returns something"
     )
@@ -65,8 +65,8 @@ let test_get_vfunc test_ctxt =
 let tests =
   "GObject Introspection FunctionInfo tests" >:::
   [
-    "GIFunctionInfo get symbol" >:: test_get_symbol;
-    "GIFunctionInfo get flags" >:: test_get_flags;
-    "GIFunctionInfo get property" >:: test_get_property;
-    "GIFunctionInfo get vfunc" >:: test_get_vfunc
+    "Function_info get symbol" >:: test_get_symbol;
+    "Function_info get flags" >:: test_get_flags;
+    "Function_info get property" >:: test_get_property;
+    "Function_info get vfunc" >:: test_get_vfunc
   ]

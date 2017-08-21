@@ -78,7 +78,7 @@ let test_get_n_methods test_ctxt =
 let test_get_method test_ctxt =
   interface_test (fun info ->
       let info' = GIInterfaceInfo.get_method info 0 in
-      let base_info = GIFunctionInfo.to_baseinfo info' in
+      let base_info = Function_info.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " " a name"
       | Some name -> assert_equal_string "new" name
@@ -90,7 +90,7 @@ let test_find_method test_ctxt =
       match GIInterfaceInfo.find_method info method_name with
       | None -> assert_equal_string "It should " "return an info"
       | Some info' ->
-      let symbol = GIFunctionInfo.get_symbol info' in
+      let symbol = Function_info.get_symbol info' in
       assert_equal_string ("g_tls_server_connection_"^ method_name) symbol
     )
 

@@ -29,7 +29,7 @@ let get_function_info name () =
   match Repository.find_by_name repo namespace name with
   | None -> None
   | Some (base_info) -> match Base_info.get_type base_info with
-    | Base_info.Function -> let info = GIFunctionInfo.from_baseinfo base_info in
+    | Base_info.Function -> let info = Function_info.from_baseinfo base_info in
       Some info
     | _ -> None
 
@@ -40,7 +40,7 @@ let test_function_info name fn =
 
 let test_get_arguments_types test_ctx =
   test_function_info name (fun info ->
-      let callable = GIFunctionInfo.to_callableinfo info in
+      let callable = Function_info.to_callableinfo info in
       match BuilderFunction.get_arguments_types callable with
       | None -> assert_equal_string "It should returns " "Ctypes arguments"
       | Some l -> let ocaml_types = String.concat " -> " (List.map (fun (a, b) -> a) l) in
@@ -51,7 +51,7 @@ let test_get_arguments_types test_ctx =
 
 let test_get_return_types test_ctx =
   test_function_info name (fun info ->
-      let callable = GIFunctionInfo.to_callableinfo info in
+      let callable = Function_info.to_callableinfo info in
       match BuilderFunction.get_return_types callable with
       | None -> assert_equal_string "It should returns " "the return value ocaml and ctypes types"
       | Some (ocaml_type, ctypes_type) ->

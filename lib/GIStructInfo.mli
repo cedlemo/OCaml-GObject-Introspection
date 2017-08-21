@@ -58,11 +58,11 @@ val get_field:
 
 (** Obtain the type information for method with specified index. *)
 val get_method:
-  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+  t structure ptr -> int -> Function_info.t structure ptr
 
 (** Obtain the type information for method named name .*)
 val find_method:
-  t structure ptr -> string -> GIFunctionInfo.t structure ptr option
+  t structure ptr -> string -> Function_info.t structure ptr option
 
 (** Add unref of the C underlying structure whith Gc.finalise. *)
 val add_unref_finaliser:

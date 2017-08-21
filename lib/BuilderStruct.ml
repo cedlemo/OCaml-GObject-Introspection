@@ -57,7 +57,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources_files =
   let n = GIStructInfo.get_n_methods info in
   for i = 0 to n - 1 do
     let method_info = GIStructInfo.get_method info i in
-    let base_info = GIFunctionInfo.to_baseinfo method_info in
+    let base_info = Function_info.to_baseinfo method_info in
     match Base_info.get_name base_info with
     | None -> ()
     | Some name ->

@@ -35,7 +35,7 @@ val base_info_unref:
   t structure ptr -> unit
 
 (** Obtain the name of the info . What the name represents depends on the
-    GIInfoType of the info . For instance for GIFunctionInfo it is the name of
+    GIInfoType of the info . For instance for Function_info it is the name of
     the function.*)
 val get_name:
   t structure ptr -> string option
@@ -56,15 +56,15 @@ val is_deprecated:
   t structure ptr -> bool
 
 (** Obtain the container of the info . The container is the parent Base_info.
-    For instance, the parent of a GIFunctionInfo is an GIObjectInfo or
+    For instance, the parent of a Function_info is an GIObjectInfo or
     GIInterfaceInfo. *)
 val get_container:
   t structure ptr -> t structure ptr option
 
 type baseinfo_type =
   | Invalid (** invalid type *)
-  | Function (** function, see GIFunctionInfo *)
-  | Callback (** callback, see GIFunctionInfo *)
+  | Function (** function, see Function_info *)
+  | Callback (** callback, see Function_info *)
   | Struct (** struct, see GIStructInfo *)
   | Boxed (** boxed, see GIStructInfo or GIUnionInfo *)
   | Enum (** enum, see Enum_info *)

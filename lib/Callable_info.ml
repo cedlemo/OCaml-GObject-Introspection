@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIFunctionInfo — Struct representing a function. *)
+(** Function_info — Struct representing a function. *)
 
 open Ctypes
 open Foreign

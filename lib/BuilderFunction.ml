@@ -100,9 +100,9 @@ let get_return_types callable =
  *)
 
 let append_ctypes_function_bindings raw_name info (mli, ml) =
-  let symbol = GIFunctionInfo.get_symbol info in
+  let symbol = Function_info.get_symbol info in
   let name = BuilderUtils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
-  let callable = GIFunctionInfo.to_callableinfo info in
+  let callable = Function_info.to_callableinfo info in
   match get_arguments_types callable with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
     BuilderUtils.add_comments mli coms;
@@ -164,9 +164,9 @@ let get_method_return_types callable container =
       | Arg_info.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
 
 let append_ctypes_method_bindings raw_name info container (mli, ml) =
-  let symbol = GIFunctionInfo.get_symbol info in
+  let symbol = Function_info.get_symbol info in
   let name = BuilderUtils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
-  let callable = GIFunctionInfo.to_callableinfo info in
+  let callable = Function_info.to_callableinfo info in
   match get_method_arguments_types callable container with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
     BuilderUtils.add_comments mli coms;

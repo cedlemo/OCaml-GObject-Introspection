@@ -37,7 +37,7 @@ val get_n_methods:
 
 (** Obtain an enum type method at index n . *)
 val get_method:
-  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+  t structure ptr -> int -> Function_info.t structure ptr
 
 (** Obtain a value for this enumeration. *)
 val get_value:

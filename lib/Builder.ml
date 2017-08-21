@@ -73,11 +73,11 @@ let parse_function_info info source_files =
                                                                 "function";
                                                                 name])
      in
-     let info' = GIFunctionInfo.from_baseinfo info in
-     let flags = GIFunctionInfo.get_flags info' in
+     let info' = Function_info.from_baseinfo info in
+     let flags = Function_info.get_flags info' in
     let rec search = function
       | [] -> true
-      | f :: q -> if f == GIFunctionInfo.Is_method then false
+      | f :: q -> if f == Function_info.Is_method then false
       else search q
     in
     if search flags then (

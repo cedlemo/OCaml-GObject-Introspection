@@ -21,7 +21,7 @@
 open Ctypes
 
 (** Callable_info represents an entity which is callable. Currently a function
-    (GIFunctionInfo), virtual function, (GIVFuncInfo) or callback
+    (Function_info), virtual function, (GIVFuncInfo) or callback
     (GICallbackInfo).
     A callable has a list of arguments (Arg_info), a return type, direction
     and a flag which decides if it returns null*)
@@ -42,7 +42,7 @@ val get_return_attribute:
 
 (** Determines if the callable info is a method. For GIVFuncInfos,
     GICallbackInfos, and GISignalInfos, this is always true. Otherwise, this
-    looks at the GIFunctionInfo.Is_method flag on the GIFunctionInfo.
+    looks at the Function_info.Is_method flag on the Function_info.
     Concretely, this function returns whether Callable_info.get_n_args matches
     the number of arguments in the raw C method. For methods, there is one more
     C argument than is exposed by introspection: the "self" or "this" object. *)
@@ -89,13 +89,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIFunctionInfo.t from a Base_info.t, the underlying C structure
+(** Return a Function_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t from a GIFunctionInfo, the underlying C structure
+(** Return a Base_info.t from a Function_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:

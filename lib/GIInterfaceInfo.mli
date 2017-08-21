@@ -50,12 +50,12 @@ val get_n_methods:
 
 (** Obtain an interface type method at index n . *)
 val get_method:
-  t structure ptr -> int -> GIFunctionInfo.t structure ptr
+  t structure ptr -> int -> Function_info.t structure ptr
 
 (** Obtain a method of the interface type given a name . NULL will be returned
     if there's no method available with that name. *)
 val find_method:
-  t structure ptr -> string -> GIFunctionInfo.t structure ptr option
+  t structure ptr -> string -> Function_info.t structure ptr option
 
 (** Obtain the number of signals that this interface type has. *)
 val get_n_signals:

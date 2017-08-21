@@ -109,7 +109,7 @@ let test_get_field_out_of_bounds test_ctxt =
 let test_get_method test_ctxt =
   struct_test (fun info ->
     let m = GIStructInfo.get_method info 0 in
-    let symbol = GIFunctionInfo.get_symbol m in
+    let symbol = Function_info.get_symbol m in
     assert_equal_string "g_value_copy" symbol
   )
 
@@ -125,7 +125,7 @@ let test_get_method_out_of_bounds test_ctxt =
 let test_find_method test_ctxt =
   struct_test (fun info -> match GIStructInfo.find_method info "copy" with
     | None -> assert_equal_boolean false true
-    | Some fn_info -> let symbol = GIFunctionInfo.get_symbol fn_info in
+    | Some fn_info -> let symbol = Function_info.get_symbol fn_info in
       assert_equal_string "g_value_copy" symbol
   )
 
