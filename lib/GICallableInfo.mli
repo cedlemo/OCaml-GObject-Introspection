@@ -23,7 +23,7 @@ open Ctypes
 (** GICallableInfo represents an entity which is callable. Currently a function
     (GIFunctionInfo), virtual function, (GIVFuncInfo) or callback
     (GICallbackInfo).
-    A callable has a list of arguments (GIArgInfo), a return type, direction
+    A callable has a list of arguments (Arg_info), a return type, direction
     and a flag which decides if it returns null*)
 type t
 val callableinfo: t structure typ
@@ -59,7 +59,7 @@ val skip_return:
 
 (** Obtain information about a particular argument of this callable. *)
 val get_arg:
-  t structure ptr -> int -> GIArgInfo.t structure ptr
+  t structure ptr -> int -> Arg_info.t structure ptr
 
 (** Obtain the return type of a callable item as a GITypeInfo. *)
 val get_return_type:
@@ -68,7 +68,7 @@ val get_return_type:
 (** See whether the caller owns the return value of this callable. GITransfer
     contains a list of possible transfer values. *)
 val get_caller_owns:
-  t structure ptr -> GIArgInfo.transfer
+  t structure ptr -> Arg_info.transfer
 
 (*
   gboolean	g_callable_info_invoke ()

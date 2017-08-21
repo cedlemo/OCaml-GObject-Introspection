@@ -16,16 +16,16 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIArgInfo — Struct representing an argument *)
+(** Arg_info — Struct representing an argument *)
 
 open Ctypes
 
-(** GIArgInfo represents an argument. An argument is always part of a
+(** Arg_info represents an argument. An argument is always part of a
     GICallableInfo. *)
 type t
 val arginfo : t structure typ
 
-(** The direction of a GIArgInfo. *)
+(** The direction of a Arg_info. *)
 type direction =
   | In    (** in argument. *)
   | Out   (** out argument. *)
@@ -83,12 +83,12 @@ val get_ownership_transfer:
 
 (** Obtain if the type of the argument includes the possibility of NULL. For
     'in' values this means that NULL is a valid value. For 'out' values, this
-    means that NULL may be returned. See also GIArgInfo.is_optional. *)
+    means that NULL may be returned. See also Arg_info.is_optional. *)
 val may_be_null:
   t structure ptr -> bool
 
 (** Obtain if the argument is a pointer to a struct or object that will receive
-    an output of a function. The default assumption for GIArgInfo.Out arguments
+    an output of a function. The default assumption for Arg_info.Out arguments
     which have allocation is that the callee allocates; if this is TRUE, then
     the caller must allocate. *)
 val is_caller_allocates:
@@ -108,7 +108,7 @@ val is_return_value:
 val is_skip:
   t structure ptr -> bool
 
-(** Scope type of a GIArgInfo representing callback, determines how the
+(** Scope type of a Arg_info representing callback, determines how the
     callback is invoked and is used to decided when the invoke structs can be
     freed. *)
 type scope =
@@ -181,13 +181,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIArgInfo.t from a Base_info.t, the underlying C structure
+(** Return a Arg_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t form a GIArgInfo, the underlying C structure
+(** Return a Base_info.t form a Arg_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:

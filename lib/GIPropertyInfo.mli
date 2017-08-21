@@ -28,7 +28,7 @@ val propertyinfo : t structure typ
 (** Obtain the ownership transfer for this property. See GITransfer for more
     information about transfer values. *)
 val get_ownership_transfer:
-  t structure ptr -> GIArgInfo.transfer
+  t structure ptr -> Arg_info.transfer
 
 (** Obtain the type information for the property info . *)
 val get_type:
@@ -37,7 +37,7 @@ val get_type:
 (** Obtain the flags for this property info. See GParamFlags for more
     information about possible flag values. *)
 val get_flags:
-  t structure ptr -> GIArgInfo.param_flags
+  t structure ptr -> Arg_info.param_flags
 
 (** Just cast OCaml Ctypes base info to property info. *)
 val cast_from_baseinfo:

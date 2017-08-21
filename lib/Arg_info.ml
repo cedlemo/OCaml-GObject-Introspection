@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let arginfo : t structure typ = structure "GIArgInfo"
+let arginfo : t structure typ = structure "Arg_info"
 
 type direction =
   | In
@@ -35,7 +35,7 @@ let get_direction info =
   | 0 -> In
   | 1 -> Out
   | 2 -> InOut
-  | value -> let message = String.concat " " ["GIArgInfo get_direction value";
+  | value -> let message = String.concat " " ["Arg_info get_direction value";
                                               string_of_int value;
                                               "should not have been reached"]
     in raise (Failure message)
@@ -57,7 +57,7 @@ let transfer_of_int = function
   | 0 -> Nothing
   | 1 -> Container
   | 2 -> Everything
-  | value -> let message = String.concat " " ["GIArgInfo get_ownership_transfer value";
+  | value -> let message = String.concat " " ["Arg_info get_ownership_transfer value";
                                               string_of_int value;
                                               "should not have been reached"]
     in raise (Failure message)
@@ -105,7 +105,7 @@ let get_scope info =
   | 1 -> Call
   | 2 -> Async
   | 3 -> Notified
-  | value -> let message = String.concat " " ["GIArgInfo get_scope value";
+  | value -> let message = String.concat " " ["Arg_info get_scope value";
                                               string_of_int value;
                                               "should not have been reached"]
     in raise (Failure message)
@@ -136,7 +136,7 @@ let param_flags_of_int32 flag =
   else if flag = (Int32.shift_left (Int32.of_int 1) 7) then Static_blurb
   else if flag = (Int32.shift_left (Int32.of_int 1) 30) then Explicit_notify
   else if flag = (Int32.shift_left (Int32.of_int 1) 31) then Deprecated
-  else let message = String.concat " " ["GIArgInfo get_scope value";
+  else let message = String.concat " " ["Arg_info get_scope value";
                                         Int32.to_string flag;
                                         "should not have been reached"]
     in raise (Failure message)

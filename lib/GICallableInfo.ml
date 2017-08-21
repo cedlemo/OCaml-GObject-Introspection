@@ -51,12 +51,12 @@ let skip_return =
 let get_arg info n =
   let get_arg_raw =
     foreign "g_callable_info_get_arg"
-      (ptr callableinfo @-> int @-> returning (ptr GIArgInfo.arginfo))
+      (ptr callableinfo @-> int @-> returning (ptr Arg_info.arginfo))
   in let max = get_n_args info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else
     let info' = get_arg_raw info n in
-    GIArgInfo.add_unref_finaliser info'
+    Arg_info.add_unref_finaliser info'
 
 let get_return_type info =
   let get_return_type_raw =
@@ -70,7 +70,7 @@ let get_caller_owns info =
     foreign "g_callable_info_get_caller_owns"
       (ptr callableinfo @-> returning int)
   in let transfer = get_caller_owns_raw info
-  in GIArgInfo.transfer_of_int transfer
+  in Arg_info.transfer_of_int transfer
 
 let cast_from_baseinfo info =
   coerce (ptr Base_info.baseinfo) (ptr callableinfo) info

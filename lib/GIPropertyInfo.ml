@@ -27,7 +27,7 @@ let get_ownership_transfer info =
     foreign "g_property_info_get_ownership_transfer"
       (ptr propertyinfo @-> returning int) in
   let transfer = get_ownership_transfer_raw info in
-  GIArgInfo.transfer_of_int transfer
+  Arg_info.transfer_of_int transfer
 
 let get_type info =
   let get_type_raw =
@@ -41,7 +41,7 @@ let get_flags info =
     foreign "g_property_info_get_flags"
       (ptr propertyinfo @-> returning int32_t) in
   let flag = get_flags_raw info in
-  GIArgInfo.param_flags_of_int32 flag
+  Arg_info.param_flags_of_int32 flag
 
 (* TODO : check that the info can be casted to property info ? *)
 let cast_from_baseinfo info =

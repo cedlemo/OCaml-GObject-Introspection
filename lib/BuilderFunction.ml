@@ -53,10 +53,10 @@ let get_arguments_types callable =
   else let rec parse_args index args_types =
          if index = n then Some (List.rev args_types)
          else let arg = GICallableInfo.get_arg callable index in
-           match GIArgInfo.get_direction arg with
-           | GIArgInfo.In -> (
-               let type_info = GIArgInfo.get_type arg in
-               let may_be_null = GIArgInfo.may_be_null arg in
+           match Arg_info.get_direction arg with
+           | Arg_info.In -> (
+               let type_info = Arg_info.get_type arg in
+               let may_be_null = Arg_info.may_be_null arg in
                match BuilderUtils.type_info_to_bindings_types type_info may_be_null with
                | BuilderUtils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -74,11 +74,11 @@ let get_return_types callable =
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match GICallableInfo.get_caller_owns callable with
-      | GIArgInfo.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
+      | Arg_info.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
       Some types
-      | GIArgInfo.Container -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
+      | Arg_info.Container -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
       Some types
-      | GIArgInfo.Everything -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
+      | Arg_info.Everything -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
       Some types
 
 
@@ -138,10 +138,10 @@ let get_method_arguments_types callable container =
   let rec parse_args index args_types =
     if index = n then Some (List.rev args_types)
     else let arg = GICallableInfo.get_arg callable index in
-    match GIArgInfo.get_direction arg with
-           | GIArgInfo.In -> (
-             let type_info = GIArgInfo.get_type arg in
-             let may_be_null = GIArgInfo.may_be_null arg in
+    match Arg_info.get_direction arg with
+           | Arg_info.In -> (
+             let type_info = Arg_info.get_type arg in
+             let may_be_null = Arg_info.may_be_null arg in
              match BuilderUtils.type_info_to_bindings_types type_info may_be_null with
                | BuilderUtils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
@@ -159,9 +159,9 @@ let get_method_return_types callable container =
     | BuilderUtils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match GICallableInfo.get_caller_owns callable with
-      | GIArgInfo.Nothing -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
-      | GIArgInfo.Container -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
-      | GIArgInfo.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+      | Arg_info.Nothing -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+      | Arg_info.Container -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+      | Arg_info.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
 
 let append_ctypes_method_bindings raw_name info container (mli, ml) =
   let symbol = GIFunctionInfo.get_symbol info in

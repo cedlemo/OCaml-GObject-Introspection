@@ -41,82 +41,82 @@ let arg_test fn =
 
 let test_get_direction test_ctxt =
   arg_test (fun info ->
-      let dir = GIArgInfo.get_direction info in
+      let dir = Arg_info.get_direction info in
       assert_equal ~printer:(fun d ->
           match d with
-          | GIArgInfo.In -> "In"
-          | GIArgInfo.Out -> "Out"
-          | GIArgInfo.InOut -> "InOut") GIArgInfo.In dir
+          | Arg_info.In -> "In"
+          | Arg_info.Out -> "Out"
+          | Arg_info.InOut -> "InOut") Arg_info.In dir
     )
 
 let test_get_closure test_ctxt =
   arg_test (fun info ->
-      let closure = GIArgInfo.get_closure info in
+      let closure = Arg_info.get_closure info in
       assert_equal_int (-1) closure
     )
 
 let test_get_destroy test_ctxt =
   arg_test (fun info ->
-      let index = GIArgInfo.get_destroy info in
+      let index = Arg_info.get_destroy info in
       assert_equal_int (-1) index
     )
 
 let test_get_ownership_transfer test_ctxt =
   arg_test (fun info ->
-      let transfer = GIArgInfo.get_ownership_transfer info in
+      let transfer = Arg_info.get_ownership_transfer info in
       assert_equal ~printer:(fun t ->
           match t with
-          | GIArgInfo.Nothing -> "nothing"
-          | GIArgInfo.Container -> "container"
-          | GIArgInfo.Everything -> "everything"
-        ) GIArgInfo.Nothing transfer
+          | Arg_info.Nothing -> "nothing"
+          | Arg_info.Container -> "container"
+          | Arg_info.Everything -> "everything"
+        ) Arg_info.Nothing transfer
     )
 
 let test_may_be_null test_ctxt =
   arg_test (fun info ->
-      let may_be_null = GIArgInfo.may_be_null info in
+      let may_be_null = Arg_info.may_be_null info in
       assert_equal_boolean false may_be_null
     )
 
 let test_is_caller_allocates test_ctxt =
   arg_test (fun info ->
-      let caller_allocates = GIArgInfo.is_caller_allocates info in
+      let caller_allocates = Arg_info.is_caller_allocates info in
       assert_equal_boolean false caller_allocates
     )
 
 let test_is_optional test_ctxt =
   arg_test (fun info ->
-      let is_optional = GIArgInfo.is_optional info in
+      let is_optional = Arg_info.is_optional info in
       assert_equal_boolean false is_optional
     )
 
 let test_is_return_value test_ctxt =
   arg_test (fun info ->
-      let is_return = GIArgInfo.is_return_value info in
+      let is_return = Arg_info.is_return_value info in
       assert_equal_boolean false is_return
     )
 
 let test_is_skip test_ctxt =
   arg_test (fun info ->
-      let is_skip = GIArgInfo.is_skip info in
+      let is_skip = Arg_info.is_skip info in
       assert_equal_boolean false is_skip
     )
 
 let test_get_scope test_ctxt =
   arg_test (fun info ->
-      let scope = GIArgInfo.get_scope info in
+      let scope = Arg_info.get_scope info in
       assert_equal ~printer:(fun scope ->
           match scope with
-          | GIArgInfo.Invalid -> "Invalid"
-          | GIArgInfo.Call -> "Call"
-          | GIArgInfo.Async -> "Async"
-          | GIArgInfo.Notified -> "Notified"
-        ) GIArgInfo.Invalid scope
+          | Arg_info.Invalid -> "Invalid"
+          | Arg_info.Call -> "Call"
+          | Arg_info.Async -> "Async"
+          | Arg_info.Notified -> "Notified"
+        ) Arg_info.Invalid scope
     )
 
 let test_get_type test_ctxt =
   arg_test (fun info ->
-        let type_info = GIArgInfo.get_type info in
+        let type_info = Arg_info.get_type info in
         let type_name = GITypeInfo.to_string type_info in
         assert_equal_string "unknown" type_name
       )
@@ -124,15 +124,15 @@ let test_get_type test_ctxt =
 let tests =
   "GObject Introspection ArgInfo tests" >:::
   [
-    "GIArgInfo get direction" >:: test_get_direction;
-    "GIArgInfo get closure" >:: test_get_closure;
-    "GIArgInfo get destroy" >:: test_get_destroy;
-    "GIArgInfo get ownership transfer" >:: test_get_ownership_transfer;
-    "GIArgInfo may be null" >:: test_may_be_null;
-    "GIArgInfo is caller allocates" >:: test_is_caller_allocates;
-    "GIArgInfo is optional" >:: test_is_optional;
-    "GIArgInfo is return value" >:: test_is_return_value;
-    "GIArgInfo is skip" >:: test_is_skip;
-    "GIArgInfo get scope" >:: test_get_scope;
-    "GIArgInfo get type" >:: test_get_type
+    "Arg_info get direction" >:: test_get_direction;
+    "Arg_info get closure" >:: test_get_closure;
+    "Arg_info get destroy" >:: test_get_destroy;
+    "Arg_info get ownership transfer" >:: test_get_ownership_transfer;
+    "Arg_info may be null" >:: test_may_be_null;
+    "Arg_info is caller allocates" >:: test_is_caller_allocates;
+    "Arg_info is optional" >:: test_is_optional;
+    "Arg_info is return value" >:: test_is_return_value;
+    "Arg_info is skip" >:: test_is_skip;
+    "Arg_info get scope" >:: test_get_scope;
+    "Arg_info get type" >:: test_get_type
   ]

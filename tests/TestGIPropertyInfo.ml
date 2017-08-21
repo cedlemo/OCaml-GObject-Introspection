@@ -60,10 +60,10 @@ let test_get_ownership_transfer test_ctxt =
       let transfer = GIPropertyInfo.get_ownership_transfer info in
       assert_equal ~printer:(fun t ->
           match t with
-          | GIArgInfo.Nothing -> "nothing"
-          | GIArgInfo.Container -> "container"
-          | GIArgInfo.Everything -> "everything"
-        ) GIArgInfo.Nothing transfer
+          | Arg_info.Nothing -> "nothing"
+          | Arg_info.Container -> "container"
+          | Arg_info.Everything -> "everything"
+        ) Arg_info.Nothing transfer
     )
 
 let test_get_type test_ctxt =
@@ -77,8 +77,8 @@ let test_get_flags test_ctxt =
   property_test (fun info ->
       let flags = GIPropertyInfo.get_flags info in
       assert_equal ~printer:(fun f ->
-          GIArgInfo.param_flags_to_string f
-        ) GIArgInfo.Readwrite flags
+          Arg_info.param_flags_to_string f
+        ) Arg_info.Readwrite flags
     )
 
 let tests =

@@ -81,10 +81,10 @@ let test_get_caller_owns test_ctxt =
       let transfer = GICallableInfo.get_caller_owns info in
       assert_equal ~printer:(fun t ->
           match t with
-          | GIArgInfo.Nothing -> "nothing"
-          | GIArgInfo.Container -> "container"
-          | GIArgInfo.Everything -> "everything"
-        ) GIArgInfo.Nothing transfer
+          | Arg_info.Nothing -> "nothing"
+          | Arg_info.Container -> "container"
+          | Arg_info.Everything -> "everything"
+        ) Arg_info.Nothing transfer
     )
 
 let tests =
