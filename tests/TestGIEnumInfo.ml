@@ -62,9 +62,9 @@ let test_get_value test_ctxt =
   enum_test (fun info ->
       match Enum_info.get_value info 1 with
       | None -> assert_equal_string "No value " "found"
-      | Some value -> let value' = GIValueInfo.get_value value in
+      | Some value -> let value' = Value_info.get_value value in
         let _ = assert_equal 1 (Int64.to_int value') in
-        let base = GIValueInfo.to_baseinfo value in
+        let base = Value_info.to_baseinfo value in
         match Base_info.get_name base with
         | None -> ()
         | Some name -> assert_equal_string "internal" name

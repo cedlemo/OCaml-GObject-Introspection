@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIValueInfo — Struct representing a value *)
+(** Value_info — Struct representing a value *)
 
 open Ctypes
 
@@ -24,7 +24,7 @@ open Ctypes
 type t
 val valueinfo : t structure typ
 
-(** Obtain the enumeration value of the GIValueInfo. *)
+(** Obtain the enumeration value of the Value_info. *)
 val get_value:
   t structure ptr -> int64
 

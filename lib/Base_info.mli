@@ -74,7 +74,7 @@ type baseinfo_type =
   | Constant (** contant, see Constant_info *)
   | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
   | Union (** union, see Union_info *)
-  | Value (** enum value, see GIValueInfo *)
+  | Value (** enum value, see Value_info *)
   | Signal (** signal, see Signal_info *)
   | Vfunc (** virtual function, see GIVFuncInfo *)
   | Property (** GObject property, see Property_info *)

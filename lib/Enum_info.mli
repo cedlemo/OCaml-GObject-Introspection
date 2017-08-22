@@ -20,9 +20,9 @@
 
 open Ctypes
 
-(** A Enum_info represents an enumeration and a GIValueInfo struct represents
+(** A Enum_info represents an enumeration and a Value_info struct represents
     a value of an enumeration. The Enum_info contains a set of values and a
-    type The GIValueInfo is fetched by calling Enum_info.get_value on a
+    type The Value_info is fetched by calling Enum_info.get_value on a
     Enum_info.*)
 type t
 val enuminfo : t structure typ
@@ -41,7 +41,7 @@ val get_method:
 
 (** Obtain a value for this enumeration. *)
 val get_value:
-  t structure ptr -> int -> GIValueInfo.t structure ptr option
+  t structure ptr -> int -> Value_info.t structure ptr option
 
 (** Obtain the string form of the quark for the error domain associated with
     this enum, if any. *)

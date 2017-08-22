@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let valueinfo : t structure typ = structure "GIValueInfo"
+let valueinfo : t structure typ = structure "Value_info"
 
 let get_value =
   foreign "g_value_info_get_value"

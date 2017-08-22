@@ -42,12 +42,12 @@ let get_method info n =
 let get_value info n =
   let get_value_raw =
     foreign "g_enum_info_get_value"
-      (ptr enuminfo @-> int @-> returning (ptr_opt GIValueInfo.valueinfo)) in
+      (ptr enuminfo @-> int @-> returning (ptr_opt Value_info.valueinfo)) in
   let max = get_n_values info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else match get_value_raw info n with
     | None -> None
-    | Some info' -> Some (GIValueInfo.add_unref_finaliser info')
+    | Some info' -> Some (Value_info.add_unref_finaliser info')
 
 let get_error_domain =
   foreign "g_enum_info_get_error_domain"

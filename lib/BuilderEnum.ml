@@ -58,13 +58,13 @@ let get_values_and_variants info =
     else
       match Enum_info.get_value info i with
       | None -> get_v_and_v (i + 1) v_v
-      | Some value_info -> let value_base_info = GIValueInfo.to_baseinfo value_info in
+      | Some value_info -> let value_base_info = Value_info.to_baseinfo value_info in
         if Base_info.is_deprecated value_base_info then get_v_and_v (i + 1) v_v
         else match Base_info.get_name value_base_info with
           | None -> get_v_and_v (i + 1) v_v
           | Some const_name ->
             if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
-            else let value = GIValueInfo.get_value value_info in
+            else let value = Value_info.get_value value_info in
               let variant_name = String.capitalize_ascii const_name in
               get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
   in get_v_and_v 0 []
