@@ -24,8 +24,8 @@ let () =
   for i = 0 to (n - 1) do
     let info =  Repository.get_info repo namespace i in
     match Base_info.get_type info with
-    | Base_info.Union -> let info' = GIUnionInfo.from_baseinfo info in
-      if GIUnionInfo.is_discriminated info' then
+    | Base_info.Union -> let info' = Union_info.from_baseinfo info in
+      if Union_info.is_discriminated info' then
         let message = ( match Base_info.get_name info with
         | None -> String.concat " " ["Anonymous";
                                      "Index";
