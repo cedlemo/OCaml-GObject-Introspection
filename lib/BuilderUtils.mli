@@ -26,18 +26,18 @@ module Option : sig
   val value : default:'a -> 'a option -> 'a
 end
 
-(** Type strings representation used in the bindings for a GITypes tag. *)
+(** Type strings representation used in the bindings for a Types tag. *)
 type type_strings = { ocaml : string;
                       ctypes : string }
 
-(** Type strings representation for GITypes tag both implemented or not. *)
+(** Type strings representation for Types tag both implemented or not. *)
 type bindings_types = Not_implemented of string | Types of type_strings
 
-(** Obtain from a GITypes.tag the type strings to use in bindings for a GITypes.tag
+(** Obtain from a Types.tag the type strings to use in bindings for a Types.tag
     if implemented. Returns Not_implemented with the tag name if not implemented.
     This is for simple scalar type (ie. with BuilderEnum.get_storage_type) .*)
 val type_tag_to_bindings_types:
-  GITypes.tag -> bindings_types
+  Types.tag -> bindings_types
 
 (** Obtain from a Type_info.t the type strings to use in bindings.
     Returns Not_implemented with the tag name if not implemented. *)

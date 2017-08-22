@@ -80,7 +80,7 @@ let test_get_error_domain test_ctxt =
 let test_get_storage_type test_ctxt =
   enum_test (fun info ->
       match Enum_info.get_storage_type info with
-      | GITypes.Uint32 -> assert_equal true true
+      | Types.Uint32 -> assert_equal true true
       | _ -> assert_equal_string "bad " "type"
     )
 

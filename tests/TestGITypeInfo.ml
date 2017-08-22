@@ -57,8 +57,8 @@ let test_get_tag test_ctxt =
   type_test (fun info ->
       let tag = Type_info.get_tag info in
       assert_equal ~printer:(fun tag ->
-          GITypes.string_of_tag tag
-        ) GITypes.Array tag
+          Types.string_of_tag tag
+        ) Types.Array tag
     )
 
 let test_get_array_length test_ctxt =
@@ -84,8 +84,8 @@ let test_get_array_type test_ctxt =
       match Type_info.get_array_type info with
       | None -> assert_equal_string "It should " "be an array"
       | Some array_type -> assert_equal ~printer:(fun t ->
-          GITypes.string_of_array_type t)
-          GITypes.C array_type
+          Types.string_of_array_type t)
+          Types.C array_type
     )
 
 let test_get_param_type test_ctxt =
@@ -93,8 +93,8 @@ let test_get_param_type test_ctxt =
      let param_type = Type_info.get_param_type info 0 in
      let tag = Type_info.get_tag param_type in
       assert_equal ~printer:(fun tag ->
-          GITypes.string_of_tag tag
-        ) GITypes.Uint32 tag
+          Types.string_of_tag tag
+        ) Types.Uint32 tag
     )
 
 let test_get_interface_none test_ctxt =

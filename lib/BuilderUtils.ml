@@ -29,28 +29,28 @@ type type_strings = { ocaml : string;
 type bindings_types = Not_implemented of string | Types of type_strings
 
 let type_tag_to_bindings_types = function
-  | GITypes.Void -> Types { ocaml = "unit"; ctypes = "void" }
-  | GITypes.Boolean -> Types { ocaml = "bool"; ctypes = "bool"}
-  | GITypes.Int8 -> Types { ocaml = "int"; ctypes = "int8_t"}
-  | GITypes.Uint8 -> Types { ocaml = "Unsigned.uint8"; ctypes = "uint8_t"}
-  | GITypes.Int16 -> Types { ocaml = "int"; ctypes = "int16_t"}
-  | GITypes.Uint16 -> Types { ocaml = "Unsigned.uint16"; ctypes = "uint16_t"}
-  | GITypes.Int32 -> Types { ocaml = "int32"; ctypes = "int32_t"}
-  | GITypes.Uint32 -> Types { ocaml = "Unsigned.uint32"; ctypes = "uint32_t"}
-  | GITypes.Int64 -> Types { ocaml = "int64"; ctypes = "int64_t"}
-  | GITypes.Uint64 -> Types { ocaml = "Unsigned.uint64"; ctypes = "uint64_t"}
-  | GITypes.Float -> Types { ocaml = "float"; ctypes = "float"}
-  | GITypes.Double -> Types { ocaml = "float"; ctypes = "double"}
-  | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Utf8 as tag-> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Filename as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Array as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.GList as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.GSList as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.GHash as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Error as tag -> Not_implemented (GITypes.string_of_tag tag)
-  | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
+  | Types.Void -> Types { ocaml = "unit"; ctypes = "void" }
+  | Types.Boolean -> Types { ocaml = "bool"; ctypes = "bool"}
+  | Types.Int8 -> Types { ocaml = "int"; ctypes = "int8_t"}
+  | Types.Uint8 -> Types { ocaml = "Unsigned.uint8"; ctypes = "uint8_t"}
+  | Types.Int16 -> Types { ocaml = "int"; ctypes = "int16_t"}
+  | Types.Uint16 -> Types { ocaml = "Unsigned.uint16"; ctypes = "uint16_t"}
+  | Types.Int32 -> Types { ocaml = "int32"; ctypes = "int32_t"}
+  | Types.Uint32 -> Types { ocaml = "Unsigned.uint32"; ctypes = "uint32_t"}
+  | Types.Int64 -> Types { ocaml = "int64"; ctypes = "int64_t"}
+  | Types.Uint64 -> Types { ocaml = "Unsigned.uint64"; ctypes = "uint64_t"}
+  | Types.Float -> Types { ocaml = "float"; ctypes = "float"}
+  | Types.Double -> Types { ocaml = "float"; ctypes = "double"}
+  | Types.GType as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.Utf8 as tag-> Not_implemented (Types.string_of_tag tag)
+  | Types.Filename as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.Array as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.Interface as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.GList as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.GSList as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.GHash as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.Error as tag -> Not_implemented (Types.string_of_tag tag)
+  | Types.Unichar as tag -> Not_implemented (Types.string_of_tag tag)
 
 let type_info_to_bindings_types type_info maybe_null =
   let check_if_pointer (ocaml_t, ctypes_t) =
@@ -64,41 +64,41 @@ let type_info_to_bindings_types type_info maybe_null =
   match Type_info.get_interface type_info with
   | None -> (
     match Type_info.get_tag type_info with
-    | GITypes.Void -> Types (check_if_pointer ("unit", "void"))
-    | GITypes.Boolean -> Types (check_if_pointer ("bool", "bool"))
-    | GITypes.Int8 -> Types (check_if_pointer ("int", "int8_t"))
-    | GITypes.Uint8 -> Types (check_if_pointer ("Unsigned.uint8", "uint8_t"))
-    | GITypes.Int16 -> Types (check_if_pointer ("int", "int16_t"))
-    | GITypes.Uint16 -> Types (check_if_pointer ("Unsigned.uint16", "uint16_t"))
-    | GITypes.Int32 -> Types (check_if_pointer ("int32", "int32_t"))
-    | GITypes.Uint32 -> Types (check_if_pointer ("Unsigned.uint32", "uint32_t"))
-    | GITypes.Int64 -> Types (check_if_pointer ("int64", "int64_t"))
-    | GITypes.Uint64 -> Types (check_if_pointer ("Unsigned.uint64", "uint64_t"))
-    | GITypes.Float -> Types (check_if_pointer ("float", "float"))
-    | GITypes.Double -> Types (check_if_pointer ("float", "double"))
-    | GITypes.GType as tag -> Not_implemented (GITypes.string_of_tag tag)
-    | GITypes.Utf8 -> if maybe_null then Types {ocaml = "string option";
+    | Types.Void -> Types (check_if_pointer ("unit", "void"))
+    | Types.Boolean -> Types (check_if_pointer ("bool", "bool"))
+    | Types.Int8 -> Types (check_if_pointer ("int", "int8_t"))
+    | Types.Uint8 -> Types (check_if_pointer ("Unsigned.uint8", "uint8_t"))
+    | Types.Int16 -> Types (check_if_pointer ("int", "int16_t"))
+    | Types.Uint16 -> Types (check_if_pointer ("Unsigned.uint16", "uint16_t"))
+    | Types.Int32 -> Types (check_if_pointer ("int32", "int32_t"))
+    | Types.Uint32 -> Types (check_if_pointer ("Unsigned.uint32", "uint32_t"))
+    | Types.Int64 -> Types (check_if_pointer ("int64", "int64_t"))
+    | Types.Uint64 -> Types (check_if_pointer ("Unsigned.uint64", "uint64_t"))
+    | Types.Float -> Types (check_if_pointer ("float", "float"))
+    | Types.Double -> Types (check_if_pointer ("float", "double"))
+    | Types.GType as tag -> Not_implemented (Types.string_of_tag tag)
+    | Types.Utf8 -> if maybe_null then Types {ocaml = "string option";
                                                 ctypes = "string_opt"}
       else Types {ocaml = "string"; ctypes = "string"}
-    | GITypes.Filename -> if maybe_null then Types {ocaml = "string option";
+    | Types.Filename -> if maybe_null then Types {ocaml = "string option";
                                                     ctypes = "string_opt"}
       else Types {ocaml = "string"; ctypes = "string"}
-    | GITypes.Array -> (
+    | Types.Array -> (
       match Type_info.get_array_type type_info with
-      | None -> Not_implemented ("Bad Array type for GITypes.Array tag")
+      | None -> Not_implemented ("Bad Array type for Types.Array tag")
       | Some array_type ->
         match array_type with
-        | GITypes.C -> Not_implemented ("C Array type for GITypes.Array tag")
-        | GITypes.Array -> Types (check_if_pointer ("Array.t structure", "Array.t_typ"))
-        | GITypes.Ptr_array -> Types (check_if_pointer ("PtrArray.t structure", "PtrArray.t_typ"))
-        | GITypes.Byte_array -> Types (check_if_pointer ("ByteArray.t structure", "ByteArray.t_typ"))
+        | Types.C -> Not_implemented ("C Array type for Types.Array tag")
+        | Types.Array -> Types (check_if_pointer ("Array.t structure", "Array.t_typ"))
+        | Types.Ptr_array -> Types (check_if_pointer ("PtrArray.t structure", "PtrArray.t_typ"))
+        | Types.Byte_array -> Types (check_if_pointer ("ByteArray.t structure", "ByteArray.t_typ"))
       )
-    | GITypes.Interface as tag -> Not_implemented (GITypes.string_of_tag tag)
-    | GITypes.GList -> Types (check_if_pointer ("List.t structure", "List.t_typ"))
-    | GITypes.GSList -> Types (check_if_pointer ("SList.t structure", "SList.t_typ"))
-    | GITypes.GHash -> Types (check_if_pointer ("HashTable.t structure", "HashTable.t_typ"))
-    | GITypes.Error -> Types (check_if_pointer ("Error.t structure", "Error.t_typ"))
-    | GITypes.Unichar as tag -> Not_implemented (GITypes.string_of_tag tag)
+    | Types.Interface as tag -> Not_implemented (Types.string_of_tag tag)
+    | Types.GList -> Types (check_if_pointer ("List.t structure", "List.t_typ"))
+    | Types.GSList -> Types (check_if_pointer ("SList.t structure", "SList.t_typ"))
+    | Types.GHash -> Types (check_if_pointer ("HashTable.t structure", "HashTable.t_typ"))
+    | Types.Error -> Types (check_if_pointer ("Error.t structure", "Error.t_typ"))
+    | Types.Unichar as tag -> Not_implemented (Types.string_of_tag tag)
     )
   | Some interface ->
       match Base_info.get_type interface with

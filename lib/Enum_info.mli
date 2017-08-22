@@ -54,7 +54,7 @@ val get_error_domain:
     correctly, but the signed or unsigned nature of the type may not match the
     sign of the type used by the C compiler. *)
 val get_storage_type:
-  t structure ptr -> GITypes.tag
+  t structure ptr -> Types.tag
 
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_from_baseinfo:

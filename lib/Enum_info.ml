@@ -58,7 +58,7 @@ let get_storage_type info =
     foreign "g_enum_info_get_storage_type"
       (ptr enuminfo @-> returning int)
   in let value = get_storage_type_raw info in
-  GITypes.tag_of_int value
+  Types.tag_of_int value
 
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_from_baseinfo info =

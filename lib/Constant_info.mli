@@ -59,4 +59,4 @@ val to_baseinfo:
     size of the constant value stored in argument will be returned. Free the
     value with Constant_info.free_value. *)
 val get_value:
-  t structure ptr -> GITypes.argument_t union ptr
+  t structure ptr -> Types.argument_t union ptr

@@ -35,7 +35,7 @@ let get_tag info =
     foreign "g_type_info_get_tag"
       (ptr typeinfo @-> returning int) in
   let tag = get_tag_raw info in
-  GITypes.tag_of_int tag
+  Types.tag_of_int tag
 
 let get_array_length =
   foreign "g_type_info_get_array_length"
@@ -55,7 +55,7 @@ let get_array_type info =
       (ptr typeinfo @-> returning int) in
   match get_array_type_raw info with
   | -1 -> None
-  | array_type -> Some (GITypes.array_type_of_int array_type)
+  | array_type -> Some (Types.array_type_of_int array_type)
 
 let get_interface info =
   let get_interface_raw =

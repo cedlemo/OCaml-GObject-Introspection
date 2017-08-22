@@ -50,49 +50,49 @@ let append_constant_of_31_or_less_bits name info files field field_type type_mod
   Printf.fprintf ml "let %s = %s.of_int %s\n" modified_name type_module str_value
 
 let append_boolean_constant name info source_files =
-  let field = GITypes.v_boolean in
+  let field = Types.v_boolean in
   let field_type = "bool" in
   let printer = string_of_bool in
   append_constant name info source_files field field_type printer
 
 let append_int8_constant name info source_files =
-  let field = GITypes.v_int8 in
+  let field = Types.v_int8 in
   let field_type = "int" in
   let printer = string_of_int in
   append_constant name info source_files field field_type printer
 
 let append_uint8_constant name info source_files =
-  let field = GITypes.v_uint8 in
+  let field = Types.v_uint8 in
   let field_type = "Unsigned.uint8" in
   let printer = Unsigned.UInt8.to_string in
   append_constant_of_31_or_less_bits name info source_files field field_type "Unsigned.UInt8" printer
 
 let append_int16_constant name info source_files =
-  let field = GITypes.v_int16 in
+  let field = Types.v_int16 in
   let field_type = "int" in
   let printer = string_of_int in
   append_constant name info source_files field field_type printer
 
 let append_uint16_constant name info source_files =
-  let field = GITypes.v_uint16 in
+  let field = Types.v_uint16 in
   let field_type = "Unsigned.uint16" in
   let printer = Unsigned.UInt16.to_string in
   append_constant_of_31_or_less_bits name info source_files field field_type "Unsigned.UInt16" printer
 
 let append_int32_constant name info source_files =
-  let field = GITypes.v_int32 in
+  let field = Types.v_int32 in
   let field_type = "int32" in
   let printer = Int32.to_string in
   append_constant_of_32_or_more_bits name info source_files field field_type "Int32" printer
 
 let append_uint32_constant name info source_files =
-  let field = GITypes.v_uint32 in
+  let field = Types.v_uint32 in
   let field_type = "Unsigned.uint32" in
   let printer = Unsigned.UInt32.to_string in
   append_constant_of_32_or_more_bits name info source_files field field_type "Unsigned.UInt32" printer
 
 let append_int64_constant name info (mli, ml) =
-  let field = GITypes.v_int64 in
+  let field = Types.v_int64 in
   let field_type = "int64" in
   let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
@@ -102,25 +102,25 @@ let append_int64_constant name info (mli, ml) =
   Printf.fprintf ml "let %s = %sL\n" modified_name str_value
 
 let append_uint64_constant name info source_files =
-  let field = GITypes.v_uint64 in
+  let field = Types.v_uint64 in
   let field_type = "Unsigned.uint64" in
   let printer = Unsigned.UInt64.to_string in
   append_constant_of_32_or_more_bits name info source_files field field_type "Unsigned.UInt64" printer
 
 let append_float_constant name info source_files =
-  let field = GITypes.v_float in
+  let field = Types.v_float in
   let field_type = "float" in
   let printer = string_of_float in
   append_constant name info source_files field field_type printer
 
 let append_double_constant name info source_files =
-  let field = GITypes.v_double in
+  let field = Types.v_double in
   let field_type = "float" in
   let printer = string_of_float in
   append_constant name info source_files field field_type printer
 
 let append_string_constant name info source_files =
-  let field = GITypes.v_string in
+  let field = Types.v_string in
   let field_type = "string" in
   let printer = (fun str -> (("\"" ^ (String.escaped str)) ^ "\"")) in
   append_constant name info source_files field field_type printer

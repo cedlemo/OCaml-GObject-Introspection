@@ -65,7 +65,7 @@ let tag_of_int = function
   | 19 -> GHash
   | 20 -> Error
   | 21 -> Unichar
-  | value  -> let message = String.concat " " ["GITypes tag value";
+  | value  -> let message = String.concat " " ["Types tag value";
                                                string_of_int value;
                                                "should not have been reached"]
     in raise (Failure message)
@@ -105,7 +105,7 @@ let array_type_of_int = function
   | 1 -> Array
   | 2 -> Ptr_array
   | 3 -> Byte_array
-  | value  -> let message = String.concat " " ["GITypes array_type value";
+  | value  -> let message = String.concat " " ["Types array_type value";
                                                string_of_int value;
                                                "should not have been reached"]
     in raise (Failure message)

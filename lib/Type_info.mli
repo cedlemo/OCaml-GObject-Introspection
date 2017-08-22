@@ -45,7 +45,7 @@ val is_pointer:
 
 (** Obtain the type tag for the type. See GITypeTag for a list of type tags. *)
 val get_tag:
-  t structure ptr -> GITypes.tag
+  t structure ptr -> Types.tag
 
 (** Obtain the array length of the type. The type tag must be a GIType.array or
     -1 will returned. *)
@@ -65,13 +65,13 @@ val is_zero_terminated:
 (** Obtain the array type for this type. See GIArrayType for a list of possible
     values. If the type tag of this type is not array, None will be returned. *)
 val get_array_type:
-  t structure ptr -> GITypes.array_type option
+  t structure ptr -> Types.array_type option
 
 (** Obtain the parameter type n .*)
 val get_param_type:
   t structure ptr -> int -> t structure ptr
 
-(** For types which have GITypes.Interface such as GObjects and boxed
+(** For types which have Types.Interface such as GObjects and boxed
     values, this function returns full information about the referenced type.
     You can then inspect the type of the returned Base_info to further query
     whether it is a concrete GObject, a GInterface, a structure, etc. using
