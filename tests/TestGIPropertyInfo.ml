@@ -31,8 +31,8 @@ let test_get_property_from_repo test_ctxt =
   | Some (base_info) ->
     match Base_info.get_type base_info with
     | Base_info.Object -> (
-        let info = GIObjectInfo.from_baseinfo base_info in
-        let prop = GIObjectInfo.get_property info 0 in
+        let info = Object_info.from_baseinfo base_info in
+        let prop = Object_info.get_property info 0 in
         let base_prop = GIPropertyInfo.to_baseinfo prop in
         match  Base_info.get_type base_prop with
         | Base_info.Property -> assert_equal true true
@@ -45,8 +45,8 @@ let get_property_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let info = GIObjectInfo.from_baseinfo base_info in
-        let prop = GIObjectInfo.get_property info 0 in
+    | Base_info.Object -> let info = Object_info.from_baseinfo base_info in
+        let prop = Object_info.get_property info 0 in
         Some prop
     | _ -> None
 

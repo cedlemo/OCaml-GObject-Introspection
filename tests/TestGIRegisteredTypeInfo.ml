@@ -78,7 +78,7 @@ let get_object_info repo namespace object_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let info = GIObjectInfo.from_baseinfo base_info
+    | Base_info.Object -> let info = Object_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -92,7 +92,7 @@ let object_test fn =
 
 let test_get_type_name_from_object test_ctxt =
   object_test (fun info ->
-      let registered = GIObjectInfo.to_registeredtypeinfo info in
+      let registered = Object_info.to_registeredtypeinfo info in
       match  GIRegisteredTypeInfo.get_type_name registered with
       | None -> assert_equal_string "It should return " "a name"
       | Some name -> assert_equal_string "GdkDisplay" name

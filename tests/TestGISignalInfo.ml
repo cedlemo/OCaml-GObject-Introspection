@@ -32,8 +32,8 @@ let get_signal_info () =
   | Some (base_info) ->
     match Base_info.get_type base_info with
     | Base_info.Object -> (
-        let object_info = GIObjectInfo.from_baseinfo base_info in
-        match GIObjectInfo.find_signal object_info signal_name with
+        let object_info = Object_info.from_baseinfo base_info in
+        match Object_info.find_signal object_info signal_name with
         | None -> None
         | Some info' -> Some info'
       )

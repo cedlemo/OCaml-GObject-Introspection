@@ -21,11 +21,11 @@
 open Ctypes
 
 (** A Field_info struct represents a field of a struct (see GIStructInfo),
-    union (see GIUnionInfo) or an object (see GIObjectInfo).
+    union (see GIUnionInfo) or an object (see Object_info).
     The Field_info is fetched by calling
     GIStructInfo.get_field,
     GIUnionInfo.get_field
-    or GIObjectInfo.get_field. A field has a size, type and a struct offset
+    or Object_info.get_field. A field has a size, type and a struct offset
     asssociated and a set of flags, which is currently
     GI_FIELD_IS_READABLE or GI_FIELD_IS_WRITABLE.*)
 type t

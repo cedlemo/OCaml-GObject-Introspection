@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIObjectInfo — Struct representing a GObject *)
+(** Object_info — Struct representing a GObject *)
 
 open Ctypes
 
-(** GIObjectInfo represents a GObject. This doesn't represent a specific
+(** Object_info represents a GObject. This doesn't represent a specific
     instance of a GObject, instead this represent the object type (eg class).
     A GObject has methods, fields, properties, signals, interfaces, constants
     and virtual functions.*)
@@ -141,31 +141,31 @@ val find_method_using_interfaces:
 
 (** Obtain the symbol name of the function that should be called to ref this
     object type. It's mainly used fundamental types. The type signature for the
-    symbol is GIObjectInfoRefFunction, to fetch the function pointer
-    see GIObjectInfo.get_ref_function. *)
+    symbol is Object_infoRefFunction, to fetch the function pointer
+    see Object_info.get_ref_function. *)
 val get_ref_function:
   t structure ptr -> string option
 
 (** Obtain the symbol name of the function that should be called to unref this
     object type. It's mainly used fundamental types. The type signature for the
-    symbol is GIObjectInfoUnrefFunction, to fetch the function pointer see
-    GIObjectInfo.get_unref_function. *)
+    symbol is Object_infoUnrefFunction, to fetch the function pointer see
+    Object_info.get_unref_function. *)
 val get_unref_function:
   t structure ptr -> string option
 
 (** Obtain the symbol name of the function that should be called to convert set
     a GValue giving an object instance pointer of this object type. I's mainly
     used fundamental types. The type signature for the symbol is
-    GIObjectInfoSetValueFunction, to fetch the function pointer see
-    GIObjectInfo.get_set_value_function. *)
+    Object_infoSetValueFunction, to fetch the function pointer see
+    Object_info.get_set_value_function. *)
 val get_set_value_function:
   t structure ptr -> string option
 
 (** Obtain the symbol name of the function that should be called to convert an
     object instance pointer of this object type to a GValue. I's mainly used
     fundamental types. The type signature for the symbol is
-    GIObjectInfoGetValueFunction, to fetch the function pointer see
-    GIObjectInfo.get_get_value_function. *)
+    Object_infoGetValueFunction, to fetch the function pointer see
+    Object_info.get_get_value_function. *)
 val get_get_value_function:
   t structure ptr -> string option
 
@@ -181,10 +181,10 @@ val find_vfunc_using_interfaces:
                                 t structure ptr option)
 
 (*
-  TODO : GIObjectInfoRefFunction	g_object_info_get_ref_function_pointer ()
-  TODO : GIObjectInfoUnrefFunction	g_object_info_get_unref_function_pointer ()
-  TODO : GIObjectInfoSetValueFunction	g_object_info_get_set_value_function_pointer ()
-  TODO : GIObjectInfoGetValueFunction	g_object_info_get_get_value_function_pointer ()
+  TODO : Object_infoRefFunction	g_object_info_get_ref_function_pointer ()
+  TODO : Object_infoUnrefFunction	g_object_info_get_unref_function_pointer ()
+  TODO : Object_infoSetValueFunction	g_object_info_get_set_value_function_pointer ()
+  TODO : Object_infoGetValueFunction	g_object_info_get_get_value_function_pointer ()
 *)
 
 (** Just cast OCaml Ctypes base info to object info. *)
@@ -195,13 +195,13 @@ val cast_from_baseinfo:
 val cast_to_baseinfo:
   t structure ptr -> Base_info.t structure ptr
 
-(** Return a GIObjectInfo.t from a Base_info.t, the underlying C structure
+(** Return a Object_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t from a GIObjectInfo, the underlying C structure
+(** Return a Base_info.t from a Object_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
@@ -215,13 +215,13 @@ val cast_from_registeredtypeinfo:
 val cast_to_registeredtypeinfo:
   t structure ptr -> GIRegisteredTypeInfo.t structure ptr
 
-(** Return a GIObjectInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+(** Return a Object_info.t from a GIRegisteredTypeInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val from_registeredtypeinfo:
   GIRegisteredTypeInfo.t structure ptr -> t structure ptr
 
-(** Return a GIRegisteredTypeInfo.t form a GIObjectInfo, the underlying C structure
+(** Return a GIRegisteredTypeInfo.t form a Object_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val to_registeredtypeinfo:

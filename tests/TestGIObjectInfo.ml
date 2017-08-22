@@ -38,7 +38,7 @@ let get_object_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
+    | Base_info.Object -> let object_info = Object_info.from_baseinfo base_info in
       Some object_info
     | _ -> None
 
@@ -49,19 +49,19 @@ let object_test fn =
 
 let test_get_abstract test_ctxt =
   object_test (fun info ->
-      let is_abstract = GIObjectInfo.get_abstract info in
+      let is_abstract = Object_info.get_abstract info in
       assert_equal_boolean false is_abstract
     )
 
 let test_get_fundamental test_ctxt =
   object_test (fun info ->
-      let is_fundamental = GIObjectInfo.get_fundamental info in
+      let is_fundamental = Object_info.get_fundamental info in
       assert_equal_boolean false is_fundamental
     )
 
 let test_get_parent test_ctxt =
   object_test (fun info ->
-      let parent = GIObjectInfo.get_parent info in
+      let parent = Object_info.get_parent info in
       match Base_info.get_name parent with
       | None -> assert_equal_string "It should have " "a name"
       | Some parent_name -> assert_equal_string "Object" parent_name
@@ -69,44 +69,44 @@ let test_get_parent test_ctxt =
 
 let test_get_type_name test_ctxt =
   object_test (fun info ->
-      let type_name = GIObjectInfo.get_type_name info in
+      let type_name = Object_info.get_type_name info in
       assert_equal_string "GdkDisplay" type_name
     )
 
 let test_get_type_init test_ctxt =
   object_test (fun info ->
-      let type_init = GIObjectInfo.get_type_init info in
+      let type_init = Object_info.get_type_init info in
       assert_equal_string "gdk_display_get_type" type_init
     )
 
 let test_get_n_constants test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_constants info in
+      let n = Object_info.get_n_constants info in
       assert_equal_int 0 n
     )
 
 let test_get_n_fields test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_fields info in
+      let n = Object_info.get_n_fields info in
       assert_equal_int 0 n
     )
 
 let test_get_n_interfaces test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_interfaces info in
+      let n = Object_info.get_n_interfaces info in
       assert_equal_int 0 n
     )
 
 let test_get_n_methods test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_methods info in
+      let n = Object_info.get_n_methods info in
       if is_travis then assert_equal_int 41 n
       else assert_equal_int 48 n
     )
 
 let test_get_method test_ctxt =
   object_test (fun info ->
-      let m = GIObjectInfo.get_method info 0 in
+      let m = Object_info.get_method info 0 in
       let m_name = Function_info.get_symbol m in
       assert_equal_string "gdk_display_get_default" m_name
     )
@@ -114,7 +114,7 @@ let test_get_method test_ctxt =
 let test_find_method test_ctxt =
   object_test (fun info ->
       let m_name = "get_default" in
-      match GIObjectInfo.find_method info m_name with
+      match Object_info.find_method info m_name with
       | None -> assert_equal_string "It should find " "a method"
       | Some info' -> let symbol = Function_info.get_symbol info' in
         assert_equal_string ("gdk_display_" ^ m_name) symbol
@@ -122,26 +122,26 @@ let test_find_method test_ctxt =
 
 let test_get_n_properties test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_properties info in
+      let n = Object_info.get_n_properties info in
       assert_equal_int 0 n
     )
 
 let test_get_n_signals test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_signals info in
+      let n = Object_info.get_n_signals info in
       if is_travis then assert_equal_int 2 n
       else assert_equal_int 6 n
     )
 
 let test_get_n_vfuncs test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_vfuncs info in
+      let n = Object_info.get_n_vfuncs info in
       assert_equal_int 0 n
     )
 
 let test_get_class_struct test_ctxt =
   object_test (fun info ->
-      match GIObjectInfo.get_class_struct info with
+      match Object_info.get_class_struct info with
       | None -> assert_equal_boolean true true
       | Some info' -> let is_struct = GIStructInfo.is_gtype_struct info' in
         assert_equal_boolean true is_struct
@@ -165,7 +165,7 @@ let get_object_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let object_info = GIObjectInfo.from_baseinfo base_info in
+    | Base_info.Object -> let object_info = Object_info.from_baseinfo base_info in
       Some object_info
     | _ -> None
 
@@ -176,19 +176,19 @@ let object_test fn =
 
 let test_gtk_window_get_abstract test_ctxt =
   object_test (fun info ->
-      let is_abstract = GIObjectInfo.get_abstract info in
+      let is_abstract = Object_info.get_abstract info in
       assert_equal_boolean false is_abstract
     )
 
 let test_gtk_window_get_fundamental test_ctxt =
   object_test (fun info ->
-      let is_fundamental = GIObjectInfo.get_fundamental info in
+      let is_fundamental = Object_info.get_fundamental info in
       assert_equal_boolean false is_fundamental
     )
 
 let test_gtk_window_get_parent test_ctxt =
   object_test (fun info ->
-      let parent = GIObjectInfo.get_parent info in
+      let parent = Object_info.get_parent info in
       match Base_info.get_name parent with
       | None -> assert_equal_string "It should have " "a name"
       | Some parent_name -> assert_equal_string "Bin" parent_name
@@ -196,37 +196,37 @@ let test_gtk_window_get_parent test_ctxt =
 
 let test_gtk_window_get_type_name test_ctxt =
   object_test (fun info ->
-      let type_name = GIObjectInfo.get_type_name info in
+      let type_name = Object_info.get_type_name info in
       assert_equal_string "GtkWindow" type_name
     )
 
 let test_gtk_window_get_type_init test_ctxt =
   object_test (fun info ->
-      let type_init = GIObjectInfo.get_type_init info in
+      let type_init = Object_info.get_type_init info in
       assert_equal_string "gtk_window_get_type" type_init
     )
 
 let test_gtk_window_get_n_constants test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_constants info in
+      let n = Object_info.get_n_constants info in
       assert_equal_int 0 n
     )
 
 let test_gtk_window_get_n_fields test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_fields info in
+      let n = Object_info.get_n_fields info in
       assert_equal_int 2 n
     )
 
 let test_gtk_window_get_n_interfaces test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_interfaces info in
+      let n = Object_info.get_n_interfaces info in
       assert_equal_int 2 n
     )
 
 let test_gtk_window_get_interface test_ctxt =
    object_test (fun info ->
-      let info' = GIObjectInfo.get_interface info 0 in
+      let info' = Object_info.get_interface info 0 in
       let base_info' = Interface_info.to_baseinfo info' in
       match Base_info.get_name base_info' with
       | None -> assert_equal_string "It should have" " a name"
@@ -235,14 +235,14 @@ let test_gtk_window_get_interface test_ctxt =
 
 let test_gtk_window_get_n_methods test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_methods info in
+      let n = Object_info.get_n_methods info in
       if is_travis then assert_equal_int 115 n
       else assert_equal_int 119 n
     )
 
 let test_gtk_window_get_method test_ctxt =
   object_test (fun info ->
-      let m = GIObjectInfo.get_method info 0 in
+      let m = Object_info.get_method info 0 in
       let m_name = Function_info.get_symbol m in
       assert_equal_string "gtk_window_new" m_name
     )
@@ -250,7 +250,7 @@ let test_gtk_window_get_method test_ctxt =
 let test_gtk_window_find_method test_ctxt =
   object_test (fun info ->
       let m_name = "new" in
-      match GIObjectInfo.find_method info m_name with
+      match Object_info.find_method info m_name with
       | None -> assert_equal_string "It should find " "a method"
       | Some info' -> let symbol = Function_info.get_symbol info' in
         assert_equal_string ("gtk_window_" ^ m_name) symbol
@@ -258,14 +258,14 @@ let test_gtk_window_find_method test_ctxt =
 
 let test_gtk_window_get_n_properties test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_properties info in
+      let n = Object_info.get_n_properties info in
       if is_travis then assert_equal_int 32 n
       else assert_equal_int 33 n
     )
 
 let test_gtk_window_get_property test_ctxt =
   object_test (fun info ->
-      let prop = GIObjectInfo.get_property info 0 in
+      let prop = Object_info.get_property info 0 in
       let base_prop = GIPropertyInfo.to_baseinfo prop in
       match Base_info.get_name base_prop with
       | None -> assert_equal_string "It should have " "a name"
@@ -274,14 +274,14 @@ let test_gtk_window_get_property test_ctxt =
 
 let test_gtk_window_get_n_signals test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_signals info in
+      let n = Object_info.get_n_signals info in
       if is_travis then assert_equal_int 4 n
       else assert_equal_int 5 n
     )
 
 let test_gtk_window_get_signal test_ctxt =
   object_test (fun info ->
-      let info' = GIObjectInfo.get_signal info 0 in
+      let info' = Object_info.get_signal info 0 in
       let base_info = GISignalInfo.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
@@ -291,7 +291,7 @@ let test_gtk_window_get_signal test_ctxt =
 let test_gtk_window_find_signal test_ctxt =
   object_test (fun info ->
       let signal_name = "activate-default" in
-      match GIObjectInfo.find_signal info signal_name with
+      match Object_info.find_signal info signal_name with
       | None -> assert_equal_string "It should have" " a signal"
       | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
         match Base_info.get_name base_info with
@@ -301,14 +301,14 @@ let test_gtk_window_find_signal test_ctxt =
 
 let test_gtk_window_get_n_vfuncs test_ctxt =
   object_test (fun info ->
-      let n = GIObjectInfo.get_n_vfuncs info in
+      let n = Object_info.get_n_vfuncs info in
       if is_travis then assert_equal_int 4 n
       else assert_equal_int 5 n
     )
 
 let test_gtk_window_get_vfunc test_ctxt =
   object_test (fun info ->
-      let info' = GIObjectInfo.get_vfunc info 0 in
+      let info' = Object_info.get_vfunc info 0 in
       let base_info = GIVFuncInfo.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
@@ -318,7 +318,7 @@ let test_gtk_window_get_vfunc test_ctxt =
 let test_gtk_window_find_vfunc test_ctxt =
   object_test (fun info ->
       let vfunc_name = "activate_default" in
-      match GIObjectInfo.find_vfunc info vfunc_name with
+      match Object_info.find_vfunc info vfunc_name with
       | None -> assert_equal_string object_name "No base info found"
       | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
         match Base_info.get_name base_info with
@@ -330,11 +330,11 @@ let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
   object_test (fun info ->
       let vfunc_name = "activate_default" in
       let (vfunc, implementor) =
-        GIObjectInfo.find_vfunc_using_interfaces info vfunc_name in
+        Object_info.find_vfunc_using_interfaces info vfunc_name in
       let _ = ( match implementor with
           | None -> assert_equal true true
           | Some info_implementor ->
-            let base_info = GIObjectInfo.to_baseinfo info_implementor in
+            let base_info = Object_info.to_baseinfo info_implementor in
             match Base_info.get_name base_info with
             | None -> assert_equal_string "It should " "have a name"
             | Some name -> assert_equal_string "Window" name
@@ -350,7 +350,7 @@ let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
 
 let test_gtk_window_get_class_struct test_ctxt =
   object_test (fun info ->
-      match GIObjectInfo.get_class_struct info with
+      match Object_info.get_class_struct info with
       | None -> assert_equal_boolean false true
       | Some info' -> let is_struct = GIStructInfo.is_gtype_struct info' in
         assert_equal_boolean true is_struct
@@ -360,11 +360,11 @@ let test_gtk_window_find_method_using_interfaces test_ctxt =
   object_test (fun info ->
       let method_name = "set_title" in
       let (meth, implementor) =
-        GIObjectInfo.find_method_using_interfaces info method_name in
+        Object_info.find_method_using_interfaces info method_name in
       let _ = ( match implementor with
           | None -> assert_equal true true
           | Some info_implementor ->
-            let base_info = GIObjectInfo.to_baseinfo info_implementor in
+            let base_info = Object_info.to_baseinfo info_implementor in
             match Base_info.get_name base_info with
             | None -> assert_equal_string "It should " "have a name"
             | Some name -> assert_equal_string "Window" name
@@ -377,28 +377,28 @@ let test_gtk_window_find_method_using_interfaces test_ctxt =
 
 let test_gtk_window_get_ref_function test_ctxt =
   object_test (fun info ->
-      match GIObjectInfo.get_ref_function info with
+      match Object_info.get_ref_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any ref function"
     )
 
 let test_gtk_window_get_unref_function test_ctxt =
   object_test (fun info ->
-      match GIObjectInfo.get_unref_function info with
+      match Object_info.get_unref_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any ref function"
     )
 
 let test_gtk_window_get_set_value_function test_ctxt =
   object_test (fun info ->
-      match GIObjectInfo.get_set_value_function info with
+      match Object_info.get_set_value_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any set value function"
     )
 
 let test_gtk_window_get_get_value_function test_ctxt =
   object_test (fun info ->
-      match GIObjectInfo.get_get_value_function info with
+      match Object_info.get_get_value_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any set value function"
     )
@@ -406,48 +406,48 @@ let test_gtk_window_get_get_value_function test_ctxt =
 let tests =
   "GObject Introspection ObjectInfo tests" >:::
   [
-    "GIObjectInfo from baseinfo" >:: test_from_baseinfo;
-    "GIObjectInfo get abstract" >:: test_get_abstract;
-    "GIObjectInfo get fundamental" >:: test_get_fundamental;
-    "GIObjectInfo get parent" >:: test_get_parent;
-    "GIObjectInfo get type name" >:: test_get_type_name;
-    "GIObjectInfo get type init" >:: test_get_type_init;
-    "GIObjectInfo get n constants" >:: test_get_n_constants;
-    "GIObjectInfo get n fields" >:: test_get_n_fields;
-    "GIObjectInfo get n interfaces" >:: test_get_n_interfaces;
-    "GIObjectInfo get n methods" >:: test_get_n_methods;
-    "GIObjectInfo get method" >:: test_get_method;
-    "GIObjectInfo find method" >:: test_find_method;
-    "GIObjectInfo get n properties" >:: test_get_n_properties;
-    "GIObjectInfo get n signals" >:: test_get_n_signals;
-    "GIObjectInfo GtkWindow get n vfuncs" >:: test_get_n_vfuncs;
-    "GIObjectInfo GtkWindow get class struct" >:: test_get_class_struct;
-    "GIObjectInfo GtkWindow from baseinfo" >:: test_gtk_window_from_baseinfo;
-    "GIObjectInfo GtkWindow get abstract" >:: test_gtk_window_get_abstract;
-    "GIObjectInfo GtkWindow get fundamental" >:: test_gtk_window_get_fundamental;
-    "GIObjectInfo GtkWindow get parent" >:: test_gtk_window_get_parent;
-    "GIObjectInfo GtkWindow get type name" >:: test_gtk_window_get_type_name;
-    "GIObjectInfo GtkWindow get type init" >:: test_gtk_window_get_type_init;
-    "GIObjectInfo GtkWindow get n constants" >:: test_gtk_window_get_n_constants;
-    "GIObjectInfo GtkWindow get n fields" >:: test_gtk_window_get_n_fields;
-    "GIObjectInfo GtkWindow get n interfaces" >:: test_gtk_window_get_n_interfaces;
-    "GIObjectInfo GtkWindow get interface" >:: test_gtk_window_get_interface;
-    "GIObjectInfo GtkWindow get n methods" >:: test_gtk_window_get_n_methods;
-    "GIObjectInfo GtkWindow get method" >:: test_gtk_window_get_method;
-    "GIObjectInfo GtkWindow find method" >:: test_gtk_window_find_method;
-    "GIObjectInfo GtkWindow get n properties" >:: test_gtk_window_get_n_properties;
-    "GIObjectInfo GtkWindow get n signals" >:: test_gtk_window_get_n_signals;
-    "GIObjectInfo GtkWindow get signal" >:: test_gtk_window_get_signal;
-    "GIObjectInfo GtkWindow find signal" >:: test_gtk_window_find_signal;
-    "GIObjectInfo GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
-    "GIObjectInfo GtkWindow get vfunc" >:: test_gtk_window_get_vfunc;
-    "GIObjectInfo GtkWindow find vfunc" >:: test_gtk_window_find_vfunc;
-    "GIObjectInfo GtkWindow find vfunc using interfaces" >:: test_gtk_window_find_vfunc_using_interfaces;
-    "GIObjectInfo GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
-    "GIObjectInfo GtkWindow get property" >:: test_gtk_window_get_property;
-    "GIObjectInfo GtkWindow find method using interfaces" >:: test_gtk_window_find_method_using_interfaces;
-    "GIObjectInfo GtkWindow get ref function" >:: test_gtk_window_get_ref_function;
-    "GIObjectInfo GtkWindow get unref function" >:: test_gtk_window_get_unref_function;
-    "GIObjectInfo GtkWindow get set value function" >:: test_gtk_window_get_set_value_function;
-    "GIObjectInfo GtkWindow get get value function" >:: test_gtk_window_get_get_value_function
+    "Object_info from baseinfo" >:: test_from_baseinfo;
+    "Object_info get abstract" >:: test_get_abstract;
+    "Object_info get fundamental" >:: test_get_fundamental;
+    "Object_info get parent" >:: test_get_parent;
+    "Object_info get type name" >:: test_get_type_name;
+    "Object_info get type init" >:: test_get_type_init;
+    "Object_info get n constants" >:: test_get_n_constants;
+    "Object_info get n fields" >:: test_get_n_fields;
+    "Object_info get n interfaces" >:: test_get_n_interfaces;
+    "Object_info get n methods" >:: test_get_n_methods;
+    "Object_info get method" >:: test_get_method;
+    "Object_info find method" >:: test_find_method;
+    "Object_info get n properties" >:: test_get_n_properties;
+    "Object_info get n signals" >:: test_get_n_signals;
+    "Object_info GtkWindow get n vfuncs" >:: test_get_n_vfuncs;
+    "Object_info GtkWindow get class struct" >:: test_get_class_struct;
+    "Object_info GtkWindow from baseinfo" >:: test_gtk_window_from_baseinfo;
+    "Object_info GtkWindow get abstract" >:: test_gtk_window_get_abstract;
+    "Object_info GtkWindow get fundamental" >:: test_gtk_window_get_fundamental;
+    "Object_info GtkWindow get parent" >:: test_gtk_window_get_parent;
+    "Object_info GtkWindow get type name" >:: test_gtk_window_get_type_name;
+    "Object_info GtkWindow get type init" >:: test_gtk_window_get_type_init;
+    "Object_info GtkWindow get n constants" >:: test_gtk_window_get_n_constants;
+    "Object_info GtkWindow get n fields" >:: test_gtk_window_get_n_fields;
+    "Object_info GtkWindow get n interfaces" >:: test_gtk_window_get_n_interfaces;
+    "Object_info GtkWindow get interface" >:: test_gtk_window_get_interface;
+    "Object_info GtkWindow get n methods" >:: test_gtk_window_get_n_methods;
+    "Object_info GtkWindow get method" >:: test_gtk_window_get_method;
+    "Object_info GtkWindow find method" >:: test_gtk_window_find_method;
+    "Object_info GtkWindow get n properties" >:: test_gtk_window_get_n_properties;
+    "Object_info GtkWindow get n signals" >:: test_gtk_window_get_n_signals;
+    "Object_info GtkWindow get signal" >:: test_gtk_window_get_signal;
+    "Object_info GtkWindow find signal" >:: test_gtk_window_find_signal;
+    "Object_info GtkWindow get n vfuncs" >:: test_gtk_window_get_n_vfuncs;
+    "Object_info GtkWindow get vfunc" >:: test_gtk_window_get_vfunc;
+    "Object_info GtkWindow find vfunc" >:: test_gtk_window_find_vfunc;
+    "Object_info GtkWindow find vfunc using interfaces" >:: test_gtk_window_find_vfunc_using_interfaces;
+    "Object_info GtkWindow get class struct" >:: test_gtk_window_get_class_struct;
+    "Object_info GtkWindow get property" >:: test_gtk_window_get_property;
+    "Object_info GtkWindow find method using interfaces" >:: test_gtk_window_find_method_using_interfaces;
+    "Object_info GtkWindow get ref function" >:: test_gtk_window_get_ref_function;
+    "Object_info GtkWindow get unref function" >:: test_gtk_window_get_unref_function;
+    "Object_info GtkWindow get set value function" >:: test_gtk_window_get_set_value_function;
+    "Object_info GtkWindow get get value function" >:: test_gtk_window_get_get_value_function
   ]
