@@ -77,7 +77,7 @@ type baseinfo_type =
   | Value (** enum value, see GIValueInfo *)
   | Signal (** signal, see GISignalInfo *)
   | Vfunc (** virtual function, see GIVFuncInfo *)
-  | Property (** GObject property, see GIPropertyInfo *)
+  | Property (** GObject property, see Property_info *)
   | Field (** struct or union field, see Field_info *)
   | Arg (** argument of a function or callback, see Arg_info *)
   | Type (** type information, see GITypeInfo *)

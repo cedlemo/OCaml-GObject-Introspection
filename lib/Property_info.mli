@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIPropertyInfo — Struct representing a property *)
+(** Property_info — Struct representing a property *)
 
 open Ctypes
 
-(** GIPropertyInfo represents a property. A property belongs to either a
+(** Property_info represents a property. A property belongs to either a
     Object_info or a Interface_info.*)
 type t
 val propertyinfo : t structure typ
@@ -51,13 +51,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIPropertyInfo.t from a Base_info.t, the underlying C structure
+(** Return a Property_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t from a GIPropertyInfo, the underlying C structure
+(** Return a Base_info.t from a Property_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:

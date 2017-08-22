@@ -93,7 +93,7 @@ val get_n_properties:
 
 (** Obtain an object type property at index n .*)
 val get_property:
-  t structure ptr -> int -> GIPropertyInfo.t structure ptr
+  t structure ptr -> int -> Property_info.t structure ptr
 
 (** Obtain the number of signals that this object type has. *)
 val get_n_signals:

@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let propertyinfo : t structure typ = structure "GIPropertyInfo"
+let propertyinfo : t structure typ = structure "Property_info"
 
 let get_ownership_transfer info =
   let get_ownership_transfer_raw =

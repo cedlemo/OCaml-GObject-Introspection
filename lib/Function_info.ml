@@ -60,10 +60,10 @@ let get_property info =
   in if (find_set_get flags) then (
     let get_property_raw =
       foreign "g_function_info_get_property"
-        (ptr functioninfo @-> returning (ptr_opt GIPropertyInfo.propertyinfo)) in
+        (ptr functioninfo @-> returning (ptr_opt Property_info.propertyinfo)) in
     match get_property_raw info with
     | None -> None
-    | Some info' -> let info'' = GIPropertyInfo.add_unref_finaliser info' in
+    | Some info' -> let info'' = Property_info.add_unref_finaliser info' in
       Some info''
   )
   else None

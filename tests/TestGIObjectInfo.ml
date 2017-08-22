@@ -266,7 +266,7 @@ let test_gtk_window_get_n_properties test_ctxt =
 let test_gtk_window_get_property test_ctxt =
   object_test (fun info ->
       let prop = Object_info.get_property info 0 in
-      let base_prop = GIPropertyInfo.to_baseinfo prop in
+      let base_prop = Property_info.to_baseinfo prop in
       match Base_info.get_name base_prop with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "accept-focus" name

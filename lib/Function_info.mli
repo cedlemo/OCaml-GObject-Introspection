@@ -37,8 +37,8 @@ val get_symbol:
 type flags =
   | Is_method      (** is a method. *)
   | Is_constructor (** is a constructor. *)
-  | Is_getter      (** is a getter of a GIPropertyInfo. *)
-  | Is_setter      (** is a setter of a GIPropertyInfo. *)
+  | Is_getter      (** is a getter of a Property_info. *)
+  | Is_setter      (** is a setter of a Property_info. *)
   | Wraps_vfunc    (** represents a virtual function. *)
   | Throws         (** the function may throw an error. *)
 
@@ -50,7 +50,7 @@ val get_flags:
     Function_info with the flag GIFunction.Is_getter or GIFunction.Is_setter
     have a property set. For other cases, NULL will be returned. *)
 val get_property:
-  t structure ptr -> GIPropertyInfo.t structure ptr option
+  t structure ptr -> Property_info.t structure ptr option
 
 (** Obtain the virtual function associated with this Function_info. Only
     Function_info with the flag Wraps_vfunc has a virtual function set. For

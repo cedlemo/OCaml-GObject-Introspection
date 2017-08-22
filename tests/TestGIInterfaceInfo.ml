@@ -63,7 +63,7 @@ let test_get_n_properties test_ctxt =
 let test_get_property test_ctxt =
 interface_test (fun info ->
       let info' = Interface_info.get_property info 0 in
-      let base_info = GIPropertyInfo.to_baseinfo info' in
+      let base_info = Property_info.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " " a name"
       | Some name -> assert_equal_string "authentication-mode" name

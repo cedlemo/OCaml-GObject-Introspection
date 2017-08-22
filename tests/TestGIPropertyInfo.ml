@@ -33,7 +33,7 @@ let test_get_property_from_repo test_ctxt =
     | Base_info.Object -> (
         let info = Object_info.from_baseinfo base_info in
         let prop = Object_info.get_property info 0 in
-        let base_prop = GIPropertyInfo.to_baseinfo prop in
+        let base_prop = Property_info.to_baseinfo prop in
         match  Base_info.get_type base_prop with
         | Base_info.Property -> assert_equal true true
         | _ -> assert_equal_string "It should be a" "Property info"
@@ -57,7 +57,7 @@ let property_test fn =
 
 let test_get_ownership_transfer test_ctxt =
   property_test (fun info ->
-      let transfer = GIPropertyInfo.get_ownership_transfer info in
+      let transfer = Property_info.get_ownership_transfer info in
       assert_equal ~printer:(fun t ->
           match t with
           | Arg_info.Nothing -> "nothing"
@@ -68,14 +68,14 @@ let test_get_ownership_transfer test_ctxt =
 
 let test_get_type test_ctxt =
   property_test (fun info ->
-      let info = GIPropertyInfo.get_type info in
+      let info = Property_info.get_type info in
       let type_name = GITypeInfo.to_string info in
       assert_equal_string "unknown" type_name
     )
 
 let test_get_flags test_ctxt =
   property_test (fun info ->
-      let flags = GIPropertyInfo.get_flags info in
+      let flags = Property_info.get_flags info in
       assert_equal ~printer:(fun f ->
           Arg_info.param_flags_to_string f
         ) Arg_info.Readwrite flags
@@ -84,8 +84,8 @@ let test_get_flags test_ctxt =
 let tests =
   "GObject Introspection InterfaceInfo tests" >:::
   [
-    "GIPropertyInfo find from repo" >:: test_get_property_from_repo;
-    "GIPropertyInfo get ownership transfer" >:: test_get_ownership_transfer;
-    "GIPropertyInfo get type" >:: test_get_type;
-    "GIPropertyInfo get flags" >:: test_get_flags
+    "Property_info find from repo" >:: test_get_property_from_repo;
+    "Property_info get ownership transfer" >:: test_get_ownership_transfer;
+    "Property_info get type" >:: test_get_type;
+    "Property_info get flags" >:: test_get_flags
   ]

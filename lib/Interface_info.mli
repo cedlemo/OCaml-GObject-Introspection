@@ -42,7 +42,7 @@ val get_n_properties:
 
 (** Obtain an interface type property at index n . *)
 val get_property:
-  t structure ptr -> int -> GIPropertyInfo.t structure ptr
+  t structure ptr -> int -> Property_info.t structure ptr
 
 (** Obtain the number of methods that this interface type has. *)
 val get_n_methods:
