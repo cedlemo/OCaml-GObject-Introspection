@@ -72,9 +72,9 @@ val get_flags:
 (** Obtain the class closure for this signal if one is set. The class closure
     is a virtual function on the type that the signal belongs to. If the signal
     lacks a closure None will be returned.
-    In order to avoid circular call graph between Signal_info and GIVFuncInfo,
+    In order to avoid circular call graph between Signal_info and VFunc_info,
     this function will return a Callable_info. It is upto the user to use
-    GIVSignalInfo.from_callableinfo in order to have the GIVFuncInfo.*)
+    GIVSignalInfo.from_callableinfo in order to have the VFunc_info.*)
 val get_class_closure:
   t structure ptr -> Callable_info.t structure ptr option
 

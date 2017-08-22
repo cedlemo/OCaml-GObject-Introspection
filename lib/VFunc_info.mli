@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIVFuncInfo — Struct representing a virtual function. *)
+(** VFunc_info — Struct representing a virtual function. *)
 
 open Ctypes
 
@@ -32,7 +32,7 @@ val get_offset:
 
 (** Obtain the signal for the virtual function if one is set. The signal comes
     from the object or interface to which this virtual function belongs.
-    In order to avoid circular call graph between GIVFuncInfo and Signal_info,
+    In order to avoid circular call graph between VFunc_info and Signal_info,
     this function will return a Callable_info. It is upto the user to use
     Signal_info.from_callableinfo in order to have the Signal_info.*)
 val get_signal:
@@ -47,7 +47,7 @@ type flags =
 val string_of_flags:
   flags -> string
 
-(** Obtain the flags for this virtual function info. See GIVFuncInfoFlags for
+(** Obtain the flags for this virtual function info. See VFunc_infoFlags for
     more information about possible flag values. *)
 val get_flags:
   t structure ptr -> flags list
@@ -70,13 +70,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIVFuncInfo.t from a Base_info.t, the underlying C structure
+(** Return a VFunc_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t from a GIVFuncInfo, the underlying C structure
+(** Return a Base_info.t from a VFunc_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
@@ -90,13 +90,13 @@ val cast_from_callableinfo:
 val cast_to_callableinfo:
   t structure ptr -> Callable_info.t structure ptr
 
-(** Return a GIVFuncInfo.t from a Callable_info.t, the underlying C structure
+(** Return a VFunc_info.t from a Callable_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_callableinfo:
   Callable_info.t structure ptr -> t structure ptr
 
-(** Return a Callable_info.t from a GIVFuncInfo, the underlying C structure
+(** Return a Callable_info.t from a VFunc_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_callableinfo:

@@ -87,12 +87,12 @@ val get_n_vfuncs:
 
 (** Obtain an interface type virtual function at index n . *)
 val get_vfunc:
-  t structure ptr -> int -> GIVFuncInfo.t structure ptr
+  t structure ptr -> int -> VFunc_info.t structure ptr
 
 (** Locate a virtual function slot with name name . See the documentation for
     g_object_info_find_vfunc() for more information on virtuals. *)
 val find_vfunc:
-  t structure ptr -> string -> GIVFuncInfo.t structure ptr option
+  t structure ptr -> string -> VFunc_info.t structure ptr option
 
 (** Just cast OCaml Ctypes base info to interface info. *)
 val cast_from_baseinfo:

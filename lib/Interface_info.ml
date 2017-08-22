@@ -122,19 +122,19 @@ let get_n_vfuncs =
 let get_vfunc info n =
   let get_vfunc_raw =
     foreign "g_interface_info_get_vfunc"
-      (ptr interfaceinfo @-> int @-> returning (ptr GIVFuncInfo.vfuncinfo)) in
+      (ptr interfaceinfo @-> int @-> returning (ptr VFunc_info.vfuncinfo)) in
   let max = get_n_vfuncs info in
   if (n < 0 || n >= max)  then raise (Failure "Array Index out of bounds")
   else let info' = get_vfunc_raw info n in
-    GIVFuncInfo.add_unref_finaliser info'
+    VFunc_info.add_unref_finaliser info'
 
 let find_vfunc info name =
   let find_vfunc_raw =
     foreign "g_interface_info_find_vfunc"
-      (ptr interfaceinfo @-> string @-> returning (ptr_opt GIVFuncInfo.vfuncinfo)) in
+      (ptr interfaceinfo @-> string @-> returning (ptr_opt VFunc_info.vfuncinfo)) in
   match find_vfunc_raw info name with
   | None -> None
-  | Some info' -> let info'' = GIVFuncInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = VFunc_info.add_unref_finaliser info' in
     Some info''
 
 (* TODO : check that the info can be casted to interface info ? *)

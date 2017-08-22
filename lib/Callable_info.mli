@@ -21,7 +21,7 @@
 open Ctypes
 
 (** Callable_info represents an entity which is callable. Currently a function
-    (Function_info), virtual function, (GIVFuncInfo) or callback
+    (Function_info), virtual function, (VFunc_info) or callback
     (GICallbackInfo).
     A callable has a list of arguments (Arg_info), a return type, direction
     and a flag which decides if it returns null*)
@@ -40,7 +40,7 @@ val get_n_args:
 val get_return_attribute:
   t structure ptr -> string option
 
-(** Determines if the callable info is a method. For GIVFuncInfos,
+(** Determines if the callable info is a method. For VFunc_infos,
     GICallbackInfos, and Signal_infos, this is always true. Otherwise, this
     looks at the Function_info.Is_method flag on the Function_info.
     Concretely, this function returns whether Callable_info.get_n_args matches

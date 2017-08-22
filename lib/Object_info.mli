@@ -113,16 +113,16 @@ val get_n_vfuncs:
 
 (** Obtain an object type virtual function at index n . *)
 val get_vfunc:
-  t structure ptr -> int -> GIVFuncInfo.t structure ptr
+  t structure ptr -> int -> VFunc_info.t structure ptr
 
 (** Locate a virtual function slot with name name . Note that the namespace for
     virtuals is distinct from that of methods; there may or may not be a
     concrete method associated for a virtual. If there is one, it may be
-    retrieved using GIVFuncInfo.get_invoker, otherwise None will be returned.
-    See the documentation for GIVFuncInfo.get_invoker for more information on
+    retrieved using VFunc_info.get_invoker, otherwise None will be returned.
+    See the documentation for VFunc_info.get_invoker for more information on
     invoking virtuals. *)
 val find_vfunc:
-  t structure ptr -> string -> GIVFuncInfo.t structure ptr option
+  t structure ptr -> string -> VFunc_info.t structure ptr option
 
 (** Every GObject has two structures; an instance structure and a class
     structure. This function returns the metadata for the class structure.
@@ -177,7 +177,7 @@ val get_get_value_function:
     Note that this function does *not* search parent classes; you will have to
     chain up if that's desired. *)
 val find_vfunc_using_interfaces:
-  t structure ptr -> string -> (GIVFuncInfo.t structure ptr option *
+  t structure ptr -> string -> (VFunc_info.t structure ptr option *
                                 t structure ptr option)
 
 (*

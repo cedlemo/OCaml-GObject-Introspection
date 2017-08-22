@@ -309,7 +309,7 @@ let test_gtk_window_get_n_vfuncs test_ctxt =
 let test_gtk_window_get_vfunc test_ctxt =
   object_test (fun info ->
       let info' = Object_info.get_vfunc info 0 in
-      let base_info = GIVFuncInfo.to_baseinfo info' in
+      let base_info = VFunc_info.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "activate_default" name
@@ -320,7 +320,7 @@ let test_gtk_window_find_vfunc test_ctxt =
       let vfunc_name = "activate_default" in
       match Object_info.find_vfunc info vfunc_name with
       | None -> assert_equal_string object_name "No base info found"
-      | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
+      | Some info' -> let base_info = VFunc_info.to_baseinfo info' in
         match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string name vfunc_name
@@ -341,7 +341,7 @@ let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
         )
       in match vfunc with
       | None -> assert_equal_string "It should return " " a function info"
-      | Some info' -> let base_info = GIVFuncInfo.to_baseinfo info' in
+      | Some info' -> let base_info = VFunc_info.to_baseinfo info' in
         match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string name vfunc_name

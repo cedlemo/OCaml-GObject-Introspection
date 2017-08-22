@@ -42,25 +42,25 @@ let vfunc_test fn =
 
 let test_get_offset test_ctxt =
   vfunc_test (fun info ->
-      let offset = GIVFuncInfo.get_offset info in
+      let offset = VFunc_info.get_offset info in
       assert_equal_int 0xFFFF offset
     )
 
 let test_get_signal test_ctxt =
   vfunc_test (fun info ->
-      match GIVFuncInfo.get_signal info with
+      match VFunc_info.get_signal info with
       | None -> assert_equal_boolean true true
       | Some info' -> assert_equal_string "It should no return " "a callable info"
     )
 
 let test_get_flags test_ctxt =
   vfunc_test (fun info ->
-      let flags = GIVFuncInfo.get_flags info in
+      let flags = VFunc_info.get_flags info in
       let rec check_flag = function
         | [] -> ()
         | flag :: remain ->let _ = assert_equal ~printer:(fun f ->
-            GIVFuncInfo.string_of_flags f
-          ) GIVFuncInfo.Must_override flag in
+            VFunc_info.string_of_flags f
+          ) VFunc_info.Must_override flag in
           check_flag remain
       in check_flag flags;
       assert_equal [] flags
@@ -69,9 +69,9 @@ let test_get_flags test_ctxt =
 let tests =
   "GObject Introspection VFuncInfo tests" >:::
   [
-    "GIVFuncInfo get offset" >:: test_get_offset;
-    "GIVFuncInfo get signal" >:: test_get_signal;
-    "GIVFuncInfo get flags" >:: test_get_flags
+    "VFunc_info get offset" >:: test_get_offset;
+    "VFunc_info get signal" >:: test_get_signal;
+    "VFunc_info get flags" >:: test_get_flags
   ]
 
 

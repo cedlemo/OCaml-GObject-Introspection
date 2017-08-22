@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let vfuncinfo : t structure typ = structure "GIVFuncInfo"
+let vfuncinfo : t structure typ = structure "VFunc_info"
 
 let get_offset =
   foreign "g_vfunc_info_get_offset"

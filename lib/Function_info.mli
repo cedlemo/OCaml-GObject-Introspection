@@ -55,9 +55,9 @@ val get_property:
 (** Obtain the virtual function associated with this Function_info. Only
     Function_info with the flag Wraps_vfunc has a virtual function set. For
     other cases, None will be returned.
-    In order to avoid circular call graph between Function_info and GIVFuncInfo,
+    In order to avoid circular call graph between Function_info and VFunc_info,
     this function will return a Callable_info. It is upto the user to use
-    GIVFuncInfo.from_callableinfo in order to have the GIVFuncInfo.*)
+    VFunc_info.from_callableinfo in order to have the VFunc_info.*)
 val get_vfunc:
   t structure ptr -> Callable_info.t structure ptr option
 

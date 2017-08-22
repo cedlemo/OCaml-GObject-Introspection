@@ -76,7 +76,7 @@ type baseinfo_type =
   | Union (** union, see Union_info *)
   | Value (** enum value, see Value_info *)
   | Signal (** signal, see Signal_info *)
-  | Vfunc (** virtual function, see GIVFuncInfo *)
+  | Vfunc (** virtual function, see VFunc_info *)
   | Property (** GObject property, see Property_info *)
   | Field (** struct or union field, see Field_info *)
   | Arg (** argument of a function or callback, see Arg_info *)
