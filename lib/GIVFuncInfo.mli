@@ -21,7 +21,7 @@
 open Ctypes
 
 (** GIVfuncInfo represents a virtual function. A property belongs to either a
-    GIObjectInfo or a GIInterfaceInfo. *)
+    GIObjectInfo or a Interface_info. *)
 type t
 val vfuncinfo : t structure typ
 

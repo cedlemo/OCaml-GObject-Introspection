@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let interfaceinfo : t structure typ = structure "GIInterfaceInfo"
+let interfaceinfo : t structure typ = structure "Interface_info"
 
 let get_n_prerequisites =
   foreign "g_interface_info_get_n_prerequisites"

@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIInterfaceInfo — Struct representing a GInterface *)
+(** Interface_info — Struct representing a GInterface *)
 
 open Ctypes
 
-(** GIInterfaceInfo represents a GInterface type.
+(** Interface_info represents a GInterface type.
     A GInterface has methods, fields, properties, signals, interfaces,
     constants, virtual functions and prerequisites.*)
 type t
@@ -106,13 +106,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIInterfaceInfo.t from a Base_info.t, the underlying C structure
+(** Return a Interface_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t from a GIInterfaceInfo, the underlying C structure
+(** Return a Base_info.t from a Interface_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
@@ -126,13 +126,13 @@ val cast_from_registeredtypeinfo:
 val cast_to_registeredtypeinfo:
   t structure ptr -> GIRegisteredTypeInfo.t structure ptr
 
-(** Return a GIInterfaceInfo.t from a GIRegisteredTypeInfo.t, the underlying C structure
+(** Return a Interface_info.t from a GIRegisteredTypeInfo.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val from_registeredtypeinfo:
   GIRegisteredTypeInfo.t structure ptr -> t structure ptr
 
-(** Return a GIRegisteredTypeInfo.t form a GIInterfaceInfo, the underlying C structure
+(** Return a GIRegisteredTypeInfo.t form a Interface_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     GIRegisteredTypeInfo.registeredtypeinfo_unref. *)
 val to_registeredtypeinfo:

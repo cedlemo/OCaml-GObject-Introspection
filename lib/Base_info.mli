@@ -57,7 +57,7 @@ val is_deprecated:
 
 (** Obtain the container of the info . The container is the parent Base_info.
     For instance, the parent of a Function_info is an GIObjectInfo or
-    GIInterfaceInfo. *)
+    Interface_info. *)
 val get_container:
   t structure ptr -> t structure ptr option
 
@@ -70,7 +70,7 @@ type baseinfo_type =
   | Enum (** enum, see Enum_info *)
   | Flags (** flags, see Enum_info *)
   | Object (** object, see GIObjectInfo *)
-  | Interface (** interface, see GIInterfaceInfo *)
+  | Interface (** interface, see Interface_info *)
   | Constant (** contant, see Constant_info *)
   | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
   | Union (** union, see GIUnionInfo *)

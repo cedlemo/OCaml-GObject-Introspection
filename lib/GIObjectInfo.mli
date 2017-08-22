@@ -72,7 +72,7 @@ val get_n_interfaces:
 
 (** Obtain an object type interface at index n . *)
 val get_interface:
-  t structure ptr -> int -> GIInterfaceInfo.t structure ptr
+  t structure ptr -> int -> Interface_info.t structure ptr
 
 (** Obtain the number of methods that this object type has. *)
 val get_n_methods:

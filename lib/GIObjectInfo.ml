@@ -78,11 +78,11 @@ let get_n_interfaces =
 let get_interface info n =
   let get_interface_raw =
     foreign "g_object_info_get_interface"
-      (ptr objectinfo @-> int @-> returning (ptr GIInterfaceInfo.interfaceinfo)) in
+      (ptr objectinfo @-> int @-> returning (ptr Interface_info.interfaceinfo)) in
   let max = get_n_interfaces info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_interface_raw info n in
-    GIInterfaceInfo.add_unref_finaliser info'
+    Interface_info.add_unref_finaliser info'
 
 let get_n_methods =
   foreign "g_object_info_get_n_methods"

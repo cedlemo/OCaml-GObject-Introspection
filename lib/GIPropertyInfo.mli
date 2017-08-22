@@ -21,7 +21,7 @@
 open Ctypes
 
 (** GIPropertyInfo represents a property. A property belongs to either a
-    GIObjectInfo or a GIInterfaceInfo.*)
+    GIObjectInfo or a Interface_info.*)
 type t
 val propertyinfo : t structure typ
 
