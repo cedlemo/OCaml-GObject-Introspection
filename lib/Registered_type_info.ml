@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let registeredtypeinfo : t structure typ = structure "GIRegisteredTypeInfo"
+let registeredtypeinfo : t structure typ = structure "Registered_type_info"
 
 let get_type_name =
   foreign "g_registered_type_info_get_type_name"

@@ -16,17 +16,17 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(**  GIRegisteredTypeInfo — Struct representing a struct with a GType. *)
+(**  Registered_type_info — Struct representing a struct with a GType. *)
 
 open Ctypes
 open Foreign
 
-(** GIRegisteredTypeInfo represents an entity with a GType associated. Could be
+(** Registered_type_info represents an entity with a GType associated. Could be
     either a Enum_info, Interface_info, Object_info, GIStructInfo or a
     GIUnionInfo.
     A registered type info struct has a name and a type function. To get the
-    name call GIRegisteredTypeInfo.get_type_name. Most users want to call
-    GIRegisteredTypeInfo.get_g_type and don't worry about the rest of the
+    name call Registered_type_info.get_type_name. Most users want to call
+    Registered_type_info.get_g_type and don't worry about the rest of the
     details. *)
 
 type t
@@ -47,7 +47,7 @@ val get_g_type:
 (** Obtain the type init function for info . The type init function is the
     function which will register the GType within the GObject type system.
     Usually this is not called by langauge bindings or applications, use
-    GIRegisteredTypeInfo.get_g_type directly instead. *)
+    Registered_type_info.get_g_type directly instead. *)
 val get_type_init:
   t structure ptr -> string option
 
@@ -63,13 +63,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIRegisteredTypeInfo.t from a Base_info.t, the underlying C structure
+(** Return a Registered_type_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t from a GIRegisteredTypeInfo, the underlying C structure
+(** Return a Base_info.t from a Registered_type_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:

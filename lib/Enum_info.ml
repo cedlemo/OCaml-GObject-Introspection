@@ -84,13 +84,13 @@ let to_baseinfo info =
 
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_from_registeredtypeinfo info =
-  coerce (ptr GIRegisteredTypeInfo.registeredtypeinfo) (ptr enuminfo) info
+  coerce (ptr Registered_type_info.registeredtypeinfo) (ptr enuminfo) info
 
 let cast_to_registeredtypeinfo info =
-  coerce (ptr enuminfo) (ptr GIRegisteredTypeInfo.registeredtypeinfo) info
+  coerce (ptr enuminfo) (ptr Registered_type_info.registeredtypeinfo) info
 
 let from_registeredtypeinfo info =
-  let base_info = GIRegisteredTypeInfo.cast_to_baseinfo info in
+  let base_info = Registered_type_info.cast_to_baseinfo info in
   let _ = Base_info.base_info_ref base_info in
   let info' = cast_from_registeredtypeinfo info in
   let _ = Gc.finalise (fun i ->
@@ -103,6 +103,6 @@ let to_registeredtypeinfo info =
   let _ = Base_info.base_info_ref base_info in
   let info' = cast_to_registeredtypeinfo info in
   let _ = Gc.finalise (fun i ->
-      let i' = GIRegisteredTypeInfo.cast_to_baseinfo i in
+      let i' = Registered_type_info.cast_to_baseinfo i in
       Base_info.base_info_unref i') info' in
   info'
