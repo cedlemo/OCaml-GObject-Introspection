@@ -126,9 +126,9 @@ val find_vfunc:
 
 (** Every GObject has two structures; an instance structure and a class
     structure. This function returns the metadata for the class structure.
-    It returns a GIStructInfo.t or None. *)
+    It returns a Struct_info.t or None. *)
 val get_class_struct:
-  t structure ptr -> GIStructInfo.t structure ptr option
+  t structure ptr -> Struct_info.t structure ptr option
 
 (** Obtain a method of the object given a name , searching both the object info
     and any interfaces it implements. None will be returned if there's no

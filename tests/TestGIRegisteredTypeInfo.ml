@@ -104,7 +104,7 @@ let get_struct_info repo namespace struct_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Struct -> let info = GIStructInfo.from_baseinfo base_info
+    | Base_info.Struct -> let info = Struct_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -118,7 +118,7 @@ let struct_test fn =
 
 let test_get_type_name_from_struct test_ctxt =
   struct_test (fun info ->
-      let registered = GIStructInfo.to_registeredtypeinfo info in
+      let registered = Struct_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
       | None -> assert_equal_string "It should return " "a name"
       | Some name -> assert_equal_string "GValue" name

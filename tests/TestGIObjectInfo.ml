@@ -143,7 +143,7 @@ let test_get_class_struct test_ctxt =
   object_test (fun info ->
       match Object_info.get_class_struct info with
       | None -> assert_equal_boolean true true
-      | Some info' -> let is_struct = GIStructInfo.is_gtype_struct info' in
+      | Some info' -> let is_struct = Struct_info.is_gtype_struct info' in
         assert_equal_boolean true is_struct
     )
 
@@ -352,7 +352,7 @@ let test_gtk_window_get_class_struct test_ctxt =
   object_test (fun info ->
       match Object_info.get_class_struct info with
       | None -> assert_equal_boolean false true
-      | Some info' -> let is_struct = GIStructInfo.is_gtype_struct info' in
+      | Some info' -> let is_struct = Struct_info.is_gtype_struct info' in
         assert_equal_boolean true is_struct
     )
 

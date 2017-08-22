@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let structinfo : t structure typ = structure "GIStructInfo"
+let structinfo : t structure typ = structure "Struct_info"
 
 let is_gtype_struct =
   foreign "g_struct_info_is_gtype_struct"

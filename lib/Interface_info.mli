@@ -79,7 +79,7 @@ val get_constant:
 
 (** Returns the layout C structure associated with this GInterface. *)
 val get_iface_struct:
-  t structure ptr -> GIStructInfo.t structure ptr option
+  t structure ptr -> Struct_info.t structure ptr option
 
 (** Obtain the number of virtual functions that this interface type has. *)
 val get_n_vfuncs:

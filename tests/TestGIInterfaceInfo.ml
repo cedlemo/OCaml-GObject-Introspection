@@ -137,7 +137,7 @@ let test_get_iface_struct test_ctxt =
   volume_interface_test (fun info ->
       match Interface_info.get_iface_struct info with
       | None -> assert_equal_string "It would be " "great to have something"
-      | Some struct_info -> let base_info = GIStructInfo.to_baseinfo struct_info in
+      | Some struct_info -> let base_info = Struct_info.to_baseinfo struct_info in
         match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string "VolumeIface" name

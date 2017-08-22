@@ -166,10 +166,10 @@ let find_vfunc info name =
 let get_class_struct info =
   let get_class_struct_raw =
     foreign "g_object_info_get_class_struct"
-      (ptr objectinfo @-> returning (ptr_opt GIStructInfo.structinfo)) in
+      (ptr objectinfo @-> returning (ptr_opt Struct_info.structinfo)) in
   match get_class_struct_raw info with
   | None -> None
-  | Some info' -> let info'' = GIStructInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Struct_info.add_unref_finaliser info' in
     Some info''
 
 let get_ref_function =

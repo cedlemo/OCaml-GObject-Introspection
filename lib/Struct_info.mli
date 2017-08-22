@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIStructInfo — Module representing a C structure *)
+(** Struct_info — Module representing a C structure *)
 
 open Ctypes
 
-(** GIStructInfo represents a generic C structure type.
+(** Struct_info represents a generic C structure type.
  A structure has methods and fields.*)
 type t
 val structinfo : t structure typ
@@ -68,13 +68,13 @@ val find_method:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GIStructInfo.t from a Base_info.t, the underlying C structure
+(** Return a Struct_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t form a GIStructInfo, the underlying C structure
+(** Return a Base_info.t form a Struct_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
@@ -88,13 +88,13 @@ val cast_from_registeredtypeinfo:
 val cast_to_registeredtypeinfo:
   t structure ptr -> Registered_type_info.t structure ptr
 
-(** Return a GIStructInfo.t from a Registered_type_info.t, the underlying C structure
+(** Return a Struct_info.t from a Registered_type_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Registered_type_info.registeredtypeinfo_unref. *)
 val from_registeredtypeinfo:
   Registered_type_info.t structure ptr -> t structure ptr
 
-(** Return a Registered_type_info.t form a GIStructInfo, the underlying C structure
+(** Return a Registered_type_info.t form a Struct_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Registered_type_info.registeredtypeinfo_unref. *)
 val to_registeredtypeinfo:

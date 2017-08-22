@@ -96,7 +96,7 @@ let parse_struct_info info source_files =
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
-    let info' = GIStructInfo.from_baseinfo info in
+    let info' = Struct_info.from_baseinfo info in
     BuilderStruct.append_ctypes_struct_declaration name f_descrs;
     BuilderStruct.append_ctypes_struct_fields_declarations name info' f_descrs;
     BuilderStruct.append_ctypes_struct_methods_bindings name info' f_descrs;

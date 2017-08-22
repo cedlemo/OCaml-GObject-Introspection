@@ -109,10 +109,10 @@ let get_constant info n =
 let get_iface_struct info =
   let get_iface_struct_raw =
     foreign "g_interface_info_get_iface_struct"
-      (ptr interfaceinfo @-> returning (ptr_opt GIStructInfo.structinfo)) in
+      (ptr interfaceinfo @-> returning (ptr_opt Struct_info.structinfo)) in
   match get_iface_struct_raw info with
   | None -> None
-  | Some info' -> let info'' = GIStructInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Struct_info.add_unref_finaliser info' in
     Some info''
 
 let get_n_vfuncs =

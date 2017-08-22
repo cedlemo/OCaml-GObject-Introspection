@@ -107,8 +107,8 @@ let parse loader
       | Base_info.Invalid -> Builder.parse_invalid_info info
       | Base_info.Function -> Builder.parse_function_info info main_sources
       | Base_info.Callback -> Builder.parse_callback_info info
-      | Base_info.Struct -> let info' = GIStructInfo.from_baseinfo info in
-      if GIStructInfo.is_gtype_struct info' then ()
+      | Base_info.Struct -> let info' = Struct_info.from_baseinfo info in
+      if Struct_info.is_gtype_struct info' then ()
       else (
         let sources = generate_secondary_module_files loader name in
         (

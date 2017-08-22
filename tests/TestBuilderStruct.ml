@@ -27,7 +27,7 @@ let get_struct_info namespace struct_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Struct -> let struct_info = GIStructInfo.from_baseinfo base_info in
+    | Base_info.Struct -> let struct_info = Struct_info.from_baseinfo base_info in
       Some struct_info
     | _ -> None
 

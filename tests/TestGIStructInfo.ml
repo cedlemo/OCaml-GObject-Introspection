@@ -38,7 +38,7 @@ let get_struct_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Struct -> Some (GIStructInfo.from_baseinfo base_info)
+    | Base_info.Struct -> Some (Struct_info.from_baseinfo base_info)
     | _ -> None
 
 let struct_test fn =
@@ -48,43 +48,43 @@ let struct_test fn =
 
 let test_is_gtype_struct test_ctxt =
   struct_test (fun info ->
-    let is_struct = GIStructInfo.is_gtype_struct info in
+    let is_struct = Struct_info.is_gtype_struct info in
     assert_equal_boolean false is_struct
   )
 
 let test_get_alignment test_ctxt =
   struct_test (fun info ->
-    let alignment = GIStructInfo.get_alignment info in
+    let alignment = Struct_info.get_alignment info in
     assert_equal_int 8 alignment
   )
 
 let test_get_size test_ctxt =
   struct_test (fun info ->
-    let size = GIStructInfo.get_size info in
+    let size = Struct_info.get_size info in
     assert_equal_int 24 size
   )
 
 let test_is_foreign test_ctxt =
   struct_test (fun info ->
-    let is_struct = GIStructInfo.is_foreign info in
+    let is_struct = Struct_info.is_foreign info in
     assert_equal_boolean false is_struct
   )
 
 let test_get_n_fields test_ctxt =
   struct_test (fun info ->
-    let n_fields = GIStructInfo.get_n_fields info in
+    let n_fields = Struct_info.get_n_fields info in
     assert_equal_int 2 n_fields
   )
 
 let test_get_n_methods test_ctxt =
   struct_test (fun info ->
-    let n_methods = GIStructInfo.get_n_methods info in
+    let n_methods = Struct_info.get_n_methods info in
     assert_equal_or_greater n_methods 62
   )
 
 let test_get_field test_ctxt =
   struct_test (fun info ->
-      let field = GIStructInfo.get_field info 0 in
+      let field = Struct_info.get_field info 0 in
       let flags = Field_info.get_flags field in
       let rec check_flags = function
         | [] -> ()
@@ -98,7 +98,7 @@ let test_get_field test_ctxt =
 
 let test_get_field_out_of_bounds test_ctxt =
   struct_test (fun info ->
-    try ignore(GIStructInfo.get_field info 300)
+    try ignore(Struct_info.get_field info 300)
     with
     | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
@@ -108,14 +108,14 @@ let test_get_field_out_of_bounds test_ctxt =
 
 let test_get_method test_ctxt =
   struct_test (fun info ->
-    let m = GIStructInfo.get_method info 0 in
+    let m = Struct_info.get_method info 0 in
     let symbol = Function_info.get_symbol m in
     assert_equal_string "g_value_copy" symbol
   )
 
 let test_get_method_out_of_bounds test_ctxt =
   struct_test (fun info ->
-    try ignore(GIStructInfo.get_method info 300)
+    try ignore(Struct_info.get_method info 300)
     with
     | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
@@ -123,7 +123,7 @@ let test_get_method_out_of_bounds test_ctxt =
   )
 
 let test_find_method test_ctxt =
-  struct_test (fun info -> match GIStructInfo.find_method info "copy" with
+  struct_test (fun info -> match Struct_info.find_method info "copy" with
     | None -> assert_equal_boolean false true
     | Some fn_info -> let symbol = Function_info.get_symbol fn_info in
       assert_equal_string "g_value_copy" symbol
@@ -131,7 +131,7 @@ let test_find_method test_ctxt =
 
 let test_find_method_bad_name test_ctxt =
   struct_test (fun info ->
-    match GIStructInfo.find_method info "Impossible" with
+    match Struct_info.find_method info "Impossible" with
     | None -> assert_equal_boolean true true
     | Some _ -> assert_equal_string "Impossible" "Should not returns something"
   )
@@ -139,17 +139,17 @@ let test_find_method_bad_name test_ctxt =
 let tests =
   "GObject Introspection StructInfo tests" >:::
   [
-    "GIStructInfo from BaseInfo" >:: test_baseinfo_get_type;
-    "GIStructInfo is gtype struct" >:: test_is_gtype_struct;
-    "GIStructInfo get alignment" >:: test_get_alignment;
-    "GIStructInfo get size" >:: test_get_size;
-    "GIStructInfo is foreign" >:: test_is_foreign;
-    "GIStructInfo get n fields" >:: test_get_n_fields;
-    "GIStructInfo get n methods" >:: test_get_n_methods;
-    "GIStructInfo get field" >:: test_get_field;
-    "GIStructInfo get field out of bounds" >:: test_get_field_out_of_bounds;
-    "GIStructInfo get method" >:: test_get_method;
-    "GIStructInfo get method out of bounds" >:: test_get_method_out_of_bounds;
-    "GIStructInfo find method" >:: test_find_method;
-    "GIStructInfo find method bad name" >:: test_find_method_bad_name
+    "Struct_info from BaseInfo" >:: test_baseinfo_get_type;
+    "Struct_info is gtype struct" >:: test_is_gtype_struct;
+    "Struct_info get alignment" >:: test_get_alignment;
+    "Struct_info get size" >:: test_get_size;
+    "Struct_info is foreign" >:: test_is_foreign;
+    "Struct_info get n fields" >:: test_get_n_fields;
+    "Struct_info get n methods" >:: test_get_n_methods;
+    "Struct_info get field" >:: test_get_field;
+    "Struct_info get field out of bounds" >:: test_get_field_out_of_bounds;
+    "Struct_info get method" >:: test_get_method;
+    "Struct_info get method out of bounds" >:: test_get_method_out_of_bounds;
+    "Struct_info find method" >:: test_find_method;
+    "Struct_info find method bad name" >:: test_find_method_bad_name
   ]

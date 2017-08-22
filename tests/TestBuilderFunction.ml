@@ -63,8 +63,8 @@ let test_escape_bad_function_name test_ctxt =
   let container = "Rand" in
   match Repository.find_by_name repo namespace container with
   | None -> assert_equal_string name " should return an I info"
-  | Some rand_info -> let struct_info = GIStructInfo.from_baseinfo rand_info in
-  let method_info = GIStructInfo.get_method struct_info 0 in
+  | Some rand_info -> let struct_info = Struct_info.from_baseinfo rand_info in
+  let method_info = Struct_info.get_method struct_info 0 in
   let mli_content = "val _double:\n\
                      t structure ptr -> float" in
   let ml_content = "let _double =\n\
