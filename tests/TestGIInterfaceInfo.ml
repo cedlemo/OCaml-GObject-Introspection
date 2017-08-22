@@ -110,7 +110,7 @@ let test_get_n_signals test_ctxt =
 let test_get_signal test_ctxt =
   volume_interface_test (fun info ->
       let info' = Interface_info.get_signal info 0 in
-      let base_info = GISignalInfo.to_baseinfo info' in
+      let base_info = Signal_info.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "changed" name
@@ -121,7 +121,7 @@ let test_find_signal test_ctxt =
       let signal_name = "changed" in
       match Interface_info.find_signal info signal_name with
       | None -> assert_equal_string interface_name "No base info found"
-      | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
+      | Some info' -> let base_info = Signal_info.to_baseinfo info' in
         match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string signal_name name

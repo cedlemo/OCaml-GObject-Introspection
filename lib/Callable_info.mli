@@ -41,7 +41,7 @@ val get_return_attribute:
   t structure ptr -> string option
 
 (** Determines if the callable info is a method. For GIVFuncInfos,
-    GICallbackInfos, and GISignalInfos, this is always true. Otherwise, this
+    GICallbackInfos, and Signal_infos, this is always true. Otherwise, this
     looks at the Function_info.Is_method flag on the Function_info.
     Concretely, this function returns whether Callable_info.get_n_args matches
     the number of arguments in the raw C method. For methods, there is one more

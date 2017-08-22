@@ -282,7 +282,7 @@ let test_gtk_window_get_n_signals test_ctxt =
 let test_gtk_window_get_signal test_ctxt =
   object_test (fun info ->
       let info' = Object_info.get_signal info 0 in
-      let base_info = GISignalInfo.to_baseinfo info' in
+      let base_info = Signal_info.to_baseinfo info' in
       match Base_info.get_name base_info with
       | None -> assert_equal_string "It should have " "a name"
       | Some name -> assert_equal_string "activate-default" name
@@ -293,7 +293,7 @@ let test_gtk_window_find_signal test_ctxt =
       let signal_name = "activate-default" in
       match Object_info.find_signal info signal_name with
       | None -> assert_equal_string "It should have" " a signal"
-      | Some info' -> let base_info = GISignalInfo.to_baseinfo info' in
+      | Some info' -> let base_info = Signal_info.to_baseinfo info' in
         match Base_info.get_name base_info with
         | None -> assert_equal_string "It should have " "a name"
         | Some name -> assert_equal_string signal_name name

@@ -63,11 +63,11 @@ val get_n_signals:
 
 (** Obtain an interface type signal at index n . *)
 val get_signal:
-  t structure ptr -> int -> GISignalInfo.t structure ptr
+  t structure ptr -> int -> Signal_info.t structure ptr
 
 (** Find a signal of the interface *)
 val find_signal:
-  t structure ptr -> string -> GISignalInfo.t structure ptr option
+  t structure ptr -> string -> Signal_info.t structure ptr option
 
 (** Obtain the number of constants that this interface type has. *)
 val get_n_constants:

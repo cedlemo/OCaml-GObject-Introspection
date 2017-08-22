@@ -126,19 +126,19 @@ let get_n_signals =
 let get_signal info n =
   let get_signal_raw =
     foreign "g_object_info_get_signal"
-      (ptr objectinfo @-> int @-> returning (ptr GISignalInfo.signalinfo)) in
+      (ptr objectinfo @-> int @-> returning (ptr Signal_info.signalinfo)) in
   let max = get_n_signals info in
   if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
   else let info' = get_signal_raw info n in
-    GISignalInfo.add_unref_finaliser info'
+    Signal_info.add_unref_finaliser info'
 
 let find_signal info name =
   let find_signal_raw =
     foreign "g_object_info_find_signal"
-      (ptr objectinfo @-> string @-> returning (ptr_opt GISignalInfo.signalinfo)) in
+      (ptr objectinfo @-> string @-> returning (ptr_opt Signal_info.signalinfo)) in
   match find_signal_raw info name with
   | None -> None
-  | Some info' -> let info'' = GISignalInfo.add_unref_finaliser info' in
+  | Some info' -> let info'' = Signal_info.add_unref_finaliser info' in
     Some info''
 
 let get_n_vfuncs =

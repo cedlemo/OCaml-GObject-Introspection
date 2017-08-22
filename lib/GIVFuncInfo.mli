@@ -32,9 +32,9 @@ val get_offset:
 
 (** Obtain the signal for the virtual function if one is set. The signal comes
     from the object or interface to which this virtual function belongs.
-    In order to avoid circular call graph between GIVFuncInfo and GISignalInfo,
+    In order to avoid circular call graph between GIVFuncInfo and Signal_info,
     this function will return a Callable_info. It is upto the user to use
-    GISignalInfo.from_callableinfo in order to have the GISignalInfo.*)
+    Signal_info.from_callableinfo in order to have the Signal_info.*)
 val get_signal:
   t structure ptr -> Callable_info.t structure ptr option
 

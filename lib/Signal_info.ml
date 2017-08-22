@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let signalinfo : t structure typ = structure "GISignalInfo"
+let signalinfo : t structure typ = structure "Signal_info"
 
 let true_stops_emit =
   foreign "g_signal_info_true_stops_emit"

@@ -75,7 +75,7 @@ type baseinfo_type =
   | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
   | Union (** union, see GIUnionInfo *)
   | Value (** enum value, see GIValueInfo *)
-  | Signal (** signal, see GISignalInfo *)
+  | Signal (** signal, see Signal_info *)
   | Vfunc (** virtual function, see GIVFuncInfo *)
   | Property (** GObject property, see Property_info *)
   | Field (** struct or union field, see Field_info *)

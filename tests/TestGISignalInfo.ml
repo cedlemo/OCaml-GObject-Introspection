@@ -46,33 +46,33 @@ let signal_test fn =
 
 let test_true_stops_emit test_ctxt =
   signal_test (fun info ->
-      let stops = GISignalInfo.true_stops_emit info in
+      let stops = Signal_info.true_stops_emit info in
       assert_equal_boolean false stops
     )
 
 let test_get_flags test_ctxt =
   signal_test (fun info ->
-      let flags = GISignalInfo.get_flags info in
+      let flags = Signal_info.get_flags info in
       let rec check_flags = function
         | [] -> ()
         | f' :: q -> let _ = assert_equal ~printer:(fun f ->
             match f with
-            | GISignalInfo.Run_first -> "Run_first"
-            | GISignalInfo.Run_last -> "Run_last"
-            | GISignalInfo.Run_cleanup -> "Run_cleanup"
-            | GISignalInfo.No_recurse -> "No_recurse"
-            | GISignalInfo.Detailed -> "Detailed"
-            | GISignalInfo.Action -> "Action"
-            | GISignalInfo.No_hooks -> "No_hooks"
-            | GISignalInfo.Must_collect -> "Must_collect"
-            | GISignalInfo.Deprecated -> "Deprecated"
-          ) GISignalInfo.Run_first f' in check_flags q
+            | Signal_info.Run_first -> "Run_first"
+            | Signal_info.Run_last -> "Run_last"
+            | Signal_info.Run_cleanup -> "Run_cleanup"
+            | Signal_info.No_recurse -> "No_recurse"
+            | Signal_info.Detailed -> "Detailed"
+            | Signal_info.Action -> "Action"
+            | Signal_info.No_hooks -> "No_hooks"
+            | Signal_info.Must_collect -> "Must_collect"
+            | Signal_info.Deprecated -> "Deprecated"
+          ) Signal_info.Run_first f' in check_flags q
       in check_flags flags
     )
 
 let test_get_class_closure test_ctxt =
   signal_test (fun info ->
-      match GISignalInfo.get_class_closure info with
+      match Signal_info.get_class_closure info with
       | None -> assert_equal_boolean true true
       | Some info' -> assert_equal_string "Class closure " " found"
     )
@@ -80,7 +80,7 @@ let test_get_class_closure test_ctxt =
 let tests =
   "GObject Introspection SignalInfo tests" >:::
   [
-    "GISignalInfo true stops emit" >:: test_true_stops_emit;
-    "GISignalInfo get flags" >:: test_get_flags;
+    "Signal_info true stops emit" >:: test_true_stops_emit;
+    "Signal_info get flags" >:: test_get_flags;
     "GISingalInfo get class closure" >:: test_get_class_closure
   ]
