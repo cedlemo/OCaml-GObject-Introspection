@@ -39,10 +39,10 @@ type bindings_types = Not_implemented of string | Types of type_strings
 val type_tag_to_bindings_types:
   GITypes.tag -> bindings_types
 
-(** Obtain from a GITypeInfo.t the type strings to use in bindings.
+(** Obtain from a Type_info.t the type strings to use in bindings.
     Returns Not_implemented with the tag name if not implemented. *)
 val type_info_to_bindings_types:
-  GITypeInfo.t structure ptr -> bool -> bindings_types
+  Type_info.t structure ptr -> bool -> bindings_types
 
 (** Add an open directives in a file for a module name.*)
 val write_open_module:

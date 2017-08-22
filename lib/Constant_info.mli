@@ -26,9 +26,9 @@ open Ctypes
 type t
 val constantinfo : t structure typ
 
-(** Obtain the type of the constant as a GITypeInfo. *)
+(** Obtain the type of the constant as a Type_info. *)
 val get_type:
-  t structure ptr -> GITypeInfo.t structure ptr
+  t structure ptr -> Type_info.t structure ptr
 
 (** Just cast OCaml Ctypes base info to constant info. *)
 val cast_from_baseinfo:

@@ -94,7 +94,7 @@ let get_return_types callable =
  *       - nothing
  *       - container
  *       - everything
- *     - get the GITypeInfo
+ *     - get the Type_info
  *       - get the Tag (scalar data or complex data)
  *     - find out if it is a pointer
  *)

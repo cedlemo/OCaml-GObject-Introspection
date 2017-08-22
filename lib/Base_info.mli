@@ -80,7 +80,7 @@ type baseinfo_type =
   | Property (** GObject property, see Property_info *)
   | Field (** struct or union field, see Field_info *)
   | Arg (** argument of a function or callback, see Arg_info *)
-  | Type (** type information, see GITypeInfo *)
+  | Type (** type information, see Type_info *)
   | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
 
 (** Transform an integer value to a baseinfo_type. *)

@@ -51,9 +51,9 @@ val get_offset:
 val get_size:
   t structure ptr -> int
 
-(** Obtain the type of a field as a GITypeInfo. *)
+(** Obtain the type of a field as a Type_info. *)
 val get_type:
-  t structure ptr -> GITypeInfo.t structure ptr
+  t structure ptr -> Type_info.t structure ptr
 
 (*
    gboolean	g_field_info_get_field ()

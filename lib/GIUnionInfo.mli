@@ -65,7 +65,7 @@ val get_discriminator_offset:
 
 (** Obtain the type information of the union discriminator. *)
 val get_discriminator_type:
-  t structure ptr -> GITypeInfo.t structure ptr
+  t structure ptr -> Type_info.t structure ptr
 
 (** Obtain discriminator value assigned for n-th union field, i.e. n-th union
     field is the active one if discriminator contains this constant. *)

@@ -21,7 +21,7 @@
 open Ctypes
 open Foreign
 
-(** The type tag of a GITypeInfo. *)
+(** The type tag of a Type_info. *)
 type tag =
   | Void (** void *)
   | Boolean (** boolean *)

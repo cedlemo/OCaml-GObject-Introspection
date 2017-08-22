@@ -32,7 +32,7 @@ val get_ownership_transfer:
 
 (** Obtain the type information for the property info . *)
 val get_type:
-  t structure ptr -> GITypeInfo.t structure ptr
+  t structure ptr -> Type_info.t structure ptr
 
 (** Obtain the flags for this property info. See GParamFlags for more
     information about possible flag values. *)

@@ -163,7 +163,7 @@ val param_flags_to_string:
   param_flags -> string
 
 val get_type:
-  t structure ptr -> GITypeInfo.t structure ptr
+  t structure ptr -> Type_info.t structure ptr
 
 (*
   TODO : void	g_arg_info_load_type ()

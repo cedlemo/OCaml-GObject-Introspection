@@ -144,7 +144,7 @@ let parse_constant_info info source_files =
     in
     let f_descrs = (source_files.mli.descr,
                     source_files.ml.descr) in
-    let _ = match GITypeInfo.get_tag type_info with
+    let _ = match Type_info.get_tag type_info with
     | GITypes.Void as tag -> not_implemented_todo_comments tag f_descrs
     | GITypes.Boolean ->
       BuilderConstant.append_boolean_constant name info' f_descrs

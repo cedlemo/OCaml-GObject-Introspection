@@ -158,9 +158,9 @@ let param_flags_to_string = function
 let get_type info =
   let get_type_raw =
     foreign "g_arg_info_get_type"
-      (ptr arginfo @-> returning (ptr GITypeInfo.typeinfo)) in
+      (ptr arginfo @-> returning (ptr Type_info.typeinfo)) in
   let info' = get_type_raw info in
-  GITypeInfo.add_unref_finaliser info'
+  Type_info.add_unref_finaliser info'
 
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_from_baseinfo info =

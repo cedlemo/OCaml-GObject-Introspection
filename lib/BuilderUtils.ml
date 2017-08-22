@@ -54,16 +54,16 @@ let type_tag_to_bindings_types = function
 
 let type_info_to_bindings_types type_info maybe_null =
   let check_if_pointer (ocaml_t, ctypes_t) =
-    if GITypeInfo.is_pointer type_info then
+    if Type_info.is_pointer type_info then
       if maybe_null then {ocaml = ocaml_t ^ " ptr option";
                           ctypes = "ptr_opt " ^ ctypes_t}
       else {ocaml = ocaml_t ^ " ptr";
             ctypes = "ptr " ^ ctypes_t}
     else {ocaml = ocaml_t; ctypes = ctypes_t}
   in
-  match GITypeInfo.get_interface type_info with
+  match Type_info.get_interface type_info with
   | None -> (
-    match GITypeInfo.get_tag type_info with
+    match Type_info.get_tag type_info with
     | GITypes.Void -> Types (check_if_pointer ("unit", "void"))
     | GITypes.Boolean -> Types (check_if_pointer ("bool", "bool"))
     | GITypes.Int8 -> Types (check_if_pointer ("int", "int8_t"))
@@ -84,7 +84,7 @@ let type_info_to_bindings_types type_info maybe_null =
                                                     ctypes = "string_opt"}
       else Types {ocaml = "string"; ctypes = "string"}
     | GITypes.Array -> (
-      match GITypeInfo.get_array_type type_info with
+      match Type_info.get_array_type type_info with
       | None -> Not_implemented ("Bad Array type for GITypes.Array tag")
       | Some array_type ->
         match array_type with

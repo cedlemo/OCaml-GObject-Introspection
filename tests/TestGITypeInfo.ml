@@ -43,19 +43,19 @@ let type_test fn =
 
 let test_to_string test_ctxt =
   type_test (fun info ->
-      let str = GITypeInfo.to_string info in
+      let str = Type_info.to_string info in
       assert_equal_string "unknown" str
     )
 
 let test_is_pointer test_ctxt =
   type_test (fun info ->
-      let is_pointer = GITypeInfo.is_pointer info in
+      let is_pointer = Type_info.is_pointer info in
       assert_equal_boolean true is_pointer
     )
 
 let test_get_tag test_ctxt =
   type_test (fun info ->
-      let tag = GITypeInfo.get_tag info in
+      let tag = Type_info.get_tag info in
       assert_equal ~printer:(fun tag ->
           GITypes.string_of_tag tag
         ) GITypes.Array tag
@@ -63,25 +63,25 @@ let test_get_tag test_ctxt =
 
 let test_get_array_length test_ctxt =
   type_test (fun info ->
-      let length = GITypeInfo.get_array_length info in
+      let length = Type_info.get_array_length info in
       assert_equal_int 1 length
     )
 
 let test_get_array_fixed_size test_ctxt =
   type_test (fun info ->
-      let size = GITypeInfo.get_array_fixed_size info in
+      let size = Type_info.get_array_fixed_size info in
       assert_equal_int (-1) size
     )
 
 let test_is_zero_terminated test_ctxt =
   type_test (fun info ->
-      let zero_terminated = GITypeInfo.is_zero_terminated info in
+      let zero_terminated = Type_info.is_zero_terminated info in
       assert_equal_boolean false zero_terminated
     )
 
 let test_get_array_type test_ctxt =
   type_test (fun info ->
-      match GITypeInfo.get_array_type info with
+      match Type_info.get_array_type info with
       | None -> assert_equal_string "It should " "be an array"
       | Some array_type -> assert_equal ~printer:(fun t ->
           GITypes.string_of_array_type t)
@@ -90,8 +90,8 @@ let test_get_array_type test_ctxt =
 
 let test_get_param_type test_ctxt =
   type_test (fun info ->
-     let param_type = GITypeInfo.get_param_type info 0 in
-     let tag = GITypeInfo.get_tag param_type in
+     let param_type = Type_info.get_param_type info 0 in
+     let tag = Type_info.get_tag param_type in
       assert_equal ~printer:(fun tag ->
           GITypes.string_of_tag tag
         ) GITypes.Uint32 tag
@@ -99,7 +99,7 @@ let test_get_param_type test_ctxt =
 
 let test_get_interface_none test_ctxt =
 type_test (fun info ->
-      match GITypeInfo.get_interface info with
+      match Type_info.get_interface info with
       | None -> assert_equal true true
       | _ -> assert_equal_string "This type info " "should not have interface"
     )
@@ -114,7 +114,7 @@ let test_get_interface test_ctxt =
       (
         let callable_info = Callable_info.from_baseinfo base_info in
         let type_info = Callable_info.get_return_type callable_info in
-        match GITypeInfo.get_interface type_info with
+        match Type_info.get_interface type_info with
         | None -> assert_equal_string "It should " "have an interface"
         | Some interface -> match Base_info.get_name interface with
           | None -> assert_equal_string "It should " "have a name"
@@ -125,14 +125,14 @@ let test_get_interface test_ctxt =
 let tests =
   "GObject Introspection TypeInfo tests" >:::
   [
-    "GITypeInfo to string" >:: test_to_string;
-    "GITypeInfo is pointer" >:: test_is_pointer;
-    "GITypeInfo get tag" >:: test_get_tag;
-    "GITypeInfo get array length" >:: test_get_array_length;
-    "GITypeInfo get array fixed size" >:: test_get_array_fixed_size;
-    "GITypeInfo get is zero terminated" >:: test_is_zero_terminated;
-    "GITypeInfo get array type" >:: test_get_array_type;
-    "GITypeInfo get param type" >:: test_get_param_type;
-    "GITypeInfo get interface none" >:: test_get_interface_none;
-    "GITypeInfo get interface" >:: test_get_interface
+    "Type_info to string" >:: test_to_string;
+    "Type_info is pointer" >:: test_is_pointer;
+    "Type_info get tag" >:: test_get_tag;
+    "Type_info get array length" >:: test_get_array_length;
+    "Type_info get array fixed size" >:: test_get_array_fixed_size;
+    "Type_info get is zero terminated" >:: test_is_zero_terminated;
+    "Type_info get array type" >:: test_get_array_type;
+    "Type_info get param type" >:: test_get_param_type;
+    "Type_info get interface none" >:: test_get_interface_none;
+    "Type_info get interface" >:: test_get_interface
   ]

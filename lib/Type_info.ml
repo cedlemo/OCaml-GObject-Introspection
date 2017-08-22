@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let typeinfo : t structure typ = structure "GITypeInfo"
+let typeinfo : t structure typ = structure "Type_info"
 
 let to_string =
   foreign "g_info_type_to_string"

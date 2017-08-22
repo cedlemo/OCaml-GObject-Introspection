@@ -117,7 +117,7 @@ let test_get_scope test_ctxt =
 let test_get_type test_ctxt =
   arg_test (fun info ->
         let type_info = Arg_info.get_type info in
-        let type_name = GITypeInfo.to_string type_info in
+        let type_name = Type_info.to_string type_info in
         assert_equal_string "unknown" type_name
       )
 

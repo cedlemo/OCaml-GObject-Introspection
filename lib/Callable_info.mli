@@ -61,9 +61,9 @@ val skip_return:
 val get_arg:
   t structure ptr -> int -> Arg_info.t structure ptr
 
-(** Obtain the return type of a callable item as a GITypeInfo. *)
+(** Obtain the return type of a callable item as a Type_info. *)
 val get_return_type:
-  t structure ptr -> GITypeInfo.t structure ptr
+  t structure ptr -> Type_info.t structure ptr
 
 (** See whether the caller owns the return value of this callable. GITransfer
     contains a list of possible transfer values. *)

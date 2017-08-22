@@ -32,9 +32,9 @@ let get_ownership_transfer info =
 let get_type info =
   let get_type_raw =
     foreign "g_property_info_get_type"
-      (ptr propertyinfo @-> returning (ptr GITypeInfo.typeinfo)) in
+      (ptr propertyinfo @-> returning (ptr Type_info.typeinfo)) in
   let info' = get_type_raw info in
-  GITypeInfo.add_unref_finaliser info'
+  Type_info.add_unref_finaliser info'
 
 let get_flags info =
   let get_flags_raw =

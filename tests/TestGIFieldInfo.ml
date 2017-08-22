@@ -67,7 +67,7 @@ let test_get_size test_ctxt =
 let test_get_type test_ctxt =
   field_test (fun info ->
       let info_type = Field_info.get_type info in
-      let type_name = GITypeInfo.to_string info_type in
+      let type_name = Type_info.to_string info_type in
       assert_equal_string "unknown" type_name
     )
 

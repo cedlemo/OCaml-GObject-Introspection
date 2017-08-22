@@ -79,9 +79,9 @@ let get_discriminator_offset =
 let get_discriminator_type info =
   let get_discriminator_type_raw =
     foreign "g_union_info_get_discriminator_type"
-      (ptr unioninfo @-> returning (ptr GITypeInfo.typeinfo)) in
+      (ptr unioninfo @-> returning (ptr Type_info.typeinfo)) in
   let info' = get_discriminator_type_raw info in
-  GITypeInfo.add_unref_finaliser info'
+  Type_info.add_unref_finaliser info'
 
 (* TODO : get_discriminator find a test  *)
 let get_discriminator info n =

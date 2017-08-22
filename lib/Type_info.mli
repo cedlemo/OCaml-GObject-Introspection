@@ -16,17 +16,17 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GITypeInfo — Struct representing a type *)
+(** Type_info — Struct representing a type *)
 
 open Ctypes
 
-(** GITypeInfo represents a type. You can retrieve a type info from an argument
+(** Type_info represents a type. You can retrieve a type info from an argument
     (see Arg_info), a function return value (see Function_info), a field
     (see Field_info), a property (see Property_info), a constant
     (see Constant_info) or for a union discriminator (see GIUnionInfo).
     A type can either be a of a basic type which is a standard C primitive type
     or an interface type. For interface types you need to call
-    GITypeInfo.get_interface to get a reference to the base info for that
+    Type_info.get_interface to get a reference to the base info for that
     interface. *)
 type t
 val typeinfo : t structure typ
@@ -91,13 +91,13 @@ val cast_to_baseinfo:
 val add_unref_finaliser:
   t structure ptr -> t structure ptr
 
-(** Return a GITypeInfo.t from a Base_info.t, the underlying C structure
+(** Return a Type_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t form a GITypeInfo, the underlying C structure
+(** Return a Base_info.t form a Type_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:

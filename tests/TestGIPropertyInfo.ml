@@ -69,7 +69,7 @@ let test_get_ownership_transfer test_ctxt =
 let test_get_type test_ctxt =
   property_test (fun info ->
       let info = Property_info.get_type info in
-      let type_name = GITypeInfo.to_string info in
+      let type_name = Type_info.to_string info in
       assert_equal_string "unknown" type_name
     )
 

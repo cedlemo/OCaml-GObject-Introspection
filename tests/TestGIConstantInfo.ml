@@ -43,9 +43,9 @@ let constant_test fn =
 let test_get_type test_ctxt =
   constant_test (fun info ->
       let type_info = Constant_info.get_type info in
-      let str = GITypeInfo.to_string type_info in
+      let str = Type_info.to_string type_info in
       assert_equal_string "unknown" str ;
-      let tag = GITypeInfo.get_tag type_info in
+      let tag = Type_info.get_tag type_info in
       assert_equal ~printer:(fun tag ->
           GITypes.string_of_tag tag
         ) GITypes.Int32 tag
@@ -54,7 +54,7 @@ let test_get_type test_ctxt =
 let test_get_value test_ctxt =
   constant_test (fun info ->
       let type_info = Constant_info.get_type info in
-      match GITypeInfo.get_tag type_info with
+      match Type_info.get_tag type_info with
       | GITypes.Int32 -> let argument = Constant_info.get_value info in
         let value = getf (!@argument) GITypes.v_int32 in
         assert_equal_int 511 (Int32.to_int value)
