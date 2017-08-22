@@ -30,14 +30,14 @@ let get_union_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let info = GIUnionInfo.from_baseinfo base_info
+    | Base_info.Union -> let info = Union_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
 let field_test fn =
   match get_union_info () with
   | None -> assert_equal_string union_name "No base info found"
-  | Some (info) -> fn (GIUnionInfo.get_field info 0)
+  | Some (info) -> fn (Union_info.get_field info 0)
 
 let test_get_flags test_ctxt =
   field_test (fun info ->

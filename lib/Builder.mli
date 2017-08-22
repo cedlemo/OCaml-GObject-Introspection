@@ -92,7 +92,7 @@ val parse_interface_info :
 val parse_constant_info :
   Base_info.t structure ptr -> files -> unit
 
-(** Use GIUnionInfo in order to generate Ctypes bindings.
+(** Use Union_info in order to generate Ctypes bindings.
   - For each union, a module is created in a UnionName.mli file and a UnionName.ml file.
   - the OCaml type is named `UnionName.t`
   - the Ctypes typ is named `UnionName.t_typ`

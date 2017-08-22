@@ -20,7 +20,7 @@ open Ctypes
 open Foreign
 
 type t
-let unioninfo : t structure typ = structure "GIUnionInfo"
+let unioninfo : t structure typ = structure "Union_info"
 
 let get_n_fields =
   foreign "g_union_info_get_n_fields"

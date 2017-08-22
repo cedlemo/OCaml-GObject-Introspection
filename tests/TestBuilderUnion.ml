@@ -27,7 +27,7 @@ let get_union_info namespace union_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let union_info = GIUnionInfo.from_baseinfo base_info in
+    | Base_info.Union -> let union_info = Union_info.from_baseinfo base_info in
       Some union_info
     | _ -> None
 

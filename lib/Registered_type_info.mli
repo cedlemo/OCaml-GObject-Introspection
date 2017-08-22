@@ -23,7 +23,7 @@ open Foreign
 
 (** Registered_type_info represents an entity with a GType associated. Could be
     either a Enum_info, Interface_info, Object_info, Struct_info or a
-    GIUnionInfo.
+    Union_info.
     A registered type info struct has a name and a type function. To get the
     name call Registered_type_info.get_type_name. Most users want to call
     Registered_type_info.get_g_type and don't worry about the rest of the

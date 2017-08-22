@@ -41,9 +41,9 @@ let append_ctypes_union_fields_declarations union_name info sources_files =
       Printf.fprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type;
       Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ
   in
-  let n = GIUnionInfo.get_n_fields info in
+  let n = Union_info.get_n_fields info in
   for i = 0 to n - 1 do
-    let field_info = GIUnionInfo.get_field info i in
+    let field_info = Union_info.get_field info i in
     append_ctypes_union_field_declarations field_info
   done
 

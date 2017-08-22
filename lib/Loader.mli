@@ -69,7 +69,7 @@ val generate_directories:
     for Enum used as flags (Ored).
   @param struct_parser allows user to customize the GIStructureInfo bindings
     generator.
-  @param union_parser allows user to customize the GIUnionInfo bindings generator.
+  @param union_parser allows user to customize the Union_info bindings generator.
  *)
 val parse:
   t ->

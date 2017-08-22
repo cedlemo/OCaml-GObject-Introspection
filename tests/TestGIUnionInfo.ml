@@ -38,7 +38,7 @@ let get_union_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let union_info = GIUnionInfo.from_baseinfo base_info in
+    | Base_info.Union -> let union_info = Union_info.from_baseinfo base_info in
       Some union_info
     | _ -> None
 
@@ -49,31 +49,31 @@ let union_test fn =
 
 let test_get_n_fields test_ctxt =
   union_test (fun info ->
-    let n = GIUnionInfo.get_n_fields info in
+    let n = Union_info.get_n_fields info in
     assert_equal_int 2 n
   )
 
 let test_get_size test_ctxt =
   union_test (fun info ->
-    let size = GIUnionInfo.get_size info in
+    let size = Union_info.get_size info in
     assert_equal_int 8 size
   )
 
 let test_get_alignment test_ctxt =
   union_test (fun info ->
-    let alignment = GIUnionInfo.get_alignment info in
+    let alignment = Union_info.get_alignment info in
     assert_equal_int 8 alignment
   )
 
 let test_get_n_methods test_ctxt =
   union_test (fun info ->
-    let n = GIUnionInfo.get_n_methods info in
+    let n = Union_info.get_n_methods info in
     assert_equal_int 5 n
   )
 
 let test_get_field test_ctxt =
   union_test (fun info ->
-    let field = GIUnionInfo.get_field info 0 in
+    let field = Union_info.get_field info 0 in
       let flags = Field_info.get_flags field in
       let rec check_flags = function
         | [] -> ()
@@ -87,7 +87,7 @@ let test_get_field test_ctxt =
 
 let test_get_field_out_of_bounds test_ctxt =
   union_test (fun info ->
-    try ignore(GIUnionInfo.get_field info 3000)
+    try ignore(Union_info.get_field info 3000)
     with
     | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
@@ -96,14 +96,14 @@ let test_get_field_out_of_bounds test_ctxt =
 
 let test_get_method test_ctxt =
   union_test (fun info ->
-    let m = GIUnionInfo.get_method info 0 in
+    let m = Union_info.get_method info 0 in
     let symbol = Function_info.get_symbol m in
     assert_equal_string "g_mutex_clear" symbol
   )
 
 let test_get_method_out_of_bounds test_ctxt =
   union_test (fun info ->
-    try ignore(GIUnionInfo.get_method info 300)
+    try ignore(Union_info.get_method info 300)
     with
     | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
@@ -113,7 +113,7 @@ let test_get_method_out_of_bounds test_ctxt =
 let test_find_method test_ctxt =
   let function_name = "clear" in
   union_test (fun info ->
-      match GIUnionInfo.find_method info function_name with
+      match Union_info.find_method info function_name with
       | None -> assert_equal_boolean true false
       | Some m -> let symbol = Function_info.get_symbol m in
         assert_equal_string ("g_mutex_" ^ function_name) symbol
@@ -121,22 +121,22 @@ let test_find_method test_ctxt =
 
 let test_is_discriminated test_ctxt =
   union_test (fun info ->
-      let is_discriminated = GIUnionInfo.is_discriminated info in
+      let is_discriminated = Union_info.is_discriminated info in
       assert_equal_boolean false is_discriminated
   )
 
 let tests =
   "GObject Introspection UnionInfo tests" >:::
   [
-    "GIUnionInfo from baseinfo" >:: test_from_baseinfo;
-    "GIUnionInfo get n fields" >:: test_get_n_fields;
-    "GIUnionInfo get size" >:: test_get_size;
-    "GIUnionInfo get alignment" >:: test_get_alignment;
-    "GIUnionInfo get n methods" >:: test_get_n_methods;
-    "GIUnionInfo get field" >:: test_get_field;
-    "GIUnionInfo get field out of bounds" >:: test_get_field_out_of_bounds;
-    "GIUnionInfo get method" >:: test_get_method;
-    "GIUnionInfo get method out of bounds" >:: test_get_method_out_of_bounds;
-    "GIUnionInfo find method" >:: test_find_method;
-    "GIUnionInfo is discriminated" >:: test_is_discriminated
+    "Union_info from baseinfo" >:: test_from_baseinfo;
+    "Union_info get n fields" >:: test_get_n_fields;
+    "Union_info get size" >:: test_get_size;
+    "Union_info get alignment" >:: test_get_alignment;
+    "Union_info get n methods" >:: test_get_n_methods;
+    "Union_info get field" >:: test_get_field;
+    "Union_info get field out of bounds" >:: test_get_field_out_of_bounds;
+    "Union_info get method" >:: test_get_method;
+    "Union_info get method out of bounds" >:: test_get_method_out_of_bounds;
+    "Union_info find method" >:: test_find_method;
+    "Union_info is discriminated" >:: test_is_discriminated
   ]

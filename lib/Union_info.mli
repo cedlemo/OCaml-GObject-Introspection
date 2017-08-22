@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** GIUnionInfo — Module representing a C structure *)
+(** Union_info — Module representing a C structure *)
 
 open Ctypes
 
-(** GIUnionInfo represents a union type.
+(** Union_info represents a union type.
     A union has methods and fields. Unions can optionally have a discriminator,
     which is a field deciding what type of real union fields is valid for
     specified instance.*)
@@ -80,13 +80,13 @@ val cast_from_baseinfo:
 val cast_to_baseinfo:
   t structure ptr -> Base_info.t structure ptr
 
-(** Return a GIUnionInfo.t from a Base_info.t, the underlying C structure
+(** Return a Union_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val from_baseinfo:
   Base_info.t structure ptr -> t structure ptr
 
-(** Return a Base_info.t form a GIUnionInfo, the underlying C structure
+(** Return a Base_info.t form a Union_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
 val to_baseinfo:
@@ -100,13 +100,13 @@ val cast_from_registeredtypeinfo:
 val cast_to_registeredtypeinfo:
   t structure ptr -> Registered_type_info.t structure ptr
 
-(** Return a GIUnionInfo.t from a Registered_type_info.t, the underlying C structure
+(** Return a Union_info.t from a Registered_type_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Registered_type_info.registeredtypeinfo_unref. *)
 val from_registeredtypeinfo:
   Registered_type_info.t structure ptr -> t structure ptr
 
-(** Return a Registered_type_info.t form a GIUnionInfo, the underlying C structure
+(** Return a Registered_type_info.t form a Union_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Registered_type_info.registeredtypeinfo_unref. *)
 val to_registeredtypeinfo:

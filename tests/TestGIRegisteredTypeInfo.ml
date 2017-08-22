@@ -130,7 +130,7 @@ let get_union_info repo namespace union_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let info = GIUnionInfo.from_baseinfo base_info
+    | Base_info.Union -> let info = Union_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -144,7 +144,7 @@ let union_test fn =
 
 let test_get_type_name_from_union test_ctxt =
   union_test (fun info ->
-      let registered = GIUnionInfo.to_registeredtypeinfo info in
+      let registered = Union_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
       | None -> assert_equal_string "No type name" "No type name"
       | Some name -> assert_equal_string "Mutex" name
@@ -167,7 +167,7 @@ let test_get_type_from_enum test_ctxt =
 
 let test_get_type_init_from_union test_ctxt =
   union_test (fun info ->
-      let registered = GIUnionInfo.to_registeredtypeinfo info in
+      let registered = Union_info.to_registeredtypeinfo info in
       match Registered_type_info.get_type_init registered with
       | None -> assert_equal_string "No type init" "No type init"
       | Some name -> assert_equal_string "It should not return" name

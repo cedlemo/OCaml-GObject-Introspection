@@ -23,7 +23,7 @@ open Ctypes
 (** Type_info represents a type. You can retrieve a type info from an argument
     (see Arg_info), a function return value (see Function_info), a field
     (see Field_info), a property (see Property_info), a constant
-    (see Constant_info) or for a union discriminator (see GIUnionInfo).
+    (see Constant_info) or for a union discriminator (see Union_info).
     A type can either be a of a basic type which is a standard C primitive type
     or an interface type. For interface types you need to call
     Type_info.get_interface to get a reference to the base info for that
