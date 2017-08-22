@@ -15,6 +15,10 @@ For now, GObject-Introspection is used to generate/bootstrap GLib2 OCaml binding
 Those bindings are used to test the `GObject-Introspection.Loader` module and will
 be a dependency to GObject-Introspection. ( https://github.com/cedlemo/OCaml-GLib2 )
 
+## API:
+
+https://cedlemo.github.io/OCaml-GObject-Introspection/
+
 ## Wiki :
 
 https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
