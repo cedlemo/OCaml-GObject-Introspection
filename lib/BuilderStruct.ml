@@ -61,7 +61,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources_files =
     match Base_info.get_name base_info with
     | None -> ()
     | Some name ->
-        BuilderFunction.append_ctypes_method_bindings name method_info struct_name sources_files
+        Bind_function.append_ctypes_method_bindings name method_info struct_name sources_files
   done
 
 let append_ctypes_struct_seal ml_descr =

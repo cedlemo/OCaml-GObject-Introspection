@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** BuilderFunction : regroups all functions needed to parse and generate the
+(** Bind_function : regroups all functions needed to parse and generate the
     OCaml code for functions. *)
 
 open Ctypes

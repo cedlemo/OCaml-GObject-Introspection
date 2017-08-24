@@ -44,7 +44,7 @@ let () =
       TestBuilderStruct.tests;
       TestBuilderUnion.tests;
       TestBindEnum.tests;
-      TestBuilderFunction.tests;
+      TestBindFunction.tests;
       TestBuilderUtils.tests
     ]
   )

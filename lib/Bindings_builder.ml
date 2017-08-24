@@ -83,7 +83,7 @@ let parse_function_info info source_files =
     if search flags then (
       let f_descrs = (source_files.mli.descr,
                                    source_files.ml.descr) in
-      BuilderFunction.append_ctypes_function_bindings name info' f_descrs;
+      Bind_function.append_ctypes_function_bindings name info' f_descrs;
       add_empty_line source_files.mli.descr;
       add_empty_line source_files.ml.descr
     )

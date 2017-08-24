@@ -41,7 +41,7 @@ let test_function_info name fn =
 let test_get_arguments_types test_ctx =
   test_function_info name (fun info ->
       let callable = Function_info.to_callableinfo info in
-      match BuilderFunction.get_arguments_types callable with
+      match Bind_function.get_arguments_types callable with
       | None -> assert_equal_string "It should returns " "Ctypes arguments"
       | Some l -> let ocaml_types = String.concat " -> " (List.map (fun (a, b) -> a) l) in
         assert_equal_string "string -> string -> Unsigned.uint64" ocaml_types;
@@ -52,7 +52,7 @@ let test_get_arguments_types test_ctx =
 let test_get_return_types test_ctx =
   test_function_info name (fun info ->
       let callable = Function_info.to_callableinfo info in
-      match BuilderFunction.get_return_types callable with
+      match Bind_function.get_return_types callable with
       | None -> assert_equal_string "It should returns " "the return value ocaml and ctypes types"
       | Some (ocaml_type, ctypes_type) ->
         assert_equal_string "int32" ocaml_type;
@@ -70,14 +70,14 @@ let test_escape_bad_function_name test_ctxt =
   let ml_content = "let _double =\n\
                     foreign \"g_rand_double\" (ptr t_typ @-> returning (double))" in
   let writer = fun name info (mli, ml) ->
-    BuilderFunction.append_ctypes_method_bindings name info container (mli, ml)
+    Bind_function.append_ctypes_method_bindings name info container (mli, ml)
   in
   TestUtils.test_writing test_ctxt method_info "double" writer mli_content ml_content
 
 let tests =
-  "GObject Introspection BuilderFunction tests" >:::
+  "GObject Introspection Bind_function tests" >:::
   [
-    "BuilderFunction get arguments ctypes" >:: test_get_arguments_types;
-    "BuilderFunction get return types" >:: test_get_return_types;
-    "BuilderFunction escape bad function name" >:: test_escape_bad_function_name
+    "Bind_function get arguments ctypes" >:: test_get_arguments_types;
+    "Bind_function get return types" >:: test_get_return_types;
+    "Bind_function escape bad function name" >:: test_escape_bad_function_name
   ]
