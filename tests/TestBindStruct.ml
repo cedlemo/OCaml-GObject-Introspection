@@ -40,7 +40,7 @@ let test_append_ctypes_struct_declaration test_ctxt =
   let namespace = "GLib" in
   let name = "Array" in
   let writer = fun name info descrs ->
-    BuilderStruct.append_ctypes_struct_declaration name descrs in
+    Bind_struct.append_ctypes_struct_declaration name descrs in
   let mli_content = "type t\n\
                      val t_typ : t structure typ" in
   let ml_content = "type t\n\
@@ -52,7 +52,7 @@ let test_append_ctypes_struct_declaration test_ctxt =
 let test_append_ctypes_struct_fields_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "SList" in
-  let writer = BuilderStruct.append_ctypes_struct_fields_declarations in
+  let writer = Bind_struct.append_ctypes_struct_fields_declarations in
   let mli_content = "val f_data: (unit ptr, t structure) field\n\
                      val f_next: (t structure ptr, t structure) field" in
   let ml_content = "let f_data = field t_typ \"data\" (ptr void)\n\
@@ -62,8 +62,8 @@ let test_append_ctypes_struct_fields_declarations test_ctxt =
   )
 
 let tests =
-  "GObject Introspection BuilderStruct tests" >:::
+  "GObject Introspection Bind_struct tests" >:::
   [
-    "BuilderStruct append ctypes struct declaration" >:: test_append_ctypes_struct_declaration;
-    "BuilderStruct append ctypes struct fields declarations" >:: test_append_ctypes_struct_fields_declarations
+    "Bind_struct append ctypes struct declaration" >:: test_append_ctypes_struct_declaration;
+    "Bind_struct append ctypes struct fields declarations" >:: test_append_ctypes_struct_fields_declarations
   ]

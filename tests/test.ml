@@ -41,7 +41,7 @@ let () =
       TestGIRegisteredTypeInfo.tests;
       TestLoader.tests;
       TestBindConstant.tests;
-      TestBuilderStruct.tests;
+      TestBindStruct.tests;
       TestBuilderUnion.tests;
       TestBindEnum.tests;
       TestBindFunction.tests;
