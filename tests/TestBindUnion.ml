@@ -53,7 +53,7 @@ let test_append_ctypes_union_declaration test_ctxt =
   let namespace = "GLib" in
   let name = "Mutex" in
   let writer = fun name info descrs ->
-    BuilderUnion.append_ctypes_union_declaration name descrs in
+    Bind_union.append_ctypes_union_declaration name descrs in
   let mli_content = "type t\n\
                      val t_typ : t union typ" in
   let ml_content = "type t\n\
@@ -65,7 +65,7 @@ let test_append_ctypes_union_declaration test_ctxt =
 let test_append_ctypes_union_fields_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "Mutex" in
-  let writer = BuilderUnion.append_ctypes_union_fields_declarations in
+  let writer = Bind_union.append_ctypes_union_fields_declarations in
   let mli_content = "val f_p: (unit ptr, t union) field\n\
                      val f_i: (Array.t structure, t union) field" in
   let ml_content = "let f_p = field t_typ \"p\" (ptr void)\n\
@@ -78,8 +78,8 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
   )
 
 let tests =
-  "GObject Introspection BuilderUnion tests" >:::
+  "GObject Introspection Bind_union tests" >:::
   [
-    "BuilderUnion append ctypes union declaration" >:: test_append_ctypes_union_declaration;
-    "BuilderUnion append ctypes union fields declarations" >:: test_append_ctypes_union_fields_declarations
+    "Bind_union append ctypes union declaration" >:: test_append_ctypes_union_declaration;
+    "Bind_union append ctypes union fields declarations" >:: test_append_ctypes_union_fields_declarations
   ]

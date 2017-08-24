@@ -189,8 +189,8 @@ let parse_union_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = Union_info.from_baseinfo info in
-    BuilderUnion.append_ctypes_union_declaration name f_descrs;
-    BuilderUnion.append_ctypes_union_fields_declarations name info' f_descrs;
+    Bind_union.append_ctypes_union_declaration name f_descrs;
+    Bind_union.append_ctypes_union_fields_declarations name info' f_descrs;
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
 
