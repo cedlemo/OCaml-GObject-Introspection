@@ -43,7 +43,7 @@ let () =
       TestBindConstant.tests;
       TestBuilderStruct.tests;
       TestBuilderUnion.tests;
-      TestBuilderEnum.tests;
+      TestBindEnum.tests;
       TestBuilderFunction.tests;
       TestBuilderUtils.tests
     ]

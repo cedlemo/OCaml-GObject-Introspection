@@ -112,7 +112,7 @@ let parse_enum_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = Enum_info.from_baseinfo info in
-    BuilderEnum.append_ctypes_enum_bindings name info' f_descrs;
+    Bind_enum.append_ctypes_enum_bindings name info' f_descrs;
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
 
@@ -122,7 +122,7 @@ let parse_flags_info info source_files =
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
     let info' = Enum_info.from_baseinfo info in
-    BuilderEnum.append_ctypes_flags_bindings name info' f_descrs;
+    Bind_enum.append_ctypes_flags_bindings name info' f_descrs;
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
 

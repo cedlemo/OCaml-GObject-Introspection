@@ -35,7 +35,7 @@ type bindings_types = Not_implemented of string | Types of type_strings
 
 (** Obtain from a Types.tag the type strings to use in bindings for a Types.tag
     if implemented. Returns Not_implemented with the tag name if not implemented.
-    This is for simple scalar type (ie. with BuilderEnum.get_storage_type) .*)
+    This is for simple scalar type (ie. with Bind_enum.get_storage_type) .*)
 val type_tag_to_bindings_types:
   Types.tag -> bindings_types
 

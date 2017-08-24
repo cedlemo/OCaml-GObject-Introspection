@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** BuilderEnum : regroups all functions needed to parse and generate the
+(** Bind_enum : regroups all functions needed to parse and generate the
     OCaml code for C enums. Flags are enums for which the constants can be
     OR"ed". *)
 
