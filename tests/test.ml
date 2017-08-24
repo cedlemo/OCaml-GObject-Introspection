@@ -40,7 +40,7 @@ let () =
       TestGIVFuncInfo.tests;
       TestGIRegisteredTypeInfo.tests;
       TestLoader.tests;
-      TestBuilderConstant.tests;
+      TestBindConstant.tests;
       TestBuilderStruct.tests;
       TestBuilderUnion.tests;
       TestBuilderEnum.tests;

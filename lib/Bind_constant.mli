@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-(** BuilderConstant : regroups all functions needed to parse and generate the
+(** Bind_constant : regroups all functions needed to parse and generate the
     OCaml code for module values. *)
 
 open Ctypes

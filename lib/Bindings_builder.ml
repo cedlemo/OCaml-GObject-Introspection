@@ -147,30 +147,30 @@ let parse_constant_info info source_files =
     let _ = match Type_info.get_tag type_info with
     | Types.Void as tag -> not_implemented_todo_comments tag f_descrs
     | Types.Boolean ->
-      BuilderConstant.append_boolean_constant name info' f_descrs
+      Bind_constant.append_boolean_constant name info' f_descrs
     | Types.Int8 ->
-      BuilderConstant.append_int8_constant name info' f_descrs
+      Bind_constant.append_int8_constant name info' f_descrs
     | Types.Uint8 ->
-      BuilderConstant.append_uint8_constant name info' f_descrs
+      Bind_constant.append_uint8_constant name info' f_descrs
     | Types.Int16 ->
-      BuilderConstant.append_int16_constant name info' f_descrs
+      Bind_constant.append_int16_constant name info' f_descrs
     | Types.Uint16 ->
-      BuilderConstant.append_uint16_constant name info' f_descrs
+      Bind_constant.append_uint16_constant name info' f_descrs
     | Types.Int32 ->
-      BuilderConstant.append_int32_constant name info' f_descrs
+      Bind_constant.append_int32_constant name info' f_descrs
     | Types.Uint32 ->
-      BuilderConstant.append_uint32_constant name info' f_descrs
+      Bind_constant.append_uint32_constant name info' f_descrs
     | Types.Int64 ->
-      BuilderConstant.append_int64_constant name info' f_descrs
+      Bind_constant.append_int64_constant name info' f_descrs
     | Types.Uint64 ->
-      BuilderConstant.append_uint64_constant name info' f_descrs
+      Bind_constant.append_uint64_constant name info' f_descrs
     | Types.Float ->
-      BuilderConstant.append_float_constant name info' f_descrs
+      Bind_constant.append_float_constant name info' f_descrs
     | Types.Double ->
-      BuilderConstant.append_double_constant name info' f_descrs
+      Bind_constant.append_double_constant name info' f_descrs
     | Types.GType as tag -> not_implemented_todo_comments tag f_descrs
     | Types.Utf8 ->
-      BuilderConstant.append_string_constant name info' f_descrs
+      Bind_constant.append_string_constant name info' f_descrs
     | Types.Filename as tag -> not_implemented_todo_comments tag f_descrs
     | Types.Array as tag -> not_implemented_todo_comments tag f_descrs
     | Types.Interface as tag -> not_implemented_todo_comments tag f_descrs

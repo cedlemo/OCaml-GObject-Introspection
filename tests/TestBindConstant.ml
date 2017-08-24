@@ -39,7 +39,7 @@ let constant_test namespace const_name fn =
 let test_append_boolean_constant test_ctxt =
   let namespace = "GLib" in
   let name = "SOURCE_REMOVE" in
-  let writer = BuilderConstant.append_boolean_constant in
+  let writer = Bind_constant.append_boolean_constant in
   let mli_content = "val _SOURCE_REMOVE : bool" in
   let ml_content = "let _SOURCE_REMOVE = false" in
   constant_test namespace name (fun info ->
@@ -49,7 +49,7 @@ let test_append_boolean_constant test_ctxt =
 let test_append_int8_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT8" in
-  let writer = BuilderConstant.append_int8_constant in
+  let writer = Bind_constant.append_int8_constant in
   let mli_content = "val _MAXINT8 : int" in
   let ml_content = "let _MAXINT8 = 127" in
   constant_test namespace name (fun info ->
@@ -59,7 +59,7 @@ let test_append_int8_constant test_ctxt =
 let test_append_uint8_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT8" in
-  let writer = BuilderConstant.append_uint8_constant in
+  let writer = Bind_constant.append_uint8_constant in
   let mli_content = "val _MAXUINT8 : Unsigned.uint8" in
   let ml_content = "let _MAXUINT8 = Unsigned.UInt8.of_int 255" in
   constant_test namespace name (fun info ->
@@ -69,7 +69,7 @@ let test_append_uint8_constant test_ctxt =
 let test_append_int16_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT16" in
-  let writer = BuilderConstant.append_int16_constant in
+  let writer = Bind_constant.append_int16_constant in
   let mli_content = "val _MAXINT16 : int" in
   let ml_content = "let _MAXINT16 = 32767" in
   constant_test namespace name (fun info ->
@@ -79,7 +79,7 @@ let test_append_int16_constant test_ctxt =
 let test_append_uint16_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT16" in
-  let writer = BuilderConstant.append_uint16_constant in
+  let writer = Bind_constant.append_uint16_constant in
   let mli_content = "val _MAXUINT16 : Unsigned.uint16" in
   let ml_content = "let _MAXUINT16 = Unsigned.UInt16.of_int 65535" in
   constant_test namespace name (fun info ->
@@ -89,7 +89,7 @@ let test_append_uint16_constant test_ctxt =
 let test_append_int32_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT32" in
-  let writer = BuilderConstant.append_int32_constant in
+  let writer = Bind_constant.append_int32_constant in
   let mli_content = "val _MAXINT32 : int32" in
   let ml_content = "let _MAXINT32 = Int32.of_string \"2147483647\"" in
   constant_test namespace name (fun info ->
@@ -99,7 +99,7 @@ let test_append_int32_constant test_ctxt =
 let test_append_uint32_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT32" in
-  let writer = BuilderConstant.append_uint32_constant in
+  let writer = Bind_constant.append_uint32_constant in
   let mli_content = "val _MAXUINT32 : Unsigned.uint32" in
   let ml_content = "let _MAXUINT32 = Unsigned.UInt32.of_string \"4294967295\"" in
   constant_test namespace name (fun info ->
@@ -109,7 +109,7 @@ let test_append_uint32_constant test_ctxt =
 let test_append_int64_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXINT64" in
-  let writer = BuilderConstant.append_int64_constant in
+  let writer = Bind_constant.append_int64_constant in
   let mli_content = "val _MAXINT64 : int64" in
   let ml_content = "let _MAXINT64 = 9223372036854775807L" in
   constant_test namespace name (fun info ->
@@ -119,7 +119,7 @@ let test_append_int64_constant test_ctxt =
 let test_append_uint64_constant test_ctxt =
   let namespace = "GLib" in
   let name = "MAXUINT64" in
-  let writer = BuilderConstant.append_uint64_constant in
+  let writer = Bind_constant.append_uint64_constant in
   let mli_content = "val _MAXUINT64 : Unsigned.uint64" in
   let ml_content = "let _MAXUINT64 = Unsigned.UInt64.of_string \"18446744073709551615\"" in
   constant_test namespace name (fun info ->
@@ -131,7 +131,7 @@ let test_append_uint64_constant test_ctxt =
 let test_append_double_constant test_ctxt =
   let namespace = "GLib" in
   let name = "E" in
-  let writer = BuilderConstant.append_double_constant in
+  let writer = Bind_constant.append_double_constant in
   let mli_content = "val _E : float" in
   let ml_content = "let _E = 2.718282" in
   constant_test namespace name (fun info ->
@@ -141,7 +141,7 @@ let test_append_double_constant test_ctxt =
 let test_append_string_constant test_ctxt =
   let namespace = "GLib" in
   let name = "CSET_A_2_Z" in
-  let writer = BuilderConstant.append_string_constant in
+  let writer = Bind_constant.append_string_constant in
   let mli_content = "val _CSET_A_2_Z : string" in
   let ml_content = "let _CSET_A_2_Z = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"" in
   constant_test namespace name (fun info ->
@@ -149,7 +149,7 @@ let test_append_string_constant test_ctxt =
     )
 
 let tests =
-  "GObject Introspection BuilderConstant tests" >:::
+  "GObject Introspection Bind_constant tests" >:::
   [
     "Append boolean constant" >:: test_append_boolean_constant;
     "Append int8 constant" >:: test_append_int8_constant;
