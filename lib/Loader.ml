@@ -71,11 +71,11 @@ let generate_dir loader =
 
 let generate_main_module_files loader =
   let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; "core"] in
-  Builder.generate_ctypes_sources file_name_pattern
+  Bindings_builder.generate_ctypes_sources file_name_pattern
 
 let generate_secondary_module_files loader name =
   let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
-  Builder.generate_ctypes_sources file_name_pattern
+  Bindings_builder.generate_ctypes_sources file_name_pattern
 
 let generate_directories loader =
   let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
@@ -90,7 +90,7 @@ let parse loader
     ?struct_parser
     ?union_parser
     () =
-  let open Builder in
+  let open Bindings_builder in
   let _ = generate_directories loader in
   let main_sources = generate_main_module_files loader in
   let n = Repository.get_n_infos loader.repo loader.namespace in
@@ -104,54 +104,54 @@ let parse loader
         BuilderUtils.add_comments main_sources.mli.descr coms
       else
         match Base_info.get_type info with
-      | Base_info.Invalid -> Builder.parse_invalid_info info
-      | Base_info.Function -> Builder.parse_function_info info main_sources
-      | Base_info.Callback -> Builder.parse_callback_info info
+      | Base_info.Invalid -> Bindings_builder.parse_invalid_info info
+      | Base_info.Function -> Bindings_builder.parse_function_info info main_sources
+      | Base_info.Callback -> Bindings_builder.parse_callback_info info
       | Base_info.Struct -> let info' = Struct_info.from_baseinfo info in
       if Struct_info.is_gtype_struct info' then ()
       else (
         let sources = generate_secondary_module_files loader name in
         (
           match struct_parser with
-            | None -> Builder.parse_struct_info info sources;
+            | None -> Bindings_builder.parse_struct_info info sources;
             | Some struct_parser_info -> struct_parser_info info sources;
       );
-          Builder.close_sources sources
+          Bindings_builder.close_sources sources
         )
-            | Base_info.Boxed -> Builder.parse_boxed_info info
+            | Base_info.Boxed -> Bindings_builder.parse_boxed_info info
       | Base_info.Enum -> (
         match enum_parser with
-          | None -> Builder.parse_enum_info info main_sources
+          | None -> Bindings_builder.parse_enum_info info main_sources
           | Some enum_parser_fn -> enum_parser_fn info main_sources
       )
           | Base_info.Flags -> (
             match flags_parser with
-          | None -> Builder.parse_flags_info info main_sources
+          | None -> Bindings_builder.parse_flags_info info main_sources
           | Some flags_parser_fn -> flags_parser_fn info main_sources
       )
-          | Base_info.Object -> Builder.parse_object_info info
-      | Base_info.Interface -> Builder.parse_interface_info info
+          | Base_info.Object -> Bindings_builder.parse_object_info info
+      | Base_info.Interface -> Bindings_builder.parse_interface_info info
       | Base_info.Constant -> (
         match const_parser with
-          | None -> Builder.parse_constant_info info main_sources
+          | None -> Bindings_builder.parse_constant_info info main_sources
           | Some const_parser_info -> const_parser_info info main_sources
           )
           | Base_info.Invalid_0 -> ()
           | Base_info.Union -> (
             let sources = generate_secondary_module_files loader name in
             let _ = ( match union_parser with
-            | None -> Builder.parse_union_info info sources
+            | None -> Bindings_builder.parse_union_info info sources
             | Some union_parser_fn -> union_parser_fn info sources
           ) in
-            Builder.close_sources sources
+            Bindings_builder.close_sources sources
             )
-            | Base_info.Value -> Builder.parse_value_info info
-      | Base_info.Signal -> Builder.parse_signal_info info
-      | Base_info.Vfunc -> Builder.parse_vfunc_info info
-      | Base_info.Property -> Builder.parse_property_info info
-      | Base_info.Field -> Builder.parse_field_info info
-      | Base_info.Arg -> Builder.parse_arg_info info
-      | Base_info.Type -> Builder.parse_type_info info
-      | Base_info.Unresolved -> Builder.parse_unresolved_info info
+            | Base_info.Value -> Bindings_builder.parse_value_info info
+      | Base_info.Signal -> Bindings_builder.parse_signal_info info
+      | Base_info.Vfunc -> Bindings_builder.parse_vfunc_info info
+      | Base_info.Property -> Bindings_builder.parse_property_info info
+      | Base_info.Field -> Bindings_builder.parse_field_info info
+      | Base_info.Arg -> Bindings_builder.parse_arg_info info
+      | Base_info.Type -> Bindings_builder.parse_type_info info
+      | Base_info.Unresolved -> Bindings_builder.parse_unresolved_info info
   done;
-  Builder.close_sources main_sources
+  Bindings_builder.close_sources main_sources

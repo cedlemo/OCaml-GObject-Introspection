@@ -56,7 +56,7 @@ val get_lib_path:
 
 (** Generate the files Namespace.ml and Namespace.mli in append mode *)
 val generate_main_module_files:
-  t -> Builder.files
+  t -> Bindings_builder.files
 
 (** Generate the directories build_path/namespace/lib *)
 val generate_directories:
@@ -73,10 +73,10 @@ val generate_directories:
  *)
 val parse:
   t ->
-  ?const_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
-  ?enum_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
-  ?flags_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
-  ?struct_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
-  ?union_parser:(Base_info.t structure ptr -> Builder.files -> unit) ->
+  ?const_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
+  ?enum_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
+  ?flags_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
+  ?struct_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
+  ?union_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
   unit ->
   unit
