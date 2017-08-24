@@ -101,7 +101,7 @@ let parse loader
     | Some name ->
       if Base_info.is_deprecated info then
         let coms = Printf.sprintf " !!! DEPRECATED : %s" name in
-        BuilderUtils.add_comments main_sources.mli.descr coms
+        Bindings_utils.add_comments main_sources.mli.descr coms
       else
         match Base_info.get_type info with
       | Base_info.Invalid -> Bindings_builder.parse_invalid_info info

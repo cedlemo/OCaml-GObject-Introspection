@@ -18,7 +18,7 @@
 
 open Ctypes
 
-(** BuilderUtils module : Regroups a set of functions needed in almost all the
+(** Bindings_utils module : Regroups a set of functions needed in almost all the
     Builder* modules. *)
 
 (** Helper to write clean code with optional values. *)

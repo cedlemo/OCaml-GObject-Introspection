@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open BuilderUtils
+open Bindings_utils
 
 let append_ctypes_struct_declaration name sources_files =
   let (mli, ml) = sources_files in
@@ -38,10 +38,10 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
     | None -> ()
     | Some name ->
       let type_info = Field_info.get_type field_info in
-      match BuilderUtils.type_info_to_bindings_types type_info false with
+      match Bindings_utils.type_info_to_bindings_types type_info false with
       | Not_implemented tag_name -> let coms = Printf.sprintf "TODO Struct field %s : %s tag not implemented" struct_name tag_name in
-        BuilderUtils.add_comments mli coms;
-        BuilderUtils.add_comments ml coms
+        Bindings_utils.add_comments mli coms;
+        Bindings_utils.add_comments ml coms
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
         Printf.fprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type';

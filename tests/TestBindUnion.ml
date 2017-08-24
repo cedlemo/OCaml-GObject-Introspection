@@ -71,7 +71,7 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
   let ml_content = "let f_p = field t_typ \"p\" (ptr void)\n\
                     let f_i = field t_typ \"i\" (Array.t_typ)" in
   union_test namespace name (fun info ->
-      (* TODO : Implement BuilderUtils.type_info_to_bindings_types for C array
+      (* TODO : Implement Bindings_utils.type_info_to_bindings_types for C array
        * before re-enabling this.
        * test_writing test_ctxt info name writer mli_content ml_content *)
        ()

@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open BuilderUtils
+open Bindings_utils
 
 let append_enum_type enum_type_name values_and_variants descr =
   Printf.fprintf descr "type %s = " enum_type_name;
@@ -63,16 +63,16 @@ let get_values_and_variants info =
         else match Base_info.get_name value_base_info with
           | None -> get_v_and_v (i + 1) v_v
           | Some const_name ->
-            if BuilderUtils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
+            if Bindings_utils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
             else let value = Value_info.get_value value_info in
               let variant_name = String.capitalize_ascii const_name in
               get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
   in get_v_and_v 0 []
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
-  let enum_type_name = BuilderUtils.get_enum_type_name enum_name in
+  let enum_type_name = Bindings_utils.get_enum_type_name enum_name in
   let tag = Enum_info.get_storage_type info in
-  match BuilderUtils.type_tag_to_bindings_types tag with
+  match Bindings_utils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
     Printf.fprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
@@ -127,9 +127,9 @@ let append_flags_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf ml "%s\n" ctypes_typ
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
-  let enum_type_name = BuilderUtils.get_enum_type_name enum_name in
+  let enum_type_name = Bindings_utils.get_enum_type_name enum_name in
   let tag = Enum_info.get_storage_type info in
-  match BuilderUtils.type_tag_to_bindings_types tag with
+  match Bindings_utils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> (
       Printf.fprintf mli "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name;
       Printf.fprintf ml "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name
