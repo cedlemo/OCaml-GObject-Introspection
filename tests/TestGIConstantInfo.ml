@@ -19,7 +19,7 @@
 open TestUtils
 open OUnit2
 open Ctypes
-open GObjectIntrospection
+open GObject_introspection
 
 let namespace = "GObject"
 let repo = Repository.get_default ()

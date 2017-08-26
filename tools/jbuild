@@ -2,5 +2,5 @@
 
 (executable
  ((name glib_raw_generator)
-  (libraries (GObjectIntrospection)))
+  (libraries (GObject_introspection)))
 )

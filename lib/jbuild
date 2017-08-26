@@ -1,7 +1,7 @@
 (jbuild_version 1)
 
 (library
- ((name        GObjectIntrospection)
+ ((name        GObject_introspection)
   (public_name ocaml-gobject-introspection)
   (libraries (ctypes ctypes.foreign str))
   (preprocess (pps (bisect_ppx -conditional)))

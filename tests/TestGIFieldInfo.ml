@@ -18,7 +18,7 @@
 
 open TestUtils
 open OUnit2
-open GObjectIntrospection
+open GObject_introspection
 
 let namespace = "GLib"
 let repo = Repository.get_default ()

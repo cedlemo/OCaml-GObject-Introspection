@@ -131,7 +131,7 @@ let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_ty
 
 (* Given that method (GIFunction with method flags) of a container (object,
  * structure, union ... ) has at least the container type as argument,
- * when GObjectIntrospection returns no arguments, we just need to add the
+ * when GObject_introspection returns no arguments, we just need to add the
  * container types.*)
 let get_method_arguments_types callable container =
   let n = Callable_info.get_n_args callable in

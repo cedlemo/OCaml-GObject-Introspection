@@ -18,7 +18,7 @@
 
 open TestUtils
 open OUnit2
-open GObjectIntrospection
+open GObject_introspection
 
 let get_enum_info repo namespace enum_name =
   let _ = Repository.require repo namespace () in

@@ -18,7 +18,7 @@
 
 open TestUtils
 open OUnit2
-open GObjectIntrospection
+open GObject_introspection
 
 let test_escape_OCaml_keywords test_ctxt =
   let escaped = Bindings_utils.escape_OCaml_keywords "end" in

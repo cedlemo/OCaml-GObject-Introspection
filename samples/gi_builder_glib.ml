@@ -1,4 +1,4 @@
-module GI = GObjectIntrospection
+module GI = GObject_introspection
 
 let print_infos loader =
   let namespace = GI.Loader.get_namespace loader in

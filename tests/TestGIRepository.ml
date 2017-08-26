@@ -18,7 +18,7 @@
 
 open OUnit2
 open TestUtils
-open GObjectIntrospection
+open GObject_introspection
 
 let test_get_default test_ctxt =
   let _ = Repository.get_default () in
