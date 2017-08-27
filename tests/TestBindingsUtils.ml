@@ -53,6 +53,8 @@ let test_camel_case_to_capitalized_snake_case test_ctxt =
     ("a", "A");
     ("Ca", "Ca");
     ("ca", "Ca");
+    ("IOChannel", "IOChannel");
+    ("PollFD", "Poll_fd");
   ] in
   let rec _check = function
     | [] -> ()
