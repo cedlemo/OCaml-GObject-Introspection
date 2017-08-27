@@ -44,6 +44,20 @@ let test_ensure_valid_variable_name test_ctxt =
     assert_equal_string reference escaped
   in test ["end"; "int"; "double"; "3D"]
 
+let test_camel_case_to_capitalized_snake_case test_ctxt =
+  let values = [
+    ("CapitalizedSnakeCase", "Capitalized_snake_case");
+    ("CAPITALizedSnakeCASe", "CAPITALized_snake_case");
+    ("capitalizedSnakeCase", "Capitalized_snake_case");
+  ] in
+  let rec _check = function
+    | [] -> ()
+    | (str_to_test, str_result) :: values'->
+        let str_result' = Bindings_utils.camel_case_to_capitalized_snake_case str_to_test in
+        let _ = assert_equal_string str_result str_result' in
+        _check values'
+  in _check values
+
 let tests =
   "GObject Introspection Bindings_utils tests" >:::
   [
@@ -51,5 +65,6 @@ let tests =
     "Test escape OCaml types" >:: test_escape_OCaml_types;
     "Test escape Ctypes types" >:: test_escape_Ctypes_types;
     "Test escape number at beginning" >:: test_escape_number_at_beginning;
-    "Test ensure valid variable name" >:: test_ensure_valid_variable_name
+    "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
+    "Test camel case to capitalized snake case" >:: test_camel_case_to_capitalized_snake_case
   ]
