@@ -101,3 +101,7 @@ val ensure_valid_variable_name:
     name as well.*)
 val get_enum_type_name:
     string -> string
+
+(** Convert a CamelCase string to a Capitalize_snake_case. *)
+val camel_case_to_capitalized_snake_case:
+  string -> string

@@ -274,3 +274,26 @@ let ensure_valid_variable_name name =
 
 let get_enum_type_name enum_name =
   String.lowercase_ascii enum_name
+
+let camel_case_to_capitalized_snake_case str =
+  let extract str start stop =
+    let len = (stop + 1) - start in
+    let sub_string = String.sub str start len in
+    if start == 0 then String.capitalize_ascii sub_string (* ensure that the first part is always capitalized *)
+    else String.lowercase_ascii sub_string
+  in
+  let len = String.length str in
+  let rec _parse str start acc index =
+    if index + 1 == len then let sub_string = extract str start index in
+        let acc' = (sub_string :: acc) in String.concat "_" (List.rev acc')
+    else (
+      let c = str.[index] in
+      let c_next = str.[index + 1] in
+      if c == Char.lowercase_ascii c && c_next == Char.uppercase_ascii c_next then
+        let sub_string = extract str start index in
+        let acc' = (sub_string :: acc) in
+        _parse str (index + 1) acc' (index + 1)
+      else
+      _parse str start acc (index + 1)
+    )
+  in _parse str 0 [] 0
