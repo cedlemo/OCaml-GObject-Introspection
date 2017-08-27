@@ -49,6 +49,10 @@ let test_camel_case_to_capitalized_snake_case test_ctxt =
     ("CapitalizedSnakeCase", "Capitalized_snake_case");
     ("CAPITALizedSnakeCASe", "CAPITALized_snake_case");
     ("capitalizedSnakeCase", "Capitalized_snake_case");
+    ("", "");
+    ("a", "A");
+    ("Ca", "Ca");
+    ("ca", "Ca");
   ] in
   let rec _check = function
     | [] -> ()

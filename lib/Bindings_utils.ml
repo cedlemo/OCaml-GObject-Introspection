@@ -283,17 +283,20 @@ let camel_case_to_capitalized_snake_case str =
     else String.lowercase_ascii sub_string
   in
   let len = String.length str in
-  let rec _parse str start acc index =
-    if index + 1 == len then let sub_string = extract str start index in
+  if len <= 1 then String.capitalize_ascii str
+  else (
+    let rec _parse str start acc index =
+      if index + 1 == len then let sub_string = extract str start index in
       let acc' = (sub_string :: acc) in String.concat "_" (List.rev acc')
-    else (
-      let c = str.[index] in
-      let c_next = str.[index + 1] in
-      if c == Char.lowercase_ascii c && c_next == Char.uppercase_ascii c_next then
-        let sub_string = extract str start index in
-        let acc' = (sub_string :: acc) in
-        _parse str (index + 1) acc' (index + 1)
-      else
-      _parse str start acc (index + 1)
-    )
-  in _parse str 0 [] 0
+      else (
+        let c = str.[index] in
+        let c_next = str.[index + 1] in
+        if c == Char.lowercase_ascii c && c_next == Char.uppercase_ascii c_next then
+          let sub_string = extract str start index in
+          let acc' = (sub_string :: acc) in
+          _parse str (index + 1) acc' (index + 1)
+        else
+          _parse str start acc (index + 1)
+      )
+    in _parse str 0 [] 0
+  )
