@@ -285,7 +285,7 @@ let camel_case_to_capitalized_snake_case str =
   let len = String.length str in
   let rec _parse str start acc index =
     if index + 1 == len then let sub_string = extract str start index in
-        let acc' = (sub_string :: acc) in String.concat "_" (List.rev acc')
+      let acc' = (sub_string :: acc) in String.concat "_" (List.rev acc')
     else (
       let c = str.[index] in
       let c_next = str.[index + 1] in
