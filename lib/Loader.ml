@@ -74,7 +74,8 @@ let generate_main_module_files loader =
   Bindings_builder.generate_ctypes_sources file_name_pattern
 
 let generate_secondary_module_files loader name =
-  let file_name_pattern = (get_lib_path loader ^ "/") ^ name in
+  let name' = Bindings_utils.camel_case_to_capitalized_snake_case name in
+  let file_name_pattern = (get_lib_path loader ^ "/") ^ name' in
   Bindings_builder.generate_ctypes_sources file_name_pattern
 
 let generate_directories loader =
