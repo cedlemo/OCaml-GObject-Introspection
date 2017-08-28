@@ -1,4 +1,4 @@
-module GI = GObjectIntrospection
+module GI = GObject_introspection
 
 (* This tool is used to  generate the raw bindings of GLib 2 in
  * the OCaml-glib package
