@@ -267,7 +267,9 @@ let type_info_to_bindings_types type_info maybe_null =
       let bindings_interface_name interface =
         match Base_info.get_name interface with
         | None -> None
-        | Some name -> camel_case_to_capitalized_snake_case name
+        | Some name ->
+          let bindings_name = camel_case_to_capitalized_snake_case name in
+          Some bindings_name
       in
       match Base_info.get_type interface with
       | Invalid as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
@@ -281,7 +283,7 @@ let type_info_to_bindings_types type_info maybe_null =
       )
       | Boxed as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Enum as t -> (
-        match bindings_interface_name with
+        match bindings_interface_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name -> let view_name = String.lowercase_ascii name in
         Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
