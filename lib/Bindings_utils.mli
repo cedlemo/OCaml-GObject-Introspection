@@ -88,7 +88,9 @@ val get_enum_type_name:
 val camel_case_to_capitalized_snake_case:
   string -> string
 
-(** Get the bindings name of a structure data from its BaseInfo. *)
+(** Get the bindings name of a C data from its BaseInfo. Only complex C data
+    structure need to use it (ie: structure, union, enum, flags, interface and
+    gobject.)*)
 val get_bindings_name:
   Base_info.t ptr -> string option
 
