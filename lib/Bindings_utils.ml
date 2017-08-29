@@ -271,32 +271,25 @@ let type_info_to_bindings_types type_info maybe_null =
     | Types.Unichar as tag -> Not_implemented (Types.string_of_tag tag)
     )
   | Some interface ->
-      let bindings_interface_name interface =
-        match Base_info.get_name interface with
-        | None -> None
-        | Some name ->
-          let bindings_name = camel_case_to_capitalized_snake_case name in
-          Some bindings_name
-      in
       match Base_info.get_type interface with
       | Invalid as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Function as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Callback as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Struct as t -> (
-        match bindings_interface_name interface with
+        match get_bindings_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name ->
         Types (check_if_pointer (Printf.sprintf "%s.t structure" name, Printf.sprintf "%s.t_typ" name))
       )
       | Boxed as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Enum as t -> (
-        match bindings_interface_name interface with
+        match get_bindings_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name -> let view_name = String.lowercase_ascii name in
         Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
       )
       | Flags as t -> (
-        match bindings_interface_name interface with
+        match get_bindings_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name -> let view_name = (String.lowercase_ascii name) ^ "_list" in
         Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
