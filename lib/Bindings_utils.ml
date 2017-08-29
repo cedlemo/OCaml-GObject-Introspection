@@ -186,6 +186,13 @@ let camel_case_to_capitalized_snake_case str =
     in _parse str 0 [] 0
   )
 
+let get_bindings_name info =
+  match Base_info.get_name info with
+  | None -> None
+  | Some name ->
+    let bindings_name = camel_case_to_capitalized_snake_case name in
+    Some bindings_name
+
 type type_strings = { ocaml : string;
                       ctypes : string }
 

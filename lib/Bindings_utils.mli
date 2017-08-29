@@ -88,6 +88,10 @@ val get_enum_type_name:
 val camel_case_to_capitalized_snake_case:
   string -> string
 
+(** Get the bindings name of a structure data from its BaseInfo. *)
+val get_bindings_name:
+  Base_info.t ptr -> string option
+
 (** Type strings representation used in the bindings for a Types tag. *)
 type type_strings = { ocaml : string;
                       ctypes : string }
