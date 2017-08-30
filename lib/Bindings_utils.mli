@@ -92,7 +92,7 @@ val camel_case_to_capitalized_snake_case:
     structure need to use it (ie: structure, union, enum, flags, interface and
     gobject.)*)
 val get_bindings_name:
-  Base_info.t ptr -> string option
+  Base_info.t structure ptr -> string option
 
 (** Type strings representation used in the bindings for a Types tag. *)
 type type_strings = { ocaml : string;
