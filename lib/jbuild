@@ -14,5 +14,8 @@
  ((targets (c_flags.sexp
             c_library_flags.sexp))
   (deps    (../config/discover.exe))
-  (action  (run ${<} -ocamlc ${OCAMLC}))))
+  (action  (run ${<} -ocamlc ${OCAMLC}))
+ )
+)
 
+(ocamllex (lexer))
