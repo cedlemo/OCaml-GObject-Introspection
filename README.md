@@ -47,14 +47,8 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
       - [Flags : enumerations for bitwise operations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#flags--enumerations-for-bitwise-operations)
 
 ## TODOS :
-  * continue with Capitalized snake case for generated modules.
-    * adapt the tests
-    * adapt code generators.
-
   * handle simple functions for struct, unions.
     * started
-
-  * generate coverage report with bisect_ppx (https://discuss.ocaml.org/t/bisect-ppx-ocaml-code-coverage-with-nice-html-reports/728/4)
 
   * start supporting Interface.
 
