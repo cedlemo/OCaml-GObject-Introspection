@@ -285,14 +285,14 @@ let type_info_to_bindings_types type_info maybe_null =
       | Enum as t -> (
         match get_bindings_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
-        | Some name -> let view_name = String.lowercase_ascii name in
-        Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
+        | Some name ->
+        Types {ocaml = Printf.sprintf "%s.t" name; ctypes = Printf.sprintf "%s.t_view" name}
       )
       | Flags as t -> (
         match get_bindings_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
-        | Some name -> let view_name = (String.lowercase_ascii name) ^ "_list" in
-        Types {ocaml = Printf.sprintf "Core.%s" view_name; ctypes = Printf.sprintf "Core.%s" view_name}
+        | Some name ->
+        Types {ocaml = Printf.sprintf "%s.t_list" name; ctypes = Printf.sprintf "%s.t_list_view" name}
       )
       | Object as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Interface as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
