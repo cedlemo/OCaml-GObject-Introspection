@@ -120,14 +120,18 @@ let parse loader
       )
       | Base_info.Boxed -> Bindings_builder.parse_boxed_info info
       | Base_info.Enum -> (
-        match enum_parser with
-          | None -> Bindings_builder.parse_enum_info info main_sources
-          | Some enum_parser_fn -> enum_parser_fn info main_sources
+          let sources = generate_secondary_module_files loader name in (
+            match enum_parser with
+            | None -> Bindings_builder.parse_enum_info info sources
+            | Some enum_parser_fn -> enum_parser_fn info sources
+          )
       )
       | Base_info.Flags -> (
+          let sources = generate_secondary_module_files loader name in (
             match flags_parser with
-          | None -> Bindings_builder.parse_flags_info info main_sources
-          | Some flags_parser_fn -> flags_parser_fn info main_sources
+            | None -> Bindings_builder.parse_flags_info info sources
+            | Some flags_parser_fn -> flags_parser_fn info sources
+          )
       )
       | Base_info.Object -> Bindings_builder.parse_object_info info
       | Base_info.Interface -> Bindings_builder.parse_interface_info info
