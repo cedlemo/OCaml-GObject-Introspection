@@ -143,14 +143,14 @@ let test_append_enum_view test_ctxt =
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
-let flags_to_type = "type optionflags = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
-                     type optionflags_list = optionflags list"
-let flags_to_type_travis = "type optionflags = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
-                            type optionflags_list = optionflags list"
+let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+                     type t_list = t list"
+let flags_to_type_travis = "type t = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+                            type t_list = t list"
 
-let flags_of_value_sig = "val optionflags_of_value:\n\
-                          Unsigned.uint32 -> optionflags"
-let flags_of_value = "let optionflags_of_value v =\n\
+let flags_of_value_sig = "val of_value:\n\
+                          Unsigned.uint32 -> t"
+let flags_of_value = "let of_value v =\n\
                       if v = Unsigned.UInt32.of_int 0 then None\n\
                       else if v = Unsigned.UInt32.of_int 1 then Hidden\n\
                       else if v = Unsigned.UInt32.of_int 2 then In_main\n\
@@ -161,7 +161,7 @@ let flags_of_value = "let optionflags_of_value v =\n\
                       else if v = Unsigned.UInt32.of_int 64 then Noalias\n\
                       else raise (Invalid_argument \"Unexpected OptionFlags value\")"
 
-let flags_of_value_travis = "let optionflags_of_value v =\n\
+let flags_of_value_travis = "let of_value v =\n\
                              if v = Unsigned.UInt32.of_int 1 then Hidden\n\
                              else if v = Unsigned.UInt32.of_int 2 then In_main\n\
                              else if v = Unsigned.UInt32.of_int 4 then Reverse\n\
@@ -171,9 +171,9 @@ let flags_of_value_travis = "let optionflags_of_value v =\n\
                              else if v = Unsigned.UInt32.of_int 64 then Noalias\n\
                              else raise (Invalid_argument \"Unexpected OptionFlags value\")"
 
-let flags_to_value_sig = "val optionflags_to_value:\n\
-                          optionflags -> Unsigned.uint32"
-let flags_to_value = "let optionflags_to_value = function\n\
+let flags_to_value_sig = "val to_value:\n\
+                          t -> Unsigned.uint32"
+let flags_to_value = "let to_value = function\n\
                       | None -> Unsigned.UInt32.of_int 0\n\
                       | Hidden -> Unsigned.UInt32.of_int 1\n\
                       | In_main -> Unsigned.UInt32.of_int 2\n\
@@ -183,7 +183,7 @@ let flags_to_value = "let optionflags_to_value = function\n\
                       | Optional_arg -> Unsigned.UInt32.of_int 32\n\
                       | Noalias -> Unsigned.UInt32.of_int 64"
 
-let flags_to_value_travis = "let optionflags_to_value = function\n\
+let flags_to_value_travis = "let to_value = function\n\
                              | Hidden -> Unsigned.UInt32.of_int 1\n\
                              | In_main -> Unsigned.UInt32.of_int 2\n\
                              | Reverse -> Unsigned.UInt32.of_int 4\n\
@@ -193,21 +193,21 @@ let flags_to_value_travis = "let optionflags_to_value = function\n\
                              | Noalias -> Unsigned.UInt32.of_int 64"
 
 
-let flags_type_list_to_value_sig = "val optionflags_list_to_value:\n\
-                                    optionflags_list -> Unsigned.uint32"
-let flags_type_list_to_value = "let optionflags_list_to_value flags =\n\
+let flags_type_list_to_value_sig = "val list_to_value:\n\
+                                    t_list -> Unsigned.uint32"
+let flags_type_list_to_value = "let list_to_value flags =\n\
                                   let open Unsigned.UInt32 in\n\
                                   let rec logor_flags l acc =\n\
                                   match l with\n\
                                   | [] -> acc\n\
-                                  | f :: q -> let v = optionflags_to_value f in\n\
+                                  | f :: q -> let v = to_value f in\n\
                                     let acc' = logor acc v in\n\
                                     logor_flags q acc'\n\
                                   in\n\
                                   logor_flags flags zero"
-let flags_type_list_of_value_sig = "val optionflags_list_of_value:\n\
-                                    Unsigned.uint32 -> optionflags_list"
-let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
+let flags_type_list_of_value_sig = "val list_of_value:\n\
+                                    Unsigned.uint32 -> t_list"
+let flags_type_list_of_value = "let list_of_value v =\n\
                                 let open Unsigned.UInt32 in\n\
                                 let all_flags = [( 0 , None ); ( 1 , Hidden ); ( 2 , In_main ); ( 4 , Reverse ); ( 8 , No_arg ); ( 16 , Filename ); ( 32 , Optional_arg ); ( 64 , Noalias )]\n\
                                 in\n\
@@ -218,7 +218,7 @@ let flags_type_list_of_value = "let optionflags_list_of_value v =\n\
                                 else build_flags_list q acc\n\
                                 in build_flags_list all_flags []"
 
-let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
+let flags_type_list_of_value_travis = "let list_of_value v =\n\
                                 let open Unsigned.UInt32 in\n\
                                 let all_flags = [( 1 , Hidden ); ( 2 , In_main ); ( 4 , Reverse ); ( 8 , No_arg ); ( 16 , Filename ); ( 32 , Optional_arg ); ( 64 , Noalias )]\n\
                                 in\n\
@@ -229,10 +229,10 @@ let flags_type_list_of_value_travis = "let optionflags_list_of_value v =\n\
                                 else build_flags_list q acc\n\
                                 in build_flags_list all_flags []"
 
-let flags_type_view_sig = "val optionflags_list : optionflags_list typ"
-let flags_type_view = "let optionflags_list = view\n\
-                       ~read:optionflags_list_of_value\n\
-                       ~write:optionflags_list_to_value\n\
+let flags_type_view_sig = "val t_list_view : t_list typ"
+let flags_type_view = "let t_list_view = view\n\
+                       ~read:list_of_value\n\
+                       ~write:list_to_value\n\
                        uint32_t"
 let get_flags_info namespace enum_name =
   match Repository.find_by_name repo namespace enum_name with
@@ -350,10 +350,10 @@ let tests =
     "Bind_enum append enum type" >:: test_append_enum_type;
     "Bind_enum append enum view reader" >:: test_append_enum_of_value_fn;
     "Bind_enum append enum view writer" >:: test_append_enum_to_value_fn;
-    "Bind_enum append enum view" >:: test_append_enum_view(*;
+    "Bind_enum append enum view" >:: test_append_enum_view;
     "Bind_enum append enum flags type" >:: test_append_flags_types;
     "Bind_enum append enum flags of value" >:: test_append_enum_flags_of_value_fn;
     "Bind_enum append enum flags to value" >:: test_append_enum_flags_to_value_fn;
     "Bind_enum append enum flags list to value" >:: test_append_enum_flags_list_to_value_fn;
-    "Bind_enum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn *)
+    "Bind_enum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn
   ]
