@@ -19,8 +19,7 @@
 open Bindings_utils
 
 let append_enum_type enum_type_name values_and_variants descr =
-  Printf.fprintf descr "type %s = " enum_type_name;
-  Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
+  Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
 
 let negative_int_in_parentheses value =
   if (String.get value 0 = '-') then String.concat " " ["("; value; ")"]
@@ -32,23 +31,22 @@ let value_info_to_enum_type_conversion ocaml_type value =
   else  "Int32.of_int " ^ value
 
 let append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
-  Printf.fprintf mli "val %s_of_value:\n%s -> %s\n" enum_type_name ocaml_type enum_type_name;
-  Printf.fprintf ml "let %s_of_value v =\nif v = " enum_type_name;
+  Printf.fprintf mli "val of_value:\n%s -> t\n" ocaml_type;
+  Printf.fprintf ml "let of_value v =\nif v = %!";
   Printf.fprintf ml "%s" (String.concat "else if v = " (List.map (fun (x, v) ->
       String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " then "; v; "\n"] ) values_and_variants));
   Printf.fprintf ml "else raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
 
 let append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
-  Printf.fprintf mli "val %s_to_value:\n%s -> %s\n" enum_type_name enum_type_name ocaml_type;
-  Printf.fprintf ml "let %s_to_value = function\n| " enum_type_name;
-  Printf.fprintf ml "%s" (String.concat "| " (List.map (fun (x, v) ->
+  Printf.fprintf mli "val to_value:\nt -> %s\n" ocaml_type;
+  Printf.fprintf ml "let to_value = function\n| %s" (String.concat "| " (List.map (fun (x, v) ->
       String.concat "" [v; " -> "; value_info_to_enum_type_conversion ocaml_type x; "\n"] ) values_and_variants))
 
 let append_enum_view enum_type_name ctypes_typ (mli, ml) =
-  Printf.fprintf mli "val %s : %s typ\n" enum_type_name enum_type_name;
-  Printf.fprintf ml "let %s = view \n" enum_type_name;
-  Printf.fprintf ml "~read:%s_of_value \n" enum_type_name;
-  Printf.fprintf ml "~write:%s_to_value \n" enum_type_name;
+  Printf.fprintf mli "val t_view: t typ\n%!";
+  Printf.fprintf ml "let t_view = view \n%!";
+  Printf.fprintf ml "~read:of_value \n%!";
+  Printf.fprintf ml "~write:to_value \n%!";
   Printf.fprintf ml "%s\n" ctypes_typ
 
 let get_values_and_variants info =
