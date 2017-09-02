@@ -82,46 +82,45 @@ let append_ctypes_enum_bindings enum_name info (mli, ml) =
     append_enum_view enum_type_name ctypes_typ (mli, ml)
 
 let append_flags_types enum_type_name values_and_variants descr =
-  Printf.fprintf descr "type %s = " enum_type_name;
-  Printf.fprintf descr "%s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants));
-  Printf.fprintf descr "type %s_list = %s list\n" enum_type_name enum_type_name
+  Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants));
+  Printf.fprintf descr "type t_list = t list\n%!"
 
 let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) =
-  Printf.fprintf mli "val %s_list_to_value:\n%s_list -> %s\n" enum_type_name enum_type_name ocaml_type;
+  Printf.fprintf mli "val list_to_value:\nt_list -> %s\n" ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
-  Printf.fprintf ml "let %s_list_to_value flags =\n\
+  Printf.fprintf ml "let list_to_value flags =\n\
                        let open %s in\n\
                        let rec logor_flags l acc =\n\
                          match l with\n\
                          | [] -> acc\n\
-                         | f :: q -> let v = %s_to_value f in\n\
+                         | f :: q -> let v = to_value f in\n\
                          let acc' = logor acc v in\n\
                          logor_flags q acc'\n\
                        in\n\
-                       logor_flags flags zero\n" enum_type_name constant_type enum_type_name
+                       logor_flags flags zero\n" constant_type
 
 let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
-  Printf.fprintf mli "val %s_list_of_value:\n%s -> %s_list\n" enum_type_name ocaml_type enum_type_name;
+  Printf.fprintf mli "val list_of_value:\n%s -> t_list\n" ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
-  Printf.fprintf ml "let %s_list_of_value v =\n\
-                     let open %s in\n" enum_type_name constant_type;
+  Printf.fprintf ml "let list_of_value v =\n\
+                     let open %s in\n" constant_type;
   Printf.fprintf ml "let all_flags = [%s]\n" (String.concat "; " (List.map (fun (x,v) ->
     String.concat " " ["("; negative_int_in_parentheses x; ","; v; ")"]) values_and_variants));
-    Printf.fprintf ml "%s" "in\n\
+    Printf.fprintf ml "in\n\
                            let rec build_flags_list allf acc =\n\
                              match allf with\n\
                              | [] -> acc\n\
                              | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)\n\
                              else build_flags_list q acc\n\
-                           in build_flags_list all_flags []\n"
+                           in build_flags_list all_flags []\n%!"
 (* TODO: factorize, there is no need to rewrite each time build_flags_list. It
  * can be added once in core.ml of the lib. *)
 
 let append_flags_view enum_type_name ctypes_typ (mli, ml) =
-  Printf.fprintf mli "val %s_list : %s_list typ\n" enum_type_name enum_type_name;
-  Printf.fprintf ml "let %s_list = view \n" enum_type_name;
-  Printf.fprintf ml "~read:%s_list_of_value \n" enum_type_name;
-  Printf.fprintf ml "~write:%s_list_to_value \n" enum_type_name;
+  Printf.fprintf mli "val t_list_view : t_list typ\n%!";
+  Printf.fprintf ml "let t_list_view = view \n%!";
+  Printf.fprintf ml "~read:list_of_value \n%!";
+  Printf.fprintf ml "~write:list_to_value \n%!";
   Printf.fprintf ml "%s\n" ctypes_typ
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
