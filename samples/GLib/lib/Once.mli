@@ -2,7 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-(* TODO Struct field Once : interface tag not implemented . *)
+val f_status: (Core.once_status, t structure) field
 val f_retval: (unit ptr, t structure) field
 val init_enter:
 t structure ptr -> unit ptr -> bool

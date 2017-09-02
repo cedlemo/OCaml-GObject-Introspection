@@ -5,32 +5,55 @@ val t_typ : t structure typ
 val f_str: (string, t structure) field
 val f_len: (Unsigned.uint64, t structure) field
 val f_allocated_len: (Unsigned.uint64, t structure) field
-(* Not implemented g_string_append return type not handled . *)
-(* Not implemented g_string_append_c return type not handled . *)
-(* Not implemented g_string_append_len return type not handled . *)
+val append:
+t structure ptr -> string -> t structure ptr
+val append_c:
+t structure ptr -> int -> t structure ptr
+val append_len:
+t structure ptr -> string -> int64 -> t structure ptr
 (* Not implemented g_string_append_unichar argument types not handled . *)
-(* Not implemented g_string_append_uri_escaped return type not handled . *)
-(* Not implemented g_string_ascii_down return type not handled . *)
-(* Not implemented g_string_ascii_up return type not handled . *)
-(* Not implemented g_string_assign return type not handled . *)
-(* Not implemented g_string_down return type not handled . *)
-(* Not implemented g_string_equal argument types not handled . *)
-(* Not implemented g_string_erase return type not handled . *)
-(* Not implemented g_string_free return type not handled . *)
-(* Not implemented g_string_free_to_bytes return type not handled . *)
+val append_uri_escaped:
+t structure ptr -> string -> string -> bool -> t structure ptr
+val ascii_down:
+t structure ptr -> t structure ptr
+val ascii_up:
+t structure ptr -> t structure ptr
+val assign:
+t structure ptr -> string -> t structure ptr
+val down:
+t structure ptr -> t structure ptr
+val equal:
+t structure ptr -> t structure ptr -> bool
+val erase:
+t structure ptr -> int64 -> int64 -> t structure ptr
+val free:
+t structure ptr -> bool -> string option
+val free_to_bytes:
+t structure ptr -> Bytes.t structure ptr
 val hash:
 t structure ptr -> Unsigned.uint32
-(* Not implemented g_string_insert return type not handled . *)
-(* Not implemented g_string_insert_c return type not handled . *)
-(* Not implemented g_string_insert_len return type not handled . *)
+val insert:
+t structure ptr -> int64 -> string -> t structure ptr
+val insert_c:
+t structure ptr -> int64 -> int -> t structure ptr
+val insert_len:
+t structure ptr -> int64 -> string -> int64 -> t structure ptr
 (* Not implemented g_string_insert_unichar argument types not handled . *)
-(* Not implemented g_string_overwrite return type not handled . *)
-(* Not implemented g_string_overwrite_len return type not handled . *)
-(* Not implemented g_string_prepend return type not handled . *)
-(* Not implemented g_string_prepend_c return type not handled . *)
-(* Not implemented g_string_prepend_len return type not handled . *)
+val overwrite:
+t structure ptr -> Unsigned.uint64 -> string -> t structure ptr
+val overwrite_len:
+t structure ptr -> Unsigned.uint64 -> string -> int64 -> t structure ptr
+val prepend:
+t structure ptr -> string -> t structure ptr
+val prepend_c:
+t structure ptr -> int -> t structure ptr
+val prepend_len:
+t structure ptr -> string -> int64 -> t structure ptr
 (* Not implemented g_string_prepend_unichar argument types not handled . *)
-(* Not implemented g_string_set_size return type not handled . *)
-(* Not implemented g_string_truncate return type not handled . *)
-(* Not implemented g_string_up return type not handled . *)
+val set_size:
+t structure ptr -> Unsigned.uint64 -> t structure ptr
+val truncate:
+t structure ptr -> Unsigned.uint64 -> t structure ptr
+val up:
+t structure ptr -> t structure ptr
 

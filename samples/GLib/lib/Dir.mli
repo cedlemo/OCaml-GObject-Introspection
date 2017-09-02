@@ -8,5 +8,6 @@ val read_name:
 t structure ptr -> string
 val rewind:
 t structure ptr -> unit
-(* Not implemented g_dir_make_tmp return type not handled . *)
+val make_tmp:
+t structure ptr -> string option -> Error.t structure ptr ptr option -> string
 

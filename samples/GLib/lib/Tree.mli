@@ -7,19 +7,19 @@ t structure ptr -> unit
 val height:
 t structure ptr -> int32
 val insert:
-t structure ptr -> unit ptr -> unit ptr -> unit
+t structure ptr -> unit ptr option -> unit ptr option -> unit
 val lookup:
-t structure ptr -> unit ptr -> unit ptr
+t structure ptr -> unit ptr option -> unit ptr option
 val lookup_extended:
-t structure ptr -> unit ptr -> unit ptr -> unit ptr -> bool
+t structure ptr -> unit ptr option -> unit ptr option -> unit ptr option -> bool
 val nnodes:
 t structure ptr -> int32
 val remove:
-t structure ptr -> unit ptr -> bool
+t structure ptr -> unit ptr option -> bool
 val replace:
-t structure ptr -> unit ptr -> unit ptr -> unit
+t structure ptr -> unit ptr option -> unit ptr option -> unit
 val steal:
-t structure ptr -> unit ptr -> bool
+t structure ptr -> unit ptr option -> bool
 val unref:
 t structure ptr -> unit
 

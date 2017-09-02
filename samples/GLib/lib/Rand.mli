@@ -2,13 +2,13 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val double:
+val _double:
 t structure ptr -> float
 val double_range:
 t structure ptr -> float -> float -> float
 val free:
 t structure ptr -> unit
-val int:
+val _int:
 t structure ptr -> Unsigned.uint32
 val int_range:
 t structure ptr -> int32 -> int32 -> int32

@@ -2,13 +2,16 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-(* Not implemented g_regex_new argument types not handled . *)
+val _new:
+t structure ptr -> string -> Core.regex_compile_flags_list -> Core.regex_match_flags_list -> Error.t structure ptr ptr option -> Regex.t structure ptr option
 val get_capture_count:
 t structure ptr -> int32
-(* Not implemented g_regex_get_compile_flags return type not handled . *)
+val get_compile_flags:
+t structure ptr -> Core.regex_compile_flags_list
 val get_has_cr_or_lf:
 t structure ptr -> bool
-(* Not implemented g_regex_get_match_flags return type not handled . *)
+val get_match_flags:
+t structure ptr -> Core.regex_match_flags_list
 val get_max_backref:
 t structure ptr -> int32
 val get_max_lookbehind:
@@ -21,18 +24,21 @@ t structure ptr -> string -> int32
 (* Not implemented g_regex_match_all argument types not handled . *)
 (* Not implemented g_regex_match_all_full argument types not handled . *)
 (* Not implemented g_regex_match_full argument types not handled . *)
-(* Not implemented g_regex_ref return type not handled . *)
+val ref:
+t structure ptr -> t structure ptr
 (* Not implemented g_regex_replace argument types not handled . *)
 (* Not implemented g_regex_replace_literal argument types not handled . *)
-(* Not implemented g_regex_split argument types not handled . *)
+(* Not implemented g_regex_split return type not handled . *)
 (* Not implemented g_regex_split_full argument types not handled . *)
 val unref:
 t structure ptr -> unit
 (* Not implemented g_regex_check_replacement argument types not handled . *)
 val error_quark:
 t structure ptr -> Unsigned.uint32
-(* Not implemented g_regex_escape_nul return type not handled . *)
+val escape_nul:
+t structure ptr -> string -> int32 -> string
 (* Not implemented g_regex_escape_string argument types not handled . *)
-(* Not implemented g_regex_match_simple argument types not handled . *)
-(* Not implemented g_regex_split_simple argument types not handled . *)
+val match_simple:
+t structure ptr -> string -> string -> Core.regex_compile_flags_list -> Core.regex_match_flags_list -> bool
+(* Not implemented g_regex_split_simple return type not handled . *)
 
