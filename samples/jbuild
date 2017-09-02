@@ -2,5 +2,5 @@
 
 (executables
  ((names (gi_builder_glib))
-  (libraries (GObjectIntrospection)))
+  (libraries (GObject_introspection)))
 )
