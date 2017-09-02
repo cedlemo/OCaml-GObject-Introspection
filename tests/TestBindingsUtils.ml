@@ -85,6 +85,22 @@ let test_lexer_snake_case test_ctxt =
         _check values'
   in _check values
 
+let test_starts_with test_ctxt =
+  let values = [
+    ("Regex", "egex", false);
+    ("Regex", "Regex", true);
+    ("Regex.t structure ptr", "Regex", true);
+    ("Rege", "Regex", false);
+    ("", "", true)
+  ] in
+  let rec _check = function
+    | [] -> ()
+    | (str, pattern, test_val) :: values'->
+        let ret = Bindings_utils.starts_with str pattern in
+        let _ = assert_equal_boolean test_val ret  in
+        _check values'
+  in _check values
+
 let tests =
   "GObject Introspection Bindings_utils tests" >:::
   [
@@ -94,5 +110,6 @@ let tests =
     "Test escape number at beginning" >:: test_escape_number_at_beginning;
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
     "Test camel case to capitalized snake case" >:: test_camel_case_to_capitalized_snake_case;
-    "Test lexer snake case" >:: test_lexer_snake_case
+    "Test lexer snake case" >:: test_lexer_snake_case;
+    "Test starts with" >:: test_starts_with
   ]
