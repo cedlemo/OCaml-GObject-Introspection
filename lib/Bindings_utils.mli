@@ -94,6 +94,12 @@ val camel_case_to_capitalized_snake_case:
 val get_bindings_name:
   Base_info.t structure ptr -> string option
 
+(** Test if a string starts with a pattern. Returns false if the string length
+    is inferior to the pattern length, returns false if the beginning of the
+    string does not match exactly to the pattern. *)
+val starts_with:
+    string -> string -> bool
+
 (** Type strings representation used in the bindings for a Types tag. *)
 type type_strings = { ocaml : string;
                       ctypes : string }
