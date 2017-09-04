@@ -101,6 +101,28 @@ let test_starts_with test_ctxt =
         _check values'
   in _check values
 
+let test_find_first_occurence test_ctxt =
+  let values = [
+    ("", "", Bindings_utils.Position (0, 0));
+    ("R", "R", Bindings_utils.Position (0, 1));
+    ("Regex", "Regex", Bindings_utils.Position (0, 5));
+    ("__Regex__", "Regex", Bindings_utils.Position (2, 5));
+    ("__Regex____Regex", "Regex", Bindings_utils.Position (2, 5))
+  ] in
+  let rec _check = function
+    | [] -> ()
+    | (str, pattern, expected_value) :: values'->
+        let ret = Bindings_utils.find_first_occurence str pattern in
+        let _ = assert_equal ~printer:(fun v ->
+          match v with
+          | Bindings_utils.NotFound -> String.concat " " [pattern; "not found in"; str]
+          | Bindings_utils.Position (a, b) -> String.concat " " [ string_of_int a;
+          string_of_int b]
+        )
+        expected_value  ret in
+        _check values'
+  in _check values
+
 let tests =
   "GObject Introspection Bindings_utils tests" >:::
   [
@@ -111,5 +133,6 @@ let tests =
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
     "Test camel case to capitalized snake case" >:: test_camel_case_to_capitalized_snake_case;
     "Test lexer snake case" >:: test_lexer_snake_case;
-    "Test starts with" >:: test_starts_with
+    "Test starts with" >:: test_starts_with;
+    "Test find first occurence" >:: test_find_first_occurence
   ]
