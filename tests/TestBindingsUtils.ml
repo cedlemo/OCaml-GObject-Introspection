@@ -123,6 +123,17 @@ let test_find_first_occurence test_ctxt =
         _check values'
   in _check values
 
+let test_remove test_ctxt =
+  let values = [
+    ("pattern", "pattern", "");
+    ("__pattern", "pattern", "__");
+    ("__pattern__pattern", "pattern", "____");
+    ] in
+  List.iter (fun (str, pattern, expected) ->
+    let ret = Bindings_utils.remove str pattern in
+    assert_equal_string expected ret
+  ) values
+
 let tests =
   "GObject Introspection Bindings_utils tests" >:::
   [
@@ -134,5 +145,6 @@ let tests =
     "Test camel case to capitalized snake case" >:: test_camel_case_to_capitalized_snake_case;
     "Test lexer snake case" >:: test_lexer_snake_case;
     "Test starts with" >:: test_starts_with;
-    "Test find first occurence" >:: test_find_first_occurence
+    "Test find first occurence" >:: test_find_first_occurence;
+    "Test remove" >:: test_remove
   ]
