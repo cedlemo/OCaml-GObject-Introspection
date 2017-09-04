@@ -39,9 +39,9 @@ let remove_core_part str =
   String.sub str 5 (len - 5)
 
 let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
- if type_from_core ocaml_type then
-   (remove_core_part ocaml_type, remove_core_part ctypes_typ)
- else (ocaml_type, ctypes_typ)
+  let ocaml_type' = Bindings_utils.remove ocaml_type "Core." in
+  let ctypes_typ' = Bindings_utils.remove ctypes_typ "Core." in
+  (ocaml_type', ctypes_typ')
 
 (* Returns None if there is an out or in/out argument,
  * else returns (string list, string list) whch correspond to
@@ -125,9 +125,10 @@ let append_ctypes_function_bindings raw_name info (mli, ml) =
 (* For the methods arguments, we have to check is the argument is of the same
  * type of the container (object, structure or union). *)
 let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_typ) =
-  if (container_name ^ ".t structure") = ocaml_type then ("t structure", "t_typ")
-  else if (container_name ^ ".t structure ptr") = ocaml_type then ("t structure ptr", "ptr t_typ")
-  else (ocaml_type, ctypes_typ)
+  let module_pattern = container_name ^ "." in
+  let ocaml_type' = Bindings_utils.remove ocaml_type module_pattern in
+  let ctypes_typ' = Bindings_utils.remove ctypes_typ module_pattern in
+  (ocaml_type', ctypes_typ')
 
 (* Given that method (GIFunction with method flags) of a container (object,
  * structure, union ... ) has at least the container type as argument,
