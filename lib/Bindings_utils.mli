@@ -100,6 +100,13 @@ val get_bindings_name:
 val starts_with:
     string -> string -> bool
 
+type pattern_found = NotFound | Position of int * int
+
+(** Find the first occurence of a pattern in a string. Returns None if no patterns
+    was found or the position (start and length). *)
+val find_first_occurence:
+  string -> string -> pattern_found
+
 (** Type strings representation used in the bindings for a Types tag. *)
 type type_strings = { ocaml : string;
                       ctypes : string }

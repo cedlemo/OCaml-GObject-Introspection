@@ -206,6 +206,32 @@ let starts_with str pattern =
     in _check 0
   )
 
+type pattern_found = NotFound | Position of int * int
+
+let find_first_occurence str pattern =
+  let str_len = String.length str in
+  let pattern_len = String.length pattern in
+  if str = pattern then Position (0, str_len)
+  else
+    if str_len < pattern_len then NotFound
+    else (
+      let check start =
+        let rec _check i =
+          let index = start + i in
+          if i = pattern_len then true
+          else
+            if str.[index] <> pattern.[i] then false
+            else _check (i + 1)
+        in _check 0
+      in
+      let rec _find j =
+        if j + pattern_len = str_len then NotFound
+        else
+          if check j then Position (j, pattern_len)
+          else _find (j + 1)
+        in _find 0
+      )
+
 type type_strings = { ocaml : string;
                       ctypes : string }
 
