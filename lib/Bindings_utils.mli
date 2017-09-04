@@ -107,6 +107,10 @@ type pattern_found = NotFound | Position of int * int
 val find_first_occurence:
   string -> string -> pattern_found
 
+(** Remove each occurence of a pattern in a string. *)
+val remove:
+  string -> string -> string
+
 (** Type strings representation used in the bindings for a Types tag. *)
 type type_strings = { ocaml : string;
                       ctypes : string }

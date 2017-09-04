@@ -232,6 +232,10 @@ let find_first_occurence str pattern =
         in _find 0
       )
 
+let remove str pattern =
+  let reg = Str.regexp_string pattern in
+  String.concat "" (Str.split reg str)
+
 type type_strings = { ocaml : string;
                       ctypes : string }
 
