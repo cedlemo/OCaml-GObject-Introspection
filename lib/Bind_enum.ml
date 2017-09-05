@@ -18,7 +18,7 @@
 
 open Bindings_utils
 
-let append_enum_type enum_type_name values_and_variants descr =
+let append_enum_type values_and_variants descr =
   Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
 
 let negative_int_in_parentheses value =
@@ -30,19 +30,19 @@ let value_info_to_enum_type_conversion ocaml_type value =
   else if (String.get value 0 = '-') then String.concat "" ["Int32.of_int "; "("; value; ")"]
   else  "Int32.of_int " ^ value
 
-let append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
+let append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val of_value:\n%s -> t\n" ocaml_type;
   Printf.fprintf ml "let of_value v =\nif v = %!";
   Printf.fprintf ml "%s" (String.concat "else if v = " (List.map (fun (x, v) ->
       String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " then "; v; "\n"] ) values_and_variants));
   Printf.fprintf ml "else raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
 
-let append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
+let append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val to_value:\nt -> %s\n" ocaml_type;
   Printf.fprintf ml "let to_value = function\n| %s" (String.concat "| " (List.map (fun (x, v) ->
       String.concat "" [v; " -> "; value_info_to_enum_type_conversion ocaml_type x; "\n"] ) values_and_variants))
 
-let append_enum_view enum_type_name ctypes_typ (mli, ml) =
+let append_enum_view ctypes_typ (mli, ml) =
   Printf.fprintf mli "val t_view: t typ\n%!";
   Printf.fprintf ml "let t_view = view \n%!";
   Printf.fprintf ml "~read:of_value \n%!";
@@ -68,24 +68,23 @@ let get_values_and_variants info =
   in get_v_and_v 0 []
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
-  let enum_type_name = Bindings_utils.get_enum_type_name enum_name in
   let tag = Enum_info.get_storage_type info in
   match Bindings_utils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
     Printf.fprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
     let values_and_variants = get_values_and_variants info in
-    append_enum_type enum_type_name values_and_variants mli;
-    append_enum_type enum_type_name values_and_variants ml;
-    append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-    append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-    append_enum_view enum_type_name ctypes_typ (mli, ml)
+    append_enum_type values_and_variants mli;
+    append_enum_type values_and_variants ml;
+    append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    append_enum_view ctypes_typ (mli, ml)
 
-let append_flags_types enum_type_name values_and_variants descr =
+let append_flags_types values_and_variants descr =
   Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants));
   Printf.fprintf descr "type t_list = t list\n%!"
 
-let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) =
+let append_flags_list_to_value_fn enum_name ocaml_type (mli, ml) =
   Printf.fprintf mli "val list_to_value:\nt_list -> %s\n" ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let list_to_value flags =\n\
@@ -99,7 +98,7 @@ let append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml) 
                        in\n\
                        logor_flags flags zero\n" constant_type
 
-let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml) =
+let append_flags_list_of_value_fn enum_name ocaml_type values_and_variants (mli, ml) =
   Printf.fprintf mli "val list_of_value:\n%s -> t_list\n" ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   Printf.fprintf ml "let list_of_value v =\n\
@@ -116,7 +115,7 @@ let append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and
 (* TODO: factorize, there is no need to rewrite each time build_flags_list. It
  * can be added once in core.ml of the lib. *)
 
-let append_flags_view enum_type_name ctypes_typ (mli, ml) =
+let append_flags_view ctypes_typ (mli, ml) =
   Printf.fprintf mli "val t_list_view : t_list typ\n%!";
   Printf.fprintf ml "let t_list_view = view \n%!";
   Printf.fprintf ml "~read:list_of_value \n%!";
@@ -124,7 +123,6 @@ let append_flags_view enum_type_name ctypes_typ (mli, ml) =
   Printf.fprintf ml "%s\n" ctypes_typ
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
-  let enum_type_name = Bindings_utils.get_enum_type_name enum_name in
   let tag = Enum_info.get_storage_type info in
   match Bindings_utils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> (
@@ -133,10 +131,10 @@ let append_ctypes_flags_bindings enum_name info (mli, ml) =
     )
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
     let values_and_variants = get_values_and_variants info in
-    append_flags_types enum_type_name values_and_variants mli;
-    append_flags_types enum_type_name values_and_variants ml;
-    append_enum_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-    append_enum_to_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-    append_flags_list_of_value_fn enum_name enum_type_name ocaml_type values_and_variants (mli, ml);
-    append_flags_list_to_value_fn enum_name enum_type_name ocaml_type (mli, ml);
-    append_flags_view enum_type_name ctypes_typ (mli, ml)
+    append_flags_types values_and_variants mli;
+    append_flags_types values_and_variants ml;
+    append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    append_flags_list_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    append_flags_list_to_value_fn enum_name ocaml_type (mli, ml);
+    append_flags_view ctypes_typ (mli, ml)

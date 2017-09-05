@@ -24,16 +24,16 @@ open Ctypes
 open Foreign
 
 val append_enum_type:
-  string -> (string * string) list -> Pervasives.out_channel -> unit
+  (string * string) list -> Pervasives.out_channel -> unit
 
 val append_enum_of_value_fn:
-  string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_enum_to_value_fn:
-  string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_enum_view:
-  string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val get_values_and_variants:
   Enum_info.t structure ptr -> (string * string) list
@@ -42,16 +42,16 @@ val append_ctypes_enum_bindings:
   string -> Enum_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_flags_types:
-  string -> (string * string) list -> Pervasives.out_channel -> unit
+  (string * string) list -> Pervasives.out_channel -> unit
 
 val append_flags_list_to_value_fn:
-  string -> string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_flags_list_of_value_fn:
-  string -> string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_flags_view:
-  string -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val append_ctypes_flags_bindings:
   string -> Enum_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
