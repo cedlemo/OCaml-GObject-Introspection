@@ -79,10 +79,6 @@ val escape_number_at_beginning:
 val ensure_valid_variable_name:
   string -> string
 
-(** Convert a CamelCase string to a Capitalize_snake_case. *)
-val camel_case_to_capitalized_snake_case:
-  string -> string
-
 (** Get the bindings name of a C data from its BaseInfo. Only complex C data
     structure need to use it (ie: structure, union, enum, flags, interface and
     gobject.)*)

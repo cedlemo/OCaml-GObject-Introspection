@@ -44,26 +44,6 @@ let test_ensure_valid_variable_name test_ctxt =
     assert_equal_string reference escaped
   in test ["end"; "int"; "double"; "3D"]
 
-let test_camel_case_to_capitalized_snake_case test_ctxt =
-  let values = [
-    ("CapitalizedSnakeCase", "Capitalized_snake_case");
-    ("CAPITALizedSnakeCASe", "CAPITALized_snake_case");
-    ("capitalizedSnakeCase", "Capitalized_snake_case");
-    ("", "");
-    ("a", "A");
-    ("Ca", "Ca");
-    ("ca", "Ca");
-    ("IOChannel", "IOChannel");
-    ("PollFD", "Poll_fd");
-  ] in
-  let rec _check = function
-    | [] -> ()
-    | (str_to_test, str_result) :: values'->
-        let str_result' = Bindings_utils.camel_case_to_capitalized_snake_case str_to_test in
-        let _ = assert_equal_string str_result str_result' in
-        _check values'
-  in _check values
-
 let test_lexer_snake_case test_ctxt =
   let values = [
     ("CapitalizedSnakeCase", "Capitalized_snake_case");
@@ -142,7 +122,6 @@ let tests =
     "Test escape Ctypes types" >:: test_escape_Ctypes_types;
     "Test escape number at beginning" >:: test_escape_number_at_beginning;
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
-    "Test camel case to capitalized snake case" >:: test_camel_case_to_capitalized_snake_case;
     "Test lexer snake case" >:: test_lexer_snake_case;
     "Test starts with" >:: test_starts_with;
     "Test find first occurence" >:: test_find_first_occurence;
