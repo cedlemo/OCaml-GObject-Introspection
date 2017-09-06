@@ -79,11 +79,6 @@ val escape_number_at_beginning:
 val ensure_valid_variable_name:
   string -> string
 
-(** This function returns from an enum name, its type name which is its view
-    name as well.*)
-val get_enum_type_name:
-    string -> string
-
 (** Convert a CamelCase string to a Capitalize_snake_case. *)
 val camel_case_to_capitalized_snake_case:
   string -> string

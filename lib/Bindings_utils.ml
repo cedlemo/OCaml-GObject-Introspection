@@ -157,9 +157,6 @@ let ensure_valid_variable_name name =
   |> escape_Ctypes_types
   |> escape_number_at_beginning
 
-let get_enum_type_name enum_name =
-  String.lowercase_ascii enum_name
-
 let camel_case_to_capitalized_snake_case str =
   let extract str start stop =
     let len = (stop + 1) - start in
