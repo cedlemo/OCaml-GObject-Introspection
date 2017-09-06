@@ -65,22 +65,6 @@ let test_lexer_snake_case test_ctxt =
         _check values'
   in _check values
 
-let test_starts_with test_ctxt =
-  let values = [
-    ("Regex", "egex", false);
-    ("Regex", "Regex", true);
-    ("Regex.t structure ptr", "Regex", true);
-    ("Rege", "Regex", false);
-    ("", "", true)
-  ] in
-  let rec _check = function
-    | [] -> ()
-    | (str, pattern, test_val) :: values'->
-        let ret = Bindings_utils.starts_with str pattern in
-        let _ = assert_equal_boolean test_val ret  in
-        _check values'
-  in _check values
-
 let test_find_first_occurence test_ctxt =
   let values = [
     ("", "", Bindings_utils.Position (0, 0));
@@ -123,7 +107,6 @@ let tests =
     "Test escape number at beginning" >:: test_escape_number_at_beginning;
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
     "Test lexer snake case" >:: test_lexer_snake_case;
-    "Test starts with" >:: test_starts_with;
     "Test find first occurence" >:: test_find_first_occurence;
     "Test remove" >:: test_remove
   ]

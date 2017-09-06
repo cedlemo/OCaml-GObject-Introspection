@@ -164,19 +164,6 @@ let get_bindings_name info =
     let bindings_name = Lexer.snake_case name in
     Some bindings_name
 
-let starts_with str pattern =
-  let str_len = String.length str in
-  let pattern_len = String.length pattern in
-  if str_len < pattern_len then false
-  else (
-    let rec _check i =
-      if i = pattern_len then true
-      else
-        if str.[i] <> pattern.[i] then false
-        else _check (i + 1)
-    in _check 0
-  )
-
 type pattern_found = NotFound | Position of int * int
 
 let find_first_occurence str pattern =
