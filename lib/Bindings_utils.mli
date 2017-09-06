@@ -85,13 +85,6 @@ val ensure_valid_variable_name:
 val get_bindings_name:
   Base_info.t structure ptr -> string option
 
-type pattern_found = NotFound | Position of int * int
-
-(** Find the first occurence of a pattern in a string. Returns None if no patterns
-    was found or the position (start and length). *)
-val find_first_occurence:
-  string -> string -> pattern_found
-
 (** Remove each occurence of a pattern in a string. *)
 val remove:
   string -> string -> string
