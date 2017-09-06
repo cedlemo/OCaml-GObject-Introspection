@@ -65,14 +65,14 @@ let test_lexer_snake_case test_ctxt =
         _check values'
   in _check values
 
-let test_remove test_ctxt =
+let test_string_pattern_remove test_ctxt =
   let values = [
     ("pattern", "pattern", "");
     ("__pattern", "pattern", "__");
     ("__pattern__pattern", "pattern", "____");
     ] in
   List.iter (fun (str, pattern, expected) ->
-    let ret = Bindings_utils.remove str pattern in
+    let ret = Bindings_utils.string_pattern_remove str pattern in
     assert_equal_string expected ret
   ) values
 
@@ -85,5 +85,5 @@ let tests =
     "Test escape number at beginning" >:: test_escape_number_at_beginning;
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
     "Test lexer snake case" >:: test_lexer_snake_case;
-    "Test remove" >:: test_remove
+    "Test remove" >:: test_string_pattern_remove
   ]

@@ -86,7 +86,7 @@ val get_bindings_name:
   Base_info.t structure ptr -> string option
 
 (** Remove each occurence of a pattern in a string. *)
-val remove:
+val string_pattern_remove:
   string -> string -> string
 
 (** Type strings representation used in the bindings for a Types tag. *)
