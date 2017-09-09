@@ -104,60 +104,60 @@ let parse loader
       if Base_info.is_deprecated info then
         let coms = Printf.sprintf " !!! DEPRECATED : %s" name in
         Bindings_utils.add_comments main_sources.mli.descr coms
-      else
-        match Base_info.get_type info with
-      | Base_info.Invalid -> Bindings_builder.parse_invalid_info info
-      | Base_info.Function -> Bindings_builder.parse_function_info info main_sources
-      | Base_info.Callback -> Bindings_builder.parse_callback_info info
-      | Base_info.Struct -> let info' = Struct_info.from_baseinfo info in
-      if Struct_info.is_gtype_struct info' then ()
       else (
-        let sources = generate_secondary_module_files loader name in (
-          match struct_parser with
+        match Base_info.get_type info with
+        | Base_info.Function -> Bindings_builder.parse_function_info info main_sources
+        | Base_info.Struct -> let info' = Struct_info.from_baseinfo info in
+          if Struct_info.is_gtype_struct info' then ()
+          else (
+            let sources = generate_secondary_module_files loader name in (
+            match struct_parser with
             | None -> Bindings_builder.parse_struct_info info sources;
             | Some struct_parser_info -> struct_parser_info info sources;
-        );
-          Bindings_builder.close_sources sources
-      )
-      | Base_info.Boxed -> Bindings_builder.parse_boxed_info info
-      | Base_info.Enum -> (
+            );
+            Bindings_builder.close_sources sources
+        )
+        | Base_info.Enum -> (
           let sources = generate_secondary_module_files loader name in (
             match enum_parser with
             | None -> Bindings_builder.parse_enum_info info sources
             | Some enum_parser_fn -> enum_parser_fn info sources
           )
-      )
-      | Base_info.Flags -> (
+        )
+        | Base_info.Flags -> (
           let sources = generate_secondary_module_files loader name in (
             match flags_parser with
             | None -> Bindings_builder.parse_flags_info info sources
             | Some flags_parser_fn -> flags_parser_fn info sources
           )
-      )
-      | Base_info.Object -> Bindings_builder.parse_object_info info
-      | Base_info.Interface -> let _ = print_endline name in
-        Bindings_builder.parse_interface_info info
-      | Base_info.Constant -> (
-        match const_parser with
+        )
+        | Base_info.Constant -> (
+          match const_parser with
           | None -> Bindings_builder.parse_constant_info info main_sources
           | Some const_parser_info -> const_parser_info info main_sources
         )
-      | Base_info.Invalid_0 -> ()
-      | Base_info.Union -> (
-        let sources = generate_secondary_module_files loader name in
+        | Base_info.Union -> (
+          let sources = generate_secondary_module_files loader name in
           let _ = ( match union_parser with
             | None -> Bindings_builder.parse_union_info info sources
             | Some union_parser_fn -> union_parser_fn info sources
           ) in
-            Bindings_builder.close_sources sources
+          Bindings_builder.close_sources sources
         )
-      | Base_info.Value -> Bindings_builder.parse_value_info info
-      | Base_info.Signal -> Bindings_builder.parse_signal_info info
-      | Base_info.Vfunc -> Bindings_builder.parse_vfunc_info info
-      | Base_info.Property -> Bindings_builder.parse_property_info info
-      | Base_info.Field -> Bindings_builder.parse_field_info info
-      | Base_info.Arg -> Bindings_builder.parse_arg_info info
-      | Base_info.Type -> Bindings_builder.parse_type_info info
-      | Base_info.Unresolved -> Bindings_builder.parse_unresolved_info info
+        | Base_info.Callback -> Bindings_builder.parse_callback_info info
+        | Base_info.Invalid -> Bindings_builder.parse_invalid_info info
+        | Base_info.Value -> Bindings_builder.parse_value_info info
+        | Base_info.Signal -> Bindings_builder.parse_signal_info info
+        | Base_info.Vfunc -> Bindings_builder.parse_vfunc_info info
+        | Base_info.Property -> Bindings_builder.parse_property_info info
+        | Base_info.Field -> Bindings_builder.parse_field_info info
+        | Base_info.Arg -> Bindings_builder.parse_arg_info info
+        | Base_info.Type -> Bindings_builder.parse_type_info info
+        | Base_info.Unresolved -> Bindings_builder.parse_unresolved_info info
+        | Base_info.Object -> Bindings_builder.parse_object_info info
+        | Base_info.Invalid_0 -> ()
+        | Base_info.Interface -> Bindings_builder.parse_interface_info info
+        | Base_info.Boxed -> Bindings_builder.parse_boxed_info info
+        )
   done;
   Bindings_builder.close_sources main_sources
