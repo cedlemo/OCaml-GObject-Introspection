@@ -62,6 +62,21 @@ val generate_module_files:
 val generate_directories:
   t -> unit
 
+(** Helper type used in Loader.load.
+    TODO : the field base_name is named like this instead of name because
+    of the existence of the field name in the "file" type. See how to better
+    organize this. For example in RWO p 93-94:
+      "we can avoid this ambiguity altogether either by using nonoverlapping
+      field names or, more generally, by minting a module for each type.
+      Packing types into modules is a broadly usefull idom (and one used quite
+      extensively by Core, providing for each type a namespace withing which
+      put related values."*)
+
+type gi_info = { base_name: string;
+                 info: Base_info.t structure ptr;
+                 loader: t;
+                 sources: Bindings_builder.files }
+
 (** Parse the GI infos and create the corresponding ctypes code
   @param const_parser allows user to customize the Constant_info bindings generator.
   @param enum_parser allows user to customize the Enum_info bindings generator.
