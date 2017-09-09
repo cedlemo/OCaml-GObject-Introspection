@@ -92,7 +92,7 @@ let parse_callback_info info =
   ()
 
 let parse_struct_info info source_files =
-  match get_bindings_name info with
+  match get_binding_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
@@ -107,7 +107,7 @@ let parse_boxed_info info =
   ()
 
 let parse_enum_info info source_files =
-  match get_bindings_name info with
+  match get_binding_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
@@ -117,7 +117,7 @@ let parse_enum_info info source_files =
     add_empty_line source_files.ml.descr
 
 let parse_flags_info info source_files =
-  match get_bindings_name info with
+  match get_binding_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
@@ -184,7 +184,7 @@ let parse_constant_info info source_files =
     add_empty_line source_files.ml.descr
 
 let parse_union_info info source_files =
-  match get_bindings_name info with
+  match get_binding_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,
                                  source_files.ml.descr) in
