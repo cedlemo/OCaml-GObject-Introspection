@@ -84,27 +84,17 @@ let generate_directories loader =
   let lib_path = get_lib_path loader in
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
-let parse loader
-    ?const_parser
-    ?enum_parser
-    ?flags_parser
-    ?struct_parser
-    ?union_parser
-    ?(skip = [])
-    () =
+let warning_for_deprecated name sources =
   let open Bindings_builder in
-  let _ = generate_directories loader in
-  let main_sources = generate_main_module_files loader in
-  let n = Repository.get_n_infos loader.repo loader.namespace in
-  for i = 0 to n - 1 do
-    let info = Repository.get_info loader.repo loader.namespace i in
-    match Base_info.get_name info with
-    | None -> ()
-    | Some name ->
-      if Base_info.is_deprecated info then
-        let coms = Printf.sprintf " !!! DEPRECATED : %s" name in
-        Bindings_utils.add_comments main_sources.mli.descr coms
-      else (
+  let coms = Printf.sprintf " !!! DEPRECATED : %s" name in
+  Bindings_utils.add_comments sources.mli.descr coms
+
+let generate_bindings loader info main_sources name const_parser
+                                             enum_parser
+                                             flags_parser
+                                             struct_parser
+                                             union_parser
+                                             skip =
         match Base_info.get_type info with
         | Base_info.Function -> Bindings_builder.parse_function_info info main_sources
         | Base_info.Struct -> let info' = Struct_info.from_baseinfo info in
@@ -158,6 +148,32 @@ let parse loader
         | Base_info.Invalid_0 -> ()
         | Base_info.Interface -> Bindings_builder.parse_interface_info info
         | Base_info.Boxed -> Bindings_builder.parse_boxed_info info
-        )
+
+let parse loader
+    ?const_parser
+    ?enum_parser
+    ?flags_parser
+    ?struct_parser
+    ?union_parser
+    ?(skip = [])
+    () =
+  let open Bindings_builder in
+  let _ = generate_directories loader in
+  let main_sources = generate_main_module_files loader in
+  let n = Repository.get_n_infos loader.repo loader.namespace in
+  for i = 0 to n - 1 do
+    let info = Repository.get_info loader.repo loader.namespace i in
+    match Base_info.get_name info with
+    | None -> ()
+    | Some name ->
+      if Base_info.is_deprecated info then warning_for_deprecated name main_sources
+      else (
+        generate_bindings loader info main_sources name const_parser
+                                                 enum_parser
+                                                 flags_parser
+                                                 struct_parser
+                                                 union_parser
+                                                 skip
+      )
   done;
   Bindings_builder.close_sources main_sources
