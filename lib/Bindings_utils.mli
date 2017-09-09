@@ -82,7 +82,7 @@ val ensure_valid_variable_name:
 (** Get the bindings name of a C data from its BaseInfo. Only complex C data
     structure need to use it (ie: structure, union, enum, flags, interface and
     gobject.)*)
-val get_bindings_name:
+val get_binding_name:
   Base_info.t structure ptr -> string option
 
 (** Remove each occurence of a pattern in a string. *)
