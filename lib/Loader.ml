@@ -90,6 +90,7 @@ let parse loader
     ?flags_parser
     ?struct_parser
     ?union_parser
+    ?(skip = [])
     () =
   let open Bindings_builder in
   let _ = generate_directories loader in
@@ -134,7 +135,8 @@ let parse loader
           )
       )
       | Base_info.Object -> Bindings_builder.parse_object_info info
-      | Base_info.Interface -> Bindings_builder.parse_interface_info info
+      | Base_info.Interface -> let _ = print_endline name in
+        Bindings_builder.parse_interface_info info
       | Base_info.Constant -> (
         match const_parser with
           | None -> Bindings_builder.parse_constant_info info main_sources

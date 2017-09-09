@@ -70,6 +70,9 @@ val generate_directories:
   @param struct_parser allows user to customize the GIStructureInfo bindings
     generator.
   @param union_parser allows user to customize the Union_info bindings generator.
+  @param skip allows user to specify string patterns that will be tested on
+         structure names, union names, enum names, parameter an return type names
+         of functions or methods in order to skip theirs bindings.
  *)
 val parse:
   t ->
@@ -78,5 +81,6 @@ val parse:
   ?flags_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
   ?struct_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
   ?union_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
+  ?skip:string list ->
   unit ->
   unit
