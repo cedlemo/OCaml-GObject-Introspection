@@ -26,7 +26,7 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 ###  table of content.
 
 - [Introduction](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction)
-- [Ctypes bindings of GObject-Introspection](wiki/Ctypes-bindings-of-GObject-Introspection#finished)
+- [Ctypes bindings of GObject-Introspection](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection)
   - [Implementation details](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#implementation-details)
     - [GObjectIntrospection Info Structures hierarchy and type coercion functions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
     - [How the underlying C structures allocation and deallocation are handled](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
@@ -34,29 +34,15 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
     - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#finished)
     - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#remains)
   - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#resources)
-- [GObjectIntrospection Loader](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.)
-  - [Loader Implementation](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#loader-implementation)
-  - [Loader Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#loader-progress)
-    - [Builders Started](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#builders-started)
-    - [Builders Next](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#builders-next)
-  - [Builder Code rules](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#builder-code-rules)
-    - [Module constants](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#module-constants)
-    - [Structures and Unions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#structures-and-unions)
-    - [Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#enumerations)
-      - [Simple Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#simple-enumerations)
-      - [Flags : enumerations for bitwise operations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader.#flags--enumerations-for-bitwise-operations)
-
-## TODOS :
-  * handle simple functions for struct, unions.
-    * started
-
-  * start supporting Interface.
-
-  * for GObject-Introspection, I need
-    * C array views
-    * GArray views
-    * one view for element types `GITypeInfo.get_param_type info 0`
-    * how to handle this and the GLib2 builder.
-
-  * Write down the process to function bindings generation then implement it.
+- [GObjectIntrospection Loader](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader)
+  - [Loader Implementation](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#loader-implementation)
+  - [Loader Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#loader-progress)
+    - [Builders Started](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#builders-started)
+    - [Builders Next](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#builders-next)
+  - [Builder Code rules](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader#builder-code-rules)
+    - [Module constants](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#module-constants)
+    - [Structures and Unions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#structures-and-unions)
+    - [Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#enumerations)
+      - [Simple Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#simple-enumerations)
+      - [Flags : enumerations for bitwise operations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#flags--enumerations-for-bitwise-operations)
 
