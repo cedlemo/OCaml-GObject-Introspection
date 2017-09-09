@@ -47,11 +47,6 @@ let close_sources source_files =
   close_file source_files.ml;
   close_file source_files.mli
 
-type gi_info = { base_name : string;
-                 info : Base_info.t;
-                 loader : Repository.repository;
-                 sources : files }
-
 let append_open_ctypes_modules (mli_descr, ml_descr) =
   add_open_ctypes mli_descr;
   add_open_ctypes ml_descr;
