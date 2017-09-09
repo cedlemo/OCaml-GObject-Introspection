@@ -42,9 +42,15 @@ let generate_sources base_name =
 
 let close_sources source_files =
   let close_file f =
-    if Sys.file_exists f.name then Pervasives.close_out f.descr in
+    if Sys.file_exists f.name then (Pervasives.close_out f.descr)
+  in
   close_file source_files.ml;
   close_file source_files.mli
+
+type gi_info = { base_name : string;
+                 info : Base_info.t;
+                 loader : Repository.repository;
+                 sources : files }
 
 let append_open_ctypes_modules (mli_descr, ml_descr) =
   add_open_ctypes mli_descr;

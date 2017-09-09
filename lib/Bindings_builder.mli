@@ -50,6 +50,12 @@ val generate_ctypes_sources:
 val close_sources:
   files -> unit
 
+(** Helper type used in Loader.load. *)
+type gi_info = { base_name: string;
+                 info: Base_info.t;
+                 loader: Repository.repository;
+                 sources: files }
+
 val parse_invalid_info :
   Base_info.t structure ptr -> unit
 
