@@ -54,9 +54,9 @@ val get_build_path:
 val get_lib_path:
   t -> string
 
-(** Generate the files Namespace.ml and Namespace.mli in append mode *)
-val generate_main_module_files:
-  t -> Bindings_builder.files
+(** Generate the files Name.ml and Name.mli in append mode *)
+val generate_module_files:
+  t -> string -> Bindings_builder.files
 
 (** Generate the directories build_path/namespace/lib *)
 val generate_directories:

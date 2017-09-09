@@ -69,14 +69,10 @@ let generate_dir loader =
  * item_name.mli
  *)
 
-let generate_main_module_files loader =
-  let file_name_pattern = String.concat "/" [loader.build_path; loader.namespace; "lib"; "core"] in
-  Bindings_builder.generate_ctypes_sources file_name_pattern
-
-let generate_secondary_module_files loader name =
-  let name' = Lexer.snake_case name in
-  let file_name_pattern = (get_lib_path loader ^ "/") ^ name' in
-  Bindings_builder.generate_ctypes_sources file_name_pattern
+let generate_module_files loader name =
+  let module_name = Lexer.snake_case name in
+  let f_name_pattern = String.concat "/" [get_lib_path loader; module_name] in
+  Bindings_builder.generate_ctypes_sources f_name_pattern
 
 let generate_directories loader =
   let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
@@ -100,7 +96,7 @@ let generate_bindings loader info main_sources name const_parser
         | Base_info.Struct -> let info' = Struct_info.from_baseinfo info in
           if Struct_info.is_gtype_struct info' then ()
           else (
-            let sources = generate_secondary_module_files loader name in (
+            let sources = generate_module_files loader name in (
             match struct_parser with
             | None -> Bindings_builder.parse_struct_info info sources;
             | Some struct_parser_info -> struct_parser_info info sources;
@@ -108,14 +104,14 @@ let generate_bindings loader info main_sources name const_parser
             Bindings_builder.close_sources sources
         )
         | Base_info.Enum -> (
-          let sources = generate_secondary_module_files loader name in (
+          let sources = generate_module_files loader name in (
             match enum_parser with
             | None -> Bindings_builder.parse_enum_info info sources
             | Some enum_parser_fn -> enum_parser_fn info sources
           )
         )
         | Base_info.Flags -> (
-          let sources = generate_secondary_module_files loader name in (
+          let sources = generate_module_files loader name in (
             match flags_parser with
             | None -> Bindings_builder.parse_flags_info info sources
             | Some flags_parser_fn -> flags_parser_fn info sources
@@ -127,7 +123,7 @@ let generate_bindings loader info main_sources name const_parser
           | Some const_parser_info -> const_parser_info info main_sources
         )
         | Base_info.Union -> (
-          let sources = generate_secondary_module_files loader name in
+          let sources = generate_module_files loader name in
           let _ = ( match union_parser with
             | None -> Bindings_builder.parse_union_info info sources
             | Some union_parser_fn -> union_parser_fn info sources
@@ -159,7 +155,7 @@ let parse loader
     () =
   let open Bindings_builder in
   let _ = generate_directories loader in
-  let main_sources = generate_main_module_files loader in
+  let main_sources = generate_module_files loader "Core" in
   let n = Repository.get_n_infos loader.repo loader.namespace in
   for i = 0 to n - 1 do
     let info = Repository.get_info loader.repo loader.namespace i in

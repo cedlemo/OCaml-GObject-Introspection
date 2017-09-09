@@ -68,7 +68,7 @@ let test_loader_generate_main_module_files test_ctxt =
   let open Bindings_builder in
   test_loader "GLib" (fun loader ->
       let _ = Loader.generate_directories loader in
-      let main_files = Loader.generate_main_module_files loader in
+      let main_files = Loader.generate_module_files loader "Core" in
       let _ = Printf.fprintf main_files.mli.descr "test" in
       let _ = Printf.fprintf main_files.ml.descr "test" in
       let test_close_and_remove file =
