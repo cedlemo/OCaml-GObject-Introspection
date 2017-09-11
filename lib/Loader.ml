@@ -82,10 +82,13 @@ let generate_directories loader =
   let lib_path = get_lib_path loader in
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
-let warning_for_deprecated name sources =
+let warning_comments warning_type information sources =
   let open Bindings_builder in
-  let coms = Printf.sprintf " !!! DEPRECATED : %s" name in
+  let coms = Printf.sprintf "!!! %s : %s" warning_type information in
   Bindings_utils.add_comments sources.mli.descr coms
+
+let warning_for_deprecated name sources =
+  warning_comments "DEPRECATED" name sources
 
 type gi_info = { base_name : string;
                  info : Base_info.t structure ptr;
