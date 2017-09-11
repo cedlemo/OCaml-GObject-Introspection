@@ -81,12 +81,7 @@ let test_loader_generate_main_module_files test_ctxt =
     )
 
 let test_loader_warning_for_deprecated test_ctxt =
-  let open Bindings_builder in
-  let (name, descr) = bracket_tmpfile ~suffix:"warning_mli" test_ctxt in
-  let mli = {name; descr} in
-  let (name, descr) = bracket_tmpfile ~suffix:"warning_ml" test_ctxt in
-  let ml = {name; descr} in
-  let sources = {ml; mli} in
+  let sources = TestUtils.temp_source_files "deprecated" test_ctxt in
   let mli_content = "(* !!! DEPRECATED : test. *)" in
   let _ = Loader.warning_for_deprecated "test" sources in
   let _ = Pervasives.close_out sources.mli.descr in
