@@ -29,15 +29,15 @@ let assert_equal_int int1 int2 =
   assert_equal ~printer: (fun s -> string_of_int s) int1 int2
 
 let assert_equal_or_greater int1 int2 =
-    assert_equal ~printer: (fun s ->
-        String.concat " " [string_of_int int1;
-                           "is not >=";
-                           string_of_int int2]) true (int1 >= int2)
+  assert_equal ~printer: (fun s ->
+    String.concat " " [string_of_int int1;
+                       "is not >=";
+                       string_of_int int2]
+  ) true (int1 >= int2)
 
 let is_travis = try
-    bool_of_string (Sys.getenv "TRAVIS_TESTS")
-  with
-  | _ -> false
+  bool_of_string (Sys.getenv "TRAVIS_TESTS")
+  with _ -> false
 
 let assert_file_exists filename =
   assert_equal_boolean true (Sys.file_exists filename)
@@ -59,12 +59,12 @@ let check_file_and_content name content =
   close_in input_ch
 
 let test_writing test_ctxt info name writer mli_content ml_content =
-      let open Bindings_builder in
-      let (mli_name, mli_descr) = bracket_tmpfile ~suffix:"mli" test_ctxt in
-      let (ml_name, ml_descr) = bracket_tmpfile ~suffix:"ml" test_ctxt in
-      let descrs = (mli_descr, ml_descr) in
-      let _ = writer name info descrs in
-      let _ = Pervasives.close_out mli_descr in
-      let _ = Pervasives.close_out ml_descr in
-      let _ = check_file_and_content mli_name mli_content in
-      check_file_and_content ml_name ml_content
+  let open Bindings_builder in
+  let (mli_name, mli_descr) = bracket_tmpfile ~suffix:"mli" test_ctxt in
+  let (ml_name, ml_descr) = bracket_tmpfile ~suffix:"ml" test_ctxt in
+  let descrs = (mli_descr, ml_descr) in
+  let _ = writer name info descrs in
+  let _ = Pervasives.close_out mli_descr in
+  let _ = Pervasives.close_out ml_descr in
+  let _ = check_file_and_content mli_name mli_content in
+  check_file_and_content ml_name ml_content
