@@ -80,6 +80,19 @@ let test_loader_generate_main_module_files test_ctxt =
       test_close_and_remove main_files.mli;
     )
 
+let test_loader_warning_for_deprecated test_ctxt =
+  let open Bindings_builder in
+  let (name, descr) = bracket_tmpfile ~suffix:"warning_mli" test_ctxt in
+  let mli = {name; descr} in
+  let (name, descr) = bracket_tmpfile ~suffix:"warning_ml" test_ctxt in
+  let ml = {name; descr} in
+  let sources = {ml; mli} in
+  let mli_content = "(* !!! DEPRECATED : test. *)" in
+  let _ = Loader.warning_for_deprecated "test" sources in
+  let _ = Pervasives.close_out sources.mli.descr in
+  let _ = Pervasives.close_out sources.ml.descr in
+  check_file_and_content sources.mli.name mli_content
+
 let tests =
   "GObject Introspection Loader tests" >:::
   [
@@ -89,5 +102,6 @@ let tests =
     "GObject Introspection Loader get version good" >:: test_loader_get_version_good;
     "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad;
     "GObject Introspection Loader generate dir" >:: test_loader_generate_dir;
-    "GObject Introspection Loader generate main module files" >:: test_loader_generate_main_module_files
+    "GObject Introspection Loader generate main module files" >:: test_loader_generate_main_module_files;
+    "GObject Introspection Loader warning for deprecated" >:: test_loader_warning_for_deprecated
   ]
