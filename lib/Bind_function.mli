@@ -26,9 +26,9 @@ open Foreign
     direction of the argument. The Arg_in form is the simpler. The two other forms need to
     provide in the ml file some pre code and post code for the implementation of
     the ctypes bindings.*)
-type argument = | Arg_in of Bindings_utils.type_strings
-                | Arg_out of { pre : string; types : Bindings_utils.type_strings; post : string }
-                | Arg_in_out of { pre : string; types : Bindings_utils.type_strings; post : string }
+type argument = | Arg_in of Binding_utils.type_strings
+                | Arg_out of { pre : string; types : Binding_utils.type_strings; post : string }
+                | Arg_in_out of { pre : string; types : Binding_utils.type_strings; post : string }
 
 (** The set of arguments of a function. The full set of the arguments must be
     parsed before knowing if we can implement the function hence the Not_implemented

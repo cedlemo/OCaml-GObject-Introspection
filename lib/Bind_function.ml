@@ -16,11 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Bindings_utils
+open Binding_utils
 
-type argument = | Arg_in of Bindings_utils.type_strings
-                | Arg_out of { pre : string; types : Bindings_utils.type_strings; post : string }
-                | Arg_in_out of { pre : string; types : Bindings_utils.type_strings; post : string }
+type argument = | Arg_in of Binding_utils.type_strings
+                | Arg_out of { pre : string; types : Binding_utils.type_strings; post : string }
+                | Arg_in_out of { pre : string; types : Binding_utils.type_strings; post : string }
 
 type arguments = | Not_implemented of string
                  | List of argument list
@@ -39,8 +39,8 @@ let remove_core_part str =
   String.sub str 5 (len - 5)
 
 let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
-  let ocaml_type' = Bindings_utils.string_pattern_remove ocaml_type "Core." in
-  let ctypes_typ' = Bindings_utils.string_pattern_remove ctypes_typ "Core." in
+  let ocaml_type' = Binding_utils.string_pattern_remove ocaml_type "Core." in
+  let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
   (ocaml_type', ctypes_typ')
 
 (* Returns None if there is an out or in/out argument,
@@ -57,8 +57,8 @@ let get_arguments_types callable =
            | Arg_info.In -> (
                let type_info = Arg_info.get_type arg in
                let may_be_null = Arg_info.may_be_null arg in
-               match Bindings_utils.type_info_to_bindings_types type_info may_be_null with
-               | Bindings_utils.Not_implemented tag_name -> None
+               match Binding_utils.type_info_to_bindings_types type_info may_be_null with
+               | Binding_utils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                    let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
                  parse_args (index + 1) (types :: args_types)
@@ -70,8 +70,8 @@ let get_return_types callable =
   if Callable_info.skip_return callable then Some ("unit", "void")
   else let ret = Callable_info.get_return_type callable in
     let may_be_null = Callable_info.may_return_null callable in
-    match Bindings_utils.type_info_to_bindings_types ret may_be_null with
-    | Bindings_utils.Not_implemented tag_name -> None
+    match Binding_utils.type_info_to_bindings_types ret may_be_null with
+    | Binding_utils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match Callable_info.get_caller_owns callable with
       | Arg_info.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
@@ -101,16 +101,16 @@ let get_return_types callable =
 
 let append_ctypes_function_bindings raw_name info (mli, ml) =
   let symbol = Function_info.get_symbol info in
-  let name = Bindings_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
+  let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_arguments_types callable with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
-    Bindings_utils.add_comments mli coms;
-    Bindings_utils.add_comments ml coms
+    Binding_utils.add_comments mli coms;
+    Binding_utils.add_comments ml coms
   | Some args -> match get_return_types callable with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
-      Bindings_utils.add_comments mli coms;
-      Bindings_utils.add_comments ml coms
+      Binding_utils.add_comments mli coms;
+      Binding_utils.add_comments ml coms
     | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli "val %s:\n" name;
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
@@ -126,8 +126,8 @@ let append_ctypes_function_bindings raw_name info (mli, ml) =
  * type of the container (object, structure or union). *)
 let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_typ) =
   let module_pattern = container_name ^ "." in
-  let ocaml_type' = Bindings_utils.string_pattern_remove ocaml_type module_pattern in
-  let ctypes_typ' = Bindings_utils.string_pattern_remove ctypes_typ module_pattern in
+  let ocaml_type' = Binding_utils.string_pattern_remove ocaml_type module_pattern in
+  let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ module_pattern in
   (ocaml_type', ctypes_typ')
 
 (* Given that method (GIFunction with method flags) of a container (object,
@@ -143,8 +143,8 @@ let get_method_arguments_types callable container =
            | Arg_info.In -> (
              let type_info = Arg_info.get_type arg in
              let may_be_null = Arg_info.may_be_null arg in
-             match Bindings_utils.type_info_to_bindings_types type_info may_be_null with
-               | Bindings_utils.Not_implemented tag_name -> None
+             match Binding_utils.type_info_to_bindings_types type_info may_be_null with
+               | Binding_utils.Not_implemented tag_name -> None
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                    let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
                    parse_args (index + 1) (types :: args_types)
@@ -156,8 +156,8 @@ let get_method_return_types callable container =
   if Callable_info.skip_return callable then Some ("unit", "void")
   else let ret = Callable_info.get_return_type callable in
     let may_be_null = Callable_info.may_return_null callable in
-    match Bindings_utils.type_info_to_bindings_types ret may_be_null with
-    | Bindings_utils.Not_implemented tag_name -> None
+    match Binding_utils.type_info_to_bindings_types ret may_be_null with
+    | Binding_utils.Not_implemented tag_name -> None
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
       match Callable_info.get_caller_owns callable with
       | Arg_info.Nothing -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
@@ -166,16 +166,16 @@ let get_method_return_types callable container =
 
 let append_ctypes_method_bindings raw_name info container (mli, ml) =
   let symbol = Function_info.get_symbol info in
-  let name = Bindings_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
+  let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_method_arguments_types callable container with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
-    Bindings_utils.add_comments mli coms;
-    Bindings_utils.add_comments ml coms
+    Binding_utils.add_comments mli coms;
+    Binding_utils.add_comments ml coms
   | Some args -> match get_method_return_types callable container with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
-      Bindings_utils.add_comments mli coms;
-      Bindings_utils.add_comments ml coms
+      Binding_utils.add_comments mli coms;
+      Binding_utils.add_comments ml coms
     | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli "val %s:\n" name;
       Printf.fprintf ml "let %s =\nforeign \"%s\" " name symbol;
       Printf.fprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));

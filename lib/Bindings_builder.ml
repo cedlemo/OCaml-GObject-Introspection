@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Bindings_utils
+open Binding_utils
 
 type file = {
   name: string;

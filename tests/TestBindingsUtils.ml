@@ -21,26 +21,26 @@ open OUnit2
 open GObject_introspection
 
 let test_escape_OCaml_keywords test_ctxt =
-  let escaped = Bindings_utils.escape_OCaml_keywords "end" in
+  let escaped = Binding_utils.escape_OCaml_keywords "end" in
   assert_equal_string "_end" escaped
 
 let test_escape_OCaml_types test_ctxt =
-  let escaped = Bindings_utils.escape_OCaml_types "int" in
+  let escaped = Binding_utils.escape_OCaml_types "int" in
   assert_equal_string "_int" escaped
 
 let test_escape_Ctypes_types test_ctxt =
-  let escaped = Bindings_utils.escape_Ctypes_types "double" in
+  let escaped = Binding_utils.escape_Ctypes_types "double" in
   assert_equal_string "_double" escaped
 
 let test_escape_number_at_beginning test_ctxt =
-  let escaped = Bindings_utils.escape_number_at_beginning "3D" in
+  let escaped = Binding_utils.escape_number_at_beginning "3D" in
   assert_equal_string "_3D" escaped
 
 let test_ensure_valid_variable_name test_ctxt =
   let rec test = function
     | [] -> ()
     | h :: q -> let reference = "_" ^ h in
-    let escaped = Bindings_utils.ensure_valid_variable_name h in
+    let escaped = Binding_utils.ensure_valid_variable_name h in
     assert_equal_string reference escaped
   in test ["end"; "int"; "double"; "3D"]
 
@@ -72,12 +72,12 @@ let test_string_pattern_remove test_ctxt =
     ("__pattern__pattern", "pattern", "____");
     ] in
   List.iter (fun (str, pattern, expected) ->
-    let ret = Bindings_utils.string_pattern_remove str pattern in
+    let ret = Binding_utils.string_pattern_remove str pattern in
     assert_equal_string expected ret
   ) values
 
 let tests =
-  "GObject Introspection Bindings_utils tests" >:::
+  "GObject Introspection Binding_utils tests" >:::
   [
     "Test escape OCaml keywords" >:: test_escape_OCaml_keywords;
     "Test escape OCaml types" >:: test_escape_OCaml_types;

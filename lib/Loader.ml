@@ -85,7 +85,7 @@ let generate_directories loader =
 let warning_comments warning_type information sources =
   let open Bindings_builder in
   let coms = Printf.sprintf "!!! %s : %s" warning_type information in
-  Bindings_utils.add_comments sources.mli.descr coms
+  Binding_utils.add_comments sources.mli.descr coms
 
 let warning_for_deprecated name sources =
   warning_comments "DEPRECATED" name sources

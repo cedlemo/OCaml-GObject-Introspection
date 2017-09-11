@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Bindings_utils
+open Binding_utils
 
 let append_enum_type values_and_variants descr =
   Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
@@ -61,7 +61,7 @@ let get_values_and_variants info =
         else match Base_info.get_name value_base_info with
           | None -> get_v_and_v (i + 1) v_v
           | Some const_name ->
-            if Bindings_utils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
+            if Binding_utils.has_number_at_beginning const_name then get_v_and_v (i + 1) v_v
             else let value = Value_info.get_value value_info in
               let variant_name = String.capitalize_ascii const_name in
               get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
@@ -69,7 +69,7 @@ let get_values_and_variants info =
 
 let append_ctypes_enum_bindings enum_name info (mli, ml) =
   let tag = Enum_info.get_storage_type info in
-  match Bindings_utils.type_tag_to_bindings_types tag with
+  match Binding_utils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
     Printf.fprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
@@ -124,7 +124,7 @@ let append_flags_view ctypes_typ (mli, ml) =
 
 let append_ctypes_flags_bindings enum_name info (mli, ml) =
   let tag = Enum_info.get_storage_type info in
-  match Bindings_utils.type_tag_to_bindings_types tag with
+  match Binding_utils.type_tag_to_bindings_types tag with
   | Not_implemented tag_name -> (
       Printf.fprintf mli "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name;
       Printf.fprintf ml "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name
