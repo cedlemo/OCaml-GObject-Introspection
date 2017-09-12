@@ -103,7 +103,7 @@ let generate_bindings gi_info const_parser
                                              skip =
         match Base_info.get_type gi_info.info with
         | Base_info.Function ->
-            Binding_utils.parse_function_info gi_info.info gi_info.sources
+            Bind_function.parse_function_info gi_info.info gi_info.sources
         | Base_info.Struct ->
             let info' = Struct_info.from_baseinfo gi_info.info in
             if Struct_info.is_gtype_struct info' then ()

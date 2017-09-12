@@ -22,6 +22,7 @@
 open Ctypes
 open Foreign
 
+
 (** Each argument of a function can be represented with this type based on the
     direction of the argument. The Arg_in form is the simpler. The two other forms need to
     provide in the ml file some pre code and post code for the implementation of
@@ -48,3 +49,6 @@ val append_ctypes_function_bindings:
 
 val append_ctypes_method_bindings:
   string -> Function_info.t structure ptr -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+val parse_function_info :
+  Base_info.t structure ptr -> files -> unit

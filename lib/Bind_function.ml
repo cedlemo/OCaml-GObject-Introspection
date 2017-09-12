@@ -186,3 +186,30 @@ let append_ctypes_method_bindings raw_name info container (mli, ml) =
       );
       Printf.fprintf mli " -> %s\n" ocaml_ret;
       Printf.fprintf ml " @-> returning (%s))\n" ctypes_ret
+
+let parse_function_info info source_files =
+  match Base_info.get_name info with
+  | None -> ()
+  | Some name -> let _ = match Base_info.get_container info with
+   | None -> ()
+   | Some container -> match Base_info.get_name container with
+     | None -> ()
+     | Some container_name -> print_endline (String.concat " " ["Container :";
+                                                                container_name;
+                                                                "function";
+                                                                name])
+     in
+     let info' = Function_info.from_baseinfo info in
+     let flags = Function_info.get_flags info' in
+    let rec search = function
+      | [] -> true
+      | f :: q -> if f == Function_info.Is_method then false
+      else search q
+    in
+    if search flags then (
+      let f_descrs = (source_files.mli.descr,
+                                   source_files.ml.descr) in
+      append_ctypes_function_bindings name info' f_descrs;
+      add_empty_line source_files.mli.descr;
+      add_empty_line source_files.ml.descr
+    )

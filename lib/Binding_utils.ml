@@ -324,33 +324,6 @@ let generate_ctypes_sources base_name =
   let _ = append_open_ctypes_modules (sources.mli.descr, sources.ml.descr) in
   sources
 
-let parse_function_info info source_files =
-  match Base_info.get_name info with
-  | None -> ()
-  | Some name -> let _ = match Base_info.get_container info with
-   | None -> ()
-   | Some container -> match Base_info.get_name container with
-     | None -> ()
-     | Some container_name -> print_endline (String.concat " " ["Container :";
-                                                                container_name;
-                                                                "function";
-                                                                name])
-     in
-     let info' = Function_info.from_baseinfo info in
-     let flags = Function_info.get_flags info' in
-    let rec search = function
-      | [] -> true
-      | f :: q -> if f == Function_info.Is_method then false
-      else search q
-    in
-    if search flags then (
-      let f_descrs = (source_files.mli.descr,
-                                   source_files.ml.descr) in
-      Bind_function.append_ctypes_function_bindings name info' f_descrs;
-      add_empty_line source_files.mli.descr;
-      add_empty_line source_files.ml.descr
-    )
-
 let parse_struct_info info source_files =
   match get_binding_name info with
   | None -> ()
