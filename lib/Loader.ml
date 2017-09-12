@@ -142,20 +142,20 @@ let generate_bindings gi_info const_parser
           ) in
           Binding_utils.close_sources sources
         )
-        | Base_info.Callback -> Binding_utils.parse_callback_info gi_info.info
-        | Base_info.Invalid -> Binding_utils.parse_invalid_info gi_info.info
-        | Base_info.Value -> Binding_utils.parse_value_info gi_info.info
-        | Base_info.Signal -> Binding_utils.parse_signal_info gi_info.info
-        | Base_info.Vfunc -> Binding_utils.parse_vfunc_info gi_info.info
-        | Base_info.Property -> Binding_utils.parse_property_info gi_info.info
-        | Base_info.Field -> Binding_utils.parse_field_info gi_info.info
-        | Base_info.Arg -> Binding_utils.parse_arg_info gi_info.info
-        | Base_info.Type -> Binding_utils.parse_type_info gi_info.info
-        | Base_info.Unresolved -> Binding_utils.parse_unresolved_info gi_info.info
-        | Base_info.Object -> Binding_utils.parse_object_info gi_info.info
+        | Base_info.Callback -> ()
+        | Base_info.Invalid -> ()
+        | Base_info.Value -> ()
+        | Base_info.Signal -> ()
+        | Base_info.Vfunc -> ()
+        | Base_info.Property -> ()
+        | Base_info.Field -> ()
+        | Base_info.Arg -> ()
+        | Base_info.Type -> ()
+        | Base_info.Unresolved -> ()
+        | Base_info.Object -> ()
         | Base_info.Invalid_0 -> ()
-        | Base_info.Interface -> Binding_utils.parse_interface_info gi_info.info
-        | Base_info.Boxed -> Binding_utils.parse_boxed_info gi_info.info
+        | Base_info.Interface -> ()
+        | Base_info.Boxed -> ()
 
 let parse loader
     ?const_parser
