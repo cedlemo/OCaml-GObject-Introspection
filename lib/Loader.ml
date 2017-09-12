@@ -74,7 +74,7 @@ let generate_dir loader =
 let generate_module_files loader name =
   let module_name = Lexer.snake_case name in
   let f_name_pattern = String.concat "/" [get_lib_path loader; module_name] in
-  Bindings_builder.generate_ctypes_sources f_name_pattern
+  Binding_utils.generate_ctypes_sources f_name_pattern
 
 let generate_directories loader =
   let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
@@ -83,7 +83,7 @@ let generate_directories loader =
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
 let warning_comments warning_type information sources =
-  let open Bindings_builder in
+  let open Binding_utils in
   let coms = Printf.sprintf "!!! %s : %s" warning_type information in
   Binding_utils.add_comments sources.mli.descr coms
 
@@ -93,7 +93,7 @@ let warning_for_deprecated name sources =
 type gi_info = { base_name : string;
                  info : Base_info.t structure ptr;
                  loader : t;
-                 sources : Bindings_builder.files }
+                 sources : Binding_utils.files }
 
 let generate_bindings gi_info const_parser
                                              enum_parser
@@ -103,59 +103,59 @@ let generate_bindings gi_info const_parser
                                              skip =
         match Base_info.get_type gi_info.info with
         | Base_info.Function ->
-            Bindings_builder.parse_function_info gi_info.info gi_info.sources
+            Binding_utils.parse_function_info gi_info.info gi_info.sources
         | Base_info.Struct ->
             let info' = Struct_info.from_baseinfo gi_info.info in
             if Struct_info.is_gtype_struct info' then ()
             else (
               let sources = generate_module_files gi_info.loader gi_info.base_name in (
               match struct_parser with
-              | None -> Bindings_builder.parse_struct_info gi_info.info sources;
+              | None -> Binding_utils.parse_struct_info gi_info.info sources;
               | Some struct_parser_info -> struct_parser_info gi_info.info sources;
               );
-              Bindings_builder.close_sources sources
+              Binding_utils.close_sources sources
           )
         | Base_info.Enum -> (
           let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match enum_parser with
-            | None -> Bindings_builder.parse_enum_info gi_info.info sources
+            | None -> Binding_utils.parse_enum_info gi_info.info sources
             | Some enum_parser_fn -> enum_parser_fn gi_info.info sources
           )
         )
         | Base_info.Flags -> (
           let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match flags_parser with
-            | None -> Bindings_builder.parse_flags_info gi_info.info sources
+            | None -> Binding_utils.parse_flags_info gi_info.info sources
             | Some flags_parser_fn -> flags_parser_fn gi_info.info sources
           )
         )
         | Base_info.Constant -> (
           match const_parser with
-          | None -> Bindings_builder.parse_constant_info gi_info.info gi_info.sources
+          | None -> Binding_utils.parse_constant_info gi_info.info gi_info.sources
           | Some const_parser_info -> const_parser_info gi_info.info gi_info.sources
         )
         | Base_info.Union -> (
           let sources = generate_module_files gi_info.loader gi_info.base_name in
           let _ = ( match union_parser with
-            | None -> Bindings_builder.parse_union_info gi_info.info sources
+            | None -> Binding_utils.parse_union_info gi_info.info sources
             | Some union_parser_fn -> union_parser_fn gi_info.info sources
           ) in
-          Bindings_builder.close_sources sources
+          Binding_utils.close_sources sources
         )
-        | Base_info.Callback -> Bindings_builder.parse_callback_info gi_info.info
-        | Base_info.Invalid -> Bindings_builder.parse_invalid_info gi_info.info
-        | Base_info.Value -> Bindings_builder.parse_value_info gi_info.info
-        | Base_info.Signal -> Bindings_builder.parse_signal_info gi_info.info
-        | Base_info.Vfunc -> Bindings_builder.parse_vfunc_info gi_info.info
-        | Base_info.Property -> Bindings_builder.parse_property_info gi_info.info
-        | Base_info.Field -> Bindings_builder.parse_field_info gi_info.info
-        | Base_info.Arg -> Bindings_builder.parse_arg_info gi_info.info
-        | Base_info.Type -> Bindings_builder.parse_type_info gi_info.info
-        | Base_info.Unresolved -> Bindings_builder.parse_unresolved_info gi_info.info
-        | Base_info.Object -> Bindings_builder.parse_object_info gi_info.info
+        | Base_info.Callback -> Binding_utils.parse_callback_info gi_info.info
+        | Base_info.Invalid -> Binding_utils.parse_invalid_info gi_info.info
+        | Base_info.Value -> Binding_utils.parse_value_info gi_info.info
+        | Base_info.Signal -> Binding_utils.parse_signal_info gi_info.info
+        | Base_info.Vfunc -> Binding_utils.parse_vfunc_info gi_info.info
+        | Base_info.Property -> Binding_utils.parse_property_info gi_info.info
+        | Base_info.Field -> Binding_utils.parse_field_info gi_info.info
+        | Base_info.Arg -> Binding_utils.parse_arg_info gi_info.info
+        | Base_info.Type -> Binding_utils.parse_type_info gi_info.info
+        | Base_info.Unresolved -> Binding_utils.parse_unresolved_info gi_info.info
+        | Base_info.Object -> Binding_utils.parse_object_info gi_info.info
         | Base_info.Invalid_0 -> ()
-        | Base_info.Interface -> Bindings_builder.parse_interface_info gi_info.info
-        | Base_info.Boxed -> Bindings_builder.parse_boxed_info gi_info.info
+        | Base_info.Interface -> Binding_utils.parse_interface_info gi_info.info
+        | Base_info.Boxed -> Binding_utils.parse_boxed_info gi_info.info
 
 let parse loader
     ?const_parser
@@ -165,7 +165,7 @@ let parse loader
     ?union_parser
     ?(skip = [])
     () =
-  let open Bindings_builder in
+  let open Binding_utils in
   let _ = generate_directories loader in
   let main_sources = generate_module_files loader "Core" in
   let n = Repository.get_n_infos loader.repo loader.namespace in
@@ -188,4 +188,4 @@ let parse loader
                                                  skip
       )
   done;
-  Bindings_builder.close_sources main_sources
+  Binding_utils.close_sources main_sources

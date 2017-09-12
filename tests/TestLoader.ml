@@ -65,7 +65,7 @@ test_loader "Gtk" (fun loader ->
 open Loader
 
 let test_loader_generate_main_module_files test_ctxt =
-  let open Bindings_builder in
+  let open Binding_utils in
   test_loader "GLib" (fun loader ->
       let _ = Loader.generate_directories loader in
       let main_files = Loader.generate_module_files loader "Core" in

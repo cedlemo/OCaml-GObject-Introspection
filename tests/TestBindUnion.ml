@@ -39,12 +39,12 @@ let union_test namespace union_name fn =
 let test_writing_union namespace name writer mli_content ml_content =
   let _ = Repository.require repo namespace () in
   union_test namespace name (fun info ->
-      let open Bindings_builder in
+      let open Binding_utils in
       let filename = String.concat "_" [namespace; name; "union"; "test"] in
-      let tmp_files = Bindings_builder.generate_sources filename in
+      let tmp_files = Binding_utils.generate_sources filename in
       let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
       let _ = writer name info descrs in
-      let _ = Bindings_builder.close_sources tmp_files in
+      let _ = Binding_utils.close_sources tmp_files in
       let _ = check_file_and_content tmp_files.mli.name mli_content in
       TestUtils.check_file_and_content tmp_files.ml.name ml_content
     )

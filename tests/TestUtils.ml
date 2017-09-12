@@ -59,7 +59,7 @@ let check_file_and_content name content =
   close_in input_ch
 
 let test_writing test_ctxt info name writer mli_content ml_content =
-  let open Bindings_builder in
+  let open Binding_utils in
   let (mli_name, mli_descr) = bracket_tmpfile ~suffix:"mli" test_ctxt in
   let (ml_name, ml_descr) = bracket_tmpfile ~suffix:"ml" test_ctxt in
   let descrs = (mli_descr, ml_descr) in
@@ -70,7 +70,7 @@ let test_writing test_ctxt info name writer mli_content ml_content =
   check_file_and_content ml_name ml_content
 
 let temp_source_files suffix test_ctxt=
-  let open Bindings_builder in
+  let open Binding_utils in
   let (name, descr) = bracket_tmpfile ~suffix:(suffix ^ "_mli") test_ctxt in
   let mli = {name; descr} in
   let (name, descr) = bracket_tmpfile ~suffix:(suffix ^ "_ml") test_ctxt in

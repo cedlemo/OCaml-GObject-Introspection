@@ -56,7 +56,7 @@ val get_lib_path:
 
 (** Generate the files Name.ml and Name.mli in append mode *)
 val generate_module_files:
-  t -> string -> Bindings_builder.files
+  t -> string -> Binding_utils.files
 
 (** Generate the directories build_path/namespace/lib *)
 val generate_directories:
@@ -64,7 +64,7 @@ val generate_directories:
 
 (** Generate comments with DEPRECATED tag. *)
 val warning_for_deprecated:
-  string -> Bindings_builder.files -> unit
+  string -> Binding_utils.files -> unit
 
 (** Helper type used in Loader.load.
     TODO : the field base_name is named like this instead of name because
@@ -79,7 +79,7 @@ val warning_for_deprecated:
 type gi_info = { base_name: string;
                  info: Base_info.t structure ptr;
                  loader: t;
-                 sources: Bindings_builder.files }
+                 sources: Binding_utils.files }
 
 (** Parse the GI infos and create the corresponding ctypes code
   @param const_parser allows user to customize the Constant_info bindings generator.
@@ -95,11 +95,11 @@ type gi_info = { base_name: string;
  *)
 val parse:
   t ->
-  ?const_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
-  ?enum_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
-  ?flags_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
-  ?struct_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
-  ?union_parser:(Base_info.t structure ptr -> Bindings_builder.files -> unit) ->
+  ?const_parser:(Base_info.t structure ptr -> Binding_utils.files -> unit) ->
+  ?enum_parser:(Base_info.t structure ptr -> Binding_utils.files -> unit) ->
+  ?flags_parser:(Base_info.t structure ptr -> Binding_utils.files -> unit) ->
+  ?struct_parser:(Base_info.t structure ptr -> Binding_utils.files -> unit) ->
+  ?union_parser:(Base_info.t structure ptr -> Binding_utils.files -> unit) ->
   ?skip:string list ->
   unit ->
   unit
