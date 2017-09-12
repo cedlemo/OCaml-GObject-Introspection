@@ -118,14 +118,14 @@ let generate_bindings gi_info const_parser
         | Base_info.Enum -> (
           let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match enum_parser with
-            | None -> Binding_utils.parse_enum_info gi_info.info sources
+            | None -> Bind_enum.parse_enum_info gi_info.info sources
             | Some enum_parser_fn -> enum_parser_fn gi_info.info sources
           )
         )
         | Base_info.Flags -> (
           let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match flags_parser with
-            | None -> Binding_utils.parse_flags_info gi_info.info sources
+            | None -> Bind_enum.parse_flags_info gi_info.info sources
             | Some flags_parser_fn -> flags_parser_fn gi_info.info sources
           )
         )

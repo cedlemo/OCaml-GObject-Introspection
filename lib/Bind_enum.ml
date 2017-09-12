@@ -138,3 +138,23 @@ let append_ctypes_flags_bindings enum_name info (mli, ml) =
     append_flags_list_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
     append_flags_list_to_value_fn enum_name ocaml_type (mli, ml);
     append_flags_view ctypes_typ (mli, ml)
+
+let parse_enum_info info source_files =
+  match get_binding_name info with
+  | None -> ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let info' = Enum_info.from_baseinfo info in
+    append_ctypes_enum_bindings name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
+
+let parse_flags_info info source_files =
+  match get_binding_name info with
+  | None -> ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let info' = Enum_info.from_baseinfo info in
+    append_ctypes_flags_bindings name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr

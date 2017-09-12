@@ -136,16 +136,6 @@ val generate_ctypes_sources:
 val close_sources:
   files -> unit
 
-(** Use Enum_info in order to generate Ctypes bindings.
-    It creates an enumname view and all the conversion functions. *)
-val parse_enum_info :
-  Base_info.t structure ptr -> files -> unit
-
-(** Use Enum_info in order to generate Ctypes bindings.
-    It creates an enumname_list view and all the conversion functions. *)
-val parse_flags_info :
-  Base_info.t structure ptr -> files -> unit
-
 (** Use a Constant_info in order to generate code with Ctypes. C Constants
     will be written as module values. *)
 val parse_constant_info :

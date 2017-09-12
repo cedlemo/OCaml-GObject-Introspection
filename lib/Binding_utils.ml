@@ -324,26 +324,6 @@ let generate_ctypes_sources base_name =
   let _ = append_open_ctypes_modules (sources.mli.descr, sources.ml.descr) in
   sources
 
-let parse_enum_info info source_files =
-  match get_binding_name info with
-  | None -> ()
-  | Some name -> let f_descrs = (source_files.mli.descr,
-                                 source_files.ml.descr) in
-    let info' = Enum_info.from_baseinfo info in
-    Bind_enum.append_ctypes_enum_bindings name info' f_descrs;
-    add_empty_line source_files.mli.descr;
-    add_empty_line source_files.ml.descr
-
-let parse_flags_info info source_files =
-  match get_binding_name info with
-  | None -> ()
-  | Some name -> let f_descrs = (source_files.mli.descr,
-                                 source_files.ml.descr) in
-    let info' = Enum_info.from_baseinfo info in
-    Bind_enum.append_ctypes_flags_bindings name info' f_descrs;
-    add_empty_line source_files.mli.descr;
-    add_empty_line source_files.ml.descr
-
 let parse_constant_info info source_files =
   match Base_info.get_name info with
   | None -> ()

@@ -55,3 +55,13 @@ val append_flags_view:
 
 val append_ctypes_flags_bindings:
   string -> Enum_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+
+(** Use Enum_info in order to generate Ctypes bindings.
+    It creates an enumname view and all the conversion functions. *)
+val parse_enum_info :
+  Base_info.t structure ptr -> files -> unit
+
+(** Use Enum_info in order to generate Ctypes bindings.
+    It creates an enumname_list view and all the conversion functions. *)
+val parse_flags_info :
+  Base_info.t structure ptr -> files -> unit
