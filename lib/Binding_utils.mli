@@ -186,28 +186,3 @@ val parse_constant_info :
 *)
 val parse_union_info :
   Base_info.t structure ptr -> files -> unit
-
-val parse_value_info :
-  Base_info.t structure ptr -> unit
-
-val parse_signal_info :
-  Base_info.t structure ptr -> unit
-
-val parse_vfunc_info :
-  Base_info.t structure ptr -> unit
-
-val parse_property_info :
-  Base_info.t structure ptr -> unit
-
-val parse_field_info :
-  Base_info.t structure ptr -> unit
-
-val parse_arg_info :
-  Base_info.t structure ptr -> unit
-
-val parse_type_info :
-  Base_info.t structure ptr -> unit
-
-val parse_unresolved_info :
-  Base_info.t structure ptr -> unit
-
