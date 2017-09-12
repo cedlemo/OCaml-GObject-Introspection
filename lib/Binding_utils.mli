@@ -136,15 +136,6 @@ val generate_ctypes_sources:
 val close_sources:
   files -> unit
 
-(** Use GIStructureInfo in order to generate Ctypes bindings.
-  - For each structure, a module is created in a StructureName.mli file and a StructureName.ml file.
-  - the OCaml type is named `StructureName.t`
-  - the Ctypes typ is named `StructureName.t_typ`
-  - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
-*)
-val parse_struct_info :
-  Base_info.t structure ptr -> files -> unit
-
 (** Use Enum_info in order to generate Ctypes bindings.
     It creates an enumname view and all the conversion functions. *)
 val parse_enum_info :

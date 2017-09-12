@@ -66,3 +66,17 @@ let append_ctypes_struct_methods_bindings struct_name info sources_files =
 
 let append_ctypes_struct_seal ml_descr =
   Printf.fprintf ml_descr "let _ = seal t_typ\n%!"
+
+let parse_struct_info info source_files =
+  match get_binding_name info with
+  | None -> ()
+  | Some name -> let f_descrs = (source_files.mli.descr,
+                                 source_files.ml.descr) in
+    let info' = Struct_info.from_baseinfo info in
+    append_ctypes_struct_declaration name f_descrs;
+    append_ctypes_struct_fields_declarations name info' f_descrs;
+    append_ctypes_struct_methods_bindings name info' f_descrs;
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr
+
+

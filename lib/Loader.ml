@@ -110,7 +110,7 @@ let generate_bindings gi_info const_parser
             else (
               let sources = generate_module_files gi_info.loader gi_info.base_name in (
               match struct_parser with
-              | None -> Binding_utils.parse_struct_info gi_info.info sources;
+              | None -> Bind_struct.parse_struct_info gi_info.info sources;
               | Some struct_parser_info -> struct_parser_info gi_info.info sources;
               );
               Binding_utils.close_sources sources
