@@ -324,9 +324,6 @@ let generate_ctypes_sources base_name =
   let _ = append_open_ctypes_modules (sources.mli.descr, sources.ml.descr) in
   sources
 
-let parse_invalid_info info =
-  ()
-
 let parse_function_info info source_files =
   match Base_info.get_name info with
   | None -> ()
@@ -354,9 +351,6 @@ let parse_function_info info source_files =
       add_empty_line source_files.ml.descr
     )
 
-let parse_callback_info info =
-  ()
-
 let parse_struct_info info source_files =
   match get_binding_name info with
   | None -> ()
@@ -368,9 +362,6 @@ let parse_struct_info info source_files =
     Bind_struct.append_ctypes_struct_methods_bindings name info' f_descrs;
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
-
-let parse_boxed_info info =
-  ()
 
 let parse_enum_info info source_files =
   match get_binding_name info with
@@ -391,12 +382,6 @@ let parse_flags_info info source_files =
     Bind_enum.append_ctypes_flags_bindings name info' f_descrs;
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
-
-let parse_object_info info =
-  ()
-
-let parse_interface_info info =
-  ()
 
 let parse_constant_info info source_files =
   match Base_info.get_name info with

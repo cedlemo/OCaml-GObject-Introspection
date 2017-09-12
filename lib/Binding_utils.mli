@@ -136,14 +136,8 @@ val generate_ctypes_sources:
 val close_sources:
   files -> unit
 
-val parse_invalid_info :
-  Base_info.t structure ptr -> unit
-
 val parse_function_info :
   Base_info.t structure ptr -> files -> unit
-
-val parse_callback_info :
-  Base_info.t structure ptr -> unit
 
 (** Use GIStructureInfo in order to generate Ctypes bindings.
   - For each structure, a module is created in a StructureName.mli file and a StructureName.ml file.
@@ -154,9 +148,6 @@ val parse_callback_info :
 val parse_struct_info :
   Base_info.t structure ptr -> files -> unit
 
-val parse_boxed_info :
-  Base_info.t structure ptr -> unit
-
 (** Use Enum_info in order to generate Ctypes bindings.
     It creates an enumname view and all the conversion functions. *)
 val parse_enum_info :
@@ -166,12 +157,6 @@ val parse_enum_info :
     It creates an enumname_list view and all the conversion functions. *)
 val parse_flags_info :
   Base_info.t structure ptr -> files -> unit
-
-val parse_object_info :
-  Base_info.t structure ptr -> unit
-
-val parse_interface_info :
-  Base_info.t structure ptr -> unit
 
 (** Use a Constant_info in order to generate code with Ctypes. C Constants
     will be written as module values. *)
