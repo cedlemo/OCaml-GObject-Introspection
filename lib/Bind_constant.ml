@@ -124,3 +124,54 @@ let append_string_constant name info source_files =
   let field_type = "string" in
   let printer = (fun str -> (("\"" ^ (String.escaped str)) ^ "\"")) in
   append_constant name info source_files field field_type printer
+
+let parse_constant_info info source_files =
+  match Base_info.get_name info with
+  | None -> ()
+  | Some name -> let info' = Constant_info.from_baseinfo info in
+    let type_info = Constant_info.get_type info' in
+    let not_implemented_todo_comments tag (mli, ml) =
+      let tag_name = Types.string_of_tag tag in
+      Printf.fprintf mli "(* TODO : constant %s type not implemented for %s *)" name tag_name;
+      Printf.fprintf mli "(* TODO : constant %s type not implemented for %s *)" name tag_name
+    in
+    let f_descrs = (source_files.mli.descr,
+                    source_files.ml.descr) in
+    let _ = match Type_info.get_tag type_info with
+    | Types.Void as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.Boolean ->
+      append_boolean_constant name info' f_descrs
+    | Types.Int8 ->
+      append_int8_constant name info' f_descrs
+    | Types.Uint8 ->
+      append_uint8_constant name info' f_descrs
+    | Types.Int16 ->
+      append_int16_constant name info' f_descrs
+    | Types.Uint16 ->
+      append_uint16_constant name info' f_descrs
+    | Types.Int32 ->
+      append_int32_constant name info' f_descrs
+    | Types.Uint32 ->
+      append_uint32_constant name info' f_descrs
+    | Types.Int64 ->
+      append_int64_constant name info' f_descrs
+    | Types.Uint64 ->
+      append_uint64_constant name info' f_descrs
+    | Types.Float ->
+      append_float_constant name info' f_descrs
+    | Types.Double ->
+      append_double_constant name info' f_descrs
+    | Types.GType as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.Utf8 ->
+      append_string_constant name info' f_descrs
+    | Types.Filename as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.Array as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.Interface as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.GList as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.GSList as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.GHash as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.Error as tag -> not_implemented_todo_comments tag f_descrs
+    | Types.Unichar as tag -> not_implemented_todo_comments tag f_descrs
+    in
+    add_empty_line source_files.mli.descr;
+    add_empty_line source_files.ml.descr

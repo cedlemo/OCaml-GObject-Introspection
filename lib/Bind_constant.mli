@@ -61,3 +61,7 @@ val append_double_constant:
 val append_string_constant:
   string -> Constant_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
+(** Use a Constant_info in order to generate code with Ctypes. C Constants
+    will be written as module values. *)
+val parse_constant_info :
+  Base_info.t structure ptr -> files -> unit

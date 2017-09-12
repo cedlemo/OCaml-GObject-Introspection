@@ -136,11 +136,6 @@ val generate_ctypes_sources:
 val close_sources:
   files -> unit
 
-(** Use a Constant_info in order to generate code with Ctypes. C Constants
-    will be written as module values. *)
-val parse_constant_info :
-  Base_info.t structure ptr -> files -> unit
-
 (** Use Union_info in order to generate Ctypes bindings.
   - For each union, a module is created in a UnionName.mli file and a UnionName.ml file.
   - the OCaml type is named `UnionName.t`
