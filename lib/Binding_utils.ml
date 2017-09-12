@@ -459,27 +459,3 @@ let parse_union_info info source_files =
     Bind_union.append_ctypes_union_fields_declarations name info' f_descrs;
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
-
-let parse_value_info info =
-  ()
-
-let parse_signal_info info =
-  ()
-
-let parse_vfunc_info info =
-  ()
-
-let parse_property_info info =
-  ()
-
-let parse_field_info info =
-  ()
-
-let parse_arg_info info =
-  ()
-
-let parse_type_info info =
-  ()
-
-let parse_unresolved_info info =
-  ()
