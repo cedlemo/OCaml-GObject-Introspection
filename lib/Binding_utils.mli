@@ -135,12 +135,3 @@ val generate_ctypes_sources:
 (** Close the two file descriptors in a files type *)
 val close_sources:
   files -> unit
-
-(** Use Union_info in order to generate Ctypes bindings.
-  - For each union, a module is created in a UnionName.mli file and a UnionName.ml file.
-  - the OCaml type is named `UnionName.t`
-  - the Ctypes typ is named `UnionName.t_typ`
-  - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
-*)
-val parse_union_info :
-  Base_info.t structure ptr -> files -> unit

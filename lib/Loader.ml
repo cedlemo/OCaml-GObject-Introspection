@@ -137,7 +137,7 @@ let generate_bindings gi_info const_parser
         | Base_info.Union -> (
           let sources = generate_module_files gi_info.loader gi_info.base_name in
           let _ = ( match union_parser with
-            | None -> Binding_utils.parse_union_info gi_info.info sources
+            | None -> Bind_union.parse_union_info gi_info.info sources
             | Some union_parser_fn -> union_parser_fn gi_info.info sources
           ) in
           Binding_utils.close_sources sources
