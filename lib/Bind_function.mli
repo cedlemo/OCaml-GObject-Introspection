@@ -51,4 +51,4 @@ val append_ctypes_method_bindings:
   string -> Function_info.t structure ptr -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
 val parse_function_info :
-  Base_info.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> Binding_utils.files -> unit

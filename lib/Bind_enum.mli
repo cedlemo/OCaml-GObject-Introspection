@@ -59,9 +59,9 @@ val append_ctypes_flags_bindings:
 (** Use Enum_info in order to generate Ctypes bindings.
     It creates an enumname view and all the conversion functions. *)
 val parse_enum_info :
-  Base_info.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> Binding_utils.files -> unit
 
 (** Use Enum_info in order to generate Ctypes bindings.
     It creates an enumname_list view and all the conversion functions. *)
 val parse_flags_info :
-  Base_info.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> Binding_utils.files -> unit

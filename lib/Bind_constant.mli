@@ -64,4 +64,4 @@ val append_string_constant:
 (** Use a Constant_info in order to generate code with Ctypes. C Constants
     will be written as module values. *)
 val parse_constant_info :
-  Base_info.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> Binding_utils.files -> unit

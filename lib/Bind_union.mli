@@ -38,4 +38,4 @@ val append_ctypes_union_seal:
   - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 *)
 val parse_union_info :
-  Base_info.t structure ptr -> files -> unit
+  Base_info.t structure ptr -> Binding_utils.files -> unit

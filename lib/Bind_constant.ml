@@ -126,6 +126,7 @@ let append_string_constant name info source_files =
   append_constant name info source_files field field_type printer
 
 let parse_constant_info info source_files =
+  let open Binding_utils in
   match Base_info.get_name info with
   | None -> ()
   | Some name -> let info' = Constant_info.from_baseinfo info in
