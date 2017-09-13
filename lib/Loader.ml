@@ -131,7 +131,7 @@ let generate_bindings gi_info const_parser
         )
         | Base_info.Constant -> (
           match const_parser with
-          | None -> Binding_constants.parse_constant_info gi_info.info gi_info.sources
+          | None -> Bind_constant.parse_constant_info gi_info.info gi_info.sources
           | Some const_parser_info -> const_parser_info gi_info.info gi_info.sources
         )
         | Base_info.Union -> (
