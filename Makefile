@@ -10,4 +10,5 @@ documentation :
 	mv _build/default/_doc/odoc.css _build/default/_doc/ocaml-gobject-introspection/
 	rm -rf docs/*
 	cp -rf _build/default/_doc/ocaml-gobject-introspection/* docs/
+	cp odoc.css docs/
 	jbuilder clean
