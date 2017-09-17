@@ -23,21 +23,6 @@ module Option = struct
       | Some v -> v
 end
 
-let write_open_module descr name =
-  Printf.fprintf descr "open %s\n" name
-
-let add_open_ctypes descr =
-  write_open_module descr "Ctypes"
-
-let add_open_foreign descr =
-  write_open_module descr "Foreign"
-
-let add_empty_line descr =
-  Printf.fprintf descr "%s" "\n"
-
-let add_comments descr information =
-  Printf.fprintf descr "(* %s. *)\n" information
-
 let escape_OCaml_keywords variable_name =
   match variable_name with
   | "and"
@@ -292,6 +277,22 @@ type files = {
   ml : file;
   mli : file;
 }
+
+let write_open_module descr name =
+  Printf.fprintf descr "open %s\n" name
+
+let add_open_ctypes descr =
+  write_open_module descr "Ctypes"
+
+let add_open_foreign descr =
+  write_open_module descr "Foreign"
+
+let add_empty_line descr =
+  Printf.fprintf descr "%s" "\n"
+
+let add_comments descr information =
+  Printf.fprintf descr "(* %s. *)\n" information
+
 
 let file_in_create_append_mode name =
   Pervasives.open_out_gen [Open_trunc; Open_append; Open_creat] 0o666 name
