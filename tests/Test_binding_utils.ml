@@ -76,6 +76,17 @@ let test_string_pattern_remove test_ctxt =
     assert_equal_string expected ret
   ) values
 
+module UFile = Binding_utils.File
+
+let test_file_create test_ctxt =
+  let filename = "test_file" in
+  let test_f = UFile.create "test_file" in
+  let test_f_name = UFile.name test_f in
+  let _ = assert_equal_string filename test_f_name in
+  let _ = assert_file_exists test_f_name in
+  let _ = UFile.close test_f in
+  Sys.remove test_f_name
+
 let tests =
   "GObject Introspection Binding_utils tests" >:::
   [
@@ -85,5 +96,6 @@ let tests =
     "Test escape number at beginning" >:: test_escape_number_at_beginning;
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
     "Test lexer snake case" >:: test_lexer_snake_case;
-    "Test remove" >:: test_string_pattern_remove
+    "Test remove" >:: test_string_pattern_remove;
+    "Test file create" >:: test_file_create
   ]
