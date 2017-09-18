@@ -108,14 +108,13 @@ val add_empty_line:
 val add_comments:
   Pervasives.out_channel -> string -> unit
 
-(**
 module File : sig
-  type t = { (* Should its content exposed ? *)
+  type t (* = { Should its content exposed ?
     name: string;
     descr : Pervasives.out_channel;
-  }
+  } *)
 
-  val initialize:
+  val create:
     string -> t
 
   val close :
@@ -141,6 +140,7 @@ module File : sig
   val add_comments:
     t -> string -> unit
 
+(**
   (* Should I create another submodule ? *)
   type sources = { (* Should its content exposed ? *)
     ml : file;
@@ -166,8 +166,8 @@ module File : sig
 
   val close_sources:
     sources -> unit
-end
 **)
+end
 
 (** A simple file type that contains the name and the file descriptor. *)
 type file = {
