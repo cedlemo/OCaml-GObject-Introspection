@@ -166,6 +166,9 @@ module File = struct
   let close t =
     if Sys.file_exists t.name then (Pervasives.close_out t.descr)
 
+  let name t =
+    t.name
+
   let write_open_module t module_name =
     Printf.fprintf t.descr "open %s\n" module_name
 

@@ -120,6 +120,10 @@ module File : sig
   val close :
     t -> unit
 
+  (** Get the filename of the File.t value. *)
+  val name:
+    t -> string
+
   (** Add an open directives in a file for a module name.*)
   val write_open_module:
     t -> string -> unit
