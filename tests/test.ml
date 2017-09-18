@@ -39,7 +39,7 @@ let () =
       TestGISignalInfo.tests;
       TestGIVFuncInfo.tests;
       TestGIRegisteredTypeInfo.tests;
-      TestLoader.tests;
+      Test_loader.tests;
       TestBindConstant.tests;
       TestBindStruct.tests;
       TestBindUnion.tests;
