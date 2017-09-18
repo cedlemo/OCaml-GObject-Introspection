@@ -153,6 +153,35 @@ let string_pattern_remove str pattern =
   let reg = Str.regexp_string pattern in
   String.concat "" (Str.split reg str)
 
+
+module File = struct
+  type t = {name : string; descr : Pervasives.out_channel}
+
+  let create name =
+    let flags = [Open_trunc; Open_append; Open_creat] in
+    let perm = 0o666 in
+    let descr = Pervasives.open_out_gen flags perm name in
+    {name; descr}
+
+  let close t =
+    if Sys.file_exists t.name then (Pervasives.close_out t.descr)
+
+  let write_open_module t module_name =
+    Printf.fprintf t.descr "open %s\n" module_name
+
+  let add_open_ctypes t =
+    write_open_module t "Ctypes"
+
+  let add_open_foreign t =
+    write_open_module t "Foreign"
+
+  let add_empty_line t =
+    Printf.fprintf t.descr "%s" "\n"
+
+  let add_comments t information =
+    Printf.fprintf t.descr "(* %s. *)\n" information
+end
+
 type type_strings = { ocaml : string;
                       ctypes : string }
 
