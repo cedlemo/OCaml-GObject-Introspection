@@ -169,6 +169,9 @@ module File = struct
   let name t =
     t.name
 
+  let descr t =
+    t.descr
+
   let write_open_module t module_name =
     Printf.fprintf t.descr "open %s\n" module_name
 

@@ -124,6 +124,10 @@ module File : sig
   val name:
     t -> string
 
+  (** Get the file descriptor of the File.t value. *)
+  val descr:
+    t -> Pervasives.out_channel
+
   (** Add an open directives in a file for a module name.*)
   val write_open_module:
     t -> string -> unit
