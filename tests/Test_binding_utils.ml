@@ -87,6 +87,17 @@ let test_file_create test_ctxt =
   let _ = UFile.close test_f in
   Sys.remove test_f_name
 
+let test_file_write_open_module test_ctxt =
+  let filename = "test_file" in
+  let test_f = UFile.create "test_file" in
+  let test_f_name = UFile.name test_f in
+  let _ = UFile.write_open_module test_f "A_module" in
+  let _ = UFile.close test_f in
+  let expected_content = "open A_module" in
+  let _ = check_file_and_content test_f_name expected_content in
+  Sys.remove test_f_name
+
+
 let tests =
   "GObject Introspection Binding_utils tests" >:::
   [
@@ -97,5 +108,6 @@ let tests =
     "Test ensure valid variable name" >:: test_ensure_valid_variable_name;
     "Test lexer snake case" >:: test_lexer_snake_case;
     "Test remove" >:: test_string_pattern_remove;
-    "Test file create" >:: test_file_create
+    "Test file create" >:: test_file_create;
+    "Test file write open module" >:: test_file_write_open_module
   ]
