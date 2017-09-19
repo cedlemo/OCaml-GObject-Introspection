@@ -148,20 +148,20 @@ module File : sig
   val add_comments:
     t -> string -> unit
 
-(**
   (* Should I create another submodule ? *)
-  type sources = { (* Should its content exposed ? *)
+  type sources (*= { Should its content exposed ?
     ml : file;
     mli : file;
-  }
+  } *)
 
   (** Constructor that generate a two files in append mode and that returns
       a value of type sources.*)
-  val initialize_sources:
+  val create_sources:
     string -> sources
+  (**
   (** Helper that generate ml and mli files, that adds "open Ctypes" in the
       .mli file and "open Ctypes\nopenForeign\n" in the .ml file. *)
-  val generate_ctypes_sources:
+  val create_ctypes_sources:
     string -> sources
   (** function that returns the ml part of the sources type. It contains both
       the name of the ".ml" source and its file descriptor.*)
@@ -174,7 +174,7 @@ module File : sig
 
   val close_sources:
     sources -> unit
-**)
+    *)
 end
 
 (** A simple file type that contains the name and the file descriptor. *)

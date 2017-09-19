@@ -186,6 +186,17 @@ module File = struct
 
   let add_comments t information =
     Printf.fprintf t.descr "(* %s. *)\n" information
+
+  type sources = {
+    ml : t;
+    mli : t;
+  }
+
+  let create_sources name =
+    let ml = create @@ name ^ ".ml" in
+    let mli = create @@ name ^ ".mli" in
+    {ml; mli}
+
 end
 
 type type_strings = { ocaml : string;
