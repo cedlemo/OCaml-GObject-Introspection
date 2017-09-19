@@ -96,6 +96,13 @@ let test_file_write_open_module test_ctxt =
   let _ = check_file_and_content filename expected_content in
   Sys.remove filename
 
+let test_file_create_sources test_ctxt =
+  let filename = "test_file2" in
+  let sources = UFile.create_sources filename in
+  let _ = assert_file_exists @@ filename ^ ".ml" in
+  let _ = assert_file_exists @@ filename ^ ".mli" in
+  let _ = Sys.remove @@ filename ^ ".ml" in
+  Sys.remove @@ filename ^ ".mli"
 
 let tests =
   "GObject Introspection Binding_utils tests" >:::
@@ -108,5 +115,6 @@ let tests =
     "Test lexer snake case" >:: test_lexer_snake_case;
     "Test remove" >:: test_string_pattern_remove;
     "Test file create" >:: test_file_create;
-    "Test file write open module" >:: test_file_write_open_module
+    "Test file write open module" >:: test_file_write_open_module;
+    "Test file create sources" >:: test_file_create_sources
   ]
