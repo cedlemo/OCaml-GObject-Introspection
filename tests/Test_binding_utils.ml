@@ -78,9 +78,8 @@ let test_string_pattern_remove test_ctxt =
 
 module UFile = Binding_utils.File
 
-let filename = "test_file"
-
 let test_file_create test_ctxt =
+  let filename = "test_file" in
   let test_f = UFile.create filename in
   let test_f_name = UFile.name test_f in
   let _ = assert_equal_string filename test_f_name in
@@ -89,6 +88,7 @@ let test_file_create test_ctxt =
   Sys.remove filename
 
 let test_file_write_open_module test_ctxt =
+  let filename = "test_file1" in
   let test_f = UFile.create filename in
   let _ = UFile.write_open_module test_f "A_module" in
   let _ = UFile.close test_f in
