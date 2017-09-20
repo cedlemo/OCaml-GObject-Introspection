@@ -158,23 +158,21 @@ module File : sig
       a value of type sources.*)
   val create_sources:
     string -> sources
-  (**
   (** Helper that generate ml and mli files, that adds "open Ctypes" in the
       .mli file and "open Ctypes\nopenForeign\n" in the .ml file. *)
   val create_ctypes_sources:
     string -> sources
   (** function that returns the ml part of the sources type. It contains both
       the name of the ".ml" source and its file descriptor.*)
-  val ml:
+  val sources_ml:
     sources -> t
   (** function that returns the mli part of the sources type. It contains both
       the name of the ".mli" source and its file descriptor.*)
-  val mli:
+  val sources_mli:
     sources -> t
 
   val close_sources:
     sources -> unit
-    *)
 end
 
 (** A simple file type that contains the name and the file descriptor. *)

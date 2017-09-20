@@ -197,6 +197,24 @@ module File = struct
     let mli = create @@ name ^ ".mli" in
     {ml; mli}
 
+  let create_ctypes_sources base_name =
+    let sources = create_sources base_name in
+    let _ = add_open_ctypes sources.mli in
+    let _ = add_empty_line sources.mli in
+    let _ = add_open_ctypes sources.ml in
+    let _ = add_open_foreign sources.ml in
+    let _ = add_empty_line sources.ml in
+    sources
+
+  let sources_ml sources =
+    sources.ml
+
+  let sources_mli sources =
+    sources.mli
+
+  let close_sources sources =
+    let _ = close sources.mli in
+    close sources.ml
 end
 
 type type_strings = { ocaml : string;
