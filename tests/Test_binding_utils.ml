@@ -104,6 +104,20 @@ let test_file_create_sources test_ctxt =
   let _ = Sys.remove @@ filename ^ ".ml" in
   Sys.remove @@ filename ^ ".mli"
 
+let test_file_create_ctypes_sources test_ctxt =
+  let filename = "test_file3" in
+  let sources = UFile.create_ctypes_sources filename in
+  let _ = UFile.close_sources sources in
+  let mli_file = filename ^ ".mli" in
+  let ml_file =  filename ^ ".ml" in
+  let mli_content = "open Ctypes\n" in
+  let ml_content = "open Ctypes\nopen Foreign\n" in
+  let _ = check_file_and_content mli_file mli_content in
+  let _ = check_file_and_content ml_file ml_content in
+  let _ = Sys.remove @@ filename ^ ".ml" in
+  Sys.remove @@ filename ^ ".mli"
+
+
 let tests =
   "GObject Introspection Binding_utils tests" >:::
   [
@@ -116,5 +130,6 @@ let tests =
     "Test remove" >:: test_string_pattern_remove;
     "Test file create" >:: test_file_create;
     "Test file write open module" >:: test_file_write_open_module;
-    "Test file create sources" >:: test_file_create_sources
+    "Test file create sources" >:: test_file_create_sources;
+    "Test file create ctypes sources" >:: test_file_create_ctypes_sources
   ]
