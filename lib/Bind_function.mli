@@ -45,10 +45,10 @@ val get_return_types:
   Callable_info.t structure ptr -> (string * string) option
 
 val append_ctypes_function_bindings:
-  string -> Function_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Function_info.t structure ptr -> Binding_utils.File.sources -> unit
 
 val append_ctypes_method_bindings:
-  string -> Function_info.t structure ptr -> string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Function_info.t structure ptr -> string -> Binding_utils.File.sources -> unit
 
 val parse_function_info :
-  Base_info.t structure ptr -> Binding_utils.files -> unit
+  Base_info.t structure ptr -> Binding_utils.File.sources -> unit
