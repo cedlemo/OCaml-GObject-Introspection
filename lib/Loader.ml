@@ -74,7 +74,7 @@ let generate_dir loader =
 let generate_module_files loader name =
   let module_name = Lexer.snake_case name in
   let f_name_pattern = String.concat "/" [get_lib_path loader; module_name] in
-  Binding_utils.generate_ctypes_sources f_name_pattern
+  Binding_utils.File.create_ctypes_sources f_name_pattern
 
 let generate_directories loader =
   let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
@@ -83,9 +83,9 @@ let generate_directories loader =
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
 let warning_comments warning_type information sources =
-  let open Binding_utils in
+  let open Binding_utils.File in
   let coms = Printf.sprintf "!!! %s : %s" warning_type information in
-  Binding_utils.add_comments sources.mli.descr coms
+  add_comments sources.mli coms
 
 let warning_for_deprecated name sources =
   warning_comments "DEPRECATED" name sources
@@ -93,7 +93,7 @@ let warning_for_deprecated name sources =
 type gi_info = { base_name : string;
                  info : Base_info.t structure ptr;
                  loader : t;
-                 sources : Binding_utils.files }
+                 sources : Binding_utils.File.sources }
 
 let generate_bindings gi_info const_parser
                                              enum_parser
@@ -108,39 +108,42 @@ let generate_bindings gi_info const_parser
             let info' = Struct_info.from_baseinfo gi_info.info in
             if Struct_info.is_gtype_struct info' then ()
             else (
-              let sources = generate_module_files gi_info.loader gi_info.base_name in (
+              (*let sources = generate_module_files gi_info.loader gi_info.base_name in (
               match struct_parser with
               | None -> Bind_struct.parse_struct_info gi_info.info sources;
               | Some struct_parser_info -> struct_parser_info gi_info.info sources;
               );
-              Binding_utils.close_sources sources
+              Binding_utils.File.close_sources sources *)
           )
         | Base_info.Enum -> (
-          let sources = generate_module_files gi_info.loader gi_info.base_name in (
+          (* let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match enum_parser with
             | None -> Bind_enum.parse_enum_info gi_info.info sources
             | Some enum_parser_fn -> enum_parser_fn gi_info.info sources
-          )
+            (* TODO: Close sources ? *)
+          ) *)
         )
         | Base_info.Flags -> (
-          let sources = generate_module_files gi_info.loader gi_info.base_name in (
+          (* let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match flags_parser with
             | None -> Bind_enum.parse_flags_info gi_info.info sources
             | Some flags_parser_fn -> flags_parser_fn gi_info.info sources
-          )
+            (* TODO: Close sources ? *)
+          ) *)
         )
         | Base_info.Constant -> (
-          match const_parser with
+          (* match const_parser with
           | None -> Bind_constant.parse_constant_info gi_info.info gi_info.sources
           | Some const_parser_info -> const_parser_info gi_info.info gi_info.sources
+          *)
         )
         | Base_info.Union -> (
-          let sources = generate_module_files gi_info.loader gi_info.base_name in
+          (* let sources = generate_module_files gi_info.loader gi_info.base_name in
           let _ = ( match union_parser with
             | None -> Bind_union.parse_union_info gi_info.info sources
             | Some union_parser_fn -> union_parser_fn gi_info.info sources
           ) in
-          Binding_utils.close_sources sources
+          Binding_utils.File.close_sources sources *)
         )
         | Base_info.Callback -> ()
         | Base_info.Invalid -> ()
@@ -188,4 +191,4 @@ let parse loader
                                                  skip
       )
   done;
-  Binding_utils.close_sources main_sources
+  Binding_utils.File.close_sources main_sources
