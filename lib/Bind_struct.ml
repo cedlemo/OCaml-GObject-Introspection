@@ -75,7 +75,7 @@ let parse_struct_info info source_files =
     let info' = Struct_info.from_baseinfo info in
     append_ctypes_struct_declaration name f_descrs;
     append_ctypes_struct_fields_declarations name info' f_descrs;
-    append_ctypes_struct_methods_bindings name info' f_descrs;
+    (* hide while finishing Bind_function append_ctypes_struct_methods_bindings name info' f_descrs; *)
     add_empty_line source_files.mli.descr;
     add_empty_line source_files.ml.descr
 
