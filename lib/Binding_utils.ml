@@ -163,6 +163,9 @@ module File = struct
     let descr = Pervasives.open_out_gen flags perm name in
     {name; descr}
 
+  let create_tmp (name, descr) =
+    {name; descr}
+
   let close t =
     if Sys.file_exists t.name then (Pervasives.close_out t.descr)
 
@@ -205,6 +208,9 @@ module File = struct
     let _ = add_open_foreign sources.ml in
     let _ = add_empty_line sources.ml in
     sources
+
+  let create_tmp_sources (ml, mli) =
+    {ml; mli}
 
   let sources_ml sources =
     sources.ml

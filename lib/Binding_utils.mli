@@ -117,6 +117,10 @@ module File : sig
   val create:
     string -> t
 
+  (** Used in tests with oUnit. *)
+  val create_tmp:
+    string * Pervasives.out_channel -> t
+
   val close :
     t -> unit
 
@@ -162,6 +166,9 @@ module File : sig
       .mli file and "open Ctypes\nopenForeign\n" in the .ml file. *)
   val create_ctypes_sources:
     string -> sources
+  (** Constructor for oUnit in tests. *)
+  val create_tmp_sources:
+    t * t -> sources
   (** function that returns the ml part of the sources type. It contains both
       the name of the ".ml" source and its file descriptor.*)
   val sources_ml:
