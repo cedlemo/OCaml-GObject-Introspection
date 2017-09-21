@@ -212,10 +212,10 @@ module File = struct
   let create_tmp_sources (ml, mli) =
     {ml; mli}
 
-  let sources_ml sources =
+  let ml sources =
     sources.ml
 
-  let sources_mli sources =
+  let mli sources =
     sources.mli
 
   let close_sources sources =

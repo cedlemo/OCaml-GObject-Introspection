@@ -171,11 +171,11 @@ module File : sig
     t * t -> sources
   (** function that returns the ml part of the sources type. It contains both
       the name of the ".ml" source and its file descriptor.*)
-  val sources_ml:
+  val ml:
     sources -> t
   (** function that returns the mli part of the sources type. It contains both
       the name of the ".mli" source and its file descriptor.*)
-  val sources_mli:
+  val mli:
     sources -> t
 
   val close_sources:
