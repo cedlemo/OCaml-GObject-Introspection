@@ -44,7 +44,7 @@ let () =
       TestBindStruct.tests;
       TestBindUnion.tests;
       TestBindEnum.tests; *)
-      TestBindFunction.tests;
+      Test_bind_function.tests;
       Test_binding_utils.tests
     ]
   )
