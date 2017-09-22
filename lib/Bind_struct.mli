@@ -28,9 +28,9 @@ val append_ctypes_struct_declaration:
 val append_ctypes_struct_fields_declarations:
   string -> Struct_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 
-val append_ctypes_struct_methods_bindings:
+(* val append_ctypes_struct_methods_bindings:
   string -> Struct_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
-
+*)
 val append_ctypes_struct_seal:
   Pervasives.out_channel -> unit
 

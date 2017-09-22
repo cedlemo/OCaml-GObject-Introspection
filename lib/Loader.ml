@@ -83,9 +83,10 @@ let generate_directories loader =
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
 let warning_comments warning_type information sources =
-  let open Binding_utils.File in
+  let open Binding_utils in
   let coms = Printf.sprintf "!!! %s : %s" warning_type information in
-  add_comments sources.mli coms
+  let mli = File.mli sources in
+  File.add_comments mli coms
 
 let warning_for_deprecated name sources =
   warning_comments "DEPRECATED" name sources

@@ -16,7 +16,6 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Binding_utils.File
 
 type argument = | Arg_in of Binding_utils.type_strings
                 | Arg_out of { pre : string; types : Binding_utils.type_strings; post : string }
@@ -100,27 +99,32 @@ let get_return_types callable =
  *)
 
 let append_ctypes_function_bindings raw_name info sources =
+  let open Binding_utils in
+  let mli = File.mli sources in
+  let mli_descr = File.descr mli in
+  let ml = File.ml sources in
+  let ml_descr = File.descr ml in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_arguments_types callable with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
-    Binding_utils.add_comments sources.mli coms;
-    Binding_utils.add_comments sources.ml coms
+    Binding_utils.File.add_comments mli coms;
+    Binding_utils.File.add_comments ml coms
   | Some args -> match get_return_types callable with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
-      Binding_utils.add_comments sources.mli coms;
-      Binding_utils.add_comments sources.ml coms
-    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf sources.mli.desc "val %s:\n" name;
-      Printf.fprintf sources.ml.desc "let %s =\nforeign \"%s\" " name symbol;
-      Printf.fprintf sources.mli.desc "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-      Printf.fprintf sources.ml.desc "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      Binding_utils.File.add_comments mli coms;
+      Binding_utils.File.add_comments ml coms
+    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli_descr "val %s:\n" name;
+      Printf.fprintf ml_descr "let %s =\nforeign \"%s\" " name symbol;
+      Printf.fprintf mli_descr "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+      Printf.fprintf ml_descr "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
       if Callable_info.can_throw_gerror callable then (
-        Printf.fprintf sources.mli.desc " -> %s" "Error.t structure ptr ptr option";
-        Printf.fprintf sources.ml.desc "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+        Printf.fprintf mli_descr " -> %s" "Error.t structure ptr ptr option";
+        Printf.fprintf ml_descr "  @-> %s" "ptr_opt (ptr Error.t_typ)"
       );
-      Printf.fprintf sources.mli.desc " -> %s\n" ocaml_ret;
-      Printf.fprintf sources.ml.desc " @-> returning (%s))\n" ctypes_ret
+      Printf.fprintf mli_descr " -> %s\n" ocaml_ret;
+      Printf.fprintf ml_descr " @-> returning (%s))\n" ctypes_ret
 
 (* For the methods arguments, we have to check is the argument is of the same
  * type of the container (object, structure or union). *)
@@ -165,27 +169,32 @@ let get_method_return_types callable container =
       | Arg_info.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
 
 let append_ctypes_method_bindings raw_name info container sources =
+  let open Binding_utils in
+  let mli = File.mli sources in
+  let mli_descr = File.descr mli in
+  let ml = File.ml sources in
+  let ml_descr = File.descr ml in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_method_arguments_types callable container with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
-    add_comments sources.mli coms;
-    add_comments sources.ml coms
+    File.add_comments mli coms;
+    File.add_comments ml coms
   | Some args -> match get_method_return_types callable container with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
-      add_comments sources.mli coms;
-      add_comments sources.ml coms
-    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf sources.mli.desc "val %s:\n" name;
-      Printf.fprintf sources.ml.desc "let %s =\nforeign \"%s\" " name symbol;
-      Printf.fprintf sources.mli.desc "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-      Printf.fprintf sources.ml.desc "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      File.add_comments mli coms;
+      File.add_comments ml coms
+    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli_descr "val %s:\n" name;
+      Printf.fprintf ml_descr "let %s =\nforeign \"%s\" " name symbol;
+      Printf.fprintf mli_descr "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+      Printf.fprintf ml_descr "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
       if Callable_info.can_throw_gerror callable then (
-        Printf.fprintf sources.mli.desc " -> %s" "Error.t structure ptr ptr option";
-        Printf.fprintf sources.ml.desc "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+        Printf.fprintf mli_descr " -> %s" "Error.t structure ptr ptr option";
+        Printf.fprintf ml_descr "  @-> %s" "ptr_opt (ptr Error.t_typ)"
       );
-      Printf.fprintf sources.mli.desc " -> %s\n" ocaml_ret;
-      Printf.fprintf sources.ml.desc " @-> returning (%s))\n" ctypes_ret
+      Printf.fprintf mli_descr " -> %s\n" ocaml_ret;
+      Printf.fprintf ml_descr " @-> returning (%s))\n" ctypes_ret
 
 let parse_function_info info sources =
   match Base_info.get_name info with
@@ -207,8 +216,9 @@ let parse_function_info info sources =
       else search q
      in
       if search flags then (
-        let f_descrs = (sources.mli.descr, sources.ml.descr) in
-        let _ = append_ctypes_function_bindings name info' f_descrs in
-        let _ = add_empty_line source_files.mli in
-        add_empty_line source_files.ml
+        let _ = append_ctypes_function_bindings name info' sources in
+        let mli = Binding_utils.File.mli sources in
+        let ml = Binding_utils.File.ml sources in
+        let _ = Binding_utils.File.add_empty_line mli in
+        Binding_utils.File.add_empty_line ml
     )

@@ -53,7 +53,8 @@ let append_ctypes_struct_fields_declarations struct_name info sources_files =
     append_ctypes_struct_field_declarations field_info
   done
 
-let append_ctypes_struct_methods_bindings struct_name info sources_files =
+(* hide while finishing Bind_function
+ * let append_ctypes_struct_methods_bindings struct_name info sources_files =
   let n = Struct_info.get_n_methods info in
   for i = 0 to n - 1 do
     let method_info = Struct_info.get_method info i in
@@ -63,7 +64,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources_files =
     | Some name ->
         Bind_function.append_ctypes_method_bindings name method_info struct_name sources_files
   done
-
+*)
 let append_ctypes_struct_seal ml_descr =
   Printf.fprintf ml_descr "let _ = seal t_typ\n%!"
 
