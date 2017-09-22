@@ -58,15 +58,22 @@ let check_file_and_content name content =
   let _ = assert_equal_string content lines in
   close_in input_ch
 
+let tmp_file suffix test_ctxt =
+  let (name, descr) = bracket_tmpfile ~suffix test_ctxt in
+  Binding_utils.File.create_tmp (name, descr)
+
+let tmp_sources test_ctxt =
+  let mli_tmp = tmp_file "mli" test_ctxt in
+  let ml_tmp = tmp_file "ml" test_ctxt in
+  Binding_utils.File.(create_tmp_sources (ml_tmp, mli_tmp))
+
 let test_writing test_ctxt info name writer mli_content ml_content =
   let open Binding_utils in
-  let mli_tmp = bracket_tmpfile ~suffix:"mli" test_ctxt in
-  let ml_tmp = bracket_tmpfile ~suffix:"ml" test_ctxt in
-  let sources = Binding_utils.File.(create_tmp_sources (create_tmp ml_tmp, create_tmp mli_tmp)) in
+  let sources = tmp_sources test_ctxt in
   let _ = writer name info sources in
-  let _ = Binding_utils.File.close_sources sources in
-  let (mli_name, mli_descr) = mli_tmp in
-  let (ml_name, ml_descr) = ml_tmp in
+  let _ = File.close_sources sources in
+  let mli_name = File.mli sources |> File.name in
+  let ml_name = File.ml sources |> File.name in
   let _ = check_file_and_content mli_name mli_content in
   check_file_and_content ml_name ml_content
 
