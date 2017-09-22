@@ -60,12 +60,13 @@ let check_file_and_content name content =
 
 let test_writing test_ctxt info name writer mli_content ml_content =
   let open Binding_utils in
-  let (mli_name, mli_descr) = bracket_tmpfile ~suffix:"mli" test_ctxt in
-  let (ml_name, ml_descr) = bracket_tmpfile ~suffix:"ml" test_ctxt in
-  let descrs = (mli_descr, ml_descr) in
-  let _ = writer name info descrs in
-  let _ = Pervasives.close_out mli_descr in
-  let _ = Pervasives.close_out ml_descr in
+  let mli_tmp = bracket_tmpfile ~suffix:"mli" test_ctxt in
+  let ml_tmp = bracket_tmpfile ~suffix:"ml" test_ctxt in
+  let sources = Binding_utils.File.(create_tmp_sources (create_tmp ml_tmp, create_tmp mli_tmp)) in
+  let _ = writer name info sources in
+  let _ = Binding_utils.File.close_sources sources in
+  let (mli_name, mli_descr) = mli_tmp in
+  let (ml_name, ml_descr) = ml_tmp in
   let _ = check_file_and_content mli_name mli_content in
   check_file_and_content ml_name ml_content
 
