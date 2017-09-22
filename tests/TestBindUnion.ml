@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open TestUtils
+open Test_utils
 open OUnit2
 open GObject_introspection
 
@@ -46,7 +46,7 @@ let test_writing_union namespace name writer mli_content ml_content =
       let _ = writer name info descrs in
       let _ = Binding_utils.close_sources tmp_files in
       let _ = check_file_and_content tmp_files.mli.name mli_content in
-      TestUtils.check_file_and_content tmp_files.ml.name ml_content
+      Test_utils.check_file_and_content tmp_files.ml.name ml_content
     )
 
 let test_append_ctypes_union_declaration test_ctxt =

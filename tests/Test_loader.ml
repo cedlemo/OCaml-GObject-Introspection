@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open TestUtils
+open Test_utils
 open OUnit2
 open GObject_introspection
 
@@ -68,25 +68,30 @@ let test_loader_generate_main_module_files test_ctxt =
   let open Binding_utils in
   test_loader "GLib" (fun loader ->
       let _ = Loader.generate_directories loader in
-      let main_files = Loader.generate_module_files loader "Core" in
-      let _ = Printf.fprintf main_files.mli.descr "test" in
-      let _ = Printf.fprintf main_files.ml.descr "test" in
+      let sources = Loader.generate_module_files loader "Core" in
+      let mli = File.mli sources in
+      let ml = File.ml sources in
+      let mli_descr = File.descr mli in
+      let ml_descr = File.descr ml in
+      let _ = Printf.fprintf mli_descr "test" in
+      let _ = Printf.fprintf ml_descr "test" in
       let test_close_and_remove file =
-        assert_file_exists file.name;
-        Pervasives.close_out file.descr;
-        Sys.remove file.name;
+        let filename = File.name file in
+        assert_file_exists filename;
+        File.close file;
+        Sys.remove filename;
       in
-      test_close_and_remove main_files.ml;
-      test_close_and_remove main_files.mli;
+      test_close_and_remove ml;
+      test_close_and_remove mli;
     )
 
 let test_loader_warning_for_deprecated test_ctxt =
-  let sources = TestUtils.temp_source_files "deprecated" test_ctxt in
+  let sources = Test_utils.tmp_sources test_ctxt in
   let mli_content = "(* !!! DEPRECATED : test. *)" in
   let _ = Loader.warning_for_deprecated "test" sources in
-  let _ = Pervasives.close_out sources.mli.descr in
-  let _ = Pervasives.close_out sources.ml.descr in
-  check_file_and_content sources.mli.name mli_content
+  let _ = Binding_utils.File.close_sources sources in
+  let mli = Binding_utils.File.(mli sources |> name ) in
+  check_file_and_content mli mli_content
 
 let tests =
   "GObject Introspection Loader tests" >:::

@@ -16,7 +16,7 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open TestUtils
+open Test_utils
 open OUnit2
 open GObject_introspection
 
@@ -69,10 +69,10 @@ let test_escape_bad_function_name test_ctxt =
                      t structure ptr -> float" in
   let ml_content = "let _double =\n\
                     foreign \"g_rand_double\" (ptr t_typ @-> returning (double))" in
-  let writer = fun name info (mli, ml) ->
-    Bind_function.append_ctypes_method_bindings name info container (mli, ml)
+  let writer = fun name info sources ->
+    Bind_function.append_ctypes_method_bindings name info container sources
   in
-  TestUtils.test_writing test_ctxt method_info "double" writer mli_content ml_content
+  Test_utils.test_writing test_ctxt method_info "double" writer mli_content ml_content
 
 let tests =
   "GObject Introspection Bind_function tests" >:::

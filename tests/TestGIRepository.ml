@@ -17,7 +17,7 @@
  *)
 
 open OUnit2
-open TestUtils
+open Test_utils
 open GObject_introspection
 
 let test_get_default test_ctxt =
