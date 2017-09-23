@@ -97,6 +97,39 @@ let test_file_write_open_module test_ctxt =
   let _ = check_file_and_content filename expected_content in
   Sys.remove filename
 
+let test_file_buffer_add test_ctxt =
+  let filename = "test_file4" in
+  let str = "a test string" in
+  let test_f = UFile.create filename in
+  let buff = UFile.buffer test_f in
+  let _ = UFile.buff_add test_f str in
+  let content = Buffer.contents buff in
+  let _ = assert_equal_string str content in
+  let _ = UFile.close test_f in
+  Sys.remove filename
+
+let test_file_buffer_add_line test_ctxt =
+  let filename = "test_file5" in
+  let str = "a test string" in
+  let test_f = UFile.create filename in
+  let buff = UFile.buffer test_f in
+  let _ = UFile.buff_add_line test_f str in
+  let content = Buffer.contents buff in
+  let _ = assert_equal_string (str ^ "\n") content in
+  let _ = UFile.close test_f in
+  Sys.remove filename
+
+let test_file_buffer_add_comments test_ctxt =
+  let filename = "test_file6" in
+  let str = "a test string" in
+  let test_f = UFile.create filename in
+  let buff = UFile.buffer test_f in
+  let _ = UFile.buff_add_comments test_f str in
+  let content = Buffer.contents buff in
+  let _ = assert_equal_string (Printf.sprintf "(*%s*)\n" str) content in
+  let _ = UFile.close test_f in
+  Sys.remove filename
+
 let test_file_create_sources test_ctxt =
   let filename = "test_file2" in
   let _ = USources.create filename in
@@ -132,5 +165,8 @@ let tests =
     "Test file create" >:: test_file_create;
     "Test file write open module" >:: test_file_write_open_module;
     "Test file create sources" >:: test_file_create_sources;
-    "Test file create ctypes sources" >:: test_file_create_ctypes_sources
+    "Test file create ctypes sources" >:: test_file_create_ctypes_sources;
+    "Test file buffer add" >:: test_file_buffer_add;
+    "Test file buffer add line" >:: test_file_buffer_add_line;
+    "Test file buffer add comments" >:: test_file_buffer_add_comments
   ]
