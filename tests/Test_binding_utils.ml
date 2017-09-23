@@ -130,6 +130,18 @@ let test_file_buffer_add_comments test_ctxt =
   let _ = UFile.close test_f in
   Sys.remove filename
 
+let test_file_bprintf test_ctxt =
+  let filename = "test_file7" in
+  let str = "a test string" in
+  let test_f = UFile.create filename in
+  let buff = UFile.buffer test_f in
+  let _ = UFile.bprintf test_f "(*%s*)\n" str in
+  let content = Buffer.contents buff in
+  let _ = assert_equal_string (Printf.sprintf "(*%s*)\n" str) content in
+  let _ = UFile.close test_f in
+  Sys.remove filename
+
+
 let test_file_create_sources test_ctxt =
   let filename = "test_file2" in
   let _ = USources.create filename in
@@ -168,5 +180,6 @@ let tests =
     "Test file create ctypes sources" >:: test_file_create_ctypes_sources;
     "Test file buffer add" >:: test_file_buffer_add;
     "Test file buffer add line" >:: test_file_buffer_add_line;
-    "Test file buffer add comments" >:: test_file_buffer_add_comments
+    "Test file buffer add comments" >:: test_file_buffer_add_comments;
+    "Test file bprintf" >:: test_file_bprintf
   ]
