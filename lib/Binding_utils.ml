@@ -197,6 +197,23 @@ module File = struct
   let add_comments t information =
     Printf.fprintf t.descr "(* %s. *)\n" information
 
+  let buff_add t str =
+    Buffer.add_string t.buffer str
+
+  let buff_add_line t str =
+    Buffer.add_string t.buffer str;
+    Buffer.add_string t.buffer "\n"
+
+  let buff_add_comments t str =
+    Buffer.add_string t.buffer "(*";
+    Buffer.add_string t.buffer str;
+    Buffer.add_string t.buffer "*)\n"
+
+  let buff_add_eof t =
+    Buffer.add_string t.buffer "\n"
+
+  let buff_write t =
+    Buffer.output_buffer t.descr t.buffer
 end
 
 module Sources = struct

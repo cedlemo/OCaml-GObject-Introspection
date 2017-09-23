@@ -159,6 +159,26 @@ module File : sig
   (** Add information in comment. *)
   val add_comments:
     t -> string -> unit
+
+  (** Append string to buffer. *)
+  val buff_add:
+    t ->string -> unit
+
+  (** Append a line to the current buffer. *)
+  val buff_add_line:
+    t -> string -> unit
+
+  (** Append a comment line. *)
+  val buff_add_comments:
+    t -> string -> unit
+
+  (** Append an end of line. *)
+  val buff_add_eof:
+    t -> unit
+
+  (** Write the buffer into the file descriptor. *)
+  val buff_write:
+    t -> unit
 end
 
 module Sources : sig
