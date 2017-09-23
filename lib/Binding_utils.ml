@@ -211,12 +211,12 @@ module Sources = struct
     {ml; mli}
 
   let create_ctypes base_name =
-    let sources = create_sources base_name in
-    let _ = add_open_ctypes sources.mli in
-    let _ = add_empty_line sources.mli in
-    let _ = add_open_ctypes sources.ml in
-    let _ = add_open_foreign sources.ml in
-    let _ = add_empty_line sources.ml in
+    let sources = create base_name in
+    let _ = File.add_open_ctypes sources.mli in
+    let _ = File.add_empty_line sources.mli in
+    let _ = File.add_open_ctypes sources.ml in
+    let _ = File.add_open_foreign sources.ml in
+    let _ = File.add_empty_line sources.ml in
     sources
 
   let create_tmp (ml, mli) =
@@ -229,8 +229,8 @@ module Sources = struct
     t.mli
 
   let close t =
-    let _ = File.close sources.mli in
-    File.close sources.ml
+    let _ = File.close t.mli in
+    File.close t.ml
 end
 
 type type_strings = { ocaml : string;
