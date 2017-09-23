@@ -25,18 +25,6 @@ type arguments = | Not_implemented of string
                  | List of argument list
 
 
-let type_from_core str =
-  if str.[0] == 'C' &&
-     str.[1] == 'o' &&
-     str.[2] == 'r' &&
-     str.[3] == 'e' &&
-     str.[4] == '.' then true
-  else false
-
-let remove_core_part str =
-  let len = String.length str in
-  String.sub str 5 (len - 5)
-
 let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
   let ocaml_type' = Binding_utils.string_pattern_remove ocaml_type "Core." in
   let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
