@@ -212,6 +212,9 @@ module File = struct
   let buff_add_eof t =
     Buffer.add_string t.buffer "\n"
 
+  let bprintf t =
+    Printf.bprintf t.buffer
+
   let buff_write t =
     Buffer.output_buffer t.descr t.buffer
 end

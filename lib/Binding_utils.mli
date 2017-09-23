@@ -176,6 +176,10 @@ module File : sig
   val buff_add_eof:
     t -> unit
 
+  (** Printf.bprintf like but that use File.t as argument.*)
+  val bprintf:
+    t -> ('a, Buffer.t, unit) format -> 'a
+
   (** Write the buffer into the file descriptor. *)
   val buff_write:
     t -> unit
