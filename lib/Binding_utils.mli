@@ -132,6 +132,10 @@ module File : sig
   val descr:
     t -> Pervasives.out_channel
 
+  (** Get the buffer of the File.t value. *)
+  val buffer:
+    t -> Buffer.t
+
   (** Add an open directives in a file for a module name.*)
   val write_open_module:
     t -> string -> unit

@@ -155,16 +155,18 @@ let string_pattern_remove str pattern =
 
 
 module File = struct
-  type t = {name : string; descr : Pervasives.out_channel}
+  type t = {name : string; descr : Pervasives.out_channel; buffer : Buffer.t}
 
   let create name =
     let flags = [Open_trunc; Open_append; Open_creat] in
     let perm = 0o666 in
     let descr = Pervasives.open_out_gen flags perm name in
-    {name; descr}
+    let buffer = Buffer.create 16 in
+    {name; descr; buffer}
 
   let create_tmp (name, descr) =
-    {name; descr}
+    let buffer = Buffer.create 16 in
+    {name; descr; buffer}
 
   let close t =
     if Sys.file_exists t.name then (Pervasives.close_out t.descr)
@@ -174,6 +176,9 @@ module File = struct
 
   let descr t =
     t.descr
+
+  let buffer t =
+    t.buffer
 
   let write_open_module t module_name =
     Printf.fprintf t.descr "open %s\n" module_name
