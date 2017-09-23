@@ -169,7 +169,9 @@ module File = struct
     {name; descr; buffer}
 
   let close t =
-    if Sys.file_exists t.name then (Pervasives.close_out t.descr)
+    if Sys.file_exists t.name then (
+      Pervasives.close_out t.descr;
+      Buffer.reset t.buffer)
 
   let name t =
     t.name
@@ -195,17 +197,20 @@ module File = struct
   let add_comments t information =
     Printf.fprintf t.descr "(* %s. *)\n" information
 
-  type sources = {
-    ml : t;
-    mli : t;
+end
+
+module Sources = struct
+  type t = {
+    ml : File.t;
+    mli : File.t;
   }
 
-  let create_sources name =
-    let ml = create @@ name ^ ".ml" in
-    let mli = create @@ name ^ ".mli" in
+  let create name =
+    let ml = File.create @@ name ^ ".ml" in
+    let mli = File.create @@ name ^ ".mli" in
     {ml; mli}
 
-  let create_ctypes_sources base_name =
+  let create_ctypes base_name =
     let sources = create_sources base_name in
     let _ = add_open_ctypes sources.mli in
     let _ = add_empty_line sources.mli in
@@ -214,18 +219,18 @@ module File = struct
     let _ = add_empty_line sources.ml in
     sources
 
-  let create_tmp_sources (ml, mli) =
+  let create_tmp (ml, mli) =
     {ml; mli}
 
-  let ml sources =
-    sources.ml
+  let ml t =
+    t.ml
 
-  let mli sources =
-    sources.mli
+  let mli t =
+    t.mli
 
-  let close_sources sources =
-    let _ = close sources.mli in
-    close sources.ml
+  let close t =
+    let _ = File.close sources.mli in
+    File.close sources.ml
 end
 
 type type_strings = { ocaml : string;

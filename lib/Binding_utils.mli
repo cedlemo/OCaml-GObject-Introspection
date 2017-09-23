@@ -108,6 +108,10 @@ val add_empty_line:
 val add_comments:
   Pervasives.out_channel -> string -> unit
 
+(** Module for a file representation. A File.t is associated with a
+     - name
+     - file descriptor
+     - buffer *)
 module File : sig
   type t (* = { Should its content exposed ?
     name: string;
@@ -155,35 +159,36 @@ module File : sig
   (** Add information in comment. *)
   val add_comments:
     t -> string -> unit
+end
 
-  (* Should I create another submodule ? *)
-  type sources (*= { Should its content exposed ?
+module Sources : sig
+  type t (*= { Should its content exposed ?
     ml : file;
     mli : file;
   } *)
 
   (** Constructor that generate a two files in append mode and that returns
       a value of type sources.*)
-  val create_sources:
-    string -> sources
+  val create:
+    string -> t
   (** Helper that generate ml and mli files, that adds "open Ctypes" in the
       .mli file and "open Ctypes\nopenForeign\n" in the .ml file. *)
-  val create_ctypes_sources:
-    string -> sources
+  val create_ctypes:
+    string -> t
   (** Constructor for oUnit in tests. *)
-  val create_tmp_sources:
-    t * t -> sources
+  val create_tmp:
+    File.t * File.t -> t
   (** function that returns the ml part of the sources type. It contains both
       the name of the ".ml" source and its file descriptor.*)
   val ml:
-    sources -> t
+    t -> File.t
   (** function that returns the mli part of the sources type. It contains both
       the name of the ".mli" source and its file descriptor.*)
   val mli:
-    sources -> t
-
-  val close_sources:
-    sources -> unit
+    t -> File.t
+  (** Close the source files (ml and ml) and reset the buffer. *)
+  val close:
+    t -> unit
 end
 
 (** A simple file type that contains the name and the file descriptor. *)
