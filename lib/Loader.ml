@@ -74,7 +74,7 @@ let generate_dir loader =
 let generate_module_files loader name =
   let module_name = Lexer.snake_case name in
   let f_name_pattern = String.concat "/" [get_lib_path loader; module_name] in
-  Binding_utils.File.create_ctypes_sources f_name_pattern
+  Binding_utils.Sources.create_ctypes f_name_pattern
 
 let generate_directories loader =
   let namespace_path = (loader.build_path ^ "/") ^ loader.namespace in
@@ -85,7 +85,7 @@ let generate_directories loader =
 let warning_comments warning_type information sources =
   let open Binding_utils in
   let coms = Printf.sprintf "!!! %s : %s" warning_type information in
-  let mli = File.mli sources in
+  let mli = Sources.mli sources in
   File.add_comments mli coms
 
 let warning_for_deprecated name sources =
@@ -94,7 +94,7 @@ let warning_for_deprecated name sources =
 type gi_info = { base_name : string;
                  info : Base_info.t structure ptr;
                  loader : t;
-                 sources : Binding_utils.File.sources }
+                 sources : Binding_utils.Sources.t }
 
 let generate_bindings gi_info const_parser
                                              enum_parser
@@ -192,4 +192,4 @@ let parse loader
                                                  skip
       )
   done;
-  Binding_utils.File.close_sources main_sources
+  Binding_utils.Sources.close main_sources

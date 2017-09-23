@@ -88,9 +88,9 @@ let get_return_types callable =
 
 let append_ctypes_function_bindings raw_name info sources =
   let open Binding_utils in
-  let mli = File.mli sources in
+  let mli = Sources.mli sources in
   let mli_descr = File.descr mli in
-  let ml = File.ml sources in
+  let ml = Sources.ml sources in
   let ml_descr = File.descr ml in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
@@ -158,9 +158,9 @@ let get_method_return_types callable container =
 
 let append_ctypes_method_bindings raw_name info container sources =
   let open Binding_utils in
-  let mli = File.mli sources in
+  let mli = Sources.mli sources in
   let mli_descr = File.descr mli in
-  let ml = File.ml sources in
+  let ml = Sources.ml sources in
   let ml_descr = File.descr ml in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
@@ -205,8 +205,8 @@ let parse_function_info info sources =
      in
       if search flags then (
         let _ = append_ctypes_function_bindings name info' sources in
-        let mli = Binding_utils.File.mli sources in
-        let ml = Binding_utils.File.ml sources in
+        let mli = Binding_utils.Sources.mli sources in
+        let ml = Binding_utils.Sources.ml sources in
         let _ = Binding_utils.File.add_empty_line mli in
         Binding_utils.File.add_empty_line ml
     )

@@ -77,6 +77,7 @@ let test_string_pattern_remove test_ctxt =
   ) values
 
 module UFile = Binding_utils.File
+module USources = Binding_utils.Sources
 
 let test_file_create test_ctxt =
   let filename = "test_file" in
@@ -98,7 +99,7 @@ let test_file_write_open_module test_ctxt =
 
 let test_file_create_sources test_ctxt =
   let filename = "test_file2" in
-  let sources = UFile.create_sources filename in
+  let _ = USources.create filename in
   let _ = assert_file_exists @@ filename ^ ".ml" in
   let _ = assert_file_exists @@ filename ^ ".mli" in
   let _ = Sys.remove @@ filename ^ ".ml" in
@@ -106,8 +107,8 @@ let test_file_create_sources test_ctxt =
 
 let test_file_create_ctypes_sources test_ctxt =
   let filename = "test_file3" in
-  let sources = UFile.create_ctypes_sources filename in
-  let _ = UFile.close_sources sources in
+  let sources = USources.create_ctypes filename in
+  let _ = USources.close sources in
   let mli_file = filename ^ ".mli" in
   let ml_file =  filename ^ ".ml" in
   let mli_content = "open Ctypes\n" in

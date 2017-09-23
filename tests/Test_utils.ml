@@ -65,14 +65,14 @@ let tmp_file suffix test_ctxt =
 let tmp_sources test_ctxt =
   let mli_tmp = tmp_file "mli" test_ctxt in
   let ml_tmp = tmp_file "ml" test_ctxt in
-  Binding_utils.File.(create_tmp_sources (ml_tmp, mli_tmp))
+  Binding_utils.Sources.create_tmp (ml_tmp, mli_tmp)
 
 let test_writing test_ctxt info name writer mli_content ml_content =
   let open Binding_utils in
   let sources = tmp_sources test_ctxt in
   let _ = writer name info sources in
-  let _ = File.close_sources sources in
-  let mli_name = File.mli sources |> File.name in
-  let ml_name = File.ml sources |> File.name in
+  let _ = Sources.close sources in
+  let mli_name = Sources.mli sources |> File.name in
+  let ml_name = Sources.ml sources |> File.name in
   let _ = check_file_and_content mli_name mli_content in
   check_file_and_content ml_name ml_content

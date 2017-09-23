@@ -69,8 +69,8 @@ let test_loader_generate_main_module_files test_ctxt =
   test_loader "GLib" (fun loader ->
       let _ = Loader.generate_directories loader in
       let sources = Loader.generate_module_files loader "Core" in
-      let mli = File.mli sources in
-      let ml = File.ml sources in
+      let mli = Sources.mli sources in
+      let ml = Sources.ml sources in
       let mli_descr = File.descr mli in
       let ml_descr = File.descr ml in
       let _ = Printf.fprintf mli_descr "test" in
@@ -89,8 +89,8 @@ let test_loader_warning_for_deprecated test_ctxt =
   let sources = Test_utils.tmp_sources test_ctxt in
   let mli_content = "(* !!! DEPRECATED : test. *)" in
   let _ = Loader.warning_for_deprecated "test" sources in
-  let _ = Binding_utils.File.close_sources sources in
-  let mli = Binding_utils.File.(mli sources |> name ) in
+  let _ = Binding_utils.Sources.close sources in
+  let mli = Binding_utils.(Sources.mli sources |> File.name) in
   check_file_and_content mli mli_content
 
 let tests =
