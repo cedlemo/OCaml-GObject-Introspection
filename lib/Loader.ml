@@ -109,12 +109,12 @@ let generate_bindings gi_info const_parser
             let info' = Struct_info.from_baseinfo gi_info.info in
             if Struct_info.is_gtype_struct info' then ()
             else (
-              (*let sources = generate_module_files gi_info.loader gi_info.base_name in (
+              let sources = generate_module_files gi_info.loader gi_info.base_name in (
               match struct_parser with
               | None -> Bind_struct.parse_struct_info gi_info.info sources;
               | Some struct_parser_info -> struct_parser_info gi_info.info sources;
               );
-              Binding_utils.File.close_sources sources *)
+              Binding_utils.Sources.close sources
           )
         | Base_info.Enum -> (
           (* let sources = generate_module_files gi_info.loader gi_info.base_name in (
