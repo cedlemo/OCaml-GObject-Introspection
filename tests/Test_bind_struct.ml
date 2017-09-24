@@ -39,8 +39,11 @@ let struct_test namespace struct_name fn =
 let test_append_ctypes_struct_declaration test_ctxt =
   let namespace = "GLib" in
   let name = "Array" in
-  let writer = fun name info descrs ->
-    Bind_struct.append_ctypes_struct_declaration name descrs in
+  let writer = fun name info sources -> (
+    let _ = Bind_struct.append_ctypes_struct_declaration name sources in
+    Binding_utils.Sources.write_buffs sources
+  )
+  in
   let mli_content = "type t\n\
                      val t_typ : t structure typ" in
   let ml_content = "type t\n\
@@ -52,7 +55,11 @@ let test_append_ctypes_struct_declaration test_ctxt =
 let test_append_ctypes_struct_fields_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "SList" in
-  let writer = Bind_struct.append_ctypes_struct_fields_declarations in
+  let writer = fun name info sources -> (
+    let _ = Bind_struct.append_ctypes_struct_fields_declarations name info sources in
+    Binding_utils.Sources.write_buffs sources
+  )
+  in
   let mli_content = "val f_data: (unit ptr, t structure) field\n\
                      val f_next: (t structure ptr, t structure) field" in
   let ml_content = "let f_data = field t_typ \"data\" (ptr void)\n\
