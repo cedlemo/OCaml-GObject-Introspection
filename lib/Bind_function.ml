@@ -68,7 +68,6 @@ let get_return_types callable =
       | Arg_info.Everything -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
       Some types
 
-
 (* Build function bindings :
  * - get the Callable_info
  * - find out the numbers of arguments
@@ -89,37 +88,36 @@ let get_return_types callable =
 let append_ctypes_function_bindings raw_name info sources =
   let open Binding_utils in
   let mli = Sources.mli sources in
-  let mli_descr = File.descr mli in
   let ml = Sources.ml sources in
-  let ml_descr = File.descr ml in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_arguments_types callable with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
-    Binding_utils.File.add_comments mli coms;
-    Binding_utils.File.add_comments ml coms
+    File.buff_add_comments mli coms;
+    File.buff_add_comments ml coms
   | Some args -> match get_return_types callable with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
-      Binding_utils.File.add_comments mli coms;
-      Binding_utils.File.add_comments ml coms
-    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli_descr "val %s:\n" name;
-      Printf.fprintf ml_descr "let %s =\nforeign \"%s\" " name symbol;
-      Printf.fprintf mli_descr "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-      Printf.fprintf ml_descr "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      File.buff_add_comments mli coms;
+      File.buff_add_comments ml coms
+    | Some (ocaml_ret, ctypes_ret) -> File.bprintf mli "val %s:\n" name;
+      File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
+      File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+      File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
       if Callable_info.can_throw_gerror callable then (
-        Printf.fprintf mli_descr " -> %s" "Error.t structure ptr ptr option";
-        Printf.fprintf ml_descr "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+        File.bprintf mli " -> %s" "Error.t structure ptr ptr option";
+        File.bprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
       );
-      Printf.fprintf mli_descr " -> %s\n" ocaml_ret;
-      Printf.fprintf ml_descr " @-> returning (%s))\n" ctypes_ret
+      File.bprintf mli " -> %s\n" ocaml_ret;
+      File.bprintf ml " @-> returning (%s))\n" ctypes_ret
 
 (* For the methods arguments, we have to check is the argument is of the same
  * type of the container (object, structure or union). *)
 let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_typ) =
+  let open Binding_utils in
   let module_pattern = container_name ^ "." in
-  let ocaml_type' = Binding_utils.string_pattern_remove ocaml_type module_pattern in
-  let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ module_pattern in
+  let ocaml_type' = string_pattern_remove ocaml_type module_pattern in
+  let ctypes_typ' = string_pattern_remove ctypes_typ module_pattern in
   (ocaml_type', ctypes_typ')
 
 (* Given that method (GIFunction with method flags) of a container (object,
@@ -159,30 +157,30 @@ let get_method_return_types callable container =
 let append_ctypes_method_bindings raw_name info container sources =
   let open Binding_utils in
   let mli = Sources.mli sources in
-  let mli_descr = File.descr mli in
   let ml = Sources.ml sources in
-  let ml_descr = File.descr ml in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_method_arguments_types callable container with
   | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
-    File.add_comments mli coms;
-    File.add_comments ml coms
+    File.buff_add_comments mli coms;
+    File.buff_add_comments ml coms
   | Some args -> match get_method_return_types callable container with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
-      File.add_comments mli coms;
-      File.add_comments ml coms
-    | Some (ocaml_ret, ctypes_ret) -> Printf.fprintf mli_descr "val %s:\n" name;
-      Printf.fprintf ml_descr "let %s =\nforeign \"%s\" " name symbol;
-      Printf.fprintf mli_descr "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-      Printf.fprintf ml_descr "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+      File.buff_add_comments mli coms;
+      File.buff_add_comments ml coms
+    | Some (ocaml_ret, ctypes_ret) -> File.bprintf mli "val %s:\n" name;
+      File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
+      File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+      File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
       if Callable_info.can_throw_gerror callable then (
-        Printf.fprintf mli_descr " -> %s" "Error.t structure ptr ptr option";
-        Printf.fprintf ml_descr "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+        File.bprintf mli " -> %s" "Error.t structure ptr ptr option";
+        File.bprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
       );
-      Printf.fprintf mli_descr " -> %s\n" ocaml_ret;
-      Printf.fprintf ml_descr " @-> returning (%s))\n" ctypes_ret
+      File.bprintf mli " -> %s\n" ocaml_ret;
+      File.bprintf ml " @-> returning (%s))\n" ctypes_ret;
+      File.buff_add_eol mli;
+      File.buff_add_eol ml
 
 let parse_function_info info sources =
   match Base_info.get_name info with
@@ -205,8 +203,5 @@ let parse_function_info info sources =
      in
       if search flags then (
         let _ = append_ctypes_function_bindings name info' sources in
-        let mli = Binding_utils.Sources.mli sources in
-        let ml = Binding_utils.Sources.ml sources in
-        let _ = Binding_utils.File.add_empty_line mli in
-        Binding_utils.File.add_empty_line ml
+        Binding_utils.Sources.write_buffs sources
     )
