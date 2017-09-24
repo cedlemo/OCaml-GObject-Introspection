@@ -40,8 +40,8 @@ let () =
       TestGIVFuncInfo.tests;
       TestGIRegisteredTypeInfo.tests;
       Test_loader.tests;
+      Test_bind_struct.tests;
       (* TestBindConstant.tests;
-      TestBindStruct.tests;
       TestBindUnion.tests;
       TestBindEnum.tests; *)
       Test_bind_function.tests;
