@@ -173,7 +173,7 @@ module File : sig
     t -> string -> unit
 
   (** Append an end of line. *)
-  val buff_add_eof:
+  val buff_add_eol:
     t -> unit
 
   (** Printf.bprintf like but that use File.t as argument.*)
@@ -210,7 +210,10 @@ module Sources : sig
       the name of the ".mli" source and its file descriptor.*)
   val mli:
     t -> File.t
-  (** Close the source files (ml and ml) and reset the buffer. *)
+  (** Write all the buffer contents (ml and mli) in their respective files. *)
+  val write_buffs:
+    t -> unit
+  (** Close the source files (ml and mli) and reset the buffer. *)
   val close:
     t -> unit
 end

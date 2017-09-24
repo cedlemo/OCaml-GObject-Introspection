@@ -209,14 +209,15 @@ module File = struct
     Buffer.add_string t.buffer str;
     Buffer.add_string t.buffer "*)\n"
 
-  let buff_add_eof t =
+  let buff_add_eol t =
     Buffer.add_string t.buffer "\n"
 
   let bprintf t =
     Printf.bprintf t.buffer
 
   let buff_write t =
-    Buffer.output_buffer t.descr t.buffer
+    Buffer.output_buffer t.descr t.buffer;
+    Buffer.clear t.buffer
 end
 
 module Sources = struct
@@ -247,6 +248,10 @@ module Sources = struct
 
   let mli t =
     t.mli
+
+  let write_buffs t =
+    File.buff_write t.ml;
+    File.buff_write t.mli
 
   let close t =
     let _ = File.close t.mli in
