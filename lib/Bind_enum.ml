@@ -106,15 +106,15 @@ let append_flags_list_to_value_fn enum_name ocaml_type sources =
   File.bprintf mli "val list_to_value:\nt_list -> %s\n" ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
   File.bprintf ml "let list_to_value flags =\n\
-                     let open %s in\n\
-                     let rec logor_flags l acc =\n\
-                         match l with\n\
-                         | [] -> acc\n\
-                         | f :: q -> let v = to_value f in\n\
-                         let acc' = logor acc v in\n\
-                         logor_flags q acc'\n\
-                       in\n\
-                       logor_flags flags zero\n" constant_type
+                   let open %s in\n\
+                   let rec logor_flags l acc =\n\
+                       match l with\n\
+                       | [] -> acc\n\
+                       | f :: q -> let v = to_value f in\n\
+                       let acc' = logor acc v in\n\
+                       logor_flags q acc'\n\
+                     in\n\
+                     logor_flags flags zero\n" constant_type
 
 let append_flags_list_of_value_fn enum_name ocaml_type values_and_variants sources =
   let open Binding_utils in
@@ -122,7 +122,7 @@ let append_flags_list_of_value_fn enum_name ocaml_type values_and_variants sourc
   let ml = Sources.ml sources in
   File.bprintf mli "val list_of_value:\n%s -> t_list\n" ocaml_type;
   let constant_type = if ocaml_type = "Unsigned.uint32" then "Unsigned.UInt32" else "Int32" in
-  File.bprintf ml "let list_of_value v =\n  let open %s in\n" constant_type;
+  File.bprintf ml "let list_of_value v =\nlet open %s in\n" constant_type;
   File.bprintf ml "let all_flags = [%s]\n" (String.concat "; " (List.map (fun (x,v) ->
     String.concat " " ["("; negative_int_in_parentheses x; ","; v; ")"]) values_and_variants));
     File.bprintf ml "in\n\
