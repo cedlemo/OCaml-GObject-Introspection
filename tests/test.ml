@@ -41,9 +41,10 @@ let () =
       TestGIRegisteredTypeInfo.tests;
       Test_loader.tests;
       Test_bind_struct.tests;
+      Test_bind_enum.tests;
       (* TestBindConstant.tests;
       TestBindUnion.tests;
-      TestBindEnum.tests; *)
+      *)
       Test_bind_function.tests;
       Test_binding_utils.tests
     ]
