@@ -35,9 +35,9 @@ val append_ctypes_struct_seal:
   Binding_utils.File.t -> unit
 
 (** Use GIStructureInfo in order to generate Ctypes bindings.
-  - For each structure, a module is created in a StructureName.mli file and a StructureName.ml file.
-  - the OCaml type is named `StructureName.t`
-  - the Ctypes typ is named `StructureName.t_typ`
+  - For each structure, a module is created in a Structure_name.mli file and a Structure_name.ml file.
+  - the OCaml type is named `Structure_name.t`
+  - the Ctypes typ is named `Structure_name.t_typ`
   - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 *)
 val parse_struct_info :
