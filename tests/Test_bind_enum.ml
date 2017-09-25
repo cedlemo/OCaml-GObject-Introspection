@@ -156,7 +156,7 @@ let test_append_enum_view test_ctxt =
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
-(* let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
                      type t_list = t list"
 let flags_to_type_travis = "type t = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
                             type t_list = t list"
@@ -264,10 +264,14 @@ let flags_test namespace enum_name fn =
 let test_append_flags_types test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
-  let writer = (fun name info (mli, ml) ->
+  let writer = (fun name info sources ->
+      let open Binding_utils in
+      let mli = Sources.mli sources in
+      let ml = Sources.ml sources in
       let values_and_variants = Bind_enum.get_values_and_variants info in
       Bind_enum.append_flags_types values_and_variants mli;
-      Bind_enum.append_flags_types values_and_variants ml
+      Bind_enum.append_flags_types values_and_variants ml;
+      Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_to_type_travis flags_to_type_travis
@@ -277,29 +281,36 @@ let test_append_flags_types test_ctxt =
 let test_append_enum_flags_of_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
-  let writer = (fun name info (mli, ml) ->
+  let writer = (fun name info sources ->
+      let open Binding_utils in
+      let mli = Sources.mli sources in
+      let ml = Sources.ml sources in
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
       | Binding_utils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | Binding_utils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
         let values_and_variants = Bind_enum.get_values_and_variants info in
-        Bind_enum.append_enum_of_value_fn name ocaml_type values_and_variants (mli, ml)
+        Bind_enum.append_enum_of_value_fn name ocaml_type values_and_variants sources;
+        Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer flags_of_value_sig flags_of_value_travis
-      else test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
+      if is_travis then
+        test_writing test_ctxt info name writer flags_of_value_sig flags_of_value_travis
+      else
+        test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
   )
 
 let test_append_enum_flags_to_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
-  let writer = (fun name info (mli, ml) ->
+  let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
       | Binding_utils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | Binding_utils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
         let values_and_variants = Bind_enum.get_values_and_variants info in
-        Bind_enum.append_enum_to_value_fn name ocaml_type values_and_variants (mli, ml)
+        Bind_enum.append_enum_to_value_fn name ocaml_type values_and_variants sources;
+        Binding_utils.Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_to_value_sig flags_to_value_travis
@@ -309,12 +320,13 @@ let test_append_enum_flags_to_value_fn test_ctxt =
 let test_append_enum_flags_list_to_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
-  let writer = (fun name info (mli, ml) ->
+  let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
       | Binding_utils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | Binding_utils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-        Bind_enum.append_flags_list_to_value_fn name ocaml_type (mli, ml)
+        Bind_enum.append_flags_list_to_value_fn name ocaml_type sources;
+        Binding_utils.Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
       test_writing test_ctxt info name writer flags_type_list_to_value_sig flags_type_list_to_value
@@ -323,13 +335,14 @@ let test_append_enum_flags_list_to_value_fn test_ctxt =
 let test_append_enum_flags_list_of_value_fn test_ctxt =
   let namespace = "GLib" in
   let name = "OptionFlags" in
-  let writer = (fun name info (mli, ml) ->
+  let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
       | Binding_utils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | Binding_utils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
         let values_and_variants = Bind_enum.get_values_and_variants info in
-        Bind_enum.append_flags_list_of_value_fn name ocaml_type values_and_variants (mli, ml)
+        Bind_enum.append_flags_list_of_value_fn name ocaml_type values_and_variants sources;
+        Binding_utils.Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
       if is_travis then test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value_travis
@@ -339,28 +352,28 @@ let test_append_enum_flags_list_of_value_fn test_ctxt =
 let test_append_flags_view test_ctxt =
   let namespace = "GLib" in
   let name = "ChecksumType" in
-  let writer = (fun name info (mli, ml) ->
+  let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
       | Binding_utils.Not_implemented tag -> assert_equal_string tag "should be implemented"
       | Binding_utils.Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-        Bind_enum.append_flags_view ctypes_typ (mli, ml)
+        Bind_enum.append_flags_view ctypes_typ sources;
+        Binding_utils.Sources.write_buffs sources
   ) in
   enum_test namespace name (fun info ->
       test_writing test_ctxt info name writer flags_type_view_sig flags_type_view
   )
 
-*)
 let tests =
   "GObject Introspection Bind_enum tests" >:::
   [
     "Bind_enum append enum type" >:: test_append_enum_type;
     "Bind_enum append enum view reader" >:: test_append_enum_of_value_fn;
     "Bind_enum append enum view writer" >:: test_append_enum_to_value_fn;
-    "Bind_enum append enum view" >:: test_append_enum_view(*;
+    "Bind_enum append enum view" >:: test_append_enum_view;
     "Bind_enum append enum flags type" >:: test_append_flags_types;
     "Bind_enum append enum flags of value" >:: test_append_enum_flags_of_value_fn;
     "Bind_enum append enum flags to value" >:: test_append_enum_flags_to_value_fn;
     "Bind_enum append enum flags list to value" >:: test_append_enum_flags_list_to_value_fn;
-    "Bind_enum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn*)
+    "Bind_enum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn
   ]
