@@ -19,7 +19,6 @@
 open Test_utils
 open OUnit2
 open GObject_introspection
-open Binding_utils
 
 let repo = Repository.get_default ()
 
@@ -139,7 +138,7 @@ let test_append_enum_view test_ctxt =
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
-let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+(* let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
                      type t_list = t list"
 let flags_to_type_travis = "type t = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
                             type t_list = t list"
@@ -333,17 +332,17 @@ let test_append_flags_view test_ctxt =
       test_writing test_ctxt info name writer flags_type_view_sig flags_type_view
   )
 
-
+*)
 let tests =
   "GObject Introspection Bind_enum tests" >:::
   [
     "Bind_enum append enum type" >:: test_append_enum_type;
     "Bind_enum append enum view reader" >:: test_append_enum_of_value_fn;
     "Bind_enum append enum view writer" >:: test_append_enum_to_value_fn;
-    "Bind_enum append enum view" >:: test_append_enum_view;
+    "Bind_enum append enum view" >:: test_append_enum_view(*;
     "Bind_enum append enum flags type" >:: test_append_flags_types;
     "Bind_enum append enum flags of value" >:: test_append_enum_flags_of_value_fn;
     "Bind_enum append enum flags to value" >:: test_append_enum_flags_to_value_fn;
     "Bind_enum append enum flags list to value" >:: test_append_enum_flags_list_to_value_fn;
-    "Bind_enum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn
+    "Bind_enum append enum flags list of value" >:: test_append_enum_flags_list_of_value_fn*)
   ]
