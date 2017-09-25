@@ -117,12 +117,12 @@ let generate_bindings gi_info const_parser
               Binding_utils.Sources.close sources
           )
         | Base_info.Enum -> (
-          (* let sources = generate_module_files gi_info.loader gi_info.base_name in (
+            let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match enum_parser with
             | None -> Bind_enum.parse_enum_info gi_info.info sources
             | Some enum_parser_fn -> enum_parser_fn gi_info.info sources
             (* TODO: Close sources ? *)
-          ) *)
+          )
         )
         | Base_info.Flags -> (
           (* let sources = generate_module_files gi_info.loader gi_info.base_name in (

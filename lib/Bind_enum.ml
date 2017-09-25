@@ -16,10 +16,9 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Binding_utils
-
-let append_enum_type values_and_variants descr =
-  Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants))
+let append_enum_type values_and_variants file =
+  String.concat " | " (List.map (fun (_, v) -> v) values_and_variants)
+  |> Binding_utils.File.bprintf file "type t = %s\n"
 
 let negative_int_in_parentheses value =
   if (String.get value 0 = '-') then String.concat " " ["("; value; ")"]
@@ -30,24 +29,33 @@ let value_info_to_enum_type_conversion ocaml_type value =
   else if (String.get value 0 = '-') then String.concat "" ["Int32.of_int "; "("; value; ")"]
   else  "Int32.of_int " ^ value
 
-let append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml) =
-  Printf.fprintf mli "val of_value:\n%s -> t\n" ocaml_type;
-  Printf.fprintf ml "let of_value v =\nif v = %!";
-  Printf.fprintf ml "%s" (String.concat "else if v = " (List.map (fun (x, v) ->
+let append_enum_of_value_fn enum_name ocaml_type values_and_variants sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
+  File.bprintf mli "val of_value:\n%s -> t\n" ocaml_type;
+  File.buff_add ml "let of_value v =\nif v = ";
+  File.buff_add ml (String.concat "else if v = " (List.map (fun (x, v) ->
       String.concat "" [value_info_to_enum_type_conversion ocaml_type x; " then "; v; "\n"] ) values_and_variants));
-  Printf.fprintf ml "else raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
+  File.bprintf ml "else raise (Invalid_argument \"Unexpected %s value\")\n" enum_name
 
-let append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml) =
-  Printf.fprintf mli "val to_value:\nt -> %s\n" ocaml_type;
-  Printf.fprintf ml "let to_value = function\n| %s" (String.concat "| " (List.map (fun (x, v) ->
+let append_enum_to_value_fn enum_name ocaml_type values_and_variants sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
+  File.bprintf mli "val to_value:\nt -> %s\n" ocaml_type;
+  File.bprintf ml "let to_value = function\n| %s" (String.concat "| " (List.map (fun (x, v) ->
       String.concat "" [v; " -> "; value_info_to_enum_type_conversion ocaml_type x; "\n"] ) values_and_variants))
 
-let append_enum_view ctypes_typ (mli, ml) =
-  Printf.fprintf mli "val t_view: t typ\n%!";
-  Printf.fprintf ml "let t_view = view \n%!";
-  Printf.fprintf ml "~read:of_value \n%!";
-  Printf.fprintf ml "~write:to_value \n%!";
-  Printf.fprintf ml "%s\n" ctypes_typ
+let append_enum_view ctypes_typ sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
+  File.buff_add_line mli "val t_view: t typ";
+  File.buff_add_line ml "let t_view = view";
+  File.buff_add_line ml "~read:of_value";
+  File.buff_add_line ml "~write:to_value";
+  File.buff_add_line ml ctypes_typ
 
 let get_values_and_variants info =
   let n = Enum_info.get_n_values info in
@@ -67,18 +75,23 @@ let get_values_and_variants info =
               get_v_and_v (i + 1) ((Int64.to_string value, variant_name) :: v_v)
   in get_v_and_v 0 []
 
-let append_ctypes_enum_bindings enum_name info (mli, ml) =
+let append_ctypes_enum_bindings enum_name info sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
   let tag = Enum_info.get_storage_type info in
-  match Binding_utils.type_tag_to_bindings_types tag with
-  | Not_implemented tag_name -> Printf.fprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
-    Printf.fprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
+  match type_tag_to_bindings_types tag with
+  | Not_implemented tag_name -> File.bprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
+    File.bprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
     let values_and_variants = get_values_and_variants info in
     append_enum_type values_and_variants mli;
     append_enum_type values_and_variants ml;
-    append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
-    append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml);
-    append_enum_view ctypes_typ (mli, ml)
+    append_enum_of_value_fn enum_name ocaml_type values_and_variants sources;
+    append_enum_to_value_fn enum_name ocaml_type values_and_variants sources;
+    append_enum_view ctypes_typ sources;
+    File.buff_add_eol mli;
+    File.buff_add_eol ml
 
 let append_flags_types values_and_variants descr =
   Printf.fprintf descr "type t = %s\n" (String.concat " | " (List.map (fun (_, v) -> v) values_and_variants));
@@ -133,23 +146,20 @@ let append_ctypes_flags_bindings enum_name info (mli, ml) =
     let values_and_variants = get_values_and_variants info in
     append_flags_types values_and_variants mli;
     append_flags_types values_and_variants ml;
-    append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
-    append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    (*append_enum_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
+    append_enum_to_value_fn enum_name ocaml_type values_and_variants (mli, ml); *)
     append_flags_list_of_value_fn enum_name ocaml_type values_and_variants (mli, ml);
     append_flags_list_to_value_fn enum_name ocaml_type (mli, ml);
     append_flags_view ctypes_typ (mli, ml)
 
-let parse_enum_info info source_files =
-  match get_binding_name info with
+let parse_enum_info info sources =
+  match Binding_utils.get_binding_name info with
   | None -> ()
-  | Some name -> let f_descrs = (source_files.mli.descr,
-                                 source_files.ml.descr) in
-    let info' = Enum_info.from_baseinfo info in
-    append_ctypes_enum_bindings name info' f_descrs;
-    add_empty_line source_files.mli.descr;
-    add_empty_line source_files.ml.descr
+  | Some name -> let info' = Enum_info.from_baseinfo info in
+    append_ctypes_enum_bindings name info' sources
 
 let parse_flags_info info source_files =
+  let open Binding_utils in
   match get_binding_name info with
   | None -> ()
   | Some name -> let f_descrs = (source_files.mli.descr,

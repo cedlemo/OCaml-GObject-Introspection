@@ -24,22 +24,22 @@ open Ctypes
 open Foreign
 
 val append_enum_type:
-  (string * string) list -> Pervasives.out_channel -> unit
+  (string * string) list -> Binding_utils.File.t -> unit
 
 val append_enum_of_value_fn:
-  string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> string -> (string * string) list -> Binding_utils.Sources.t -> unit
 
 val append_enum_to_value_fn:
-  string -> string -> (string * string) list -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> string -> (string * string) list -> Binding_utils.Sources.t -> unit
 
 val append_enum_view:
-  string -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Binding_utils.Sources.t -> unit
 
 val get_values_and_variants:
   Enum_info.t structure ptr -> (string * string) list
 
 val append_ctypes_enum_bindings:
-  string -> Enum_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
+  string -> Enum_info.t structure ptr -> Binding_utils.Sources.t -> unit
 
 val append_flags_types:
   (string * string) list -> Pervasives.out_channel -> unit
@@ -59,7 +59,7 @@ val append_ctypes_flags_bindings:
 (** Use Enum_info in order to generate Ctypes bindings.
     It creates an enumname view and all the conversion functions. *)
 val parse_enum_info :
-  Base_info.t structure ptr -> Binding_utils.files -> unit
+  Base_info.t structure ptr -> Binding_utils.Sources.t -> unit
 
 (** Use Enum_info in order to generate Ctypes bindings.
     It creates an enumname_list view and all the conversion functions. *)
