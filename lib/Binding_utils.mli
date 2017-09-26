@@ -19,8 +19,9 @@
 open Ctypes
 open Foreign
 
-(** Binding_utils module : Regroups a set of functions needed in almost all the
-    Builder* modules. *)
+(** Binding_utils module : Regroups a set of functions and sub-modules needed
+    and used in almost all the Bind_* modules that generate automatically the
+    bindings. *)
 
 (** Helper to write clean code with optional values. *)
 module Option : sig
@@ -111,7 +112,9 @@ val add_comments:
 (** Module for a file representation. A File.t is associated with a
      - name
      - file descriptor
-     - buffer *)
+     - buffer
+     The idea is to build the bindings in the buffer and write the buffer in
+     the file descriptor once the bindings are generated. *)
 module File : sig
   type t (* = { Should its content exposed ?
     name: string;
@@ -185,6 +188,9 @@ module File : sig
     t -> unit
 end
 
+(** This module is dedicated to a set of a mli and ml file represented by two
+    File.t type variables. It allows to easily create, write, close and access
+    to two sources files. *)
 module Sources : sig
   type t (*= { Should its content exposed ?
     ml : file;
