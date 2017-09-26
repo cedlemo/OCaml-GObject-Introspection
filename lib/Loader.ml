@@ -133,10 +133,9 @@ let generate_bindings gi_info const_parser
           )
         )
         | Base_info.Constant -> (
-          (* match const_parser with
+           match const_parser with
           | None -> Bind_constant.parse_constant_info gi_info.info gi_info.sources
           | Some const_parser_info -> const_parser_info gi_info.info gi_info.sources
-          *)
         )
         | Base_info.Union -> (
           (* let sources = generate_module_files gi_info.loader gi_info.base_name in

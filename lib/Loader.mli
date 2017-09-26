@@ -95,7 +95,7 @@ type gi_info = { base_name: string;
  *)
 val parse:
   t ->
-  ?const_parser:(Base_info.t structure ptr -> Binding_utils.files -> unit) ->
+  ?const_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?enum_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?flags_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?struct_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
