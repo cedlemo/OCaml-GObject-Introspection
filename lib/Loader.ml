@@ -125,12 +125,12 @@ let generate_bindings gi_info const_parser
           )
         )
         | Base_info.Flags -> (
-          (* let sources = generate_module_files gi_info.loader gi_info.base_name in (
+            let sources = generate_module_files gi_info.loader gi_info.base_name in (
             match flags_parser with
             | None -> Bind_enum.parse_flags_info gi_info.info sources
             | Some flags_parser_fn -> flags_parser_fn gi_info.info sources
             (* TODO: Close sources ? *)
-          ) *)
+          )
         )
         | Base_info.Constant -> (
           (* match const_parser with
