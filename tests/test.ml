@@ -42,9 +42,8 @@ let () =
       Test_loader.tests;
       Test_bind_struct.tests;
       Test_bind_enum.tests;
-      (* TestBindConstant.tests;
-      TestBindUnion.tests;
-      *)
+      Test_bind_constant.tests;
+      (* TestBindUnion.tests; *)
       Test_bind_function.tests;
       Test_binding_utils.tests
     ]
