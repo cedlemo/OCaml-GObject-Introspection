@@ -16,17 +16,19 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Binding_utils
+let append_ctypes_union_declaration name sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
+  File.buff_add_line mli "type t";
+  File.buff_add_line mli "val t_typ : t union typ";
+  File.buff_add_line ml "type t";
+  File.bprintf ml "let t_typ : t union typ = union \"%s\"\n" name
 
-let append_ctypes_union_declaration name sources_files =
-  let (mli, ml) = sources_files in
-  Printf.fprintf mli "type t\n%!";
-  Printf.fprintf mli "val t_typ : t union typ\n%!";
-  Printf.fprintf ml "type t\n%!";
-  Printf.fprintf ml "let t_typ : t union typ = union \"%s\"\n" name
-
-let append_ctypes_union_fields_declarations union_name info sources_files =
-  let (mli, ml) = sources_files in
+let append_ctypes_union_fields_declarations union_name info sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
   let append_ctypes_union_field_declarations field_info =
     let base_info = Field_info.to_baseinfo field_info in
     match Base_info.get_name base_info with
@@ -34,12 +36,13 @@ let append_ctypes_union_fields_declarations union_name info sources_files =
     | Some name ->
       let type_info = Field_info.get_type field_info in
       match Binding_utils.type_info_to_bindings_types type_info false with
-      | Not_implemented tag_name -> let coms = Printf.sprintf "TODO Union field %s : %s tag not implemented" union_name tag_name in
-        Binding_utils.add_comments mli coms;
-        Binding_utils.add_comments ml coms
+      | Not_implemented tag_name ->
+        let coms = Printf.sprintf "TODO Union field %s : %s tag not implemented" union_name tag_name in
+        File.buff_add_comments mli coms;
+        File.buff_add_comments ml coms
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
-      Printf.fprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type;
-      Printf.fprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ
+      File.bprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type;
+      File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ
   in
   let n = Union_info.get_n_fields info in
   for i = 0 to n - 1 do
@@ -47,16 +50,19 @@ let append_ctypes_union_fields_declarations union_name info sources_files =
     append_ctypes_union_field_declarations field_info
   done
 
-let append_ctypes_union_seal ml_descr =
-  Printf.fprintf ml_descr "let _ = seal t_typ\n"
+let append_ctypes_union_seal file =
+  Binding_utils.File.buff_add_line file "let _ = seal t_typ"
 
-let parse_union_info info source_files =
+let parse_union_info info sources =
+  let open Binding_utils in
   match get_binding_name info with
   | None -> ()
-  | Some name -> let f_descrs = (source_files.mli.descr,
-                                 source_files.ml.descr) in
+  | Some name ->
     let info' = Union_info.from_baseinfo info in
-    append_ctypes_union_declaration name f_descrs;
-    append_ctypes_union_fields_declarations name info' f_descrs;
-    add_empty_line source_files.mli.descr;
-    add_empty_line source_files.ml.descr
+    append_ctypes_union_declaration name sources;
+    append_ctypes_union_fields_declarations name info' sources;
+    let mli = Sources.mli sources in
+    let ml = Sources.ml sources in
+    File.buff_add_eol mli;
+    File.buff_add_eol ml;
+    Sources.write_buffs sources

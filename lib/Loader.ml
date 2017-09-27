@@ -138,12 +138,12 @@ let generate_bindings gi_info const_parser
           | Some const_parser_info -> const_parser_info gi_info.info gi_info.sources
         )
         | Base_info.Union -> (
-          (* let sources = generate_module_files gi_info.loader gi_info.base_name in
+          let sources = generate_module_files gi_info.loader gi_info.base_name in
           let _ = ( match union_parser with
             | None -> Bind_union.parse_union_info gi_info.info sources
             | Some union_parser_fn -> union_parser_fn gi_info.info sources
           ) in
-          Binding_utils.File.close_sources sources *)
+          Binding_utils.Sources.close sources
         )
         | Base_info.Callback -> ()
         | Base_info.Invalid -> ()
