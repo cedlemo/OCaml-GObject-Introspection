@@ -36,19 +36,6 @@ let union_test namespace union_name fn =
   | None -> assert_equal_string union_name "No base info found"
   | Some (info) -> fn info
 
-let test_writing_union namespace name writer mli_content ml_content =
-  let _ = Repository.require repo namespace () in
-  union_test namespace name (fun info ->
-      let open Binding_utils in
-      let filename = String.concat "_" [namespace; name; "union"; "test"] in
-      let tmp_files = Binding_utils.generate_sources filename in
-      let descrs = (tmp_files.mli.descr, tmp_files.ml.descr) in
-      let _ = writer name info descrs in
-      let _ = Binding_utils.close_sources tmp_files in
-      let _ = check_file_and_content tmp_files.mli.name mli_content in
-      Test_utils.check_file_and_content tmp_files.ml.name ml_content
-    )
-
 let test_append_ctypes_union_declaration test_ctxt =
   let namespace = "GLib" in
   let name = "Mutex" in
