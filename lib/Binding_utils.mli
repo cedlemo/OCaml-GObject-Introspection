@@ -89,26 +89,6 @@ val type_tag_to_bindings_types:
 val type_info_to_bindings_types:
   Type_info.t structure ptr -> bool -> bindings_types
 
-(** Add an open directives in a file for a module name.*)
-val write_open_module:
-  Pervasives.out_channel -> string -> unit
-
-(** Add the line "open Ctypes\n" in a file. *)
-val add_open_ctypes:
-  Pervasives.out_channel -> unit
-
-(** Add the line "open Foreign\n" in a file. *)
-val add_open_foreign:
-  Pervasives.out_channel -> unit
-
-(** Add empty line in a file. *)
-val add_empty_line:
-  Pervasives.out_channel -> unit
-
-(** Add information in comment. *)
-val add_comments:
-  Pervasives.out_channel -> string -> unit
-
 (** Module for a file representation. A File.t is associated with a
      - name
      - file descriptor
@@ -116,10 +96,7 @@ val add_comments:
      The idea is to build the bindings in the buffer and write the buffer in
      the file descriptor once the bindings are generated. *)
 module File : sig
-  type t (* = { Should its content exposed ?
-    name: string;
-    descr : Pervasives.out_channel;
-  } *)
+  type t
 
   val create:
     string -> t
@@ -192,62 +169,38 @@ end
     File.t type variables. It allows to easily create, write, close and access
     to two sources files. *)
 module Sources : sig
-  type t (*= { Should its content exposed ?
-    ml : file;
-    mli : file;
-  } *)
+
+  type t
 
   (** Constructor that generate a two files in append mode and that returns
       a value of type sources.*)
   val create:
     string -> t
+
   (** Helper that generate ml and mli files, that adds "open Ctypes" in the
       .mli file and "open Ctypes\nopenForeign\n" in the .ml file. *)
   val create_ctypes:
     string -> t
+
   (** Constructor for oUnit in tests. *)
   val create_tmp:
     File.t * File.t -> t
+
   (** function that returns the ml part of the sources type. It contains both
       the name of the ".ml" source and its file descriptor.*)
   val ml:
     t -> File.t
+
   (** function that returns the mli part of the sources type. It contains both
       the name of the ".mli" source and its file descriptor.*)
   val mli:
     t -> File.t
+
   (** Write all the buffer contents (ml and mli) in their respective files. *)
   val write_buffs:
     t -> unit
+
   (** Close the source files (ml and mli) and reset the buffer. *)
   val close:
     t -> unit
 end
-
-(** A simple file type that contains the name and the file descriptor. *)
-type file = {
-  name: string;
-  descr : Pervasives.out_channel;
-}
-
-(** A type that for OCaml source file. The ml field is for the source code
-    file and the mli field is for the header file.*)
-type files = {
-  ml : file;
-  mli : file;
-}
-
-(** Helper that uses the argument as a base name in order to create two files
-    one with the .ml extension and one with the .mli extension in create and
-    append mode. The name and the file descriptor are returned in a files type. *)
-val generate_sources:
-  string -> files
-
-(** Helper that uses generate_sources and that adds "open Ctypes" in the .mli
-    file and "open Ctypes\nopenForeign\n" in the .ml file. *)
-val generate_ctypes_sources:
-  string -> files
-
-(** Close the two file descriptors in a files type *)
-val close_sources:
-  files -> unit
