@@ -22,7 +22,9 @@
 open Ctypes
 open Foreign
 
-val bindings_constant_name:
+(** Returns the OCaml constant name from the C constant name. It just prepend
+    "c_" to the C constant name.*)
+val binding_constant_name:
   string -> string
 
 val append_boolean_constant:

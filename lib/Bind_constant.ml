@@ -19,15 +19,15 @@
 open Ctypes
 open Foreign
 
-let bindings_constant_name name =
-  "_" ^ name
+let binding_constant_name name =
+  "c_" ^ name
 
 let append_constant name info files field field_type printer =
   let open Binding_utils in
   let (mli, ml) = files in
   let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
-  let modified_name = bindings_constant_name name in
+  let modified_name = binding_constant_name name in
   let _ = File.bprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = printer value in
   File.bprintf ml "let %s = %s\n" modified_name str_value
@@ -37,7 +37,7 @@ let append_constant_of_32_or_more_bits name info files field field_type type_mod
   let (mli, ml) = files in
   let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
-  let modified_name = bindings_constant_name name in
+  let modified_name = binding_constant_name name in
   let _ = File.bprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = printer value in
   File.bprintf ml "let %s = %s.of_string \"%s\"\n" modified_name type_module str_value
@@ -47,7 +47,7 @@ let append_constant_of_31_or_less_bits name info files field field_type type_mod
   let (mli, ml) = files in
   let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
-  let modified_name = bindings_constant_name name in
+  let modified_name = binding_constant_name name in
   let _ = File.bprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = printer value in
   File.bprintf ml "let %s = %s.of_int %s\n" modified_name type_module str_value
@@ -100,7 +100,7 @@ let append_int64_constant name info (mli, ml) =
   let field_type = "int64" in
   let argument = Constant_info.get_value info in
   let value = getf (!@argument) field in
-  let modified_name = bindings_constant_name name in
+  let modified_name = binding_constant_name name in
   let _ = File.bprintf mli "val %s : %s\n" modified_name field_type in
   let str_value = Int64.to_string value in
   File.bprintf ml "let %s = %sL\n" modified_name str_value
