@@ -170,10 +170,12 @@ let parse_enum_info info sources =
   match Binding_utils.get_binding_name info with
   | None -> ()
   | Some name -> let info' = Enum_info.from_baseinfo info in
-    append_ctypes_enum_bindings name info' sources
+    append_ctypes_enum_bindings name info' sources;
+    Binding_utils.Sources.write_buffs sources
 
 let parse_flags_info info sources =
   match Binding_utils.get_binding_name info with
   | None -> ()
   | Some name -> let info' = Enum_info.from_baseinfo info in
-    append_ctypes_flags_bindings name info' sources
+    append_ctypes_flags_bindings name info' sources;
+    Binding_utils.Sources.write_buffs sources
