@@ -344,20 +344,20 @@ let type_info_to_bindings_types type_info maybe_null =
         match get_binding_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name ->
-        Types (check_if_pointer (Printf.sprintf "(* interface *) %s.t structure" name, Printf.sprintf "(* interface *) %s.t_typ" name))
+        Types (check_if_pointer (Printf.sprintf "%s.t structure" name, Printf.sprintf "%s.t_typ" name))
       )
       | Boxed as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Enum as t -> (
         match get_binding_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name ->
-        Types {ocaml = Printf.sprintf "(* interface *) %s.t" name; ctypes = Printf.sprintf "(* interface *) %s.t_view" name}
+        Types {ocaml = Printf.sprintf "%s.t" name; ctypes = Printf.sprintf "%s.t_view" name}
       )
       | Flags as t -> (
         match get_binding_name interface with
         | None -> Not_implemented (Base_info.string_of_baseinfo_type t)
         | Some name ->
-        Types {ocaml = Printf.sprintf "(* interface *) %s.t_list" name; ctypes = Printf.sprintf "(* interface *) %s.t_list_view" name}
+        Types {ocaml = Printf.sprintf "%s.t_list" name; ctypes = Printf.sprintf "%s.t_list_view" name}
       )
       | Object as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
       | Interface as t -> Not_implemented (Base_info.string_of_baseinfo_type t)
