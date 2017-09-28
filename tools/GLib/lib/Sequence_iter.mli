@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val compare:
-t structure ptr -> (* interface *) t structure ptr -> int32
+t structure ptr -> t structure ptr -> int32
 
 val get_position:
 t structure ptr -> int32

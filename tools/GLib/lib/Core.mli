@@ -222,7 +222,7 @@ unit -> Unsigned.uint32
 val byte_array_free:
 Byte_array.t structure ptr -> bool -> Unsigned.uint8 ptr
 val byte_array_free_to_bytes:
-Byte_array.t structure ptr -> (* interface *) Bytes.t structure ptr
+Byte_array.t structure ptr -> Bytes.t structure ptr
 val byte_array_new:
 unit -> Byte_array.t structure ptr
 (*Not implemented g_byte_array_new_take argument types not handled*)
@@ -233,21 +233,21 @@ string -> int32
 val check_version:
 Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32 -> string
 val checksum_type_get_length:
-(* interface *) Checksum_type.t -> int64
+Checksum_type.t -> int64
 (*Not implemented g_child_watch_add_full argument types not handled*)
 val child_watch_source_new:
-int32 -> (* interface *) Source.t structure ptr
+int32 -> Source.t structure ptr
 val clear_error:
 unit -> Error.t structure ptr ptr option -> unit
 val close:
 int32 -> Error.t structure ptr ptr option -> bool
 val compute_checksum_for_bytes:
-(* interface *) Checksum_type.t -> (* interface *) Bytes.t structure ptr -> string
+Checksum_type.t -> Bytes.t structure ptr -> string
 (*Not implemented g_compute_checksum_for_data argument types not handled*)
 val compute_checksum_for_string:
-(* interface *) Checksum_type.t -> string -> int64 -> string
+Checksum_type.t -> string -> int64 -> string
 val compute_hmac_for_bytes:
-(* interface *) Checksum_type.t -> (* interface *) Bytes.t structure ptr -> (* interface *) Bytes.t structure ptr -> string
+Checksum_type.t -> Bytes.t structure ptr -> Bytes.t structure ptr -> string
 (*Not implemented g_compute_hmac_for_data argument types not handled*)
 (*Not implemented g_compute_hmac_for_string argument types not handled*)
 (*Not implemented g_convert argument types not handled*)
@@ -256,25 +256,25 @@ unit -> Unsigned.uint32
 val convert_with_fallback:
 string -> int64 -> string -> string -> string -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> Error.t structure ptr ptr option -> string
 val convert_with_iconv:
-string -> int64 -> (* interface *) IConv.t structure ptr -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> Error.t structure ptr ptr option -> string
+string -> int64 -> IConv.t structure ptr -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> Error.t structure ptr ptr option -> string
 val datalist_clear:
-(* interface *) Data.t structure ptr -> unit
+Data.t structure ptr -> unit
 val datalist_get_data:
-(* interface *) Data.t structure ptr -> string -> unit ptr option
+Data.t structure ptr -> string -> unit ptr option
 val datalist_get_flags:
-(* interface *) Data.t structure ptr -> Unsigned.uint32
+Data.t structure ptr -> Unsigned.uint32
 val datalist_id_get_data:
-(* interface *) Data.t structure ptr -> Unsigned.uint32 -> unit ptr option
+Data.t structure ptr -> Unsigned.uint32 -> unit ptr option
 val datalist_id_remove_no_notify:
-(* interface *) Data.t structure ptr -> Unsigned.uint32 -> unit ptr option
+Data.t structure ptr -> Unsigned.uint32 -> unit ptr option
 (*Not implemented g_datalist_id_replace_data argument types not handled*)
 (*Not implemented g_datalist_id_set_data_full argument types not handled*)
 val datalist_init:
-(* interface *) Data.t structure ptr -> unit
+Data.t structure ptr -> unit
 val datalist_set_flags:
-(* interface *) Data.t structure ptr -> Unsigned.uint32 -> unit
+Data.t structure ptr -> Unsigned.uint32 -> unit
 val datalist_unset_flags:
-(* interface *) Data.t structure ptr -> Unsigned.uint32 -> unit
+Data.t structure ptr -> Unsigned.uint32 -> unit
 val dataset_destroy:
 unit ptr -> unit
 val dataset_id_get_data:
@@ -283,7 +283,7 @@ val dataset_id_remove_no_notify:
 unit ptr -> Unsigned.uint32 -> unit ptr option
 (*Not implemented g_dataset_id_set_data_full argument types not handled*)
 val date_get_days_in_month:
-(* interface *) Date_month.t -> Unsigned.uint16 -> Unsigned.uint8
+Date_month.t -> Unsigned.uint16 -> Unsigned.uint8
 val date_get_monday_weeks_in_year:
 Unsigned.uint16 -> Unsigned.uint8
 val date_get_sunday_weeks_in_year:
@@ -291,7 +291,7 @@ Unsigned.uint16 -> Unsigned.uint8
 val date_is_leap_year:
 Unsigned.uint16 -> bool
 val date_strftime:
-string -> Unsigned.uint64 -> string -> (* interface *) Date.t structure ptr -> Unsigned.uint64
+string -> Unsigned.uint64 -> string -> Date.t structure ptr -> Unsigned.uint64
 val date_time_compare:
 unit ptr -> unit ptr -> int32
 val date_time_equal:
@@ -301,13 +301,13 @@ unit ptr -> Unsigned.uint32
 val date_valid_day:
 Unsigned.uint8 -> bool
 val date_valid_dmy:
-Unsigned.uint8 -> (* interface *) Date_month.t -> Unsigned.uint16 -> bool
+Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> bool
 val date_valid_julian:
 Unsigned.uint32 -> bool
 val date_valid_month:
-(* interface *) Date_month.t -> bool
+Date_month.t -> bool
 val date_valid_weekday:
-(* interface *) Date_weekday.t -> bool
+Date_weekday.t -> bool
 val date_valid_year:
 Unsigned.uint16 -> bool
 val dcgettext:
@@ -334,7 +334,7 @@ string option -> string -> string -> string
 (*Not implemented g_environ_setenv argument types not handled*)
 (*Not implemented g_environ_unsetenv argument types not handled*)
 val file_error_from_errno:
-int32 -> (* interface *) File_error.t
+int32 -> File_error.t
 val file_error_quark:
 unit -> Unsigned.uint32
 (*Not implemented g_file_get_contents argument types not handled*)
@@ -343,7 +343,7 @@ val file_read_link:
 string -> Error.t structure ptr ptr option -> string
 (*Not implemented g_file_set_contents argument types not handled*)
 val file_test:
-string -> (* interface *) File_test.t_list -> bool
+string -> File_test.t_list -> bool
 val filename_display_basename:
 string -> string
 val filename_display_name:
@@ -359,7 +359,7 @@ val format_size:
 Unsigned.uint64 -> string
 (* !!! DEPRECATED : format_size_for_display. *)
 val format_size_full:
-Unsigned.uint64 -> (* interface *) Format_size_flags.t_list -> string
+Unsigned.uint64 -> Format_size_flags.t_list -> string
 val free:
 unit ptr option -> unit
 val get_application_name:
@@ -370,7 +370,7 @@ unit -> string
 val get_current_dir:
 unit -> string
 val get_current_time:
-(* interface *) Time_val.t structure ptr -> unit
+Time_val.t structure ptr -> unit
 (*Not implemented g_get_environ return type not handled*)
 val get_filename_charsets:
 string -> bool
@@ -405,7 +405,7 @@ unit -> string
 val get_user_runtime_dir:
 unit -> string
 val get_user_special_dir:
-(* interface *) User_directory.t -> string
+User_directory.t -> string
 val getenv:
 string -> string
 val hash_table_add:
@@ -434,17 +434,17 @@ Hash_table.t structure ptr -> unit
 val hash_table_unref:
 Hash_table.t structure ptr -> unit
 val hook_destroy:
-(* interface *) Hook_list.t structure ptr -> Unsigned.uint64 -> bool
+Hook_list.t structure ptr -> Unsigned.uint64 -> bool
 val hook_destroy_link:
-(* interface *) Hook_list.t structure ptr -> (* interface *) Hook.t structure ptr -> unit
+Hook_list.t structure ptr -> Hook.t structure ptr -> unit
 val hook_free:
-(* interface *) Hook_list.t structure ptr -> (* interface *) Hook.t structure ptr -> unit
+Hook_list.t structure ptr -> Hook.t structure ptr -> unit
 val hook_insert_before:
-(* interface *) Hook_list.t structure ptr -> (* interface *) Hook.t structure ptr option -> (* interface *) Hook.t structure ptr -> unit
+Hook_list.t structure ptr -> Hook.t structure ptr option -> Hook.t structure ptr -> unit
 val hook_prepend:
-(* interface *) Hook_list.t structure ptr -> (* interface *) Hook.t structure ptr -> unit
+Hook_list.t structure ptr -> Hook.t structure ptr -> unit
 val hook_unref:
-(* interface *) Hook_list.t structure ptr -> (* interface *) Hook.t structure ptr -> unit
+Hook_list.t structure ptr -> Hook.t structure ptr -> unit
 val hostname_is_ascii_encoded:
 string -> bool
 val hostname_is_ip_address:
@@ -456,12 +456,12 @@ string -> string
 val hostname_to_unicode:
 string -> string
 val iconv:
-(* interface *) IConv.t structure ptr -> string -> Unsigned.uint64 ptr -> string -> Unsigned.uint64 ptr -> Unsigned.uint64
+IConv.t structure ptr -> string -> Unsigned.uint64 ptr -> string -> Unsigned.uint64 ptr -> Unsigned.uint64
 (*Not implemented g_idle_add_full argument types not handled*)
 val idle_remove_by_data:
 unit ptr option -> bool
 val idle_source_new:
-unit -> (* interface *) Source.t structure ptr
+unit -> Source.t structure ptr
 val int64_equal:
 unit ptr -> unit ptr -> bool
 val int64_hash:
@@ -476,29 +476,29 @@ val intern_string:
 string option -> string
 (*Not implemented g_io_add_watch_full argument types not handled*)
 val io_channel_error_from_errno:
-int32 -> (* interface *) IOChannel_error.t
+int32 -> IOChannel_error.t
 val io_channel_error_quark:
 unit -> Unsigned.uint32
 val io_create_watch:
-(* interface *) IOChannel.t structure ptr -> (* interface *) IOCondition.t_list -> (* interface *) Source.t structure ptr
+IOChannel.t structure ptr -> IOCondition.t_list -> Source.t structure ptr
 val key_file_error_quark:
 unit -> Unsigned.uint32
 (*Not implemented g_listenv return type not handled*)
 (*Not implemented g_locale_from_utf8 argument types not handled*)
 (*Not implemented g_locale_to_utf8 argument types not handled*)
 val log_default_handler:
-string option -> (* interface *) Log_level_flags.t_list -> string option -> unit ptr option -> unit
+string option -> Log_level_flags.t_list -> string option -> unit ptr option -> unit
 val log_remove_handler:
 string -> Unsigned.uint32 -> unit
 val log_set_always_fatal:
-(* interface *) Log_level_flags.t_list -> (* interface *) Log_level_flags.t_list
+Log_level_flags.t_list -> Log_level_flags.t_list
 val log_set_fatal_mask:
-string -> (* interface *) Log_level_flags.t_list -> (* interface *) Log_level_flags.t_list
+string -> Log_level_flags.t_list -> Log_level_flags.t_list
 (*Not implemented g_log_set_handler_full argument types not handled*)
 (*Not implemented g_log_set_writer_func argument types not handled*)
 (*Not implemented g_log_structured_array argument types not handled*)
 val log_variant:
-string option -> (* interface *) Log_level_flags.t_list -> (* interface *) Variant.t structure ptr -> unit
+string option -> Log_level_flags.t_list -> Variant.t structure ptr -> unit
 (*Not implemented g_log_writer_default argument types not handled*)
 (*Not implemented g_log_writer_format_fields argument types not handled*)
 val log_writer_is_journald:
@@ -508,13 +508,13 @@ int32 -> bool
 val log_writer_supports_color:
 int32 -> bool
 val main_context_default:
-unit -> (* interface *) Main_context.t structure ptr
+unit -> Main_context.t structure ptr
 val main_context_get_thread_default:
-unit -> (* interface *) Main_context.t structure ptr
+unit -> Main_context.t structure ptr
 val main_context_ref_thread_default:
-unit -> (* interface *) Main_context.t structure ptr
+unit -> Main_context.t structure ptr
 val main_current_source:
-unit -> (* interface *) Source.t structure ptr
+unit -> Source.t structure ptr
 val main_depth:
 unit -> int32
 val malloc:
@@ -558,11 +558,11 @@ string -> bool
 val path_skip_root:
 string -> string option
 val pattern_match:
-(* interface *) Pattern_spec.t structure ptr -> Unsigned.uint32 -> string -> string option -> bool
+Pattern_spec.t structure ptr -> Unsigned.uint32 -> string -> string option -> bool
 val pattern_match_simple:
 string -> string -> bool
 val pattern_match_string:
-(* interface *) Pattern_spec.t structure ptr -> string -> bool
+Pattern_spec.t structure ptr -> string -> bool
 val pointer_bit_lock:
 unit ptr -> int32 -> unit
 val pointer_bit_trylock:
@@ -570,7 +570,7 @@ unit ptr -> int32 -> bool
 val pointer_bit_unlock:
 unit ptr -> int32 -> unit
 val poll:
-(* interface *) Poll_fd.t structure ptr -> Unsigned.uint32 -> int32 -> int32
+Poll_fd.t structure ptr -> Unsigned.uint32 -> int32 -> int32
 (*Not implemented g_propagate_error argument types not handled*)
 val quark_from_static_string:
 string option -> Unsigned.uint32
@@ -601,26 +601,26 @@ val regex_escape_nul:
 string -> int32 -> string
 (*Not implemented g_regex_escape_string argument types not handled*)
 val regex_match_simple:
-string -> string -> (* interface *) Regex_compile_flags.t_list -> (* interface *) Regex_match_flags.t_list -> bool
+string -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> bool
 (*Not implemented g_regex_split_simple return type not handled*)
 val reload_user_special_dirs_cache:
 unit -> unit
 val rmdir:
 string -> int32
 val sequence_get:
-(* interface *) Sequence_iter.t structure ptr -> unit ptr option
+Sequence_iter.t structure ptr -> unit ptr option
 val sequence_move:
-(* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 val sequence_move_range:
-(* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 val sequence_remove:
-(* interface *) Sequence_iter.t structure ptr -> unit
+Sequence_iter.t structure ptr -> unit
 val sequence_remove_range:
-(* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 val sequence_set:
-(* interface *) Sequence_iter.t structure ptr -> unit ptr option -> unit
+Sequence_iter.t structure ptr -> unit ptr option -> unit
 val sequence_swap:
-(* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 val set_application_name:
 string -> unit
 (*Not implemented g_set_error_literal argument types not handled*)
@@ -646,15 +646,15 @@ Unsigned.uint64 -> unit ptr option -> unit
 val slice_free_chain_with_offset:
 Unsigned.uint64 -> unit ptr option -> Unsigned.uint64 -> unit
 val slice_get_config:
-(* interface *) Slice_config.t -> int64
+Slice_config.t -> int64
 val slice_get_config_state:
-(* interface *) Slice_config.t -> int64 -> Unsigned.uint32 ptr -> int64 ptr
+Slice_config.t -> int64 -> Unsigned.uint32 ptr -> int64 ptr
 val slice_set_config:
-(* interface *) Slice_config.t -> int64 -> unit
+Slice_config.t -> int64 -> unit
 val source_remove:
 Unsigned.uint32 -> bool
 val source_remove_by_funcs_user_data:
-(* interface *) Source_funcs.t structure ptr -> unit ptr option -> bool
+Source_funcs.t structure ptr -> unit ptr option -> bool
 val source_remove_by_user_data:
 unit ptr option -> bool
 val source_set_name_by_id:
@@ -715,11 +715,11 @@ string -> string option -> string
 val strfreev:
 string option -> unit
 val string_new:
-string option -> (* interface *) String.t structure ptr
+string option -> String.t structure ptr
 val string_new_len:
-string -> int64 -> (* interface *) String.t structure ptr
+string -> int64 -> String.t structure ptr
 val string_sized_new:
-Unsigned.uint64 -> (* interface *) String.t structure ptr
+Unsigned.uint64 -> String.t structure ptr
 val strip_context:
 string -> string -> string
 val strjoinv:
@@ -760,17 +760,17 @@ string -> unit
 val test_bug_base:
 string -> unit
 val test_expect_message:
-string option -> (* interface *) Log_level_flags.t_list -> string -> unit
+string option -> Log_level_flags.t_list -> string -> unit
 val test_fail:
 unit -> unit
 val test_failed:
 unit -> bool
 val test_get_dir:
-(* interface *) Test_file_type.t -> string
+Test_file_type.t -> string
 val test_incomplete:
 string option -> unit
 val test_log_type_name:
-(* interface *) Test_log_type.t -> string
+Test_log_type.t -> string
 (*Not implemented g_test_queue_destroy argument types not handled*)
 val test_queue_free:
 unit ptr option -> unit
@@ -785,7 +785,7 @@ int32 -> int32 -> int32
 val test_run:
 unit -> int32
 val test_run_suite:
-(* interface *) Test_suite.t structure ptr -> int32
+Test_suite.t structure ptr -> int32
 val test_set_nonfatal_assertions:
 unit -> unit
 val test_skip:
@@ -806,7 +806,7 @@ unit -> bool
 val test_trap_reached_timeout:
 unit -> bool
 val test_trap_subprocess:
-string option -> Unsigned.uint64 -> (* interface *) Test_subprocess_flags.t_list -> unit
+string option -> Unsigned.uint64 -> Test_subprocess_flags.t_list -> unit
 val thread_error_quark:
 unit -> Unsigned.uint32
 val thread_exit:
@@ -824,16 +824,16 @@ int32 -> unit
 val thread_pool_stop_unused_threads:
 unit -> unit
 val thread_self:
-unit -> (* interface *) Thread.t structure ptr
+unit -> Thread.t structure ptr
 val thread_yield:
 unit -> unit
 (*Not implemented g_time_val_from_iso8601 argument types not handled*)
 (*Not implemented g_timeout_add_full argument types not handled*)
 (*Not implemented g_timeout_add_seconds_full argument types not handled*)
 val timeout_source_new:
-Unsigned.uint32 -> (* interface *) Source.t structure ptr
+Unsigned.uint32 -> Source.t structure ptr
 val timeout_source_new_seconds:
-Unsigned.uint32 -> (* interface *) Source.t structure ptr
+Unsigned.uint32 -> Source.t structure ptr
 (* !!! DEPRECATED : trash_stack_height. *)
 (* !!! DEPRECATED : trash_stack_peek. *)
 (* !!! DEPRECATED : trash_stack_pop. *)
@@ -887,21 +887,21 @@ unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
 (* !!! DEPRECATED : unicode_canonical_decomposition. *)
 (*Not implemented g_unicode_canonical_ordering argument types not handled*)
 val unicode_script_from_iso15924:
-Unsigned.uint32 -> (* interface *) Unicode_script.t
+Unsigned.uint32 -> Unicode_script.t
 val unicode_script_to_iso15924:
-(* interface *) Unicode_script.t -> Unsigned.uint32
+Unicode_script.t -> Unsigned.uint32
 val unix_error_quark:
 unit -> Unsigned.uint32
 (*Not implemented g_unix_fd_add_full argument types not handled*)
 val unix_fd_source_new:
-int32 -> (* interface *) IOCondition.t_list -> (* interface *) Source.t structure ptr
+int32 -> IOCondition.t_list -> Source.t structure ptr
 val unix_open_pipe:
 int32 ptr -> int32 -> Error.t structure ptr ptr option -> bool
 val unix_set_fd_nonblocking:
 int32 -> bool -> Error.t structure ptr ptr option -> bool
 (*Not implemented g_unix_signal_add_full argument types not handled*)
 val unix_signal_source_new:
-int32 -> (* interface *) Source.t structure ptr
+int32 -> Source.t structure ptr
 val unlink:
 string -> int32
 val unsetenv:
@@ -936,7 +936,7 @@ string -> string -> string
 val utf8_make_valid:
 string -> int64 -> string
 val utf8_normalize:
-string -> int64 -> (* interface *) Normalize_mode.t -> string
+string -> int64 -> Normalize_mode.t -> string
 val utf8_offset_to_pointer:
 string -> int64 -> string
 val utf8_pointer_to_offset:
@@ -971,14 +971,14 @@ string -> bool
 val variant_is_signature:
 string -> bool
 val variant_parse:
-(* interface *) Variant_type.t structure ptr option -> string -> string option -> string option -> Error.t structure ptr ptr option -> (* interface *) Variant.t structure ptr
+Variant_type.t structure ptr option -> string -> string option -> string option -> Error.t structure ptr ptr option -> Variant.t structure ptr
 val variant_parse_error_print_context:
 Error.t structure ptr -> string -> string
 val variant_parse_error_quark:
 unit -> Unsigned.uint32
 (* !!! DEPRECATED : variant_parser_get_error_quark. *)
 val variant_type_checked_:
-string -> (* interface *) Variant_type.t structure ptr
+string -> Variant_type.t structure ptr
 val variant_type_string_is_valid:
 string -> bool
 (*Not implemented g_variant_type_string_scan argument types not handled*)

@@ -216,7 +216,7 @@ foreign "g_bookmark_file_error_quark" (void @-> returning (uint32_t))
 let byte_array_free =
 foreign "g_byte_array_free" (ptr Byte_array.t_typ @-> bool @-> returning (ptr uint8_t))
 let byte_array_free_to_bytes =
-foreign "g_byte_array_free_to_bytes" (ptr Byte_array.t_typ @-> returning (ptr (* interface *) Bytes.t_typ))
+foreign "g_byte_array_free_to_bytes" (ptr Byte_array.t_typ @-> returning (ptr Bytes.t_typ))
 let byte_array_new =
 foreign "g_byte_array_new" (void @-> returning (ptr Byte_array.t_typ))
 (*Not implemented g_byte_array_new_take argument types not handled*)
@@ -227,21 +227,21 @@ foreign "g_chdir" (string @-> returning (int32_t))
 let check_version =
 foreign "glib_check_version" (uint32_t @-> uint32_t @-> uint32_t @-> returning (string))
 let checksum_type_get_length =
-foreign "g_checksum_type_get_length" ((* interface *) Checksum_type.t_view @-> returning (int64_t))
+foreign "g_checksum_type_get_length" (Checksum_type.t_view @-> returning (int64_t))
 (*Not implemented g_child_watch_add_full argument types not handled*)
 let child_watch_source_new =
-foreign "g_child_watch_source_new" (int32_t @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_child_watch_source_new" (int32_t @-> returning (ptr Source.t_typ))
 let clear_error =
 foreign "g_clear_error" (void  @-> ptr_opt (ptr Error.t_typ) @-> returning (void))
 let close =
 foreign "g_close" (int32_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 let compute_checksum_for_bytes =
-foreign "g_compute_checksum_for_bytes" ((* interface *) Checksum_type.t_view @-> ptr (* interface *) Bytes.t_typ @-> returning (string))
+foreign "g_compute_checksum_for_bytes" (Checksum_type.t_view @-> ptr Bytes.t_typ @-> returning (string))
 (*Not implemented g_compute_checksum_for_data argument types not handled*)
 let compute_checksum_for_string =
-foreign "g_compute_checksum_for_string" ((* interface *) Checksum_type.t_view @-> string @-> int64_t @-> returning (string))
+foreign "g_compute_checksum_for_string" (Checksum_type.t_view @-> string @-> int64_t @-> returning (string))
 let compute_hmac_for_bytes =
-foreign "g_compute_hmac_for_bytes" ((* interface *) Checksum_type.t_view @-> ptr (* interface *) Bytes.t_typ @-> ptr (* interface *) Bytes.t_typ @-> returning (string))
+foreign "g_compute_hmac_for_bytes" (Checksum_type.t_view @-> ptr Bytes.t_typ @-> ptr Bytes.t_typ @-> returning (string))
 (*Not implemented g_compute_hmac_for_data argument types not handled*)
 (*Not implemented g_compute_hmac_for_string argument types not handled*)
 (*Not implemented g_convert argument types not handled*)
@@ -250,25 +250,25 @@ foreign "g_convert_error_quark" (void @-> returning (uint32_t))
 let convert_with_fallback =
 foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
 let convert_with_iconv =
-foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr (* interface *) IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
 let datalist_clear =
-foreign "g_datalist_clear" (ptr (* interface *) Data.t_typ @-> returning (void))
+foreign "g_datalist_clear" (ptr Data.t_typ @-> returning (void))
 let datalist_get_data =
-foreign "g_datalist_get_data" (ptr (* interface *) Data.t_typ @-> string @-> returning (ptr_opt void))
+foreign "g_datalist_get_data" (ptr Data.t_typ @-> string @-> returning (ptr_opt void))
 let datalist_get_flags =
-foreign "g_datalist_get_flags" (ptr (* interface *) Data.t_typ @-> returning (uint32_t))
+foreign "g_datalist_get_flags" (ptr Data.t_typ @-> returning (uint32_t))
 let datalist_id_get_data =
-foreign "g_datalist_id_get_data" (ptr (* interface *) Data.t_typ @-> uint32_t @-> returning (ptr_opt void))
+foreign "g_datalist_id_get_data" (ptr Data.t_typ @-> uint32_t @-> returning (ptr_opt void))
 let datalist_id_remove_no_notify =
-foreign "g_datalist_id_remove_no_notify" (ptr (* interface *) Data.t_typ @-> uint32_t @-> returning (ptr_opt void))
+foreign "g_datalist_id_remove_no_notify" (ptr Data.t_typ @-> uint32_t @-> returning (ptr_opt void))
 (*Not implemented g_datalist_id_replace_data argument types not handled*)
 (*Not implemented g_datalist_id_set_data_full argument types not handled*)
 let datalist_init =
-foreign "g_datalist_init" (ptr (* interface *) Data.t_typ @-> returning (void))
+foreign "g_datalist_init" (ptr Data.t_typ @-> returning (void))
 let datalist_set_flags =
-foreign "g_datalist_set_flags" (ptr (* interface *) Data.t_typ @-> uint32_t @-> returning (void))
+foreign "g_datalist_set_flags" (ptr Data.t_typ @-> uint32_t @-> returning (void))
 let datalist_unset_flags =
-foreign "g_datalist_unset_flags" (ptr (* interface *) Data.t_typ @-> uint32_t @-> returning (void))
+foreign "g_datalist_unset_flags" (ptr Data.t_typ @-> uint32_t @-> returning (void))
 let dataset_destroy =
 foreign "g_dataset_destroy" (ptr void @-> returning (void))
 let dataset_id_get_data =
@@ -277,7 +277,7 @@ let dataset_id_remove_no_notify =
 foreign "g_dataset_id_remove_no_notify" (ptr void @-> uint32_t @-> returning (ptr_opt void))
 (*Not implemented g_dataset_id_set_data_full argument types not handled*)
 let date_get_days_in_month =
-foreign "g_date_get_days_in_month" ((* interface *) Date_month.t_view @-> uint16_t @-> returning (uint8_t))
+foreign "g_date_get_days_in_month" (Date_month.t_view @-> uint16_t @-> returning (uint8_t))
 let date_get_monday_weeks_in_year =
 foreign "g_date_get_monday_weeks_in_year" (uint16_t @-> returning (uint8_t))
 let date_get_sunday_weeks_in_year =
@@ -285,7 +285,7 @@ foreign "g_date_get_sunday_weeks_in_year" (uint16_t @-> returning (uint8_t))
 let date_is_leap_year =
 foreign "g_date_is_leap_year" (uint16_t @-> returning (bool))
 let date_strftime =
-foreign "g_date_strftime" (string @-> uint64_t @-> string @-> ptr (* interface *) Date.t_typ @-> returning (uint64_t))
+foreign "g_date_strftime" (string @-> uint64_t @-> string @-> ptr Date.t_typ @-> returning (uint64_t))
 let date_time_compare =
 foreign "g_date_time_compare" (ptr void @-> ptr void @-> returning (int32_t))
 let date_time_equal =
@@ -295,13 +295,13 @@ foreign "g_date_time_hash" (ptr void @-> returning (uint32_t))
 let date_valid_day =
 foreign "g_date_valid_day" (uint8_t @-> returning (bool))
 let date_valid_dmy =
-foreign "g_date_valid_dmy" (uint8_t @-> (* interface *) Date_month.t_view @-> uint16_t @-> returning (bool))
+foreign "g_date_valid_dmy" (uint8_t @-> Date_month.t_view @-> uint16_t @-> returning (bool))
 let date_valid_julian =
 foreign "g_date_valid_julian" (uint32_t @-> returning (bool))
 let date_valid_month =
-foreign "g_date_valid_month" ((* interface *) Date_month.t_view @-> returning (bool))
+foreign "g_date_valid_month" (Date_month.t_view @-> returning (bool))
 let date_valid_weekday =
-foreign "g_date_valid_weekday" ((* interface *) Date_weekday.t_view @-> returning (bool))
+foreign "g_date_valid_weekday" (Date_weekday.t_view @-> returning (bool))
 let date_valid_year =
 foreign "g_date_valid_year" (uint16_t @-> returning (bool))
 let dcgettext =
@@ -328,7 +328,7 @@ foreign "g_dpgettext2" (string_opt @-> string @-> string @-> returning (string))
 (*Not implemented g_environ_setenv argument types not handled*)
 (*Not implemented g_environ_unsetenv argument types not handled*)
 let file_error_from_errno =
-foreign "g_file_error_from_errno" (int32_t @-> returning ((* interface *) File_error.t_view))
+foreign "g_file_error_from_errno" (int32_t @-> returning (File_error.t_view))
 let file_error_quark =
 foreign "g_file_error_quark" (void @-> returning (uint32_t))
 (*Not implemented g_file_get_contents argument types not handled*)
@@ -337,7 +337,7 @@ let file_read_link =
 foreign "g_file_read_link" (string  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
 (*Not implemented g_file_set_contents argument types not handled*)
 let file_test =
-foreign "g_file_test" (string @-> (* interface *) File_test.t_list_view @-> returning (bool))
+foreign "g_file_test" (string @-> File_test.t_list_view @-> returning (bool))
 let filename_display_basename =
 foreign "g_filename_display_basename" (string @-> returning (string))
 let filename_display_name =
@@ -352,7 +352,7 @@ foreign "g_find_program_in_path" (string @-> returning (string))
 let format_size =
 foreign "g_format_size" (uint64_t @-> returning (string))
 let format_size_full =
-foreign "g_format_size_full" (uint64_t @-> (* interface *) Format_size_flags.t_list_view @-> returning (string))
+foreign "g_format_size_full" (uint64_t @-> Format_size_flags.t_list_view @-> returning (string))
 let free =
 foreign "g_free" (ptr_opt void @-> returning (void))
 let get_application_name =
@@ -363,7 +363,7 @@ foreign "g_get_codeset" (void @-> returning (string))
 let get_current_dir =
 foreign "g_get_current_dir" (void @-> returning (string))
 let get_current_time =
-foreign "g_get_current_time" (ptr (* interface *) Time_val.t_typ @-> returning (void))
+foreign "g_get_current_time" (ptr Time_val.t_typ @-> returning (void))
 (*Not implemented g_get_environ return type not handled*)
 let get_filename_charsets =
 foreign "g_get_filename_charsets" (string @-> returning (bool))
@@ -398,7 +398,7 @@ foreign "g_get_user_name" (void @-> returning (string))
 let get_user_runtime_dir =
 foreign "g_get_user_runtime_dir" (void @-> returning (string))
 let get_user_special_dir =
-foreign "g_get_user_special_dir" ((* interface *) User_directory.t_view @-> returning (string))
+foreign "g_get_user_special_dir" (User_directory.t_view @-> returning (string))
 let getenv =
 foreign "g_getenv" (string @-> returning (string))
 let hash_table_add =
@@ -427,17 +427,17 @@ foreign "g_hash_table_steal_all" (ptr Hash_table.t_typ @-> returning (void))
 let hash_table_unref =
 foreign "g_hash_table_unref" (ptr Hash_table.t_typ @-> returning (void))
 let hook_destroy =
-foreign "g_hook_destroy" (ptr (* interface *) Hook_list.t_typ @-> uint64_t @-> returning (bool))
+foreign "g_hook_destroy" (ptr Hook_list.t_typ @-> uint64_t @-> returning (bool))
 let hook_destroy_link =
-foreign "g_hook_destroy_link" (ptr (* interface *) Hook_list.t_typ @-> ptr (* interface *) Hook.t_typ @-> returning (void))
+foreign "g_hook_destroy_link" (ptr Hook_list.t_typ @-> ptr Hook.t_typ @-> returning (void))
 let hook_free =
-foreign "g_hook_free" (ptr (* interface *) Hook_list.t_typ @-> ptr (* interface *) Hook.t_typ @-> returning (void))
+foreign "g_hook_free" (ptr Hook_list.t_typ @-> ptr Hook.t_typ @-> returning (void))
 let hook_insert_before =
-foreign "g_hook_insert_before" (ptr (* interface *) Hook_list.t_typ @-> ptr_opt (* interface *) Hook.t_typ @-> ptr (* interface *) Hook.t_typ @-> returning (void))
+foreign "g_hook_insert_before" (ptr Hook_list.t_typ @-> ptr_opt Hook.t_typ @-> ptr Hook.t_typ @-> returning (void))
 let hook_prepend =
-foreign "g_hook_prepend" (ptr (* interface *) Hook_list.t_typ @-> ptr (* interface *) Hook.t_typ @-> returning (void))
+foreign "g_hook_prepend" (ptr Hook_list.t_typ @-> ptr Hook.t_typ @-> returning (void))
 let hook_unref =
-foreign "g_hook_unref" (ptr (* interface *) Hook_list.t_typ @-> ptr (* interface *) Hook.t_typ @-> returning (void))
+foreign "g_hook_unref" (ptr Hook_list.t_typ @-> ptr Hook.t_typ @-> returning (void))
 let hostname_is_ascii_encoded =
 foreign "g_hostname_is_ascii_encoded" (string @-> returning (bool))
 let hostname_is_ip_address =
@@ -449,12 +449,12 @@ foreign "g_hostname_to_ascii" (string @-> returning (string))
 let hostname_to_unicode =
 foreign "g_hostname_to_unicode" (string @-> returning (string))
 let iconv =
-foreign "g_iconv" (ptr (* interface *) IConv.t_typ @-> string @-> ptr uint64_t @-> string @-> ptr uint64_t @-> returning (uint64_t))
+foreign "g_iconv" (ptr IConv.t_typ @-> string @-> ptr uint64_t @-> string @-> ptr uint64_t @-> returning (uint64_t))
 (*Not implemented g_idle_add_full argument types not handled*)
 let idle_remove_by_data =
 foreign "g_idle_remove_by_data" (ptr_opt void @-> returning (bool))
 let idle_source_new =
-foreign "g_idle_source_new" (void @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_idle_source_new" (void @-> returning (ptr Source.t_typ))
 let int64_equal =
 foreign "g_int64_equal" (ptr void @-> ptr void @-> returning (bool))
 let int64_hash =
@@ -469,29 +469,29 @@ let intern_string =
 foreign "g_intern_string" (string_opt @-> returning (string))
 (*Not implemented g_io_add_watch_full argument types not handled*)
 let io_channel_error_from_errno =
-foreign "g_io_channel_error_from_errno" (int32_t @-> returning ((* interface *) IOChannel_error.t_view))
+foreign "g_io_channel_error_from_errno" (int32_t @-> returning (IOChannel_error.t_view))
 let io_channel_error_quark =
 foreign "g_io_channel_error_quark" (void @-> returning (uint32_t))
 let io_create_watch =
-foreign "g_io_create_watch" (ptr (* interface *) IOChannel.t_typ @-> (* interface *) IOCondition.t_list_view @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_io_create_watch" (ptr IOChannel.t_typ @-> IOCondition.t_list_view @-> returning (ptr Source.t_typ))
 let key_file_error_quark =
 foreign "g_key_file_error_quark" (void @-> returning (uint32_t))
 (*Not implemented g_listenv return type not handled*)
 (*Not implemented g_locale_from_utf8 argument types not handled*)
 (*Not implemented g_locale_to_utf8 argument types not handled*)
 let log_default_handler =
-foreign "g_log_default_handler" (string_opt @-> (* interface *) Log_level_flags.t_list_view @-> string_opt @-> ptr_opt void @-> returning (void))
+foreign "g_log_default_handler" (string_opt @-> Log_level_flags.t_list_view @-> string_opt @-> ptr_opt void @-> returning (void))
 let log_remove_handler =
 foreign "g_log_remove_handler" (string @-> uint32_t @-> returning (void))
 let log_set_always_fatal =
-foreign "g_log_set_always_fatal" ((* interface *) Log_level_flags.t_list_view @-> returning ((* interface *) Log_level_flags.t_list_view))
+foreign "g_log_set_always_fatal" (Log_level_flags.t_list_view @-> returning (Log_level_flags.t_list_view))
 let log_set_fatal_mask =
-foreign "g_log_set_fatal_mask" (string @-> (* interface *) Log_level_flags.t_list_view @-> returning ((* interface *) Log_level_flags.t_list_view))
+foreign "g_log_set_fatal_mask" (string @-> Log_level_flags.t_list_view @-> returning (Log_level_flags.t_list_view))
 (*Not implemented g_log_set_handler_full argument types not handled*)
 (*Not implemented g_log_set_writer_func argument types not handled*)
 (*Not implemented g_log_structured_array argument types not handled*)
 let log_variant =
-foreign "g_log_variant" (string_opt @-> (* interface *) Log_level_flags.t_list_view @-> ptr (* interface *) Variant.t_typ @-> returning (void))
+foreign "g_log_variant" (string_opt @-> Log_level_flags.t_list_view @-> ptr Variant.t_typ @-> returning (void))
 (*Not implemented g_log_writer_default argument types not handled*)
 (*Not implemented g_log_writer_format_fields argument types not handled*)
 let log_writer_is_journald =
@@ -501,13 +501,13 @@ foreign "g_log_writer_is_journald" (int32_t @-> returning (bool))
 let log_writer_supports_color =
 foreign "g_log_writer_supports_color" (int32_t @-> returning (bool))
 let main_context_default =
-foreign "g_main_context_default" (void @-> returning (ptr (* interface *) Main_context.t_typ))
+foreign "g_main_context_default" (void @-> returning (ptr Main_context.t_typ))
 let main_context_get_thread_default =
-foreign "g_main_context_get_thread_default" (void @-> returning (ptr (* interface *) Main_context.t_typ))
+foreign "g_main_context_get_thread_default" (void @-> returning (ptr Main_context.t_typ))
 let main_context_ref_thread_default =
-foreign "g_main_context_ref_thread_default" (void @-> returning (ptr (* interface *) Main_context.t_typ))
+foreign "g_main_context_ref_thread_default" (void @-> returning (ptr Main_context.t_typ))
 let main_current_source =
-foreign "g_main_current_source" (void @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_main_current_source" (void @-> returning (ptr Source.t_typ))
 let main_depth =
 foreign "g_main_depth" (void @-> returning (int32_t))
 let malloc =
@@ -548,11 +548,11 @@ foreign "g_path_is_absolute" (string @-> returning (bool))
 let path_skip_root =
 foreign "g_path_skip_root" (string @-> returning (string_opt))
 let pattern_match =
-foreign "g_pattern_match" (ptr (* interface *) Pattern_spec.t_typ @-> uint32_t @-> string @-> string_opt @-> returning (bool))
+foreign "g_pattern_match" (ptr Pattern_spec.t_typ @-> uint32_t @-> string @-> string_opt @-> returning (bool))
 let pattern_match_simple =
 foreign "g_pattern_match_simple" (string @-> string @-> returning (bool))
 let pattern_match_string =
-foreign "g_pattern_match_string" (ptr (* interface *) Pattern_spec.t_typ @-> string @-> returning (bool))
+foreign "g_pattern_match_string" (ptr Pattern_spec.t_typ @-> string @-> returning (bool))
 let pointer_bit_lock =
 foreign "g_pointer_bit_lock" (ptr void @-> int32_t @-> returning (void))
 let pointer_bit_trylock =
@@ -560,7 +560,7 @@ foreign "g_pointer_bit_trylock" (ptr void @-> int32_t @-> returning (bool))
 let pointer_bit_unlock =
 foreign "g_pointer_bit_unlock" (ptr void @-> int32_t @-> returning (void))
 let poll =
-foreign "g_poll" (ptr (* interface *) Poll_fd.t_typ @-> uint32_t @-> int32_t @-> returning (int32_t))
+foreign "g_poll" (ptr Poll_fd.t_typ @-> uint32_t @-> int32_t @-> returning (int32_t))
 (*Not implemented g_propagate_error argument types not handled*)
 let quark_from_static_string =
 foreign "g_quark_from_static_string" (string_opt @-> returning (uint32_t))
@@ -591,26 +591,26 @@ let regex_escape_nul =
 foreign "g_regex_escape_nul" (string @-> int32_t @-> returning (string))
 (*Not implemented g_regex_escape_string argument types not handled*)
 let regex_match_simple =
-foreign "g_regex_match_simple" (string @-> string @-> (* interface *) Regex_compile_flags.t_list_view @-> (* interface *) Regex_match_flags.t_list_view @-> returning (bool))
+foreign "g_regex_match_simple" (string @-> string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> returning (bool))
 (*Not implemented g_regex_split_simple return type not handled*)
 let reload_user_special_dirs_cache =
 foreign "g_reload_user_special_dirs_cache" (void @-> returning (void))
 let rmdir =
 foreign "g_rmdir" (string @-> returning (int32_t))
 let sequence_get =
-foreign "g_sequence_get" (ptr (* interface *) Sequence_iter.t_typ @-> returning (ptr_opt void))
+foreign "g_sequence_get" (ptr Sequence_iter.t_typ @-> returning (ptr_opt void))
 let sequence_move =
-foreign "g_sequence_move" (ptr (* interface *) Sequence_iter.t_typ @-> ptr (* interface *) Sequence_iter.t_typ @-> returning (void))
+foreign "g_sequence_move" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
 let sequence_move_range =
-foreign "g_sequence_move_range" (ptr (* interface *) Sequence_iter.t_typ @-> ptr (* interface *) Sequence_iter.t_typ @-> ptr (* interface *) Sequence_iter.t_typ @-> returning (void))
+foreign "g_sequence_move_range" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
 let sequence_remove =
-foreign "g_sequence_remove" (ptr (* interface *) Sequence_iter.t_typ @-> returning (void))
+foreign "g_sequence_remove" (ptr Sequence_iter.t_typ @-> returning (void))
 let sequence_remove_range =
-foreign "g_sequence_remove_range" (ptr (* interface *) Sequence_iter.t_typ @-> ptr (* interface *) Sequence_iter.t_typ @-> returning (void))
+foreign "g_sequence_remove_range" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
 let sequence_set =
-foreign "g_sequence_set" (ptr (* interface *) Sequence_iter.t_typ @-> ptr_opt void @-> returning (void))
+foreign "g_sequence_set" (ptr Sequence_iter.t_typ @-> ptr_opt void @-> returning (void))
 let sequence_swap =
-foreign "g_sequence_swap" (ptr (* interface *) Sequence_iter.t_typ @-> ptr (* interface *) Sequence_iter.t_typ @-> returning (void))
+foreign "g_sequence_swap" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
 let set_application_name =
 foreign "g_set_application_name" (string @-> returning (void))
 (*Not implemented g_set_error_literal argument types not handled*)
@@ -636,15 +636,15 @@ foreign "g_slice_free1" (uint64_t @-> ptr_opt void @-> returning (void))
 let slice_free_chain_with_offset =
 foreign "g_slice_free_chain_with_offset" (uint64_t @-> ptr_opt void @-> uint64_t @-> returning (void))
 let slice_get_config =
-foreign "g_slice_get_config" ((* interface *) Slice_config.t_view @-> returning (int64_t))
+foreign "g_slice_get_config" (Slice_config.t_view @-> returning (int64_t))
 let slice_get_config_state =
-foreign "g_slice_get_config_state" ((* interface *) Slice_config.t_view @-> int64_t @-> ptr uint32_t @-> returning (ptr int64_t))
+foreign "g_slice_get_config_state" (Slice_config.t_view @-> int64_t @-> ptr uint32_t @-> returning (ptr int64_t))
 let slice_set_config =
-foreign "g_slice_set_config" ((* interface *) Slice_config.t_view @-> int64_t @-> returning (void))
+foreign "g_slice_set_config" (Slice_config.t_view @-> int64_t @-> returning (void))
 let source_remove =
 foreign "g_source_remove" (uint32_t @-> returning (bool))
 let source_remove_by_funcs_user_data =
-foreign "g_source_remove_by_funcs_user_data" (ptr (* interface *) Source_funcs.t_typ @-> ptr_opt void @-> returning (bool))
+foreign "g_source_remove_by_funcs_user_data" (ptr Source_funcs.t_typ @-> ptr_opt void @-> returning (bool))
 let source_remove_by_user_data =
 foreign "g_source_remove_by_user_data" (ptr_opt void @-> returning (bool))
 let source_set_name_by_id =
@@ -703,11 +703,11 @@ foreign "g_strescape" (string @-> string_opt @-> returning (string))
 let strfreev =
 foreign "g_strfreev" (string_opt @-> returning (void))
 let string_new =
-foreign "g_string_new" (string_opt @-> returning (ptr (* interface *) String.t_typ))
+foreign "g_string_new" (string_opt @-> returning (ptr String.t_typ))
 let string_new_len =
-foreign "g_string_new_len" (string @-> int64_t @-> returning (ptr (* interface *) String.t_typ))
+foreign "g_string_new_len" (string @-> int64_t @-> returning (ptr String.t_typ))
 let string_sized_new =
-foreign "g_string_sized_new" (uint64_t @-> returning (ptr (* interface *) String.t_typ))
+foreign "g_string_sized_new" (uint64_t @-> returning (ptr String.t_typ))
 let strip_context =
 foreign "g_strip_context" (string @-> string @-> returning (string))
 let strjoinv =
@@ -746,17 +746,17 @@ foreign "g_test_bug" (string @-> returning (void))
 let test_bug_base =
 foreign "g_test_bug_base" (string @-> returning (void))
 let test_expect_message =
-foreign "g_test_expect_message" (string_opt @-> (* interface *) Log_level_flags.t_list_view @-> string @-> returning (void))
+foreign "g_test_expect_message" (string_opt @-> Log_level_flags.t_list_view @-> string @-> returning (void))
 let test_fail =
 foreign "g_test_fail" (void @-> returning (void))
 let test_failed =
 foreign "g_test_failed" (void @-> returning (bool))
 let test_get_dir =
-foreign "g_test_get_dir" ((* interface *) Test_file_type.t_view @-> returning (string))
+foreign "g_test_get_dir" (Test_file_type.t_view @-> returning (string))
 let test_incomplete =
 foreign "g_test_incomplete" (string_opt @-> returning (void))
 let test_log_type_name =
-foreign "g_test_log_type_name" ((* interface *) Test_log_type.t_view @-> returning (string))
+foreign "g_test_log_type_name" (Test_log_type.t_view @-> returning (string))
 (*Not implemented g_test_queue_destroy argument types not handled*)
 let test_queue_free =
 foreign "g_test_queue_free" (ptr_opt void @-> returning (void))
@@ -771,7 +771,7 @@ foreign "g_test_rand_int_range" (int32_t @-> int32_t @-> returning (int32_t))
 let test_run =
 foreign "g_test_run" (void @-> returning (int32_t))
 let test_run_suite =
-foreign "g_test_run_suite" (ptr (* interface *) Test_suite.t_typ @-> returning (int32_t))
+foreign "g_test_run_suite" (ptr Test_suite.t_typ @-> returning (int32_t))
 let test_set_nonfatal_assertions =
 foreign "g_test_set_nonfatal_assertions" (void @-> returning (void))
 let test_skip =
@@ -791,7 +791,7 @@ foreign "g_test_trap_has_passed" (void @-> returning (bool))
 let test_trap_reached_timeout =
 foreign "g_test_trap_reached_timeout" (void @-> returning (bool))
 let test_trap_subprocess =
-foreign "g_test_trap_subprocess" (string_opt @-> uint64_t @-> (* interface *) Test_subprocess_flags.t_list_view @-> returning (void))
+foreign "g_test_trap_subprocess" (string_opt @-> uint64_t @-> Test_subprocess_flags.t_list_view @-> returning (void))
 let thread_error_quark =
 foreign "g_thread_error_quark" (void @-> returning (uint32_t))
 let thread_exit =
@@ -809,16 +809,16 @@ foreign "g_thread_pool_set_max_unused_threads" (int32_t @-> returning (void))
 let thread_pool_stop_unused_threads =
 foreign "g_thread_pool_stop_unused_threads" (void @-> returning (void))
 let thread_self =
-foreign "g_thread_self" (void @-> returning (ptr (* interface *) Thread.t_typ))
+foreign "g_thread_self" (void @-> returning (ptr Thread.t_typ))
 let thread_yield =
 foreign "g_thread_yield" (void @-> returning (void))
 (*Not implemented g_time_val_from_iso8601 argument types not handled*)
 (*Not implemented g_timeout_add_full argument types not handled*)
 (*Not implemented g_timeout_add_seconds_full argument types not handled*)
 let timeout_source_new =
-foreign "g_timeout_source_new" (uint32_t @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_timeout_source_new" (uint32_t @-> returning (ptr Source.t_typ))
 let timeout_source_new_seconds =
-foreign "g_timeout_source_new_seconds" (uint32_t @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_timeout_source_new_seconds" (uint32_t @-> returning (ptr Source.t_typ))
 let try_malloc =
 foreign "g_try_malloc" (uint64_t @-> returning (ptr_opt void))
 let try_malloc0 =
@@ -867,21 +867,21 @@ foreign "g_try_realloc_n" (ptr_opt void @-> uint64_t @-> uint64_t @-> returning 
 (*Not implemented g_unichar_xdigit_value argument types not handled*)
 (*Not implemented g_unicode_canonical_ordering argument types not handled*)
 let unicode_script_from_iso15924 =
-foreign "g_unicode_script_from_iso15924" (uint32_t @-> returning ((* interface *) Unicode_script.t_view))
+foreign "g_unicode_script_from_iso15924" (uint32_t @-> returning (Unicode_script.t_view))
 let unicode_script_to_iso15924 =
-foreign "g_unicode_script_to_iso15924" ((* interface *) Unicode_script.t_view @-> returning (uint32_t))
+foreign "g_unicode_script_to_iso15924" (Unicode_script.t_view @-> returning (uint32_t))
 let unix_error_quark =
 foreign "g_unix_error_quark" (void @-> returning (uint32_t))
 (*Not implemented g_unix_fd_add_full argument types not handled*)
 let unix_fd_source_new =
-foreign "g_unix_fd_source_new" (int32_t @-> (* interface *) IOCondition.t_list_view @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_unix_fd_source_new" (int32_t @-> IOCondition.t_list_view @-> returning (ptr Source.t_typ))
 let unix_open_pipe =
 foreign "g_unix_open_pipe" (ptr int32_t @-> int32_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 let unix_set_fd_nonblocking =
 foreign "g_unix_set_fd_nonblocking" (int32_t @-> bool  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 (*Not implemented g_unix_signal_add_full argument types not handled*)
 let unix_signal_source_new =
-foreign "g_unix_signal_source_new" (int32_t @-> returning (ptr (* interface *) Source.t_typ))
+foreign "g_unix_signal_source_new" (int32_t @-> returning (ptr Source.t_typ))
 let unlink =
 foreign "g_unlink" (string @-> returning (int32_t))
 let unsetenv =
@@ -916,7 +916,7 @@ foreign "g_utf8_find_prev_char" (string @-> string @-> returning (string))
 let utf8_make_valid =
 foreign "g_utf8_make_valid" (string @-> int64_t @-> returning (string))
 let utf8_normalize =
-foreign "g_utf8_normalize" (string @-> int64_t @-> (* interface *) Normalize_mode.t_view @-> returning (string))
+foreign "g_utf8_normalize" (string @-> int64_t @-> Normalize_mode.t_view @-> returning (string))
 let utf8_offset_to_pointer =
 foreign "g_utf8_offset_to_pointer" (string @-> int64_t @-> returning (string))
 let utf8_pointer_to_offset =
@@ -951,13 +951,13 @@ foreign "g_variant_is_object_path" (string @-> returning (bool))
 let variant_is_signature =
 foreign "g_variant_is_signature" (string @-> returning (bool))
 let variant_parse =
-foreign "g_variant_parse" (ptr_opt (* interface *) Variant_type.t_typ @-> string @-> string_opt @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (ptr (* interface *) Variant.t_typ))
+foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (ptr Variant.t_typ))
 let variant_parse_error_print_context =
 foreign "g_variant_parse_error_print_context" (ptr Error.t_typ @-> string @-> returning (string))
 let variant_parse_error_quark =
 foreign "g_variant_parse_error_quark" (void @-> returning (uint32_t))
 let variant_type_checked_ =
-foreign "g_variant_type_checked_" (string @-> returning (ptr (* interface *) Variant_type.t_typ))
+foreign "g_variant_type_checked_" (string @-> returning (ptr Variant_type.t_typ))
 let variant_type_string_is_valid =
 foreign "g_variant_type_string_is_valid" (string @-> returning (bool))
 (*Not implemented g_variant_type_string_scan argument types not handled*)

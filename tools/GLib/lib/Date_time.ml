@@ -4,64 +4,64 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Date_time"
 let _new =
-foreign "g_date_time_new" (ptr t_typ @-> ptr (* interface *) Time_zone.t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new" (ptr t_typ @-> ptr Time_zone.t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr t_typ))
 
 let new_from_timeval_local =
-foreign "g_date_time_new_from_timeval_local" (ptr t_typ @-> ptr (* interface *) Time_val.t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_from_timeval_local" (ptr t_typ @-> ptr Time_val.t_typ @-> returning (ptr t_typ))
 
 let new_from_timeval_utc =
-foreign "g_date_time_new_from_timeval_utc" (ptr t_typ @-> ptr (* interface *) Time_val.t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_from_timeval_utc" (ptr t_typ @-> ptr Time_val.t_typ @-> returning (ptr t_typ))
 
 let new_from_unix_local =
-foreign "g_date_time_new_from_unix_local" (ptr t_typ @-> int64_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_from_unix_local" (ptr t_typ @-> int64_t @-> returning (ptr t_typ))
 
 let new_from_unix_utc =
-foreign "g_date_time_new_from_unix_utc" (ptr t_typ @-> int64_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_from_unix_utc" (ptr t_typ @-> int64_t @-> returning (ptr t_typ))
 
 let new_local =
-foreign "g_date_time_new_local" (ptr t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_local" (ptr t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr t_typ))
 
 let new_now =
-foreign "g_date_time_new_now" (ptr t_typ @-> ptr (* interface *) Time_zone.t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_now" (ptr t_typ @-> ptr Time_zone.t_typ @-> returning (ptr t_typ))
 
 let new_now_local =
-foreign "g_date_time_new_now_local" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_now_local" (ptr t_typ @-> returning (ptr t_typ))
 
 let new_now_utc =
-foreign "g_date_time_new_now_utc" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_now_utc" (ptr t_typ @-> returning (ptr t_typ))
 
 let new_utc =
-foreign "g_date_time_new_utc" (ptr t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_new_utc" (ptr t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr t_typ))
 
 let add =
-foreign "g_date_time_add" (ptr t_typ @-> int64_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add" (ptr t_typ @-> int64_t @-> returning (ptr t_typ))
 
 let add_days =
-foreign "g_date_time_add_days" (ptr t_typ @-> int32_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_days" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 
 let add_full =
-foreign "g_date_time_add_full" (ptr t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_full" (ptr t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr t_typ))
 
 let add_hours =
-foreign "g_date_time_add_hours" (ptr t_typ @-> int32_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_hours" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 
 let add_minutes =
-foreign "g_date_time_add_minutes" (ptr t_typ @-> int32_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_minutes" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 
 let add_months =
-foreign "g_date_time_add_months" (ptr t_typ @-> int32_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_months" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 
 let add_seconds =
-foreign "g_date_time_add_seconds" (ptr t_typ @-> double @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_seconds" (ptr t_typ @-> double @-> returning (ptr t_typ))
 
 let add_weeks =
-foreign "g_date_time_add_weeks" (ptr t_typ @-> int32_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_weeks" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 
 let add_years =
-foreign "g_date_time_add_years" (ptr t_typ @-> int32_t @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_add_years" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 
 let difference =
-foreign "g_date_time_difference" (ptr t_typ @-> ptr (* interface *) t_typ @-> returning (int64_t))
+foreign "g_date_time_difference" (ptr t_typ @-> ptr t_typ @-> returning (int64_t))
 
 let format =
 foreign "g_date_time_format" (ptr t_typ @-> string @-> returning (string))
@@ -113,22 +113,22 @@ let is_daylight_savings =
 foreign "g_date_time_is_daylight_savings" (ptr t_typ @-> returning (bool))
 
 let ref =
-foreign "g_date_time_ref" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_ref" (ptr t_typ @-> returning (ptr t_typ))
 
 let to_local =
-foreign "g_date_time_to_local" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_to_local" (ptr t_typ @-> returning (ptr t_typ))
 
 let to_timeval =
-foreign "g_date_time_to_timeval" (ptr t_typ @-> ptr (* interface *) Time_val.t_typ @-> returning (bool))
+foreign "g_date_time_to_timeval" (ptr t_typ @-> ptr Time_val.t_typ @-> returning (bool))
 
 let to_timezone =
-foreign "g_date_time_to_timezone" (ptr t_typ @-> ptr (* interface *) Time_zone.t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_to_timezone" (ptr t_typ @-> ptr Time_zone.t_typ @-> returning (ptr t_typ))
 
 let to_unix =
 foreign "g_date_time_to_unix" (ptr t_typ @-> returning (int64_t))
 
 let to_utc =
-foreign "g_date_time_to_utc" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_date_time_to_utc" (ptr t_typ @-> returning (ptr t_typ))
 
 let unref =
 foreign "g_date_time_unref" (ptr t_typ @-> returning (void))

@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Test_log_buffer"
-let f_data = field t_typ "data" (ptr (* interface *) String.t_typ)
+let f_data = field t_typ "data" (ptr String.t_typ)
 let f_msgs = field t_typ "msgs" (ptr SList.t_typ)
 let free =
 foreign "g_test_log_buffer_free" (ptr t_typ @-> returning (void))

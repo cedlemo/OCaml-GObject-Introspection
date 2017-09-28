@@ -21,7 +21,7 @@ val get_match_count:
 t structure ptr -> int32
 
 val get_regex:
-t structure ptr -> (* interface *) Regex.t structure ptr
+t structure ptr -> Regex.t structure ptr
 
 val get_string:
 t structure ptr -> string
@@ -36,7 +36,7 @@ val next:
 t structure ptr -> Error.t structure ptr ptr option -> bool
 
 val ref:
-t structure ptr -> (* interface *) t structure ptr
+t structure ptr -> t structure ptr
 
 val unref:
 t structure ptr -> unit

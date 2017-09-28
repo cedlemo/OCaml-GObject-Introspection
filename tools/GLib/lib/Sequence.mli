@@ -12,24 +12,24 @@ val is_empty:
 t structure ptr -> bool
 
 val get:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit ptr option
+t structure ptr -> Sequence_iter.t structure ptr -> unit ptr option
 
 val move:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 
 val move_range:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 
 val remove:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+t structure ptr -> Sequence_iter.t structure ptr -> unit
 
 val remove_range:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 
 val set:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit ptr option -> unit
+t structure ptr -> Sequence_iter.t structure ptr -> unit ptr option -> unit
 
 val swap:
-t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> (* interface *) Sequence_iter.t structure ptr -> unit
+t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
 
 

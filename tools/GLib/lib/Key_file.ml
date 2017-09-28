@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Key_file"
 let _new =
-foreign "g_key_file_new" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_key_file_new" (ptr t_typ @-> returning (ptr t_typ))
 
 let get_boolean =
 foreign "g_key_file_get_boolean" (ptr t_typ @-> string @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
@@ -47,15 +47,15 @@ let has_group =
 foreign "g_key_file_has_group" (ptr t_typ @-> string @-> returning (bool))
 
 let load_from_bytes =
-foreign "g_key_file_load_from_bytes" (ptr t_typ @-> ptr (* interface *) Bytes.t_typ @-> (* interface *) Key_file_flags.t_list_view  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+foreign "g_key_file_load_from_bytes" (ptr t_typ @-> ptr Bytes.t_typ @-> Key_file_flags.t_list_view  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 
 let load_from_data =
-foreign "g_key_file_load_from_data" (ptr t_typ @-> string @-> uint64_t @-> (* interface *) Key_file_flags.t_list_view  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+foreign "g_key_file_load_from_data" (ptr t_typ @-> string @-> uint64_t @-> Key_file_flags.t_list_view  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 
 (*Not implemented g_key_file_load_from_data_dirs argument types not handled*)
 (*Not implemented g_key_file_load_from_dirs argument types not handled*)
 let load_from_file =
-foreign "g_key_file_load_from_file" (ptr t_typ @-> string @-> (* interface *) Key_file_flags.t_list_view  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+foreign "g_key_file_load_from_file" (ptr t_typ @-> string @-> Key_file_flags.t_list_view  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 
 let remove_comment =
 foreign "g_key_file_remove_comment" (ptr t_typ @-> string_opt @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))

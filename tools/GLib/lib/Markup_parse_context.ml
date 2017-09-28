@@ -26,10 +26,10 @@ let pop =
 foreign "g_markup_parse_context_pop" (ptr t_typ @-> returning (ptr_opt void))
 
 let push =
-foreign "g_markup_parse_context_push" (ptr t_typ @-> ptr (* interface *) Markup_parser.t_typ @-> ptr_opt void @-> returning (void))
+foreign "g_markup_parse_context_push" (ptr t_typ @-> ptr Markup_parser.t_typ @-> ptr_opt void @-> returning (void))
 
 let ref =
-foreign "g_markup_parse_context_ref" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_markup_parse_context_ref" (ptr t_typ @-> returning (ptr t_typ))
 
 let unref =
 foreign "g_markup_parse_context_unref" (ptr t_typ @-> returning (void))

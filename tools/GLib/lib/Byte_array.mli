@@ -8,7 +8,7 @@ val free:
 t structure ptr -> t structure ptr -> bool -> Unsigned.uint8 ptr
 
 val free_to_bytes:
-t structure ptr -> t structure ptr -> (* interface *) Bytes.t structure ptr
+t structure ptr -> t structure ptr -> Bytes.t structure ptr
 
 val _new:
 t structure ptr -> t structure ptr

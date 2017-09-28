@@ -22,7 +22,7 @@ let get_match_count =
 foreign "g_match_info_get_match_count" (ptr t_typ @-> returning (int32_t))
 
 let get_regex =
-foreign "g_match_info_get_regex" (ptr t_typ @-> returning (ptr (* interface *) Regex.t_typ))
+foreign "g_match_info_get_regex" (ptr t_typ @-> returning (ptr Regex.t_typ))
 
 let get_string =
 foreign "g_match_info_get_string" (ptr t_typ @-> returning (string))
@@ -37,7 +37,7 @@ let next =
 foreign "g_match_info_next" (ptr t_typ  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 
 let ref =
-foreign "g_match_info_ref" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_match_info_ref" (ptr t_typ @-> returning (ptr t_typ))
 
 let unref =
 foreign "g_match_info_unref" (ptr t_typ @-> returning (void))

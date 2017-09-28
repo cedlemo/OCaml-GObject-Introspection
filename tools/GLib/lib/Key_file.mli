@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-t structure ptr -> (* interface *) t structure ptr
+t structure ptr -> t structure ptr
 
 val get_boolean:
 t structure ptr -> string -> string -> Error.t structure ptr ptr option -> bool
@@ -46,15 +46,15 @@ val has_group:
 t structure ptr -> string -> bool
 
 val load_from_bytes:
-t structure ptr -> (* interface *) Bytes.t structure ptr -> (* interface *) Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
+t structure ptr -> Bytes.t structure ptr -> Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
 
 val load_from_data:
-t structure ptr -> string -> Unsigned.uint64 -> (* interface *) Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
+t structure ptr -> string -> Unsigned.uint64 -> Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
 
 (*Not implemented g_key_file_load_from_data_dirs argument types not handled*)
 (*Not implemented g_key_file_load_from_dirs argument types not handled*)
 val load_from_file:
-t structure ptr -> string -> (* interface *) Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
+t structure ptr -> string -> Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
 
 val remove_comment:
 t structure ptr -> string option -> string option -> Error.t structure ptr ptr option -> bool

@@ -39,10 +39,10 @@ val remove_unlocked:
 t structure ptr -> unit ptr option -> bool
 
 val timed_pop:
-t structure ptr -> (* interface *) Time_val.t structure ptr -> unit ptr option
+t structure ptr -> Time_val.t structure ptr -> unit ptr option
 
 val timed_pop_unlocked:
-t structure ptr -> (* interface *) Time_val.t structure ptr -> unit ptr option
+t structure ptr -> Time_val.t structure ptr -> unit ptr option
 
 val timeout_pop:
 t structure ptr -> Unsigned.uint64 -> unit ptr option

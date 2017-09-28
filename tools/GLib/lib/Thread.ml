@@ -7,7 +7,7 @@ let join =
 foreign "g_thread_join" (ptr t_typ @-> returning (ptr_opt void))
 
 let ref =
-foreign "g_thread_ref" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_thread_ref" (ptr t_typ @-> returning (ptr t_typ))
 
 let unref =
 foreign "g_thread_unref" (ptr t_typ @-> returning (void))
@@ -19,7 +19,7 @@ let exit =
 foreign "g_thread_exit" (ptr t_typ @-> ptr_opt void @-> returning (void))
 
 let self =
-foreign "g_thread_self" (ptr t_typ @-> returning (ptr (* interface *) t_typ))
+foreign "g_thread_self" (ptr t_typ @-> returning (ptr t_typ))
 
 let yield =
 foreign "g_thread_yield" (ptr t_typ @-> returning (void))

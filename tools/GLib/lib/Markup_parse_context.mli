@@ -25,10 +25,10 @@ val pop:
 t structure ptr -> unit ptr option
 
 val push:
-t structure ptr -> (* interface *) Markup_parser.t structure ptr -> unit ptr option -> unit
+t structure ptr -> Markup_parser.t structure ptr -> unit ptr option -> unit
 
 val ref:
-t structure ptr -> (* interface *) t structure ptr
+t structure ptr -> t structure ptr
 
 val unref:
 t structure ptr -> unit
