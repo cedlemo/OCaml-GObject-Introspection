@@ -256,6 +256,13 @@ module Sources = struct
   let close t =
     let _ = File.close t.mli in
     File.close t.ml
+
+  let add_todo t str =
+    let com = "TODO : " ^ str in
+    File.buff_add_comments t.mli com;
+    File.buff_add_comments t.ml com;
+    write_buffs t
+
 end
 
 type type_strings = { ocaml : string;

@@ -203,4 +203,9 @@ module Sources : sig
   (** Close the source files (ml and mli) and reset the buffer. *)
   val close:
     t -> unit
+
+  (** Add a todo instructions in comments in both the mli and ml files. *)
+  val add_todo:
+    t -> string -> unit
+
 end
