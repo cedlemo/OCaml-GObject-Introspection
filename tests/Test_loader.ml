@@ -85,14 +85,6 @@ let test_loader_generate_main_module_files test_ctxt =
       test_close_and_remove mli;
     )
 
-let test_loader_warning_for_deprecated test_ctxt =
-  let sources = Test_utils.tmp_sources test_ctxt in
-  let mli_content = "(* !!! DEPRECATED : test. *)" in
-  let _ = Loader.warning_for_deprecated "test" sources in
-  let _ = Binding_utils.Sources.close sources in
-  let mli = Binding_utils.(Sources.mli sources |> File.name) in
-  check_file_and_content mli mli_content
-
 let tests =
   "GObject Introspection Loader tests" >:::
   [
@@ -102,6 +94,5 @@ let tests =
     "GObject Introspection Loader get version good" >:: test_loader_get_version_good;
     "GObject Introspection Loader get version bad" >:: test_loader_get_version_bad;
     "GObject Introspection Loader generate dir" >:: test_loader_generate_dir;
-    "GObject Introspection Loader generate main module files" >:: test_loader_generate_main_module_files;
-    "GObject Introspection Loader warning for deprecated" >:: test_loader_warning_for_deprecated
+    "GObject Introspection Loader generate main module files" >:: test_loader_generate_main_module_files
   ]

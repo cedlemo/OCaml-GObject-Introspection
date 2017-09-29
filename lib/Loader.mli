@@ -62,10 +62,6 @@ val generate_module_files:
 val generate_directories:
   t -> unit
 
-(** Generate comments with DEPRECATED tag. *)
-val warning_for_deprecated:
-  string -> Binding_utils.Sources.t -> unit
-
 (** Helper type used in Loader.load.
     TODO : the field base_name is named like this instead of name because
     of the existence of the field name in the "file" type. See how to better

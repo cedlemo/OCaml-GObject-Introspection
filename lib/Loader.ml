@@ -82,15 +82,6 @@ let generate_directories loader =
   let lib_path = get_lib_path loader in
   if not (dir_exists lib_path) then Unix.mkdir lib_path 0o777
 
-let warning_comments warning_type information sources =
-  let open Binding_utils in
-  let coms = Printf.sprintf "!!! %s : %s" warning_type information in
-  let mli = Sources.mli sources in
-  File.add_comments mli coms
-
-let warning_for_deprecated name sources =
-  warning_comments "DEPRECATED" name sources
-
 type gi_info = { base_name : string;
                  info : Base_info.t structure ptr;
                  loader : t;
@@ -177,7 +168,7 @@ let parse loader
     match Base_info.get_name info with
     | None -> ()
     | Some name ->
-      if Base_info.is_deprecated info then warning_for_deprecated name main_sources
+      if Base_info.is_deprecated info then Sources.add_deprecated main_sources name
       else (
         let gi_info = { base_name = name;
                         info = info;
