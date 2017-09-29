@@ -204,8 +204,11 @@ module Sources : sig
   val close:
     t -> unit
 
-  (** Add a todo instructions in comments in both the mli and ml files. *)
+  (** Add a TODO instructions in comments in both the mli and ml files. *)
   val add_todo:
     t -> string -> unit
 
+  (** Add a DEPRECATED instruction in comments in both the mli and ml files. *)
+  val add_deprecated:
+    t -> string -> unit
 end

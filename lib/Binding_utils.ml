@@ -263,6 +263,12 @@ module Sources = struct
     File.buff_add_comments t.ml com;
     write_buffs t
 
+  let add_deprecated t str =
+    let com = "DEPRECATED : " ^ str in
+    File.buff_add_comments t.mli com;
+    File.buff_add_comments t.ml com;
+    write_buffs t
+
 end
 
 type type_strings = { ocaml : string;
