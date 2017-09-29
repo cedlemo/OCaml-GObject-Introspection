@@ -163,6 +163,20 @@ let test_file_create_ctypes_sources test_ctxt =
   let _ = Sys.remove @@ filename ^ ".ml" in
   Sys.remove @@ filename ^ ".mli"
 
+let test_sources_add_comment test_ctxt =
+  let filename = "test_file9" in
+  let sources = USources.create filename in
+  let _ = USources.add_todo sources "test" in
+  let _ = USources.close sources in
+  let mli_file = filename ^ ".mli" in
+  let ml_file =  filename ^ ".ml" in
+  let mli_content = "(*TODO : test*)" in
+  let ml_content = "(*TODO : test*)" in
+  let _ = check_file_and_content mli_file mli_content in
+  let _ = check_file_and_content ml_file ml_content in
+  let _ = Sys.remove @@ filename ^ ".ml" in
+  Sys.remove @@ filename ^ ".mli"
+
 
 let tests =
   "GObject Introspection Binding_utils tests" >:::
@@ -181,5 +195,6 @@ let tests =
     "Test file buffer add" >:: test_file_buffer_add;
     "Test file buffer add line" >:: test_file_buffer_add_line;
     "Test file buffer add comments" >:: test_file_buffer_add_comments;
-    "Test file bprintf" >:: test_file_bprintf
+    "Test file bprintf" >:: test_file_bprintf;
+    "Test sources add comment" >:: test_sources_add_comment
   ]
