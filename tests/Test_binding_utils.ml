@@ -164,46 +164,37 @@ let test_file_create_ctypes_sources test_ctxt =
   Sys.remove @@ filename ^ ".mli"
 
 let test_sources_add_comment test_ctxt =
-  let filename = "test_file9" in
-  let sources = USources.create filename in
+  let sources = tmp_sources test_ctxt in
   let _ = USources.add_todo sources "test" in
   let _ = USources.close sources in
-  let mli_file = filename ^ ".mli" in
-  let ml_file =  filename ^ ".ml" in
+  let mli_file = USources.mli sources |> UFile.name in
+  let ml_file =  USources.ml sources |> UFile.name in
   let mli_content = "(*TODO : test*)" in
   let ml_content = "(*TODO : test*)" in
   let _ = check_file_and_content mli_file mli_content in
-  let _ = check_file_and_content ml_file ml_content in
-  let _ = Sys.remove @@ filename ^ ".ml" in
-  Sys.remove @@ filename ^ ".mli"
+  check_file_and_content ml_file ml_content
 
 let test_sources_add_deprecated test_ctxt =
-  let filename = "test_file9" in
-  let sources = USources.create filename in
+  let sources = tmp_sources test_ctxt in
   let _ = USources.add_deprecated sources "test" in
   let _ = USources.close sources in
-  let mli_file = filename ^ ".mli" in
-  let ml_file =  filename ^ ".ml" in
+  let mli_file = USources.mli sources |> UFile.name in
+  let ml_file =  USources.ml sources |> UFile.name in
   let mli_content = "(*DEPRECATED : test*)" in
   let ml_content = "(*DEPRECATED : test*)" in
   let _ = check_file_and_content mli_file mli_content in
-  let _ = check_file_and_content ml_file ml_content in
-  let _ = Sys.remove @@ filename ^ ".ml" in
-  Sys.remove @@ filename ^ ".mli"
+  check_file_and_content ml_file ml_content
 
 let test_sources_add_skipped test_ctxt =
-  let filename = "test_file10" in
-  let sources = USources.create filename in
+  let sources = tmp_sources test_ctxt in
   let _ = USources.add_skipped sources "test" in
   let _ = USources.close sources in
-  let mli_file = filename ^ ".mli" in
-  let ml_file =  filename ^ ".ml" in
+  let mli_file = USources.mli sources |> UFile.name in
+  let ml_file =  USources.ml sources |> UFile.name in
   let mli_content = "(*SKIPPED : test*)" in
   let ml_content = "(*SKIPPED : test*)" in
   let _ = check_file_and_content mli_file mli_content in
-  let _ = check_file_and_content ml_file ml_content in
-  let _ = Sys.remove @@ filename ^ ".ml" in
-  Sys.remove @@ filename ^ ".mli"
+  check_file_and_content ml_file ml_content
 
 let test_match_one_of test_ctxt =
   let patterns = ["to*"; "Ho*"] in
