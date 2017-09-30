@@ -170,16 +170,18 @@ let parse loader
     | Some name ->
       if Base_info.is_deprecated info then Sources.add_deprecated main_sources name
       else (
-        let gi_info = { base_name = name;
-                        info = info;
-                        loader = loader;
-                        sources = main_sources } in
-        generate_bindings gi_info const_parser
-                                                 enum_parser
-                                                 flags_parser
-                                                 struct_parser
-                                                 union_parser
-                                                 skip
+        if match_one_of name skip then Sources.add_skipped main_sources name
+        else
+          let gi_info = { base_name = name;
+                          info = info;
+                          loader = loader;
+                          sources = main_sources } in
+          generate_bindings gi_info const_parser
+                                    enum_parser
+                                    flags_parser
+                                    struct_parser
+                                    union_parser
+                                    skip
       )
   done;
   Binding_utils.Sources.close main_sources
