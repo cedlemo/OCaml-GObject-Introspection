@@ -191,6 +191,11 @@ let test_sources_add_deprecated test_ctxt =
   let _ = Sys.remove @@ filename ^ ".ml" in
   Sys.remove @@ filename ^ ".mli"
 
+let test_match_one_of test_ctxt =
+  let patterns = ["to*"; "Ho*"] in
+  assert_equal_boolean true (Binding_utils.match_one_of "Hook" patterns);
+  assert_equal_boolean false (Binding_utils.match_one_of "hook" patterns);
+  assert_equal_boolean false (Binding_utils.match_one_of "_to" patterns)
 
 let tests =
   "GObject Introspection Binding_utils tests" >:::
@@ -211,5 +216,6 @@ let tests =
     "Test file buffer add comments" >:: test_file_buffer_add_comments;
     "Test file bprintf" >:: test_file_bprintf;
     "Test sources add comment" >:: test_sources_add_comment;
-    "Test sources add deprecated" >:: test_sources_add_deprecated
+    "Test sources add deprecated" >:: test_sources_add_deprecated;
+    "Test match one of" >:: test_match_one_of
   ]
