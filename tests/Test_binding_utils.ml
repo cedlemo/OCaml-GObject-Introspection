@@ -191,6 +191,20 @@ let test_sources_add_deprecated test_ctxt =
   let _ = Sys.remove @@ filename ^ ".ml" in
   Sys.remove @@ filename ^ ".mli"
 
+let test_sources_add_skipped test_ctxt =
+  let filename = "test_file10" in
+  let sources = USources.create filename in
+  let _ = USources.add_skipped sources "test" in
+  let _ = USources.close sources in
+  let mli_file = filename ^ ".mli" in
+  let ml_file =  filename ^ ".ml" in
+  let mli_content = "(*SKIPPED : test*)" in
+  let ml_content = "(*SKIPPED : test*)" in
+  let _ = check_file_and_content mli_file mli_content in
+  let _ = check_file_and_content ml_file ml_content in
+  let _ = Sys.remove @@ filename ^ ".ml" in
+  Sys.remove @@ filename ^ ".mli"
+
 let test_match_one_of test_ctxt =
   let patterns = ["to*"; "Ho*"] in
   assert_equal_boolean true (Binding_utils.match_one_of "Hook" patterns);
@@ -217,5 +231,6 @@ let tests =
     "Test file bprintf" >:: test_file_bprintf;
     "Test sources add comment" >:: test_sources_add_comment;
     "Test sources add deprecated" >:: test_sources_add_deprecated;
-    "Test match one of" >:: test_match_one_of
+    "Test match one of" >:: test_match_one_of;
+    "Test sources add skipped" >:: test_sources_add_skipped
   ]
