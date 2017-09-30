@@ -37,6 +37,16 @@ val c_HAVE_GNUC_VISIBILITY : int32
 val c_HAVE_GROWING_STACK : int32
 val c_HAVE_ISO_VARARGS : int32
 val c_HOOK_FLAG_USER_SHIFT : int32
+(*SKIPPED : Hook*)
+(*SKIPPED : HookCheckFunc*)
+(*SKIPPED : HookCheckMarshaller*)
+(*SKIPPED : HookCompareFunc*)
+(*SKIPPED : HookFinalizeFunc*)
+(*SKIPPED : HookFindFunc*)
+(*SKIPPED : HookFlagMask*)
+(*SKIPPED : HookFunc*)
+(*SKIPPED : HookList*)
+(*SKIPPED : HookMarshaller*)
 val c_IEEE754_DOUBLE_BIAS : int32
 val c_IEEE754_FLOAT_BIAS : int32
 val c_KEY_FILE_DESKTOP_GROUP : string

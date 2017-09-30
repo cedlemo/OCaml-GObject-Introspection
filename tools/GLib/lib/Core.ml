@@ -38,6 +38,16 @@ let c_HAVE_GNUC_VISIBILITY = Int32.of_string "1"
 let c_HAVE_GROWING_STACK = Int32.of_string "0"
 let c_HAVE_ISO_VARARGS = Int32.of_string "1"
 let c_HOOK_FLAG_USER_SHIFT = Int32.of_string "4"
+(*SKIPPED : Hook*)
+(*SKIPPED : HookCheckFunc*)
+(*SKIPPED : HookCheckMarshaller*)
+(*SKIPPED : HookCompareFunc*)
+(*SKIPPED : HookFinalizeFunc*)
+(*SKIPPED : HookFindFunc*)
+(*SKIPPED : HookFlagMask*)
+(*SKIPPED : HookFunc*)
+(*SKIPPED : HookList*)
+(*SKIPPED : HookMarshaller*)
 let c_IEEE754_DOUBLE_BIAS = Int32.of_string "1023"
 let c_IEEE754_FLOAT_BIAS = Int32.of_string "127"
 let c_KEY_FILE_DESKTOP_GROUP = "Desktop Entry"
