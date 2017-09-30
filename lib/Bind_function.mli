@@ -37,15 +37,15 @@ type argument = | Arg_in of Binding_utils.type_strings
 type arguments = | Not_implemented of string
                  | List of argument list
 
-(** When the argument types of a function are checked, there are three possibilities. *)
-type func_args = | Not_implemented of string (** One of the argument type is not handled. *)
-                 | Skipped of string (** One of the argument type must be skipped. *)
-                 | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
-
+(** When the element types of a function are checked (both from arguments or
+    return value, there are three possibilities. *)
+type func_types = | Not_implemented of string (** One of the argument type is not handled. *)
+                  | Skipped of string (** One of the type must be skipped. *)
+                  | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
 
 (** Get a list of the function arguments types, both OCaml types and Ctypes types. *)
 val get_arguments_types:
-  Callable_info.t structure ptr -> string list -> func_args
+  Callable_info.t structure ptr -> string list -> func_types
 
 (** Get the type names of the return value, both OCaml and Ctypes type names. *)
 val get_return_types:

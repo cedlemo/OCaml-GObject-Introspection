@@ -30,10 +30,9 @@ let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
   let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
   (ocaml_type', ctypes_typ')
 
-(** When the argument types of a function are checked, there are three possibilities. *)
-type func_args = | Not_implemented of string (** One of the argument type is not handled. *)
-                 | Skipped of string (** One of the argument type must be skipped. *)
-                 | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
+type func_types = | Not_implemented of string
+                  | Skipped of string
+                  | Arg_types of (string * string) list
 
 (* Returns None if there is an out or in/out argument,
  * else returns (string list, string list) whch correspond to
