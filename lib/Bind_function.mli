@@ -33,22 +33,27 @@ type argument = | Arg_in of Binding_utils.type_strings
 
 (** The set of arguments of a function. The full set of the arguments must be
     parsed before knowing if we can implement the function hence the Not_implemented
-    variant. *)
+    variant. TODO : remove / replace with func_args.*)
 type arguments = | Not_implemented of string
                  | List of argument list
 
+(** When the argument types of a function are checked, there are three possibilities. *)
+type func_args = | Not_implemented of string (** One of the argument type is not handled. *)
+                 | Skipped of string (** One of the argument type must be skipped. *)
+                 | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
+
 
 val get_arguments_types:
-  Callable_info.t structure ptr -> (string * string) list option
+  Callable_info.t structure ptr -> string list -> func_args
 
 val get_return_types:
   Callable_info.t structure ptr -> (string * string) option
 
 val append_ctypes_function_bindings:
-  string -> Function_info.t structure ptr -> Binding_utils.Sources.t -> unit
+  string -> Function_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
 
 val append_ctypes_method_bindings:
   string -> Function_info.t structure ptr -> string -> Binding_utils.Sources.t -> unit
 
 val parse_function_info :
-  Base_info.t structure ptr -> Binding_utils.Sources.t -> unit
+  Base_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit

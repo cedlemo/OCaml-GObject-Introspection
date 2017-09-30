@@ -30,27 +30,33 @@ let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
   let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
   (ocaml_type', ctypes_typ')
 
+(** When the argument types of a function are checked, there are three possibilities. *)
+type func_args = | Not_implemented of string (** One of the argument type is not handled. *)
+                 | Skipped of string (** One of the argument type must be skipped. *)
+                 | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
+
 (* Returns None if there is an out or in/out argument,
  * else returns (string list, string list) whch correspond to
  * the ocaml types of the args for the mli file and the Ctypes for
  * the args for the ml file and the Ctypes functions binding *)
-let get_arguments_types callable =
+let get_arguments_types callable skip_types =
   let n = Callable_info.get_n_args callable in
-  if n = 0 then Some [("unit", "void")]
+  if n = 0 then Arg_types [("unit", "void")]
   else let rec parse_args index args_types =
-         if index = n then Some (List.rev args_types)
+         if index = n then Arg_types (List.rev args_types)
          else let arg = Callable_info.get_arg callable index in
            match Arg_info.get_direction arg with
            | Arg_info.In -> (
                let type_info = Arg_info.get_type arg in
                let may_be_null = Arg_info.may_be_null arg in
                match Binding_utils.type_info_to_bindings_types type_info may_be_null with
-               | Binding_utils.Not_implemented tag_name -> None
+               | Binding_utils.Not_implemented tag_name -> Not_implemented tag_name
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                    let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-                 parse_args (index + 1) (types :: args_types)
+                   if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
+                   else parse_args (index + 1) (types :: args_types)
              )
-           | _ -> None
+           | _ -> Not_implemented "Arg_info.In or Arg_info.Out"
     in parse_args 0 []
 
 let get_return_types callable =
@@ -85,18 +91,20 @@ let get_return_types callable =
  *     - find out if it is a pointer
  *)
 
-let append_ctypes_function_bindings raw_name info sources =
+let append_ctypes_function_bindings raw_name info sources skip_types =
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
-  match get_arguments_types callable with
-  | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
+  match get_arguments_types callable skip_types with
+  | Not_implemented t -> let coms = Printf.sprintf "Not implemented %s argument type %s not handled" symbol t in
     File.buff_add_comments mli coms;
     File.buff_add_comments ml coms
-  | Some args -> match get_return_types callable with
+  | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
+    Sources.add_skipped sources coms
+  | Arg_types args -> match get_return_types callable with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
       File.buff_add_comments mli coms;
       File.buff_add_comments ml coms
@@ -182,7 +190,7 @@ let append_ctypes_method_bindings raw_name info container sources =
       File.buff_add_eol mli;
       File.buff_add_eol ml
 
-let parse_function_info info sources =
+let parse_function_info info sources skip_types =
   match Base_info.get_name info with
   | None -> ()
   | Some name -> let _ = match Base_info.get_container info with
@@ -195,5 +203,5 @@ let parse_function_info info sources =
                                                                 name])
      in
      let info' = Function_info.from_baseinfo info in
-     let _ = append_ctypes_function_bindings name info' sources in
+     let _ = append_ctypes_function_bindings name info' sources skip_types in
      Binding_utils.Sources.write_buffs sources
