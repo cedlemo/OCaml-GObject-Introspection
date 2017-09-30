@@ -215,4 +215,8 @@ module Sources : sig
   (** Add a DEPRECATED instruction in comments in both the mli and ml files. *)
   val add_deprecated:
     t -> string -> unit
+
+  (** Add a skipped instruction in comments in both the mli and ml files. *)
+  val add_skipped:
+    t -> string -> unit
 end
