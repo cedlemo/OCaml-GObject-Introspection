@@ -89,6 +89,10 @@ val type_tag_to_bindings_types:
 val type_info_to_bindings_types:
   Type_info.t structure ptr -> bool -> bindings_types
 
+(** Check if a string match on of the pattern in a list. *)
+val match_one_of:
+  string -> string list -> bool
+
 (** Module for a file representation. A File.t is associated with a
      - name
      - file descriptor

@@ -153,6 +153,17 @@ let string_pattern_remove str pattern =
   let reg = Str.regexp_string pattern in
   String.concat "" (Str.split reg str)
 
+let match_one_of str patterns =
+  let found pattern =
+    let r = Str.regexp pattern in
+    Str.string_match r str 0
+  in
+  let rec iterate = function
+    | [] -> false
+    | hd :: tl -> if found hd then true
+                  else iterate tl
+  in
+  iterate patterns
 
 module File = struct
   type t = {name : string; descr : Pervasives.out_channel; buffer : Buffer.t}
