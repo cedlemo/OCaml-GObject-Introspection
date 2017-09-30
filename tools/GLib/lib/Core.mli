@@ -21,8 +21,8 @@ val c_GINT64_FORMAT : string
 val c_GINT64_MODIFIER : string
 val c_GINTPTR_FORMAT : string
 val c_GINTPTR_MODIFIER : string
-(* !!! DEPRECATED : GNUC_FUNCTION. *)
-(* !!! DEPRECATED : GNUC_PRETTY_FUNCTION. *)
+(*DEPRECATED : GNUC_FUNCTION*)
+(*DEPRECATED : GNUC_PRETTY_FUNCTION*)
 val c_GSIZE_FORMAT : string
 val c_GSIZE_MODIFIER : string
 val c_GSSIZE_FORMAT : string
@@ -120,8 +120,8 @@ val c_TIME_SPAN_HOUR : int64
 val c_TIME_SPAN_MILLISECOND : int64
 val c_TIME_SPAN_MINUTE : int64
 val c_TIME_SPAN_SECOND : int64
-(* !!! DEPRECATED : TestTrapFlags. *)
-(* !!! DEPRECATED : TrashStack. *)
+(*DEPRECATED : TestTrapFlags*)
+(*DEPRECATED : TrashStack*)
 val c_UNICHAR_MAX_DECOMPOSITION_LENGTH : int32
 val c_URI_RESERVED_CHARS_GENERIC_DELIMITERS : string
 val c_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS : string
@@ -162,7 +162,7 @@ val assertion_message_cmpstr:
 string -> string -> int32 -> string -> string -> string -> string -> string -> unit
 val assertion_message_error:
 string -> string -> int32 -> string -> string -> Error.t structure ptr -> Unsigned.uint32 -> int32 -> unit
-(* !!! DEPRECATED : atexit. *)
+(*DEPRECATED : atexit*)
 val atomic_int_add:
 int32 ptr -> int32 -> int32
 val atomic_int_and:
@@ -171,7 +171,7 @@ val atomic_int_compare_and_exchange:
 int32 ptr -> int32 -> int32 -> bool
 val atomic_int_dec_and_test:
 int32 ptr -> bool
-(* !!! DEPRECATED : atomic_int_exchange_and_add. *)
+(*DEPRECATED : atomic_int_exchange_and_add*)
 val atomic_int_get:
 int32 ptr -> int32
 val atomic_int_inc:
@@ -202,7 +202,7 @@ unit ptr -> Unsigned.uint64 -> Unsigned.uint64
 (*Not implemented g_base64_encode argument types not handled*)
 (*Not implemented g_base64_encode_close argument types not handled*)
 (*Not implemented g_base64_encode_step argument types not handled*)
-(* !!! DEPRECATED : basename. *)
+(*DEPRECATED : basename*)
 val bit_lock:
 int32 ptr -> int32 -> unit
 val bit_nth_lsf:
@@ -357,7 +357,7 @@ val find_program_in_path:
 string -> string
 val format_size:
 Unsigned.uint64 -> string
-(* !!! DEPRECATED : format_size_for_display. *)
+(*DEPRECATED : format_size_for_display*)
 val format_size_full:
 Unsigned.uint64 -> Format_size_flags.t_list -> string
 val free:
@@ -529,9 +529,9 @@ val markup_error_quark:
 unit -> Unsigned.uint32
 val markup_escape_text:
 string -> int64 -> string
-(* !!! DEPRECATED : mem_is_system_malloc. *)
-(* !!! DEPRECATED : mem_profile. *)
-(* !!! DEPRECATED : mem_set_vtable. *)
+(*DEPRECATED : mem_is_system_malloc*)
+(*DEPRECATED : mem_profile*)
+(*DEPRECATED : mem_set_vtable*)
 val memdup:
 unit ptr option -> Unsigned.uint32 -> unit ptr option
 val mkdir_with_parents:
@@ -694,7 +694,7 @@ string -> string option -> string
 (*Not implemented g_str_tokenize_and_fold argument types not handled*)
 val strcanon:
 string -> string -> int -> string
-(* !!! DEPRECATED : strcasecmp. *)
+(*DEPRECATED : strcasecmp*)
 val strchomp:
 string -> string
 val strchug:
@@ -705,7 +705,7 @@ val strcompress:
 string -> string
 val strdelimit:
 string -> string option -> int -> string
-(* !!! DEPRECATED : strdown. *)
+(*DEPRECATED : strdown*)
 val strdup:
 string option -> string
 val strerror:
@@ -728,7 +728,7 @@ val strlcat:
 string -> string -> Unsigned.uint64 -> Unsigned.uint64
 val strlcpy:
 string -> string -> Unsigned.uint64 -> Unsigned.uint64
-(* !!! DEPRECATED : strncasecmp. *)
+(*DEPRECATED : strncasecmp*)
 val strndup:
 string -> Unsigned.uint64 -> string
 val strnfill:
@@ -744,7 +744,7 @@ int32 -> string
 val strstr_len:
 string -> int64 -> string -> string
 (*Not implemented g_strtod argument types not handled*)
-(* !!! DEPRECATED : strup. *)
+(*DEPRECATED : strup*)
 val strv_contains:
 string -> string -> bool
 (*Not implemented g_strv_get_type return type not handled*)
@@ -800,7 +800,7 @@ val test_timer_start:
 unit -> unit
 val test_trap_assertions:
 string -> string -> int32 -> string -> Unsigned.uint64 -> string -> unit
-(* !!! DEPRECATED : test_trap_fork. *)
+(*DEPRECATED : test_trap_fork*)
 val test_trap_has_passed:
 unit -> bool
 val test_trap_reached_timeout:
@@ -834,10 +834,10 @@ val timeout_source_new:
 Unsigned.uint32 -> Source.t structure ptr
 val timeout_source_new_seconds:
 Unsigned.uint32 -> Source.t structure ptr
-(* !!! DEPRECATED : trash_stack_height. *)
-(* !!! DEPRECATED : trash_stack_peek. *)
-(* !!! DEPRECATED : trash_stack_pop. *)
-(* !!! DEPRECATED : trash_stack_push. *)
+(*DEPRECATED : trash_stack_height*)
+(*DEPRECATED : trash_stack_peek*)
+(*DEPRECATED : trash_stack_pop*)
+(*DEPRECATED : trash_stack_push*)
 val try_malloc:
 Unsigned.uint64 -> unit ptr option
 val try_malloc0:
@@ -884,7 +884,7 @@ unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
 (*Not implemented g_unichar_type argument types not handled*)
 (*Not implemented g_unichar_validate argument types not handled*)
 (*Not implemented g_unichar_xdigit_value argument types not handled*)
-(* !!! DEPRECATED : unicode_canonical_decomposition. *)
+(*DEPRECATED : unicode_canonical_decomposition*)
 (*Not implemented g_unicode_canonical_ordering argument types not handled*)
 val unicode_script_from_iso15924:
 Unsigned.uint32 -> Unicode_script.t
@@ -976,7 +976,7 @@ val variant_parse_error_print_context:
 Error.t structure ptr -> string -> string
 val variant_parse_error_quark:
 unit -> Unsigned.uint32
-(* !!! DEPRECATED : variant_parser_get_error_quark. *)
+(*DEPRECATED : variant_parser_get_error_quark*)
 val variant_type_checked_:
 string -> Variant_type.t structure ptr
 val variant_type_string_is_valid:

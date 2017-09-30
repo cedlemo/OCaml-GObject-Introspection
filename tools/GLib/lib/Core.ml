@@ -22,6 +22,8 @@ let c_GINT64_FORMAT = "li"
 let c_GINT64_MODIFIER = "l"
 let c_GINTPTR_FORMAT = "li"
 let c_GINTPTR_MODIFIER = "l"
+(*DEPRECATED : GNUC_FUNCTION*)
+(*DEPRECATED : GNUC_PRETTY_FUNCTION*)
 let c_GSIZE_FORMAT = "lu"
 let c_GSIZE_MODIFIER = "l"
 let c_GSSIZE_FORMAT = "li"
@@ -119,6 +121,8 @@ let c_TIME_SPAN_HOUR = 3600000000L
 let c_TIME_SPAN_MILLISECOND = 1000L
 let c_TIME_SPAN_MINUTE = 60000000L
 let c_TIME_SPAN_SECOND = 1000000L
+(*DEPRECATED : TestTrapFlags*)
+(*DEPRECATED : TrashStack*)
 let c_UNICHAR_MAX_DECOMPOSITION_LENGTH = Int32.of_string "18"
 let c_URI_RESERVED_CHARS_GENERIC_DELIMITERS = ":/?#[]@"
 let c_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS = "!$&'()*+,;="
@@ -159,6 +163,7 @@ let assertion_message_cmpstr =
 foreign "g_assertion_message_cmpstr" (string @-> string @-> int32_t @-> string @-> string @-> string @-> string @-> string @-> returning (void))
 let assertion_message_error =
 foreign "g_assertion_message_error" (string @-> string @-> int32_t @-> string @-> string @-> ptr Error.t_typ @-> uint32_t @-> int32_t @-> returning (void))
+(*DEPRECATED : atexit*)
 let atomic_int_add =
 foreign "g_atomic_int_add" (ptr int32_t @-> int32_t @-> returning (int32_t))
 let atomic_int_and =
@@ -167,6 +172,7 @@ let atomic_int_compare_and_exchange =
 foreign "g_atomic_int_compare_and_exchange" (ptr int32_t @-> int32_t @-> int32_t @-> returning (bool))
 let atomic_int_dec_and_test =
 foreign "g_atomic_int_dec_and_test" (ptr int32_t @-> returning (bool))
+(*DEPRECATED : atomic_int_exchange_and_add*)
 let atomic_int_get =
 foreign "g_atomic_int_get" (ptr int32_t @-> returning (int32_t))
 let atomic_int_inc =
@@ -197,6 +203,7 @@ foreign "g_atomic_pointer_xor" (ptr void @-> uint64_t @-> returning (uint64_t))
 (*Not implemented g_base64_encode argument types not handled*)
 (*Not implemented g_base64_encode_close argument types not handled*)
 (*Not implemented g_base64_encode_step argument types not handled*)
+(*DEPRECATED : basename*)
 let bit_lock =
 foreign "g_bit_lock" (ptr int32_t @-> int32_t @-> returning (void))
 let bit_nth_lsf =
@@ -351,6 +358,7 @@ let find_program_in_path =
 foreign "g_find_program_in_path" (string @-> returning (string))
 let format_size =
 foreign "g_format_size" (uint64_t @-> returning (string))
+(*DEPRECATED : format_size_for_display*)
 let format_size_full =
 foreign "g_format_size_full" (uint64_t @-> Format_size_flags.t_list_view @-> returning (string))
 let free =
@@ -522,6 +530,9 @@ let markup_error_quark =
 foreign "g_markup_error_quark" (void @-> returning (uint32_t))
 let markup_escape_text =
 foreign "g_markup_escape_text" (string @-> int64_t @-> returning (string))
+(*DEPRECATED : mem_is_system_malloc*)
+(*DEPRECATED : mem_profile*)
+(*DEPRECATED : mem_set_vtable*)
 let memdup =
 foreign "g_memdup" (ptr_opt void @-> uint32_t @-> returning (ptr_opt void))
 let mkdir_with_parents =
@@ -684,6 +695,7 @@ foreign "g_str_to_ascii" (string @-> string_opt @-> returning (string))
 (*Not implemented g_str_tokenize_and_fold argument types not handled*)
 let strcanon =
 foreign "g_strcanon" (string @-> string @-> int8_t @-> returning (string))
+(*DEPRECATED : strcasecmp*)
 let strchomp =
 foreign "g_strchomp" (string @-> returning (string))
 let strchug =
@@ -694,6 +706,7 @@ let strcompress =
 foreign "g_strcompress" (string @-> returning (string))
 let strdelimit =
 foreign "g_strdelimit" (string @-> string_opt @-> int8_t @-> returning (string))
+(*DEPRECATED : strdown*)
 let strdup =
 foreign "g_strdup" (string_opt @-> returning (string))
 let strerror =
@@ -716,6 +729,7 @@ let strlcat =
 foreign "g_strlcat" (string @-> string @-> uint64_t @-> returning (uint64_t))
 let strlcpy =
 foreign "g_strlcpy" (string @-> string @-> uint64_t @-> returning (uint64_t))
+(*DEPRECATED : strncasecmp*)
 let strndup =
 foreign "g_strndup" (string @-> uint64_t @-> returning (string))
 let strnfill =
@@ -731,6 +745,7 @@ foreign "g_strsignal" (int32_t @-> returning (string))
 let strstr_len =
 foreign "g_strstr_len" (string @-> int64_t @-> string @-> returning (string))
 (*Not implemented g_strtod argument types not handled*)
+(*DEPRECATED : strup*)
 let strv_contains =
 foreign "g_strv_contains" (string @-> string @-> returning (bool))
 (*Not implemented g_strv_get_type return type not handled*)
@@ -786,6 +801,7 @@ let test_timer_start =
 foreign "g_test_timer_start" (void @-> returning (void))
 let test_trap_assertions =
 foreign "g_test_trap_assertions" (string @-> string @-> int32_t @-> string @-> uint64_t @-> string @-> returning (void))
+(*DEPRECATED : test_trap_fork*)
 let test_trap_has_passed =
 foreign "g_test_trap_has_passed" (void @-> returning (bool))
 let test_trap_reached_timeout =
@@ -819,6 +835,10 @@ let timeout_source_new =
 foreign "g_timeout_source_new" (uint32_t @-> returning (ptr Source.t_typ))
 let timeout_source_new_seconds =
 foreign "g_timeout_source_new_seconds" (uint32_t @-> returning (ptr Source.t_typ))
+(*DEPRECATED : trash_stack_height*)
+(*DEPRECATED : trash_stack_peek*)
+(*DEPRECATED : trash_stack_pop*)
+(*DEPRECATED : trash_stack_push*)
 let try_malloc =
 foreign "g_try_malloc" (uint64_t @-> returning (ptr_opt void))
 let try_malloc0 =
@@ -865,6 +885,7 @@ foreign "g_try_realloc_n" (ptr_opt void @-> uint64_t @-> uint64_t @-> returning 
 (*Not implemented g_unichar_type argument types not handled*)
 (*Not implemented g_unichar_validate argument types not handled*)
 (*Not implemented g_unichar_xdigit_value argument types not handled*)
+(*DEPRECATED : unicode_canonical_decomposition*)
 (*Not implemented g_unicode_canonical_ordering argument types not handled*)
 let unicode_script_from_iso15924 =
 foreign "g_unicode_script_from_iso15924" (uint32_t @-> returning (Unicode_script.t_view))
@@ -956,6 +977,7 @@ let variant_parse_error_print_context =
 foreign "g_variant_parse_error_print_context" (ptr Error.t_typ @-> string @-> returning (string))
 let variant_parse_error_quark =
 foreign "g_variant_parse_error_quark" (void @-> returning (uint32_t))
+(*DEPRECATED : variant_parser_get_error_quark*)
 let variant_type_checked_ =
 foreign "g_variant_type_checked_" (string @-> returning (ptr Variant_type.t_typ))
 let variant_type_string_is_valid =
