@@ -195,13 +195,5 @@ let parse_function_info info sources =
                                                                 name])
      in
      let info' = Function_info.from_baseinfo info in
-     let flags = Function_info.get_flags info' in
-     let rec search = function
-      | [] -> true
-      | f :: q -> if f == Function_info.Is_method then false
-      else search q
-     in
-      if search flags then (
-        let _ = append_ctypes_function_bindings name info' sources in
-        Binding_utils.Sources.write_buffs sources
-    )
+     let _ = append_ctypes_function_bindings name info' sources in
+     Binding_utils.Sources.write_buffs sources
