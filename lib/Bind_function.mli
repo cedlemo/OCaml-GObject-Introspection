@@ -43,9 +43,11 @@ type func_args = | Not_implemented of string (** One of the argument type is not
                  | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
 
 
+(** Get a list of the function arguments types, both OCaml types and Ctypes types. *)
 val get_arguments_types:
   Callable_info.t structure ptr -> string list -> func_args
 
+(** Get the type names of the return value, both OCaml and Ctypes type names. *)
 val get_return_types:
   Callable_info.t structure ptr -> (string * string) option
 
