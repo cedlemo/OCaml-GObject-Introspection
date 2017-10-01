@@ -41,7 +41,7 @@ type arguments = | Not_implemented of string
     return value, there are three possibilities. *)
 type func_types = | Not_implemented of string (** One of the argument type is not handled. *)
                   | Skipped of string (** One of the type must be skipped. *)
-                  | Arg_types of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
+                  | Type_names of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
 
 (** Get a list of the function arguments types, both OCaml types and Ctypes types. *)
 val get_arguments_types:

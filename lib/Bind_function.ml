@@ -32,7 +32,7 @@ let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
 
 type func_types = | Not_implemented of string
                   | Skipped of string
-                  | Arg_types of (string * string) list
+                  | Type_names of (string * string) list
 
 (* Returns None if there is an out or in/out argument,
  * else returns (string list, string list) whch correspond to
@@ -40,9 +40,9 @@ type func_types = | Not_implemented of string
  * the args for the ml file and the Ctypes functions binding *)
 let get_arguments_types callable skip_types =
   let n = Callable_info.get_n_args callable in
-  if n = 0 then Arg_types [("unit", "void")]
+  if n = 0 then Type_names [("unit", "void")]
   else let rec parse_args index args_types =
-         if index = n then Arg_types (List.rev args_types)
+         if index = n then Type_names (List.rev args_types)
          else let arg = Callable_info.get_arg callable index in
            match Arg_info.get_direction arg with
            | Arg_info.In -> (
@@ -103,7 +103,7 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
     File.buff_add_comments ml coms
   | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
     Sources.add_skipped sources coms
-  | Arg_types args -> match get_return_types callable with
+  | Type_names args -> match get_return_types callable with
     | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
       File.buff_add_comments mli coms;
       File.buff_add_comments ml coms
