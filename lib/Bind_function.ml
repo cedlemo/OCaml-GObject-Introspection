@@ -30,7 +30,7 @@ let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
   let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
   (ocaml_type', ctypes_typ')
 
-type func_types = | Not_implemented of string
+type func_types = | Not_handled of string
                   | Skipped of string
                   | Type_names of (string * string) list
 
@@ -49,29 +49,30 @@ let get_arguments_types callable skip_types =
                let type_info = Arg_info.get_type arg in
                let may_be_null = Arg_info.may_be_null arg in
                match Binding_utils.type_info_to_bindings_types type_info may_be_null with
-               | Binding_utils.Not_implemented tag_name -> Not_implemented tag_name
+               | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
                | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
                    let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
                    if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
                    else parse_args (index + 1) (types :: args_types)
              )
-           | _ -> Not_implemented "Arg_info.In or Arg_info.Out"
+           | _ -> Not_handled "Arg_info.In or Arg_info.Out"
     in parse_args 0 []
 
-let get_return_types callable =
-  if Callable_info.skip_return callable then Some ("unit", "void")
+let get_return_types callable skip_types =
+  if Callable_info.skip_return callable then Type_names [("unit", "void")]
   else let ret = Callable_info.get_return_type callable in
     let may_be_null = Callable_info.may_return_null callable in
     match Binding_utils.type_info_to_bindings_types ret may_be_null with
-    | Binding_utils.Not_implemented tag_name -> None
+    | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-      match Callable_info.get_caller_owns callable with
-      | Arg_info.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-      Some types
-      | Arg_info.Container -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-      Some types
-      | Arg_info.Everything -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-      Some types
+      if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
+      else match Callable_info.get_caller_owns callable with
+        | Arg_info.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
+          Type_names [types]
+        | Arg_info.Container -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
+          Type_names [types]
+        | Arg_info.Everything -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
+          Type_names [types]
 
 (* Build function bindings :
  * - get the Callable_info
@@ -98,16 +99,19 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_arguments_types callable skip_types with
-  | Not_implemented t -> let coms = Printf.sprintf "Not implemented %s argument type %s not handled" symbol t in
+  | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type %s not handled" symbol t in
     File.buff_add_comments mli coms;
     File.buff_add_comments ml coms
   | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
     Sources.add_skipped sources coms
-  | Type_names args -> match get_return_types callable with
-    | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
+  | Type_names args -> match get_return_types callable skip_types with
+    | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
       File.buff_add_comments mli coms;
       File.buff_add_comments ml coms
-    | Some (ocaml_ret, ctypes_ret) -> File.bprintf mli "val %s:\n" name;
+    | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
+      Sources.add_skipped sources coms
+    | Type_names types -> let (ocaml_ret, ctypes_ret) = List.hd types in
+      File.bprintf mli "val %s:\n" name;
       File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
       File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
