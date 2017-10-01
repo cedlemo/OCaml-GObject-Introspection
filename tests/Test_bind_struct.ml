@@ -56,7 +56,7 @@ let test_append_ctypes_struct_field_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "SList" in
   let writer = fun name info sources -> (
-    let _ = Bind_struct.append_ctypes_struct_field_declarations name info sources in
+    let _ = Bind_struct.append_ctypes_struct_field_declarations name info sources [] in
     Binding_utils.Sources.write_buffs sources
   )
   in

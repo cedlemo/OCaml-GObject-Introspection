@@ -26,7 +26,7 @@ val append_ctypes_struct_declaration:
   string -> Binding_utils.Sources.t -> unit
 
 val append_ctypes_struct_field_declarations:
-  string -> Struct_info.t structure ptr -> Binding_utils.Sources.t -> unit
+  string -> Struct_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
 
 (* val append_ctypes_struct_methods_bindings:
   string -> Struct_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
@@ -41,4 +41,4 @@ val append_ctypes_struct_seal:
   - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 *)
 val parse_struct_info :
-  Base_info.t structure ptr -> Binding_utils.Sources.t -> unit
+  Base_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
