@@ -382,15 +382,15 @@ let get_current_dir =
 foreign "g_get_current_dir" (void @-> returning (string))
 let get_current_time =
 foreign "g_get_current_time" (ptr Time_val.t_typ @-> returning (void))
-(*Not implemented g_get_environ return type not handled*)
+(*Not implemented g_get_environ return type C Array type for Types.Array tag not handled*)
 let get_filename_charsets =
 foreign "g_get_filename_charsets" (string @-> returning (bool))
 let get_home_dir =
 foreign "g_get_home_dir" (void @-> returning (string))
 let get_host_name =
 foreign "g_get_host_name" (void @-> returning (string))
-(*Not implemented g_get_language_names return type not handled*)
-(*Not implemented g_get_locale_variants return type not handled*)
+(*Not implemented g_get_language_names return type C Array type for Types.Array tag not handled*)
+(*Not implemented g_get_locale_variants return type C Array type for Types.Array tag not handled*)
 let get_monotonic_time =
 foreign "g_get_monotonic_time" (void @-> returning (int64_t))
 let get_num_processors =
@@ -401,8 +401,8 @@ let get_real_name =
 foreign "g_get_real_name" (void @-> returning (string))
 let get_real_time =
 foreign "g_get_real_time" (void @-> returning (int64_t))
-(*Not implemented g_get_system_config_dirs return type not handled*)
-(*Not implemented g_get_system_data_dirs return type not handled*)
+(*Not implemented g_get_system_config_dirs return type C Array type for Types.Array tag not handled*)
+(*Not implemented g_get_system_data_dirs return type C Array type for Types.Array tag not handled*)
 let get_tmp_dir =
 foreign "g_get_tmp_dir" (void @-> returning (string))
 let get_user_cache_dir =
@@ -488,7 +488,7 @@ let io_create_watch =
 foreign "g_io_create_watch" (ptr IOChannel.t_typ @-> IOCondition.t_list_view @-> returning (ptr Source.t_typ))
 let key_file_error_quark =
 foreign "g_key_file_error_quark" (void @-> returning (uint32_t))
-(*Not implemented g_listenv return type not handled*)
+(*Not implemented g_listenv return type C Array type for Types.Array tag not handled*)
 (*Not implemented g_locale_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_locale_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 let log_default_handler =
@@ -607,7 +607,7 @@ foreign "g_regex_escape_nul" (string @-> int32_t @-> returning (string))
 (*Not implemented g_regex_escape_string argument type C Array type for Types.Array tag not handled*)
 let regex_match_simple =
 foreign "g_regex_match_simple" (string @-> string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> returning (bool))
-(*Not implemented g_regex_split_simple return type not handled*)
+(*Not implemented g_regex_split_simple return type C Array type for Types.Array tag not handled*)
 let reload_user_special_dirs_cache =
 foreign "g_reload_user_special_dirs_cache" (void @-> returning (void))
 let rmdir =
@@ -752,7 +752,7 @@ foreign "g_strstr_len" (string @-> int64_t @-> string @-> returning (string))
 (*DEPRECATED : strup*)
 let strv_contains =
 foreign "g_strv_contains" (string @-> string @-> returning (bool))
-(*Not implemented g_strv_get_type return type not handled*)
+(*Not implemented g_strv_get_type return type gType not handled*)
 let strv_length =
 foreign "g_strv_length" (string @-> returning (uint32_t))
 (*Not implemented g_test_add_data_func argument type callback not handled*)
@@ -913,7 +913,7 @@ let unsetenv =
 foreign "g_unsetenv" (string @-> returning (void))
 let uri_escape_string =
 foreign "g_uri_escape_string" (string @-> string_opt @-> bool @-> returning (string))
-(*Not implemented g_uri_list_extract_uris return type not handled*)
+(*Not implemented g_uri_list_extract_uris return type C Array type for Types.Array tag not handled*)
 let uri_parse_scheme =
 foreign "g_uri_parse_scheme" (string @-> returning (string))
 let uri_unescape_segment =
@@ -936,8 +936,8 @@ let utf8_find_next_char =
 foreign "g_utf8_find_next_char" (string @-> string_opt @-> returning (string))
 let utf8_find_prev_char =
 foreign "g_utf8_find_prev_char" (string @-> string @-> returning (string))
-(*Not implemented g_utf8_get_char return type not handled*)
-(*Not implemented g_utf8_get_char_validated return type not handled*)
+(*Not implemented g_utf8_get_char return type unichar not handled*)
+(*Not implemented g_utf8_get_char_validated return type unichar not handled*)
 let utf8_make_valid =
 foreign "g_utf8_make_valid" (string @-> int64_t @-> returning (string))
 let utf8_normalize =
@@ -970,7 +970,7 @@ let uuid_string_is_valid =
 foreign "g_uuid_string_is_valid" (string @-> returning (bool))
 let uuid_string_random =
 foreign "g_uuid_string_random" (void @-> returning (string))
-(*Not implemented g_variant_get_gtype return type not handled*)
+(*Not implemented g_variant_get_gtype return type gType not handled*)
 let variant_is_object_path =
 foreign "g_variant_is_object_path" (string @-> returning (bool))
 let variant_is_signature =

@@ -381,15 +381,15 @@ val get_current_dir:
 unit -> string
 val get_current_time:
 Time_val.t structure ptr -> unit
-(*Not implemented g_get_environ return type not handled*)
+(*Not implemented g_get_environ return type C Array type for Types.Array tag not handled*)
 val get_filename_charsets:
 string -> bool
 val get_home_dir:
 unit -> string
 val get_host_name:
 unit -> string
-(*Not implemented g_get_language_names return type not handled*)
-(*Not implemented g_get_locale_variants return type not handled*)
+(*Not implemented g_get_language_names return type C Array type for Types.Array tag not handled*)
+(*Not implemented g_get_locale_variants return type C Array type for Types.Array tag not handled*)
 val get_monotonic_time:
 unit -> int64
 val get_num_processors:
@@ -400,8 +400,8 @@ val get_real_name:
 unit -> string
 val get_real_time:
 unit -> int64
-(*Not implemented g_get_system_config_dirs return type not handled*)
-(*Not implemented g_get_system_data_dirs return type not handled*)
+(*Not implemented g_get_system_config_dirs return type C Array type for Types.Array tag not handled*)
+(*Not implemented g_get_system_data_dirs return type C Array type for Types.Array tag not handled*)
 val get_tmp_dir:
 unit -> string
 val get_user_cache_dir:
@@ -487,7 +487,7 @@ val io_create_watch:
 IOChannel.t structure ptr -> IOCondition.t_list -> Source.t structure ptr
 val key_file_error_quark:
 unit -> Unsigned.uint32
-(*Not implemented g_listenv return type not handled*)
+(*Not implemented g_listenv return type C Array type for Types.Array tag not handled*)
 (*Not implemented g_locale_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_locale_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 val log_default_handler:
@@ -606,7 +606,7 @@ string -> int32 -> string
 (*Not implemented g_regex_escape_string argument type C Array type for Types.Array tag not handled*)
 val regex_match_simple:
 string -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> bool
-(*Not implemented g_regex_split_simple return type not handled*)
+(*Not implemented g_regex_split_simple return type C Array type for Types.Array tag not handled*)
 val reload_user_special_dirs_cache:
 unit -> unit
 val rmdir:
@@ -751,7 +751,7 @@ string -> int64 -> string -> string
 (*DEPRECATED : strup*)
 val strv_contains:
 string -> string -> bool
-(*Not implemented g_strv_get_type return type not handled*)
+(*Not implemented g_strv_get_type return type gType not handled*)
 val strv_length:
 string -> Unsigned.uint32
 (*Not implemented g_test_add_data_func argument type callback not handled*)
@@ -912,7 +912,7 @@ val unsetenv:
 string -> unit
 val uri_escape_string:
 string -> string option -> bool -> string
-(*Not implemented g_uri_list_extract_uris return type not handled*)
+(*Not implemented g_uri_list_extract_uris return type C Array type for Types.Array tag not handled*)
 val uri_parse_scheme:
 string -> string
 val uri_unescape_segment:
@@ -935,8 +935,8 @@ val utf8_find_next_char:
 string -> string option -> string
 val utf8_find_prev_char:
 string -> string -> string
-(*Not implemented g_utf8_get_char return type not handled*)
-(*Not implemented g_utf8_get_char_validated return type not handled*)
+(*Not implemented g_utf8_get_char return type unichar not handled*)
+(*Not implemented g_utf8_get_char_validated return type unichar not handled*)
 val utf8_make_valid:
 string -> int64 -> string
 val utf8_normalize:
@@ -969,7 +969,7 @@ val uuid_string_is_valid:
 string -> bool
 val uuid_string_random:
 unit -> string
-(*Not implemented g_variant_get_gtype return type not handled*)
+(*Not implemented g_variant_get_gtype return type gType not handled*)
 val variant_is_object_path:
 string -> bool
 val variant_is_signature:
