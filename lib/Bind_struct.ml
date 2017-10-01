@@ -30,11 +30,11 @@ let handle_recursive_structure structure_name (ocaml_type, ctypes_typ) =
   else if (structure_name ^ ".t structure ptr") = ocaml_type then ("t structure ptr", "ptr t_typ")
   else (ocaml_type, ctypes_typ)
 
-let append_ctypes_struct_fields_declarations struct_name info sources =
+let append_ctypes_struct_field_declarations struct_name info sources =
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
-  let append_ctypes_struct_field_declarations field_info =
+  let append_ctypes_struct_field_declaration field_info =
     let base_info = Field_info.to_baseinfo field_info in
     match Base_info.get_name base_info with
     | None -> ()
@@ -53,7 +53,7 @@ let append_ctypes_struct_fields_declarations struct_name info sources =
   let n = Struct_info.get_n_fields info in
   for i = 0 to n - 1 do
     let field_info = Struct_info.get_field info i in
-    append_ctypes_struct_field_declarations field_info
+    append_ctypes_struct_field_declaration field_info
   done
 
 let append_ctypes_struct_methods_bindings struct_name info sources =
@@ -76,7 +76,7 @@ let parse_struct_info info sources =
   | None -> ()
   | Some name -> let info' = Struct_info.from_baseinfo info in
     append_ctypes_struct_declaration name sources;
-    append_ctypes_struct_fields_declarations name info' sources;
+    append_ctypes_struct_field_declarations name info' sources;
     append_ctypes_struct_methods_bindings name info' sources;
     let mli = Sources.mli sources in
     let ml = Sources.ml sources in

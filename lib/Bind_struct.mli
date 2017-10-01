@@ -25,7 +25,7 @@ open Foreign
 val append_ctypes_struct_declaration:
   string -> Binding_utils.Sources.t -> unit
 
-val append_ctypes_struct_fields_declarations:
+val append_ctypes_struct_field_declarations:
   string -> Struct_info.t structure ptr -> Binding_utils.Sources.t -> unit
 
 (* val append_ctypes_struct_methods_bindings:

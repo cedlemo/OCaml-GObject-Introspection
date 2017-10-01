@@ -52,11 +52,11 @@ let test_append_ctypes_struct_declaration test_ctxt =
     test_writing test_ctxt info name writer mli_content ml_content
     )
 
-let test_append_ctypes_struct_fields_declarations test_ctxt =
+let test_append_ctypes_struct_field_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "SList" in
   let writer = fun name info sources -> (
-    let _ = Bind_struct.append_ctypes_struct_fields_declarations name info sources in
+    let _ = Bind_struct.append_ctypes_struct_field_declarations name info sources in
     Binding_utils.Sources.write_buffs sources
   )
   in
@@ -72,5 +72,5 @@ let tests =
   "GObject Introspection Bind_struct tests" >:::
   [
     "Bind_struct append ctypes struct declaration" >:: test_append_ctypes_struct_declaration;
-    "Bind_struct append ctypes struct fields declarations" >:: test_append_ctypes_struct_fields_declarations
+    "Bind_struct append ctypes struct field declarations" >:: test_append_ctypes_struct_field_declarations
   ]
