@@ -91,6 +91,20 @@ let get_return_types callable skip_types =
  *     - find out if it is a pointer
  *)
 
+let generate_callable_bindings callable name symbol args ret_types mli ml =
+  let open Binding_utils in
+  let (ocaml_ret, ctypes_ret) = List.hd ret_types in
+  File.bprintf mli "val %s:\n" name;
+  File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
+  File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+  File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+  if Callable_info.can_throw_gerror callable then (
+    File.bprintf mli " -> %s" "Error.t structure ptr ptr option";
+    File.bprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
+  );
+  File.bprintf mli " -> %s\n" ocaml_ret;
+  File.bprintf ml " @-> returning (%s))\n" ctypes_ret
+
 let append_ctypes_function_bindings raw_name info sources skip_types =
   let open Binding_utils in
   let mli = Sources.mli sources in
@@ -110,17 +124,8 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
       File.buff_add_comments ml coms
     | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
       Sources.add_skipped sources coms
-    | Type_names types -> let (ocaml_ret, ctypes_ret) = List.hd types in
-      File.bprintf mli "val %s:\n" name;
-      File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
-      File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-      File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
-      if Callable_info.can_throw_gerror callable then (
-        File.bprintf mli " -> %s" "Error.t structure ptr ptr option";
-        File.bprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
-      );
-      File.bprintf mli " -> %s\n" ocaml_ret;
-      File.bprintf ml " @-> returning (%s))\n" ctypes_ret
+    | Type_names ret_types ->
+        generate_callable_bindings callable name symbol args ret_types mli ml
 
 (* For the methods arguments, we have to check is the argument is of the same
  * type of the container (object, structure or union). *)
@@ -191,19 +196,10 @@ let append_ctypes_method_bindings raw_name info container sources skip_types =
       File.buff_add_comments ml coms
     | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
       Sources.add_skipped sources coms
-    | Type_names types -> let (ocaml_ret, ctypes_ret) = List.hd types in
-      File.bprintf mli "val %s:\n" name;
-      File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
-      File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-      File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
-      if Callable_info.can_throw_gerror callable then (
-        File.bprintf mli " -> %s" "Error.t structure ptr ptr option";
-        File.bprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
-      );
-      File.bprintf mli " -> %s\n" ocaml_ret;
-      File.bprintf ml " @-> returning (%s))\n" ctypes_ret;
-      File.buff_add_eol mli;
-      File.buff_add_eol ml
+    | Type_names ret_types ->
+        generate_callable_bindings callable name symbol args ret_types mli ml;
+       File.buff_add_eol mli;
+       File.buff_add_eol ml
 
 let parse_function_info info sources skip_types =
   match Base_info.get_name info with
