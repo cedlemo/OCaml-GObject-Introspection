@@ -42,13 +42,17 @@ let append_ctypes_struct_field_declarations struct_name info sources skip_types 
       let type_info = Field_info.get_type field_info in
       match type_info_to_bindings_types type_info false with
       | Not_implemented tag_name ->
-        let coms = Printf.sprintf "TODO Struct field %s : %s tag not implemented" struct_name tag_name in
+        let coms = Printf.sprintf "Struct field %s : %s tag not implemented" struct_name tag_name in
         File.buff_add_comments mli coms;
         File.buff_add_comments ml coms
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
-        let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
-        File.bprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type';
-        File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ'
+        if Binding_utils.match_one_of ocaml_type skip_types then
+          let com = Printf.sprintf "field type %s" ocaml_type in
+          Sources.add_skipped sources com
+        else
+          let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
+          File.bprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type';
+          File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ'
   in
   let n = Struct_info.get_n_fields info in
   for i = 0 to n - 1 do
