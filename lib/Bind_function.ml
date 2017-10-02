@@ -91,8 +91,10 @@ let get_return_types callable skip_types =
  *     - find out if it is a pointer
  *)
 
-let generate_callable_bindings callable name symbol args ret_types mli ml =
+let generate_callable_bindings callable name symbol args ret_types sources =
   let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
   let (ocaml_ret, ctypes_ret) = List.hd ret_types in
   File.bprintf mli "val %s:\n" name;
   File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
@@ -107,25 +109,21 @@ let generate_callable_bindings callable name symbol args ret_types mli ml =
 
 let append_ctypes_function_bindings raw_name info sources skip_types =
   let open Binding_utils in
-  let mli = Sources.mli sources in
-  let ml = Sources.ml sources in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_arguments_types callable skip_types with
   | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type %s not handled" symbol t in
-    File.buff_add_comments mli coms;
-    File.buff_add_comments ml coms
+    Sources.add_comments sources coms
   | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
     Sources.add_skipped sources coms
   | Type_names args -> match get_return_types callable skip_types with
     | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
-      File.buff_add_comments mli coms;
-      File.buff_add_comments ml coms
+      Sources.add_comments sources coms
     | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
       Sources.add_skipped sources coms
     | Type_names ret_types ->
-        generate_callable_bindings callable name symbol args ret_types mli ml
+        generate_callable_bindings callable name symbol args ret_types sources
 
 (* For the methods arguments, we have to check is the argument is of the same
  * type of the container (object, structure or union). *)
@@ -179,27 +177,22 @@ let get_method_return_types callable container skip_types =
 
 let append_ctypes_method_bindings raw_name info container sources skip_types =
   let open Binding_utils in
-  let mli = Sources.mli sources in
-  let ml = Sources.ml sources in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   match get_method_arguments_types callable container skip_types with
   | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type%s not handled" symbol t in
-    File.buff_add_comments mli coms;
-    File.buff_add_comments ml coms
+    Sources.add_comments sources coms
   | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
     Sources.add_skipped sources coms
   | Type_names args -> match get_method_return_types callable container skip_types with
     | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
-      File.buff_add_comments mli coms;
-      File.buff_add_comments ml coms
+      Sources.add_comments sources coms
     | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
       Sources.add_skipped sources coms
     | Type_names ret_types ->
-        generate_callable_bindings callable name symbol args ret_types mli ml;
-       File.buff_add_eol mli;
-       File.buff_add_eol ml
+      generate_callable_bindings callable name symbol args ret_types sources;
+      Sources.add_eol sources
 
 let parse_function_info info sources skip_types =
   match Base_info.get_name info with
