@@ -291,6 +291,11 @@ module Sources = struct
     File.buff_add_comments t.ml com;
     write_buffs t
 
+  let add_eol t =
+    File.buff_add_eol t.mli;
+    File.buff_add_eol t.ml;
+    write_buffs t
+
 end
 
 type type_strings = { ocaml : string;

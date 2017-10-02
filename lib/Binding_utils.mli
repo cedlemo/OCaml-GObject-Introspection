@@ -223,4 +223,8 @@ module Sources : sig
   (** Add a skipped instruction in comments in both the mli and ml files. *)
   val add_skipped:
     t -> string -> unit
+
+  (** Add end of line in both mli and ml files. *)
+  val add_eol:
+    t -> unit
 end
