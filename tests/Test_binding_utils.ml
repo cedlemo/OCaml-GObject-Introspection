@@ -196,6 +196,18 @@ let test_sources_add_skipped test_ctxt =
   let _ = check_file_and_content mli_file mli_content in
   check_file_and_content ml_file ml_content
 
+let test_sources_add_comments test_ctxt =
+  let sources = tmp_sources test_ctxt in
+  let _ = USources.add_comments sources "test" in
+  let _ = USources.close sources in
+  let mli_file = USources.mli sources |> UFile.name in
+  let ml_file =  USources.ml sources |> UFile.name in
+  let mli_content = "(*test*)" in
+  let ml_content = "(*test*)" in
+  let _ = check_file_and_content mli_file mli_content in
+  check_file_and_content ml_file ml_content
+
+
 let test_match_one_of test_ctxt =
   let patterns = ["to*"; "Ho*"] in
   assert_equal_boolean true (Binding_utils.match_one_of "Hook" patterns);
@@ -223,5 +235,6 @@ let tests =
     "Test sources add todo" >:: test_sources_add_todo;
     "Test sources add deprecated" >:: test_sources_add_deprecated;
     "Test match one of" >:: test_match_one_of;
-    "Test sources add skipped" >:: test_sources_add_skipped
+    "Test sources add skipped" >:: test_sources_add_skipped;
+    "Test sources add comments" >:: test_sources_add_comments
   ]
