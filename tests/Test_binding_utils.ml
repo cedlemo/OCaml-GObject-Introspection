@@ -163,9 +163,10 @@ let test_file_create_ctypes_sources test_ctxt =
   let _ = Sys.remove @@ filename ^ ".ml" in
   Sys.remove @@ filename ^ ".mli"
 
-let test_sources_add_todo test_ctxt =
+let test_sources_buffs_add_todo test_ctxt =
   let sources = tmp_sources test_ctxt in
-  let _ = USources.add_todo sources "test" in
+  let _ = USources.buffs_add_todo sources "test" in
+  let _ = USources.write_buffs sources in
   let _ = USources.close sources in
   let mli_file = USources.mli sources |> UFile.name in
   let ml_file =  USources.ml sources |> UFile.name in
@@ -174,9 +175,10 @@ let test_sources_add_todo test_ctxt =
   let _ = check_file_and_content mli_file mli_content in
   check_file_and_content ml_file ml_content
 
-let test_sources_add_deprecated test_ctxt =
+let test_sources_buffs_add_deprecated test_ctxt =
   let sources = tmp_sources test_ctxt in
-  let _ = USources.add_deprecated sources "test" in
+  let _ = USources.buffs_add_deprecated sources "test" in
+  let _ = USources.write_buffs sources in
   let _ = USources.close sources in
   let mli_file = USources.mli sources |> UFile.name in
   let ml_file =  USources.ml sources |> UFile.name in
@@ -185,9 +187,10 @@ let test_sources_add_deprecated test_ctxt =
   let _ = check_file_and_content mli_file mli_content in
   check_file_and_content ml_file ml_content
 
-let test_sources_add_skipped test_ctxt =
+let test_sources_buffs_add_skipped test_ctxt =
   let sources = tmp_sources test_ctxt in
-  let _ = USources.add_skipped sources "test" in
+  let _ = USources.buffs_add_skipped sources "test" in
+  let _ = USources.write_buffs sources in
   let _ = USources.close sources in
   let mli_file = USources.mli sources |> UFile.name in
   let ml_file =  USources.ml sources |> UFile.name in
@@ -196,9 +199,10 @@ let test_sources_add_skipped test_ctxt =
   let _ = check_file_and_content mli_file mli_content in
   check_file_and_content ml_file ml_content
 
-let test_sources_add_comments test_ctxt =
+let test_sources_buffs_add_comments test_ctxt =
   let sources = tmp_sources test_ctxt in
-  let _ = USources.add_comments sources "test" in
+  let _ = USources.buffs_add_comments sources "test" in
+  let _ = USources.write_buffs sources in
   let _ = USources.close sources in
   let mli_file = USources.mli sources |> UFile.name in
   let ml_file =  USources.ml sources |> UFile.name in
@@ -232,9 +236,9 @@ let tests =
     "Test file buffer add line" >:: test_file_buffer_add_line;
     "Test file buffer add comments" >:: test_file_buffer_add_comments;
     "Test file bprintf" >:: test_file_bprintf;
-    "Test sources add todo" >:: test_sources_add_todo;
-    "Test sources add deprecated" >:: test_sources_add_deprecated;
+    "Test sources buffers add todo" >:: test_sources_buffs_add_todo;
+    "Test sources buffers add deprecated" >:: test_sources_buffs_add_deprecated;
     "Test match one of" >:: test_match_one_of;
-    "Test sources add skipped" >:: test_sources_add_skipped;
-    "Test sources add comments" >:: test_sources_add_comments
+    "Test sources buffers add skipped" >:: test_sources_buffs_add_skipped;
+    "Test sources buffers add comments" >:: test_sources_buffs_add_comments
   ]

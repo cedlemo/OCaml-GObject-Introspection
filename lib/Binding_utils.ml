@@ -268,34 +268,28 @@ module Sources = struct
     let _ = File.close t.mli in
     File.close t.ml
 
-  let add_comments t str =
+  let buffs_add_comments t str =
     File.buff_add_comments t.mli str;
-    File.buff_add_comments t.ml str;
-    write_buffs t
+    File.buff_add_comments t.ml str
 
-  let add_todo t str =
+  let buffs_add_todo t str =
     let com = "TODO : " ^ str in
     File.buff_add_comments t.mli com;
-    File.buff_add_comments t.ml com;
-    write_buffs t
+    File.buff_add_comments t.ml com
 
-  let add_deprecated t str =
+  let buffs_add_deprecated t str =
     let com = "DEPRECATED : " ^ str in
     File.buff_add_comments t.mli com;
-    File.buff_add_comments t.ml com;
-    write_buffs t
+    File.buff_add_comments t.ml com
 
-  let add_skipped t str =
+  let buffs_add_skipped t str =
     let com = "SKIPPED : " ^ str in
     File.buff_add_comments t.mli com;
-    File.buff_add_comments t.ml com;
-    write_buffs t
+    File.buff_add_comments t.ml com
 
-  let add_eol t =
+  let buffs_add_eol t =
     File.buff_add_eol t.mli;
-    File.buff_add_eol t.ml;
-    write_buffs t
-
+    File.buff_add_eol t.ml
 end
 
 type type_strings = { ocaml : string;

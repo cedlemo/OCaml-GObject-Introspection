@@ -209,22 +209,22 @@ module Sources : sig
     t -> unit
 
   (** Add comments in both mli and ml files. *)
-  val add_comments:
+  val buffs_add_comments:
     t -> string -> unit
 
   (** Add a TODO instructions in comments in both the mli and ml files. *)
-  val add_todo:
+  val buffs_add_todo:
     t -> string -> unit
 
   (** Add a DEPRECATED instruction in comments in both the mli and ml files. *)
-  val add_deprecated:
+  val buffs_add_deprecated:
     t -> string -> unit
 
   (** Add a skipped instruction in comments in both the mli and ml files. *)
-  val add_skipped:
+  val buffs_add_skipped:
     t -> string -> unit
 
   (** Add end of line in both mli and ml files. *)
-  val add_eol:
+  val buffs_add_eol:
     t -> unit
 end

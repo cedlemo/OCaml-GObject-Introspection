@@ -168,9 +168,9 @@ let parse loader
     match Base_info.get_name info with
     | None -> ()
     | Some name ->
-      if Base_info.is_deprecated info then Sources.add_deprecated main_sources name
+      if Base_info.is_deprecated info then Sources.buffs_add_deprecated main_sources name
       else (
-        if match_one_of name skip then Sources.add_skipped main_sources name
+        if match_one_of name skip then Sources.buffs_add_skipped main_sources name
         else
           let gi_info = { base_name = name;
                           info = info;
