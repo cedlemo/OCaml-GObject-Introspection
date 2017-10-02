@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Rec_mutex"
 let f_p = field t_typ "p" (ptr void)
-(*TODO Struct field Rec_mutex : C Array type for Types.Array tag tag not implemented*)
+(*Struct field Rec_mutex : C Array type for Types.Array tag tag not implemented*)
 let clear =
 foreign "g_rec_mutex_clear" (ptr t_typ @-> returning (void))
 

@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Cond"
 let f_p = field t_typ "p" (ptr void)
-(*TODO Struct field Cond : C Array type for Types.Array tag tag not implemented*)
+(*Struct field Cond : C Array type for Types.Array tag tag not implemented*)
 let broadcast =
 foreign "g_cond_broadcast" (ptr t_typ @-> returning (void))
 

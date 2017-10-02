@@ -13,7 +13,7 @@ val f_buf_size: (Unsigned.uint64, t structure) field
 val f_read_buf: (String.t structure ptr, t structure) field
 val f_encoded_read_buf: (String.t structure ptr, t structure) field
 val f_write_buf: (String.t structure ptr, t structure) field
-(*TODO Struct field IOChannel : C Array type for Types.Array tag tag not implemented*)
+(*Struct field IOChannel : C Array type for Types.Array tag tag not implemented*)
 val f_use_buffer: (Unsigned.uint32, t structure) field
 val f_do_encode: (Unsigned.uint32, t structure) field
 val f_close_on_unref: (Unsigned.uint32, t structure) field

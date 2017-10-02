@@ -9,11 +9,11 @@ val f_input_name: (string, t structure) field
 val f_qdata: (Data.t structure ptr, t structure) field
 val f_config: (Scanner_config.t structure ptr, t structure) field
 val f_token: (Token_type.t, t structure) field
-(*TODO Struct field Scanner : union tag not implemented*)
+(*Struct field Scanner : union tag not implemented*)
 val f_line: (Unsigned.uint32, t structure) field
 val f_position: (Unsigned.uint32, t structure) field
 val f_next_token: (Token_type.t, t structure) field
-(*TODO Struct field Scanner : union tag not implemented*)
+(*Struct field Scanner : union tag not implemented*)
 val f_next_line: (Unsigned.uint32, t structure) field
 val f_next_position: (Unsigned.uint32, t structure) field
 val f_symbol_table: (Hash_table.t structure ptr, t structure) field
@@ -22,7 +22,7 @@ val f_text: (string, t structure) field
 val f_text_end: (string, t structure) field
 val f_buffer: (string, t structure) field
 val f_scope_id: (Unsigned.uint32, t structure) field
-(*TODO Struct field Scanner : callback tag not implemented*)
+(*Struct field Scanner : callback tag not implemented*)
 val cur_line:
 t structure ptr -> Unsigned.uint32
 
