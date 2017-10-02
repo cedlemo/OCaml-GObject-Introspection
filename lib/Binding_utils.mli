@@ -208,6 +208,10 @@ module Sources : sig
   val close:
     t -> unit
 
+  (** Add comments in both mli and ml files. *)
+  val add_comments:
+    t -> string -> unit
+
   (** Add a TODO instructions in comments in both the mli and ml files. *)
   val add_todo:
     t -> string -> unit

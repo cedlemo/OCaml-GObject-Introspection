@@ -268,6 +268,11 @@ module Sources = struct
     let _ = File.close t.mli in
     File.close t.ml
 
+  let add_comments t str =
+    File.buff_add_comments t.mli str;
+    File.buff_add_comments t.ml str;
+    write_buffs t
+
   let add_todo t str =
     let com = "TODO : " ^ str in
     File.buff_add_comments t.mli com;
