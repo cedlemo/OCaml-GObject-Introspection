@@ -9,12 +9,12 @@ foreign "g_match_info_expand_references" (ptr t_typ @-> string  @-> ptr_opt (ptr
 let fetch =
 foreign "g_match_info_fetch" (ptr t_typ @-> int32_t @-> returning (string_opt))
 
-(*Not implemented g_match_info_fetch_all return type not handled*)
+(*Not implemented g_match_info_fetch_all return type C Array type for Types.Array tag not handled*)
 let fetch_named =
 foreign "g_match_info_fetch_named" (ptr t_typ @-> string @-> returning (string_opt))
 
-(*Not implemented g_match_info_fetch_named_pos argument types not handled*)
-(*Not implemented g_match_info_fetch_pos argument types not handled*)
+(*Not implemented g_match_info_fetch_named_pos argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_match_info_fetch_pos argument typeArg_info.InOut or Arg_info.Out not handled*)
 let free =
 foreign "g_match_info_free" (ptr t_typ @-> returning (void))
 

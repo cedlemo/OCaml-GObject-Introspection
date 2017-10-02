@@ -14,7 +14,7 @@ foreign "g_byte_array_free_to_bytes" (ptr t_typ @-> ptr t_typ @-> returning (ptr
 let _new =
 foreign "g_byte_array_new" (ptr t_typ @-> returning (ptr t_typ))
 
-(*Not implemented g_byte_array_new_take argument types not handled*)
+(*Not implemented g_byte_array_new_take argument typeC Array type for Types.Array tag not handled*)
 let unref =
 foreign "g_byte_array_unref" (ptr t_typ @-> ptr t_typ @-> returning (void))
 

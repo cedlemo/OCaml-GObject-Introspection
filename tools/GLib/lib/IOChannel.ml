@@ -62,13 +62,13 @@ foreign "g_io_channel_init" (ptr t_typ @-> returning (void))
 let read =
 foreign "g_io_channel_read" (ptr t_typ @-> string @-> uint64_t @-> ptr uint64_t @-> returning (IOError.t_view))
 
-(*Not implemented g_io_channel_read_chars argument types not handled*)
-(*Not implemented g_io_channel_read_line argument types not handled*)
+(*Not implemented g_io_channel_read_chars argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_io_channel_read_line argument typeArg_info.InOut or Arg_info.Out not handled*)
 let read_line_string =
 foreign "g_io_channel_read_line_string" (ptr t_typ @-> ptr String.t_typ @-> ptr_opt uint64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (IOStatus.t_view))
 
-(*Not implemented g_io_channel_read_to_end argument types not handled*)
-(*Not implemented g_io_channel_read_unichar argument types not handled*)
+(*Not implemented g_io_channel_read_to_end argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_io_channel_read_unichar argument typeArg_info.InOut or Arg_info.Out not handled*)
 let ref =
 foreign "g_io_channel_ref" (ptr t_typ @-> returning (ptr t_typ))
 
@@ -108,8 +108,8 @@ foreign "g_io_channel_unref" (ptr t_typ @-> returning (void))
 let write =
 foreign "g_io_channel_write" (ptr t_typ @-> string @-> uint64_t @-> ptr uint64_t @-> returning (IOError.t_view))
 
-(*Not implemented g_io_channel_write_chars argument types not handled*)
-(*Not implemented g_io_channel_write_unichar argument types not handled*)
+(*Not implemented g_io_channel_write_chars argument typeC Array type for Types.Array tag not handled*)
+(*Not implemented g_io_channel_write_unichar argument typeunichar not handled*)
 let error_from_errno =
 foreign "g_io_channel_error_from_errno" (ptr t_typ @-> int32_t @-> returning (IOChannel_error.t_view))
 

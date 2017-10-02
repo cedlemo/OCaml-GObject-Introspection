@@ -29,30 +29,30 @@ t structure ptr -> string
 val get_string_number:
 t structure ptr -> string -> int32
 
-(*Not implemented g_regex_match argument types not handled*)
-(*Not implemented g_regex_match_all argument types not handled*)
-(*Not implemented g_regex_match_all_full argument types not handled*)
-(*Not implemented g_regex_match_full argument types not handled*)
+(*Not implemented g_regex_match argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_regex_match_all argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_regex_match_all_full argument typeC Array type for Types.Array tag not handled*)
+(*Not implemented g_regex_match_full argument typeC Array type for Types.Array tag not handled*)
 val ref:
 t structure ptr -> t structure ptr
 
-(*Not implemented g_regex_replace argument types not handled*)
-(*Not implemented g_regex_replace_literal argument types not handled*)
-(*Not implemented g_regex_split return type not handled*)
-(*Not implemented g_regex_split_full argument types not handled*)
+(*Not implemented g_regex_replace argument typeC Array type for Types.Array tag not handled*)
+(*Not implemented g_regex_replace_literal argument typeC Array type for Types.Array tag not handled*)
+(*Not implemented g_regex_split return type C Array type for Types.Array tag not handled*)
+(*Not implemented g_regex_split_full argument typeC Array type for Types.Array tag not handled*)
 val unref:
 t structure ptr -> unit
 
-(*Not implemented g_regex_check_replacement argument types not handled*)
+(*Not implemented g_regex_check_replacement argument typeArg_info.InOut or Arg_info.Out not handled*)
 val error_quark:
 t structure ptr -> Unsigned.uint32
 
 val escape_nul:
 t structure ptr -> string -> int32 -> string
 
-(*Not implemented g_regex_escape_string argument types not handled*)
+(*Not implemented g_regex_escape_string argument typeC Array type for Types.Array tag not handled*)
 val match_simple:
 t structure ptr -> string -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> bool
 
-(*Not implemented g_regex_split_simple return type not handled*)
+(*Not implemented g_regex_split_simple return type C Array type for Types.Array tag not handled*)
 

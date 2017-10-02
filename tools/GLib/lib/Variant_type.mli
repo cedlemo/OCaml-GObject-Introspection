@@ -14,7 +14,7 @@ t structure ptr -> t structure ptr -> t structure ptr -> t structure ptr
 val new_maybe:
 t structure ptr -> t structure ptr -> t structure ptr
 
-(*Not implemented g_variant_type_new_tuple argument types not handled*)
+(*Not implemented g_variant_type_new_tuple argument typeC Array type for Types.Array tag not handled*)
 val copy:
 t structure ptr -> t structure ptr
 
@@ -84,5 +84,5 @@ t structure ptr -> string -> t structure ptr
 val string_is_valid:
 t structure ptr -> string -> bool
 
-(*Not implemented g_variant_type_string_scan argument types not handled*)
+(*Not implemented g_variant_type_string_scan argument typeArg_info.InOut or Arg_info.Out not handled*)
 

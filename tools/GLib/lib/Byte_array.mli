@@ -13,7 +13,7 @@ t structure ptr -> t structure ptr -> Bytes.t structure ptr
 val _new:
 t structure ptr -> t structure ptr
 
-(*Not implemented g_byte_array_new_take argument types not handled*)
+(*Not implemented g_byte_array_new_take argument typeC Array type for Types.Array tag not handled*)
 val unref:
 t structure ptr -> t structure ptr -> unit
 

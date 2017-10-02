@@ -11,5 +11,5 @@ foreign "g_time_val_add" (ptr t_typ @-> int64_t @-> returning (void))
 let to_iso8601 =
 foreign "g_time_val_to_iso8601" (ptr t_typ @-> returning (string))
 
-(*Not implemented g_time_val_from_iso8601 argument types not handled*)
+(*Not implemented g_time_val_from_iso8601 argument typeArg_info.InOut or Arg_info.Out not handled*)
 

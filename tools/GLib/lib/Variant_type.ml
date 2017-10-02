@@ -15,7 +15,7 @@ foreign "g_variant_type_new_dict_entry" (ptr t_typ @-> ptr t_typ @-> ptr t_typ @
 let new_maybe =
 foreign "g_variant_type_new_maybe" (ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
 
-(*Not implemented g_variant_type_new_tuple argument types not handled*)
+(*Not implemented g_variant_type_new_tuple argument typeC Array type for Types.Array tag not handled*)
 let copy =
 foreign "g_variant_type_copy" (ptr t_typ @-> returning (ptr t_typ))
 
@@ -85,5 +85,5 @@ foreign "g_variant_type_checked_" (ptr t_typ @-> string @-> returning (ptr t_typ
 let string_is_valid =
 foreign "g_variant_type_string_is_valid" (ptr t_typ @-> string @-> returning (bool))
 
-(*Not implemented g_variant_type_string_scan argument types not handled*)
+(*Not implemented g_variant_type_string_scan argument typeArg_info.InOut or Arg_info.Out not handled*)
 

@@ -14,13 +14,13 @@ t structure ptr -> unit
 val get_added:
 t structure ptr -> string -> Error.t structure ptr ptr option -> int64
 
-(*Not implemented g_bookmark_file_get_app_info argument types not handled*)
-(*Not implemented g_bookmark_file_get_applications argument types not handled*)
+(*Not implemented g_bookmark_file_get_app_info argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_bookmark_file_get_applications argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_description:
 t structure ptr -> string -> Error.t structure ptr ptr option -> string
 
-(*Not implemented g_bookmark_file_get_groups argument types not handled*)
-(*Not implemented g_bookmark_file_get_icon argument types not handled*)
+(*Not implemented g_bookmark_file_get_groups argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_bookmark_file_get_icon argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_is_private:
 t structure ptr -> string -> Error.t structure ptr ptr option -> bool
 
@@ -36,7 +36,7 @@ t structure ptr -> int32
 val get_title:
 t structure ptr -> string option -> Error.t structure ptr ptr option -> string
 
-(*Not implemented g_bookmark_file_get_uris argument types not handled*)
+(*Not implemented g_bookmark_file_get_uris argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_visited:
 t structure ptr -> string -> Error.t structure ptr ptr option -> int64
 
@@ -100,7 +100,7 @@ t structure ptr -> string option -> string -> unit
 val set_visited:
 t structure ptr -> string -> int64 -> unit
 
-(*Not implemented g_bookmark_file_to_data argument types not handled*)
+(*Not implemented g_bookmark_file_to_data argument typeArg_info.InOut or Arg_info.Out not handled*)
 val to_file:
 t structure ptr -> string -> Error.t structure ptr ptr option -> bool
 

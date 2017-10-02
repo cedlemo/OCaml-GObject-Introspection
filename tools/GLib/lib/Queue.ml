@@ -12,7 +12,7 @@ foreign "g_queue_clear" (ptr t_typ @-> returning (void))
 let free =
 foreign "g_queue_free" (ptr t_typ @-> returning (void))
 
-(*Not implemented g_queue_free_full argument types not handled*)
+(*Not implemented g_queue_free_full argument typecallback not handled*)
 let get_length =
 foreign "g_queue_get_length" (ptr t_typ @-> returning (uint32_t))
 

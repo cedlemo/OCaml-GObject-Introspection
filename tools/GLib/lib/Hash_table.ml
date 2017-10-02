@@ -18,7 +18,7 @@ foreign "g_hash_table_insert" (ptr t_typ @-> ptr t_typ @-> ptr_opt void @-> ptr_
 let lookup =
 foreign "g_hash_table_lookup" (ptr t_typ @-> ptr t_typ @-> ptr_opt void @-> returning (ptr_opt void))
 
-(*Not implemented g_hash_table_lookup_extended argument types not handled*)
+(*Not implemented g_hash_table_lookup_extended argument typeArg_info.InOut or Arg_info.Out not handled*)
 let remove =
 foreign "g_hash_table_remove" (ptr t_typ @-> ptr t_typ @-> ptr_opt void @-> returning (bool))
 

@@ -14,7 +14,7 @@ t structure ptr -> int -> t structure ptr
 val append_len:
 t structure ptr -> string -> int64 -> t structure ptr
 
-(*Not implemented g_string_append_unichar argument types not handled*)
+(*Not implemented g_string_append_unichar argument typeunichar not handled*)
 val append_uri_escaped:
 t structure ptr -> string -> string -> bool -> t structure ptr
 
@@ -54,7 +54,7 @@ t structure ptr -> int64 -> int -> t structure ptr
 val insert_len:
 t structure ptr -> int64 -> string -> int64 -> t structure ptr
 
-(*Not implemented g_string_insert_unichar argument types not handled*)
+(*Not implemented g_string_insert_unichar argument typeunichar not handled*)
 val overwrite:
 t structure ptr -> Unsigned.uint64 -> string -> t structure ptr
 
@@ -70,7 +70,7 @@ t structure ptr -> int -> t structure ptr
 val prepend_len:
 t structure ptr -> string -> int64 -> t structure ptr
 
-(*Not implemented g_string_prepend_unichar argument types not handled*)
+(*Not implemented g_string_prepend_unichar argument typeunichar not handled*)
 val set_size:
 t structure ptr -> Unsigned.uint64 -> t structure ptr
 

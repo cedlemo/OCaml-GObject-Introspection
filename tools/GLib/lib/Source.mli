@@ -78,7 +78,7 @@ t structure ptr -> Poll_fd.t structure ptr -> unit
 val remove_unix_fd:
 t structure ptr -> unit ptr -> unit
 
-(*Not implemented g_source_set_callback argument types not handled*)
+(*Not implemented g_source_set_callback argument typecallback not handled*)
 val set_callback_indirect:
 t structure ptr -> unit ptr option -> Source_callback_funcs.t structure ptr -> unit
 

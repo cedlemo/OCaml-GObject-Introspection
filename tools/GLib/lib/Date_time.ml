@@ -108,7 +108,7 @@ foreign "g_date_time_get_week_of_year" (ptr t_typ @-> returning (int32_t))
 let get_year =
 foreign "g_date_time_get_year" (ptr t_typ @-> returning (int32_t))
 
-(*Not implemented g_date_time_get_ymd argument types not handled*)
+(*Not implemented g_date_time_get_ymd argument typeArg_info.InOut or Arg_info.Out not handled*)
 let is_daylight_savings =
 foreign "g_date_time_is_daylight_savings" (ptr t_typ @-> returning (bool))
 

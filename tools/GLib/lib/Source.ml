@@ -79,7 +79,7 @@ foreign "g_source_remove_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> returning (v
 let remove_unix_fd =
 foreign "g_source_remove_unix_fd" (ptr t_typ @-> ptr void @-> returning (void))
 
-(*Not implemented g_source_set_callback argument types not handled*)
+(*Not implemented g_source_set_callback argument typecallback not handled*)
 let set_callback_indirect =
 foreign "g_source_set_callback_indirect" (ptr t_typ @-> ptr_opt void @-> ptr Source_callback_funcs.t_typ @-> returning (void))
 

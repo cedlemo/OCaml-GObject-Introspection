@@ -15,7 +15,7 @@ foreign "g_string_append_c" (ptr t_typ @-> int8_t @-> returning (ptr t_typ))
 let append_len =
 foreign "g_string_append_len" (ptr t_typ @-> string @-> int64_t @-> returning (ptr t_typ))
 
-(*Not implemented g_string_append_unichar argument types not handled*)
+(*Not implemented g_string_append_unichar argument typeunichar not handled*)
 let append_uri_escaped =
 foreign "g_string_append_uri_escaped" (ptr t_typ @-> string @-> string @-> bool @-> returning (ptr t_typ))
 
@@ -55,7 +55,7 @@ foreign "g_string_insert_c" (ptr t_typ @-> int64_t @-> int8_t @-> returning (ptr
 let insert_len =
 foreign "g_string_insert_len" (ptr t_typ @-> int64_t @-> string @-> int64_t @-> returning (ptr t_typ))
 
-(*Not implemented g_string_insert_unichar argument types not handled*)
+(*Not implemented g_string_insert_unichar argument typeunichar not handled*)
 let overwrite =
 foreign "g_string_overwrite" (ptr t_typ @-> uint64_t @-> string @-> returning (ptr t_typ))
 
@@ -71,7 +71,7 @@ foreign "g_string_prepend_c" (ptr t_typ @-> int8_t @-> returning (ptr t_typ))
 let prepend_len =
 foreign "g_string_prepend_len" (ptr t_typ @-> string @-> int64_t @-> returning (ptr t_typ))
 
-(*Not implemented g_string_prepend_unichar argument types not handled*)
+(*Not implemented g_string_prepend_unichar argument typeunichar not handled*)
 let set_size =
 foreign "g_string_set_size" (ptr t_typ @-> uint64_t @-> returning (ptr t_typ))
 

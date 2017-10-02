@@ -33,8 +33,8 @@ foreign "g_option_context_get_strict_posix" (ptr t_typ @-> returning (bool))
 let get_summary =
 foreign "g_option_context_get_summary" (ptr t_typ @-> returning (string))
 
-(*Not implemented g_option_context_parse argument types not handled*)
-(*Not implemented g_option_context_parse_strv argument types not handled*)
+(*Not implemented g_option_context_parse argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_option_context_parse_strv argument typeArg_info.InOut or Arg_info.Out not handled*)
 let set_description =
 foreign "g_option_context_set_description" (ptr t_typ @-> string_opt @-> returning (void))
 
@@ -53,7 +53,7 @@ foreign "g_option_context_set_strict_posix" (ptr t_typ @-> bool @-> returning (v
 let set_summary =
 foreign "g_option_context_set_summary" (ptr t_typ @-> string_opt @-> returning (void))
 
-(*Not implemented g_option_context_set_translate_func argument types not handled*)
+(*Not implemented g_option_context_set_translate_func argument typecallback not handled*)
 let set_translation_domain =
 foreign "g_option_context_set_translation_domain" (ptr t_typ @-> string @-> returning (void))
 

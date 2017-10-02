@@ -10,5 +10,5 @@ t structure ptr -> int64 -> unit
 val to_iso8601:
 t structure ptr -> string
 
-(*Not implemented g_time_val_from_iso8601 argument types not handled*)
+(*Not implemented g_time_val_from_iso8601 argument typeArg_info.InOut or Arg_info.Out not handled*)
 

@@ -11,7 +11,7 @@ val f_dummy6: (unit ptr, t structure) field
 val init:
 t structure ptr -> Hash_table.t structure ptr -> unit
 
-(*Not implemented g_hash_table_iter_next argument types not handled*)
+(*Not implemented g_hash_table_iter_next argument typeArg_info.InOut or Arg_info.Out not handled*)
 val remove:
 t structure ptr -> unit
 

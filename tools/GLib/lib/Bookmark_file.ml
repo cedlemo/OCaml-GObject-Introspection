@@ -15,13 +15,13 @@ foreign "g_bookmark_file_free" (ptr t_typ @-> returning (void))
 let get_added =
 foreign "g_bookmark_file_get_added" (ptr t_typ @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (int64_t))
 
-(*Not implemented g_bookmark_file_get_app_info argument types not handled*)
-(*Not implemented g_bookmark_file_get_applications argument types not handled*)
+(*Not implemented g_bookmark_file_get_app_info argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_bookmark_file_get_applications argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_description =
 foreign "g_bookmark_file_get_description" (ptr t_typ @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
 
-(*Not implemented g_bookmark_file_get_groups argument types not handled*)
-(*Not implemented g_bookmark_file_get_icon argument types not handled*)
+(*Not implemented g_bookmark_file_get_groups argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_bookmark_file_get_icon argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_is_private =
 foreign "g_bookmark_file_get_is_private" (ptr t_typ @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 
@@ -37,7 +37,7 @@ foreign "g_bookmark_file_get_size" (ptr t_typ @-> returning (int32_t))
 let get_title =
 foreign "g_bookmark_file_get_title" (ptr t_typ @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
 
-(*Not implemented g_bookmark_file_get_uris argument types not handled*)
+(*Not implemented g_bookmark_file_get_uris argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_visited =
 foreign "g_bookmark_file_get_visited" (ptr t_typ @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (int64_t))
 
@@ -101,7 +101,7 @@ foreign "g_bookmark_file_set_title" (ptr t_typ @-> string_opt @-> string @-> ret
 let set_visited =
 foreign "g_bookmark_file_set_visited" (ptr t_typ @-> string @-> int64_t @-> returning (void))
 
-(*Not implemented g_bookmark_file_to_data argument types not handled*)
+(*Not implemented g_bookmark_file_to_data argument typeArg_info.InOut or Arg_info.Out not handled*)
 let to_file =
 foreign "g_bookmark_file_to_file" (ptr t_typ @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 

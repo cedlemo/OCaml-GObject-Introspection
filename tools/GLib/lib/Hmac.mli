@@ -11,5 +11,5 @@ t structure ptr -> string
 val unref:
 t structure ptr -> unit
 
-(*Not implemented g_hmac_update argument types not handled*)
+(*Not implemented g_hmac_update argument typeC Array type for Types.Array tag not handled*)
 

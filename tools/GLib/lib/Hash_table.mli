@@ -17,7 +17,7 @@ t structure ptr -> t structure ptr -> unit ptr option -> unit ptr option -> bool
 val lookup:
 t structure ptr -> t structure ptr -> unit ptr option -> unit ptr option
 
-(*Not implemented g_hash_table_lookup_extended argument types not handled*)
+(*Not implemented g_hash_table_lookup_extended argument typeArg_info.InOut or Arg_info.Out not handled*)
 val remove:
 t structure ptr -> t structure ptr -> unit ptr option -> bool
 

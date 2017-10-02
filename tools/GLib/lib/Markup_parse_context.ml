@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Markup_parse_context"
-(*Not implemented g_markup_parse_context_new argument types not handled*)
+(*Not implemented g_markup_parse_context_new argument typecallback not handled*)
 let end_parse =
 foreign "g_markup_parse_context_end_parse" (ptr t_typ  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
 

@@ -11,7 +11,7 @@ t structure ptr -> unit
 val free:
 t structure ptr -> unit
 
-(*Not implemented g_queue_free_full argument types not handled*)
+(*Not implemented g_queue_free_full argument typecallback not handled*)
 val get_length:
 t structure ptr -> Unsigned.uint32
 

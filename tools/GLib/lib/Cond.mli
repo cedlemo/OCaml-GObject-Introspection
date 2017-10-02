@@ -16,6 +16,6 @@ t structure ptr -> unit
 val signal:
 t structure ptr -> unit
 
-(*Not implemented g_cond_wait argument types not handled*)
-(*Not implemented g_cond_wait_until argument types not handled*)
+(*Not implemented g_cond_wait argument typeunion not handled*)
+(*Not implemented g_cond_wait_until argument typeunion not handled*)
 

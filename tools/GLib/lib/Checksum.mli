@@ -17,7 +17,7 @@ t structure ptr -> string
 val reset:
 t structure ptr -> unit
 
-(*Not implemented g_checksum_update argument types not handled*)
+(*Not implemented g_checksum_update argument typeC Array type for Types.Array tag not handled*)
 val type_get_length:
 t structure ptr -> Checksum_type.t -> int64
 

@@ -2,7 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-(*Not implemented g_markup_parse_context_new argument types not handled*)
+(*Not implemented g_markup_parse_context_new argument typecallback not handled*)
 val end_parse:
 t structure ptr -> Error.t structure ptr ptr option -> bool
 

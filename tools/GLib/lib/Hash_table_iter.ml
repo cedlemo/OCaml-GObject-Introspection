@@ -12,7 +12,7 @@ let f_dummy6 = field t_typ "dummy6" (ptr void)
 let init =
 foreign "g_hash_table_iter_init" (ptr t_typ @-> ptr Hash_table.t_typ @-> returning (void))
 
-(*Not implemented g_hash_table_iter_next argument types not handled*)
+(*Not implemented g_hash_table_iter_next argument typeArg_info.InOut or Arg_info.Out not handled*)
 let remove =
 foreign "g_hash_table_iter_remove" (ptr t_typ @-> returning (void))
 

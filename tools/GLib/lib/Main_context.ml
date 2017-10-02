@@ -12,7 +12,7 @@ foreign "g_main_context_acquire" (ptr t_typ @-> returning (bool))
 let add_poll =
 foreign "g_main_context_add_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> int32_t @-> returning (void))
 
-(*Not implemented g_main_context_check argument types not handled*)
+(*Not implemented g_main_context_check argument typeC Array type for Types.Array tag not handled*)
 let dispatch =
 foreign "g_main_context_dispatch" (ptr t_typ @-> returning (void))
 
@@ -25,7 +25,7 @@ foreign "g_main_context_find_source_by_id" (ptr t_typ @-> uint32_t @-> returning
 let find_source_by_user_data =
 foreign "g_main_context_find_source_by_user_data" (ptr t_typ @-> ptr_opt void @-> returning (ptr Source.t_typ))
 
-(*Not implemented g_main_context_invoke_full argument types not handled*)
+(*Not implemented g_main_context_invoke_full argument typecallback not handled*)
 let is_owner =
 foreign "g_main_context_is_owner" (ptr t_typ @-> returning (bool))
 
@@ -44,7 +44,7 @@ foreign "g_main_context_prepare" (ptr t_typ @-> ptr int32_t @-> returning (bool)
 let push_thread_default =
 foreign "g_main_context_push_thread_default" (ptr t_typ @-> returning (void))
 
-(*Not implemented g_main_context_query argument types not handled*)
+(*Not implemented g_main_context_query argument typeArg_info.InOut or Arg_info.Out not handled*)
 let ref =
 foreign "g_main_context_ref" (ptr t_typ @-> returning (ptr t_typ))
 
@@ -57,7 +57,7 @@ foreign "g_main_context_remove_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> return
 let unref =
 foreign "g_main_context_unref" (ptr t_typ @-> returning (void))
 
-(*Not implemented g_main_context_wait argument types not handled*)
+(*Not implemented g_main_context_wait argument typeunion not handled*)
 let wakeup =
 foreign "g_main_context_wakeup" (ptr t_typ @-> returning (void))
 

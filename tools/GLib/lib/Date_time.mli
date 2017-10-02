@@ -107,7 +107,7 @@ t structure ptr -> int32
 val get_year:
 t structure ptr -> int32
 
-(*Not implemented g_date_time_get_ymd argument types not handled*)
+(*Not implemented g_date_time_get_ymd argument typeArg_info.InOut or Arg_info.Out not handled*)
 val is_daylight_savings:
 t structure ptr -> bool
 

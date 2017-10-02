@@ -61,13 +61,13 @@ t structure ptr -> unit
 val read:
 t structure ptr -> string -> Unsigned.uint64 -> Unsigned.uint64 ptr -> IOError.t
 
-(*Not implemented g_io_channel_read_chars argument types not handled*)
-(*Not implemented g_io_channel_read_line argument types not handled*)
+(*Not implemented g_io_channel_read_chars argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_io_channel_read_line argument typeArg_info.InOut or Arg_info.Out not handled*)
 val read_line_string:
 t structure ptr -> String.t structure ptr -> Unsigned.uint64 ptr option -> Error.t structure ptr ptr option -> IOStatus.t
 
-(*Not implemented g_io_channel_read_to_end argument types not handled*)
-(*Not implemented g_io_channel_read_unichar argument types not handled*)
+(*Not implemented g_io_channel_read_to_end argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_io_channel_read_unichar argument typeArg_info.InOut or Arg_info.Out not handled*)
 val ref:
 t structure ptr -> t structure ptr
 
@@ -107,8 +107,8 @@ t structure ptr -> unit
 val write:
 t structure ptr -> string -> Unsigned.uint64 -> Unsigned.uint64 ptr -> IOError.t
 
-(*Not implemented g_io_channel_write_chars argument types not handled*)
-(*Not implemented g_io_channel_write_unichar argument types not handled*)
+(*Not implemented g_io_channel_write_chars argument typeC Array type for Types.Array tag not handled*)
+(*Not implemented g_io_channel_write_unichar argument typeunichar not handled*)
 val error_from_errno:
 t structure ptr -> int32 -> IOChannel_error.t
 

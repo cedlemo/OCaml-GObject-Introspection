@@ -32,8 +32,8 @@ t structure ptr -> bool
 val get_summary:
 t structure ptr -> string
 
-(*Not implemented g_option_context_parse argument types not handled*)
-(*Not implemented g_option_context_parse_strv argument types not handled*)
+(*Not implemented g_option_context_parse argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_option_context_parse_strv argument typeArg_info.InOut or Arg_info.Out not handled*)
 val set_description:
 t structure ptr -> string option -> unit
 
@@ -52,7 +52,7 @@ t structure ptr -> bool -> unit
 val set_summary:
 t structure ptr -> string option -> unit
 
-(*Not implemented g_option_context_set_translate_func argument types not handled*)
+(*Not implemented g_option_context_set_translate_func argument typecallback not handled*)
 val set_translation_domain:
 t structure ptr -> string -> unit
 
