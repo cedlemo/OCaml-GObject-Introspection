@@ -60,7 +60,7 @@ let append_ctypes_struct_field_declarations struct_name info sources skip_types 
     append_ctypes_struct_field_declaration field_info
   done
 
-let append_ctypes_struct_methods_bindings struct_name info sources =
+let append_ctypes_struct_methods_bindings struct_name info sources skip_types =
   let n = Struct_info.get_n_methods info in
   for i = 0 to n - 1 do
     let method_info = Struct_info.get_method info i in
@@ -68,7 +68,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources =
     match Base_info.get_name base_info with
     | None -> ()
     | Some name ->
-        Bind_function.append_ctypes_method_bindings name method_info struct_name sources
+        Bind_function.append_ctypes_method_bindings name method_info struct_name sources skip_types
   done
 
 let append_ctypes_struct_seal file =
@@ -81,7 +81,7 @@ let parse_struct_info info sources skip_types =
   | Some name -> let info' = Struct_info.from_baseinfo info in
     append_ctypes_struct_declaration name sources;
     append_ctypes_struct_field_declarations name info' sources skip_types;
-    append_ctypes_struct_methods_bindings name info' sources;
+    append_ctypes_struct_methods_bindings name info' sources skip_types;
     let mli = Sources.mli sources in
     let ml = Sources.ml sources in
     File.buff_add_eol mli;

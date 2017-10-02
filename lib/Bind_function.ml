@@ -135,52 +135,64 @@ let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_ty
  * structure, union ... ) has at least the container type as argument,
  * when GObject_introspection returns no arguments, we just need to add the
  * container types.*)
-let get_method_arguments_types callable container =
+let get_method_arguments_types callable container skip_types =
   let n = Callable_info.get_n_args callable in
   let rec parse_args index args_types =
-    if index = n then Some (List.rev args_types)
+    if index = n then Type_names (List.rev args_types)
     else let arg = Callable_info.get_arg callable index in
-    match Arg_info.get_direction arg with
-           | Arg_info.In -> (
-             let type_info = Arg_info.get_type arg in
-             let may_be_null = Arg_info.may_be_null arg in
-             match Binding_utils.type_info_to_bindings_types type_info may_be_null with
-               | Binding_utils.Not_implemented tag_name -> None
-               | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-                   let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
-                   parse_args (index + 1) (types :: args_types)
-                   )
-               | _ -> None
-                   in parse_args 0 [("t structure ptr", "ptr t_typ")]
+      match Arg_info.get_direction arg with
+      | Arg_info.In -> (
+        let type_info = Arg_info.get_type arg in
+        let may_be_null = Arg_info.may_be_null arg in
+        match Binding_utils.type_info_to_bindings_types type_info may_be_null with
+        | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
+        | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+          let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
+          if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
+          else parse_args (index + 1) (types :: args_types)
+      )
+      | _ -> Not_handled "Arg_info.InOut or Arg_info.Out"
+   in
+   parse_args 0 [("t structure ptr", "ptr t_typ")]
 
-let get_method_return_types callable container =
-  if Callable_info.skip_return callable then Some ("unit", "void")
+let get_method_return_types callable container skip_types =
+  if Callable_info.skip_return callable then Type_names [("unit", "void")]
   else let ret = Callable_info.get_return_type callable in
     let may_be_null = Callable_info.may_return_null callable in
     match Binding_utils.type_info_to_bindings_types ret may_be_null with
-    | Binding_utils.Not_implemented tag_name -> None
+    | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
+        let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
+        if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
+        else Type_names [types]
+      (* TODO : how to free the returned data
       match Callable_info.get_caller_owns callable with
-      | Arg_info.Nothing -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
-      | Arg_info.Container -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
-      | Arg_info.Everything -> Some (check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ))
+      | Arg_info.Nothing -> ()
+      | Arg_info.Container -> ()
+      | Arg_info.Everything -> ()
+      *)
 
-let append_ctypes_method_bindings raw_name info container sources =
+let append_ctypes_method_bindings raw_name info container sources skip_types =
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
-  match get_method_arguments_types callable container with
-  | None -> let coms = Printf.sprintf "Not implemented %s argument types not handled" symbol in
+  match get_method_arguments_types callable container skip_types with
+  | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type%s not handled" symbol t in
     File.buff_add_comments mli coms;
     File.buff_add_comments ml coms
-  | Some args -> match get_method_return_types callable container with
-    | None -> let coms = Printf.sprintf "Not implemented %s return type not handled" symbol in
+  | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
+    Sources.add_skipped sources coms
+  | Type_names args -> match get_method_return_types callable container skip_types with
+    | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
       File.buff_add_comments mli coms;
       File.buff_add_comments ml coms
-    | Some (ocaml_ret, ctypes_ret) -> File.bprintf mli "val %s:\n" name;
+    | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
+      Sources.add_skipped sources coms
+    | Type_names types -> let (ocaml_ret, ctypes_ret) = List.hd types in
+      File.bprintf mli "val %s:\n" name;
       File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
       File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
       File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
