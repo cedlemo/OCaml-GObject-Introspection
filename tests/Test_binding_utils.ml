@@ -163,7 +163,7 @@ let test_file_create_ctypes_sources test_ctxt =
   let _ = Sys.remove @@ filename ^ ".ml" in
   Sys.remove @@ filename ^ ".mli"
 
-let test_sources_add_comment test_ctxt =
+let test_sources_add_todo test_ctxt =
   let sources = tmp_sources test_ctxt in
   let _ = USources.add_todo sources "test" in
   let _ = USources.close sources in
@@ -220,7 +220,7 @@ let tests =
     "Test file buffer add line" >:: test_file_buffer_add_line;
     "Test file buffer add comments" >:: test_file_buffer_add_comments;
     "Test file bprintf" >:: test_file_bprintf;
-    "Test sources add comment" >:: test_sources_add_comment;
+    "Test sources add todo" >:: test_sources_add_todo;
     "Test sources add deprecated" >:: test_sources_add_deprecated;
     "Test match one of" >:: test_match_one_of;
     "Test sources add skipped" >:: test_sources_add_skipped
