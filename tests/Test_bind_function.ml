@@ -70,7 +70,7 @@ let test_escape_bad_function_name test_ctxt =
   let ml_content = "let _double =\n\
                     foreign \"g_rand_double\" (ptr t_typ @-> returning (double))\n" in
   let writer = fun name info sources ->
-    let _ = Bind_function.append_ctypes_method_bindings name info container sources in
+    let _ = Bind_function.append_ctypes_method_bindings name info container sources [] in
     Binding_utils.Sources.write_buffs sources
   in
   Test_utils.test_writing test_ctxt method_info "double" writer mli_content ml_content
