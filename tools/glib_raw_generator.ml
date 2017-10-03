@@ -14,6 +14,7 @@ let print_infos loader =
 
 let skip = [ "Hook";
              "Byte";
+             "MainContext"; "Main_context"; (* TODO: fix the lexer to not raise exception *)
 ]
 
 let () =
