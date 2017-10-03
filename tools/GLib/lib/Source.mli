@@ -6,7 +6,7 @@ val f_callback_data: (unit ptr, t structure) field
 val f_callback_funcs: (Source_callback_funcs.t structure ptr, t structure) field
 val f_source_funcs: (Source_funcs.t structure ptr, t structure) field
 val f_ref_count: (Unsigned.uint32, t structure) field
-val f_context: (Main_context.t structure ptr, t structure) field
+(*SKIPPED : field type Main_context.t structure ptr*)
 val f_priority: (int32, t structure) field
 val f_flags: (Unsigned.uint32, t structure) field
 val f_source_id: (Unsigned.uint32, t structure) field
@@ -27,18 +27,14 @@ t structure ptr -> Poll_fd.t structure ptr -> unit
 val add_unix_fd:
 t structure ptr -> int32 -> IOCondition.t_list -> unit ptr
 
-val attach:
-t structure ptr -> Main_context.t structure ptr option -> Unsigned.uint32
-
+(*SKIPPED : g_source_attach argument type Main_context.t structure ptr option*)
 val destroy:
 t structure ptr -> unit
 
 val get_can_recurse:
 t structure ptr -> bool
 
-val get_context:
-t structure ptr -> Main_context.t structure ptr option
-
+(*SKIPPED : g_source_get_context return type Main_context.t structure ptr option*)
 val get_current_time:
 t structure ptr -> Time_val.t structure ptr -> unit
 

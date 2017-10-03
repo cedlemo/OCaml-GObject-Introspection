@@ -2,12 +2,8 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val _new:
-t structure ptr -> Main_context.t structure ptr option -> bool -> t structure ptr
-
-val get_context:
-t structure ptr -> Main_context.t structure ptr
-
+(*SKIPPED : g_main_loop_new argument type Main_context.t structure ptr option*)
+(*SKIPPED : g_main_loop_get_context return type Main_context.t structure ptr*)
 val is_running:
 t structure ptr -> bool
 

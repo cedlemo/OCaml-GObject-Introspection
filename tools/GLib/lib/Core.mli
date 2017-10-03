@@ -99,6 +99,7 @@ val c_MININT64 : int64
 val c_MININT8 : int
 val c_MINOR_VERSION : int32
 val c_MODULE_SUFFIX : string
+(*SKIPPED : MainContext*)
 val c_OPTION_REMAINING : string
 val c_PDP_ENDIAN : int32
 val c_PI : float
@@ -507,12 +508,9 @@ int32 -> bool
 (*Not implemented g_log_writer_standard_streams argument type C Array type for Types.Array tag not handled*)
 val log_writer_supports_color:
 int32 -> bool
-val main_context_default:
-unit -> Main_context.t structure ptr
-val main_context_get_thread_default:
-unit -> Main_context.t structure ptr
-val main_context_ref_thread_default:
-unit -> Main_context.t structure ptr
+(*SKIPPED : g_main_context_default return type Main_context.t structure ptr*)
+(*SKIPPED : g_main_context_get_thread_default return type Main_context.t structure ptr*)
+(*SKIPPED : g_main_context_ref_thread_default return type Main_context.t structure ptr*)
 val main_current_source:
 unit -> Source.t structure ptr
 val main_depth:

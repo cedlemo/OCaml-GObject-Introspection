@@ -7,7 +7,7 @@ let f_callback_data = field t_typ "callback_data" (ptr void)
 let f_callback_funcs = field t_typ "callback_funcs" (ptr Source_callback_funcs.t_typ)
 let f_source_funcs = field t_typ "source_funcs" (ptr Source_funcs.t_typ)
 let f_ref_count = field t_typ "ref_count" (uint32_t)
-let f_context = field t_typ "context" (ptr Main_context.t_typ)
+(*SKIPPED : field type Main_context.t structure ptr*)
 let f_priority = field t_typ "priority" (int32_t)
 let f_flags = field t_typ "flags" (uint32_t)
 let f_source_id = field t_typ "source_id" (uint32_t)
@@ -28,18 +28,14 @@ foreign "g_source_add_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> returning (void
 let add_unix_fd =
 foreign "g_source_add_unix_fd" (ptr t_typ @-> int32_t @-> IOCondition.t_list_view @-> returning (ptr void))
 
-let attach =
-foreign "g_source_attach" (ptr t_typ @-> ptr_opt Main_context.t_typ @-> returning (uint32_t))
-
+(*SKIPPED : g_source_attach argument type Main_context.t structure ptr option*)
 let destroy =
 foreign "g_source_destroy" (ptr t_typ @-> returning (void))
 
 let get_can_recurse =
 foreign "g_source_get_can_recurse" (ptr t_typ @-> returning (bool))
 
-let get_context =
-foreign "g_source_get_context" (ptr t_typ @-> returning (ptr_opt Main_context.t_typ))
-
+(*SKIPPED : g_source_get_context return type Main_context.t structure ptr option*)
 let get_current_time =
 foreign "g_source_get_current_time" (ptr t_typ @-> ptr Time_val.t_typ @-> returning (void))
 

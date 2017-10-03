@@ -100,6 +100,7 @@ let c_MININT64 = -9223372036854775808L
 let c_MININT8 = -128
 let c_MINOR_VERSION = Int32.of_string "52"
 let c_MODULE_SUFFIX = "so"
+(*SKIPPED : MainContext*)
 let c_OPTION_REMAINING = ""
 let c_PDP_ENDIAN = Int32.of_string "3412"
 let c_PI = 3.141593
@@ -508,12 +509,9 @@ foreign "g_log_writer_is_journald" (int32_t @-> returning (bool))
 (*Not implemented g_log_writer_standard_streams argument type C Array type for Types.Array tag not handled*)
 let log_writer_supports_color =
 foreign "g_log_writer_supports_color" (int32_t @-> returning (bool))
-let main_context_default =
-foreign "g_main_context_default" (void @-> returning (ptr Main_context.t_typ))
-let main_context_get_thread_default =
-foreign "g_main_context_get_thread_default" (void @-> returning (ptr Main_context.t_typ))
-let main_context_ref_thread_default =
-foreign "g_main_context_ref_thread_default" (void @-> returning (ptr Main_context.t_typ))
+(*SKIPPED : g_main_context_default return type Main_context.t structure ptr*)
+(*SKIPPED : g_main_context_get_thread_default return type Main_context.t structure ptr*)
+(*SKIPPED : g_main_context_ref_thread_default return type Main_context.t structure ptr*)
 let main_current_source =
 foreign "g_main_current_source" (void @-> returning (ptr Source.t_typ))
 let main_depth =
