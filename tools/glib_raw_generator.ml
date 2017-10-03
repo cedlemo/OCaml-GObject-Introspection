@@ -13,6 +13,7 @@ let print_infos loader =
   print_endline ("\t - version :" ^ version)
 
 let skip = [ "Hook";
+             "Byte";
 ]
 
 let () =
