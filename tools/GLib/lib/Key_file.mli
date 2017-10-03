@@ -45,9 +45,7 @@ t structure ptr -> string -> string -> Error.t structure ptr ptr option -> strin
 val has_group:
 t structure ptr -> string -> bool
 
-val load_from_bytes:
-t structure ptr -> Bytes.t structure ptr -> Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
-
+(*SKIPPED : g_key_file_load_from_bytes argument type Bytes.t structure ptr*)
 val load_from_data:
 t structure ptr -> string -> Unsigned.uint64 -> Key_file_flags.t_list -> Error.t structure ptr ptr option -> bool
 

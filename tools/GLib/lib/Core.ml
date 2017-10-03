@@ -4,6 +4,8 @@ open Foreign
 let c_ANALYZER_ANALYZING = Int32.of_string "1"
 let c_ASCII_DTOSTR_BUF_SIZE = Int32.of_string "39"
 let c_BIG_ENDIAN = Int32.of_string "4321"
+(*SKIPPED : ByteArray*)
+(*SKIPPED : Bytes*)
 let c_CSET_A_2_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let c_CSET_DIGITS = "0123456789"
 let c_CSET_a_2_z = "abcdefghijklmnopqrstuvwxyz"
@@ -230,15 +232,11 @@ let bookmark_file_error_quark =
 foreign "g_bookmark_file_error_quark" (void @-> returning (uint32_t))
 (*Not implemented g_build_filenamev argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_build_pathv argument type C Array type for Types.Array tag not handled*)
-let byte_array_free =
-foreign "g_byte_array_free" (ptr Byte_array.t_typ @-> bool @-> returning (ptr uint8_t))
-let byte_array_free_to_bytes =
-foreign "g_byte_array_free_to_bytes" (ptr Byte_array.t_typ @-> returning (ptr Bytes.t_typ))
-let byte_array_new =
-foreign "g_byte_array_new" (void @-> returning (ptr Byte_array.t_typ))
+(*SKIPPED : g_byte_array_free argument type Byte_array.t structure ptr*)
+(*SKIPPED : g_byte_array_free_to_bytes argument type Byte_array.t structure ptr*)
+(*SKIPPED : g_byte_array_new return type Byte_array.t structure ptr*)
 (*Not implemented g_byte_array_new_take argument type C Array type for Types.Array tag not handled*)
-let byte_array_unref =
-foreign "g_byte_array_unref" (ptr Byte_array.t_typ @-> returning (void))
+(*SKIPPED : g_byte_array_unref argument type Byte_array.t structure ptr*)
 let chdir =
 foreign "g_chdir" (string @-> returning (int32_t))
 let check_version =
@@ -252,13 +250,11 @@ let clear_error =
 foreign "g_clear_error" (void  @-> ptr_opt (ptr Error.t_typ) @-> returning (void))
 let close =
 foreign "g_close" (int32_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
-let compute_checksum_for_bytes =
-foreign "g_compute_checksum_for_bytes" (Checksum_type.t_view @-> ptr Bytes.t_typ @-> returning (string))
+(*SKIPPED : g_compute_checksum_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_checksum_for_data argument type C Array type for Types.Array tag not handled*)
 let compute_checksum_for_string =
 foreign "g_compute_checksum_for_string" (Checksum_type.t_view @-> string @-> int64_t @-> returning (string))
-let compute_hmac_for_bytes =
-foreign "g_compute_hmac_for_bytes" (Checksum_type.t_view @-> ptr Bytes.t_typ @-> ptr Bytes.t_typ @-> returning (string))
+(*SKIPPED : g_compute_hmac_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_hmac_for_data argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_compute_hmac_for_string argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_convert argument type Arg_info.In or Arg_info.Out not handled*)

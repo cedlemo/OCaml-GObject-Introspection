@@ -11,9 +11,7 @@ t structure ptr -> int32 -> bool -> Error.t structure ptr ptr option -> t struct
 val free:
 t structure ptr -> unit
 
-val get_bytes:
-t structure ptr -> Bytes.t structure ptr
-
+(*SKIPPED : g_mapped_file_get_bytes return type Bytes.t structure ptr*)
 val get_contents:
 t structure ptr -> string
 

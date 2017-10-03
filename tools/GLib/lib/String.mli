@@ -39,9 +39,7 @@ t structure ptr -> int64 -> int64 -> t structure ptr
 val free:
 t structure ptr -> bool -> string option
 
-val free_to_bytes:
-t structure ptr -> Bytes.t structure ptr
-
+(*SKIPPED : g_string_free_to_bytes return type Bytes.t structure ptr*)
 val hash:
 t structure ptr -> Unsigned.uint32
 

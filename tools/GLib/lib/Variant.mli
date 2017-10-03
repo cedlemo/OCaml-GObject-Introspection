@@ -20,9 +20,7 @@ t structure ptr -> float -> t structure ptr
 val new_fixed_array:
 t structure ptr -> Variant_type.t structure ptr -> unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> t structure ptr
 
-val new_from_bytes:
-t structure ptr -> Variant_type.t structure ptr -> Bytes.t structure ptr -> bool -> t structure ptr
-
+(*SKIPPED : g_variant_new_from_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_variant_new_from_data argument typeC Array type for Types.Array tag not handled*)
 val new_handle:
 t structure ptr -> int32 -> t structure ptr
@@ -97,9 +95,7 @@ t structure ptr -> Unsigned.uint64 -> t structure ptr
 val get_data:
 t structure ptr -> unit ptr option
 
-val get_data_as_bytes:
-t structure ptr -> Bytes.t structure ptr
-
+(*SKIPPED : g_variant_get_data_as_bytes return type Bytes.t structure ptr*)
 val get_double:
 t structure ptr -> float
 

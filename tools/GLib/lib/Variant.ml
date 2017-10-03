@@ -21,9 +21,7 @@ foreign "g_variant_new_double" (ptr t_typ @-> double @-> returning (ptr t_typ))
 let new_fixed_array =
 foreign "g_variant_new_fixed_array" (ptr t_typ @-> ptr Variant_type.t_typ @-> ptr_opt void @-> uint64_t @-> uint64_t @-> returning (ptr t_typ))
 
-let new_from_bytes =
-foreign "g_variant_new_from_bytes" (ptr t_typ @-> ptr Variant_type.t_typ @-> ptr Bytes.t_typ @-> bool @-> returning (ptr t_typ))
-
+(*SKIPPED : g_variant_new_from_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_variant_new_from_data argument typeC Array type for Types.Array tag not handled*)
 let new_handle =
 foreign "g_variant_new_handle" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
@@ -98,9 +96,7 @@ foreign "g_variant_get_child_value" (ptr t_typ @-> uint64_t @-> returning (ptr t
 let get_data =
 foreign "g_variant_get_data" (ptr t_typ @-> returning (ptr_opt void))
 
-let get_data_as_bytes =
-foreign "g_variant_get_data_as_bytes" (ptr t_typ @-> returning (ptr Bytes.t_typ))
-
+(*SKIPPED : g_variant_get_data_as_bytes return type Bytes.t structure ptr*)
 let get_double =
 foreign "g_variant_get_double" (ptr t_typ @-> returning (double))
 

@@ -40,9 +40,7 @@ foreign "g_string_erase" (ptr t_typ @-> int64_t @-> int64_t @-> returning (ptr t
 let free =
 foreign "g_string_free" (ptr t_typ @-> bool @-> returning (string_opt))
 
-let free_to_bytes =
-foreign "g_string_free_to_bytes" (ptr t_typ @-> returning (ptr Bytes.t_typ))
-
+(*SKIPPED : g_string_free_to_bytes return type Bytes.t structure ptr*)
 let hash =
 foreign "g_string_hash" (ptr t_typ @-> returning (uint32_t))
 

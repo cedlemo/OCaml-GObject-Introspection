@@ -3,6 +3,8 @@ open Ctypes
 val c_ANALYZER_ANALYZING : int32
 val c_ASCII_DTOSTR_BUF_SIZE : int32
 val c_BIG_ENDIAN : int32
+(*SKIPPED : ByteArray*)
+(*SKIPPED : Bytes*)
 val c_CSET_A_2_Z : string
 val c_CSET_DIGITS : string
 val c_CSET_a_2_z : string
@@ -229,15 +231,11 @@ val bookmark_file_error_quark:
 unit -> Unsigned.uint32
 (*Not implemented g_build_filenamev argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_build_pathv argument type C Array type for Types.Array tag not handled*)
-val byte_array_free:
-Byte_array.t structure ptr -> bool -> Unsigned.uint8 ptr
-val byte_array_free_to_bytes:
-Byte_array.t structure ptr -> Bytes.t structure ptr
-val byte_array_new:
-unit -> Byte_array.t structure ptr
+(*SKIPPED : g_byte_array_free argument type Byte_array.t structure ptr*)
+(*SKIPPED : g_byte_array_free_to_bytes argument type Byte_array.t structure ptr*)
+(*SKIPPED : g_byte_array_new return type Byte_array.t structure ptr*)
 (*Not implemented g_byte_array_new_take argument type C Array type for Types.Array tag not handled*)
-val byte_array_unref:
-Byte_array.t structure ptr -> unit
+(*SKIPPED : g_byte_array_unref argument type Byte_array.t structure ptr*)
 val chdir:
 string -> int32
 val check_version:
@@ -251,13 +249,11 @@ val clear_error:
 unit -> Error.t structure ptr ptr option -> unit
 val close:
 int32 -> Error.t structure ptr ptr option -> bool
-val compute_checksum_for_bytes:
-Checksum_type.t -> Bytes.t structure ptr -> string
+(*SKIPPED : g_compute_checksum_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_checksum_for_data argument type C Array type for Types.Array tag not handled*)
 val compute_checksum_for_string:
 Checksum_type.t -> string -> int64 -> string
-val compute_hmac_for_bytes:
-Checksum_type.t -> Bytes.t structure ptr -> Bytes.t structure ptr -> string
+(*SKIPPED : g_compute_hmac_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_hmac_for_data argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_compute_hmac_for_string argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_convert argument type Arg_info.In or Arg_info.Out not handled*)
