@@ -83,8 +83,7 @@ val c_LOG_2_BASE_10 : float
 val c_LOG_DOMAIN : int
 val c_LOG_FATAL_MASK : int32
 val c_LOG_LEVEL_USER_SHIFT : int32
-val c_MAJOR_VERSION : int32
-val c_MAXINT16 : int
+val c_MAJOR_VERSION: int32val c_MAXINT16 : int
 val c_MAXINT32 : int32
 val c_MAXINT64 : int64
 val c_MAXINT8 : int
@@ -92,13 +91,11 @@ val c_MAXUINT16 : Unsigned.uint16
 val c_MAXUINT32 : Unsigned.uint32
 val c_MAXUINT64 : Unsigned.uint64
 val c_MAXUINT8 : Unsigned.uint8
-val c_MICRO_VERSION : int32
-val c_MININT16 : int
+val c_MICRO_VERSION: int32val c_MININT16 : int
 val c_MININT32 : int32
 val c_MININT64 : int64
 val c_MININT8 : int
-val c_MINOR_VERSION : int32
-val c_MODULE_SUFFIX : string
+val c_MINOR_VERSION: int32val c_MODULE_SUFFIX : string
 (*SKIPPED : MainContext*)
 val c_OPTION_REMAINING : string
 val c_PDP_ENDIAN : int32
