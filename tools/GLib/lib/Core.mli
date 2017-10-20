@@ -245,7 +245,7 @@ unit -> Unsigned.uint32
 val chdir:
 string -> int32
 val check_version:
-Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32 -> string
+Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32 -> string option
 val checksum_type_get_length:
 Checksum_type.t -> int64
 (*Not implemented g_child_watch_add_full argument type callback not handled*)

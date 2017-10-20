@@ -246,7 +246,7 @@ foreign "g_bookmark_file_error_quark" (void @-> returning (uint32_t))
 let chdir =
 foreign "g_chdir" (string @-> returning (int32_t))
 let check_version =
-foreign "glib_check_version" (uint32_t @-> uint32_t @-> uint32_t @-> returning (string))
+foreign "glib_check_version" (uint32_t @-> uint32_t @-> uint32_t @-> returning (string_opt))
 let checksum_type_get_length =
 foreign "g_checksum_type_get_length" (Checksum_type.t_view @-> returning (int64_t))
 (*Not implemented g_child_watch_add_full argument type callback not handled*)
