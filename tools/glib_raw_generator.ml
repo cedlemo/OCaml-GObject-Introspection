@@ -67,9 +67,39 @@ let const_parser info sources =
     in
     Sources.write_buffs sources
 
+let function_parser info sources skip_types =
+  let open GI.Binding_utils in
+  let open GI.Bind_function in
+  match GI.Base_info.get_name info with
+  | None -> ()
+  | Some name ->
+      if name = "check_version" then (
+        let mli = Sources.mli sources in
+        let ml = Sources.ml sources in
+        File.buff_add_line mli "val check_version:\n\
+                                Unsigned.uint32 -> Unsigned.uint32 -> Unsigned.uint32 -> string option";
+        File.buff_add_line ml "let check_version =\n\
+                               foreign \"glib_check_version\" (uint32_t @-> uint32_t @-> uint32_t @-> returning (string_opt))"
+
+      )
+      else (
+        let _ = match GI.Base_info.get_container info with
+        | None -> ()
+        | Some container -> match GI.Base_info.get_name container with
+           | None -> ()
+           | Some container_name -> print_endline (String.concat " " ["Container :";
+                                                                      container_name;
+                                                                      "function";
+                                                                      name])
+       in
+       let info' = GI.Function_info.from_baseinfo info in
+       append_ctypes_function_bindings name info' sources skip_types
+      );
+     Sources.write_buffs sources
+
 let () =
   match GI.Loader.load "GLib" () with
   | None -> print_endline "Please check the namespace, something is wrong"
   | Some loader -> print_infos loader;
     let loader = GI.Loader.set_build_path loader "tools/" in
-    GI.Loader.parse loader ~const_parser ~skip ()
+    GI.Loader.parse loader ~const_parser ~function_parser ~skip ()
