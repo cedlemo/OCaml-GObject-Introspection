@@ -538,8 +538,7 @@ let mkdir_with_parents =
 foreign "g_mkdir_with_parents" (string @-> int32_t @-> returning (int32_t))
 let nullify_pointer =
 foreign "g_nullify_pointer" (ptr void @-> returning (void))
-let number_parser_error_quark =
-foreign "g_number_parser_error_quark" (void @-> returning (uint32_t))
+(*SKIPPED : number_parser_error_quark*)
 let on_error_query =
 foreign "g_on_error_query" (string @-> returning (void))
 let on_error_stack_trace =

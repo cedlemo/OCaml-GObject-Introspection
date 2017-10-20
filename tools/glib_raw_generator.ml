@@ -17,6 +17,7 @@ let skip = [ "Hook";
              "MainContext"; "Main_context"; (* TODO: fix the lexer to not raise exception *)
              "Sequence";
              "log_";
+             "number_parser_error_quark";
 ]
 
 let const_parser info sources =

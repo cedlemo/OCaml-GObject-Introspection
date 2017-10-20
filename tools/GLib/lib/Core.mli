@@ -534,8 +534,7 @@ val mkdir_with_parents:
 string -> int32 -> int32
 val nullify_pointer:
 unit ptr -> unit
-val number_parser_error_quark:
-unit -> Unsigned.uint32
+(*SKIPPED : number_parser_error_quark*)
 val on_error_query:
 string -> unit
 val on_error_stack_trace:
