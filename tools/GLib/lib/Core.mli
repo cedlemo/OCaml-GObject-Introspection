@@ -128,6 +128,9 @@ val c_SYSDEF_AF_UNIX : int32
 val c_SYSDEF_MSG_DONTROUTE : int32
 val c_SYSDEF_MSG_OOB : int32
 val c_SYSDEF_MSG_PEEK : int32
+(*SKIPPED : Sequence*)
+(*SKIPPED : SequenceIter*)
+(*SKIPPED : SequenceIterCompareFunc*)
 val c_TIME_SPAN_DAY : int64
 val c_TIME_SPAN_HOUR : int64
 val c_TIME_SPAN_MILLISECOND : int64
@@ -602,24 +605,15 @@ val reload_user_special_dirs_cache:
 unit -> unit
 val rmdir:
 string -> int32
-val sequence_get:
-Sequence_iter.t structure ptr -> unit ptr option
-val sequence_insert_before:
-Sequence_iter.t structure ptr -> unit ptr option -> Sequence_iter.t structure ptr
-val sequence_move:
-Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
-val sequence_move_range:
-Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
-val sequence_range_get_midpoint:
-Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr
-val sequence_remove:
-Sequence_iter.t structure ptr -> unit
-val sequence_remove_range:
-Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
-val sequence_set:
-Sequence_iter.t structure ptr -> unit ptr option -> unit
-val sequence_swap:
-Sequence_iter.t structure ptr -> Sequence_iter.t structure ptr -> unit
+(*SKIPPED : g_sequence_get argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_insert_before argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_move argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_move_range argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_range_get_midpoint argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_remove argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_remove_range argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_set argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_swap argument type Sequence_iter.t structure ptr*)
 val set_application_name:
 string -> unit
 (*Not implemented g_set_error_literal argument type Arg_info.In or Arg_info.Out not handled*)

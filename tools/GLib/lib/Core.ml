@@ -129,6 +129,9 @@ let c_SYSDEF_AF_UNIX = Int32.of_string "1"
 let c_SYSDEF_MSG_DONTROUTE = Int32.of_string "4"
 let c_SYSDEF_MSG_OOB = Int32.of_string "1"
 let c_SYSDEF_MSG_PEEK = Int32.of_string "2"
+(*SKIPPED : Sequence*)
+(*SKIPPED : SequenceIter*)
+(*SKIPPED : SequenceIterCompareFunc*)
 let c_TIME_SPAN_DAY = 86400000000L
 let c_TIME_SPAN_HOUR = 3600000000L
 let c_TIME_SPAN_MILLISECOND = 1000L
@@ -603,24 +606,15 @@ let reload_user_special_dirs_cache =
 foreign "g_reload_user_special_dirs_cache" (void @-> returning (void))
 let rmdir =
 foreign "g_rmdir" (string @-> returning (int32_t))
-let sequence_get =
-foreign "g_sequence_get" (ptr Sequence_iter.t_typ @-> returning (ptr_opt void))
-let sequence_insert_before =
-foreign "g_sequence_insert_before" (ptr Sequence_iter.t_typ @-> ptr_opt void @-> returning (ptr Sequence_iter.t_typ))
-let sequence_move =
-foreign "g_sequence_move" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
-let sequence_move_range =
-foreign "g_sequence_move_range" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
-let sequence_range_get_midpoint =
-foreign "g_sequence_range_get_midpoint" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (ptr Sequence_iter.t_typ))
-let sequence_remove =
-foreign "g_sequence_remove" (ptr Sequence_iter.t_typ @-> returning (void))
-let sequence_remove_range =
-foreign "g_sequence_remove_range" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
-let sequence_set =
-foreign "g_sequence_set" (ptr Sequence_iter.t_typ @-> ptr_opt void @-> returning (void))
-let sequence_swap =
-foreign "g_sequence_swap" (ptr Sequence_iter.t_typ @-> ptr Sequence_iter.t_typ @-> returning (void))
+(*SKIPPED : g_sequence_get argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_insert_before argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_move argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_move_range argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_range_get_midpoint argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_remove argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_remove_range argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_set argument type Sequence_iter.t structure ptr*)
+(*SKIPPED : g_sequence_swap argument type Sequence_iter.t structure ptr*)
 let set_application_name =
 foreign "g_set_application_name" (string @-> returning (void))
 (*Not implemented g_set_error_literal argument type Arg_info.In or Arg_info.Out not handled*)
