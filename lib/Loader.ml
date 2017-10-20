@@ -88,14 +88,18 @@ type gi_info = { base_name : string;
                  sources : Binding_utils.Sources.t }
 
 let generate_bindings gi_info const_parser
-                                             enum_parser
-                                             flags_parser
-                                             struct_parser
-                                             union_parser
-                                             skip =
+                              enum_parser
+                              flags_parser
+                              function_parser
+                              struct_parser
+                              union_parser
+                              skip =
         match Base_info.get_type gi_info.info with
-        | Base_info.Function ->
-            Bind_function.parse_function_info gi_info.info gi_info.sources skip
+        | Base_info.Function -> (
+          match function_parser with
+            | None -> Bind_function.parse_function_info gi_info.info gi_info.sources skip
+            | Some function_parser_alt -> function_parser_alt gi_info.info gi_info.sources skip
+          )
         | Base_info.Struct ->
             let info' = Struct_info.from_baseinfo gi_info.info in
             if Struct_info.is_gtype_struct info' then ()
@@ -155,6 +159,7 @@ let parse loader
     ?const_parser
     ?enum_parser
     ?flags_parser
+    ?function_parser
     ?struct_parser
     ?union_parser
     ?(skip = [])
@@ -179,6 +184,7 @@ let parse loader
           generate_bindings gi_info const_parser
                                     enum_parser
                                     flags_parser
+                                    function_parser
                                     struct_parser
                                     union_parser
                                     skip
