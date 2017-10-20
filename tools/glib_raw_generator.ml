@@ -15,6 +15,7 @@ let print_infos loader =
 let skip = [ "Hook";
              "Byte";
              "MainContext"; "Main_context"; (* TODO: fix the lexer to not raise exception *)
+             "log_";
 ]
 
 let const_parser info sources =
