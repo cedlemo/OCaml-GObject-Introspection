@@ -34,13 +34,15 @@ let const_parser info sources =
     in
     let mli = Sources.mli sources in
     let ml = Sources.ml sources in
-    let version_number_constants () =
+    let dyn_loader_version_number_constants () =
+      let lower_name = String.lowercase_ascii name in
       File.bprintf mli "val c_%s : int32\n" name;
-      File.bprintf ml "let c_%s = constant \"GLIB_%s\" int32\n" name name
+      File.bprintf ml "external get_%s: unit -> int = \"get_%s\"\n" lower_name lower_name;
+      File.bprintf ml "let c_%s = get_%s () |> Int32.of_int\n" name lower_name
     in
     match name with
     | "MAJOR_VERSION" | "MINOR_VERSION" | "MICRO_VERSION" ->
-       version_number_constants ()
+       dyn_loader_version_number_constants ()
     | _ -> let _ = match GI.Type_info.get_tag type_info with
       | GI.Types.Void as tag -> not_implemented_todo_comments tag (mli, ml)
       | GI.Types.Boolean -> append_boolean_constant name info' (mli, ml)
