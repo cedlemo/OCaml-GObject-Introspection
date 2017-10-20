@@ -737,8 +737,7 @@ val strstr_len:
 string -> int64 -> string -> string
 (*Not implemented g_strtod argument type Arg_info.In or Arg_info.Out not handled*)
 (*DEPRECATED : strup*)
-val strv_contains:
-string -> string -> bool
+(*SKIPPED : strv_contains*)
 (*Not implemented g_strv_get_type return type gType not handled*)
 val strv_length:
 string -> Unsigned.uint32

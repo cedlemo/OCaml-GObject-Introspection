@@ -18,6 +18,7 @@ let skip = [ "Hook";
              "Sequence";
              "log_";
              "number_parser_error_quark";
+             "strv_contains";
 ]
 
 let const_parser info sources =

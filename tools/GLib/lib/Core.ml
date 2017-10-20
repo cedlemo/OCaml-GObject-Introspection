@@ -741,8 +741,7 @@ let strstr_len =
 foreign "g_strstr_len" (string @-> int64_t @-> string @-> returning (string))
 (*Not implemented g_strtod argument type Arg_info.In or Arg_info.Out not handled*)
 (*DEPRECATED : strup*)
-let strv_contains =
-foreign "g_strv_contains" (string @-> string @-> returning (bool))
+(*SKIPPED : strv_contains*)
 (*Not implemented g_strv_get_type return type gType not handled*)
 let strv_length =
 foreign "g_strv_length" (string @-> returning (uint32_t))
