@@ -928,8 +928,7 @@ let utf8_find_prev_char =
 foreign "g_utf8_find_prev_char" (string @-> string @-> returning (string))
 (*Not implemented g_utf8_get_char return type unichar not handled*)
 (*Not implemented g_utf8_get_char_validated return type unichar not handled*)
-let utf8_make_valid =
-foreign "g_utf8_make_valid" (string @-> int64_t @-> returning (string))
+(*SKIPPED : utf8_make_valid*)
 let utf8_normalize =
 foreign "g_utf8_normalize" (string @-> int64_t @-> Normalize_mode.t_view @-> returning (string))
 let utf8_offset_to_pointer =

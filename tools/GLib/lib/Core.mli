@@ -924,8 +924,7 @@ val utf8_find_prev_char:
 string -> string -> string
 (*Not implemented g_utf8_get_char return type unichar not handled*)
 (*Not implemented g_utf8_get_char_validated return type unichar not handled*)
-val utf8_make_valid:
-string -> int64 -> string
+(*SKIPPED : utf8_make_valid*)
 val utf8_normalize:
 string -> int64 -> Normalize_mode.t -> string
 val utf8_offset_to_pointer:
