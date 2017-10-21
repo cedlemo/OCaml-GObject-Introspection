@@ -21,6 +21,7 @@ let skip = [ "Hook";
              "strv_contains";
              "utf8_make_valid";
              "uuid_string_is_valid";
+             "uuid_string_random";
 ]
 
 let const_parser info sources =

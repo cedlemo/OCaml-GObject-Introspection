@@ -952,8 +952,7 @@ string -> int64 -> int64 -> string
 (*Not implemented g_utf8_to_utf16 argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_utf8_validate argument type C Array type for Types.Array tag not handled*)
 (*SKIPPED : uuid_string_is_valid*)
-val uuid_string_random:
-unit -> string
+(*SKIPPED : uuid_string_random*)
 (*Not implemented g_variant_get_gtype return type gType not handled*)
 val variant_is_object_path:
 string -> bool
