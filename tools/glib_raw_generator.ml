@@ -20,6 +20,7 @@ let skip = [ "Hook";
              "number_parser_error_quark";
              "strv_contains";
              "utf8_make_valid";
+             "uuid_string_is_valid";
 ]
 
 let const_parser info sources =

@@ -955,8 +955,7 @@ foreign "g_utf8_substring" (string @-> int64_t @-> int64_t @-> returning (string
 (*Not implemented g_utf8_to_ucs4_fast argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_utf8_to_utf16 argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_utf8_validate argument type C Array type for Types.Array tag not handled*)
-let uuid_string_is_valid =
-foreign "g_uuid_string_is_valid" (string @-> returning (bool))
+(*SKIPPED : uuid_string_is_valid*)
 let uuid_string_random =
 foreign "g_uuid_string_random" (void @-> returning (string))
 (*Not implemented g_variant_get_gtype return type gType not handled*)
