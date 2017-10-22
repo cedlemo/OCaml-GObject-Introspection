@@ -151,8 +151,7 @@ let c_VERSION_MIN_REQUIRED = Int32.of_string "2"
 let c_WIN32_MSG_HANDLE = Int32.of_string "19981206"
 let access =
   foreign "g_access" (string @-> int32_t @-> returning (int32_t))
-let ascii_digit_value =
-  foreign "g_ascii_digit_value" (int8_t @-> returning (int32_t))
+(*SKIPPED : ascii_digit_value*)
 let ascii_dtostr =
   foreign "g_ascii_dtostr" (string @-> int32_t @-> double @-> returning (string))
 let ascii_formatd =

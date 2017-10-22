@@ -31,6 +31,10 @@ let skip = [ "Hook"; (* skip for recursion pb *)
              "utf8_make_valid"; (* skip for compatibilty with GLib version < 2.52 *)
              "uuid_string_is_valid"; (* skip for compatibilty with GLib version < 2.52 *)
              "uuid_string_random"; (* skip for compatibilty with GLib version < 2.52 *)
+             "ascii_digit_value"; (* skip because in GI gchar seems to be
+                                     interpreted as uint8
+                                     https://developer.gnome.org/glib/stable/glib-String-Utility-Functions.html#g-ascii-digit-value
+                                     TODO: find a fix for this *)
 ]
 
 let const_parser info sources =

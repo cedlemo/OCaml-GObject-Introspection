@@ -147,8 +147,7 @@ val c_VERSION_MIN_REQUIRED : int32
 val c_WIN32_MSG_HANDLE : int32
 val access:
   string -> int32 -> int32
-val ascii_digit_value:
-  int -> int32
+(*SKIPPED : ascii_digit_value*)
 val ascii_dtostr:
   string -> int32 -> float -> string
 val ascii_formatd:
