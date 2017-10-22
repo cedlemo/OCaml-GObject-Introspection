@@ -96,8 +96,8 @@ let generate_callable_bindings callable name symbol args ret_types sources =
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
   let (ocaml_ret, ctypes_ret) = List.hd ret_types in
-  File.bprintf mli "val %s:\n" name;
-  File.bprintf ml "let %s =\nforeign \"%s\" " name symbol;
+  File.bprintf mli "val %s:\n  " name;
+  File.bprintf ml "let %s =\n  foreign \"%s\" " name symbol;
   File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
   File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
   if Callable_info.can_throw_gerror callable then (

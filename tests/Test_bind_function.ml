@@ -65,9 +65,9 @@ let test_escape_bad_function_name test_ctxt =
   | None -> assert_equal_string name " should return an I info"
   | Some rand_info -> let struct_info = Struct_info.from_baseinfo rand_info in
   let method_info = Struct_info.get_method struct_info 0 in
-  let mli_content = "val _double:\n\
+  let mli_content = "val _double:\n  \
                      t structure ptr -> float\n" in
-  let ml_content = "let _double =\n\
+  let ml_content = "let _double =\n  \
                     foreign \"g_rand_double\" (ptr t_typ @-> returning (double))\n" in
   let writer = fun name info sources ->
     let _ = Bind_function.append_ctypes_method_bindings name info container sources [] in
