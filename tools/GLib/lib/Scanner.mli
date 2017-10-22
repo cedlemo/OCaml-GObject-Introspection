@@ -24,51 +24,51 @@ val f_buffer: (string, t structure) field
 val f_scope_id: (Unsigned.uint32, t structure) field
 (*Struct field Scanner : callback tag not implemented*)
 val cur_line:
-t structure ptr -> Unsigned.uint32
+  t structure ptr -> Unsigned.uint32
 
 val cur_position:
-t structure ptr -> Unsigned.uint32
+  t structure ptr -> Unsigned.uint32
 
 val cur_token:
-t structure ptr -> Token_type.t
+  t structure ptr -> Token_type.t
 
 val destroy:
-t structure ptr -> unit
+  t structure ptr -> unit
 
 val eof:
-t structure ptr -> bool
+  t structure ptr -> bool
 
 val get_next_token:
-t structure ptr -> Token_type.t
+  t structure ptr -> Token_type.t
 
 val input_file:
-t structure ptr -> int32 -> unit
+  t structure ptr -> int32 -> unit
 
 val input_text:
-t structure ptr -> string -> Unsigned.uint32 -> unit
+  t structure ptr -> string -> Unsigned.uint32 -> unit
 
 val lookup_symbol:
-t structure ptr -> string -> unit ptr option
+  t structure ptr -> string -> unit ptr option
 
 val peek_next_token:
-t structure ptr -> Token_type.t
+  t structure ptr -> Token_type.t
 
 val scope_add_symbol:
-t structure ptr -> Unsigned.uint32 -> string -> unit ptr option -> unit
+  t structure ptr -> Unsigned.uint32 -> string -> unit ptr option -> unit
 
 val scope_lookup_symbol:
-t structure ptr -> Unsigned.uint32 -> string -> unit ptr option
+  t structure ptr -> Unsigned.uint32 -> string -> unit ptr option
 
 val scope_remove_symbol:
-t structure ptr -> Unsigned.uint32 -> string -> unit
+  t structure ptr -> Unsigned.uint32 -> string -> unit
 
 val set_scope:
-t structure ptr -> Unsigned.uint32 -> Unsigned.uint32
+  t structure ptr -> Unsigned.uint32 -> Unsigned.uint32
 
 val sync_file_offset:
-t structure ptr -> unit
+  t structure ptr -> unit
 
 val unexp_token:
-t structure ptr -> Token_type.t -> string -> string -> string -> string -> int32 -> unit
+  t structure ptr -> Token_type.t -> string -> string -> string -> string -> int32 -> unit
 
 
