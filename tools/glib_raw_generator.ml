@@ -21,16 +21,16 @@ let print_infos loader =
   print_endline (">> " ^ namespace);
   print_endline ("\t - version :" ^ version)
 
-let skip = [ "Hook";
-             "Byte";
-             "MainContext"; "Main_context"; (* TODO: fix the lexer to not raise exception *)
-             "Sequence";
-             "log_";
-             "number_parser_error_quark";
-             "strv_contains";
-             "utf8_make_valid";
-             "uuid_string_is_valid";
-             "uuid_string_random";
+let skip = [ "Hook"; (* skip for recursion pb *)
+             "Byte"; (* skip for recursion pb *)
+             "MainContext"; "Main_context"; (* skip for recursion pb *) (* TODO: fix the lexer to not raise exception *)
+             "Sequence"; (* skip for recursion pb *)
+             "log_"; (* skip for compatibilty with GLib version < 2.52 *)
+             "number_parser_error_quark"; (* skip for compatibilty with GLib version < 2.52 *)
+             "strv_contains"; (* skip for compatibilty with GLib version < 2.52 *)
+             "utf8_make_valid"; (* skip for compatibilty with GLib version < 2.52 *)
+             "uuid_string_is_valid"; (* skip for compatibilty with GLib version < 2.52 *)
+             "uuid_string_random"; (* skip for compatibilty with GLib version < 2.52 *)
 ]
 
 let const_parser info sources =
