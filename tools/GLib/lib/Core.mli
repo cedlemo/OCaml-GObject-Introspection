@@ -148,10 +148,8 @@ val c_WIN32_MSG_HANDLE : int32
 val access:
   string -> int32 -> int32
 (*SKIPPED : ascii_digit_value*)
-val ascii_dtostr:
-  string -> int32 -> float -> string
-val ascii_formatd:
-  string -> int32 -> string -> float -> string
+(*SKIPPED : ascii_dtostr*)
+(*SKIPPED : ascii_formatd*)
 val ascii_strcasecmp:
   string -> string -> int32
 val ascii_strdown:

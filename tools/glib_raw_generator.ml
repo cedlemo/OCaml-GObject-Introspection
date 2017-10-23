@@ -35,6 +35,11 @@ let skip = [ "Hook"; (* skip for recursion pb *)
                                      interpreted as uint8
                                      https://developer.gnome.org/glib/stable/glib-String-Utility-Functions.html#g-ascii-digit-value
                                      TODO: find a fix for this *)
+             (* The following functions should be Arg.In_out
+              * https://developer.gnome.org/glib/stable/glib-String-Utility-Functions.html#g-ascii-dtostr
+              *)
+             "ascii_dtostr";
+             "ascii_formatd";
 ]
 
 let const_parser info sources =

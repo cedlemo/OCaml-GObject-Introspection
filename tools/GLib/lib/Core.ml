@@ -152,10 +152,8 @@ let c_WIN32_MSG_HANDLE = Int32.of_string "19981206"
 let access =
   foreign "g_access" (string @-> int32_t @-> returning (int32_t))
 (*SKIPPED : ascii_digit_value*)
-let ascii_dtostr =
-  foreign "g_ascii_dtostr" (string @-> int32_t @-> double @-> returning (string))
-let ascii_formatd =
-  foreign "g_ascii_formatd" (string @-> int32_t @-> string @-> double @-> returning (string))
+(*SKIPPED : ascii_dtostr*)
+(*SKIPPED : ascii_formatd*)
 let ascii_strcasecmp =
   foreign "g_ascii_strcasecmp" (string @-> string @-> returning (int32_t))
 let ascii_strdown =
