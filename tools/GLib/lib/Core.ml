@@ -167,10 +167,8 @@ let ascii_strncasecmp =
 (*Not implemented g_ascii_strtoull argument type Arg_info.In or Arg_info.Out not handled*)
 let ascii_strup =
   foreign "g_ascii_strup" (string @-> int64_t @-> returning (string))
-let ascii_tolower =
-  foreign "g_ascii_tolower" (int8_t @-> returning (int8_t))
-let ascii_toupper =
-  foreign "g_ascii_toupper" (int8_t @-> returning (int8_t))
+(*SKIPPED : ascii_tolower*)
+(*SKIPPED : ascii_toupper*)
 let ascii_xdigit_value =
   foreign "g_ascii_xdigit_value" (int8_t @-> returning (int32_t))
 let assert_warning =

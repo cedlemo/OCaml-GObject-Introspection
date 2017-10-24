@@ -163,10 +163,8 @@ val ascii_strncasecmp:
 (*Not implemented g_ascii_strtoull argument type Arg_info.In or Arg_info.Out not handled*)
 val ascii_strup:
   string -> int64 -> string
-val ascii_tolower:
-  int -> int
-val ascii_toupper:
-  int -> int
+(*SKIPPED : ascii_tolower*)
+(*SKIPPED : ascii_toupper*)
 val ascii_xdigit_value:
   int -> int32
 val assert_warning:
