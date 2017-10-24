@@ -136,6 +136,18 @@ val c_TIME_SPAN_HOUR : int64
 val c_TIME_SPAN_MILLISECOND : int64
 val c_TIME_SPAN_MINUTE : int64
 val c_TIME_SPAN_SECOND : int64
+(*SKIPPED : TestCase*)
+(*SKIPPED : TestConfig*)
+(*SKIPPED : TestDataFunc*)
+(*SKIPPED : TestFileType*)
+(*SKIPPED : TestFixtureFunc*)
+(*SKIPPED : TestFunc*)
+(*SKIPPED : TestLogBuffer*)
+(*SKIPPED : TestLogFatalFunc*)
+(*SKIPPED : TestLogMsg*)
+(*SKIPPED : TestLogType*)
+(*SKIPPED : TestSubprocessFlags*)
+(*SKIPPED : TestSuite*)
 (*DEPRECATED : TestTrapFlags*)
 (*DEPRECATED : TrashStack*)
 val c_UNICHAR_MAX_DECOMPOSITION_LENGTH : int32
@@ -166,14 +178,10 @@ val ascii_strup:
 (*SKIPPED : ascii_tolower*)
 (*SKIPPED : ascii_toupper*)
 (*SKIPPED : ascii_xdigit_value*)
-val assert_warning:
-  string -> string -> int32 -> string -> string -> unit
-val assertion_message:
-  string -> string -> int32 -> string -> string -> unit
-val assertion_message_cmpstr:
-  string -> string -> int32 -> string -> string -> string -> string -> string -> unit
-val assertion_message_error:
-  string -> string -> int32 -> string -> string -> Error.t structure ptr -> Unsigned.uint32 -> int32 -> unit
+(*SKIPPED : assert_warning*)
+(*SKIPPED : assertion_message*)
+(*SKIPPED : assertion_message_cmpstr*)
+(*SKIPPED : assertion_message_error*)
 (*DEPRECATED : atexit*)
 val atomic_int_add:
   int32 ptr -> int32 -> int32
@@ -735,63 +743,37 @@ val strstr_len:
 (*Not implemented g_strv_get_type return type gType not handled*)
 val strv_length:
   string -> Unsigned.uint32
-(*Not implemented g_test_add_data_func argument type callback not handled*)
-(*Not implemented g_test_add_data_func_full argument type callback not handled*)
-(*Not implemented g_test_add_func argument type callback not handled*)
-val test_assert_expected_messages_internal:
-  string -> string -> int32 -> string -> unit
-val test_bug:
-  string -> unit
-val test_bug_base:
-  string -> unit
-val test_expect_message:
-  string option -> Log_level_flags.t_list -> string -> unit
-val test_fail:
-  unit -> unit
-val test_failed:
-  unit -> bool
-val test_get_dir:
-  Test_file_type.t -> string
-val test_incomplete:
-  string option -> unit
-val test_log_type_name:
-  Test_log_type.t -> string
-(*Not implemented g_test_queue_destroy argument type callback not handled*)
-val test_queue_free:
-  unit ptr option -> unit
-val test_rand_double:
-  unit -> float
-val test_rand_double_range:
-  float -> float -> float
-val test_rand_int:
-  unit -> int32
-val test_rand_int_range:
-  int32 -> int32 -> int32
-val test_run:
-  unit -> int32
-val test_run_suite:
-  Test_suite.t structure ptr -> int32
-val test_set_nonfatal_assertions:
-  unit -> unit
-val test_skip:
-  string option -> unit
-val test_subprocess:
-  unit -> bool
-val test_timer_elapsed:
-  unit -> float
-val test_timer_last:
-  unit -> float
-val test_timer_start:
-  unit -> unit
-val test_trap_assertions:
-  string -> string -> int32 -> string -> Unsigned.uint64 -> string -> unit
+(*SKIPPED : test_add_data_func*)
+(*SKIPPED : test_add_data_func_full*)
+(*SKIPPED : test_add_func*)
+(*SKIPPED : test_assert_expected_messages_internal*)
+(*SKIPPED : test_bug*)
+(*SKIPPED : test_bug_base*)
+(*SKIPPED : test_expect_message*)
+(*SKIPPED : test_fail*)
+(*SKIPPED : test_failed*)
+(*SKIPPED : test_get_dir*)
+(*SKIPPED : test_incomplete*)
+(*SKIPPED : test_log_type_name*)
+(*SKIPPED : test_queue_destroy*)
+(*SKIPPED : test_queue_free*)
+(*SKIPPED : test_rand_double*)
+(*SKIPPED : test_rand_double_range*)
+(*SKIPPED : test_rand_int*)
+(*SKIPPED : test_rand_int_range*)
+(*SKIPPED : test_run*)
+(*SKIPPED : test_run_suite*)
+(*SKIPPED : test_set_nonfatal_assertions*)
+(*SKIPPED : test_skip*)
+(*SKIPPED : test_subprocess*)
+(*SKIPPED : test_timer_elapsed*)
+(*SKIPPED : test_timer_last*)
+(*SKIPPED : test_timer_start*)
+(*SKIPPED : test_trap_assertions*)
 (*DEPRECATED : test_trap_fork*)
-val test_trap_has_passed:
-  unit -> bool
-val test_trap_reached_timeout:
-  unit -> bool
-val test_trap_subprocess:
-  string option -> Unsigned.uint64 -> Test_subprocess_flags.t_list -> unit
+(*SKIPPED : test_trap_has_passed*)
+(*SKIPPED : test_trap_reached_timeout*)
+(*SKIPPED : test_trap_subprocess*)
 val thread_error_quark:
   unit -> Unsigned.uint32
 val thread_exit:

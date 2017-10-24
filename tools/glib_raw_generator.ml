@@ -44,6 +44,10 @@ let skip = [ "Hook"; (* skip for recursion pb *)
               *)
              "ascii_dtostr";
              "ascii_formatd";
+             (* Remove all stuff related to the testing framework of GLib *)
+             "Test";
+             "test_";
+             "assert";
 ]
 
 let const_parser info sources =

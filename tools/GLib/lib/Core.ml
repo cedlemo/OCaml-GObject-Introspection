@@ -140,6 +140,18 @@ let c_TIME_SPAN_HOUR = 3600000000L
 let c_TIME_SPAN_MILLISECOND = 1000L
 let c_TIME_SPAN_MINUTE = 60000000L
 let c_TIME_SPAN_SECOND = 1000000L
+(*SKIPPED : TestCase*)
+(*SKIPPED : TestConfig*)
+(*SKIPPED : TestDataFunc*)
+(*SKIPPED : TestFileType*)
+(*SKIPPED : TestFixtureFunc*)
+(*SKIPPED : TestFunc*)
+(*SKIPPED : TestLogBuffer*)
+(*SKIPPED : TestLogFatalFunc*)
+(*SKIPPED : TestLogMsg*)
+(*SKIPPED : TestLogType*)
+(*SKIPPED : TestSubprocessFlags*)
+(*SKIPPED : TestSuite*)
 (*DEPRECATED : TestTrapFlags*)
 (*DEPRECATED : TrashStack*)
 let c_UNICHAR_MAX_DECOMPOSITION_LENGTH = Int32.of_string "18"
@@ -170,14 +182,10 @@ let ascii_strup =
 (*SKIPPED : ascii_tolower*)
 (*SKIPPED : ascii_toupper*)
 (*SKIPPED : ascii_xdigit_value*)
-let assert_warning =
-  foreign "g_assert_warning" (string @-> string @-> int32_t @-> string @-> string @-> returning (void))
-let assertion_message =
-  foreign "g_assertion_message" (string @-> string @-> int32_t @-> string @-> string @-> returning (void))
-let assertion_message_cmpstr =
-  foreign "g_assertion_message_cmpstr" (string @-> string @-> int32_t @-> string @-> string @-> string @-> string @-> string @-> returning (void))
-let assertion_message_error =
-  foreign "g_assertion_message_error" (string @-> string @-> int32_t @-> string @-> string @-> ptr Error.t_typ @-> uint32_t @-> int32_t @-> returning (void))
+(*SKIPPED : assert_warning*)
+(*SKIPPED : assertion_message*)
+(*SKIPPED : assertion_message_cmpstr*)
+(*SKIPPED : assertion_message_error*)
 (*DEPRECATED : atexit*)
 let atomic_int_add =
   foreign "g_atomic_int_add" (ptr int32_t @-> int32_t @-> returning (int32_t))
@@ -739,63 +747,37 @@ let strstr_len =
 (*Not implemented g_strv_get_type return type gType not handled*)
 let strv_length =
   foreign "g_strv_length" (string @-> returning (uint32_t))
-(*Not implemented g_test_add_data_func argument type callback not handled*)
-(*Not implemented g_test_add_data_func_full argument type callback not handled*)
-(*Not implemented g_test_add_func argument type callback not handled*)
-let test_assert_expected_messages_internal =
-  foreign "g_test_assert_expected_messages_internal" (string @-> string @-> int32_t @-> string @-> returning (void))
-let test_bug =
-  foreign "g_test_bug" (string @-> returning (void))
-let test_bug_base =
-  foreign "g_test_bug_base" (string @-> returning (void))
-let test_expect_message =
-  foreign "g_test_expect_message" (string_opt @-> Log_level_flags.t_list_view @-> string @-> returning (void))
-let test_fail =
-  foreign "g_test_fail" (void @-> returning (void))
-let test_failed =
-  foreign "g_test_failed" (void @-> returning (bool))
-let test_get_dir =
-  foreign "g_test_get_dir" (Test_file_type.t_view @-> returning (string))
-let test_incomplete =
-  foreign "g_test_incomplete" (string_opt @-> returning (void))
-let test_log_type_name =
-  foreign "g_test_log_type_name" (Test_log_type.t_view @-> returning (string))
-(*Not implemented g_test_queue_destroy argument type callback not handled*)
-let test_queue_free =
-  foreign "g_test_queue_free" (ptr_opt void @-> returning (void))
-let test_rand_double =
-  foreign "g_test_rand_double" (void @-> returning (double))
-let test_rand_double_range =
-  foreign "g_test_rand_double_range" (double @-> double @-> returning (double))
-let test_rand_int =
-  foreign "g_test_rand_int" (void @-> returning (int32_t))
-let test_rand_int_range =
-  foreign "g_test_rand_int_range" (int32_t @-> int32_t @-> returning (int32_t))
-let test_run =
-  foreign "g_test_run" (void @-> returning (int32_t))
-let test_run_suite =
-  foreign "g_test_run_suite" (ptr Test_suite.t_typ @-> returning (int32_t))
-let test_set_nonfatal_assertions =
-  foreign "g_test_set_nonfatal_assertions" (void @-> returning (void))
-let test_skip =
-  foreign "g_test_skip" (string_opt @-> returning (void))
-let test_subprocess =
-  foreign "g_test_subprocess" (void @-> returning (bool))
-let test_timer_elapsed =
-  foreign "g_test_timer_elapsed" (void @-> returning (double))
-let test_timer_last =
-  foreign "g_test_timer_last" (void @-> returning (double))
-let test_timer_start =
-  foreign "g_test_timer_start" (void @-> returning (void))
-let test_trap_assertions =
-  foreign "g_test_trap_assertions" (string @-> string @-> int32_t @-> string @-> uint64_t @-> string @-> returning (void))
+(*SKIPPED : test_add_data_func*)
+(*SKIPPED : test_add_data_func_full*)
+(*SKIPPED : test_add_func*)
+(*SKIPPED : test_assert_expected_messages_internal*)
+(*SKIPPED : test_bug*)
+(*SKIPPED : test_bug_base*)
+(*SKIPPED : test_expect_message*)
+(*SKIPPED : test_fail*)
+(*SKIPPED : test_failed*)
+(*SKIPPED : test_get_dir*)
+(*SKIPPED : test_incomplete*)
+(*SKIPPED : test_log_type_name*)
+(*SKIPPED : test_queue_destroy*)
+(*SKIPPED : test_queue_free*)
+(*SKIPPED : test_rand_double*)
+(*SKIPPED : test_rand_double_range*)
+(*SKIPPED : test_rand_int*)
+(*SKIPPED : test_rand_int_range*)
+(*SKIPPED : test_run*)
+(*SKIPPED : test_run_suite*)
+(*SKIPPED : test_set_nonfatal_assertions*)
+(*SKIPPED : test_skip*)
+(*SKIPPED : test_subprocess*)
+(*SKIPPED : test_timer_elapsed*)
+(*SKIPPED : test_timer_last*)
+(*SKIPPED : test_timer_start*)
+(*SKIPPED : test_trap_assertions*)
 (*DEPRECATED : test_trap_fork*)
-let test_trap_has_passed =
-  foreign "g_test_trap_has_passed" (void @-> returning (bool))
-let test_trap_reached_timeout =
-  foreign "g_test_trap_reached_timeout" (void @-> returning (bool))
-let test_trap_subprocess =
-  foreign "g_test_trap_subprocess" (string_opt @-> uint64_t @-> Test_subprocess_flags.t_list_view @-> returning (void))
+(*SKIPPED : test_trap_has_passed*)
+(*SKIPPED : test_trap_reached_timeout*)
+(*SKIPPED : test_trap_subprocess*)
 let thread_error_quark =
   foreign "g_thread_error_quark" (void @-> returning (uint32_t))
 let thread_exit =
