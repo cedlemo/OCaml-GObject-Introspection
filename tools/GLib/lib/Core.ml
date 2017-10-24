@@ -169,8 +169,7 @@ let ascii_strup =
   foreign "g_ascii_strup" (string @-> int64_t @-> returning (string))
 (*SKIPPED : ascii_tolower*)
 (*SKIPPED : ascii_toupper*)
-let ascii_xdigit_value =
-  foreign "g_ascii_xdigit_value" (int8_t @-> returning (int32_t))
+(*SKIPPED : ascii_xdigit_value*)
 let assert_warning =
   foreign "g_assert_warning" (string @-> string @-> int32_t @-> string @-> string @-> returning (void))
 let assertion_message =

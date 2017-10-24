@@ -165,8 +165,7 @@ val ascii_strup:
   string -> int64 -> string
 (*SKIPPED : ascii_tolower*)
 (*SKIPPED : ascii_toupper*)
-val ascii_xdigit_value:
-  int -> int32
+(*SKIPPED : ascii_xdigit_value*)
 val assert_warning:
   string -> string -> int32 -> string -> string -> unit
 val assertion_message:

@@ -38,6 +38,7 @@ let skip = [ "Hook"; (* skip for recursion pb *)
              "ascii_digit_value";
              "ascii_tolower";
              "ascii_toupper";
+             "ascii_xdigit_value";
              (* The following functions should be Arg.In_out
               * https://developer.gnome.org/glib/stable/glib-String-Utility-Functions.html#g-ascii-dtostr
               *)
