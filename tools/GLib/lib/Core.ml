@@ -84,6 +84,11 @@ let c_LOG_2_BASE_10 = 0.30103
 let c_LOG_DOMAIN = 0
 let c_LOG_FATAL_MASK = Int32.of_string "0"
 let c_LOG_LEVEL_USER_SHIFT = Int32.of_string "8"
+(*SKIPPED : LogField*)
+(*SKIPPED : LogFunc*)
+(*SKIPPED : LogLevelFlags*)
+(*SKIPPED : LogWriterFunc*)
+(*SKIPPED : LogWriterOutput*)
 external get_major_version: unit -> int = "get_major_version"
 let c_MAJOR_VERSION = get_major_version () |> Int32.of_int
 let c_MAXINT16 = 32767

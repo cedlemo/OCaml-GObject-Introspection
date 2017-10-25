@@ -83,6 +83,11 @@ val c_LOG_2_BASE_10 : float
 val c_LOG_DOMAIN : int
 val c_LOG_FATAL_MASK : int32
 val c_LOG_LEVEL_USER_SHIFT : int32
+(*SKIPPED : LogField*)
+(*SKIPPED : LogFunc*)
+(*SKIPPED : LogLevelFlags*)
+(*SKIPPED : LogWriterFunc*)
+(*SKIPPED : LogWriterOutput*)
 val c_MAJOR_VERSION : int32
 val c_MAXINT16 : int
 val c_MAXINT32 : int32
