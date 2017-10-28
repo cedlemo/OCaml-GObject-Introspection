@@ -61,6 +61,10 @@ val escape_number_at_beginning:
 val ensure_valid_variable_name:
   string -> string
 
+(** Generate n argument meaningless names (ie: arg1 arg2 arg3) *)
+val generate_n_meaningless_arg_names:
+  int -> string
+
 (** Get the bindings name of a C data from its BaseInfo. Only complex C data
     structure need to use it (ie: structure, union, enum, flags, interface and
     gobject.)*)

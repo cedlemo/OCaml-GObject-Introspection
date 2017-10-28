@@ -211,12 +211,15 @@ let test_sources_buffs_add_comments test_ctxt =
   let _ = check_file_and_content mli_file mli_content in
   check_file_and_content ml_file ml_content
 
-
 let test_match_one_of test_ctxt =
   let patterns = ["to*"; "Ho*"] in
   assert_equal_boolean true (Binding_utils.match_one_of "Hook" patterns);
   assert_equal_boolean false (Binding_utils.match_one_of "hook" patterns);
   assert_equal_boolean false (Binding_utils.match_one_of "_to" patterns)
+
+let test_generate_n_meaningless_arg_names test_ctxt =
+  let args = Binding_utils.generate_n_meaningless_arg_names 4 in
+  assert_equal_string "arg1 arg2 arg3 arg4" args
 
 let tests =
   "GObject Introspection Binding_utils tests" >:::
@@ -240,5 +243,6 @@ let tests =
     "Test sources buffers add deprecated" >:: test_sources_buffs_add_deprecated;
     "Test match one of" >:: test_match_one_of;
     "Test sources buffers add skipped" >:: test_sources_buffs_add_skipped;
-    "Test sources buffers add comments" >:: test_sources_buffs_add_comments
+    "Test sources buffers add comments" >:: test_sources_buffs_add_comments;
+    "Test generate n meaningless arg names" >:: test_generate_n_meaningless_arg_names
   ]

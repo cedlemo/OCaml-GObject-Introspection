@@ -142,6 +142,16 @@ let ensure_valid_variable_name name =
   |> escape_Ctypes_types
   |> escape_number_at_beginning
 
+let generate_n_meaningless_arg_names n =
+  if n < 0 then ""
+  else
+    let rec build n acc =
+      match n with
+      | 0 -> acc
+      | _ -> build (n - 1) (("arg" ^ (string_of_int n)) :: acc)
+    in
+    String.concat " " (build n [])
+
 let get_binding_name info =
   match Base_info.get_name info with
   | None -> None
