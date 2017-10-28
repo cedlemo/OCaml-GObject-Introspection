@@ -1,5 +1,6 @@
 open Ctypes
 
+type 'a greturn = ('a, Error.t ptr) result
 val c_ANALYZER_ANALYZING : int32
 val c_ASCII_DTOSTR_BUF_SIZE : int32
 val c_BIG_ENDIAN : int32
