@@ -78,10 +78,13 @@ type gi_info = { base_name: string;
                  sources: Binding_utils.Sources.t }
 
 (** Parse the GI infos and create the corresponding ctypes code
-  @param const_parser allows user to customize the Constant_info bindings generator.
+  @param prepend_in_core allows user to add independent stuff at the begining of the
+         Core.ml and Core.mli files.
+  @param const_parser allows user to customize the Constant_info bindings
+         generator.
   @param enum_parser allows user to customize the Enum_info bindings generator.
   @param flags_parser allows user to customize the Enum_info bindings generator
-    for Enum used as flags (Ored).
+         for Enum used as flags (Ored).
   @param function_parser allows user to customize the Core function bindings.
   @param struct_parser allows user to customize the GIStructureInfo bindings
     generator.
@@ -92,6 +95,7 @@ type gi_info = { base_name: string;
  *)
 val parse:
   t ->
+  ?prepend_in_core:(Binding_utils.Sources.t -> unit) ->
   ?const_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?enum_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?flags_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->

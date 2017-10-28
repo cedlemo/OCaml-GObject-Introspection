@@ -156,6 +156,7 @@ let generate_bindings gi_info const_parser
         | Base_info.Boxed -> ()
 
 let parse loader
+    ?prepend_in_core
     ?const_parser
     ?enum_parser
     ?flags_parser
@@ -167,6 +168,10 @@ let parse loader
   let open Binding_utils in
   let _ = generate_directories loader in
   let main_sources = generate_module_files loader "Core" in
+  let _ = match prepend_in_core with
+    | None -> ()
+    | Some writer -> writer main_sources
+  in
   let n = Repository.get_n_infos loader.repo loader.namespace in
   for i = 0 to n - 1 do
     let info = Repository.get_info loader.repo loader.namespace i in
