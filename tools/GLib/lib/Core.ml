@@ -263,10 +263,26 @@ let checksum_type_get_length =
 (*Not implemented g_child_watch_add_full argument type callback not handled*)
 let child_watch_source_new =
   foreign "g_child_watch_source_new" (int32_t @-> returning (ptr Source.t_typ))
-let clear_error =
-  foreign "g_clear_error" (void  @-> ptr_opt (ptr Error.t_typ) @-> returning (void))
-let close =
-  foreign "g_close" (int32_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let clear_error arg1 =
+let clear_error_raw =
+  foreign "g_clear_error" (void @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (void))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = clear_error_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
+let close arg1 =
+let close_raw =
+  foreign "g_close" (int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = close_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 (*SKIPPED : g_compute_checksum_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_checksum_for_data argument type C Array type for Types.Array tag not handled*)
 let compute_checksum_for_string =
@@ -277,10 +293,26 @@ let compute_checksum_for_string =
 (*Not implemented g_convert argument type Arg_info.In or Arg_info.Out not handled*)
 let convert_error_quark =
   foreign "g_convert_error_quark" (void @-> returning (uint32_t))
-let convert_with_fallback =
-  foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
-let convert_with_iconv =
-  foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+let convert_with_fallback arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
+let convert_with_fallback_raw =
+  foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = convert_with_fallback_raw arg1 arg2 arg3 arg4 arg5 arg6 arg7 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
+let convert_with_iconv arg1 arg2 arg3 arg4 arg5 =
+let convert_with_iconv_raw =
+  foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = convert_with_iconv_raw arg1 arg2 arg3 arg4 arg5 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 let datalist_clear =
   foreign "g_datalist_clear" (ptr Data.t_typ @-> returning (void))
 let datalist_get_data =
@@ -338,8 +370,16 @@ let dcgettext =
   foreign "g_dcgettext" (string_opt @-> string @-> int32_t @-> returning (string))
 let dgettext =
   foreign "g_dgettext" (string_opt @-> string @-> returning (string))
-let dir_make_tmp =
-  foreign "g_dir_make_tmp" (string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+let dir_make_tmp arg1 =
+let dir_make_tmp_raw =
+  foreign "g_dir_make_tmp" (string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = dir_make_tmp_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 let direct_equal =
   foreign "g_direct_equal" (ptr_opt void @-> ptr_opt void @-> returning (bool))
 let direct_hash =
@@ -363,8 +403,16 @@ let file_error_quark =
   foreign "g_file_error_quark" (void @-> returning (uint32_t))
 (*Not implemented g_file_get_contents argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_file_open_tmp argument type Arg_info.In or Arg_info.Out not handled*)
-let file_read_link =
-  foreign "g_file_read_link" (string  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+let file_read_link arg1 =
+let file_read_link_raw =
+  foreign "g_file_read_link" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = file_read_link_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 (*Not implemented g_file_set_contents argument type C Array type for Types.Array tag not handled*)
 let file_test =
   foreign "g_file_test" (string @-> File_test.t_list_view @-> returning (bool))
@@ -374,8 +422,16 @@ let filename_display_name =
   foreign "g_filename_display_name" (string @-> returning (string))
 (*Not implemented g_filename_from_uri argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_filename_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
-let filename_to_uri =
-  foreign "g_filename_to_uri" (string @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+let filename_to_uri arg1 arg2 =
+let filename_to_uri_raw =
+  foreign "g_filename_to_uri" (string @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = filename_to_uri_raw arg1 arg2 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 (*Not implemented g_filename_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 let find_program_in_path =
   foreign "g_find_program_in_path" (string @-> returning (string))
@@ -637,8 +693,16 @@ let shell_error_quark =
 (*Not implemented g_shell_parse_argv argument type Arg_info.In or Arg_info.Out not handled*)
 let shell_quote =
   foreign "g_shell_quote" (string @-> returning (string))
-let shell_unquote =
-  foreign "g_shell_unquote" (string  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+let shell_unquote arg1 =
+let shell_unquote_raw =
+  foreign "g_shell_unquote" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = shell_unquote_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 let slice_alloc =
   foreign "g_slice_alloc" (uint64_t @-> returning (ptr_opt void))
 let slice_alloc0 =
@@ -667,12 +731,28 @@ let spaced_primes_closest =
   foreign "g_spaced_primes_closest" (uint32_t @-> returning (uint32_t))
 (*Not implemented g_spawn_async argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_spawn_async_with_pipes argument type C Array type for Types.Array tag not handled*)
-let spawn_check_exit_status =
-  foreign "g_spawn_check_exit_status" (int32_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let spawn_check_exit_status arg1 =
+let spawn_check_exit_status_raw =
+  foreign "g_spawn_check_exit_status" (int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = spawn_check_exit_status_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 let spawn_close_pid =
   foreign "g_spawn_close_pid" (int32_t @-> returning (void))
-let spawn_command_line_async =
-  foreign "g_spawn_command_line_async" (string  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let spawn_command_line_async arg1 =
+let spawn_command_line_async_raw =
+  foreign "g_spawn_command_line_async" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = spawn_command_line_async_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 (*Not implemented g_spawn_command_line_sync argument type Arg_info.In or Arg_info.Out not handled*)
 let spawn_error_quark =
   foreign "g_spawn_error_quark" (void @-> returning (uint32_t))
@@ -872,10 +952,26 @@ let unix_error_quark =
 (*Not implemented g_unix_fd_add_full argument type callback not handled*)
 let unix_fd_source_new =
   foreign "g_unix_fd_source_new" (int32_t @-> IOCondition.t_list_view @-> returning (ptr Source.t_typ))
-let unix_open_pipe =
-  foreign "g_unix_open_pipe" (ptr int32_t @-> int32_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
-let unix_set_fd_nonblocking =
-  foreign "g_unix_set_fd_nonblocking" (int32_t @-> bool  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let unix_open_pipe arg1 arg2 =
+let unix_open_pipe_raw =
+  foreign "g_unix_open_pipe" (ptr int32_t @-> int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = unix_open_pipe_raw arg1 arg2 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
+let unix_set_fd_nonblocking arg1 arg2 =
+let unix_set_fd_nonblocking_raw =
+  foreign "g_unix_set_fd_nonblocking" (int32_t @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = unix_set_fd_nonblocking_raw arg1 arg2 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 (*Not implemented g_unix_signal_add_full argument type callback not handled*)
 let unix_signal_source_new =
   foreign "g_unix_signal_source_new" (int32_t @-> returning (ptr Source.t_typ))
@@ -944,8 +1040,16 @@ let variant_is_object_path =
   foreign "g_variant_is_object_path" (string @-> returning (bool))
 let variant_is_signature =
   foreign "g_variant_is_signature" (string @-> returning (bool))
-let variant_parse =
-  foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (ptr Variant.t_typ))
+let variant_parse arg1 arg2 arg3 arg4 =
+let variant_parse_raw =
+  foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Variant.t_typ))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = variant_parse_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 let variant_parse_error_print_context =
   foreign "g_variant_parse_error_print_context" (ptr Error.t_typ @-> string @-> returning (string))
 let variant_parse_error_quark =

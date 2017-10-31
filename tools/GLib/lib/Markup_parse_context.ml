@@ -4,8 +4,16 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Markup_parse_context"
 (*Not implemented g_markup_parse_context_new argument typecallback not handled*)
-let end_parse =
-  foreign "g_markup_parse_context_end_parse" (ptr t_typ  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let end_parse arg1 =
+let end_parse_raw =
+  foreign "g_markup_parse_context_end_parse" (ptr t_typ @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = end_parse_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 
 let free =
   foreign "g_markup_parse_context_free" (ptr t_typ @-> returning (void))
@@ -19,8 +27,16 @@ let get_position =
 let get_user_data =
   foreign "g_markup_parse_context_get_user_data" (ptr t_typ @-> returning (ptr_opt void))
 
-let parse =
-  foreign "g_markup_parse_context_parse" (ptr t_typ @-> string @-> int64_t  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let parse arg1 arg2 arg3 =
+let parse_raw =
+  foreign "g_markup_parse_context_parse" (ptr t_typ @-> string @-> int64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = parse_raw arg1 arg2 arg3 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 
 let pop =
   foreign "g_markup_parse_context_pop" (ptr t_typ @-> returning (ptr_opt void))

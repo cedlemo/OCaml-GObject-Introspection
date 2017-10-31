@@ -187,8 +187,16 @@ let is_object_path =
 let is_signature =
   foreign "g_variant_is_signature" (ptr t_typ @-> string @-> returning (bool))
 
-let parse =
-  foreign "g_variant_parse" (ptr t_typ @-> ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (ptr t_typ))
+let parse arg1 arg2 arg3 arg4 arg5 =
+let parse_raw =
+  foreign "g_variant_parse" (ptr t_typ @-> ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = parse_raw arg1 arg2 arg3 arg4 arg5 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 
 let parse_error_print_context =
   foreign "g_variant_parse_error_print_context" (ptr t_typ @-> ptr Error.t_typ @-> string @-> returning (string))

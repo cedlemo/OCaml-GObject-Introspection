@@ -3,8 +3,16 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Match_info"
-let expand_references =
-  foreign "g_match_info_expand_references" (ptr t_typ @-> string  @-> ptr_opt (ptr Error.t_typ) @-> returning (string_opt))
+let expand_references arg1 arg2 =
+let expand_references_raw =
+  foreign "g_match_info_expand_references" (ptr t_typ @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = expand_references_raw arg1 arg2 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 
 let fetch =
   foreign "g_match_info_fetch" (ptr t_typ @-> int32_t @-> returning (string_opt))
@@ -33,8 +41,16 @@ let is_partial_match =
 let matches =
   foreign "g_match_info_matches" (ptr t_typ @-> returning (bool))
 
-let next =
-  foreign "g_match_info_next" (ptr t_typ  @-> ptr_opt (ptr Error.t_typ) @-> returning (bool))
+let next arg1 =
+let next_raw =
+  foreign "g_match_info_next" (ptr t_typ @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = next_raw arg1 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 
 let ref =
   foreign "g_match_info_ref" (ptr t_typ @-> returning (ptr t_typ))

@@ -12,7 +12,15 @@ let read_name =
 let rewind =
   foreign "g_dir_rewind" (ptr t_typ @-> returning (void))
 
-let make_tmp =
-  foreign "g_dir_make_tmp" (ptr t_typ @-> string_opt  @-> ptr_opt (ptr Error.t_typ) @-> returning (string))
+let make_tmp arg1 arg2 =
+let make_tmp_raw =
+  foreign "g_dir_make_tmp" (ptr t_typ @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+in
+let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+let value = make_tmp_raw arg1 arg2 (Some err_ptr_ptr)
+in
+match (!@ err_ptr_ptr) with
+| None -> Ok value
+| Some _ -> Error (!@ err_ptr_ptr)
 
 

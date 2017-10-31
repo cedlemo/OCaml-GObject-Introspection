@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val expand_references:
-  t structure ptr -> string -> Error.t structure ptr ptr option -> string option
+  t structure ptr -> string -> (string option, Error.t structure ptr option) result
 
 val fetch:
   t structure ptr -> int32 -> string option
@@ -33,7 +33,7 @@ val matches:
   t structure ptr -> bool
 
 val next:
-  t structure ptr -> Error.t structure ptr ptr option -> bool
+  t structure ptr -> (bool, Error.t structure ptr option) result
 
 val ref:
   t structure ptr -> t structure ptr

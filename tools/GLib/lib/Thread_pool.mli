@@ -18,10 +18,10 @@ val move_to_front:
   t structure ptr -> unit ptr option -> bool
 
 val push:
-  t structure ptr -> unit ptr option -> Error.t structure ptr ptr option -> bool
+  t structure ptr -> unit ptr option -> (bool, Error.t structure ptr option) result
 
 val set_max_threads:
-  t structure ptr -> int32 -> Error.t structure ptr ptr option -> bool
+  t structure ptr -> int32 -> (bool, Error.t structure ptr option) result
 
 val unprocessed:
   t structure ptr -> Unsigned.uint32

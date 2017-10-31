@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  t structure ptr -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> Error.t structure ptr ptr option -> t structure ptr option
+  t structure ptr -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> (t structure ptr option, Error.t structure ptr option) result
 
 val get_capture_count:
   t structure ptr -> int32

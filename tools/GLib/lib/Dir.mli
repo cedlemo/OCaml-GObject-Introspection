@@ -12,6 +12,6 @@ val rewind:
   t structure ptr -> unit
 
 val make_tmp:
-  t structure ptr -> string option -> Error.t structure ptr ptr option -> string
+  t structure ptr -> string option -> (string, Error.t structure ptr option) result
 
 

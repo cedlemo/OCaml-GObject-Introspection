@@ -260,9 +260,9 @@ val checksum_type_get_length:
 val child_watch_source_new:
   int32 -> Source.t structure ptr
 val clear_error:
-  unit -> Error.t structure ptr ptr option -> unit
+  unit -> (unit, Error.t structure ptr option) result
 val close:
-  int32 -> Error.t structure ptr ptr option -> bool
+  int32 -> (bool, Error.t structure ptr option) result
 (*SKIPPED : g_compute_checksum_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_checksum_for_data argument type C Array type for Types.Array tag not handled*)
 val compute_checksum_for_string:
@@ -274,9 +274,9 @@ val compute_checksum_for_string:
 val convert_error_quark:
   unit -> Unsigned.uint32
 val convert_with_fallback:
-  string -> int64 -> string -> string -> string -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> Error.t structure ptr ptr option -> string
+  string -> int64 -> string -> string -> string -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> (string, Error.t structure ptr option) result
 val convert_with_iconv:
-  string -> int64 -> IConv.t structure ptr -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> Error.t structure ptr ptr option -> string
+  string -> int64 -> IConv.t structure ptr -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> (string, Error.t structure ptr option) result
 val datalist_clear:
   Data.t structure ptr -> unit
 val datalist_get_data:
@@ -335,7 +335,7 @@ val dcgettext:
 val dgettext:
   string option -> string -> string
 val dir_make_tmp:
-  string option -> Error.t structure ptr ptr option -> string
+  string option -> (string, Error.t structure ptr option) result
 val direct_equal:
   unit ptr option -> unit ptr option -> bool
 val direct_hash:
@@ -360,7 +360,7 @@ val file_error_quark:
 (*Not implemented g_file_get_contents argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_file_open_tmp argument type Arg_info.In or Arg_info.Out not handled*)
 val file_read_link:
-  string -> Error.t structure ptr ptr option -> string
+  string -> (string, Error.t structure ptr option) result
 (*Not implemented g_file_set_contents argument type C Array type for Types.Array tag not handled*)
 val file_test:
   string -> File_test.t_list -> bool
@@ -371,7 +371,7 @@ val filename_display_name:
 (*Not implemented g_filename_from_uri argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_filename_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 val filename_to_uri:
-  string -> string option -> Error.t structure ptr ptr option -> string
+  string -> string option -> (string, Error.t structure ptr option) result
 (*Not implemented g_filename_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 val find_program_in_path:
   string -> string
@@ -634,7 +634,7 @@ val shell_error_quark:
 val shell_quote:
   string -> string
 val shell_unquote:
-  string -> Error.t structure ptr ptr option -> string
+  string -> (string, Error.t structure ptr option) result
 val slice_alloc:
   Unsigned.uint64 -> unit ptr option
 val slice_alloc0:
@@ -664,11 +664,11 @@ val spaced_primes_closest:
 (*Not implemented g_spawn_async argument type C Array type for Types.Array tag not handled*)
 (*Not implemented g_spawn_async_with_pipes argument type C Array type for Types.Array tag not handled*)
 val spawn_check_exit_status:
-  int32 -> Error.t structure ptr ptr option -> bool
+  int32 -> (bool, Error.t structure ptr option) result
 val spawn_close_pid:
   int32 -> unit
 val spawn_command_line_async:
-  string -> Error.t structure ptr ptr option -> bool
+  string -> (bool, Error.t structure ptr option) result
 (*Not implemented g_spawn_command_line_sync argument type Arg_info.In or Arg_info.Out not handled*)
 val spawn_error_quark:
   unit -> Unsigned.uint32
@@ -869,9 +869,9 @@ val unix_error_quark:
 val unix_fd_source_new:
   int32 -> IOCondition.t_list -> Source.t structure ptr
 val unix_open_pipe:
-  int32 ptr -> int32 -> Error.t structure ptr ptr option -> bool
+  int32 ptr -> int32 -> (bool, Error.t structure ptr option) result
 val unix_set_fd_nonblocking:
-  int32 -> bool -> Error.t structure ptr ptr option -> bool
+  int32 -> bool -> (bool, Error.t structure ptr option) result
 (*Not implemented g_unix_signal_add_full argument type callback not handled*)
 val unix_signal_source_new:
   int32 -> Source.t structure ptr
@@ -941,7 +941,7 @@ val variant_is_object_path:
 val variant_is_signature:
   string -> bool
 val variant_parse:
-  Variant_type.t structure ptr option -> string -> string option -> string option -> Error.t structure ptr ptr option -> Variant.t structure ptr
+  Variant_type.t structure ptr option -> string -> string option -> string option -> (Variant.t structure ptr, Error.t structure ptr option) result
 val variant_parse_error_print_context:
   Error.t structure ptr -> string -> string
 val variant_parse_error_quark:

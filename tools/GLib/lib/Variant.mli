@@ -187,7 +187,7 @@ val is_signature:
   t structure ptr -> string -> bool
 
 val parse:
-  t structure ptr -> Variant_type.t structure ptr option -> string -> string option -> string option -> Error.t structure ptr ptr option -> t structure ptr
+  t structure ptr -> Variant_type.t structure ptr option -> string -> string option -> string option -> (t structure ptr, Error.t structure ptr option) result
 
 val parse_error_print_context:
   t structure ptr -> Error.t structure ptr -> string -> string
