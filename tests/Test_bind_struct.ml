@@ -63,7 +63,8 @@ let test_append_ctypes_struct_field_declarations test_ctxt =
   let mli_content = "val f_data: (unit ptr, t structure) field\n\
                      val f_next: (t structure ptr, t structure) field" in
   let ml_content = "let f_data = field t_typ \"data\" (ptr void)\n\
-                    let f_next = field t_typ \"next\" (ptr t_typ)" in
+                    let f_next = field t_typ \"next\" (ptr t_typ)\n\
+                    let _ = seal t_typ" in
   struct_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
   )
