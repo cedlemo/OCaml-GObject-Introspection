@@ -20,7 +20,7 @@ match (!@ err_ptr_ptr) with
 (*Not implemented g_key_file_get_boolean_list argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_comment arg1 arg2 arg3 =
 let get_comment_raw =
-  foreign "g_key_file_get_comment" (ptr t_typ @-> string_opt @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_key_file_get_comment" (ptr t_typ @-> string_opt @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_comment_raw arg1 arg2 arg3 (Some err_ptr_ptr)
@@ -68,7 +68,7 @@ match (!@ err_ptr_ptr) with
 (*Not implemented g_key_file_get_keys argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_locale_string arg1 arg2 arg3 arg4 =
 let get_locale_string_raw =
-  foreign "g_key_file_get_locale_string" (ptr t_typ @-> string @-> string @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_key_file_get_locale_string" (ptr t_typ @-> string @-> string @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_locale_string_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr)
@@ -83,7 +83,7 @@ let get_start_group =
 
 let get_string arg1 arg2 arg3 =
 let get_string_raw =
-  foreign "g_key_file_get_string" (ptr t_typ @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_key_file_get_string" (ptr t_typ @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_string_raw arg1 arg2 arg3 (Some err_ptr_ptr)
@@ -106,7 +106,7 @@ match (!@ err_ptr_ptr) with
 
 let get_value arg1 arg2 arg3 =
 let get_value_raw =
-  foreign "g_key_file_get_value" (ptr t_typ @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_key_file_get_value" (ptr t_typ @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_value_raw arg1 arg2 arg3 (Some err_ptr_ptr)

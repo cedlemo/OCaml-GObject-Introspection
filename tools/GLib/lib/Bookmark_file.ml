@@ -27,7 +27,7 @@ match (!@ err_ptr_ptr) with
 (*Not implemented g_bookmark_file_get_applications argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_description arg1 arg2 =
 let get_description_raw =
-  foreign "g_bookmark_file_get_description" (ptr t_typ @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_bookmark_file_get_description" (ptr t_typ @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_description_raw arg1 arg2 (Some err_ptr_ptr)
@@ -51,7 +51,7 @@ match (!@ err_ptr_ptr) with
 
 let get_mime_type arg1 arg2 =
 let get_mime_type_raw =
-  foreign "g_bookmark_file_get_mime_type" (ptr t_typ @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_bookmark_file_get_mime_type" (ptr t_typ @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_mime_type_raw arg1 arg2 (Some err_ptr_ptr)
@@ -76,7 +76,7 @@ let get_size =
 
 let get_title arg1 arg2 =
 let get_title_raw =
-  foreign "g_bookmark_file_get_title" (ptr t_typ @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_bookmark_file_get_title" (ptr t_typ @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = get_title_raw arg1 arg2 (Some err_ptr_ptr)

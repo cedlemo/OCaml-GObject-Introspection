@@ -295,7 +295,7 @@ let convert_error_quark =
   foreign "g_convert_error_quark" (void @-> returning (uint32_t))
 let convert_with_fallback arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
 let convert_with_fallback_raw =
-  foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = convert_with_fallback_raw arg1 arg2 arg3 arg4 arg5 arg6 arg7 (Some err_ptr_ptr)
@@ -305,7 +305,7 @@ match (!@ err_ptr_ptr) with
 | Some _ -> Error (!@ err_ptr_ptr)
 let convert_with_iconv arg1 arg2 arg3 arg4 arg5 =
 let convert_with_iconv_raw =
-  foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = convert_with_iconv_raw arg1 arg2 arg3 arg4 arg5 (Some err_ptr_ptr)
@@ -372,7 +372,7 @@ let dgettext =
   foreign "g_dgettext" (string_opt @-> string @-> returning (string))
 let dir_make_tmp arg1 =
 let dir_make_tmp_raw =
-  foreign "g_dir_make_tmp" (string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_dir_make_tmp" (string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = dir_make_tmp_raw arg1 (Some err_ptr_ptr)
@@ -405,7 +405,7 @@ let file_error_quark =
 (*Not implemented g_file_open_tmp argument type Arg_info.In or Arg_info.Out not handled*)
 let file_read_link arg1 =
 let file_read_link_raw =
-  foreign "g_file_read_link" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_file_read_link" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = file_read_link_raw arg1 (Some err_ptr_ptr)
@@ -424,7 +424,7 @@ let filename_display_name =
 (*Not implemented g_filename_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 let filename_to_uri arg1 arg2 =
 let filename_to_uri_raw =
-  foreign "g_filename_to_uri" (string @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_filename_to_uri" (string @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = filename_to_uri_raw arg1 arg2 (Some err_ptr_ptr)
@@ -695,7 +695,7 @@ let shell_quote =
   foreign "g_shell_quote" (string @-> returning (string))
 let shell_unquote arg1 =
 let shell_unquote_raw =
-  foreign "g_shell_unquote" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string))
+  foreign "g_shell_unquote" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = shell_unquote_raw arg1 (Some err_ptr_ptr)

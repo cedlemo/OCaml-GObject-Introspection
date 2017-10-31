@@ -10,7 +10,7 @@ val get_boolean:
 
 (*Not implemented g_key_file_get_boolean_list argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_comment:
-  t structure ptr -> string option -> string -> (string, Error.t structure ptr option) result
+  t structure ptr -> string option -> string -> (string option, Error.t structure ptr option) result
 
 val get_double:
   t structure ptr -> string -> string -> (float, Error.t structure ptr option) result
@@ -26,21 +26,21 @@ val get_integer:
 (*Not implemented g_key_file_get_integer_list argument typeArg_info.InOut or Arg_info.Out not handled*)
 (*Not implemented g_key_file_get_keys argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_locale_string:
-  t structure ptr -> string -> string -> string option -> (string, Error.t structure ptr option) result
+  t structure ptr -> string -> string -> string option -> (string option, Error.t structure ptr option) result
 
 (*Not implemented g_key_file_get_locale_string_list argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_start_group:
   t structure ptr -> string
 
 val get_string:
-  t structure ptr -> string -> string -> (string, Error.t structure ptr option) result
+  t structure ptr -> string -> string -> (string option, Error.t structure ptr option) result
 
 (*Not implemented g_key_file_get_string_list argument typeArg_info.InOut or Arg_info.Out not handled*)
 val get_uint64:
   t structure ptr -> string -> string -> (Unsigned.uint64, Error.t structure ptr option) result
 
 val get_value:
-  t structure ptr -> string -> string -> (string, Error.t structure ptr option) result
+  t structure ptr -> string -> string -> (string option, Error.t structure ptr option) result
 
 val has_group:
   t structure ptr -> string -> bool

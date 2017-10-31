@@ -116,14 +116,16 @@ let generate_callable_bindings callable name symbol args ret_types sources =
   let (ocaml_ret, ctypes_ret) = List.hd ret_types in
   if Callable_info.can_throw_gerror callable then (
     let args' = args @ [("Error.t structure ptr option ptr option", "ptr_opt (ptr_opt Error.t_typ)")] in
+    let ocaml_ret' = if ocaml_ret = "string" then "string option" else ocaml_ret in
+    let ctypes_ret' = if ctypes_ret = "string" then "string_opt" else ctypes_ret in
     File.bprintf mli "val %s:\n  " name;
-    File.bprintf mli "%s -> (%s, Error.t structure ptr option) result\n" (String.concat " -> " (List.map (fun (a, b) -> a) args)) ocaml_ret;
+    File.bprintf mli "%s -> (%s, Error.t structure ptr option) result\n" (String.concat " -> " (List.map (fun (a, b) -> a) args)) ocaml_ret';
     let meaning_less_args = generate_n_meaningless_arg_names (List.length args) in
     File.bprintf ml "let %s %s =\n" name meaning_less_args;
     let name_raw = name ^ "_raw" in
     File.bprintf ml "let %s =\n  foreign \"%s\" " name_raw symbol;
     File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args'));
-    File.bprintf ml " @-> returning (%s))\n" ctypes_ret;
+    File.bprintf ml " @-> returning (%s))\n" ctypes_ret';
     File.buff_add_line ml "in\nlet err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in";
     File.bprintf ml "let value = %s %s (Some err_ptr_ptr)\nin\n" name_raw meaning_less_args;
     File.buff_add_line ml "match (!@ err_ptr_ptr) with\n\

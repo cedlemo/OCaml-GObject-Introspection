@@ -274,9 +274,9 @@ val compute_checksum_for_string:
 val convert_error_quark:
   unit -> Unsigned.uint32
 val convert_with_fallback:
-  string -> int64 -> string -> string -> string -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> (string, Error.t structure ptr option) result
+  string -> int64 -> string -> string -> string -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> (string option, Error.t structure ptr option) result
 val convert_with_iconv:
-  string -> int64 -> IConv.t structure ptr -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> (string, Error.t structure ptr option) result
+  string -> int64 -> IConv.t structure ptr -> Unsigned.uint64 ptr -> Unsigned.uint64 ptr -> (string option, Error.t structure ptr option) result
 val datalist_clear:
   Data.t structure ptr -> unit
 val datalist_get_data:
@@ -335,7 +335,7 @@ val dcgettext:
 val dgettext:
   string option -> string -> string
 val dir_make_tmp:
-  string option -> (string, Error.t structure ptr option) result
+  string option -> (string option, Error.t structure ptr option) result
 val direct_equal:
   unit ptr option -> unit ptr option -> bool
 val direct_hash:
@@ -360,7 +360,7 @@ val file_error_quark:
 (*Not implemented g_file_get_contents argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_file_open_tmp argument type Arg_info.In or Arg_info.Out not handled*)
 val file_read_link:
-  string -> (string, Error.t structure ptr option) result
+  string -> (string option, Error.t structure ptr option) result
 (*Not implemented g_file_set_contents argument type C Array type for Types.Array tag not handled*)
 val file_test:
   string -> File_test.t_list -> bool
@@ -371,7 +371,7 @@ val filename_display_name:
 (*Not implemented g_filename_from_uri argument type Arg_info.In or Arg_info.Out not handled*)
 (*Not implemented g_filename_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 val filename_to_uri:
-  string -> string option -> (string, Error.t structure ptr option) result
+  string -> string option -> (string option, Error.t structure ptr option) result
 (*Not implemented g_filename_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 val find_program_in_path:
   string -> string
@@ -634,7 +634,7 @@ val shell_error_quark:
 val shell_quote:
   string -> string
 val shell_unquote:
-  string -> (string, Error.t structure ptr option) result
+  string -> (string option, Error.t structure ptr option) result
 val slice_alloc:
   Unsigned.uint64 -> unit ptr option
 val slice_alloc0:
