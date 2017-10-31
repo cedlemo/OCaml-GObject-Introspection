@@ -92,20 +92,51 @@ let get_return_types callable skip_types =
  *)
 
 let generate_callable_bindings callable name symbol args ret_types sources =
+  (* TODO: when dealing with Error.t, make sure to be able to find if the code
+          that is generated is for :
+            - GLib module (use "Error.t" string)
+            - other module (user "GLib.Error.t")
+  *)
+  (*
+    TODO: add a finalizer to allocated error
+  example of simple arg out val
+  let get_value info =
+    let get_value_raw =
+      foreign "g_constant_info_get_value"
+        (ptr constantinfo @-> ptr Types.argument @-> returning int) in
+    let arg_ptr = allocate_n Types.argument ~count:1 in
+    let _ = get_value_raw info arg_ptr in
+    let _ = Gc.finalise (fun v ->
+        info_free_value info v) arg_ptr in
+    arg_ptr
+   *)
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
   let (ocaml_ret, ctypes_ret) = List.hd ret_types in
-  File.bprintf mli "val %s:\n  " name;
-  File.bprintf ml "let %s =\n  foreign \"%s\" " name symbol;
-  File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-  File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
   if Callable_info.can_throw_gerror callable then (
-    File.bprintf mli " -> %s" "Error.t structure ptr ptr option";
-    File.bprintf ml "  @-> %s" "ptr_opt (ptr Error.t_typ)"
-  );
-  File.bprintf mli " -> %s\n" ocaml_ret;
-  File.bprintf ml " @-> returning (%s))\n" ctypes_ret
+    let args' = args @ [("Error.t structure ptr option ptr option", "ptr_opt (ptr_opt Error.t_typ)")] in
+    File.bprintf mli "val %s:\n  " name;
+    File.bprintf mli "%s -> (%s, Error.t structure ptr option) result\n" (String.concat " -> " (List.map (fun (a, b) -> a) args)) ocaml_ret;
+    let meaning_less_args = generate_n_meaningless_arg_names (List.length args) in
+    File.bprintf ml "let %s %s =\n" name meaning_less_args;
+    let name_raw = name ^ "_raw" in
+    File.bprintf ml "let %s =\n  foreign \"%s\" " name_raw symbol;
+    File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args'));
+    File.bprintf ml " @-> returning (%s))\n" ctypes_ret;
+    File.buff_add_line ml "in\nlet err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in";
+    File.bprintf ml "let value = %s %s (Some err_ptr_ptr)\nin\n" name_raw meaning_less_args;
+    File.buff_add_line ml "match (!@ err_ptr_ptr) with\n\
+                             | None -> Ok value\n\
+                             | Some _ -> Error (!@ err_ptr_ptr)"
+  ) else (
+    File.bprintf mli "val %s:\n  " name;
+    File.bprintf ml "let %s =\n  foreign \"%s\" " name symbol;
+    File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
+    File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
+    File.bprintf mli " -> %s\n" ocaml_ret;
+    File.bprintf ml " @-> returning (%s))\n" ctypes_ret
+  )
 
 let append_ctypes_function_bindings raw_name info sources skip_types =
   let open Binding_utils in
