@@ -16,6 +16,7 @@ let f_prev = field t_typ "prev" (ptr t_typ)
 let f_next = field t_typ "next" (ptr t_typ)
 let f_name = field t_typ "name" (string)
 let f_priv = field t_typ "priv" (ptr Source_private.t_typ)
+let _ = seal t_typ
 let _new =
   foreign "g_source_new" (ptr t_typ @-> ptr Source_funcs.t_typ @-> uint32_t @-> returning (ptr t_typ))
 

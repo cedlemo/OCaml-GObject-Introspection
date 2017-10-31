@@ -9,4 +9,5 @@ let f_dispatch = field t_typ "dispatch" (ptr void)
 (*Struct field Source_funcs : callback tag not implemented*)
 (*Struct field Source_funcs : callback tag not implemented*)
 (*Struct field Source_funcs : callback tag not implemented*)
+let _ = seal t_typ
 

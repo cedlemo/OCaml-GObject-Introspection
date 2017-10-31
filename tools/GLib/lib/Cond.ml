@@ -5,6 +5,7 @@ type t
 let t_typ : t structure typ = structure "Cond"
 let f_p = field t_typ "p" (ptr void)
 (*Struct field Cond : C Array type for Types.Array tag tag not implemented*)
+let _ = seal t_typ
 let broadcast =
   foreign "g_cond_broadcast" (ptr t_typ @-> returning (void))
 

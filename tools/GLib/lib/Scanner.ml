@@ -24,6 +24,7 @@ let f_text_end = field t_typ "text_end" (string)
 let f_buffer = field t_typ "buffer" (string)
 let f_scope_id = field t_typ "scope_id" (uint32_t)
 (*Struct field Scanner : callback tag not implemented*)
+let _ = seal t_typ
 let cur_line =
   foreign "g_scanner_cur_line" (ptr t_typ @-> returning (uint32_t))
 

@@ -10,4 +10,5 @@ let f_arg = field t_typ "arg" (Option_arg.t_view)
 let f_arg_data = field t_typ "arg_data" (ptr void)
 let f_description = field t_typ "description" (string)
 let f_arg_description = field t_typ "arg_description" (string)
+let _ = seal t_typ
 

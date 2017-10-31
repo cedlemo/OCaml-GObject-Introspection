@@ -8,6 +8,7 @@ let f_next = field t_typ "next" (ptr t_typ)
 let f_prev = field t_typ "prev" (ptr t_typ)
 let f_parent = field t_typ "parent" (ptr t_typ)
 let f_children = field t_typ "children" (ptr t_typ)
+let _ = seal t_typ
 let child_index =
   foreign "g_node_child_index" (ptr t_typ @-> ptr_opt void @-> returning (int32_t))
 

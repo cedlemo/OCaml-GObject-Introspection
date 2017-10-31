@@ -5,6 +5,7 @@ type t
 let t_typ : t structure typ = structure "Rec_mutex"
 let f_p = field t_typ "p" (ptr void)
 (*Struct field Rec_mutex : C Array type for Types.Array tag tag not implemented*)
+let _ = seal t_typ
 let clear =
   foreign "g_rec_mutex_clear" (ptr t_typ @-> returning (void))
 

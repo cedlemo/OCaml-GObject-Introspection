@@ -37,28 +37,38 @@ let append_ctypes_struct_field_declarations struct_name info sources skip_types 
   let append_ctypes_struct_field_declaration field_info =
     let base_info = Field_info.to_baseinfo field_info in
     match Base_info.get_name base_info with
-    | None -> ()
+    | None -> false
     | Some name ->
       let type_info = Field_info.get_type field_info in
       match type_info_to_bindings_types type_info false with
       | Not_implemented tag_name ->
         let coms = Printf.sprintf "Struct field %s : %s tag not implemented" struct_name tag_name in
         File.buff_add_comments mli coms;
-        File.buff_add_comments ml coms
+        File.buff_add_comments ml coms;
+        false
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         if Binding_utils.match_one_of ocaml_type skip_types then
           let com = Printf.sprintf "field type %s" ocaml_type in
-          Sources.buffs_add_skipped sources com
+          Sources.buffs_add_skipped sources com;
+          false
         else
           let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
           File.bprintf mli "val f_%s: (%s, t structure) field\n" name ocaml_type';
-          File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ'
+          File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ';
+          true
   in
   let n = Struct_info.get_n_fields info in
-  for i = 0 to n - 1 do
-    let field_info = Struct_info.get_field info i in
-    append_ctypes_struct_field_declaration field_info
-  done
+  let rec iterate_over_field index n_implemented =
+    if index = n then n_implemented
+    else (
+      let field_info = Struct_info.get_field info index in
+      if append_ctypes_struct_field_declaration field_info then
+        iterate_over_field (index + 1) (n_implemented + 1)
+      else
+        iterate_over_field (index + 1) n_implemented
+    )
+  in
+  if iterate_over_field 0 0 > 0 then File.buff_add_line ml "let _ = seal t_typ"
 
 let append_ctypes_struct_methods_bindings struct_name info sources skip_types =
   let n = Struct_info.get_n_methods info in

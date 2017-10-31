@@ -9,6 +9,7 @@ let f_dummy3 = field t_typ "dummy3" (ptr void)
 let f_dummy4 = field t_typ "dummy4" (int32_t)
 let f_dummy5 = field t_typ "dummy5" (bool)
 let f_dummy6 = field t_typ "dummy6" (ptr void)
+let _ = seal t_typ
 let init =
   foreign "g_hash_table_iter_init" (ptr t_typ @-> ptr Hash_table.t_typ @-> returning (void))
 

@@ -30,4 +30,5 @@ let f_symbol_2_token = field t_typ "symbol_2_token" (uint32_t)
 let f_scope_0_fallback = field t_typ "scope_0_fallback" (uint32_t)
 let f_store_int64 = field t_typ "store_int64" (uint32_t)
 let f_padding_dummy = field t_typ "padding_dummy" (uint32_t)
+let _ = seal t_typ
 

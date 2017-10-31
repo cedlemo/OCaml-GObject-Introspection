@@ -5,6 +5,7 @@ type t
 let t_typ : t structure typ = structure "Time_val"
 let f_tv_sec = field t_typ "tv_sec" (int64_t)
 let f_tv_usec = field t_typ "tv_usec" (int64_t)
+let _ = seal t_typ
 let add =
   foreign "g_time_val_add" (ptr t_typ @-> int64_t @-> returning (void))
 

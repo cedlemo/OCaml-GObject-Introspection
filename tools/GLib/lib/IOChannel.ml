@@ -23,6 +23,7 @@ let f_is_writeable = field t_typ "is_writeable" (uint32_t)
 let f_is_seekable = field t_typ "is_seekable" (uint32_t)
 let f_reserved1 = field t_typ "reserved1" (ptr void)
 let f_reserved2 = field t_typ "reserved2" (ptr void)
+let _ = seal t_typ
 let new_file arg1 arg2 arg3 =
 let new_file_raw =
   foreign "g_io_channel_new_file" (ptr t_typ @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
