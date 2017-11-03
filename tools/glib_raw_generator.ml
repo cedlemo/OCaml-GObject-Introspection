@@ -132,17 +132,9 @@ let function_parser info sources skip_types =
       );
      Sources.write_buffs sources
 
-let prepend_in_core sources =
-  let open Binding_utils in
-  let mli = Sources.mli sources in
-  let ml = Sources.ml sources in
-  let greturn_type = "type 'a greturn = ('a, Error.t ptr) result" in
-  File.buff_add_line mli greturn_type;
-  File.buff_add_line ml greturn_type
-
 let () =
   match Loader.load "GLib" () with
   | None -> print_endline "Please check the namespace, something is wrong"
   | Some loader -> print_infos loader;
     let loader = Loader.set_build_path loader "tools/" in
-    Loader.parse loader ~prepend_in_core ~const_parser ~function_parser ~skip ()
+    Loader.parse loader ~const_parser ~function_parser ~skip ()
