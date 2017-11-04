@@ -36,7 +36,7 @@ let enum_test namespace enum_name fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
-let enum_to_type = "type t = Md5 | Sha1 | Sha256 | Sha512 | Sha384"
+(* let enum_to_type = "type t = Md5 | Sha1 | Sha256 | Sha512 | Sha384"
 let enum_to_type_travis = "type t = Md5 | Sha1 | Sha256 | Sha512"
 let enum_type_of_value_sig = "val of_value:\n\
                               Unsigned.uint32 -> t"
@@ -78,10 +78,35 @@ let enum_type_view = "let t_view = view\n\
                       ~read:of_value\n\
                       ~write:to_value\n\
                       uint32_t"
+*)
+let enum_to_type = "type t = Standard | Daylight | Universal"
 
+let enum_type_of_value_sig = "val of_value:
+Unsigned.uint32 -> t"
+
+let enum_type_of_value = "let of_value v =
+if v = Unsigned.UInt32.of_int 0 then Standard
+else if v = Unsigned.UInt32.of_int 1 then Daylight
+else if v = Unsigned.UInt32.of_int 2 then Universal
+else raise (Invalid_argument \"Unexpected TimeType value\")"
+
+let enum_type_to_value_sig = "val to_value:
+t -> Unsigned.uint32"
+
+let enum_type_to_value = "let to_value = function
+| Standard -> Unsigned.UInt32.of_int 0
+| Daylight -> Unsigned.UInt32.of_int 1
+| Universal -> Unsigned.UInt32.of_int 2 "
+
+let enum_type_view_sig = "val t_view: t typ"
+
+let enum_type_view = "let t_view = view\n\
+                      ~read:of_value\n\
+                      ~write:to_value\n\
+                      uint32_t"
 let test_append_enum_type test_ctxt =
   let namespace = "GLib" in
-  let name = "ChecksumType" in
+  let name = "TimeType" in
   let writer = (fun name info sources ->
       let open Binding_utils in
       let mli = Sources.mli sources in
@@ -92,15 +117,12 @@ let test_append_enum_type test_ctxt =
       Sources.write_buffs sources
   ) in
   enum_test namespace name (fun info ->
-      if is_travis then
-        test_writing test_ctxt info name writer enum_to_type_travis enum_to_type_travis
-      else
-        test_writing test_ctxt info name writer enum_to_type enum_to_type
+    test_writing test_ctxt info name writer enum_to_type enum_to_type
   )
 
 let test_append_enum_of_value_fn test_ctxt =
   let namespace = "GLib" in
-  let name = "ChecksumType" in
+  let name = "TimeType" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
@@ -111,15 +133,12 @@ let test_append_enum_of_value_fn test_ctxt =
         Binding_utils.Sources.write_buffs sources
   ) in
   enum_test namespace name (fun info ->
-      if is_travis then
-        test_writing test_ctxt info name writer enum_type_of_value_sig enum_type_of_value_travis
-      else
-        test_writing test_ctxt info name writer enum_type_of_value_sig enum_type_of_value
+    test_writing test_ctxt info name writer enum_type_of_value_sig enum_type_of_value
   )
 
 let test_append_enum_to_value_fn test_ctxt =
   let namespace = "GLib" in
-  let name = "ChecksumType" in
+  let name = "TimeType" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
@@ -130,13 +149,12 @@ let test_append_enum_to_value_fn test_ctxt =
         Binding_utils.Sources.write_buffs sources
   ) in
   enum_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer enum_type_to_value_sig enum_type_to_value_travis
-      else test_writing test_ctxt info name writer enum_type_to_value_sig enum_type_to_value
+    test_writing test_ctxt info name writer enum_type_to_value_sig enum_type_to_value
   )
 
 let test_append_enum_view test_ctxt =
   let namespace = "GLib" in
-  let name = "ChecksumType" in
+  let name = "TimeType" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
