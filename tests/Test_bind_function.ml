@@ -23,7 +23,7 @@ open GObject_introspection
 let repo = Repository.get_default ()
 let namespace = "GLib"
 let typelib = Repository.require repo namespace ()
-let name = "ascii_strncasecmp"
+let name = "ascii_strcasecmp"
 
 let get_function_info name () =
   match Repository.find_by_name repo namespace name with
@@ -43,9 +43,9 @@ let test_get_arguments_types test_ctx =
       let callable = Function_info.to_callableinfo info in
       match Bind_function.get_arguments_types callable [] with
       | Bind_function.Type_names l -> let ocaml_types = String.concat " -> " (List.map (fun (a, b) -> a) l) in
-        assert_equal_string "string -> string -> Unsigned.uint64" ocaml_types;
+        assert_equal_string "string -> string" ocaml_types;
         let ctypes_types = String.concat " -> " (List.map (fun (a, b) -> b) l) in
-        assert_equal_string "string -> string -> uint64_t" ctypes_types;
+        assert_equal_string "string -> string" ctypes_types;
       | _ -> assert_equal_string "It should returns " "Ctypes arguments"
     )
 
