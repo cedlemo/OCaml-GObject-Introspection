@@ -96,7 +96,7 @@ t -> Unsigned.uint32"
 let enum_type_to_value = "let to_value = function
 | Standard -> Unsigned.UInt32.of_int 0
 | Daylight -> Unsigned.UInt32.of_int 1
-| Universal -> Unsigned.UInt32.of_int 2 "
+| Universal -> Unsigned.UInt32.of_int 2"
 
 let enum_type_view_sig = "val t_view: t typ"
 
@@ -167,7 +167,7 @@ let test_append_enum_view test_ctxt =
       test_writing test_ctxt info name writer enum_type_view_sig enum_type_view
   )
 
-let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
+(* let flags_to_type = "type t = None | Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
                      type t_list = t list"
 let flags_to_type_travis = "type t = Hidden | In_main | Reverse | No_arg | Filename | Optional_arg | Noalias\n\
                             type t_list = t list"
@@ -258,6 +258,57 @@ let flags_type_view = "let t_list_view = view\n\
                        ~read:list_of_value\n\
                        ~write:list_to_value\n\
                        uint32_t"
+                       *)
+let flags_to_type = "type t = None | Keep_comments | Keep_translations
+type t_list = t list"
+
+let flags_of_value_sig = "val of_value:\n\
+                          Unsigned.uint32 -> t"
+let flags_of_value = "let of_value v =
+if v = Unsigned.UInt32.of_int 0 then None
+else if v = Unsigned.UInt32.of_int 1 then Keep_comments
+else if v = Unsigned.UInt32.of_int 2 then Keep_translations
+else raise (Invalid_argument \"Unexpected KeyFileFlags value\")"
+
+let flags_to_value_sig = "val to_value:\n\
+                          t -> Unsigned.uint32"
+let flags_to_value = "let to_value = function
+| None -> Unsigned.UInt32.of_int 0
+| Keep_comments -> Unsigned.UInt32.of_int 1
+| Keep_translations -> Unsigned.UInt32.of_int 2"
+
+let flags_type_list_to_value_sig = "val list_to_value:\n\
+                                    t_list -> Unsigned.uint32"
+let flags_type_list_to_value = "let list_to_value flags =
+let open Unsigned.UInt32 in
+let rec logor_flags l acc =
+match l with
+| [] -> acc
+| f :: q -> let v = to_value f in
+let acc' = logor acc v in
+logor_flags q acc'
+in
+logor_flags flags zero"
+let flags_type_list_of_value_sig = "val list_of_value:\n\
+                                    Unsigned.uint32 -> t_list"
+let flags_type_list_of_value = "let list_of_value v =
+let open Unsigned.UInt32 in
+let all_flags = [( 0 , None ); ( 1 , Keep_comments ); ( 2 , Keep_translations )]
+in
+let rec build_flags_list allf acc =
+match allf with
+| [] -> acc
+| (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)
+else build_flags_list q acc
+in build_flags_list all_flags []"
+
+let flags_type_view_sig = "val t_list_view : t_list typ"
+
+let flags_type_view = "let t_list_view = view\n\
+                       ~read:list_of_value\n\
+                       ~write:list_to_value\n\
+                       uint32_t"
+
 let get_flags_info namespace enum_name =
   match Repository.find_by_name repo namespace enum_name with
   | None -> None
@@ -274,7 +325,7 @@ let flags_test namespace enum_name fn =
 
 let test_append_flags_types test_ctxt =
   let namespace = "GLib" in
-  let name = "OptionFlags" in
+  let name = "KeyFileFlags" in
   let writer = (fun name info sources ->
       let open Binding_utils in
       let mli = Sources.mli sources in
@@ -285,13 +336,12 @@ let test_append_flags_types test_ctxt =
       Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer flags_to_type_travis flags_to_type_travis
-      else test_writing test_ctxt info name writer flags_to_type flags_to_type
+    test_writing test_ctxt info name writer flags_to_type flags_to_type
   )
 
 let test_append_enum_flags_of_value_fn test_ctxt =
   let namespace = "GLib" in
-  let name = "OptionFlags" in
+  let name = "KeyFileFlags" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
@@ -302,15 +352,12 @@ let test_append_enum_flags_of_value_fn test_ctxt =
         Binding_utils.Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
-      if is_travis then
-        test_writing test_ctxt info name writer flags_of_value_sig flags_of_value_travis
-      else
-        test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
+    test_writing test_ctxt info name writer flags_of_value_sig flags_of_value
   )
 
 let test_append_enum_flags_to_value_fn test_ctxt =
   let namespace = "GLib" in
-  let name = "OptionFlags" in
+  let name = "KeyFileFlags" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
@@ -321,13 +368,12 @@ let test_append_enum_flags_to_value_fn test_ctxt =
         Binding_utils.Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer flags_to_value_sig flags_to_value_travis
-      else test_writing test_ctxt info name writer flags_to_value_sig flags_to_value
+    test_writing test_ctxt info name writer flags_to_value_sig flags_to_value
 )
 
 let test_append_enum_flags_list_to_value_fn test_ctxt =
   let namespace = "GLib" in
-  let name = "OptionFlags" in
+  let name = "KeyFileFlags" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
@@ -342,7 +388,7 @@ let test_append_enum_flags_list_to_value_fn test_ctxt =
 
 let test_append_enum_flags_list_of_value_fn test_ctxt =
   let namespace = "GLib" in
-  let name = "OptionFlags" in
+  let name = "KeyFileFlags" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
@@ -353,13 +399,12 @@ let test_append_enum_flags_list_of_value_fn test_ctxt =
         Binding_utils.Sources.write_buffs sources
   ) in
   flags_test namespace name (fun info ->
-      if is_travis then test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value_travis
-      else test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value
+    test_writing test_ctxt info name writer flags_type_list_of_value_sig flags_type_list_of_value
   )
 
 let test_append_flags_view test_ctxt =
   let namespace = "GLib" in
-  let name = "ChecksumType" in
+  let name = "KeyFileFlags" in
   let writer = (fun name info sources ->
       let tag = Enum_info.get_storage_type info in
       match Binding_utils.type_tag_to_bindings_types tag with
