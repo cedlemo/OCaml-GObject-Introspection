@@ -100,8 +100,7 @@ let test_get_n_interfaces test_ctxt =
 let test_get_n_methods test_ctxt =
   object_test (fun info ->
       let n = Object_info.get_n_methods info in
-      if is_travis then assert_equal_int 41 n
-      else assert_equal_int 48 n
+      assert_equal_boolean true (n >= 41)
     )
 
 let test_get_method test_ctxt =
@@ -129,8 +128,7 @@ let test_get_n_properties test_ctxt =
 let test_get_n_signals test_ctxt =
   object_test (fun info ->
       let n = Object_info.get_n_signals info in
-      if is_travis then assert_equal_int 2 n
-      else assert_equal_int 6 n
+      assert_equal_boolean true (n >= 2)
     )
 
 let test_get_n_vfuncs test_ctxt =
@@ -236,8 +234,7 @@ let test_gtk_window_get_interface test_ctxt =
 let test_gtk_window_get_n_methods test_ctxt =
   object_test (fun info ->
       let n = Object_info.get_n_methods info in
-      if is_travis then assert_equal_int 115 n
-      else assert_equal_int 119 n
+      assert_equal_boolean true (n >= 115)
     )
 
 let test_gtk_window_get_method test_ctxt =
@@ -259,8 +256,7 @@ let test_gtk_window_find_method test_ctxt =
 let test_gtk_window_get_n_properties test_ctxt =
   object_test (fun info ->
       let n = Object_info.get_n_properties info in
-      if is_travis then assert_equal_int 32 n
-      else assert_equal_int 33 n
+      assert_equal_boolean true (n >= 32)
     )
 
 let test_gtk_window_get_property test_ctxt =
@@ -275,8 +271,7 @@ let test_gtk_window_get_property test_ctxt =
 let test_gtk_window_get_n_signals test_ctxt =
   object_test (fun info ->
       let n = Object_info.get_n_signals info in
-      if is_travis then assert_equal_int 4 n
-      else assert_equal_int 5 n
+      assert_equal_boolean true (n >= 4)
     )
 
 let test_gtk_window_get_signal test_ctxt =
@@ -302,8 +297,7 @@ let test_gtk_window_find_signal test_ctxt =
 let test_gtk_window_get_n_vfuncs test_ctxt =
   object_test (fun info ->
       let n = Object_info.get_n_vfuncs info in
-      if is_travis then assert_equal_int 4 n
-      else assert_equal_int 5 n
+      assert_equal_boolean true (n >= 4)
     )
 
 let test_gtk_window_get_vfunc test_ctxt =
