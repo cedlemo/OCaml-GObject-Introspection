@@ -62,7 +62,7 @@ let test_get_size test_ctxt =
 let test_get_alignment test_ctxt =
   union_test (fun info ->
     let alignment = Union_info.get_alignment info in
-    assert_equal_int 8 alignment
+    assert_equal_boolean true (alignment = 4 || alignment = 8)
   )
 
 let test_get_n_methods test_ctxt =
