@@ -12,7 +12,9 @@ let value = _new_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let get_capture_count =
   foreign "g_regex_get_capture_count" (ptr t_typ @-> returning (int32_t))

@@ -28,7 +28,9 @@ let value = push_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let set_max_threads arg1 arg2 =
 let set_max_threads_raw =
@@ -39,7 +41,9 @@ let value = set_max_threads_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let unprocessed =
   foreign "g_thread_pool_unprocessed" (ptr t_typ @-> returning (uint32_t))

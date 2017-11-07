@@ -21,6 +21,8 @@ let value = make_tmp_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 

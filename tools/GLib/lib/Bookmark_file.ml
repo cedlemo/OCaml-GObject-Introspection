@@ -21,7 +21,9 @@ let value = get_added_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 (*Not implemented g_bookmark_file_get_app_info argument typeArg_info.InOut or Arg_info.Out not handled*)
 (*Not implemented g_bookmark_file_get_applications argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -34,7 +36,9 @@ let value = get_description_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 (*Not implemented g_bookmark_file_get_groups argument typeArg_info.InOut or Arg_info.Out not handled*)
 (*Not implemented g_bookmark_file_get_icon argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -47,7 +51,9 @@ let value = get_is_private_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let get_mime_type arg1 arg2 =
 let get_mime_type_raw =
@@ -58,7 +64,9 @@ let value = get_mime_type_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let get_modified arg1 arg2 =
 let get_modified_raw =
@@ -69,7 +77,9 @@ let value = get_modified_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let get_size =
   foreign "g_bookmark_file_get_size" (ptr t_typ @-> returning (int32_t))
@@ -83,7 +93,9 @@ let value = get_title_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 (*Not implemented g_bookmark_file_get_uris argument typeArg_info.InOut or Arg_info.Out not handled*)
 let get_visited arg1 arg2 =
@@ -95,7 +107,9 @@ let value = get_visited_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let has_application arg1 arg2 arg3 =
 let has_application_raw =
@@ -106,7 +120,9 @@ let value = has_application_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let has_group arg1 arg2 arg3 =
 let has_group_raw =
@@ -117,7 +133,9 @@ let value = has_group_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let has_item =
   foreign "g_bookmark_file_has_item" (ptr t_typ @-> string @-> returning (bool))
@@ -131,7 +149,9 @@ let value = load_from_data_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let load_from_data_dirs arg1 arg2 arg3 =
 let load_from_data_dirs_raw =
@@ -142,7 +162,9 @@ let value = load_from_data_dirs_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let load_from_file arg1 arg2 =
 let load_from_file_raw =
@@ -153,7 +175,9 @@ let value = load_from_file_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let move_item arg1 arg2 arg3 =
 let move_item_raw =
@@ -164,7 +188,9 @@ let value = move_item_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let remove_application arg1 arg2 arg3 =
 let remove_application_raw =
@@ -175,7 +201,9 @@ let value = remove_application_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let remove_group arg1 arg2 arg3 =
 let remove_group_raw =
@@ -186,7 +214,9 @@ let value = remove_group_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let remove_item arg1 arg2 =
 let remove_item_raw =
@@ -197,7 +227,9 @@ let value = remove_item_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let set_added =
   foreign "g_bookmark_file_set_added" (ptr t_typ @-> string @-> int64_t @-> returning (void))
@@ -211,7 +243,9 @@ let value = set_app_info_raw arg1 arg2 arg3 arg4 arg5 arg6 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let set_description =
   foreign "g_bookmark_file_set_description" (ptr t_typ @-> string_opt @-> string @-> returning (void))
@@ -247,7 +281,9 @@ let value = to_file_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let error_quark =
   foreign "g_bookmark_file_error_quark" (ptr t_typ @-> returning (uint32_t))

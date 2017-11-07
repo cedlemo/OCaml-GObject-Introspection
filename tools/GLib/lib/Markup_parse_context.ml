@@ -13,7 +13,9 @@ let value = end_parse_raw arg1 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let free =
   foreign "g_markup_parse_context_free" (ptr t_typ @-> returning (void))
@@ -36,7 +38,9 @@ let value = parse_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let pop =
   foreign "g_markup_parse_context_pop" (ptr t_typ @-> returning (ptr_opt void))

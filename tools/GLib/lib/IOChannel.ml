@@ -33,7 +33,9 @@ let value = new_file_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let unix_new =
   foreign "g_io_channel_unix_new" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
@@ -50,7 +52,9 @@ let value = flush_raw arg1 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let get_buffer_condition =
   foreign "g_io_channel_get_buffer_condition" (ptr t_typ @-> returning (IOCondition.t_list_view))
@@ -90,7 +94,9 @@ let value = read_line_string_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 (*Not implemented g_io_channel_read_to_end argument typeArg_info.InOut or Arg_info.Out not handled*)
 (*Not implemented g_io_channel_read_unichar argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -109,7 +115,9 @@ let value = seek_position_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let set_buffer_size =
   foreign "g_io_channel_set_buffer_size" (ptr t_typ @-> uint64_t @-> returning (void))
@@ -129,7 +137,9 @@ let value = set_encoding_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let set_flags arg1 arg2 =
 let set_flags_raw =
@@ -140,7 +150,9 @@ let value = set_flags_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let set_line_term =
   foreign "g_io_channel_set_line_term" (ptr t_typ @-> string_opt @-> int32_t @-> returning (void))
@@ -154,7 +166,9 @@ let value = shutdown_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let unix_get_fd =
   foreign "g_io_channel_unix_get_fd" (ptr t_typ @-> returning (int32_t))

@@ -12,7 +12,9 @@ let value = _new_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let new_from_fd arg1 arg2 arg3 =
 let new_from_fd_raw =
@@ -23,7 +25,9 @@ let value = new_from_fd_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let free =
   foreign "g_mapped_file_free" (ptr t_typ @-> returning (void))

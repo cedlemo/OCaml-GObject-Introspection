@@ -196,7 +196,9 @@ let value = parse_raw arg1 arg2 arg3 arg4 arg5 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
-| Some _ -> Error (!@ err_ptr_ptr)
+| Some _ -> let err_ptr = !@ err_ptr_ptr in
+let _ = Gc.finalise Error.free in
+Error (err_ptr)
 
 let parse_error_print_context =
   foreign "g_variant_parse_error_print_context" (ptr t_typ @-> ptr Error.t_typ @-> string @-> returning (string))
