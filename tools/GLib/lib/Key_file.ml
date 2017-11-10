@@ -16,7 +16,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_key_file_get_boolean_list argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -30,7 +33,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_double arg1 arg2 arg3 =
@@ -43,7 +49,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_key_file_get_double_list argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -58,7 +67,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_integer arg1 arg2 arg3 =
@@ -71,7 +83,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_key_file_get_integer_list argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -86,7 +101,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_key_file_get_locale_string_list argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -103,7 +121,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_key_file_get_string_list argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -117,7 +138,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_value arg1 arg2 arg3 =
@@ -130,7 +154,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let has_group =
@@ -147,7 +174,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_key_file_load_from_data_dirs argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -162,7 +192,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let remove_comment arg1 arg2 arg3 =
@@ -175,7 +208,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let remove_group arg1 arg2 =
@@ -188,7 +224,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let remove_key arg1 arg2 arg3 =
@@ -201,7 +240,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let save_to_file arg1 arg2 =
@@ -214,7 +256,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_boolean =
@@ -231,7 +276,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_double =

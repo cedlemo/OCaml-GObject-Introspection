@@ -22,7 +22,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_bookmark_file_get_app_info argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -37,7 +40,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_bookmark_file_get_groups argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -52,7 +58,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_mime_type arg1 arg2 =
@@ -65,7 +74,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_modified arg1 arg2 =
@@ -78,7 +90,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_size =
@@ -94,7 +109,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_bookmark_file_get_uris argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -108,7 +126,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let has_application arg1 arg2 arg3 =
@@ -121,7 +142,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let has_group arg1 arg2 arg3 =
@@ -134,7 +158,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let has_item =
@@ -150,7 +177,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let load_from_data_dirs arg1 arg2 arg3 =
@@ -163,7 +193,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let load_from_file arg1 arg2 =
@@ -176,7 +209,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let move_item arg1 arg2 arg3 =
@@ -189,7 +225,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let remove_application arg1 arg2 arg3 =
@@ -202,7 +241,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let remove_group arg1 arg2 arg3 =
@@ -215,7 +257,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let remove_item arg1 arg2 =
@@ -228,7 +273,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_added =
@@ -244,7 +292,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_description =
@@ -282,7 +333,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let error_quark =

@@ -13,7 +13,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let new_from_fd arg1 arg2 arg3 =
@@ -26,7 +29,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let free =

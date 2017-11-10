@@ -272,7 +272,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let close arg1 =
 let close_raw =
@@ -284,7 +287,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 (*SKIPPED : g_compute_checksum_for_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_compute_checksum_for_data argument type C Array type for Types.Array tag not handled*)
@@ -306,7 +312,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let convert_with_iconv arg1 arg2 arg3 arg4 arg5 =
 let convert_with_iconv_raw =
@@ -318,7 +327,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let datalist_clear =
   foreign "g_datalist_clear" (ptr Data.t_typ @-> returning (void))
@@ -387,7 +399,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let direct_equal =
   foreign "g_direct_equal" (ptr_opt void @-> ptr_opt void @-> returning (bool))
@@ -422,7 +437,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 (*Not implemented g_file_set_contents argument type C Array type for Types.Array tag not handled*)
 let file_test =
@@ -443,7 +461,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 (*Not implemented g_filename_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
 let find_program_in_path =
@@ -716,7 +737,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let slice_alloc =
   foreign "g_slice_alloc" (uint64_t @-> returning (ptr_opt void))
@@ -756,7 +780,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let spawn_close_pid =
   foreign "g_spawn_close_pid" (int32_t @-> returning (void))
@@ -770,7 +797,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 (*Not implemented g_spawn_command_line_sync argument type Arg_info.In or Arg_info.Out not handled*)
 let spawn_error_quark =
@@ -981,7 +1011,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let unix_set_fd_nonblocking arg1 arg2 =
 let unix_set_fd_nonblocking_raw =
@@ -993,7 +1026,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 (*Not implemented g_unix_signal_add_full argument type callback not handled*)
 let unix_signal_source_new =
@@ -1073,7 +1109,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 let variant_parse_error_print_context =
   foreign "g_variant_parse_error_print_context" (ptr Error.t_typ @-> string @-> returning (string))

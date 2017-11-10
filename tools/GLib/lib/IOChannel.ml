@@ -34,7 +34,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let unix_new =
@@ -53,7 +56,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let get_buffer_condition =
@@ -95,7 +101,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 (*Not implemented g_io_channel_read_to_end argument typeArg_info.InOut or Arg_info.Out not handled*)
@@ -116,7 +125,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_buffer_size =
@@ -138,7 +150,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_flags arg1 arg2 =
@@ -151,7 +166,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let set_line_term =
@@ -167,7 +185,10 @@ in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
 | Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise Error.free in
+let _ = Gc.finalise (function
+| Some e -> Error.free e
+| None -> () ) err_ptr
+in
 Error (err_ptr)
 
 let unix_get_fd =
