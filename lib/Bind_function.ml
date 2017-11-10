@@ -131,7 +131,10 @@ let generate_callable_bindings callable name symbol args ret_types sources =
     File.buff_add_line ml "match (!@ err_ptr_ptr) with\n\
                              | None -> Ok value\n\
                              | Some _ -> let err_ptr = !@ err_ptr_ptr in\n\
-                               let _ = Gc.finalise Error.free in\n\
+                               let _ = Gc.finalise (function\n\
+                                   | Some e -> Error.free e\n\
+                                   | None -> () ) err_ptr\n\
+                               in\n\
                                Error (err_ptr)"
   ) else (
     File.bprintf mli "val %s:\n  " name;
