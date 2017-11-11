@@ -25,7 +25,7 @@ let append_ctypes_union_declaration name sources =
   File.buff_add_line ml "type t";
   File.bprintf ml "let t_typ : t union typ = union \"%s\"\n" name
 
-let append_ctypes_union_fields_declarations union_name info sources =
+let append_ctypes_union_fields_declarations union_name info sources skip_types =
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
@@ -41,8 +41,12 @@ let append_ctypes_union_fields_declarations union_name info sources =
         File.buff_add_comments mli coms;
         File.buff_add_comments ml coms
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
-      File.bprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type;
-      File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ
+        if Binding_utils.match_one_of ocaml_type skip_types then
+          let com = Printf.sprintf "field type %s" ocaml_type in
+          Sources.buffs_add_skipped sources com;
+        else
+          File.bprintf mli "val f_%s: (%s, t union) field\n" name ocaml_type;
+          File.bprintf ml "let f_%s = field t_typ \"%s\" (%s)\n" name name ctypes_typ;
   in
   let n = Union_info.get_n_fields info in
   for i = 0 to n - 1 do
@@ -53,14 +57,14 @@ let append_ctypes_union_fields_declarations union_name info sources =
 let append_ctypes_union_seal file =
   Binding_utils.File.buff_add_line file "let _ = seal t_typ"
 
-let parse_union_info info sources =
+let parse_union_info info sources skip =
   let open Binding_utils in
   match get_binding_name info with
   | None -> ()
   | Some name ->
     let info' = Union_info.from_baseinfo info in
     append_ctypes_union_declaration name sources;
-    append_ctypes_union_fields_declarations name info' sources;
+    append_ctypes_union_fields_declarations name info' sources skip;
     let mli = Sources.mli sources in
     let ml = Sources.ml sources in
     File.buff_add_eol mli;

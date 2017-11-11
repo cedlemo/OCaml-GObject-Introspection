@@ -26,7 +26,7 @@ val append_ctypes_union_declaration:
   string -> Binding_utils.Sources.t -> unit
 
 val append_ctypes_union_fields_declarations:
-  string -> Union_info.t structure ptr -> Binding_utils.Sources.t -> unit
+  string -> Union_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
 
 val append_ctypes_union_seal:
   Binding_utils.File.t -> unit
@@ -38,4 +38,4 @@ val append_ctypes_union_seal:
   - the fields are named `f_field_name` (in order to avoid conflict with OCaml keywords).
 *)
 val parse_union_info :
-  Base_info.t structure ptr -> Binding_utils.Sources.t -> unit
+  Base_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
