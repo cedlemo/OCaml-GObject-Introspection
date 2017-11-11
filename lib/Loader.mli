@@ -100,7 +100,7 @@ val parse:
   ?enum_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?flags_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?function_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit) ->
-  ?struct_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
+  ?struct_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit) ->
   ?union_parser:(Base_info.t structure ptr -> Binding_utils.Sources.t -> unit) ->
   ?skip:string list ->
   unit ->
