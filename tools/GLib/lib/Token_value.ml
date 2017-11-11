@@ -15,4 +15,5 @@ let f_v_string = field t_typ "v_string" (string)
 let f_v_comment = field t_typ "v_comment" (string)
 let f_v_char = field t_typ "v_char" (uint8_t)
 let f_v_error = field t_typ "v_error" (uint32_t)
+let _ = seal t_typ
 
