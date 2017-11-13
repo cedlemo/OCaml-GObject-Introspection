@@ -38,8 +38,7 @@ let append_ctypes_union_fields_declarations union_name info sources skip_types =
       match Binding_utils.type_info_to_bindings_types type_info false with
       | Not_implemented tag_name ->
         let coms = Printf.sprintf "TODO Union field %s : %s tag not implemented" union_name tag_name in
-        File.buff_add_comments mli coms;
-        File.buff_add_comments ml coms;
+        Sources.buffs_add_comments sources coms;
         false
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         if Binding_utils.match_one_of ocaml_type skip_types then
