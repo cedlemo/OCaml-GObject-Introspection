@@ -43,8 +43,7 @@ let append_ctypes_struct_field_declarations struct_name info sources skip_types 
       match type_info_to_bindings_types type_info false with
       | Not_implemented tag_name ->
         let coms = Printf.sprintf "Struct field %s : %s tag not implemented" struct_name tag_name in
-        File.buff_add_comments mli coms;
-        File.buff_add_comments ml coms;
+        Sources.buffs_add_comments sources coms;
         false
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         if Binding_utils.match_one_of ocaml_type skip_types then
