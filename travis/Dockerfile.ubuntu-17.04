@@ -28,6 +28,12 @@ USER ocaml-gi
 
 COPY . /home/ocaml-gi/ocaml-gi
 
+ENV TRAVIS_TESTS=true
+ENV INSTALL=false
+ENV TESTS=true
+ENV PACKAGE=ocaml-gobject-introspection
+ENV OCAML_VERSION=4.05
+
 RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
 WORKDIR /home/ocaml-gi/ocaml-gi
 
