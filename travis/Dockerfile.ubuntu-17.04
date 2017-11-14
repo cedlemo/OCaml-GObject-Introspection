@@ -1,2 +1,35 @@
 FROM ubuntu:17.04
-CMD cat /etc/os-release
+
+RUN \
+  apt update && \
+  apt install -y \
+    sudo \
+    xvfb \
+    git \
+    wget \
+    gcc \
+    g++ \
+    make \
+    libssl-dev \
+    libreadline-dev \
+    gstreamer1.0-plugins-good \
+    gnumeric \
+    gnome-icon-theme \
+    dbus-x11
+
+RUN \
+  useradd --user-group --create-home ocaml-gi
+
+RUN \
+  echo "ocaml-gi ALL=(ALL:ALL) NOPASSWD:ALL" | \
+    EDITOR=tee visudo -f /etc/sudoers.d/ocaml-gi
+
+USER ocaml-gi
+
+COPY . /home/ocaml-gi/ocaml-gi
+
+RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
+WORKDIR /home/ocaml-gi/ocaml-gi
+
+RUN wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
+CMD bash -ex .travis-build-jbuilder.sh
