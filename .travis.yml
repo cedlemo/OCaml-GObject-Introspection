@@ -15,7 +15,7 @@ matrix:
 
 install:
   - docker build
-      -t ocaml-gi-${TYPE}
+      -t ocaml-gi/${TYPE}
       -f travis/Dockerfile.${TYPE}
       .
 
@@ -23,7 +23,7 @@ script:
   - docker run
       --interactive
       --tty
-      ocaml-gi-${TYPE}#
+      ocaml-gi/${TYPE}
 # sudo: required
 # install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
 # script: bash -ex .travis-build-jbuilder.sh
