@@ -32,4 +32,4 @@ RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
 WORKDIR /home/ocaml-gi/ocaml-gi
 
 RUN wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
-CMD bash -ex .travis-build-jbuilder.sh
+CMD bash -ex .travis-opam.sh
