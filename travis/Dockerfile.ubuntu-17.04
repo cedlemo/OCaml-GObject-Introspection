@@ -6,6 +6,8 @@ RUN \
     sudo \
     xvfb \
     git \
+    darcs \
+    mercurial \
     wget \
     gcc \
     g++ \
@@ -15,7 +17,13 @@ RUN \
     gstreamer1.0-plugins-good \
     gnumeric \
     gnome-icon-theme \
-    dbus-x11
+    dbus-x11 \
+    software-properties-common \
+    aspcud \
+    m4 \
+    unzip \
+    pkg-config \
+    libffi-dev
 
 RUN \
   useradd --user-group --create-home ocaml-gi
@@ -33,9 +41,13 @@ ENV INSTALL=false
 ENV TESTS=true
 ENV PACKAGE=ocaml-gobject-introspection
 ENV OCAML_VERSION=4.05
+ENV TRAVIS_OS_NAME=linux
 
 RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
 WORKDIR /home/ocaml-gi/ocaml-gi
-
-RUN wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
-CMD bash -ex .travis-opam.sh
+RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+RUN /usr/local/bin/opam init --comp 4.05.0
+RUN opam install ctypes configurator base stdio ctypes-foreign jbuilder odoc bisect_ppx
+RUN echo ". /home/ocaml-gi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true" > /home/ocaml-gi/ocaml-gi/runtest.sh
+RUN echo "jbuilder runtest" >> /home/ocaml-gi/ocaml-gi/runtest.sh
+CMD bash -ex /home/ocaml-gi/ocaml-gi/runtest.sh
