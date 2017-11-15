@@ -23,6 +23,8 @@ RUN \
     m4 \
     unzip \
     pkg-config \
+    libgirepository1.0-dev \
+    libffi6 \
     libffi-dev
 
 RUN \
