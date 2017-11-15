@@ -109,21 +109,20 @@ let tests =
     [
       "Repository get default" >:: test_get_default;
       "Repository require" >:: test_require;
-      (* Disable for compatibility with Travis
-       * "Repository get dependencies" >:: test_get_dependencies; *)
       (* Disable because there is only one instance of Repository and those
        * namespaces depends on the nampespaces loaded previously and can
        * interfers with previous test.
        * "Repository get loaded namespaces" >:: test_get_loaded_namespaces;*)
       "Repository get c prefix" >:: test_get_c_prefix;
       "Repository get version" >:: test_get_version;
-      "Repository get typelib path" >:: test_get_typelib_path;
+      (* Tests depend too much on system (ubuntu, arch, centos ...)
+        "Repository get typelib path" >:: test_get_typelib_path;
+        "Repository prepend search path" >:: test_prepend_search_path;
+        "Repository get dependencies" >:: test_get_dependencies;
+        "Repository get n infos" >:: test_get_n_infos *)
       "Repository enumerate versions" >:: test_enumerate_versions;
       "Repository get search path" >:: test_get_search_path;
-      "Repository prepend search path" >:: test_prepend_search_path;
       "Repository find by name" >:: test_find_by_name;
-      (* Disable for compatibility with Travis
-      "Repository get n infos" >:: test_get_n_infos *)
       "Repository get info out of bounds" >:: test_get_info_out_of_bounds;
       "Repository get info" >:: test_get_info;
       "Repository get shared library" >:: test_get_shared_library
