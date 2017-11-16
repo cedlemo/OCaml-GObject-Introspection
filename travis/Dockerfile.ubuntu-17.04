@@ -40,13 +40,6 @@ USER ocaml-gi
 
 COPY . /home/ocaml-gi/ocaml-gi
 
-ENV TRAVIS_TESTS=true
-ENV INSTALL=false
-ENV TESTS=true
-ENV PACKAGE=ocaml-gobject-introspection
-ENV OCAML_VERSION=4.05
-ENV TRAVIS_OS_NAME=linux
-
 RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
 WORKDIR /home/ocaml-gi/ocaml-gi
 RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
