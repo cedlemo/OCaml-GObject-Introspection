@@ -8,11 +8,11 @@ services:
 
 matrix:
   include:
-    - env: TYPE=ubuntu-16.04 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
-    - env: TYPE=ubuntu-17.04 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
-    - env: TYPE=debian-buster TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
-#    - env: TYPE=centos-6 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
-#    - env: TYPE=centos-7 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
+    - env: TYPE=ubuntu-16.04
+    - env: TYPE=ubuntu-17.04
+    - env: TYPE=debian-buster
+#    - env: TYPE=centos-6
+#    - env: TYPE=centos-7
 
 install:
   - docker build
@@ -25,16 +25,3 @@ script:
       --interactive
       --tty
       ocaml-gi/${TYPE}
-# sudo: required
-# install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
-# script: bash -ex .travis-build-jbuilder.sh
-# env:
-#         #  - INSTALL=false TESTS=true PACKAGE=ocaml-libmpdclient OCAML_VERSION=4.00
-#         #  - INSTALL=false TESTS=true PACKAGE=ocaml-libmpdclient OCAML_VERSION=4.01
-#         #  - INSTALL=false TESTS=true PACKAGE=ocaml-libmpdclient OCAML_VERSION=4.02
-#         #  - INSTALL=false TESTS=true PACKAGE=ocaml-libmpdclient OCAML_VERSION=4.03
-#         #  - INSTALL=false TESTS=true PACKAGE=ocaml-libmpdclient OCAML_VERSION=4.04
-#   - TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
-# os:
-#   - linux
-#     #  - osx
