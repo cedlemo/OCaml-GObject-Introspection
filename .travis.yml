@@ -10,6 +10,7 @@ matrix:
   include:
     - env: TYPE=ubuntu-16.04 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
     - env: TYPE=ubuntu-17.04 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
+    - env: TYPE=debian-buster TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
 #    - env: TYPE=centos-6 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
 #    - env: TYPE=centos-7 TRAVIS_TESTS=true INSTALL=false TESTS=true PACKAGE=ocaml-gobject-introspection OCAML_VERSION=4.05
 
