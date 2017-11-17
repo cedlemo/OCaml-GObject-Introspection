@@ -11,7 +11,7 @@ matrix:
     - env: TYPE=ubuntu-16.04
     - env: TYPE=ubuntu-17.04
     - env: TYPE=debian-buster
-#    - env: TYPE=centos-6
+    - env: TYPE=centos-6
     - env: TYPE=centos-7
 
 install:
