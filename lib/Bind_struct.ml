@@ -47,8 +47,8 @@ let append_ctypes_struct_field_declarations struct_name info sources skip_types 
         false
       | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
         if Binding_utils.match_one_of ocaml_type skip_types then
-          let com = Printf.sprintf "field type %s" ocaml_type in
-          Sources.buffs_add_skipped sources com;
+          let coms = Printf.sprintf "field type %s" ocaml_type in
+          Sources.buffs_add_skipped sources coms;
           false
         else
           let (ocaml_type', ctypes_typ') = handle_recursive_structure struct_name (ocaml_type, ctypes_typ) in
