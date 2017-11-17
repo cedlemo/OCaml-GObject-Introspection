@@ -17,9 +17,6 @@ menu,nav,output,ruby,section,summary,time,mark,audio,video
 
 table { border-collapse: collapse; border-spacing: 0; }
 *,  *:before,  *:after { box-sizing: border-box; }
-span.module-path {
-  color: #555;
-  }
 
 body
 { font-family: Helvetica, "DejaVu Sans", Arial, sans-serif;
@@ -31,7 +28,7 @@ body
   max-width: 78ex;
   padding: 1.25rem;
   margin-left: 3.75rem;
-  color: #555; background: #FFF; }
+  color: #222; background: #FAFAFA; }
 
 /* Basic markup elements */
 
@@ -60,13 +57,12 @@ li > *:first-child { margin-top: 0 }
 
 /* Links and anchors */
 
-a { text-decoration:none; color:#4D62B8; }
+a { text-decoration:none; color:#2C5CBD; }
 a:hover { box-shadow:0 1px 0 0 #2C5CBD; }
 *:target /* Linked highlight */
 { background-color: #FFF8E5;
   box-shadow: 0 0 0 2px #FFF8E5, 0 0 0 3px #DDD; }
 
-.spec { padding-right: 8px; border-right: 3px solid #888; }
 .spec:hover > a.anchor, /* FIXME remove */
 .anchored:hover a.anchor { visibility: visible; }
 
@@ -74,11 +70,11 @@ a.anchor:before { content: "#" }
 a.anchor:hover {  box-shadow: none; text-decoration: underline }
 a.anchor
 { visibility: hidden; position: absolute; /* top: 0px; */
-  margin-left: -2ex;
+  margin-left: -3ex;
   font-weight: normal;
   font-style: normal;
   padding-right: 1ex; padding-left: 1ex; /* To remain selectable */
-  color: rgb(77,98,184); }
+  color: #AAA; }
 
 .xref-unresolved { box-shadow:0 1px 0 0 red }
 
@@ -122,13 +118,14 @@ h3 tt, h3 code { font-size: 1rem }
 
 /* Code lexemes */
 
-.keyword { font-weight: bold; color: #FABD2F}
+.keyword { font-weight: bold; }
 
 /* Module member specification */
 
 div.def { margin-top: 0rem; text-indent: -2ex; padding-left: 2ex; }
 div.def + div.doc { margin-left: 1ex; margin-top: 0.15625rem }
 div.doc > *:first-child { margin-top: 0rem; }
+
 /* Collapsible inlined include and module */
 
 details
