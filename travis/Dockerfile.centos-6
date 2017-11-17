@@ -34,6 +34,8 @@ RUN \
     gtksourceview3 \
     dbus-x11 \
     wget \
+    libffi \
+    libffi-devel \
     patch
 
 
