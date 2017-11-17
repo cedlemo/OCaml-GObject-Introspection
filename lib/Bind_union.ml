@@ -79,8 +79,5 @@ let parse_union_info info sources skip =
     let info' = Union_info.from_baseinfo info in
     append_ctypes_union_declaration name sources;
     append_ctypes_union_fields_declarations name info' sources skip;
-    let mli = Sources.mli sources in
-    let ml = Sources.ml sources in
-    File.buff_add_eol mli;
-    File.buff_add_eol ml;
+    Sources.buffs_add_eol sources;
     Sources.write_buffs sources
