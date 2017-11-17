@@ -125,13 +125,13 @@ let append_flags_list_of_value_fn enum_name ocaml_type values_and_variants sourc
   File.bprintf ml "let list_of_value v =\nlet open %s in\n" constant_type;
   File.bprintf ml "let all_flags = [%s]\n" (String.concat "; " (List.map (fun (x,v) ->
     String.concat " " ["("; negative_int_in_parentheses x; ","; v; ")"]) values_and_variants));
-    File.bprintf ml "in\n\
+    File.buff_add_line ml "in\n\
                            let rec build_flags_list allf acc =\n\
                              match allf with\n\
                              | [] -> acc\n\
                              | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)\n\
                              else build_flags_list q acc\n\
-                           in build_flags_list all_flags []\n%!"
+                           in build_flags_list all_flags []"
 (* TODO: factorize, there is no need to rewrite each time build_flags_list. It
  * can be added once in core.ml of the lib. *)
 
