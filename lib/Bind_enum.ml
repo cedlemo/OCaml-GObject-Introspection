@@ -81,8 +81,9 @@ let append_ctypes_enum_bindings enum_name info sources =
   let ml = Sources.ml sources in
   let tag = Enum_info.get_storage_type info in
   match type_tag_to_bindings_types tag with
-  | Not_implemented tag_name -> File.bprintf mli "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name;
-    File.bprintf ml "(* TODO enum %s : %s tag not implemented *)" enum_name tag_name
+  | Not_implemented tag_name ->
+      let coms = Printf.sprintf "TODO enum %s : %s tag not implemented" enum_name tag_name in
+      Sources.buffs_add_comments sources coms
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
     let values_and_variants = get_values_and_variants info in
     append_enum_type values_and_variants mli;
@@ -149,10 +150,9 @@ let append_ctypes_flags_bindings enum_name info sources =
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in  let tag = Enum_info.get_storage_type info in
   match Binding_utils.type_tag_to_bindings_types tag with
-  | Not_implemented tag_name -> (
-      File.bprintf mli "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name;
-      File.bprintf ml "(* TODO flags %s : %s tag not implemented *)\n" enum_name tag_name
-    )
+  | Not_implemented tag_name ->
+      let coms = Printf.sprintf "TODO flags %s : %s tag not implemented *)\n" enum_name tag_name in
+      Sources.buffs_add_comments sources coms
   | Types {ocaml = ocaml_type; ctypes = ctypes_typ } ->
     let values_and_variants = get_values_and_variants info in
     append_flags_types values_and_variants mli;
