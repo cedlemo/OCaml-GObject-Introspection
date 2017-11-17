@@ -20,9 +20,9 @@ let append_ctypes_struct_declaration name sources =
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
-  File.bprintf mli "type t\n%!";
-  File.bprintf mli "val t_typ : t structure typ\n%!";
-  File.bprintf ml "type t\n%!";
+  File.buff_add_line mli "type t";
+  File.buff_add_line mli "val t_typ : t structure typ";
+  File.buff_add_line ml "type t";
   File.bprintf ml "let t_typ : t structure typ = structure \"%s\"\n" name
 
 let handle_recursive_structure structure_name (ocaml_type, ctypes_typ) =
@@ -81,7 +81,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources skip_types =
   done
 
 let append_ctypes_struct_seal file =
-  Binding_utils.File.bprintf file "let _ = seal t_typ\n%!"
+  Binding_utils.File.buff_add_line file "let _ = seal t_typ\n"
 
 let parse_struct_info info sources skip_types =
   let open Binding_utils in
