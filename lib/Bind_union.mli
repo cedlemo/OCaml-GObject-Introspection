@@ -28,9 +28,6 @@ val append_ctypes_union_declaration:
 val append_ctypes_union_fields_declarations:
   string -> Union_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
 
-val append_ctypes_union_seal:
-  Binding_utils.File.t -> unit
-
 (** Use Union_info in order to generate Ctypes bindings.
   - For each union, a module is created in a Union_name.mli file and a Union_name.ml file.
   - the OCaml type is named `Union_name.t`
