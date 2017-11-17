@@ -80,9 +80,6 @@ let append_ctypes_struct_methods_bindings struct_name info sources skip_types =
         Bind_function.append_ctypes_method_bindings name method_info struct_name sources skip_types
   done
 
-let append_ctypes_struct_seal file =
-  Binding_utils.File.buff_add_line file "let _ = seal t_typ\n"
-
 let parse_struct_info info sources skip_types =
   let open Binding_utils in
   match get_binding_name info with

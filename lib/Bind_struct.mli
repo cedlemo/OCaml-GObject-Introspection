@@ -31,9 +31,6 @@ val append_ctypes_struct_field_declarations:
 (* val append_ctypes_struct_methods_bindings:
   string -> Struct_info.t structure ptr -> (Pervasives.out_channel * Pervasives.out_channel) -> unit
 *)
-val append_ctypes_struct_seal:
-  Binding_utils.File.t -> unit
-
 (** Use GIStructureInfo in order to generate Ctypes bindings.
   - For each structure, a module is created in a Structure_name.mli file and a Structure_name.ml file.
   - the OCaml type is named `Structure_name.t`
