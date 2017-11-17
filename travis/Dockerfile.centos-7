@@ -33,7 +33,8 @@ RUN \
     clutter-gtk \
     gtksourceview3 \
     dbus-x11 \
-    wget
+    wget \
+    patch
 
 
 RUN \
