@@ -62,11 +62,6 @@ let append_ctypes_union_fields_declarations union_name info sources skip_types =
     )
   in
   if iterate_over_field 0 0 > 0 then File.buff_add_line ml "let _ = seal t_typ"
-(*  let n = Union_info.get_n_fields info in
-  for i = 0 to n - 1 do
-    let field_info = Union_info.get_field info i in
-    append_ctypes_union_field_declarations field_info
-  done *)
 
 let append_ctypes_union_seal file =
   Binding_utils.File.buff_add_line file "let _ = seal t_typ"
