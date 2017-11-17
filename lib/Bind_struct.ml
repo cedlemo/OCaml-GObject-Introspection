@@ -91,8 +91,5 @@ let parse_struct_info info sources skip_types =
     append_ctypes_struct_declaration name sources;
     append_ctypes_struct_field_declarations name info' sources skip_types;
     append_ctypes_struct_methods_bindings name info' sources skip_types;
-    let mli = Sources.mli sources in
-    let ml = Sources.ml sources in
-    File.buff_add_eol mli;
-    File.buff_add_eol ml;
+    Sources.buffs_add_eol sources;
     Sources.write_buffs sources
