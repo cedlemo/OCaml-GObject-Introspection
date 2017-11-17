@@ -90,8 +90,7 @@ let append_ctypes_enum_bindings enum_name info sources =
     append_enum_of_value_fn enum_name ocaml_type values_and_variants sources;
     append_enum_to_value_fn enum_name ocaml_type values_and_variants sources;
     append_enum_view ctypes_typ sources;
-    File.buff_add_eol mli;
-    File.buff_add_eol ml
+    Sources.buffs_add_eol sources
 
 let append_flags_types values_and_variants file =
   let open Binding_utils in
@@ -163,8 +162,7 @@ let append_ctypes_flags_bindings enum_name info sources =
     append_flags_list_of_value_fn enum_name ocaml_type values_and_variants sources;
     append_flags_list_to_value_fn enum_name ocaml_type sources;
     append_flags_view ctypes_typ sources;
-    File.buff_add_eol mli;
-    File.buff_add_eol ml
+    Sources.buffs_add_eol sources
 
 let parse_enum_info info sources =
   match Binding_utils.get_binding_name info with
