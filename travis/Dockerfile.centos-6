@@ -7,7 +7,7 @@ RUN \
     sudo \
     gtk+-devel \
     glib-devel \
-    gobject-introspection-devel \
+    gobject-introspection \
     xorg-x11-server-Xvfb \
     which \
     git \
