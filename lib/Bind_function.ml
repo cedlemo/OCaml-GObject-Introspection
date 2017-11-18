@@ -196,7 +196,7 @@ let get_method_arguments_types callable container skip_types =
    in
    let arg_types_list =
      if Callable_info.is_method callable then [("t structure ptr", "ptr t_typ")]
-     else [("unit", "void")] in
+     else [] in
    parse_args 0 arg_types_list
 
 let get_method_return_types callable container skip_types =
@@ -226,14 +226,16 @@ let append_ctypes_method_bindings raw_name info container sources skip_types =
     Sources.buffs_add_comments sources coms
   | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
     Sources.buffs_add_skipped sources coms
-  | Type_names args -> match get_method_return_types callable container skip_types with
-    | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
-      Sources.buffs_add_comments sources coms
-    | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
-      Sources.buffs_add_skipped sources coms
-    | Type_names ret_types ->
-      generate_callable_bindings callable name symbol args ret_types sources;
-      Sources.buffs_add_eol sources
+  | Type_names args ->
+      let args' = match args with | [] -> [("unit", "void")] | _ -> args in
+      match get_method_return_types callable container skip_types with
+      | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
+        Sources.buffs_add_comments sources coms
+      | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
+        Sources.buffs_add_skipped sources coms
+      | Type_names ret_types ->
+        generate_callable_bindings callable name symbol args' ret_types sources;
+        Sources.buffs_add_eol sources
 
 let parse_function_info info sources skip_types =
   match Base_info.get_name info with
