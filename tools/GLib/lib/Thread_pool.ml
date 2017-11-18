@@ -55,21 +55,21 @@ let unprocessed =
   foreign "g_thread_pool_unprocessed" (ptr t_typ @-> returning (uint32_t))
 
 let get_max_idle_time =
-  foreign "g_thread_pool_get_max_idle_time" (ptr t_typ @-> returning (uint32_t))
+  foreign "g_thread_pool_get_max_idle_time" (void @-> returning (uint32_t))
 
 let get_max_unused_threads =
-  foreign "g_thread_pool_get_max_unused_threads" (ptr t_typ @-> returning (int32_t))
+  foreign "g_thread_pool_get_max_unused_threads" (void @-> returning (int32_t))
 
 let get_num_unused_threads =
-  foreign "g_thread_pool_get_num_unused_threads" (ptr t_typ @-> returning (uint32_t))
+  foreign "g_thread_pool_get_num_unused_threads" (void @-> returning (uint32_t))
 
 let set_max_idle_time =
-  foreign "g_thread_pool_set_max_idle_time" (ptr t_typ @-> uint32_t @-> returning (void))
+  foreign "g_thread_pool_set_max_idle_time" (void @-> uint32_t @-> returning (void))
 
 let set_max_unused_threads =
-  foreign "g_thread_pool_set_max_unused_threads" (ptr t_typ @-> int32_t @-> returning (void))
+  foreign "g_thread_pool_set_max_unused_threads" (void @-> int32_t @-> returning (void))
 
 let stop_unused_threads =
-  foreign "g_thread_pool_stop_unused_threads" (ptr t_typ @-> returning (void))
+  foreign "g_thread_pool_stop_unused_threads" (void @-> returning (void))
 
 

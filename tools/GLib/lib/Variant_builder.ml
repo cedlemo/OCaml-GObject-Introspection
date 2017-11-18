@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Variant_builder"
 let _new =
-  foreign "g_variant_builder_new" (ptr t_typ @-> ptr Variant_type.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_builder_new" (void @-> ptr Variant_type.t_typ @-> returning (ptr t_typ))
 
 let add_value =
   foreign "g_variant_builder_add_value" (ptr t_typ @-> ptr Variant.t_typ @-> returning (void))

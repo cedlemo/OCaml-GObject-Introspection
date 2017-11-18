@@ -11,13 +11,13 @@ let f_month = field t_typ "month" (uint32_t)
 let f_year = field t_typ "year" (uint32_t)
 let _ = seal t_typ
 let _new =
-  foreign "g_date_new" (ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_date_new" (void @-> returning (ptr t_typ))
 
 let new_dmy =
-  foreign "g_date_new_dmy" (ptr t_typ @-> uint8_t @-> Date_month.t_view @-> uint16_t @-> returning (ptr t_typ))
+  foreign "g_date_new_dmy" (void @-> uint8_t @-> Date_month.t_view @-> uint16_t @-> returning (ptr t_typ))
 
 let new_julian =
-  foreign "g_date_new_julian" (ptr t_typ @-> uint32_t @-> returning (ptr t_typ))
+  foreign "g_date_new_julian" (void @-> uint32_t @-> returning (ptr t_typ))
 
 let add_days =
   foreign "g_date_add_days" (ptr t_typ @-> uint32_t @-> returning (void))
@@ -122,36 +122,36 @@ let valid =
   foreign "g_date_valid" (ptr t_typ @-> returning (bool))
 
 let get_days_in_month =
-  foreign "g_date_get_days_in_month" (ptr t_typ @-> Date_month.t_view @-> uint16_t @-> returning (uint8_t))
+  foreign "g_date_get_days_in_month" (void @-> Date_month.t_view @-> uint16_t @-> returning (uint8_t))
 
 let get_monday_weeks_in_year =
-  foreign "g_date_get_monday_weeks_in_year" (ptr t_typ @-> uint16_t @-> returning (uint8_t))
+  foreign "g_date_get_monday_weeks_in_year" (void @-> uint16_t @-> returning (uint8_t))
 
 let get_sunday_weeks_in_year =
-  foreign "g_date_get_sunday_weeks_in_year" (ptr t_typ @-> uint16_t @-> returning (uint8_t))
+  foreign "g_date_get_sunday_weeks_in_year" (void @-> uint16_t @-> returning (uint8_t))
 
 let is_leap_year =
-  foreign "g_date_is_leap_year" (ptr t_typ @-> uint16_t @-> returning (bool))
+  foreign "g_date_is_leap_year" (void @-> uint16_t @-> returning (bool))
 
 let strftime =
-  foreign "g_date_strftime" (ptr t_typ @-> string @-> uint64_t @-> string @-> ptr t_typ @-> returning (uint64_t))
+  foreign "g_date_strftime" (void @-> string @-> uint64_t @-> string @-> ptr t_typ @-> returning (uint64_t))
 
 let valid_day =
-  foreign "g_date_valid_day" (ptr t_typ @-> uint8_t @-> returning (bool))
+  foreign "g_date_valid_day" (void @-> uint8_t @-> returning (bool))
 
 let valid_dmy =
-  foreign "g_date_valid_dmy" (ptr t_typ @-> uint8_t @-> Date_month.t_view @-> uint16_t @-> returning (bool))
+  foreign "g_date_valid_dmy" (void @-> uint8_t @-> Date_month.t_view @-> uint16_t @-> returning (bool))
 
 let valid_julian =
-  foreign "g_date_valid_julian" (ptr t_typ @-> uint32_t @-> returning (bool))
+  foreign "g_date_valid_julian" (void @-> uint32_t @-> returning (bool))
 
 let valid_month =
-  foreign "g_date_valid_month" (ptr t_typ @-> Date_month.t_view @-> returning (bool))
+  foreign "g_date_valid_month" (void @-> Date_month.t_view @-> returning (bool))
 
 let valid_weekday =
-  foreign "g_date_valid_weekday" (ptr t_typ @-> Date_weekday.t_view @-> returning (bool))
+  foreign "g_date_valid_weekday" (void @-> Date_weekday.t_view @-> returning (bool))
 
 let valid_year =
-  foreign "g_date_valid_year" (ptr t_typ @-> uint16_t @-> returning (bool))
+  foreign "g_date_valid_year" (void @-> uint16_t @-> returning (bool))
 
 

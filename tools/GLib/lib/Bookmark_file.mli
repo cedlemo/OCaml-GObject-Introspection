@@ -105,6 +105,6 @@ val to_file:
   t structure ptr -> string -> (bool, Error.t structure ptr option) result
 
 val error_quark:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 

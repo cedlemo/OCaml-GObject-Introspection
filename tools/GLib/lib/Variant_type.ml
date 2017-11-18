@@ -4,16 +4,16 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Variant_type"
 let _new =
-  foreign "g_variant_type_new" (ptr t_typ @-> string @-> returning (ptr t_typ))
+  foreign "g_variant_type_new" (void @-> string @-> returning (ptr t_typ))
 
 let new_array =
-  foreign "g_variant_type_new_array" (ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_type_new_array" (void @-> ptr t_typ @-> returning (ptr t_typ))
 
 let new_dict_entry =
-  foreign "g_variant_type_new_dict_entry" (ptr t_typ @-> ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_type_new_dict_entry" (void @-> ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
 
 let new_maybe =
-  foreign "g_variant_type_new_maybe" (ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_type_new_maybe" (void @-> ptr t_typ @-> returning (ptr t_typ))
 
 (*Not implemented g_variant_type_new_tuple argument typeC Array type for Types.Array tag not handled*)
 let copy =
@@ -80,10 +80,10 @@ let value =
   foreign "g_variant_type_value" (ptr t_typ @-> returning (ptr t_typ))
 
 let checked_ =
-  foreign "g_variant_type_checked_" (ptr t_typ @-> string @-> returning (ptr t_typ))
+  foreign "g_variant_type_checked_" (void @-> string @-> returning (ptr t_typ))
 
 let string_is_valid =
-  foreign "g_variant_type_string_is_valid" (ptr t_typ @-> string @-> returning (bool))
+  foreign "g_variant_type_string_is_valid" (void @-> string @-> returning (bool))
 
 (*Not implemented g_variant_type_string_scan argument typeArg_info.InOut or Arg_info.Out not handled*)
 

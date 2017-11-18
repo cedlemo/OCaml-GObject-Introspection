@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Variant_dict"
 let _new =
-  foreign "g_variant_dict_new" (ptr t_typ @-> ptr_opt Variant.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_dict_new" (void @-> ptr_opt Variant.t_typ @-> returning (ptr t_typ))
 
 let clear =
   foreign "g_variant_dict_clear" (ptr t_typ @-> returning (void))

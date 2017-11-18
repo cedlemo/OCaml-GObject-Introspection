@@ -4,13 +4,13 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Time_zone"
 let _new =
-  foreign "g_time_zone_new" (ptr t_typ @-> string_opt @-> returning (ptr t_typ))
+  foreign "g_time_zone_new" (void @-> string_opt @-> returning (ptr t_typ))
 
 let new_local =
-  foreign "g_time_zone_new_local" (ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_time_zone_new_local" (void @-> returning (ptr t_typ))
 
 let new_utc =
-  foreign "g_time_zone_new_utc" (ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_time_zone_new_utc" (void @-> returning (ptr t_typ))
 
 let adjust_time =
   foreign "g_time_zone_adjust_time" (ptr t_typ @-> Time_type.t_view @-> ptr int64_t @-> returning (int32_t))

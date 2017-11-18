@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  t structure ptr -> Variant_type.t structure ptr -> t structure ptr
+  unit -> Variant_type.t structure ptr -> t structure ptr
 
 val add_value:
   t structure ptr -> Variant.t structure ptr -> unit

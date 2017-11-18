@@ -8,7 +8,7 @@ let f_code = field t_typ "code" (int32_t)
 let f_message = field t_typ "message" (string)
 let _ = seal t_typ
 let new_literal =
-  foreign "g_error_new_literal" (ptr t_typ @-> uint32_t @-> int32_t @-> string @-> returning (ptr t_typ))
+  foreign "g_error_new_literal" (void @-> uint32_t @-> int32_t @-> string @-> returning (ptr t_typ))
 
 let copy =
   foreign "g_error_copy" (ptr t_typ @-> returning (ptr t_typ))

@@ -340,6 +340,6 @@ in
 Error (err_ptr)
 
 let error_quark =
-  foreign "g_bookmark_file_error_quark" (ptr t_typ @-> returning (uint32_t))
+  foreign "g_bookmark_file_error_quark" (void @-> returning (uint32_t))
 
 

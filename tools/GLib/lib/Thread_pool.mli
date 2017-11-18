@@ -27,21 +27,21 @@ val unprocessed:
   t structure ptr -> Unsigned.uint32
 
 val get_max_idle_time:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 val get_max_unused_threads:
-  t structure ptr -> int32
+  unit -> int32
 
 val get_num_unused_threads:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 val set_max_idle_time:
-  t structure ptr -> Unsigned.uint32 -> unit
+  unit -> Unsigned.uint32 -> unit
 
 val set_max_unused_threads:
-  t structure ptr -> int32 -> unit
+  unit -> int32 -> unit
 
 val stop_unused_threads:
-  t structure ptr -> unit
+  unit -> unit
 
 

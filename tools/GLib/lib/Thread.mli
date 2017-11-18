@@ -12,15 +12,15 @@ val unref:
   t structure ptr -> unit
 
 val error_quark:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 val exit:
-  t structure ptr -> unit ptr option -> unit
+  unit -> unit ptr option -> unit
 
 val self:
-  t structure ptr -> t structure ptr
+  unit -> t structure ptr
 
 val yield:
-  t structure ptr -> unit
+  unit -> unit
 
 

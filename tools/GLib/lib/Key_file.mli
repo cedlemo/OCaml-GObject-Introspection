@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  t structure ptr -> t structure ptr
+  unit -> t structure ptr
 
 val get_boolean:
   t structure ptr -> string -> string -> (bool, Error.t structure ptr option) result
@@ -106,6 +106,6 @@ val unref:
   t structure ptr -> unit
 
 val error_quark:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 

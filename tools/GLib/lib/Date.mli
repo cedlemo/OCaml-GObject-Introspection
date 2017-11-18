@@ -9,13 +9,13 @@ val f_day: (Unsigned.uint32, t structure) field
 val f_month: (Unsigned.uint32, t structure) field
 val f_year: (Unsigned.uint32, t structure) field
 val _new:
-  t structure ptr -> t structure ptr
+  unit -> t structure ptr
 
 val new_dmy:
-  t structure ptr -> Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> t structure ptr
+  unit -> Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> t structure ptr
 
 val new_julian:
-  t structure ptr -> Unsigned.uint32 -> t structure ptr
+  unit -> Unsigned.uint32 -> t structure ptr
 
 val add_days:
   t structure ptr -> Unsigned.uint32 -> unit
@@ -120,36 +120,36 @@ val valid:
   t structure ptr -> bool
 
 val get_days_in_month:
-  t structure ptr -> Date_month.t -> Unsigned.uint16 -> Unsigned.uint8
+  unit -> Date_month.t -> Unsigned.uint16 -> Unsigned.uint8
 
 val get_monday_weeks_in_year:
-  t structure ptr -> Unsigned.uint16 -> Unsigned.uint8
+  unit -> Unsigned.uint16 -> Unsigned.uint8
 
 val get_sunday_weeks_in_year:
-  t structure ptr -> Unsigned.uint16 -> Unsigned.uint8
+  unit -> Unsigned.uint16 -> Unsigned.uint8
 
 val is_leap_year:
-  t structure ptr -> Unsigned.uint16 -> bool
+  unit -> Unsigned.uint16 -> bool
 
 val strftime:
-  t structure ptr -> string -> Unsigned.uint64 -> string -> t structure ptr -> Unsigned.uint64
+  unit -> string -> Unsigned.uint64 -> string -> t structure ptr -> Unsigned.uint64
 
 val valid_day:
-  t structure ptr -> Unsigned.uint8 -> bool
+  unit -> Unsigned.uint8 -> bool
 
 val valid_dmy:
-  t structure ptr -> Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> bool
+  unit -> Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> bool
 
 val valid_julian:
-  t structure ptr -> Unsigned.uint32 -> bool
+  unit -> Unsigned.uint32 -> bool
 
 val valid_month:
-  t structure ptr -> Date_month.t -> bool
+  unit -> Date_month.t -> bool
 
 val valid_weekday:
-  t structure ptr -> Date_weekday.t -> bool
+  unit -> Date_weekday.t -> bool
 
 val valid_year:
-  t structure ptr -> Unsigned.uint16 -> bool
+  unit -> Unsigned.uint16 -> bool
 
 

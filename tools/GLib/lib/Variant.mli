@@ -4,62 +4,62 @@ type t
 val t_typ : t structure typ
 (*Not implemented g_variant_new_array argument typeC Array type for Types.Array tag not handled*)
 val new_boolean:
-  t structure ptr -> bool -> t structure ptr
+  unit -> bool -> t structure ptr
 
 val new_byte:
-  t structure ptr -> Unsigned.uint8 -> t structure ptr
+  unit -> Unsigned.uint8 -> t structure ptr
 
 (*Not implemented g_variant_new_bytestring argument typeC Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_new_bytestring_array argument typeC Array type for Types.Array tag not handled*)
 val new_dict_entry:
-  t structure ptr -> t structure ptr -> t structure ptr -> t structure ptr
+  unit -> t structure ptr -> t structure ptr -> t structure ptr
 
 val new_double:
-  t structure ptr -> float -> t structure ptr
+  unit -> float -> t structure ptr
 
 val new_fixed_array:
-  t structure ptr -> Variant_type.t structure ptr -> unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> t structure ptr
+  unit -> Variant_type.t structure ptr -> unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> t structure ptr
 
 (*SKIPPED : g_variant_new_from_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_variant_new_from_data argument typeC Array type for Types.Array tag not handled*)
 val new_handle:
-  t structure ptr -> int32 -> t structure ptr
+  unit -> int32 -> t structure ptr
 
 val new_int16:
-  t structure ptr -> int -> t structure ptr
+  unit -> int -> t structure ptr
 
 val new_int32:
-  t structure ptr -> int32 -> t structure ptr
+  unit -> int32 -> t structure ptr
 
 val new_int64:
-  t structure ptr -> int64 -> t structure ptr
+  unit -> int64 -> t structure ptr
 
 val new_maybe:
-  t structure ptr -> Variant_type.t structure ptr option -> t structure ptr option -> t structure ptr
+  unit -> Variant_type.t structure ptr option -> t structure ptr option -> t structure ptr
 
 val new_object_path:
-  t structure ptr -> string -> t structure ptr
+  unit -> string -> t structure ptr
 
 (*Not implemented g_variant_new_objv argument typeC Array type for Types.Array tag not handled*)
 val new_signature:
-  t structure ptr -> string -> t structure ptr
+  unit -> string -> t structure ptr
 
 val new_string:
-  t structure ptr -> string -> t structure ptr
+  unit -> string -> t structure ptr
 
 (*Not implemented g_variant_new_strv argument typeC Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_new_tuple argument typeC Array type for Types.Array tag not handled*)
 val new_uint16:
-  t structure ptr -> Unsigned.uint16 -> t structure ptr
+  unit -> Unsigned.uint16 -> t structure ptr
 
 val new_uint32:
-  t structure ptr -> Unsigned.uint32 -> t structure ptr
+  unit -> Unsigned.uint32 -> t structure ptr
 
 val new_uint64:
-  t structure ptr -> Unsigned.uint64 -> t structure ptr
+  unit -> Unsigned.uint64 -> t structure ptr
 
 val new_variant:
-  t structure ptr -> t structure ptr -> t structure ptr
+  unit -> t structure ptr -> t structure ptr
 
 val byteswap:
   t structure ptr -> t structure ptr
@@ -181,21 +181,21 @@ val unref:
   t structure ptr -> unit
 
 val is_object_path:
-  t structure ptr -> string -> bool
+  unit -> string -> bool
 
 val is_signature:
-  t structure ptr -> string -> bool
+  unit -> string -> bool
 
 val parse:
-  t structure ptr -> Variant_type.t structure ptr option -> string -> string option -> string option -> (t structure ptr, Error.t structure ptr option) result
+  unit -> Variant_type.t structure ptr option -> string -> string option -> string option -> (t structure ptr, Error.t structure ptr option) result
 
 val parse_error_print_context:
-  t structure ptr -> Error.t structure ptr -> string -> string
+  unit -> Error.t structure ptr -> string -> string
 
 val parse_error_quark:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 val parser_get_error_quark:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 

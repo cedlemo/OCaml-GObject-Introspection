@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Key_file"
 let _new =
-  foreign "g_key_file_new" (ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_key_file_new" (void @-> returning (ptr t_typ))
 
 let get_boolean arg1 arg2 arg3 =
 let get_boolean_raw =
@@ -315,6 +315,6 @@ let unref =
   foreign "g_key_file_unref" (ptr t_typ @-> returning (void))
 
 let error_quark =
-  foreign "g_key_file_error_quark" (ptr t_typ @-> returning (uint32_t))
+  foreign "g_key_file_error_quark" (void @-> returning (uint32_t))
 
 

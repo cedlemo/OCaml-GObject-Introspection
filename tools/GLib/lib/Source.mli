@@ -16,7 +16,7 @@ val f_next: (t structure ptr, t structure) field
 val f_name: (string, t structure) field
 val f_priv: (Source_private.t structure ptr, t structure) field
 val _new:
-  t structure ptr -> Source_funcs.t structure ptr -> Unsigned.uint32 -> t structure ptr
+  unit -> Source_funcs.t structure ptr -> Unsigned.uint32 -> t structure ptr
 
 val add_child_source:
   t structure ptr -> t structure ptr -> unit
@@ -97,15 +97,15 @@ val unref:
   t structure ptr -> unit
 
 val remove:
-  t structure ptr -> Unsigned.uint32 -> bool
+  unit -> Unsigned.uint32 -> bool
 
 val remove_by_funcs_user_data:
-  t structure ptr -> Source_funcs.t structure ptr -> unit ptr option -> bool
+  unit -> Source_funcs.t structure ptr -> unit ptr option -> bool
 
 val remove_by_user_data:
-  t structure ptr -> unit ptr option -> bool
+  unit -> unit ptr option -> bool
 
 val set_name_by_id:
-  t structure ptr -> Unsigned.uint32 -> string -> unit
+  unit -> Unsigned.uint32 -> string -> unit
 
 

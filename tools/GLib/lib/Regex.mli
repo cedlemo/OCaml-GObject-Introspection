@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  t structure ptr -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> (t structure ptr option, Error.t structure ptr option) result
+  unit -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> (t structure ptr option, Error.t structure ptr option) result
 
 val get_capture_count:
   t structure ptr -> int32
@@ -45,14 +45,14 @@ val unref:
 
 (*Not implemented g_regex_check_replacement argument typeArg_info.InOut or Arg_info.Out not handled*)
 val error_quark:
-  t structure ptr -> Unsigned.uint32
+  unit -> Unsigned.uint32
 
 val escape_nul:
-  t structure ptr -> string -> int32 -> string
+  unit -> string -> int32 -> string
 
 (*Not implemented g_regex_escape_string argument typeC Array type for Types.Array tag not handled*)
 val match_simple:
-  t structure ptr -> string -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> bool
+  unit -> string -> string -> Regex_compile_flags.t_list -> Regex_match_flags.t_list -> bool
 
 (*Not implemented g_regex_split_simple return type C Array type for Types.Array tag not handled*)
 

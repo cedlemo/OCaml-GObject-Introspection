@@ -3,13 +3,13 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  t structure ptr -> string option -> t structure ptr
+  unit -> string option -> t structure ptr
 
 val new_local:
-  t structure ptr -> t structure ptr
+  unit -> t structure ptr
 
 val new_utc:
-  t structure ptr -> t structure ptr
+  unit -> t structure ptr
 
 val adjust_time:
   t structure ptr -> Time_type.t -> int64 ptr -> int32

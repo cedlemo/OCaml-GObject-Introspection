@@ -14,7 +14,7 @@ let rewind =
 
 let make_tmp arg1 arg2 =
 let make_tmp_raw =
-  foreign "g_dir_make_tmp" (ptr t_typ @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+  foreign "g_dir_make_tmp" (void @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = make_tmp_raw arg1 arg2 (Some err_ptr_ptr)

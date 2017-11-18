@@ -26,7 +26,7 @@ let f_reserved2 = field t_typ "reserved2" (ptr void)
 let _ = seal t_typ
 let new_file arg1 arg2 arg3 =
 let new_file_raw =
-  foreign "g_io_channel_new_file" (ptr t_typ @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
+  foreign "g_io_channel_new_file" (void @-> string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
 let value = new_file_raw arg1 arg2 arg3 (Some err_ptr_ptr)
@@ -41,7 +41,7 @@ in
 Error (err_ptr)
 
 let unix_new =
-  foreign "g_io_channel_unix_new" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
+  foreign "g_io_channel_unix_new" (void @-> int32_t @-> returning (ptr t_typ))
 
 let close =
   foreign "g_io_channel_close" (ptr t_typ @-> returning (void))
@@ -203,9 +203,9 @@ let write =
 (*Not implemented g_io_channel_write_chars argument typeC Array type for Types.Array tag not handled*)
 (*Not implemented g_io_channel_write_unichar argument typeunichar not handled*)
 let error_from_errno =
-  foreign "g_io_channel_error_from_errno" (ptr t_typ @-> int32_t @-> returning (IOChannel_error.t_view))
+  foreign "g_io_channel_error_from_errno" (void @-> int32_t @-> returning (IOChannel_error.t_view))
 
 let error_quark =
-  foreign "g_io_channel_error_quark" (ptr t_typ @-> returning (uint32_t))
+  foreign "g_io_channel_error_quark" (void @-> returning (uint32_t))
 
 
