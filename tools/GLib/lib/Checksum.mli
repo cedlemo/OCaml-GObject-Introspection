@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  unit -> Checksum_type.t -> t structure ptr
+  Checksum_type.t -> t structure ptr
 
 val copy:
   t structure ptr -> t structure ptr
@@ -19,6 +19,6 @@ val reset:
 
 (*Not implemented g_checksum_update argument typeC Array type for Types.Array tag not handled*)
 val type_get_length:
-  unit -> Checksum_type.t -> int64
+  Checksum_type.t -> int64
 
 

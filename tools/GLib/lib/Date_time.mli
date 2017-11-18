@@ -3,25 +3,25 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  unit -> Time_zone.t structure ptr -> int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
+  Time_zone.t structure ptr -> int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
 
 val new_from_timeval_local:
-  unit -> Time_val.t structure ptr -> t structure ptr
+  Time_val.t structure ptr -> t structure ptr
 
 val new_from_timeval_utc:
-  unit -> Time_val.t structure ptr -> t structure ptr
+  Time_val.t structure ptr -> t structure ptr
 
 val new_from_unix_local:
-  unit -> int64 -> t structure ptr
+  int64 -> t structure ptr
 
 val new_from_unix_utc:
-  unit -> int64 -> t structure ptr
+  int64 -> t structure ptr
 
 val new_local:
-  unit -> int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
+  int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
 
 val new_now:
-  unit -> Time_zone.t structure ptr -> t structure ptr
+  Time_zone.t structure ptr -> t structure ptr
 
 val new_now_local:
   unit -> t structure ptr
@@ -30,7 +30,7 @@ val new_now_utc:
   unit -> t structure ptr
 
 val new_utc:
-  unit -> int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
+  int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
 
 val add:
   t structure ptr -> int64 -> t structure ptr
@@ -133,12 +133,12 @@ val unref:
   t structure ptr -> unit
 
 val compare:
-  unit -> unit ptr -> unit ptr -> int32
+  unit ptr -> unit ptr -> int32
 
 val equal:
-  unit -> unit ptr -> unit ptr -> bool
+  unit ptr -> unit ptr -> bool
 
 val hash:
-  unit -> unit ptr -> Unsigned.uint32
+  unit ptr -> Unsigned.uint32
 
 

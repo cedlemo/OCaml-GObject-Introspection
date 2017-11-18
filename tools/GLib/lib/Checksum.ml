@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Checksum"
 let _new =
-  foreign "g_checksum_new" (void @-> Checksum_type.t_view @-> returning (ptr t_typ))
+  foreign "g_checksum_new" (Checksum_type.t_view @-> returning (ptr t_typ))
 
 let copy =
   foreign "g_checksum_copy" (ptr t_typ @-> returning (ptr t_typ))
@@ -20,6 +20,6 @@ let reset =
 
 (*Not implemented g_checksum_update argument typeC Array type for Types.Array tag not handled*)
 let type_get_length =
-  foreign "g_checksum_type_get_length" (void @-> Checksum_type.t_view @-> returning (int64_t))
+  foreign "g_checksum_type_get_length" (Checksum_type.t_view @-> returning (int64_t))
 
 

@@ -23,10 +23,10 @@ val f_is_seekable: (Unsigned.uint32, t structure) field
 val f_reserved1: (unit ptr, t structure) field
 val f_reserved2: (unit ptr, t structure) field
 val new_file:
-  unit -> string -> string -> (t structure ptr, Error.t structure ptr option) result
+  string -> string -> (t structure ptr, Error.t structure ptr option) result
 
 val unix_new:
-  unit -> int32 -> t structure ptr
+  int32 -> t structure ptr
 
 val close:
   t structure ptr -> unit
@@ -110,7 +110,7 @@ val write:
 (*Not implemented g_io_channel_write_chars argument typeC Array type for Types.Array tag not handled*)
 (*Not implemented g_io_channel_write_unichar argument typeunichar not handled*)
 val error_from_errno:
-  unit -> int32 -> IOChannel_error.t
+  int32 -> IOChannel_error.t
 
 val error_quark:
   unit -> Unsigned.uint32

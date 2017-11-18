@@ -3,12 +3,12 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Regex"
-let _new arg1 arg2 arg3 arg4 =
+let _new arg1 arg2 arg3 =
 let _new_raw =
-  foreign "g_regex_new" (void @-> string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr_opt t_typ))
+  foreign "g_regex_new" (string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr_opt t_typ))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = _new_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr)
+let value = _new_raw arg1 arg2 arg3 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
@@ -62,11 +62,11 @@ let error_quark =
   foreign "g_regex_error_quark" (void @-> returning (uint32_t))
 
 let escape_nul =
-  foreign "g_regex_escape_nul" (void @-> string @-> int32_t @-> returning (string))
+  foreign "g_regex_escape_nul" (string @-> int32_t @-> returning (string))
 
 (*Not implemented g_regex_escape_string argument typeC Array type for Types.Array tag not handled*)
 let match_simple =
-  foreign "g_regex_match_simple" (void @-> string @-> string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> returning (bool))
+  foreign "g_regex_match_simple" (string @-> string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> returning (bool))
 
 (*Not implemented g_regex_split_simple return type C Array type for Types.Array tag not handled*)
 

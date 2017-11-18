@@ -18,7 +18,7 @@ let f_name = field t_typ "name" (string)
 let f_priv = field t_typ "priv" (ptr Source_private.t_typ)
 let _ = seal t_typ
 let _new =
-  foreign "g_source_new" (void @-> ptr Source_funcs.t_typ @-> uint32_t @-> returning (ptr t_typ))
+  foreign "g_source_new" (ptr Source_funcs.t_typ @-> uint32_t @-> returning (ptr t_typ))
 
 let add_child_source =
   foreign "g_source_add_child_source" (ptr t_typ @-> ptr t_typ @-> returning (void))
@@ -99,15 +99,15 @@ let unref =
   foreign "g_source_unref" (ptr t_typ @-> returning (void))
 
 let remove =
-  foreign "g_source_remove" (void @-> uint32_t @-> returning (bool))
+  foreign "g_source_remove" (uint32_t @-> returning (bool))
 
 let remove_by_funcs_user_data =
-  foreign "g_source_remove_by_funcs_user_data" (void @-> ptr Source_funcs.t_typ @-> ptr_opt void @-> returning (bool))
+  foreign "g_source_remove_by_funcs_user_data" (ptr Source_funcs.t_typ @-> ptr_opt void @-> returning (bool))
 
 let remove_by_user_data =
-  foreign "g_source_remove_by_user_data" (void @-> ptr_opt void @-> returning (bool))
+  foreign "g_source_remove_by_user_data" (ptr_opt void @-> returning (bool))
 
 let set_name_by_id =
-  foreign "g_source_set_name_by_id" (void @-> uint32_t @-> string @-> returning (void))
+  foreign "g_source_set_name_by_id" (uint32_t @-> string @-> returning (void))
 
 

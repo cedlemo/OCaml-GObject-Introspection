@@ -16,7 +16,7 @@ let error_quark =
   foreign "g_thread_error_quark" (void @-> returning (uint32_t))
 
 let exit =
-  foreign "g_thread_exit" (void @-> ptr_opt void @-> returning (void))
+  foreign "g_thread_exit" (ptr_opt void @-> returning (void))
 
 let self =
   foreign "g_thread_self" (void @-> returning (ptr t_typ))

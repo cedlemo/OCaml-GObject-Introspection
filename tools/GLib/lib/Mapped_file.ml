@@ -3,12 +3,12 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Mapped_file"
-let _new arg1 arg2 arg3 =
+let _new arg1 arg2 =
 let _new_raw =
-  foreign "g_mapped_file_new" (void @-> string @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
+  foreign "g_mapped_file_new" (string @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = _new_raw arg1 arg2 arg3 (Some err_ptr_ptr)
+let value = _new_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
@@ -19,12 +19,12 @@ let _ = Gc.finalise (function
 in
 Error (err_ptr)
 
-let new_from_fd arg1 arg2 arg3 =
+let new_from_fd arg1 arg2 =
 let new_from_fd_raw =
-  foreign "g_mapped_file_new_from_fd" (void @-> int32_t @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
+  foreign "g_mapped_file_new_from_fd" (int32_t @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = new_from_fd_raw arg1 arg2 arg3 (Some err_ptr_ptr)
+let value = new_from_fd_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value

@@ -5,62 +5,62 @@ type t
 let t_typ : t structure typ = structure "Variant"
 (*Not implemented g_variant_new_array argument typeC Array type for Types.Array tag not handled*)
 let new_boolean =
-  foreign "g_variant_new_boolean" (void @-> bool @-> returning (ptr t_typ))
+  foreign "g_variant_new_boolean" (bool @-> returning (ptr t_typ))
 
 let new_byte =
-  foreign "g_variant_new_byte" (void @-> uint8_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_byte" (uint8_t @-> returning (ptr t_typ))
 
 (*Not implemented g_variant_new_bytestring argument typeC Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_new_bytestring_array argument typeC Array type for Types.Array tag not handled*)
 let new_dict_entry =
-  foreign "g_variant_new_dict_entry" (void @-> ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_new_dict_entry" (ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
 
 let new_double =
-  foreign "g_variant_new_double" (void @-> double @-> returning (ptr t_typ))
+  foreign "g_variant_new_double" (double @-> returning (ptr t_typ))
 
 let new_fixed_array =
-  foreign "g_variant_new_fixed_array" (void @-> ptr Variant_type.t_typ @-> ptr_opt void @-> uint64_t @-> uint64_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_fixed_array" (ptr Variant_type.t_typ @-> ptr_opt void @-> uint64_t @-> uint64_t @-> returning (ptr t_typ))
 
 (*SKIPPED : g_variant_new_from_bytes argument type Bytes.t structure ptr*)
 (*Not implemented g_variant_new_from_data argument typeC Array type for Types.Array tag not handled*)
 let new_handle =
-  foreign "g_variant_new_handle" (void @-> int32_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_handle" (int32_t @-> returning (ptr t_typ))
 
 let new_int16 =
-  foreign "g_variant_new_int16" (void @-> int16_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_int16" (int16_t @-> returning (ptr t_typ))
 
 let new_int32 =
-  foreign "g_variant_new_int32" (void @-> int32_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_int32" (int32_t @-> returning (ptr t_typ))
 
 let new_int64 =
-  foreign "g_variant_new_int64" (void @-> int64_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_int64" (int64_t @-> returning (ptr t_typ))
 
 let new_maybe =
-  foreign "g_variant_new_maybe" (void @-> ptr_opt Variant_type.t_typ @-> ptr_opt t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_new_maybe" (ptr_opt Variant_type.t_typ @-> ptr_opt t_typ @-> returning (ptr t_typ))
 
 let new_object_path =
-  foreign "g_variant_new_object_path" (void @-> string @-> returning (ptr t_typ))
+  foreign "g_variant_new_object_path" (string @-> returning (ptr t_typ))
 
 (*Not implemented g_variant_new_objv argument typeC Array type for Types.Array tag not handled*)
 let new_signature =
-  foreign "g_variant_new_signature" (void @-> string @-> returning (ptr t_typ))
+  foreign "g_variant_new_signature" (string @-> returning (ptr t_typ))
 
 let new_string =
-  foreign "g_variant_new_string" (void @-> string @-> returning (ptr t_typ))
+  foreign "g_variant_new_string" (string @-> returning (ptr t_typ))
 
 (*Not implemented g_variant_new_strv argument typeC Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_new_tuple argument typeC Array type for Types.Array tag not handled*)
 let new_uint16 =
-  foreign "g_variant_new_uint16" (void @-> uint16_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_uint16" (uint16_t @-> returning (ptr t_typ))
 
 let new_uint32 =
-  foreign "g_variant_new_uint32" (void @-> uint32_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_uint32" (uint32_t @-> returning (ptr t_typ))
 
 let new_uint64 =
-  foreign "g_variant_new_uint64" (void @-> uint64_t @-> returning (ptr t_typ))
+  foreign "g_variant_new_uint64" (uint64_t @-> returning (ptr t_typ))
 
 let new_variant =
-  foreign "g_variant_new_variant" (void @-> ptr t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_new_variant" (ptr t_typ @-> returning (ptr t_typ))
 
 let byteswap =
   foreign "g_variant_byteswap" (ptr t_typ @-> returning (ptr t_typ))
@@ -182,17 +182,17 @@ let unref =
   foreign "g_variant_unref" (ptr t_typ @-> returning (void))
 
 let is_object_path =
-  foreign "g_variant_is_object_path" (void @-> string @-> returning (bool))
+  foreign "g_variant_is_object_path" (string @-> returning (bool))
 
 let is_signature =
-  foreign "g_variant_is_signature" (void @-> string @-> returning (bool))
+  foreign "g_variant_is_signature" (string @-> returning (bool))
 
-let parse arg1 arg2 arg3 arg4 arg5 =
+let parse arg1 arg2 arg3 arg4 =
 let parse_raw =
-  foreign "g_variant_parse" (void @-> ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
+  foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = parse_raw arg1 arg2 arg3 arg4 arg5 (Some err_ptr_ptr)
+let value = parse_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value
@@ -204,7 +204,7 @@ in
 Error (err_ptr)
 
 let parse_error_print_context =
-  foreign "g_variant_parse_error_print_context" (void @-> ptr Error.t_typ @-> string @-> returning (string))
+  foreign "g_variant_parse_error_print_context" (ptr Error.t_typ @-> string @-> returning (string))
 
 let parse_error_quark =
   foreign "g_variant_parse_error_quark" (void @-> returning (uint32_t))

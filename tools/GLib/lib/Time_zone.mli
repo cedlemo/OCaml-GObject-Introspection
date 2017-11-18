@@ -3,7 +3,7 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  unit -> string option -> t structure ptr
+  string option -> t structure ptr
 
 val new_local:
   unit -> t structure ptr

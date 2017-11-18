@@ -12,10 +12,10 @@ val _new:
   unit -> t structure ptr
 
 val new_dmy:
-  unit -> Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> t structure ptr
+  Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> t structure ptr
 
 val new_julian:
-  unit -> Unsigned.uint32 -> t structure ptr
+  Unsigned.uint32 -> t structure ptr
 
 val add_days:
   t structure ptr -> Unsigned.uint32 -> unit
@@ -120,36 +120,36 @@ val valid:
   t structure ptr -> bool
 
 val get_days_in_month:
-  unit -> Date_month.t -> Unsigned.uint16 -> Unsigned.uint8
+  Date_month.t -> Unsigned.uint16 -> Unsigned.uint8
 
 val get_monday_weeks_in_year:
-  unit -> Unsigned.uint16 -> Unsigned.uint8
+  Unsigned.uint16 -> Unsigned.uint8
 
 val get_sunday_weeks_in_year:
-  unit -> Unsigned.uint16 -> Unsigned.uint8
+  Unsigned.uint16 -> Unsigned.uint8
 
 val is_leap_year:
-  unit -> Unsigned.uint16 -> bool
+  Unsigned.uint16 -> bool
 
 val strftime:
-  unit -> string -> Unsigned.uint64 -> string -> t structure ptr -> Unsigned.uint64
+  string -> Unsigned.uint64 -> string -> t structure ptr -> Unsigned.uint64
 
 val valid_day:
-  unit -> Unsigned.uint8 -> bool
+  Unsigned.uint8 -> bool
 
 val valid_dmy:
-  unit -> Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> bool
+  Unsigned.uint8 -> Date_month.t -> Unsigned.uint16 -> bool
 
 val valid_julian:
-  unit -> Unsigned.uint32 -> bool
+  Unsigned.uint32 -> bool
 
 val valid_month:
-  unit -> Date_month.t -> bool
+  Date_month.t -> bool
 
 val valid_weekday:
-  unit -> Date_weekday.t -> bool
+  Date_weekday.t -> bool
 
 val valid_year:
-  unit -> Unsigned.uint16 -> bool
+  Unsigned.uint16 -> bool
 
 

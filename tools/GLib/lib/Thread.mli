@@ -15,7 +15,7 @@ val error_quark:
   unit -> Unsigned.uint32
 
 val exit:
-  unit -> unit ptr option -> unit
+  unit ptr option -> unit
 
 val self:
   unit -> t structure ptr

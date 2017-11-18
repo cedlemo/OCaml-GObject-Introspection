@@ -4,7 +4,7 @@ open Foreign
 type t
 let t_typ : t structure typ = structure "Time_zone"
 let _new =
-  foreign "g_time_zone_new" (void @-> string_opt @-> returning (ptr t_typ))
+  foreign "g_time_zone_new" (string_opt @-> returning (ptr t_typ))
 
 let new_local =
   foreign "g_time_zone_new_local" (void @-> returning (ptr t_typ))

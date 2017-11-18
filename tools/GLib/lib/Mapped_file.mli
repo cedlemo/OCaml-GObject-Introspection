@@ -3,10 +3,10 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  unit -> string -> bool -> (t structure ptr, Error.t structure ptr option) result
+  string -> bool -> (t structure ptr, Error.t structure ptr option) result
 
 val new_from_fd:
-  unit -> int32 -> bool -> (t structure ptr, Error.t structure ptr option) result
+  int32 -> bool -> (t structure ptr, Error.t structure ptr option) result
 
 val free:
   t structure ptr -> unit

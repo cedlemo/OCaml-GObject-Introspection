@@ -3,16 +3,16 @@ open Ctypes
 type t
 val t_typ : t structure typ
 val _new:
-  unit -> string -> t structure ptr
+  string -> t structure ptr
 
 val new_array:
-  unit -> t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr
 
 val new_dict_entry:
-  unit -> t structure ptr -> t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr -> t structure ptr
 
 val new_maybe:
-  unit -> t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr
 
 (*Not implemented g_variant_type_new_tuple argument typeC Array type for Types.Array tag not handled*)
 val copy:
@@ -79,10 +79,10 @@ val value:
   t structure ptr -> t structure ptr
 
 val checked_:
-  unit -> string -> t structure ptr
+  string -> t structure ptr
 
 val string_is_valid:
-  unit -> string -> bool
+  string -> bool
 
 (*Not implemented g_variant_type_string_scan argument typeArg_info.InOut or Arg_info.Out not handled*)
 
