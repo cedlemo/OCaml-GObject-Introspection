@@ -194,7 +194,10 @@ let get_method_arguments_types callable container skip_types =
       )
       | _ -> Not_handled "Arg_info.InOut or Arg_info.Out"
    in
-   parse_args 0 [("t structure ptr", "ptr t_typ")]
+   let arg_types_list =
+     if Callable_info.is_method callable then [("t structure ptr", "ptr t_typ")]
+     else [("unit", "void")] in
+   parse_args 0 arg_types_list
 
 let get_method_return_types callable container skip_types =
   if Callable_info.skip_return callable then Type_names [("unit", "void")]
