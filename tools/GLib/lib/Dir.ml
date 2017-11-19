@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Dir"
+
 let close =
   foreign "g_dir_close" (ptr t_typ @-> returning (void))
 
@@ -27,5 +28,4 @@ let _ = Gc.finalise (function
 | None -> () ) err_ptr
 in
 Error (err_ptr)
-
 

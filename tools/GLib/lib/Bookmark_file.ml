@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Bookmark_file"
+
 let add_application =
   foreign "g_bookmark_file_add_application" (ptr t_typ @-> string @-> string_opt @-> string_opt @-> returning (void))
 
@@ -341,5 +342,4 @@ Error (err_ptr)
 
 let error_quark =
   foreign "g_bookmark_file_error_quark" (void @-> returning (uint32_t))
-
 

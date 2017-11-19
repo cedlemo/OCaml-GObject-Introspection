@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Rand"
+
 let _double =
   foreign "g_rand_double" (ptr t_typ @-> returning (double))
 
@@ -23,5 +24,4 @@ let set_seed =
 
 let set_seed_array =
   foreign "g_rand_set_seed_array" (ptr t_typ @-> ptr uint32_t @-> uint32_t @-> returning (void))
-
 

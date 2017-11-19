@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Scanner_config"
+
 let f_cset_skip_characters = field t_typ "cset_skip_characters" (string)
 let f_cset_identifier_first = field t_typ "cset_identifier_first" (string)
 let f_cset_identifier_nth = field t_typ "cset_identifier_nth" (string)

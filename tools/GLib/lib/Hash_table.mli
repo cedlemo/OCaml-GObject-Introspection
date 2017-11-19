@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val add:
   t structure ptr -> unit ptr option -> bool
 
@@ -38,5 +39,4 @@ val steal_all:
 
 val unref:
   t structure ptr -> unit
-
 

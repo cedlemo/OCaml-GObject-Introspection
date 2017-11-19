@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Markup_parse_context"
+
 (*Not implemented g_markup_parse_context_new argument typecallback not handled*)
 let end_parse arg1 =
 let end_parse_raw =
@@ -59,5 +60,4 @@ let ref =
 
 let unref =
   foreign "g_markup_parse_context_unref" (ptr t_typ @-> returning (void))
-
 

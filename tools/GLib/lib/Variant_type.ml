@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Variant_type"
+
 let create =
   foreign "g_variant_type_new" (string @-> returning (ptr t_typ))
 
@@ -86,4 +87,3 @@ let string_is_valid =
   foreign "g_variant_type_string_is_valid" (string @-> returning (bool))
 
 (*Not implemented g_variant_type_string_scan argument typeArg_info.InOut or Arg_info.Out not handled*)
-

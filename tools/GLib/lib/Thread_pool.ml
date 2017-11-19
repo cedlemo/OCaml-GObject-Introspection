@@ -3,10 +3,12 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Thread_pool"
+
 (*Struct field Thread_pool : callback tag not implemented*)
 let f_user_data = field t_typ "user_data" (ptr void)
 let f_exclusive = field t_typ "exclusive" (bool)
 let _ = seal t_typ
+
 let free =
   foreign "g_thread_pool_free" (ptr t_typ @-> bool @-> bool @-> returning (void))
 
@@ -71,5 +73,4 @@ let set_max_unused_threads =
 
 let stop_unused_threads =
   foreign "g_thread_pool_stop_unused_threads" (void @-> returning (void))
-
 

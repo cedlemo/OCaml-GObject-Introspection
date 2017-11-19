@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val _double:
   t structure ptr -> float
 
@@ -22,5 +23,4 @@ val set_seed:
 
 val set_seed_array:
   t structure ptr -> Unsigned.uint32 ptr -> Unsigned.uint32 -> unit
-
 

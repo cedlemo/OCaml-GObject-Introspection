@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "IOChannel"
+
 let f_ref_count = field t_typ "ref_count" (int32_t)
 let f_funcs = field t_typ "funcs" (ptr IOFuncs.t_typ)
 let f_encoding = field t_typ "encoding" (string)
@@ -24,6 +25,7 @@ let f_is_seekable = field t_typ "is_seekable" (uint32_t)
 let f_reserved1 = field t_typ "reserved1" (ptr void)
 let f_reserved2 = field t_typ "reserved2" (ptr void)
 let _ = seal t_typ
+
 let new_file arg1 arg2 =
 let new_file_raw =
   foreign "g_io_channel_new_file" (string @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
@@ -207,5 +209,4 @@ let error_from_errno =
 
 let error_quark =
   foreign "g_io_channel_error_quark" (void @-> returning (uint32_t))
-
 

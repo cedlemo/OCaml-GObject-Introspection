@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Match_info"
+
 let expand_references arg1 arg2 =
 let expand_references_raw =
   foreign "g_match_info_expand_references" (ptr t_typ @-> string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
@@ -67,5 +68,4 @@ let ref =
 
 let unref =
   foreign "g_match_info_unref" (ptr t_typ @-> returning (void))
-
 

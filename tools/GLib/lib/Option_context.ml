@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Option_context"
+
 let add_group =
   foreign "g_option_context_add_group" (ptr t_typ @-> ptr Option_group.t_typ @-> returning (void))
 
@@ -56,5 +57,4 @@ let set_summary =
 (*Not implemented g_option_context_set_translate_func argument typecallback not handled*)
 let set_translation_domain =
   foreign "g_option_context_set_translation_domain" (ptr t_typ @-> string @-> returning (void))
-
 

@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Option_entry"
+
 let f_long_name = field t_typ "long_name" (string)
 let f_short_name = field t_typ "short_name" (int8_t)
 let f_flags = field t_typ "flags" (int32_t)

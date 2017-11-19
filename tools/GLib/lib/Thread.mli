@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val join:
   t structure ptr -> unit ptr option
 
@@ -22,5 +23,4 @@ val self:
 
 val yield:
   unit -> unit
-
 

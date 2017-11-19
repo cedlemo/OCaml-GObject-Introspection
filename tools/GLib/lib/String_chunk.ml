@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "String_chunk"
+
 let clear =
   foreign "g_string_chunk_clear" (ptr t_typ @-> returning (void))
 
@@ -17,5 +18,4 @@ let insert_const =
 
 let insert_len =
   foreign "g_string_chunk_insert_len" (ptr t_typ @-> string @-> int64_t @-> returning (string))
-
 

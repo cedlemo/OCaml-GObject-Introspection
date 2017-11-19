@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val clear:
   t structure ptr -> unit
 
@@ -16,5 +17,4 @@ val insert_const:
 
 val insert_len:
   t structure ptr -> string -> int64 -> string
-
 

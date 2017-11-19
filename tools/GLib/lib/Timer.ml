@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Timer"
+
 let continue =
   foreign "g_timer_continue" (ptr t_typ @-> returning (void))
 
@@ -20,5 +21,4 @@ let start =
 
 let stop =
   foreign "g_timer_stop" (ptr t_typ @-> returning (void))
-
 

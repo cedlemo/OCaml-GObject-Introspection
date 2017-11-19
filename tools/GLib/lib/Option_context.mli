@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val add_group:
   t structure ptr -> Option_group.t structure ptr -> unit
 
@@ -55,5 +56,4 @@ val set_summary:
 (*Not implemented g_option_context_set_translate_func argument typecallback not handled*)
 val set_translation_domain:
   t structure ptr -> string -> unit
-
 

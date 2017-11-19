@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val create:
   string -> t structure ptr
 
@@ -85,4 +86,3 @@ val string_is_valid:
   string -> bool
 
 (*Not implemented g_variant_type_string_scan argument typeArg_info.InOut or Arg_info.Out not handled*)
-

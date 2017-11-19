@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Hash_table"
+
 let add =
   foreign "g_hash_table_add" (ptr t_typ @-> ptr_opt void @-> returning (bool))
 
@@ -39,5 +40,4 @@ let steal_all =
 
 let unref =
   foreign "g_hash_table_unref" (ptr t_typ @-> returning (void))
-
 

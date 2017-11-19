@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 (*Not implemented g_variant_new_array argument typeC Array type for Types.Array tag not handled*)
 val new_boolean:
   bool -> t structure ptr
@@ -197,5 +198,4 @@ val parse_error_quark:
 
 val parser_get_error_quark:
   unit -> Unsigned.uint32
-
 

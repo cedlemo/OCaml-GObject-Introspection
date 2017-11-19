@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Key_file"
+
 let create =
   foreign "g_key_file_new" (void @-> returning (ptr t_typ))
 
@@ -316,5 +317,4 @@ let unref =
 
 let error_quark =
   foreign "g_key_file_error_quark" (void @-> returning (uint32_t))
-
 

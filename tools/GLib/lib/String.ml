@@ -3,10 +3,12 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "String"
+
 let f_str = field t_typ "str" (string)
 let f_len = field t_typ "len" (uint64_t)
 let f_allocated_len = field t_typ "allocated_len" (uint64_t)
 let _ = seal t_typ
+
 let append =
   foreign "g_string_append" (ptr t_typ @-> string @-> returning (ptr t_typ))
 
@@ -79,5 +81,4 @@ let truncate =
 
 let up =
   foreign "g_string_up" (ptr t_typ @-> returning (ptr t_typ))
-
 

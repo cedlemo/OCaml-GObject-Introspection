@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val f_ref_count: (int32, t structure) field
 val f_funcs: (IOFuncs.t structure ptr, t structure) field
 val f_encoding: (string, t structure) field
@@ -22,6 +23,7 @@ val f_is_writeable: (Unsigned.uint32, t structure) field
 val f_is_seekable: (Unsigned.uint32, t structure) field
 val f_reserved1: (unit ptr, t structure) field
 val f_reserved2: (unit ptr, t structure) field
+
 val new_file:
   string -> string -> (t structure ptr, Error.t structure ptr option) result
 
@@ -114,5 +116,4 @@ val error_from_errno:
 
 val error_quark:
   unit -> Unsigned.uint32
-
 

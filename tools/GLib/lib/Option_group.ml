@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Option_group"
+
 (*Not implemented g_option_group_new argument typecallback not handled*)
 let add_entries =
   foreign "g_option_group_add_entries" (ptr t_typ @-> ptr Option_entry.t_typ @-> returning (void))
@@ -19,5 +20,4 @@ let set_translation_domain =
 
 let unref =
   foreign "g_option_group_unref" (ptr t_typ @-> returning (void))
-
 

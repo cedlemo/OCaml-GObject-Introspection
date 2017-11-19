@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val destroy:
   t structure ptr -> unit
 
@@ -31,5 +32,4 @@ val steal:
 
 val unref:
   t structure ptr -> unit
-
 

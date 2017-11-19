@@ -3,9 +3,11 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "RWLock"
+
 let f_p = field t_typ "p" (ptr void)
 (*Struct field RWLock : C Array type for Types.Array tag tag not implemented*)
 let _ = seal t_typ
+
 let clear =
   foreign "g_rw_lock_clear" (ptr t_typ @-> returning (void))
 
@@ -29,5 +31,4 @@ let writer_trylock =
 
 let writer_unlock =
   foreign "g_rw_lock_writer_unlock" (ptr t_typ @-> returning (void))
-
 

@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 (*Not implemented g_markup_parse_context_new argument typecallback not handled*)
 val end_parse:
   t structure ptr -> (bool, Error.t structure ptr option) result
@@ -32,5 +33,4 @@ val ref:
 
 val unref:
   t structure ptr -> unit
-
 

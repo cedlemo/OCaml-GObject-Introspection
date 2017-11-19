@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val add_application:
   t structure ptr -> string -> string option -> string option -> unit
 
@@ -106,5 +107,4 @@ val to_file:
 
 val error_quark:
   unit -> Unsigned.uint32
-
 

@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Source"
+
 let f_callback_data = field t_typ "callback_data" (ptr void)
 let f_callback_funcs = field t_typ "callback_funcs" (ptr Source_callback_funcs.t_typ)
 let f_source_funcs = field t_typ "source_funcs" (ptr Source_funcs.t_typ)
@@ -17,6 +18,7 @@ let f_next = field t_typ "next" (ptr t_typ)
 let f_name = field t_typ "name" (string)
 let f_priv = field t_typ "priv" (ptr Source_private.t_typ)
 let _ = seal t_typ
+
 let create =
   foreign "g_source_new" (ptr Source_funcs.t_typ @-> uint32_t @-> returning (ptr t_typ))
 
@@ -109,5 +111,4 @@ let remove_by_user_data =
 
 let set_name_by_id =
   foreign "g_source_set_name_by_id" (uint32_t @-> string @-> returning (void))
-
 

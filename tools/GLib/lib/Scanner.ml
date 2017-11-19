@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Scanner"
+
 let f_user_data = field t_typ "user_data" (ptr void)
 let f_max_parse_errors = field t_typ "max_parse_errors" (uint32_t)
 let f_parse_errors = field t_typ "parse_errors" (uint32_t)
@@ -25,6 +26,7 @@ let f_buffer = field t_typ "buffer" (string)
 let f_scope_id = field t_typ "scope_id" (uint32_t)
 (*Struct field Scanner : callback tag not implemented*)
 let _ = seal t_typ
+
 let cur_line =
   foreign "g_scanner_cur_line" (ptr t_typ @-> returning (uint32_t))
 
@@ -72,5 +74,4 @@ let sync_file_offset =
 
 let unexp_token =
   foreign "g_scanner_unexp_token" (ptr t_typ @-> Token_type.t_view @-> string @-> string @-> string @-> string @-> int32_t @-> returning (void))
-
 

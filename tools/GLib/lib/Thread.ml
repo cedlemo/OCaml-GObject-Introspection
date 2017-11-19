@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Thread"
+
 let join =
   foreign "g_thread_join" (ptr t_typ @-> returning (ptr_opt void))
 
@@ -23,5 +24,4 @@ let self =
 
 let yield =
   foreign "g_thread_yield" (void @-> returning (void))
-
 

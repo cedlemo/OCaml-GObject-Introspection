@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Mapped_file"
+
 let create arg1 arg2 =
 let create_raw =
   foreign "g_mapped_file_new" (string @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
@@ -50,5 +51,4 @@ let ref =
 
 let unref =
   foreign "g_mapped_file_unref" (ptr t_typ @-> returning (void))
-
 

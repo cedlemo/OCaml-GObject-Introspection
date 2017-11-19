@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Async_queue"
+
 let length =
   foreign "g_async_queue_length" (ptr t_typ @-> returning (int32_t))
 
@@ -65,5 +66,4 @@ let unref =
 
 let unref_and_unlock =
   foreign "g_async_queue_unref_and_unlock" (ptr t_typ @-> returning (void))
-
 

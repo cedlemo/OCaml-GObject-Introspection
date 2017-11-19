@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val length:
   t structure ptr -> int32
 
@@ -64,5 +65,4 @@ val unref:
 
 val unref_and_unlock:
   t structure ptr -> unit
-
 

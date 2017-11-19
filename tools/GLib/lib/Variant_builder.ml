@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Variant_builder"
+
 let create =
   foreign "g_variant_builder_new" (ptr Variant_type.t_typ @-> returning (ptr t_typ))
 
@@ -23,5 +24,4 @@ let ref =
 
 let unref =
   foreign "g_variant_builder_unref" (ptr t_typ @-> returning (void))
-
 

@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Tree"
+
 let destroy =
   foreign "g_tree_destroy" (ptr t_typ @-> returning (void))
 
@@ -32,5 +33,4 @@ let steal =
 
 let unref =
   foreign "g_tree_unref" (ptr t_typ @-> returning (void))
-
 

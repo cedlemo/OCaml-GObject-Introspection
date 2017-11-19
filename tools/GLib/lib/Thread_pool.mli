@@ -2,9 +2,11 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 (*Struct field Thread_pool : callback tag not implemented*)
 val f_user_data: (unit ptr, t structure) field
 val f_exclusive: (bool, t structure) field
+
 val free:
   t structure ptr -> bool -> bool -> unit
 
@@ -43,5 +45,4 @@ val set_max_unused_threads:
 
 val stop_unused_threads:
   unit -> unit
-
 

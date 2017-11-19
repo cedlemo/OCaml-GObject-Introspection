@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val expand_references:
   t structure ptr -> string -> (string option, Error.t structure ptr option) result
 
@@ -40,5 +41,4 @@ val ref:
 
 val unref:
   t structure ptr -> unit
-
 

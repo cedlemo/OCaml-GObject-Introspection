@@ -23,7 +23,8 @@ let append_ctypes_struct_declaration name sources =
   File.buff_add_line mli "type t";
   File.buff_add_line mli "val t_typ : t structure typ";
   File.buff_add_line ml "type t";
-  File.bprintf ml "let t_typ : t structure typ = structure \"%s\"\n" name
+  File.bprintf ml "let t_typ : t structure typ = structure \"%s\"\n" name;
+  Sources.buffs_add_eol sources
 
 let handle_recursive_structure structure_name (ocaml_type, ctypes_typ) =
   if (structure_name ^ ".t structure") = ocaml_type then ("t structure", "t_typ")
@@ -67,7 +68,10 @@ let append_ctypes_struct_field_declarations struct_name info sources skip_types 
         iterate_over_field (index + 1) n_implemented
     )
   in
-  if iterate_over_field 0 0 > 0 then File.buff_add_line ml "let _ = seal t_typ"
+  if iterate_over_field 0 0 > 0 then (
+    let _ = File.buff_add_line ml "let _ = seal t_typ" in
+    Sources.buffs_add_eol sources
+  )
 
 let append_ctypes_struct_methods_bindings struct_name info sources skip_types =
   let n = Struct_info.get_n_methods info in
@@ -88,5 +92,4 @@ let parse_struct_info info sources skip_types =
     append_ctypes_struct_declaration name sources;
     append_ctypes_struct_field_declarations name info' sources skip_types;
     append_ctypes_struct_methods_bindings name info' sources skip_types;
-    Sources.buffs_add_eol sources;
     Sources.write_buffs sources

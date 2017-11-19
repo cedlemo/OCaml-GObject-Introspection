@@ -2,9 +2,11 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val f_str: (string, t structure) field
 val f_len: (Unsigned.uint64, t structure) field
 val f_allocated_len: (Unsigned.uint64, t structure) field
+
 val append:
   t structure ptr -> string -> t structure ptr
 
@@ -77,5 +79,4 @@ val truncate:
 
 val up:
   t structure ptr -> t structure ptr
-
 

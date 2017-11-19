@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 (*Not implemented g_option_group_new argument typecallback not handled*)
 val add_entries:
   t structure ptr -> Option_entry.t structure ptr -> unit
@@ -18,5 +19,4 @@ val set_translation_domain:
 
 val unref:
   t structure ptr -> unit
-
 

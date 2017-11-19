@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Variant"
+
 (*Not implemented g_variant_new_array argument typeC Array type for Types.Array tag not handled*)
 let new_boolean =
   foreign "g_variant_new_boolean" (bool @-> returning (ptr t_typ))
@@ -211,5 +212,4 @@ let parse_error_quark =
 
 let parser_get_error_quark =
   foreign "g_variant_parser_get_error_quark" (void @-> returning (uint32_t))
-
 

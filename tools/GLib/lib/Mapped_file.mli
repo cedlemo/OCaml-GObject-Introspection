@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val create:
   string -> bool -> (t structure ptr, Error.t structure ptr option) result
 
@@ -23,5 +24,4 @@ val ref:
 
 val unref:
   t structure ptr -> unit
-
 

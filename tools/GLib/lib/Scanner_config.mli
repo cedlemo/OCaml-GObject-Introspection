@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val f_cset_skip_characters: (string, t structure) field
 val f_cset_identifier_first: (string, t structure) field
 val f_cset_identifier_nth: (string, t structure) field

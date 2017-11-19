@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val f_user_data: (unit ptr, t structure) field
 val f_max_parse_errors: (Unsigned.uint32, t structure) field
 val f_parse_errors: (Unsigned.uint32, t structure) field
@@ -23,6 +24,7 @@ val f_text_end: (string, t structure) field
 val f_buffer: (string, t structure) field
 val f_scope_id: (Unsigned.uint32, t structure) field
 (*Struct field Scanner : callback tag not implemented*)
+
 val cur_line:
   t structure ptr -> Unsigned.uint32
 
@@ -70,5 +72,4 @@ val sync_file_offset:
 
 val unexp_token:
   t structure ptr -> Token_type.t -> string -> string -> string -> string -> int32 -> unit
-
 

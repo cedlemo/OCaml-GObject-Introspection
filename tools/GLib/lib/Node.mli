@@ -2,11 +2,13 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val f_data: (unit ptr, t structure) field
 val f_next: (t structure ptr, t structure) field
 val f_prev: (t structure ptr, t structure) field
 val f_parent: (t structure ptr, t structure) field
 val f_children: (t structure ptr, t structure) field
+
 val child_index:
   t structure ptr -> unit ptr option -> int32
 
@@ -36,5 +38,4 @@ val reverse_children:
 
 val unlink:
   t structure ptr -> unit
-
 

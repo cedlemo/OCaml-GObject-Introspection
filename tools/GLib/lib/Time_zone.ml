@@ -3,6 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Time_zone"
+
 let create =
   foreign "g_time_zone_new" (string_opt @-> returning (ptr t_typ))
 
@@ -32,5 +33,4 @@ let ref =
 
 let unref =
   foreign "g_time_zone_unref" (ptr t_typ @-> returning (void))
-
 

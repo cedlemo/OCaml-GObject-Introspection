@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val create:
   Variant_type.t structure ptr -> t structure ptr
 
@@ -22,5 +23,4 @@ val ref:
 
 val unref:
   t structure ptr -> unit
-
 

@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val continue:
   t structure ptr -> unit
 
@@ -19,5 +20,4 @@ val start:
 
 val stop:
   t structure ptr -> unit
-
 

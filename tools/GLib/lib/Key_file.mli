@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val create:
   unit -> t structure ptr
 
@@ -107,5 +108,4 @@ val unref:
 
 val error_quark:
   unit -> Unsigned.uint32
-
 

@@ -2,6 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
+
 val f_callback_data: (unit ptr, t structure) field
 val f_callback_funcs: (Source_callback_funcs.t structure ptr, t structure) field
 val f_source_funcs: (Source_funcs.t structure ptr, t structure) field
@@ -15,6 +16,7 @@ val f_prev: (t structure ptr, t structure) field
 val f_next: (t structure ptr, t structure) field
 val f_name: (string, t structure) field
 val f_priv: (Source_private.t structure ptr, t structure) field
+
 val create:
   Source_funcs.t structure ptr -> Unsigned.uint32 -> t structure ptr
 
@@ -107,5 +109,4 @@ val remove_by_user_data:
 
 val set_name_by_id:
   Unsigned.uint32 -> string -> unit
-
 
