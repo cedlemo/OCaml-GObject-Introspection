@@ -8,7 +8,7 @@ val f_dmy: (Unsigned.uint32, t structure) field
 val f_day: (Unsigned.uint32, t structure) field
 val f_month: (Unsigned.uint32, t structure) field
 val f_year: (Unsigned.uint32, t structure) field
-val _new:
+val create:
   unit -> t structure ptr
 
 val new_dmy:

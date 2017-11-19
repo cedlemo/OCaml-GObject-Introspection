@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Checksum"
-let _new =
+let create =
   foreign "g_checksum_new" (Checksum_type.t_view @-> returning (ptr t_typ))
 
 let copy =

@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Key_file"
-let _new =
+let create =
   foreign "g_key_file_new" (void @-> returning (ptr t_typ))
 
 let get_boolean arg1 arg2 arg3 =

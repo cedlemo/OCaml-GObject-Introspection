@@ -2,7 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val _new:
+val create:
   string option -> t structure ptr
 
 val new_local:

@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Variant_builder"
-let _new =
+let create =
   foreign "g_variant_builder_new" (ptr Variant_type.t_typ @-> returning (ptr t_typ))
 
 let add_value =

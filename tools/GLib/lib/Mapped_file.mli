@@ -2,7 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val _new:
+val create:
   string -> bool -> (t structure ptr, Error.t structure ptr option) result
 
 val new_from_fd:

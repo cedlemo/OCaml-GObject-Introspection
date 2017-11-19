@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Variant_dict"
-let _new =
+let create =
   foreign "g_variant_dict_new" (ptr_opt Variant.t_typ @-> returning (ptr t_typ))
 
 let clear =

@@ -2,7 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val _new:
+val create:
   Checksum_type.t -> t structure ptr
 
 val copy:

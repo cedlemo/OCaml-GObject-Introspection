@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Time_zone"
-let _new =
+let create =
   foreign "g_time_zone_new" (string_opt @-> returning (ptr t_typ))
 
 let new_local =

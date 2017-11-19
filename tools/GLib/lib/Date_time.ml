@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Date_time"
-let _new =
+let create =
   foreign "g_date_time_new" (ptr Time_zone.t_typ @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> int32_t @-> double @-> returning (ptr t_typ))
 
 let new_from_timeval_local =

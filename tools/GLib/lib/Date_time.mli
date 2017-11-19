@@ -2,7 +2,7 @@ open Ctypes
 
 type t
 val t_typ : t structure typ
-val _new:
+val create:
   Time_zone.t structure ptr -> int32 -> int32 -> int32 -> int32 -> int32 -> float -> t structure ptr
 
 val new_from_timeval_local:

@@ -3,7 +3,7 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Variant_type"
-let _new =
+let create =
   foreign "g_variant_type_new" (string @-> returning (ptr t_typ))
 
 let new_array =

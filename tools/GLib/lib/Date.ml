@@ -10,7 +10,7 @@ let f_day = field t_typ "day" (uint32_t)
 let f_month = field t_typ "month" (uint32_t)
 let f_year = field t_typ "year" (uint32_t)
 let _ = seal t_typ
-let _new =
+let create =
   foreign "g_date_new" (void @-> returning (ptr t_typ))
 
 let new_dmy =

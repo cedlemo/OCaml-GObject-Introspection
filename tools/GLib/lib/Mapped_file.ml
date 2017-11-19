@@ -3,12 +3,12 @@ open Foreign
 
 type t
 let t_typ : t structure typ = structure "Mapped_file"
-let _new arg1 arg2 =
-let _new_raw =
+let create arg1 arg2 =
+let create_raw =
   foreign "g_mapped_file_new" (string @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
 in
 let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = _new_raw arg1 arg2 (Some err_ptr_ptr)
+let value = create_raw arg1 arg2 (Some err_ptr_ptr)
 in
 match (!@ err_ptr_ptr) with
 | None -> Ok value

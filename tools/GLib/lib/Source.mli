@@ -15,7 +15,7 @@ val f_prev: (t structure ptr, t structure) field
 val f_next: (t structure ptr, t structure) field
 val f_name: (string, t structure) field
 val f_priv: (Source_private.t structure ptr, t structure) field
-val _new:
+val create:
   Source_funcs.t structure ptr -> Unsigned.uint32 -> t structure ptr
 
 val add_child_source:
