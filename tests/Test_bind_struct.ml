@@ -45,9 +45,9 @@ let test_append_ctypes_struct_declaration test_ctxt =
   )
   in
   let mli_content = "type t\n\
-                     val t_typ : t structure typ" in
+                     val t_typ : t structure typ\n" in
   let ml_content = "type t\n\
-                    let t_typ : t structure typ = structure \"Array\"" in
+                    let t_typ : t structure typ = structure \"Array\"\n" in
   struct_test namespace name (fun info ->
     test_writing test_ctxt info name writer mli_content ml_content
     )
@@ -61,10 +61,10 @@ let test_append_ctypes_struct_field_declarations test_ctxt =
   )
   in
   let mli_content = "val f_data: (unit ptr, t structure) field\n\
-                     val f_next: (t structure ptr, t structure) field" in
+                     val f_next: (t structure ptr, t structure) field\n" in
   let ml_content = "let f_data = field t_typ \"data\" (ptr void)\n\
                     let f_next = field t_typ \"next\" (ptr t_typ)\n\
-                    let _ = seal t_typ" in
+                    let _ = seal t_typ\n" in
   struct_test namespace name (fun info ->
       test_writing test_ctxt info name writer mli_content ml_content
   )
