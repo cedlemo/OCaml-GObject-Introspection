@@ -128,6 +128,7 @@ let function_parser info sources skip_types =
                                                                       name])
        in
        let info' = Function_info.from_baseinfo info in
+       let _ = Sources.buffs_add_eol sources in
        append_ctypes_function_bindings name info' sources skip_types
       );
      Sources.write_buffs sources
