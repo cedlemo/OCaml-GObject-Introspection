@@ -118,15 +118,6 @@ let function_parser info sources skip_types =
 
       )
       else (
-        let _ = match Base_info.get_container info with
-        | None -> ()
-        | Some container -> match Base_info.get_name container with
-           | None -> ()
-           | Some container_name -> print_endline (String.concat " " ["Container :";
-                                                                      container_name;
-                                                                      "function";
-                                                                      name])
-       in
        let info' = Function_info.from_baseinfo info in
        let _ = Sources.buffs_add_eol sources in
        append_ctypes_function_bindings name info' sources skip_types
