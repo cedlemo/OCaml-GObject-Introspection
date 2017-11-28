@@ -118,30 +118,27 @@ let generate_callable_bindings callable name symbol args ret_types sources =
     let args' = args @ [("Error.t structure ptr option ptr option", "ptr_opt (ptr_opt Error.t_typ)")] in
     let ocaml_ret' = if ocaml_ret = "string" then "string option" else ocaml_ret in
     let ctypes_ret' = if ctypes_ret = "string" then "string_opt" else ctypes_ret in
-    File.bprintf mli "val %s:\n  " name;
-    File.bprintf mli "%s -> (%s, Error.t structure ptr option) result\n" (String.concat " -> " (List.map (fun (a, b) -> a) args)) ocaml_ret';
+    let _ = File.bprintf mli "val %s:\n  " name in
+    let _ = File.bprintf mli "%s -> (%s, Error.t structure ptr option) result\n" (String.concat " -> " (List.map (fun (a, b) -> a) args)) ocaml_ret' in
     let meaning_less_args = generate_n_meaningless_arg_names (List.length args) in
-    File.bprintf ml "let %s %s =\n" name meaning_less_args;
+    let _ = File.bprintf ml "let %s %s =\n" name meaning_less_args in
     let name_raw = name ^ "_raw" in
-    File.bprintf ml "let %s =\n  foreign \"%s\" " name_raw symbol;
-    File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args'));
-    File.bprintf ml " @-> returning (%s))\n" ctypes_ret';
-    File.buff_add_line ml "in\nlet err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in";
-    File.bprintf ml "let value = %s %s (Some err_ptr_ptr)\nin\n" name_raw meaning_less_args;
-    File.buff_add_line ml "match (!@ err_ptr_ptr) with\n\
-                             | None -> Ok value\n\
-                             | Some _ -> let err_ptr = !@ err_ptr_ptr in\n\
-                               let _ = Gc.finalise (function\n\
-                                   | Some e -> Error.free e\n\
-                                   | None -> () ) err_ptr\n\
-                               in\n\
-                               Error (err_ptr)"
+    let _ = File.bprintf ml "  let %s =\n    foreign \"%s\" " name_raw symbol in
+    let _ = File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args')) in
+    let _ = File.bprintf ml " @-> returning (%s))\n  in\n" ctypes_ret' in
+    let _ = File.buff_add_line ml "  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in" in
+    let _ = File.bprintf ml "  let value = %s %s (Some err_ptr_ptr) in\n" name_raw meaning_less_args in
+    let _ = File.buff_add_line ml "  match (!@ err_ptr_ptr) with" in
+    let _ = File.buff_add_line ml "   | None -> Ok value" in
+    let _ = File.buff_add_line ml "   | Some _ -> let err_ptr = !@ err_ptr_ptr in" in
+    let _ = File.buff_add_line ml "     let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in" in
+    File.buff_add_line ml "     Error (err_ptr)"
   ) else (
-    File.bprintf mli "val %s:\n  " name;
-    File.bprintf ml "let %s =\n  foreign \"%s\" " name symbol;
-    File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args));
-    File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args));
-    File.bprintf mli " -> %s\n" ocaml_ret;
+    let _ = File.bprintf mli "val %s:\n  " name in
+    let _ = File.bprintf ml "let %s =\n  foreign \"%s\" " name symbol in
+    let _ = File.bprintf mli "%s" (String.concat " -> " (List.map (fun (a, b) -> a) args)) in
+    let _ = File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun (a, b) -> b) args)) in
+    let _ = File.bprintf mli " -> %s\n" ocaml_ret in
     File.bprintf ml " @-> returning (%s))\n" ctypes_ret
   )
 
@@ -238,6 +235,7 @@ let append_ctypes_method_bindings raw_name info container sources skip_types =
         Sources.buffs_add_eol sources
 
 let parse_function_info info sources skip_types =
+  let open Binding_utils in
   match Base_info.get_name info with
   | None -> ()
   | Some name -> let _ = match Base_info.get_container info with
@@ -251,4 +249,5 @@ let parse_function_info info sources skip_types =
      in
      let info' = Function_info.from_baseinfo info in
      let _ = append_ctypes_function_bindings name info' sources skip_types in
-     Binding_utils.Sources.write_buffs sources
+     let _ = Sources.buffs_add_eol sources in
+     Sources.write_buffs sources
