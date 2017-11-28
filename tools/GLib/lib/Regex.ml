@@ -5,20 +5,16 @@ type t
 let t_typ : t structure typ = structure "Regex"
 
 let create arg1 arg2 arg3 =
-let create_raw =
-  foreign "g_regex_new" (string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr_opt t_typ))
-in
-let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = create_raw arg1 arg2 arg3 (Some err_ptr_ptr)
-in
-match (!@ err_ptr_ptr) with
-| None -> Ok value
-| Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise (function
-| Some e -> Error.free e
-| None -> () ) err_ptr
-in
-Error (err_ptr)
+  let create_raw =
+    foreign "g_regex_new" (string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr_opt t_typ))
+  in
+  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+  let value = create_raw arg1 arg2 arg3 (Some err_ptr_ptr) in
+  match (!@ err_ptr_ptr) with
+   | None -> Ok value
+   | Some _ -> let err_ptr = !@ err_ptr_ptr in
+     let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
+     Error (err_ptr)
 
 let get_capture_count =
   foreign "g_regex_get_capture_count" (ptr t_typ @-> returning (int32_t))

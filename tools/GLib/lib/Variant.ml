@@ -189,20 +189,16 @@ let is_signature =
   foreign "g_variant_is_signature" (string @-> returning (bool))
 
 let parse arg1 arg2 arg3 arg4 =
-let parse_raw =
-  foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
-in
-let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = parse_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr)
-in
-match (!@ err_ptr_ptr) with
-| None -> Ok value
-| Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise (function
-| Some e -> Error.free e
-| None -> () ) err_ptr
-in
-Error (err_ptr)
+  let parse_raw =
+    foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr t_typ))
+  in
+  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+  let value = parse_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr) in
+  match (!@ err_ptr_ptr) with
+   | None -> Ok value
+   | Some _ -> let err_ptr = !@ err_ptr_ptr in
+     let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
+     Error (err_ptr)
 
 let parse_error_print_context =
   foreign "g_variant_parse_error_print_context" (ptr Error.t_typ @-> string @-> returning (string))

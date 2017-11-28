@@ -22,36 +22,28 @@ let move_to_front =
   foreign "g_thread_pool_move_to_front" (ptr t_typ @-> ptr_opt void @-> returning (bool))
 
 let push arg1 arg2 =
-let push_raw =
-  foreign "g_thread_pool_push" (ptr t_typ @-> ptr_opt void @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
-in
-let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = push_raw arg1 arg2 (Some err_ptr_ptr)
-in
-match (!@ err_ptr_ptr) with
-| None -> Ok value
-| Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise (function
-| Some e -> Error.free e
-| None -> () ) err_ptr
-in
-Error (err_ptr)
+  let push_raw =
+    foreign "g_thread_pool_push" (ptr t_typ @-> ptr_opt void @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+  in
+  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+  let value = push_raw arg1 arg2 (Some err_ptr_ptr) in
+  match (!@ err_ptr_ptr) with
+   | None -> Ok value
+   | Some _ -> let err_ptr = !@ err_ptr_ptr in
+     let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
+     Error (err_ptr)
 
 let set_max_threads arg1 arg2 =
-let set_max_threads_raw =
-  foreign "g_thread_pool_set_max_threads" (ptr t_typ @-> int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
-in
-let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-let value = set_max_threads_raw arg1 arg2 (Some err_ptr_ptr)
-in
-match (!@ err_ptr_ptr) with
-| None -> Ok value
-| Some _ -> let err_ptr = !@ err_ptr_ptr in
-let _ = Gc.finalise (function
-| Some e -> Error.free e
-| None -> () ) err_ptr
-in
-Error (err_ptr)
+  let set_max_threads_raw =
+    foreign "g_thread_pool_set_max_threads" (ptr t_typ @-> int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+  in
+  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
+  let value = set_max_threads_raw arg1 arg2 (Some err_ptr_ptr) in
+  match (!@ err_ptr_ptr) with
+   | None -> Ok value
+   | Some _ -> let err_ptr = !@ err_ptr_ptr in
+     let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
+     Error (err_ptr)
 
 let unprocessed =
   foreign "g_thread_pool_unprocessed" (ptr t_typ @-> returning (uint32_t))
