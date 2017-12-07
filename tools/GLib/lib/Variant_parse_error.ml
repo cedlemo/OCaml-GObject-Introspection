@@ -24,7 +24,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 17 then Value_expected
   else raise (Invalid_argument "Unexpected Variant_parse_error value")
 
-let to_value =  function
+let to_value = function
   | Failed -> Unsigned.UInt32.of_int 0
   | Basic_type_expected -> Unsigned.UInt32.of_int 1
   | Cannot_infer_type -> Unsigned.UInt32.of_int 2

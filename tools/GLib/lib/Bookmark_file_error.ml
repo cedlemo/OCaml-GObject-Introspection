@@ -14,7 +14,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 7 then File_not_found
   else raise (Invalid_argument "Unexpected Bookmark_file_error value")
 
-let to_value =  function
+let to_value = function
   | Invalid_uri -> Unsigned.UInt32.of_int 0
   | Invalid_value -> Unsigned.UInt32.of_int 1
   | App_not_registered -> Unsigned.UInt32.of_int 2

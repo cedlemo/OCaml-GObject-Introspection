@@ -15,7 +15,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 8 then N_directories
   else raise (Invalid_argument "Unexpected User_directory value")
 
-let to_value =  function
+let to_value = function
   | Directory_desktop -> Unsigned.UInt32.of_int 0
   | Directory_documents -> Unsigned.UInt32.of_int 1
   | Directory_download -> Unsigned.UInt32.of_int 2

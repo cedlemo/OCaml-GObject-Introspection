@@ -22,7 +22,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 268435456 then Notempty_atstart
   else raise (Invalid_argument "Unexpected Regex_match_flags value")
 
-let to_value =  function
+let to_value = function
   | Anchored -> Unsigned.UInt32.of_int 16
   | Notbol -> Unsigned.UInt32.of_int 128
   | Noteol -> Unsigned.UInt32.of_int 256
@@ -53,11 +53,11 @@ let list_of_value v =
 let list_to_value flags =
   let open Unsigned.UInt32 in
   let rec logor_flags l acc =
-     match l with
-     | [] -> acc
-     | f :: q -> let v = to_value f in
-       let acc' = logor acc v in
-       logor_flags q acc'
+    match l with
+    | [] -> acc
+    | f :: q -> let v = to_value f in
+      let acc' = logor acc v in
+      logor_flags q acc'
   in
   logor_flags flags zero
 

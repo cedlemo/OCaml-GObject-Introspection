@@ -15,7 +15,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 8 then Int64
   else raise (Invalid_argument "Unexpected Option_arg value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
   | String -> Unsigned.UInt32.of_int 1
   | Int -> Unsigned.UInt32.of_int 2

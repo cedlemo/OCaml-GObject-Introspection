@@ -63,7 +63,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 176 then Character_value_too_large
   else raise (Invalid_argument "Unexpected Regex_error value")
 
-let to_value =  function
+let to_value = function
   | Compile -> Unsigned.UInt32.of_int 0
   | Optimize -> Unsigned.UInt32.of_int 1
   | Replace -> Unsigned.UInt32.of_int 2

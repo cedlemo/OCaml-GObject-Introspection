@@ -14,7 +14,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Nfkc
   else raise (Invalid_argument "Unexpected Normalize_mode value")
 
-let to_value =  function
+let to_value = function
   | Default -> Unsigned.UInt32.of_int 0
   | Nfd -> Unsigned.UInt32.of_int 0
   | Default_compose -> Unsigned.UInt32.of_int 1

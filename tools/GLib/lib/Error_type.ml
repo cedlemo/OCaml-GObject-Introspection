@@ -14,7 +14,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 7 then Float_malformed
   else raise (Invalid_argument "Unexpected Error_type value")
 
-let to_value =  function
+let to_value = function
   | Unknown -> Unsigned.UInt32.of_int 0
   | Unexp_eof -> Unsigned.UInt32.of_int 1
   | Unexp_eof_in_string -> Unsigned.UInt32.of_int 2

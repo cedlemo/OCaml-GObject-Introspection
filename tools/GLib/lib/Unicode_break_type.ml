@@ -49,7 +49,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 42 then Zero_width_joiner
   else raise (Invalid_argument "Unexpected Unicode_break_type value")
 
-let to_value =  function
+let to_value = function
   | Mandatory -> Unsigned.UInt32.of_int 0
   | Carriage_return -> Unsigned.UInt32.of_int 1
   | Line_feed -> Unsigned.UInt32.of_int 2

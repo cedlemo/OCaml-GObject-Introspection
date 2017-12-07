@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Unknown
   else raise (Invalid_argument "Unexpected IOError value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
   | Again -> Unsigned.UInt32.of_int 1
   | Inval -> Unsigned.UInt32.of_int 2

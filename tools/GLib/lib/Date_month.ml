@@ -19,7 +19,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 12 then December
   else raise (Invalid_argument "Unexpected Date_month value")
 
-let to_value =  function
+let to_value = function
   | Bad_month -> Unsigned.UInt32.of_int 0
   | January -> Unsigned.UInt32.of_int 1
   | February -> Unsigned.UInt32.of_int 2

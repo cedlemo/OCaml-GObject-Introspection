@@ -14,7 +14,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 7 then Sunday
   else raise (Invalid_argument "Unexpected Date_weekday value")
 
-let to_value =  function
+let to_value = function
   | Bad_weekday -> Unsigned.UInt32.of_int 0
   | Monday -> Unsigned.UInt32.of_int 1
   | Tuesday -> Unsigned.UInt32.of_int 2

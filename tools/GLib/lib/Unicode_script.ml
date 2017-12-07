@@ -149,7 +149,7 @@ let of_value v =
   else if v = Int32.of_int 141 then Zanabazar_square
   else raise (Invalid_argument "Unexpected Unicode_script value")
 
-let to_value =  function
+let to_value = function
   | Invalid_code -> Int32.of_int (-1)
   | Common -> Int32.of_int 0
   | Inherited -> Int32.of_int 1

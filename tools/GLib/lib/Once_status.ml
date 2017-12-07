@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Ready
   else raise (Invalid_argument "Unexpected Once_status value")
 
-let to_value =  function
+let to_value = function
   | Notcalled -> Unsigned.UInt32.of_int 0
   | Progress -> Unsigned.UInt32.of_int 1
   | Ready -> Unsigned.UInt32.of_int 2

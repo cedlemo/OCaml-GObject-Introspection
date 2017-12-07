@@ -12,7 +12,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 6 then Contention_counter
   else raise (Invalid_argument "Unexpected Slice_config value")
 
-let to_value =  function
+let to_value = function
   | Always_malloc -> Unsigned.UInt32.of_int 1
   | Bypass_magazines -> Unsigned.UInt32.of_int 2
   | Working_set_msecs -> Unsigned.UInt32.of_int 3

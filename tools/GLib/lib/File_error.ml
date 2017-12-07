@@ -31,7 +31,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 24 then Failed
   else raise (Invalid_argument "Unexpected File_error value")
 
-let to_value =  function
+let to_value = function
   | Exist -> Unsigned.UInt32.of_int 0
   | Isdir -> Unsigned.UInt32.of_int 1
   | Acces -> Unsigned.UInt32.of_int 2

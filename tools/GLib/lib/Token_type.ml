@@ -29,7 +29,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 269 then Comment_multi
   else raise (Invalid_argument "Unexpected Token_type value")
 
-let to_value =  function
+let to_value = function
   | Eof -> Unsigned.UInt32.of_int 0
   | Left_paren -> Unsigned.UInt32.of_int 40
   | Right_paren -> Unsigned.UInt32.of_int 41

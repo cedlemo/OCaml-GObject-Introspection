@@ -8,7 +8,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 1 then Out_of_bounds
   else raise (Invalid_argument "Unexpected Number_parser_error value")
 
-let to_value =  function
+let to_value = function
   | Invalid -> Unsigned.UInt32.of_int 0
   | Out_of_bounds -> Unsigned.UInt32.of_int 1
 

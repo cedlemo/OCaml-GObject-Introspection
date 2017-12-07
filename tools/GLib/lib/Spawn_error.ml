@@ -26,7 +26,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 19 then Failed
   else raise (Invalid_argument "Unexpected Spawn_error value")
 
-let to_value =  function
+let to_value = function
   | Fork -> Unsigned.UInt32.of_int 0
   | Read -> Unsigned.UInt32.of_int 1
   | Chdir -> Unsigned.UInt32.of_int 2

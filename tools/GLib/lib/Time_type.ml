@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Universal
   else raise (Invalid_argument "Unexpected Time_type value")
 
-let to_value =  function
+let to_value = function
   | Standard -> Unsigned.UInt32.of_int 0
   | Daylight -> Unsigned.UInt32.of_int 1
   | Universal -> Unsigned.UInt32.of_int 2

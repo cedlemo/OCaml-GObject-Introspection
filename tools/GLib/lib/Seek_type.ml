@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then End
   else raise (Invalid_argument "Unexpected Seek_type value")
 
-let to_value =  function
+let to_value = function
   | Cur -> Unsigned.UInt32.of_int 0
   | Set -> Unsigned.UInt32.of_int 1
   | End -> Unsigned.UInt32.of_int 2

@@ -13,7 +13,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 6 then Missing_attribute
   else raise (Invalid_argument "Unexpected Markup_error value")
 
-let to_value =  function
+let to_value = function
   | Bad_utf8 -> Unsigned.UInt32.of_int 0
   | Empty -> Unsigned.UInt32.of_int 1
   | Parse -> Unsigned.UInt32.of_int 2

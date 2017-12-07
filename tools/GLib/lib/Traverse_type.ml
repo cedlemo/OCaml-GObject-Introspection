@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Level_order
   else raise (Invalid_argument "Unexpected Traverse_type value")
 
-let to_value =  function
+let to_value = function
   | In_order -> Unsigned.UInt32.of_int 0
   | Pre_order -> Unsigned.UInt32.of_int 1
   | Post_order -> Unsigned.UInt32.of_int 2

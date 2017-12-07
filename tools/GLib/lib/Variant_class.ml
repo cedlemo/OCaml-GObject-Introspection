@@ -24,7 +24,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 123 then Dict_entry
   else raise (Invalid_argument "Unexpected Variant_class value")
 
-let to_value =  function
+let to_value = function
   | Boolean -> Unsigned.UInt32.of_int 98
   | Byte -> Unsigned.UInt32.of_int 121
   | Int16 -> Unsigned.UInt32.of_int 110

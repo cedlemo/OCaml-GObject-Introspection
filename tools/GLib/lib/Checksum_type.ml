@@ -11,7 +11,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 4 then Sha384
   else raise (Invalid_argument "Unexpected Checksum_type value")
 
-let to_value =  function
+let to_value = function
   | Md5 -> Unsigned.UInt32.of_int 0
   | Sha1 -> Unsigned.UInt32.of_int 1
   | Sha256 -> Unsigned.UInt32.of_int 2
