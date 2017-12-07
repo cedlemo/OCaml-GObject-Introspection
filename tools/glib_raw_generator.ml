@@ -50,6 +50,8 @@ let skip = [ "Hook"; (* skip for recursion pb *)
              (* Remove all stuff related to GLib debugging and Ouput *)
              "Log";
              "log_";
+             (* Remove all stuff related to GLib atomic operations *)
+             "atomic";
 ]
 
 let const_parser info sources =

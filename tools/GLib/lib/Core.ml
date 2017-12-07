@@ -202,55 +202,23 @@ let ascii_strup =
 (*SKIPPED : assertion_message_cmpstr*)
 (*SKIPPED : assertion_message_error*)
 (*DEPRECATED : atexit*)
-
-let atomic_int_add =
-  foreign "g_atomic_int_add" (ptr int32_t @-> int32_t @-> returning (int32_t))
-
-let atomic_int_and =
-  foreign "g_atomic_int_and" (ptr uint32_t @-> uint32_t @-> returning (uint32_t))
-
-let atomic_int_compare_and_exchange =
-  foreign "g_atomic_int_compare_and_exchange" (ptr int32_t @-> int32_t @-> int32_t @-> returning (bool))
-
-let atomic_int_dec_and_test =
-  foreign "g_atomic_int_dec_and_test" (ptr int32_t @-> returning (bool))
+(*SKIPPED : atomic_int_add*)
+(*SKIPPED : atomic_int_and*)
+(*SKIPPED : atomic_int_compare_and_exchange*)
+(*SKIPPED : atomic_int_dec_and_test*)
 (*DEPRECATED : atomic_int_exchange_and_add*)
-
-let atomic_int_get =
-  foreign "g_atomic_int_get" (ptr int32_t @-> returning (int32_t))
-
-let atomic_int_inc =
-  foreign "g_atomic_int_inc" (ptr int32_t @-> returning (void))
-
-let atomic_int_or =
-  foreign "g_atomic_int_or" (ptr uint32_t @-> uint32_t @-> returning (uint32_t))
-
-let atomic_int_set =
-  foreign "g_atomic_int_set" (ptr int32_t @-> int32_t @-> returning (void))
-
-let atomic_int_xor =
-  foreign "g_atomic_int_xor" (ptr uint32_t @-> uint32_t @-> returning (uint32_t))
-
-let atomic_pointer_add =
-  foreign "g_atomic_pointer_add" (ptr void @-> int64_t @-> returning (int64_t))
-
-let atomic_pointer_and =
-  foreign "g_atomic_pointer_and" (ptr void @-> uint64_t @-> returning (uint64_t))
-
-let atomic_pointer_compare_and_exchange =
-  foreign "g_atomic_pointer_compare_and_exchange" (ptr void @-> ptr_opt void @-> ptr_opt void @-> returning (bool))
-
-let atomic_pointer_get =
-  foreign "g_atomic_pointer_get" (ptr void @-> returning (ptr_opt void))
-
-let atomic_pointer_or =
-  foreign "g_atomic_pointer_or" (ptr void @-> uint64_t @-> returning (uint64_t))
-
-let atomic_pointer_set =
-  foreign "g_atomic_pointer_set" (ptr void @-> ptr_opt void @-> returning (void))
-
-let atomic_pointer_xor =
-  foreign "g_atomic_pointer_xor" (ptr void @-> uint64_t @-> returning (uint64_t))
+(*SKIPPED : atomic_int_get*)
+(*SKIPPED : atomic_int_inc*)
+(*SKIPPED : atomic_int_or*)
+(*SKIPPED : atomic_int_set*)
+(*SKIPPED : atomic_int_xor*)
+(*SKIPPED : atomic_pointer_add*)
+(*SKIPPED : atomic_pointer_and*)
+(*SKIPPED : atomic_pointer_compare_and_exchange*)
+(*SKIPPED : atomic_pointer_get*)
+(*SKIPPED : atomic_pointer_or*)
+(*SKIPPED : atomic_pointer_set*)
+(*SKIPPED : atomic_pointer_xor*)
 
 (*Not implemented g_base64_decode argument type Arg_info.In or Arg_info.Out not handled*)
 

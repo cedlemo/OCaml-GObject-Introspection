@@ -198,55 +198,23 @@ val ascii_strup:
 (*SKIPPED : assertion_message_cmpstr*)
 (*SKIPPED : assertion_message_error*)
 (*DEPRECATED : atexit*)
-
-val atomic_int_add:
-  int32 ptr -> int32 -> int32
-
-val atomic_int_and:
-  Unsigned.uint32 ptr -> Unsigned.uint32 -> Unsigned.uint32
-
-val atomic_int_compare_and_exchange:
-  int32 ptr -> int32 -> int32 -> bool
-
-val atomic_int_dec_and_test:
-  int32 ptr -> bool
+(*SKIPPED : atomic_int_add*)
+(*SKIPPED : atomic_int_and*)
+(*SKIPPED : atomic_int_compare_and_exchange*)
+(*SKIPPED : atomic_int_dec_and_test*)
 (*DEPRECATED : atomic_int_exchange_and_add*)
-
-val atomic_int_get:
-  int32 ptr -> int32
-
-val atomic_int_inc:
-  int32 ptr -> unit
-
-val atomic_int_or:
-  Unsigned.uint32 ptr -> Unsigned.uint32 -> Unsigned.uint32
-
-val atomic_int_set:
-  int32 ptr -> int32 -> unit
-
-val atomic_int_xor:
-  Unsigned.uint32 ptr -> Unsigned.uint32 -> Unsigned.uint32
-
-val atomic_pointer_add:
-  unit ptr -> int64 -> int64
-
-val atomic_pointer_and:
-  unit ptr -> Unsigned.uint64 -> Unsigned.uint64
-
-val atomic_pointer_compare_and_exchange:
-  unit ptr -> unit ptr option -> unit ptr option -> bool
-
-val atomic_pointer_get:
-  unit ptr -> unit ptr option
-
-val atomic_pointer_or:
-  unit ptr -> Unsigned.uint64 -> Unsigned.uint64
-
-val atomic_pointer_set:
-  unit ptr -> unit ptr option -> unit
-
-val atomic_pointer_xor:
-  unit ptr -> Unsigned.uint64 -> Unsigned.uint64
+(*SKIPPED : atomic_int_get*)
+(*SKIPPED : atomic_int_inc*)
+(*SKIPPED : atomic_int_or*)
+(*SKIPPED : atomic_int_set*)
+(*SKIPPED : atomic_int_xor*)
+(*SKIPPED : atomic_pointer_add*)
+(*SKIPPED : atomic_pointer_and*)
+(*SKIPPED : atomic_pointer_compare_and_exchange*)
+(*SKIPPED : atomic_pointer_get*)
+(*SKIPPED : atomic_pointer_or*)
+(*SKIPPED : atomic_pointer_set*)
+(*SKIPPED : atomic_pointer_xor*)
 
 (*Not implemented g_base64_decode argument type Arg_info.In or Arg_info.Out not handled*)
 
