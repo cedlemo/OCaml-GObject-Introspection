@@ -748,18 +748,10 @@ let main_current_source =
 
 let main_depth =
   foreign "g_main_depth" (void @-> returning (int32_t))
-
-let malloc =
-  foreign "g_malloc" (uint64_t @-> returning (ptr_opt void))
-
-let malloc0 =
-  foreign "g_malloc0" (uint64_t @-> returning (ptr_opt void))
-
-let malloc0_n =
-  foreign "g_malloc0_n" (uint64_t @-> uint64_t @-> returning (ptr_opt void))
-
-let malloc_n =
-  foreign "g_malloc_n" (uint64_t @-> uint64_t @-> returning (ptr_opt void))
+(*SKIPPED : malloc*)
+(*SKIPPED : malloc0*)
+(*SKIPPED : malloc0_n*)
+(*SKIPPED : malloc_n*)
 
 let markup_error_quark =
   foreign "g_markup_error_quark" (void @-> returning (uint32_t))
@@ -858,12 +850,8 @@ let random_int_range =
 
 let random_set_seed =
   foreign "g_random_set_seed" (uint32_t @-> returning (void))
-
-let realloc =
-  foreign "g_realloc" (ptr_opt void @-> uint64_t @-> returning (ptr_opt void))
-
-let realloc_n =
-  foreign "g_realloc_n" (ptr_opt void @-> uint64_t @-> uint64_t @-> returning (ptr_opt void))
+(*SKIPPED : realloc*)
+(*SKIPPED : realloc_n*)
 
 (*Not implemented g_regex_check_replacement argument type Arg_info.In or Arg_info.Out not handled*)
 
@@ -1201,24 +1189,12 @@ let timeout_source_new_seconds =
 (*DEPRECATED : trash_stack_peek*)
 (*DEPRECATED : trash_stack_pop*)
 (*DEPRECATED : trash_stack_push*)
-
-let try_malloc =
-  foreign "g_try_malloc" (uint64_t @-> returning (ptr_opt void))
-
-let try_malloc0 =
-  foreign "g_try_malloc0" (uint64_t @-> returning (ptr_opt void))
-
-let try_malloc0_n =
-  foreign "g_try_malloc0_n" (uint64_t @-> uint64_t @-> returning (ptr_opt void))
-
-let try_malloc_n =
-  foreign "g_try_malloc_n" (uint64_t @-> uint64_t @-> returning (ptr_opt void))
-
-let try_realloc =
-  foreign "g_try_realloc" (ptr_opt void @-> uint64_t @-> returning (ptr_opt void))
-
-let try_realloc_n =
-  foreign "g_try_realloc_n" (ptr_opt void @-> uint64_t @-> uint64_t @-> returning (ptr_opt void))
+(*SKIPPED : try_malloc*)
+(*SKIPPED : try_malloc0*)
+(*SKIPPED : try_malloc0_n*)
+(*SKIPPED : try_malloc_n*)
+(*SKIPPED : try_realloc*)
+(*SKIPPED : try_realloc_n*)
 
 (*Not implemented g_ucs4_to_utf16 argument type unichar not handled*)
 

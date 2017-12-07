@@ -681,18 +681,10 @@ val main_current_source:
 
 val main_depth:
   unit -> int32
-
-val malloc:
-  Unsigned.uint64 -> unit ptr option
-
-val malloc0:
-  Unsigned.uint64 -> unit ptr option
-
-val malloc0_n:
-  Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
-
-val malloc_n:
-  Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
+(*SKIPPED : malloc*)
+(*SKIPPED : malloc0*)
+(*SKIPPED : malloc0_n*)
+(*SKIPPED : malloc_n*)
 
 val markup_error_quark:
   unit -> Unsigned.uint32
@@ -791,12 +783,8 @@ val random_int_range:
 
 val random_set_seed:
   Unsigned.uint32 -> unit
-
-val realloc:
-  unit ptr option -> Unsigned.uint64 -> unit ptr option
-
-val realloc_n:
-  unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
+(*SKIPPED : realloc*)
+(*SKIPPED : realloc_n*)
 
 (*Not implemented g_regex_check_replacement argument type Arg_info.In or Arg_info.Out not handled*)
 
@@ -1107,24 +1095,12 @@ val timeout_source_new_seconds:
 (*DEPRECATED : trash_stack_peek*)
 (*DEPRECATED : trash_stack_pop*)
 (*DEPRECATED : trash_stack_push*)
-
-val try_malloc:
-  Unsigned.uint64 -> unit ptr option
-
-val try_malloc0:
-  Unsigned.uint64 -> unit ptr option
-
-val try_malloc0_n:
-  Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
-
-val try_malloc_n:
-  Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
-
-val try_realloc:
-  unit ptr option -> Unsigned.uint64 -> unit ptr option
-
-val try_realloc_n:
-  unit ptr option -> Unsigned.uint64 -> Unsigned.uint64 -> unit ptr option
+(*SKIPPED : try_malloc*)
+(*SKIPPED : try_malloc0*)
+(*SKIPPED : try_malloc0_n*)
+(*SKIPPED : try_malloc_n*)
+(*SKIPPED : try_realloc*)
+(*SKIPPED : try_realloc_n*)
 
 (*Not implemented g_ucs4_to_utf16 argument type unichar not handled*)
 

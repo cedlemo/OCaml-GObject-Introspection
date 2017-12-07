@@ -52,6 +52,11 @@ let skip = [ "Hook"; (* skip for recursion pb *)
              "log_";
              (* Remove all stuff related to GLib atomic operations *)
              "atomic";
+             (* Remove all stuff like malloc /realloc *)
+             "malloc";
+             "realloc";
+             "try_malloc";
+             "try_realloc";
 ]
 
 let const_parser info sources =
