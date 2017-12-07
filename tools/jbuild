@@ -1,6 +1,10 @@
 (jbuild_version 1)
 
-(executable
- ((name glib_raw_generator)
-  (libraries (GObject_introspection)))
+(executables
+ (
+   (names (glib_raw_generator
+           gio_raw_generator))
+
+    (libraries (GObject_introspection))
+  )
 )
