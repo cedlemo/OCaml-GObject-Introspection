@@ -49,7 +49,7 @@ let append_enum_to_value_fn enum_name ocaml_type values_and_variants sources =
       fun (x, v) ->
         String.concat "" [v; " -> "; value_info_to_enum_type_conversion ocaml_type x; "\n"]
     ) values_and_variants |> String.concat "  | "  in
-  File.bprintf ml "let to_value =  function\n  | %s" branches
+  File.bprintf ml "let to_value = function\n  | %s" branches
 
 let append_enum_view ctypes_typ sources =
   let open Binding_utils in
@@ -112,11 +112,11 @@ let append_flags_list_to_value_fn enum_name ocaml_type sources =
   File.buff_add_line ml "let list_to_value flags =";
   File.bprintf ml       "  let open %s in\n" constant_type;
   File.buff_add_line ml "  let rec logor_flags l acc =";
-  File.buff_add_line ml "     match l with";
-  File.buff_add_line ml "     | [] -> acc";
-  File.buff_add_line ml "     | f :: q -> let v = to_value f in";
-  File.buff_add_line ml "       let acc' = logor acc v in";
-  File.buff_add_line ml "       logor_flags q acc'";
+  File.buff_add_line ml "    match l with";
+  File.buff_add_line ml "    | [] -> acc";
+  File.buff_add_line ml "    | f :: q -> let v = to_value f in";
+  File.buff_add_line ml "      let acc' = logor acc v in";
+  File.buff_add_line ml "      logor_flags q acc'";
   File.buff_add_line ml "  in";
   File.buff_add_line ml "  logor_flags flags zero"
 
