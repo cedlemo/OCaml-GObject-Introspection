@@ -1,0 +1,12 @@
+open Ctypes
+
+type t = Srv | Mx | Txt | Soa | Ns
+
+val of_value:
+  Unsigned.uint32 -> t
+
+val to_value:
+  t -> Unsigned.uint32
+
+val t_view: t typ
+
