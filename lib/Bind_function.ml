@@ -16,6 +16,8 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open Ctypes
+open Foreign
 
 type argument = | Arg_in of Binding_utils.type_strings
                 | Arg_out of { pre : string; types : Binding_utils.type_strings; post : string }
@@ -91,6 +93,101 @@ let get_return_types callable skip_types =
  *     - find out if it is a pointer
  *)
 
+type arg = Not_implemented of string
+         | Skipped of string
+         | Arg of {name : string; ocaml_type : string; ctypes_type : string; type_info : Type_info.t structure ptr}
+type arg_lists = {in_list : arg list; out_list : arg list; in_out_list : arg list}
+type args = No_args | Args of arg_lists
+
+let has_out_arg = function
+  | No_args -> false
+  | Args args -> if List.length args.out_list > 0 then true else false
+
+let has_not_implemented_arg = function
+  | No_args -> None
+  | Args args ->
+    let search =
+      List.find_opt (fun a -> match a with
+                              | Not_implemented _ -> true
+                              | _ -> false)
+    in
+    match search args.in_list with
+    | Some a -> Some a
+    | None -> match search args.out_list with
+              | Some a -> Some a
+              | None -> search args.in_out_list
+
+let has_not_skipped_arg = function
+  | No_args -> None
+  | Args args ->
+    let search l =
+      List.find_opt (fun a -> match a with
+                              | Skipped _ -> true
+                              | _ -> false) l
+    in
+    match search args.in_list with
+    | Some a -> Some a
+    | None -> match search args.out_list with
+              | Some a -> Some a
+              | None -> search args.in_out_list
+
+let get_args_information callable skip_types =
+  let n = Callable_info.get_n_args callable in
+  if n = 0 then No_args
+  else (
+    let fetch_arg_info arg =
+      let type_info = Arg_info.get_type arg in
+      let may_be_null = Arg_info.may_be_null arg in
+      match Binding_utils.type_info_to_bindings_types type_info may_be_null with
+      | Binding_utils.Not_implemented tag_name -> Not_implemented tag_name
+      | Types {ocaml = ocaml_type'; ctypes = ctypes_type'} ->
+          let (ocaml_type, ctypes_type) = check_if_types_are_not_from_core (ocaml_type', ctypes_type') in
+          if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
+          else let name = ( let info' = Arg_info.to_baseinfo arg in
+                            match Base_info.get_name info' with
+                            | None -> raise (Failure "It should have a name :Bind_function Arg_info.in")
+                            | Some s -> s ) in
+          Arg {name; ocaml_type; ctypes_type; type_info}
+    in
+    let rec _each_arg i {in_list; out_list; in_out_list} =
+      if i >= n then {in_list = List.rev in_list;
+                     out_list = List.rev out_list;
+                     in_out_list = List.rev in_out_list
+                    }
+      else (
+        let arg = Callable_info.get_arg callable i in
+           match Arg_info.get_direction arg with
+           | Arg_info.In -> _each_arg (i + 1) {in_list = (fetch_arg_info arg) :: in_list; out_list; in_out_list}
+           | Arg_info.Out -> _each_arg (i + 1 ) {in_list; out_list = (fetch_arg_info arg) :: out_list; in_out_list}
+           | Arg_info.InOut -> _each_arg (i + 1) {in_list; out_list; in_out_list = (fetch_arg_info arg) :: in_out_list}
+      )
+    in
+    let empty_args = {in_list = []; out_list = []; in_out_list = []} in
+    Args (_each_arg 0 empty_args)
+  )
+
+let log_new_args_type fun_name = function
+  | No_args -> Printf.printf "fn - %s : no argument\n" fun_name
+  | Args args ->
+      let print_arg_list = function
+        | [] -> ""
+        | l -> let strs = List.map (fun a ->
+                              match a with
+                              | Not_implemented s -> "Not handled: " ^ s
+                              | Skipped s -> "Skipped: " ^ s
+                              | Arg {name; ocaml_type; ctypes_type; _ } ->
+                                  Printf.sprintf "(arg name) %s : %s | %s" name ocaml_type ctypes_type)
+           l in String.concat " -> " strs
+     in
+     let _ = Printf.printf "fn - %s : (In args ) %s\n" fun_name (print_arg_list args.in_list) in
+     let _ = Printf.printf "fn - %s : (Out args) %s\n" fun_name (print_arg_list args.out_list) in
+     let _ = Printf.printf "fn - %s : (Out args) %s\n" fun_name (print_arg_list args.in_out_list) in
+     print_endline "----------------------------------------------------------------------------------------------"
+
+let test_new_args_data fun_name callable skip_types =
+  let args = get_args_information callable skip_types in
+  log_new_args_type fun_name args
+
 let generate_callable_bindings callable name symbol args ret_types sources =
   (* TODO: when dealing with Error.t, make sure to be able to find if the code
           that is generated is for :
@@ -134,6 +231,7 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
+  let _ = test_new_args_data name callable skip_types in
   match get_arguments_types callable skip_types with
   | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type %s not handled" symbol t in
     Sources.buffs_add_comments sources coms
@@ -205,6 +303,7 @@ let append_ctypes_method_bindings raw_name info container sources skip_types =
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
+  let _ = test_new_args_data name callable skip_types in
   match get_method_arguments_types callable container skip_types with
   | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type%s not handled" symbol t in
     Sources.buffs_add_comments sources coms
