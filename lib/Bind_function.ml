@@ -117,7 +117,7 @@ let has_not_implemented_arg = function
               | Some a -> Some a
               | None -> search args.in_out_list
 
-let has_not_skipped_arg = function
+let has_skipped_arg = function
   | No_args -> None
   | Args args ->
     let search l =
