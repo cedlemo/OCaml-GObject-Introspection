@@ -11,7 +11,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 4 then Signal
   else raise (Invalid_argument "Unexpected DBus_message_type value")
 
-let to_value =  function
+let to_value = function
   | Invalid -> Unsigned.UInt32.of_int 0
   | Method_call -> Unsigned.UInt32.of_int 1
   | Method_return -> Unsigned.UInt32.of_int 2

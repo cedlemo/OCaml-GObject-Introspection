@@ -8,7 +8,7 @@ let of_value v =
   if v = Unsigned.UInt32.of_int 0 then None
   else raise (Invalid_argument "Unexpected Test_dbus_flags value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
 
 let list_of_value v =
@@ -25,11 +25,11 @@ let list_of_value v =
 let list_to_value flags =
   let open Unsigned.UInt32 in
   let rec logor_flags l acc =
-     match l with
-     | [] -> acc
-     | f :: q -> let v = to_value f in
-       let acc' = logor acc v in
-       logor_flags q acc'
+    match l with
+    | [] -> acc
+    | f :: q -> let v = to_value f in
+      let acc' = logor acc v in
+      logor_flags q acc'
   in
   logor_flags flags zero
 

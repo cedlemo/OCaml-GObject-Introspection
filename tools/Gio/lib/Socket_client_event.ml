@@ -15,7 +15,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 8 then Complete
   else raise (Invalid_argument "Unexpected Socket_client_event value")
 
-let to_value =  function
+let to_value = function
   | Resolving -> Unsigned.UInt32.of_int 0
   | Resolved -> Unsigned.UInt32.of_int 1
   | Connecting -> Unsigned.UInt32.of_int 2

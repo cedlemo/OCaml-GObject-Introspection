@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Raw
   else raise (Invalid_argument "Unexpected Zlib_compressor_format value")
 
-let to_value =  function
+let to_value = function
   | Zlib -> Unsigned.UInt32.of_int 0
   | Gzip -> Unsigned.UInt32.of_int 1
   | Raw -> Unsigned.UInt32.of_int 2

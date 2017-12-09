@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Tag
   else raise (Invalid_argument "Unexpected Emblem_origin value")
 
-let to_value =  function
+let to_value = function
   | Unknown -> Unsigned.UInt32.of_int 0
   | Device -> Unsigned.UInt32.of_int 1
   | Livemetadata -> Unsigned.UInt32.of_int 2

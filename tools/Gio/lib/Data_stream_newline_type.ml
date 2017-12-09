@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Any
   else raise (Invalid_argument "Unexpected Data_stream_newline_type value")
 
-let to_value =  function
+let to_value = function
   | Lf -> Unsigned.UInt32.of_int 0
   | Cr -> Unsigned.UInt32.of_int 1
   | Cr_lf -> Unsigned.UInt32.of_int 2

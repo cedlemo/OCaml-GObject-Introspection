@@ -8,7 +8,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 1 then Block_duplicates
   else raise (Invalid_argument "Unexpected IOModule_scope_flags value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
   | Block_duplicates -> Unsigned.UInt32.of_int 1
 

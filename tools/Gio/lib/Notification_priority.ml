@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Urgent
   else raise (Invalid_argument "Unexpected Notification_priority value")
 
-let to_value =  function
+let to_value = function
   | Normal -> Unsigned.UInt32.of_int 0
   | Low -> Unsigned.UInt32.of_int 1
   | High -> Unsigned.UInt32.of_int 2

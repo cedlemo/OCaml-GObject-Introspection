@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Unhandled
   else raise (Invalid_argument "Unexpected Mount_operation_result value")
 
-let to_value =  function
+let to_value = function
   | Handled -> Unsigned.UInt32.of_int 0
   | Aborted -> Unsigned.UInt32.of_int 1
   | Unhandled -> Unsigned.UInt32.of_int 2

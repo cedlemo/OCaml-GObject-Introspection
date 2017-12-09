@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Listened
   else raise (Invalid_argument "Unexpected Socket_listener_event value")
 
-let to_value =  function
+let to_value = function
   | Binding -> Unsigned.UInt32.of_int 0
   | Bound -> Unsigned.UInt32.of_int 1
   | Listening -> Unsigned.UInt32.of_int 2

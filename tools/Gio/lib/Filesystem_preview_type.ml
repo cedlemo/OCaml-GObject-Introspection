@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Never
   else raise (Invalid_argument "Unexpected Filesystem_preview_type value")
 
-let to_value =  function
+let to_value = function
   | If_always -> Unsigned.UInt32.of_int 0
   | If_local -> Unsigned.UInt32.of_int 1
   | Never -> Unsigned.UInt32.of_int 2

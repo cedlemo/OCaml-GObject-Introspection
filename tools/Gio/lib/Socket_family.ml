@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 10 then Ipv6
   else raise (Invalid_argument "Unexpected Socket_family value")
 
-let to_value =  function
+let to_value = function
   | Invalid -> Unsigned.UInt32.of_int 0
   | Unix -> Unsigned.UInt32.of_int 1
   | Ipv4 -> Unsigned.UInt32.of_int 2

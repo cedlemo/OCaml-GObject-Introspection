@@ -51,7 +51,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 44 then Property_read_only
   else raise (Invalid_argument "Unexpected DBus_error value")
 
-let to_value =  function
+let to_value = function
   | Failed -> Unsigned.UInt32.of_int 0
   | No_memory -> Unsigned.UInt32.of_int 1
   | Service_unknown -> Unsigned.UInt32.of_int 2

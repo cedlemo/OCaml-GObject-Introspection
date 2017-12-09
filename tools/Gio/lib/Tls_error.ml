@@ -13,7 +13,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 6 then Eof
   else raise (Invalid_argument "Unexpected Tls_error value")
 
-let to_value =  function
+let to_value = function
   | Unavailable -> Unsigned.UInt32.of_int 0
   | Misc -> Unsigned.UInt32.of_int 1
   | Bad_certificate -> Unsigned.UInt32.of_int 2

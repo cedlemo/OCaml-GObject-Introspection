@@ -8,7 +8,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 1 then Keypair
   else raise (Invalid_argument "Unexpected Tls_database_lookup_flags value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
   | Keypair -> Unsigned.UInt32.of_int 1
 

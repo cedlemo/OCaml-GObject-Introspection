@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 4 then Full
   else raise (Invalid_argument "Unexpected Network_connectivity value")
 
-let to_value =  function
+let to_value = function
   | Local -> Unsigned.UInt32.of_int 1
   | Limited -> Unsigned.UInt32.of_int 2
   | Portal -> Unsigned.UInt32.of_int 3

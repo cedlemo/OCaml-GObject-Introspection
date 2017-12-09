@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 1 then Force
   else raise (Invalid_argument "Unexpected Mount_unmount_flags value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
   | Force -> Unsigned.UInt32.of_int 1
 
@@ -27,11 +27,11 @@ let list_of_value v =
 let list_to_value flags =
   let open Unsigned.UInt32 in
   let rec logor_flags l acc =
-     match l with
-     | [] -> acc
-     | f :: q -> let v = to_value f in
-       let acc' = logor acc v in
-       logor_flags q acc'
+    match l with
+    | [] -> acc
+    | f :: q -> let v = to_value f in
+      let acc' = logor acc v in
+      logor_flags q acc'
   in
   logor_flags flags zero
 

@@ -16,7 +16,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 9 then Num_unix_fds
   else raise (Invalid_argument "Unexpected DBus_message_header_field value")
 
-let to_value =  function
+let to_value = function
   | Invalid -> Unsigned.UInt32.of_int 0
   | Path -> Unsigned.UInt32.of_int 1
   | Interface -> Unsigned.UInt32.of_int 2

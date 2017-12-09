@@ -16,7 +16,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 9 then Stringv
   else raise (Invalid_argument "Unexpected File_attribute_type value")
 
-let to_value =  function
+let to_value = function
   | Invalid -> Unsigned.UInt32.of_int 0
   | String -> Unsigned.UInt32.of_int 1
   | Byte_string -> Unsigned.UInt32.of_int 2

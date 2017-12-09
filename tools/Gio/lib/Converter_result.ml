@@ -10,7 +10,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 3 then Flushed
   else raise (Invalid_argument "Unexpected Converter_result value")
 
-let to_value =  function
+let to_value = function
   | Error -> Unsigned.UInt32.of_int 0
   | Converted -> Unsigned.UInt32.of_int 1
   | Finished -> Unsigned.UInt32.of_int 2

@@ -8,7 +8,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 1 then Internal
   else raise (Invalid_argument "Unexpected Resource_error value")
 
-let to_value =  function
+let to_value = function
   | Not_found -> Unsigned.UInt32.of_int 0
   | Internal -> Unsigned.UInt32.of_int 1
 

@@ -11,7 +11,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 4 then Abstract_padded
   else raise (Invalid_argument "Unexpected Unix_socket_address_type value")
 
-let to_value =  function
+let to_value = function
   | Invalid -> Unsigned.UInt32.of_int 0
   | Anonymous -> Unsigned.UInt32.of_int 1
   | Path -> Unsigned.UInt32.of_int 2

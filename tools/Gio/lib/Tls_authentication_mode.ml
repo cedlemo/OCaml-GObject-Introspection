@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Required
   else raise (Invalid_argument "Unexpected Tls_authentication_mode value")
 
-let to_value =  function
+let to_value = function
   | None -> Unsigned.UInt32.of_int 0
   | Requested -> Unsigned.UInt32.of_int 1
   | Required -> Unsigned.UInt32.of_int 2

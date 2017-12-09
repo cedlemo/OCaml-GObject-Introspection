@@ -11,7 +11,7 @@ let of_value v =
   else if v = Int32.of_int 132 then Sctp
   else raise (Invalid_argument "Unexpected Socket_protocol value")
 
-let to_value =  function
+let to_value = function
   | Unknown -> Int32.of_int (-1)
   | Default -> Int32.of_int 0
   | Tcp -> Int32.of_int 6

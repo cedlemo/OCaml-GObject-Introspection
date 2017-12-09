@@ -11,7 +11,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 5 then Ns
   else raise (Invalid_argument "Unexpected Resolver_record_type value")
 
-let to_value =  function
+let to_value = function
   | Srv -> Unsigned.UInt32.of_int 1
   | Mx -> Unsigned.UInt32.of_int 2
   | Txt -> Unsigned.UInt32.of_int 3

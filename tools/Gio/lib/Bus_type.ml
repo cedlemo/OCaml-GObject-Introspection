@@ -10,7 +10,7 @@ let of_value v =
   else if v = Int32.of_int 2 then Session
   else raise (Invalid_argument "Unexpected Bus_type value")
 
-let to_value =  function
+let to_value = function
   | Starter -> Int32.of_int (-1)
   | None -> Int32.of_int 0
   | System -> Int32.of_int 1

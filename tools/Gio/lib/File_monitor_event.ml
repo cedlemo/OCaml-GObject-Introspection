@@ -17,7 +17,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 10 then Moved_out
   else raise (Invalid_argument "Unexpected File_monitor_event value")
 
-let to_value =  function
+let to_value = function
   | Changed -> Unsigned.UInt32.of_int 0
   | Changes_done_hint -> Unsigned.UInt32.of_int 1
   | Deleted -> Unsigned.UInt32.of_int 2

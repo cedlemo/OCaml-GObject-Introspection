@@ -9,7 +9,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 2 then Error_setting
   else raise (Invalid_argument "Unexpected File_attribute_status value")
 
-let to_value =  function
+let to_value = function
   | Unset -> Unsigned.UInt32.of_int 0
   | Set -> Unsigned.UInt32.of_int 1
   | Error_setting -> Unsigned.UInt32.of_int 2

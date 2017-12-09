@@ -8,7 +8,7 @@ let of_value v =
   else if v = Unsigned.UInt32.of_int 108 then Little_endian
   else raise (Invalid_argument "Unexpected DBus_message_byte_order value")
 
-let to_value =  function
+let to_value = function
   | Big_endian -> Unsigned.UInt32.of_int 66
   | Little_endian -> Unsigned.UInt32.of_int 108
 
