@@ -97,19 +97,6 @@ let generate_callable_bindings callable name symbol args ret_types sources =
             - GLib module (use "Error.t" string)
             - other module (user "GLib.Error.t")
   *)
-  (*
-    TODO: add a finalizer to allocated error
-  example of simple arg out val
-  let get_value info =
-    let get_value_raw =
-      foreign "g_constant_info_get_value"
-        (ptr constantinfo @-> ptr Types.argument @-> returning int) in
-    let arg_ptr = allocate_n Types.argument ~count:1 in
-    let _ = get_value_raw info arg_ptr in
-    let _ = Gc.finalise (fun v ->
-        info_free_value info v) arg_ptr in
-    arg_ptr
-   *)
   let open Binding_utils in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
