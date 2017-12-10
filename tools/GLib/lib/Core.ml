@@ -283,7 +283,7 @@ let child_watch_source_new =
 
 let clear_error () =
   let clear_error_raw =
-    foreign "g_clear_error" ptr_opt (ptr_opt Error.t_typ) @-> returning (void))
+    foreign "g_clear_error" (ptr_opt (ptr_opt Error.t_typ) @-> returning (void))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
   let value = clear_error_raw (Some err_ptr_ptr) in
