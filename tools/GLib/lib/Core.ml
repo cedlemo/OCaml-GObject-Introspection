@@ -179,18 +179,18 @@ let ascii_strcasecmp =
 let ascii_strdown =
   foreign "g_ascii_strdown" (string @-> int64_t @-> returning (string))
 
-(*Not implemented g_ascii_string_to_signed argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_ascii_string_to_signed - out argument not handled*)
 
-(*Not implemented g_ascii_string_to_unsigned argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_ascii_string_to_unsigned - out argument not handled*)
 
 let ascii_strncasecmp =
   foreign "g_ascii_strncasecmp" (string @-> string @-> uint64_t @-> returning (int32_t))
 
-(*Not implemented g_ascii_strtod argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_ascii_strtod - out argument not handled*)
 
-(*Not implemented g_ascii_strtoll argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_ascii_strtoll - out argument not handled*)
 
-(*Not implemented g_ascii_strtoull argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_ascii_strtoull - out argument not handled*)
 
 let ascii_strup =
   foreign "g_ascii_strup" (string @-> int64_t @-> returning (string))
@@ -220,17 +220,17 @@ let ascii_strup =
 (*SKIPPED : atomic_pointer_set*)
 (*SKIPPED : atomic_pointer_xor*)
 
-(*Not implemented g_base64_decode argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_base64_decode - out argument not handled*)
 
-(*Not implemented g_base64_decode_inplace argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_base64_decode_inplace type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_base64_decode_step argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_base64_decode_step type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_base64_encode argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_base64_encode type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_base64_encode_close argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_base64_encode_close type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_base64_encode_step argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_base64_encode_step type C Array type for Types.Array tag not implemented*)
 (*DEPRECATED : basename*)
 
 let bit_lock =
@@ -254,19 +254,19 @@ let bit_unlock =
 let bookmark_file_error_quark =
   foreign "g_bookmark_file_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_build_filenamev argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_build_filenamev type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_build_pathv argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_build_pathv type C Array type for Types.Array tag not implemented*)
 
-(*SKIPPED : g_byte_array_free argument type Byte_array.t structure ptr*)
+(*SKIPPED :  g_byte_array_free type Byte_array.t structure ptr skipped*)
 
-(*SKIPPED : g_byte_array_free_to_bytes argument type Byte_array.t structure ptr*)
+(*SKIPPED :  g_byte_array_free_to_bytes type Byte_array.t structure ptr skipped*)
 
 (*SKIPPED : g_byte_array_new return type Byte_array.t structure ptr*)
 
-(*Not implemented g_byte_array_new_take argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_byte_array_new_take type C Array type for Types.Array tag not implemented*)
 
-(*SKIPPED : g_byte_array_unref argument type Byte_array.t structure ptr*)
+(*SKIPPED :  g_byte_array_unref type Byte_array.t structure ptr skipped*)
 
 let chdir =
   foreign "g_chdir" (string @-> returning (int32_t))
@@ -276,71 +276,71 @@ foreign "glib_check_version" (uint32_t @-> uint32_t @-> uint32_t @-> returning (
 let checksum_type_get_length =
   foreign "g_checksum_type_get_length" (Checksum_type.t_view @-> returning (int64_t))
 
-(*Not implemented g_child_watch_add_full argument type callback not handled*)
+(*Not implemented g_child_watch_add_full type callback not implemented*)
 
 let child_watch_source_new =
   foreign "g_child_watch_source_new" (int32_t @-> returning (ptr Source.t_typ))
 
-let clear_error arg1 =
+let clear_error () =
   let clear_error_raw =
-    foreign "g_clear_error" (void @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (void))
+    foreign "g_clear_error" ptr_opt (ptr_opt Error.t_typ) @-> returning (void))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = clear_error_raw arg1 (Some err_ptr_ptr) in
+  let value = clear_error_raw (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-let close arg1 =
+let close fd =
   let close_raw =
-    foreign "g_close" (int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+    foreign "g_close" (int32_t@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = close_raw arg1 (Some err_ptr_ptr) in
+  let value = close_raw fd (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-(*SKIPPED : g_compute_checksum_for_bytes argument type Bytes.t structure ptr*)
+(*SKIPPED :  g_compute_checksum_for_bytes type Bytes.t structure ptr skipped*)
 
-(*Not implemented g_compute_checksum_for_data argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_compute_checksum_for_data type C Array type for Types.Array tag not implemented*)
 
 let compute_checksum_for_string =
   foreign "g_compute_checksum_for_string" (Checksum_type.t_view @-> string @-> int64_t @-> returning (string))
 
-(*SKIPPED : g_compute_hmac_for_bytes argument type Bytes.t structure ptr*)
+(*SKIPPED :  g_compute_hmac_for_bytes type Bytes.t structure ptr skipped*)
 
-(*Not implemented g_compute_hmac_for_data argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_compute_hmac_for_data type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_compute_hmac_for_string argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_compute_hmac_for_string type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_convert argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_convert - out argument not handled*)
 
 let convert_error_quark =
   foreign "g_convert_error_quark" (void @-> returning (uint32_t))
 
-let convert_with_fallback arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
+let convert_with_fallback str len to_codeset from_codeset fallback bytes_read bytes_written =
   let convert_with_fallback_raw =
-    foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+    foreign "g_convert_with_fallback" (string @-> int64_t @-> string @-> string @-> string @-> ptr uint64_t @-> ptr uint64_t@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = convert_with_fallback_raw arg1 arg2 arg3 arg4 arg5 arg6 arg7 (Some err_ptr_ptr) in
+  let value = convert_with_fallback_raw str len to_codeset from_codeset fallback bytes_read bytes_written (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-let convert_with_iconv arg1 arg2 arg3 arg4 arg5 =
+let convert_with_iconv str len converter bytes_read bytes_written =
   let convert_with_iconv_raw =
-    foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+    foreign "g_convert_with_iconv" (string @-> int64_t @-> ptr IConv.t_typ @-> ptr uint64_t @-> ptr uint64_t@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = convert_with_iconv_raw arg1 arg2 arg3 arg4 arg5 (Some err_ptr_ptr) in
+  let value = convert_with_iconv_raw str len converter bytes_read bytes_written (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -362,9 +362,9 @@ let datalist_id_get_data =
 let datalist_id_remove_no_notify =
   foreign "g_datalist_id_remove_no_notify" (ptr Data.t_typ @-> uint32_t @-> returning (ptr_opt void))
 
-(*Not implemented g_datalist_id_replace_data argument type callback not handled*)
+(*Not implemented g_datalist_id_replace_data type callback not implemented*)
 
-(*Not implemented g_datalist_id_set_data_full argument type callback not handled*)
+(*Not implemented g_datalist_id_set_data_full type callback not implemented*)
 
 let datalist_init =
   foreign "g_datalist_init" (ptr Data.t_typ @-> returning (void))
@@ -384,7 +384,7 @@ let dataset_id_get_data =
 let dataset_id_remove_no_notify =
   foreign "g_dataset_id_remove_no_notify" (ptr void @-> uint32_t @-> returning (ptr_opt void))
 
-(*Not implemented g_dataset_id_set_data_full argument type callback not handled*)
+(*Not implemented g_dataset_id_set_data_full type callback not implemented*)
 
 let date_get_days_in_month =
   foreign "g_date_get_days_in_month" (Date_month.t_view @-> uint16_t @-> returning (uint8_t))
@@ -434,12 +434,12 @@ let dcgettext =
 let dgettext =
   foreign "g_dgettext" (string_opt @-> string @-> returning (string))
 
-let dir_make_tmp arg1 =
+let dir_make_tmp tmpl =
   let dir_make_tmp_raw =
-    foreign "g_dir_make_tmp" (string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+    foreign "g_dir_make_tmp" (string_opt@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = dir_make_tmp_raw arg1 (Some err_ptr_ptr) in
+  let value = dir_make_tmp_raw tmpl (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -467,11 +467,11 @@ let dpgettext =
 let dpgettext2 =
   foreign "g_dpgettext2" (string_opt @-> string @-> string @-> returning (string))
 
-(*Not implemented g_environ_getenv argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_environ_getenv type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_environ_setenv argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_environ_setenv type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_environ_unsetenv argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_environ_unsetenv type C Array type for Types.Array tag not implemented*)
 
 let file_error_from_errno =
   foreign "g_file_error_from_errno" (int32_t @-> returning (File_error.t_view))
@@ -479,23 +479,23 @@ let file_error_from_errno =
 let file_error_quark =
   foreign "g_file_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_file_get_contents argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_file_get_contents type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_file_open_tmp argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_file_open_tmp - out argument not handled*)
 
-let file_read_link arg1 =
+let file_read_link filename =
   let file_read_link_raw =
-    foreign "g_file_read_link" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+    foreign "g_file_read_link" (string@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = file_read_link_raw arg1 (Some err_ptr_ptr) in
+  let value = file_read_link_raw filename (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-(*Not implemented g_file_set_contents argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_file_set_contents type C Array type for Types.Array tag not implemented*)
 
 let file_test =
   foreign "g_file_test" (string @-> File_test.t_list_view @-> returning (bool))
@@ -506,23 +506,23 @@ let filename_display_basename =
 let filename_display_name =
   foreign "g_filename_display_name" (string @-> returning (string))
 
-(*Not implemented g_filename_from_uri argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_filename_from_uri - out argument not handled*)
 
-(*Not implemented g_filename_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_filename_from_utf8 - out argument not handled*)
 
-let filename_to_uri arg1 arg2 =
+let filename_to_uri filename hostname =
   let filename_to_uri_raw =
-    foreign "g_filename_to_uri" (string @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+    foreign "g_filename_to_uri" (string @-> string_opt@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = filename_to_uri_raw arg1 arg2 (Some err_ptr_ptr) in
+  let value = filename_to_uri_raw filename hostname (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-(*Not implemented g_filename_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_filename_to_utf8 - out argument not handled*)
 
 let find_program_in_path =
   foreign "g_find_program_in_path" (string @-> returning (string))
@@ -540,7 +540,7 @@ let free =
 let get_application_name =
   foreign "g_get_application_name" (void @-> returning (string))
 
-(*Not implemented g_get_charset argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_get_charset - out argument not handled*)
 
 let get_codeset =
   foreign "g_get_codeset" (void @-> returning (string))
@@ -624,7 +624,7 @@ let hash_table_insert =
 let hash_table_lookup =
   foreign "g_hash_table_lookup" (ptr Hash_table.t_typ @-> ptr_opt void @-> returning (ptr_opt void))
 
-(*Not implemented g_hash_table_lookup_extended argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_hash_table_lookup_extended - out argument not handled*)
 
 let hash_table_remove =
   foreign "g_hash_table_remove" (ptr Hash_table.t_typ @-> ptr_opt void @-> returning (bool))
@@ -647,17 +647,17 @@ let hash_table_steal_all =
 let hash_table_unref =
   foreign "g_hash_table_unref" (ptr Hash_table.t_typ @-> returning (void))
 
-(*SKIPPED : g_hook_destroy argument type Hook_list.t structure ptr*)
+(*SKIPPED :  g_hook_destroy type Hook_list.t structure ptr skipped*)
 
-(*SKIPPED : g_hook_destroy_link argument type Hook_list.t structure ptr*)
+(*SKIPPED :  g_hook_destroy_link type Hook_list.t structure ptr skipped*)
 
-(*SKIPPED : g_hook_free argument type Hook_list.t structure ptr*)
+(*SKIPPED :  g_hook_free type Hook_list.t structure ptr skipped*)
 
-(*SKIPPED : g_hook_insert_before argument type Hook_list.t structure ptr*)
+(*SKIPPED :  g_hook_insert_before type Hook_list.t structure ptr skipped*)
 
-(*SKIPPED : g_hook_prepend argument type Hook_list.t structure ptr*)
+(*SKIPPED :  g_hook_prepend type Hook_list.t structure ptr skipped*)
 
-(*SKIPPED : g_hook_unref argument type Hook_list.t structure ptr*)
+(*SKIPPED :  g_hook_unref type Hook_list.t structure ptr skipped*)
 
 let hostname_is_ascii_encoded =
   foreign "g_hostname_is_ascii_encoded" (string @-> returning (bool))
@@ -677,7 +677,7 @@ let hostname_to_unicode =
 let iconv =
   foreign "g_iconv" (ptr IConv.t_typ @-> string @-> ptr uint64_t @-> string @-> ptr uint64_t @-> returning (uint64_t))
 
-(*Not implemented g_idle_add_full argument type callback not handled*)
+(*Not implemented g_idle_add_full type callback not implemented*)
 
 let idle_remove_by_data =
   foreign "g_idle_remove_by_data" (ptr_opt void @-> returning (bool))
@@ -703,7 +703,7 @@ let intern_static_string =
 let intern_string =
   foreign "g_intern_string" (string_opt @-> returning (string))
 
-(*Not implemented g_io_add_watch_full argument type callback not handled*)
+(*Not implemented g_io_add_watch_full type callback not implemented*)
 
 let io_channel_error_from_errno =
   foreign "g_io_channel_error_from_errno" (int32_t @-> returning (IOChannel_error.t_view))
@@ -719,9 +719,9 @@ let key_file_error_quark =
 
 (*Not implemented g_listenv return type C Array type for Types.Array tag not handled*)
 
-(*Not implemented g_locale_from_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_locale_from_utf8 - out argument not handled*)
 
-(*Not implemented g_locale_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_locale_to_utf8 - out argument not handled*)
 (*SKIPPED : log_default_handler*)
 (*SKIPPED : log_remove_handler*)
 (*SKIPPED : log_set_always_fatal*)
@@ -787,7 +787,7 @@ let once_init_leave =
 let option_error_quark =
   foreign "g_option_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_parse_debug_string argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_parse_debug_string type C Array type for Types.Array tag not implemented*)
 
 let path_get_basename =
   foreign "g_path_get_basename" (string @-> returning (string))
@@ -822,7 +822,7 @@ let pointer_bit_unlock =
 let poll =
   foreign "g_poll" (ptr Poll_fd.t_typ @-> uint32_t @-> int32_t @-> returning (int32_t))
 
-(*Not implemented g_propagate_error argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_propagate_error - out argument not handled*)
 
 let quark_from_static_string =
   foreign "g_quark_from_static_string" (string_opt @-> returning (uint32_t))
@@ -853,7 +853,7 @@ let random_set_seed =
 (*SKIPPED : realloc*)
 (*SKIPPED : realloc_n*)
 
-(*Not implemented g_regex_check_replacement argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_regex_check_replacement - out argument not handled*)
 
 let regex_error_quark =
   foreign "g_regex_error_quark" (void @-> returning (uint32_t))
@@ -861,7 +861,7 @@ let regex_error_quark =
 let regex_escape_nul =
   foreign "g_regex_escape_nul" (string @-> int32_t @-> returning (string))
 
-(*Not implemented g_regex_escape_string argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_regex_escape_string type C Array type for Types.Array tag not implemented*)
 
 let regex_match_simple =
   foreign "g_regex_match_simple" (string @-> string @-> Regex_compile_flags.t_list_view @-> Regex_match_flags.t_list_view @-> returning (bool))
@@ -874,28 +874,28 @@ let reload_user_special_dirs_cache =
 let rmdir =
   foreign "g_rmdir" (string @-> returning (int32_t))
 
-(*SKIPPED : g_sequence_get argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_get type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_insert_before argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_insert_before type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_move argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_move type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_move_range argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_move_range type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_range_get_midpoint argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_range_get_midpoint type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_remove argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_remove type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_remove_range argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_remove_range type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_set argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_set type Sequence_iter.t structure ptr skipped*)
 
-(*SKIPPED : g_sequence_swap argument type Sequence_iter.t structure ptr*)
+(*SKIPPED :  g_sequence_swap type Sequence_iter.t structure ptr skipped*)
 
 let set_application_name =
   foreign "g_set_application_name" (string @-> returning (void))
 
-(*Not implemented g_set_error_literal argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_set_error_literal - out argument not handled*)
 
 let set_prgname =
   foreign "g_set_prgname" (string @-> returning (void))
@@ -906,17 +906,17 @@ let setenv =
 let shell_error_quark =
   foreign "g_shell_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_shell_parse_argv argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_shell_parse_argv type C Array type for Types.Array tag not implemented*)
 
 let shell_quote =
   foreign "g_shell_quote" (string @-> returning (string))
 
-let shell_unquote arg1 =
+let shell_unquote quoted_string =
   let shell_unquote_raw =
-    foreign "g_shell_unquote" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
+    foreign "g_shell_unquote" (string@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (string_opt))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = shell_unquote_raw arg1 (Some err_ptr_ptr) in
+  let value = shell_unquote_raw quoted_string (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -962,16 +962,16 @@ let source_set_name_by_id =
 let spaced_primes_closest =
   foreign "g_spaced_primes_closest" (uint32_t @-> returning (uint32_t))
 
-(*Not implemented g_spawn_async argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_spawn_async type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_spawn_async_with_pipes argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_spawn_async_with_pipes type C Array type for Types.Array tag not implemented*)
 
-let spawn_check_exit_status arg1 =
+let spawn_check_exit_status exit_status =
   let spawn_check_exit_status_raw =
-    foreign "g_spawn_check_exit_status" (int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+    foreign "g_spawn_check_exit_status" (int32_t@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = spawn_check_exit_status_raw arg1 (Some err_ptr_ptr) in
+  let value = spawn_check_exit_status_raw exit_status (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -981,19 +981,19 @@ let spawn_check_exit_status arg1 =
 let spawn_close_pid =
   foreign "g_spawn_close_pid" (int32_t @-> returning (void))
 
-let spawn_command_line_async arg1 =
+let spawn_command_line_async command_line =
   let spawn_command_line_async_raw =
-    foreign "g_spawn_command_line_async" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+    foreign "g_spawn_command_line_async" (string@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = spawn_command_line_async_raw arg1 (Some err_ptr_ptr) in
+  let value = spawn_command_line_async_raw command_line (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-(*Not implemented g_spawn_command_line_sync argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_spawn_command_line_sync type C Array type for Types.Array tag not implemented*)
 
 let spawn_error_quark =
   foreign "g_spawn_error_quark" (void @-> returning (uint32_t))
@@ -1001,7 +1001,7 @@ let spawn_error_quark =
 let spawn_exit_error_quark =
   foreign "g_spawn_exit_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_spawn_sync argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_spawn_sync type C Array type for Types.Array tag not implemented*)
 
 let stpcpy =
   foreign "g_stpcpy" (string @-> string @-> returning (string))
@@ -1027,7 +1027,7 @@ let str_match_string =
 let str_to_ascii =
   foreign "g_str_to_ascii" (string @-> string_opt @-> returning (string))
 
-(*Not implemented g_str_tokenize_and_fold argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_str_tokenize_and_fold type C Array type for Types.Array tag not implemented*)
 
 let strcanon =
   foreign "g_strcanon" (string @-> string @-> int8_t @-> returning (string))
@@ -1104,7 +1104,7 @@ let strsignal =
 let strstr_len =
   foreign "g_strstr_len" (string @-> int64_t @-> string @-> returning (string))
 
-(*Not implemented g_strtod argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_strtod - out argument not handled*)
 (*DEPRECATED : strup*)
 (*SKIPPED : strv_contains*)
 
@@ -1174,11 +1174,11 @@ let thread_self =
 let thread_yield =
   foreign "g_thread_yield" (void @-> returning (void))
 
-(*Not implemented g_time_val_from_iso8601 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_time_val_from_iso8601 - out argument not handled*)
 
-(*Not implemented g_timeout_add_full argument type callback not handled*)
+(*Not implemented g_timeout_add_full type callback not implemented*)
 
-(*Not implemented g_timeout_add_seconds_full argument type callback not handled*)
+(*Not implemented g_timeout_add_seconds_full type callback not implemented*)
 
 let timeout_source_new =
   foreign "g_timeout_source_new" (uint32_t @-> returning (ptr Source.t_typ))
@@ -1196,76 +1196,76 @@ let timeout_source_new_seconds =
 (*SKIPPED : try_realloc*)
 (*SKIPPED : try_realloc_n*)
 
-(*Not implemented g_ucs4_to_utf16 argument type unichar not handled*)
+(*Not implemented g_ucs4_to_utf16 type unichar not implemented*)
 
-(*Not implemented g_ucs4_to_utf8 argument type unichar not handled*)
+(*Not implemented g_ucs4_to_utf8 type unichar not implemented*)
 
-(*Not implemented g_unichar_break_type argument type unichar not handled*)
+(*Not implemented g_unichar_break_type type unichar not implemented*)
 
-(*Not implemented g_unichar_combining_class argument type unichar not handled*)
+(*Not implemented g_unichar_combining_class type unichar not implemented*)
 
-(*Not implemented g_unichar_compose argument type unichar not handled*)
+(*Not implemented g_unichar_compose type unichar not implemented*)
 
-(*Not implemented g_unichar_decompose argument type unichar not handled*)
+(*Not implemented g_unichar_decompose type unichar not implemented*)
 
-(*Not implemented g_unichar_digit_value argument type unichar not handled*)
+(*Not implemented g_unichar_digit_value type unichar not implemented*)
 
-(*Not implemented g_unichar_fully_decompose argument type unichar not handled*)
+(*Not implemented g_unichar_fully_decompose type unichar not implemented*)
 
-(*Not implemented g_unichar_get_mirror_char argument type unichar not handled*)
+(*Not implemented g_unichar_get_mirror_char type unichar not implemented*)
 
-(*Not implemented g_unichar_get_script argument type unichar not handled*)
+(*Not implemented g_unichar_get_script type unichar not implemented*)
 
-(*Not implemented g_unichar_isalnum argument type unichar not handled*)
+(*Not implemented g_unichar_isalnum type unichar not implemented*)
 
-(*Not implemented g_unichar_isalpha argument type unichar not handled*)
+(*Not implemented g_unichar_isalpha type unichar not implemented*)
 
-(*Not implemented g_unichar_iscntrl argument type unichar not handled*)
+(*Not implemented g_unichar_iscntrl type unichar not implemented*)
 
-(*Not implemented g_unichar_isdefined argument type unichar not handled*)
+(*Not implemented g_unichar_isdefined type unichar not implemented*)
 
-(*Not implemented g_unichar_isdigit argument type unichar not handled*)
+(*Not implemented g_unichar_isdigit type unichar not implemented*)
 
-(*Not implemented g_unichar_isgraph argument type unichar not handled*)
+(*Not implemented g_unichar_isgraph type unichar not implemented*)
 
-(*Not implemented g_unichar_islower argument type unichar not handled*)
+(*Not implemented g_unichar_islower type unichar not implemented*)
 
-(*Not implemented g_unichar_ismark argument type unichar not handled*)
+(*Not implemented g_unichar_ismark type unichar not implemented*)
 
-(*Not implemented g_unichar_isprint argument type unichar not handled*)
+(*Not implemented g_unichar_isprint type unichar not implemented*)
 
-(*Not implemented g_unichar_ispunct argument type unichar not handled*)
+(*Not implemented g_unichar_ispunct type unichar not implemented*)
 
-(*Not implemented g_unichar_isspace argument type unichar not handled*)
+(*Not implemented g_unichar_isspace type unichar not implemented*)
 
-(*Not implemented g_unichar_istitle argument type unichar not handled*)
+(*Not implemented g_unichar_istitle type unichar not implemented*)
 
-(*Not implemented g_unichar_isupper argument type unichar not handled*)
+(*Not implemented g_unichar_isupper type unichar not implemented*)
 
-(*Not implemented g_unichar_iswide argument type unichar not handled*)
+(*Not implemented g_unichar_iswide type unichar not implemented*)
 
-(*Not implemented g_unichar_iswide_cjk argument type unichar not handled*)
+(*Not implemented g_unichar_iswide_cjk type unichar not implemented*)
 
-(*Not implemented g_unichar_isxdigit argument type unichar not handled*)
+(*Not implemented g_unichar_isxdigit type unichar not implemented*)
 
-(*Not implemented g_unichar_iszerowidth argument type unichar not handled*)
+(*Not implemented g_unichar_iszerowidth type unichar not implemented*)
 
-(*Not implemented g_unichar_to_utf8 argument type unichar not handled*)
+(*Not implemented g_unichar_to_utf8 type unichar not implemented*)
 
-(*Not implemented g_unichar_tolower argument type unichar not handled*)
+(*Not implemented g_unichar_tolower type unichar not implemented*)
 
-(*Not implemented g_unichar_totitle argument type unichar not handled*)
+(*Not implemented g_unichar_totitle type unichar not implemented*)
 
-(*Not implemented g_unichar_toupper argument type unichar not handled*)
+(*Not implemented g_unichar_toupper type unichar not implemented*)
 
-(*Not implemented g_unichar_type argument type unichar not handled*)
+(*Not implemented g_unichar_type type unichar not implemented*)
 
-(*Not implemented g_unichar_validate argument type unichar not handled*)
+(*Not implemented g_unichar_validate type unichar not implemented*)
 
-(*Not implemented g_unichar_xdigit_value argument type unichar not handled*)
+(*Not implemented g_unichar_xdigit_value type unichar not implemented*)
 (*DEPRECATED : unicode_canonical_decomposition*)
 
-(*Not implemented g_unicode_canonical_ordering argument type unichar not handled*)
+(*Not implemented g_unicode_canonical_ordering type unichar not implemented*)
 
 let unicode_script_from_iso15924 =
   foreign "g_unicode_script_from_iso15924" (uint32_t @-> returning (Unicode_script.t_view))
@@ -1276,36 +1276,36 @@ let unicode_script_to_iso15924 =
 let unix_error_quark =
   foreign "g_unix_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_unix_fd_add_full argument type callback not handled*)
+(*Not implemented g_unix_fd_add_full type callback not implemented*)
 
 let unix_fd_source_new =
   foreign "g_unix_fd_source_new" (int32_t @-> IOCondition.t_list_view @-> returning (ptr Source.t_typ))
 
-let unix_open_pipe arg1 arg2 =
+let unix_open_pipe fds flags =
   let unix_open_pipe_raw =
-    foreign "g_unix_open_pipe" (ptr int32_t @-> int32_t @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+    foreign "g_unix_open_pipe" (ptr int32_t @-> int32_t@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = unix_open_pipe_raw arg1 arg2 (Some err_ptr_ptr) in
+  let value = unix_open_pipe_raw fds flags (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-let unix_set_fd_nonblocking arg1 arg2 =
+let unix_set_fd_nonblocking fd nonblock =
   let unix_set_fd_nonblocking_raw =
-    foreign "g_unix_set_fd_nonblocking" (int32_t @-> bool @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+    foreign "g_unix_set_fd_nonblocking" (int32_t @-> bool@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = unix_set_fd_nonblocking_raw arg1 arg2 (Some err_ptr_ptr) in
+  let value = unix_set_fd_nonblocking_raw fd nonblock (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-(*Not implemented g_unix_signal_add_full argument type callback not handled*)
+(*Not implemented g_unix_signal_add_full type callback not implemented*)
 
 let unix_signal_source_new =
   foreign "g_unix_signal_source_new" (int32_t @-> returning (ptr Source.t_typ))
@@ -1333,9 +1333,9 @@ let uri_unescape_string =
 let usleep =
   foreign "g_usleep" (uint64_t @-> returning (void))
 
-(*Not implemented g_utf16_to_ucs4 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_utf16_to_ucs4 - out argument not handled*)
 
-(*Not implemented g_utf16_to_utf8 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_utf16_to_utf8 - out argument not handled*)
 
 let utf8_casefold =
   foreign "g_utf8_casefold" (string @-> int64_t @-> returning (string))
@@ -1372,7 +1372,7 @@ let utf8_pointer_to_offset =
 let utf8_prev_char =
   foreign "g_utf8_prev_char" (string @-> returning (string))
 
-(*Not implemented g_utf8_strchr argument type unichar not handled*)
+(*Not implemented g_utf8_strchr type unichar not implemented*)
 
 let utf8_strdown =
   foreign "g_utf8_strdown" (string @-> int64_t @-> returning (string))
@@ -1383,7 +1383,7 @@ let utf8_strlen =
 let utf8_strncpy =
   foreign "g_utf8_strncpy" (string @-> string @-> uint64_t @-> returning (string))
 
-(*Not implemented g_utf8_strrchr argument type unichar not handled*)
+(*Not implemented g_utf8_strrchr type unichar not implemented*)
 
 let utf8_strreverse =
   foreign "g_utf8_strreverse" (string @-> int64_t @-> returning (string))
@@ -1394,13 +1394,13 @@ let utf8_strup =
 let utf8_substring =
   foreign "g_utf8_substring" (string @-> int64_t @-> int64_t @-> returning (string))
 
-(*Not implemented g_utf8_to_ucs4 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_utf8_to_ucs4 - out argument not handled*)
 
-(*Not implemented g_utf8_to_ucs4_fast argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_utf8_to_ucs4_fast - out argument not handled*)
 
-(*Not implemented g_utf8_to_utf16 argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_utf8_to_utf16 - out argument not handled*)
 
-(*Not implemented g_utf8_validate argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_utf8_validate type C Array type for Types.Array tag not implemented*)
 (*SKIPPED : uuid_string_is_valid*)
 (*SKIPPED : uuid_string_random*)
 
@@ -1412,12 +1412,12 @@ let variant_is_object_path =
 let variant_is_signature =
   foreign "g_variant_is_signature" (string @-> returning (bool))
 
-let variant_parse arg1 arg2 arg3 arg4 =
+let variant_parse _type text limit endptr =
   let variant_parse_raw =
-    foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Variant.t_typ))
+    foreign "g_variant_parse" (ptr_opt Variant_type.t_typ @-> string @-> string_opt @-> string_opt@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Variant.t_typ))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = variant_parse_raw arg1 arg2 arg3 arg4 (Some err_ptr_ptr) in
+  let value = variant_parse_raw _type text limit endptr (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -1437,4 +1437,4 @@ let variant_type_checked_ =
 let variant_type_string_is_valid =
   foreign "g_variant_type_string_is_valid" (string @-> returning (bool))
 
-(*Not implemented g_variant_type_string_scan argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_variant_type_string_scan - out argument not handled*)
