@@ -55,7 +55,7 @@ let test_append_ctypes_union_fields_declarations test_ctxt =
   let namespace = "GLib" in
   let name = "Mutex" in
   let writer = fun name info sources ->
-    Bind_union.append_ctypes_union_fields_declarations name info sources;
+    Bind_union.append_ctypes_union_fields_declarations name info sources [];
     Binding_utils.Sources.write_buffs sources
   in
   let mli_content = "val f_p: (unit ptr, t union) field\n\
