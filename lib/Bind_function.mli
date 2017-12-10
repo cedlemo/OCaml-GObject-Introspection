@@ -23,20 +23,6 @@ open Ctypes
 open Foreign
 
 
-(** Each argument of a function can be represented with this type based on the
-    direction of the argument. The Arg_in form is the simpler. The two other forms need to
-    provide in the ml file some pre code and post code for the implementation of
-    the ctypes bindings.*)
-type argument = | Arg_in of Binding_utils.type_strings
-                | Arg_out of { pre : string; types : Binding_utils.type_strings; post : string }
-                | Arg_in_out of { pre : string; types : Binding_utils.type_strings; post : string }
-
-(** The set of arguments of a function. The full set of the arguments must be
-    parsed before knowing if we can implement the function hence the Not_implemented
-    variant. TODO : remove / replace with func_args.*)
-type arguments = | Not_implemented of string
-                 | List of argument list
-
 (** When the element types of a function are checked (both from arguments or
     return value, there are three possibilities. *)
 type func_types = | Not_handled of string (** One of the argument type is not handled. *)

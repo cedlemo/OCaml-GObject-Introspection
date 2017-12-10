@@ -19,14 +19,6 @@
 open Ctypes
 open Foreign
 
-type argument = | Arg_in of Binding_utils.type_strings
-                | Arg_out of { pre : string; types : Binding_utils.type_strings; post : string }
-                | Arg_in_out of { pre : string; types : Binding_utils.type_strings; post : string }
-
-type arguments = | Not_implemented of string
-                 | List of argument list
-
-
 let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
   let ocaml_type' = Binding_utils.string_pattern_remove ocaml_type "Core." in
   let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
