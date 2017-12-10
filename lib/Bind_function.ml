@@ -262,7 +262,7 @@ let generate_callable_bindings_when_only_in_arg callable name symbol arguments r
         let _ = File.bprintf ml "let %s () =\n" name in
         let name_raw = name ^ "_raw" in
         let _ = File.bprintf ml "  let %s =\n    foreign \"%s\" " name_raw symbol in
-        let _ = File.bprintf ml "ptr_opt (ptr_opt Error.t_typ) @-> returning (%s))\n  in\n" ctypes_ret' in
+        let _ = File.bprintf ml "(ptr_opt (ptr_opt Error.t_typ) @-> returning (%s))\n  in\n" ctypes_ret' in
         let _ = File.buff_add_line ml "  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in" in
         File.bprintf ml "  let value = %s (Some err_ptr_ptr) in\n" name_raw
       | Args args ->
