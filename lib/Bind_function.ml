@@ -103,6 +103,10 @@ let has_out_arg = function
   | No_args -> false
   | Args args -> if List.length args.out_list > 0 then true else false
 
+let has_in_out_arg = function
+  | No_args -> false
+  | Args args -> if List.length args.in_out_list > 0 then true else false
+
 let has_not_implemented_arg = function
   | No_args -> None
   | Args args ->
@@ -130,6 +134,31 @@ let has_skipped_arg = function
     | None -> match search args.out_list with
               | Some a -> Some a
               | None -> search args.in_out_list
+
+(* Get the escaped name (valid OCaml variable name) of the argument. Raise a Failure
+ * exception. It is an error to try to get the name of the argument while I should
+ * skeep / not implement the function bindings *)
+let get_escaped_arg_names =
+  List.map (fun a ->
+    match a with
+    | Not_implemented message -> raise (Failure (Printf.sprintf "get_escaped_arg_names : Not_implemented -> %s" message))
+    | Skipped message -> raise (Failure (Printf.sprintf "get_escaped_arg_names : Skipped -> %s" message))
+    | Arg arg -> Binding_utils.ensure_valid_variable_name arg.name
+)
+
+(* get the OCaml type of an argument and raise an exception if it is not implemented
+ * or if it is skipped. *)
+let get_ocaml_type = function
+  | Not_implemented message -> raise (Failure (Printf.sprintf "get_ocaml_type : Not_implemented -> %s" message))
+  | Skipped message -> raise (Failure (Printf.sprintf "get_ocaml_type : Skipped -> %s" message))
+  | Arg arg -> arg.ocaml_type
+
+(* get the Ctypes type of an argument and raise an exception if it is not implemented
+ * or if it is skipped. *)
+let get_ctypes_type = function
+  | Not_implemented message -> raise (Failure (Printf.sprintf "get_ocaml_type : Not_implemented -> %s" message))
+  | Skipped message -> raise (Failure (Printf.sprintf "get_ocaml_type : Skipped -> %s" message))
+  | Arg arg -> arg.ctypes_type
 
 let get_args_information callable skip_types =
   let n = Callable_info.get_n_args callable in
@@ -226,24 +255,85 @@ let generate_callable_bindings callable name symbol args ret_types sources =
     File.bprintf ml " @-> returning (%s))\n" ctypes_ret
   )
 
+let generate_callable_bindings_when_only_in_arg callable name symbol arguments ret_types sources =
+  let open Binding_utils in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
+  let (ocaml_ret, ctypes_ret) = List.hd ret_types in
+  let _ = File.bprintf mli "val %s:\n  " name in
+  if Callable_info.can_throw_gerror callable then (
+    let ocaml_ret' = if ocaml_ret = "string" then "string option" else ocaml_ret in
+    let ctypes_ret' = if ctypes_ret = "string" then "string_opt" else ctypes_ret in
+    let _ = match arguments with
+      | No_args ->
+        let _ = File.bprintf mli "unit -> (%s, Error.t structure ptr option) result\n" ocaml_ret' in
+        let _ = File.bprintf ml "let %s () =\n" name in
+        let name_raw = name ^ "_raw" in
+        let _ = File.bprintf ml "  let %s =\n    foreign \"%s\" " name_raw symbol in
+        let _ = File.bprintf ml "ptr_opt (ptr_opt Error.t_typ) @-> returning (%s))\n  in\n" ctypes_ret' in
+        let _ = File.buff_add_line ml "  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in" in
+        File.bprintf ml "  let value = %s (Some err_ptr_ptr) in\n" name_raw
+      | Args args ->
+        let _ = File.bprintf mli "%s -> (%s, Error.t structure ptr option) result\n" (String.concat " -> " (List.map (fun a -> get_ocaml_type a) args.in_list)) ocaml_ret' in
+        let arg_names = get_escaped_arg_names args.in_list |> String.concat " " in
+        let _ = File.bprintf ml "let %s %s =\n" name arg_names in
+        let name_raw = name ^ "_raw" in
+        let _ = File.bprintf ml "  let %s =\n    foreign \"%s\" " name_raw symbol in
+        let _ = File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun a -> get_ctypes_type a) args.in_list)) in
+        let _ = File.bprintf ml "@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (%s))\n  in\n" ctypes_ret' in
+        let _ = File.buff_add_line ml "  let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in" in
+        File.bprintf ml "  let value = %s %s (Some err_ptr_ptr) in\n" name_raw arg_names
+    in
+    let _ = File.buff_add_line ml "  match (!@ err_ptr_ptr) with" in
+    let _ = File.buff_add_line ml "   | None -> Ok value" in
+    let _ = File.buff_add_line ml "   | Some _ -> let err_ptr = !@ err_ptr_ptr in" in
+    let _ = File.buff_add_line ml "     let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in" in
+    File.buff_add_line ml "     Error (err_ptr)"
+  ) else (
+    let _ = File.bprintf ml "let %s =\n  foreign \"%s\" " name symbol in
+    let _ = match arguments with
+      | No_args -> let _ = File.bprintf mli "%s" "unit" in
+        File.bprintf ml "(%s" "void"
+      | Args args -> let _ = File.bprintf mli "%s" (String.concat " -> " (List.map (fun a -> get_ocaml_type a) args.in_list)) in
+        File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun a -> get_ctypes_type a) args.in_list))
+    in
+    let _ = File.bprintf mli " -> %s\n" ocaml_ret in
+    File.bprintf ml " @-> returning (%s))\n" ctypes_ret
+  )
+
 let append_ctypes_function_bindings raw_name info sources skip_types =
   let open Binding_utils in
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
   let _ = test_new_args_data name callable skip_types in
-  match get_arguments_types callable skip_types with
-  | Not_handled t -> let coms = Printf.sprintf "Not implemented %s argument type %s not handled" symbol t in
+  let args = get_args_information callable skip_types in
+  let get_info_for_non_usable_arg = function
+      | Arg _ -> raise (Failure "get_info_for_non_usable_arg: this should never has been reached")
+      | Not_implemented message -> message
+      | Skipped message -> message
+  in
+  match has_not_implemented_arg args with
+  | Some arg -> let coms = Printf.sprintf "Not implemented %s type %s not implemented" symbol (get_info_for_non_usable_arg arg) in
     Sources.buffs_add_comments sources coms
-  | Skipped t ->let coms = Printf.sprintf "%s argument type %s" symbol t in
-    Sources.buffs_add_skipped sources coms
-  | Type_names args -> match get_return_types callable skip_types with
-    | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
-      Sources.buffs_add_comments sources coms
-    | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
+  | None -> match has_skipped_arg args with
+    | Some arg -> let coms = Printf.sprintf " %s type %s skipped" symbol (get_info_for_non_usable_arg arg) in
       Sources.buffs_add_skipped sources coms
-    | Type_names ret_types ->
-        generate_callable_bindings callable name symbol args ret_types sources
+    | None ->
+        if has_out_arg args then
+          let coms = Printf.sprintf "Not implemented %s - out argument not handled" symbol in
+          Sources.buffs_add_comments sources coms
+        else if has_in_out_arg args then
+          let coms  = Printf.sprintf "Not implemented %s - in out argument not handled" symbol in
+          Sources.buffs_add_comments sources coms
+        else match get_return_types callable skip_types with
+          | Not_handled t ->
+              let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
+              Sources.buffs_add_comments sources coms
+          | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
+              Sources.buffs_add_skipped sources coms
+          | Type_names ret_types ->
+              generate_callable_bindings_when_only_in_arg callable name symbol args ret_types sources
 
 (* For the methods arguments, we have to check is the argument is of the same
  * type of the container (object, structure or union). *)
