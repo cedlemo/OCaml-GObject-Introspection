@@ -109,7 +109,7 @@ let c_VOLUME_MONITOR_EXTENSION_POINT_NAME = "gio-volume-monitor"
 let action_name_is_valid =
   foreign "g_action_name_is_valid" (string @-> returning (bool))
 
-(*Not implemented g_action_parse_detailed_name argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_action_parse_detailed_name - out argument not handled*)
 
 let action_print_detailed_name =
   foreign "g_action_print_detailed_name" (string @-> ptr_opt Variant.t_typ @-> returning (string))
@@ -132,23 +132,23 @@ let app_info_get_fallback_for_type =
 let app_info_get_recommended_for_type =
   foreign "g_app_info_get_recommended_for_type" (string @-> returning (ptr List.t_typ))
 
-(*Not implemented g_app_info_launch_default_for_uri argument type object not handled*)
+(*Not implemented g_app_info_launch_default_for_uri type object not implemented*)
 
-(*Not implemented g_app_info_launch_default_for_uri_async argument type object not handled*)
+(*Not implemented g_app_info_launch_default_for_uri_async type object not implemented*)
 
-(*Not implemented g_app_info_launch_default_for_uri_finish argument type interface not handled*)
+(*Not implemented g_app_info_launch_default_for_uri_finish type interface not implemented*)
 
 let app_info_reset_type_associations =
   foreign "g_app_info_reset_type_associations" (string @-> returning (void))
 
 (*DEPRECATED : async_initable_newv_async*)
-(*Not implemented g_bus_get argument type object not handled*)
+(*Not implemented g_bus_get type object not implemented*)
 
-(*Not implemented g_bus_get_finish argument type interface not handled*)
+(*Not implemented g_bus_get_finish type interface not implemented*)
 
-(*Not implemented g_bus_get_sync argument type object not handled*)
+(*Not implemented g_bus_get_sync type object not implemented*)
 
-(*Not implemented g_bus_own_name_on_connection_with_closures argument type object not handled*)
+(*Not implemented g_bus_own_name_on_connection_with_closures type object not implemented*)
 
 let bus_own_name =
   foreign "g_bus_own_name_with_closures" (Bus_type.t_view @-> string @-> Bus_name_owner_flags.t_list_view @-> ptr_opt Closure.t_typ @-> ptr_opt Closure.t_typ @-> ptr_opt Closure.t_typ @-> returning (uint32_t))
@@ -159,7 +159,7 @@ let bus_unown_name =
 let bus_unwatch_name =
   foreign "g_bus_unwatch_name" (uint32_t @-> returning (void))
 
-(*Not implemented g_bus_watch_name_on_connection_with_closures argument type object not handled*)
+(*Not implemented g_bus_watch_name_on_connection_with_closures type object not implemented*)
 
 let bus_watch_name =
   foreign "g_bus_watch_name_with_closures" (Bus_type.t_view @-> string @-> Bus_name_watcher_flags.t_list_view @-> ptr_opt Closure.t_typ @-> ptr_opt Closure.t_typ @-> returning (uint32_t))
@@ -186,9 +186,9 @@ let content_type_get_mime_type =
 
 (*Not implemented g_content_type_get_symbolic_icon return type interface not handled*)
 
-(*Not implemented g_content_type_guess argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_content_type_guess type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_content_type_guess_for_tree argument type interface not handled*)
+(*Not implemented g_content_type_guess_for_tree type interface not implemented*)
 
 let content_type_is_a =
   foreign "g_content_type_is_a" (string @-> string @-> returning (bool))
@@ -205,15 +205,15 @@ let content_types_get_registered =
 let dbus_address_escape_value =
   foreign "g_dbus_address_escape_value" (string @-> returning (string))
 
-(*Not implemented g_dbus_address_get_for_bus_sync argument type object not handled*)
+(*Not implemented g_dbus_address_get_for_bus_sync type object not implemented*)
 
-(*Not implemented g_dbus_address_get_stream argument type object not handled*)
+(*Not implemented g_dbus_address_get_stream type object not implemented*)
 
-(*Not implemented g_dbus_address_get_stream_finish argument type interface not handled*)
+(*Not implemented g_dbus_address_get_stream_finish type interface not implemented*)
 
-(*Not implemented g_dbus_address_get_stream_sync argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_dbus_address_get_stream_sync type object not implemented*)
 
-(*Not implemented g_dbus_annotation_info_lookup argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_dbus_annotation_info_lookup type C Array type for Types.Array tag not implemented*)
 
 let dbus_error_encode_gerror =
   foreign "g_dbus_error_encode_gerror" (ptr Error.t_typ @-> returning (string))
@@ -248,7 +248,7 @@ let dbus_generate_guid =
 let dbus_gvalue_to_gvariant =
   foreign "g_dbus_gvalue_to_gvariant" (ptr Value.t_typ @-> ptr Variant_type.t_typ @-> returning (ptr Variant.t_typ))
 
-(*Not implemented g_dbus_gvariant_to_gvalue argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_dbus_gvariant_to_gvalue - out argument not handled*)
 
 let dbus_is_address =
   foreign "g_dbus_is_address" (string @-> returning (bool))
@@ -265,12 +265,12 @@ let dbus_is_member_name =
 let dbus_is_name =
   foreign "g_dbus_is_name" (string @-> returning (bool))
 
-let dbus_is_supported_address arg1 =
+let dbus_is_supported_address _string =
   let dbus_is_supported_address_raw =
-    foreign "g_dbus_is_supported_address" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
+    foreign "g_dbus_is_supported_address" (string@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (bool))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = dbus_is_supported_address_raw arg1 (Some err_ptr_ptr) in
+  let value = dbus_is_supported_address_raw _string (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -280,9 +280,9 @@ let dbus_is_supported_address arg1 =
 let dbus_is_unique_name =
   foreign "g_dbus_is_unique_name" (string @-> returning (bool))
 
-(*Not implemented g_dtls_client_connection_new argument type interface not handled*)
+(*Not implemented g_dtls_client_connection_new type interface not implemented*)
 
-(*Not implemented g_dtls_server_connection_new argument type interface not handled*)
+(*Not implemented g_dtls_server_connection_new type interface not implemented*)
 
 (*Not implemented g_file_new_for_commandline_arg return type interface not handled*)
 
@@ -292,7 +292,7 @@ let dbus_is_unique_name =
 
 (*Not implemented g_file_new_for_uri return type interface not handled*)
 
-(*Not implemented g_file_new_tmp argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_file_new_tmp type object not implemented*)
 
 (*Not implemented g_file_parse_name return type interface not handled*)
 
@@ -310,7 +310,7 @@ let io_error_from_errno =
 let io_error_quark =
   foreign "g_io_error_quark" (void @-> returning (uint32_t))
 
-(*Not implemented g_io_extension_point_implement argument type gType not handled*)
+(*Not implemented g_io_extension_point_implement type gType not implemented*)
 
 let io_extension_point_lookup =
   foreign "g_io_extension_point_lookup" (string @-> returning (ptr IOExtension_point.t_typ))
@@ -343,15 +343,15 @@ let networking_init =
 
 (*Not implemented g_null_settings_backend_new return type object not handled*)
 
-(*Not implemented g_pollable_source_new argument type object not handled*)
+(*Not implemented g_pollable_source_new type object not implemented*)
 
-(*Not implemented g_pollable_source_new_full argument type object not handled*)
+(*Not implemented g_pollable_source_new_full type object not implemented*)
 
-(*Not implemented g_pollable_stream_read argument type object not handled*)
+(*Not implemented g_pollable_stream_read type object not implemented*)
 
-(*Not implemented g_pollable_stream_write argument type object not handled*)
+(*Not implemented g_pollable_stream_write type object not implemented*)
 
-(*Not implemented g_pollable_stream_write_all argument type object not handled*)
+(*Not implemented g_pollable_stream_write_all type object not implemented*)
 
 (*Not implemented g_proxy_get_default_for_protocol return type interface not handled*)
 
@@ -363,12 +363,12 @@ let resolver_error_quark =
 let resource_error_quark =
   foreign "g_resource_error_quark" (void @-> returning (uint32_t))
 
-let resource_load arg1 =
+let resource_load filename =
   let resource_load_raw =
-    foreign "g_resource_load" (string @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Resource.t_typ))
+    foreign "g_resource_load" (string@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Resource.t_typ))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = resource_load_raw arg1 (Some err_ptr_ptr) in
+  let value = resource_load_raw filename (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -377,14 +377,14 @@ let resource_load arg1 =
 
 (*Not implemented g_resources_enumerate_children return type C Array type for Types.Array tag not handled*)
 
-(*Not implemented g_resources_get_info argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_resources_get_info - out argument not handled*)
 
-let resources_lookup_data arg1 arg2 =
+let resources_lookup_data path lookup_flags =
   let resources_lookup_data_raw =
-    foreign "g_resources_lookup_data" (string @-> Resource_lookup_flags.t_list_view @-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Bytes.t_typ))
+    foreign "g_resources_lookup_data" (string @-> Resource_lookup_flags.t_list_view@-> ptr_opt (ptr_opt Error.t_typ) @-> returning (ptr Bytes.t_typ))
   in
   let err_ptr_ptr = allocate (ptr_opt Error.t_typ) None in
-  let value = resources_lookup_data_raw arg1 arg2 (Some err_ptr_ptr) in
+  let value = resources_lookup_data_raw path lookup_flags (Some err_ptr_ptr) in
   match (!@ err_ptr_ptr) with
    | None -> Ok value
    | Some _ -> let err_ptr = !@ err_ptr_ptr in
@@ -405,19 +405,19 @@ let settings_schema_source_get_default =
 (*DEPRECATED : simple_async_report_gerror_in_idle*)
 (*Not implemented g_tls_backend_get_default return type interface not handled*)
 
-(*Not implemented g_tls_client_connection_new argument type object not handled*)
+(*Not implemented g_tls_client_connection_new type object not implemented*)
 
 let tls_error_quark =
   foreign "g_tls_error_quark" (void @-> returning (uint32_t))
 
 (*Not implemented g_tls_file_database_new return type interface not handled*)
 
-(*Not implemented g_tls_server_connection_new argument type object not handled*)
+(*Not implemented g_tls_server_connection_new type object not implemented*)
 
 let unix_is_mount_path_system_internal =
   foreign "g_unix_is_mount_path_system_internal" (string @-> returning (bool))
 
-(*Not implemented g_unix_mount_at argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mount_at - out argument not handled*)
 
 let unix_mount_compare =
   foreign "g_unix_mount_compare" (ptr Unix_mount_entry.t_typ @-> ptr Unix_mount_entry.t_typ @-> returning (int32_t))
@@ -425,7 +425,7 @@ let unix_mount_compare =
 let unix_mount_copy =
   foreign "g_unix_mount_copy" (ptr Unix_mount_entry.t_typ @-> returning (ptr Unix_mount_entry.t_typ))
 
-(*Not implemented g_unix_mount_for argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mount_for - out argument not handled*)
 
 let unix_mount_free =
   foreign "g_unix_mount_free" (ptr Unix_mount_entry.t_typ @-> returning (void))
@@ -461,10 +461,10 @@ let unix_mount_is_system_internal =
 let unix_mount_points_changed_since =
   foreign "g_unix_mount_points_changed_since" (uint64_t @-> returning (bool))
 
-(*Not implemented g_unix_mount_points_get argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mount_points_get - out argument not handled*)
 
 let unix_mounts_changed_since =
   foreign "g_unix_mounts_changed_since" (uint64_t @-> returning (bool))
 
-(*Not implemented g_unix_mounts_get argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mounts_get - out argument not handled*)
 

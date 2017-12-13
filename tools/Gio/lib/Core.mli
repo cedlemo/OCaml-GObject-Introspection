@@ -108,7 +108,7 @@ val c_VOLUME_MONITOR_EXTENSION_POINT_NAME : string
 val action_name_is_valid:
   string -> bool
 
-(*Not implemented g_action_parse_detailed_name argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_action_parse_detailed_name - out argument not handled*)
 
 val action_print_detailed_name:
   string -> Variant.t structure ptr option -> string
@@ -131,23 +131,23 @@ val app_info_get_fallback_for_type:
 val app_info_get_recommended_for_type:
   string -> List.t structure ptr
 
-(*Not implemented g_app_info_launch_default_for_uri argument type object not handled*)
+(*Not implemented g_app_info_launch_default_for_uri type object not implemented*)
 
-(*Not implemented g_app_info_launch_default_for_uri_async argument type object not handled*)
+(*Not implemented g_app_info_launch_default_for_uri_async type object not implemented*)
 
-(*Not implemented g_app_info_launch_default_for_uri_finish argument type interface not handled*)
+(*Not implemented g_app_info_launch_default_for_uri_finish type interface not implemented*)
 
 val app_info_reset_type_associations:
   string -> unit
 
 (*DEPRECATED : async_initable_newv_async*)
-(*Not implemented g_bus_get argument type object not handled*)
+(*Not implemented g_bus_get type object not implemented*)
 
-(*Not implemented g_bus_get_finish argument type interface not handled*)
+(*Not implemented g_bus_get_finish type interface not implemented*)
 
-(*Not implemented g_bus_get_sync argument type object not handled*)
+(*Not implemented g_bus_get_sync type object not implemented*)
 
-(*Not implemented g_bus_own_name_on_connection_with_closures argument type object not handled*)
+(*Not implemented g_bus_own_name_on_connection_with_closures type object not implemented*)
 
 val bus_own_name:
   Bus_type.t -> string -> Bus_name_owner_flags.t_list -> Closure.t structure ptr option -> Closure.t structure ptr option -> Closure.t structure ptr option -> Unsigned.uint32
@@ -158,7 +158,7 @@ val bus_unown_name:
 val bus_unwatch_name:
   Unsigned.uint32 -> unit
 
-(*Not implemented g_bus_watch_name_on_connection_with_closures argument type object not handled*)
+(*Not implemented g_bus_watch_name_on_connection_with_closures type object not implemented*)
 
 val bus_watch_name:
   Bus_type.t -> string -> Bus_name_watcher_flags.t_list -> Closure.t structure ptr option -> Closure.t structure ptr option -> Unsigned.uint32
@@ -185,9 +185,9 @@ val content_type_get_mime_type:
 
 (*Not implemented g_content_type_get_symbolic_icon return type interface not handled*)
 
-(*Not implemented g_content_type_guess argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_content_type_guess type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_content_type_guess_for_tree argument type interface not handled*)
+(*Not implemented g_content_type_guess_for_tree type interface not implemented*)
 
 val content_type_is_a:
   string -> string -> bool
@@ -204,15 +204,15 @@ val content_types_get_registered:
 val dbus_address_escape_value:
   string -> string
 
-(*Not implemented g_dbus_address_get_for_bus_sync argument type object not handled*)
+(*Not implemented g_dbus_address_get_for_bus_sync type object not implemented*)
 
-(*Not implemented g_dbus_address_get_stream argument type object not handled*)
+(*Not implemented g_dbus_address_get_stream type object not implemented*)
 
-(*Not implemented g_dbus_address_get_stream_finish argument type interface not handled*)
+(*Not implemented g_dbus_address_get_stream_finish type interface not implemented*)
 
-(*Not implemented g_dbus_address_get_stream_sync argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_dbus_address_get_stream_sync type object not implemented*)
 
-(*Not implemented g_dbus_annotation_info_lookup argument type C Array type for Types.Array tag not handled*)
+(*Not implemented g_dbus_annotation_info_lookup type C Array type for Types.Array tag not implemented*)
 
 val dbus_error_encode_gerror:
   Error.t structure ptr -> string
@@ -247,7 +247,7 @@ val dbus_generate_guid:
 val dbus_gvalue_to_gvariant:
   Value.t structure ptr -> Variant_type.t structure ptr -> Variant.t structure ptr
 
-(*Not implemented g_dbus_gvariant_to_gvalue argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_dbus_gvariant_to_gvalue - out argument not handled*)
 
 val dbus_is_address:
   string -> bool
@@ -270,9 +270,9 @@ val dbus_is_supported_address:
 val dbus_is_unique_name:
   string -> bool
 
-(*Not implemented g_dtls_client_connection_new argument type interface not handled*)
+(*Not implemented g_dtls_client_connection_new type interface not implemented*)
 
-(*Not implemented g_dtls_server_connection_new argument type interface not handled*)
+(*Not implemented g_dtls_server_connection_new type interface not implemented*)
 
 (*Not implemented g_file_new_for_commandline_arg return type interface not handled*)
 
@@ -282,7 +282,7 @@ val dbus_is_unique_name:
 
 (*Not implemented g_file_new_for_uri return type interface not handled*)
 
-(*Not implemented g_file_new_tmp argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_file_new_tmp type object not implemented*)
 
 (*Not implemented g_file_parse_name return type interface not handled*)
 
@@ -300,7 +300,7 @@ val io_error_from_errno:
 val io_error_quark:
   unit -> Unsigned.uint32
 
-(*Not implemented g_io_extension_point_implement argument type gType not handled*)
+(*Not implemented g_io_extension_point_implement type gType not implemented*)
 
 val io_extension_point_lookup:
   string -> IOExtension_point.t structure ptr
@@ -333,15 +333,15 @@ val networking_init:
 
 (*Not implemented g_null_settings_backend_new return type object not handled*)
 
-(*Not implemented g_pollable_source_new argument type object not handled*)
+(*Not implemented g_pollable_source_new type object not implemented*)
 
-(*Not implemented g_pollable_source_new_full argument type object not handled*)
+(*Not implemented g_pollable_source_new_full type object not implemented*)
 
-(*Not implemented g_pollable_stream_read argument type object not handled*)
+(*Not implemented g_pollable_stream_read type object not implemented*)
 
-(*Not implemented g_pollable_stream_write argument type object not handled*)
+(*Not implemented g_pollable_stream_write type object not implemented*)
 
-(*Not implemented g_pollable_stream_write_all argument type object not handled*)
+(*Not implemented g_pollable_stream_write_all type object not implemented*)
 
 (*Not implemented g_proxy_get_default_for_protocol return type interface not handled*)
 
@@ -358,7 +358,7 @@ val resource_load:
 
 (*Not implemented g_resources_enumerate_children return type C Array type for Types.Array tag not handled*)
 
-(*Not implemented g_resources_get_info argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_resources_get_info - out argument not handled*)
 
 val resources_lookup_data:
   string -> Resource_lookup_flags.t_list -> (Bytes.t structure ptr, Error.t structure ptr option) result
@@ -377,19 +377,19 @@ val settings_schema_source_get_default:
 (*DEPRECATED : simple_async_report_gerror_in_idle*)
 (*Not implemented g_tls_backend_get_default return type interface not handled*)
 
-(*Not implemented g_tls_client_connection_new argument type object not handled*)
+(*Not implemented g_tls_client_connection_new type object not implemented*)
 
 val tls_error_quark:
   unit -> Unsigned.uint32
 
 (*Not implemented g_tls_file_database_new return type interface not handled*)
 
-(*Not implemented g_tls_server_connection_new argument type object not handled*)
+(*Not implemented g_tls_server_connection_new type object not implemented*)
 
 val unix_is_mount_path_system_internal:
   string -> bool
 
-(*Not implemented g_unix_mount_at argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mount_at - out argument not handled*)
 
 val unix_mount_compare:
   Unix_mount_entry.t structure ptr -> Unix_mount_entry.t structure ptr -> int32
@@ -397,7 +397,7 @@ val unix_mount_compare:
 val unix_mount_copy:
   Unix_mount_entry.t structure ptr -> Unix_mount_entry.t structure ptr
 
-(*Not implemented g_unix_mount_for argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mount_for - out argument not handled*)
 
 val unix_mount_free:
   Unix_mount_entry.t structure ptr -> unit
@@ -433,10 +433,10 @@ val unix_mount_is_system_internal:
 val unix_mount_points_changed_since:
   Unsigned.uint64 -> bool
 
-(*Not implemented g_unix_mount_points_get argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mount_points_get - out argument not handled*)
 
 val unix_mounts_changed_since:
   Unsigned.uint64 -> bool
 
-(*Not implemented g_unix_mounts_get argument type Arg_info.In or Arg_info.Out not handled*)
+(*Not implemented g_unix_mounts_get - out argument not handled*)
 
