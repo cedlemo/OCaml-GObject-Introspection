@@ -19,10 +19,21 @@
 open Ctypes
 open Foreign
 
-let check_if_types_are_not_from_core (ocaml_type, ctypes_typ) =
-  let ocaml_type' = Binding_utils.string_pattern_remove ocaml_type "Core." in
-  let ctypes_typ' = Binding_utils.string_pattern_remove ctypes_typ "Core." in
+(* Check is the argument is of the same type of the of the current module in
+ * which the bindings are generated.
+ * For example, if this code generator is parsing arguments of a function that
+ * has to be defined in the Core module, when it finds an argument with the
+ * type Core.a_type, in order to compile, this type should be written as "a_type".
+ * *)
+let filter_same_argument_type_as_container container_name (ocaml_type, ctypes_typ) =
+  let open Binding_utils in
+  let module_pattern = container_name ^ "." in
+  let ocaml_type' = string_pattern_remove ocaml_type module_pattern in
+  let ctypes_typ' = string_pattern_remove ctypes_typ module_pattern in
   (ocaml_type', ctypes_typ')
+
+let check_if_types_are_not_from_core =
+  filter_same_argument_type_as_container "Core"
 
 type func_types = | Not_handled of string
                   | Skipped of string
@@ -327,15 +338,6 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
           | Type_names ret_types ->
               generate_callable_bindings_when_only_in_arg callable name symbol args ret_types sources
 
-(* For the methods arguments, we have to check is the argument is of the same
- * type of the container (object, structure or union). *)
-let check_if_argument_is_type_of_container container_name (ocaml_type, ctypes_typ) =
-  let open Binding_utils in
-  let module_pattern = container_name ^ "." in
-  let ocaml_type' = string_pattern_remove ocaml_type module_pattern in
-  let ctypes_typ' = string_pattern_remove ctypes_typ module_pattern in
-  (ocaml_type', ctypes_typ')
-
 (* Given that method (GIFunction with method flags) of a container (object,
  * structure, union ... ) has at least the container type as argument,
  * when GObject_introspection returns no arguments, we just need to add the
@@ -352,7 +354,7 @@ let get_method_arguments_types callable container skip_types =
         match Binding_utils.type_info_to_bindings_types type_info may_be_null with
         | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
         | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-          let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
+          let types = filter_same_argument_type_as_container container (ocaml_type, ctypes_typ) in
           if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
           else parse_args (index + 1) (types :: args_types)
       )
@@ -370,7 +372,7 @@ let get_method_return_types callable container skip_types =
     match Binding_utils.type_info_to_bindings_types ret may_be_null with
     | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-        let types = check_if_argument_is_type_of_container container (ocaml_type, ctypes_typ) in
+        let types = filter_same_argument_type_as_container container (ocaml_type, ctypes_typ) in
         if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
         else Type_names [types]
       (* TODO : how to free the returned data
