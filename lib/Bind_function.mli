@@ -35,7 +35,7 @@ val get_arguments_types:
 
 (** Get the type names of the return value, both OCaml and Ctypes type names. *)
 val get_return_types:
-  Callable_info.t structure ptr -> string list -> func_types
+  Callable_info.t structure ptr -> string -> string list -> func_types
 
 val append_ctypes_function_bindings:
   string -> Function_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit

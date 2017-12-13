@@ -63,21 +63,22 @@ let get_arguments_types callable skip_types =
            | _ -> Not_handled "Arg_info.In or Arg_info.Out"
     in parse_args 0 []
 
-let get_return_types callable skip_types =
+let get_return_types callable container skip_types =
   if Callable_info.skip_return callable then Type_names [("unit", "void")]
   else let ret = Callable_info.get_return_type callable in
     let may_be_null = Callable_info.may_return_null callable in
     match Binding_utils.type_info_to_bindings_types ret may_be_null with
     | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
     | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-      if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
-      else match Callable_info.get_caller_owns callable with
-        | Arg_info.Nothing -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-          Type_names [types]
-        | Arg_info.Container -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-          Type_names [types]
-        | Arg_info.Everything -> let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-          Type_names [types]
+        let types = filter_same_argument_type_as_container container (ocaml_type, ctypes_typ) in
+        if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
+        else Type_names [types]
+      (* TODO : how to free the returned data
+      match Callable_info.get_caller_owns callable with
+      | Arg_info.Nothing -> ()
+      | Arg_info.Container -> ()
+      | Arg_info.Everything -> ()
+      *)
 
 (* Build function bindings :
  * - get the Callable_info
@@ -329,7 +330,7 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
         else if has_in_out_arg args then
           let coms  = Printf.sprintf "Not implemented %s - in out argument not handled" symbol in
           Sources.buffs_add_comments sources coms
-        else match get_return_types callable skip_types with
+        else match get_return_types callable "Core" skip_types with
           | Not_handled t ->
               let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
               Sources.buffs_add_comments sources coms
@@ -365,23 +366,6 @@ let get_method_arguments_types callable container skip_types =
      else [] in
    parse_args 0 arg_types_list
 
-let get_method_return_types callable container skip_types =
-  if Callable_info.skip_return callable then Type_names [("unit", "void")]
-  else let ret = Callable_info.get_return_type callable in
-    let may_be_null = Callable_info.may_return_null callable in
-    match Binding_utils.type_info_to_bindings_types ret may_be_null with
-    | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
-    | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-        let types = filter_same_argument_type_as_container container (ocaml_type, ctypes_typ) in
-        if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
-        else Type_names [types]
-      (* TODO : how to free the returned data
-      match Callable_info.get_caller_owns callable with
-      | Arg_info.Nothing -> ()
-      | Arg_info.Container -> ()
-      | Arg_info.Everything -> ()
-      *)
-
 let append_ctypes_method_bindings raw_name info container sources skip_types =
   let open Binding_utils in
   let symbol = Function_info.get_symbol info in
@@ -395,7 +379,7 @@ let append_ctypes_method_bindings raw_name info container sources skip_types =
     Sources.buffs_add_skipped sources coms
   | Type_names args ->
       let args' = match args with | [] -> [("unit", "void")] | _ -> args in
-      match get_method_return_types callable container skip_types with
+      match get_return_types callable container skip_types with
       | Not_handled t -> let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
         Sources.buffs_add_comments sources coms
       | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
