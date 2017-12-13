@@ -52,7 +52,7 @@ let test_get_arguments_types test_ctx =
 let test_get_return_types test_ctx =
   test_function_info name (fun info ->
       let callable = Function_info.to_callableinfo info in
-      match Bind_function.get_return_types callable [] with
+      match Bind_function.get_return_types callable "Core" [] with
       | Type_names types -> let (ocaml_type, ctypes_type) = List.hd types in
         assert_equal_string "int32" ocaml_type;
         assert_equal_string "int32_t" ctypes_type
