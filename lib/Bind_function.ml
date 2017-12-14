@@ -305,6 +305,43 @@ let generate_callable_bindings_when_only_in_arg callable name symbol arguments r
     File.bprintf ml " @-> returning (%s))\n" ctypes_ret
   )
 
+let generate_callable_bindings_when_out_args callable name symbol arguments ret_types sources =
+  let open Binding_utils in
+  let (ocaml_ret, ctypes_ret) = List.hd ret_types in
+  let mli = Sources.mli sources in
+  let ml = Sources.ml sources in
+  let _ = File.buff_add_line mli "(*" in
+  let _ = File.buff_add_line ml "(*" in
+  let _ = match arguments with
+    | No_args -> raise (Failure "generate_callable_bindings_when_out_args with No_args")
+    | Args args ->
+      let ocaml_types_out =
+        List.map (fun a ->  get_ocaml_type a) args.out_list
+        |> String.concat ", "
+        |> Printf.sprintf "(%s, %s)" ocaml_ret
+      in
+      let ctypes_types_out =
+        List.map (fun a -> get_ctypes_type a) args.out_list
+        |> String.concat " * "
+        |> Printf.sprintf "(%s * %s)" ctypes_ret
+      in
+      let _ = File.bprintf mli "%s" (String.concat " -> " (List.map (fun a -> get_ocaml_type a) args.in_list)) in
+      let _ = File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun a -> get_ctypes_type a) args.in_list)) in
+      let _ = File.bprintf mli " -> %s\n" ocaml_types_out in
+      File.bprintf ml " @-> returning (%s)) |return type: %s %s\n" ctypes_types_out ocaml_ret ctypes_ret
+
+        (* generate the function return types with the args out
+   generate the function signature with only "in args"
+   allocate the args out
+   create the raw function binding
+   call it
+   return the args out value
+   *)
+  in
+  let _ = File.buff_add_line mli "(*" in
+  File.buff_add_line ml "(*"
+
+
 let append_ctypes_function_bindings raw_name info sources skip_types =
   let open Binding_utils in
   let symbol = Function_info.get_symbol info in
@@ -324,20 +361,21 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
     | Some arg -> let coms = Printf.sprintf " %s type %s skipped" symbol (get_info_for_non_usable_arg arg) in
       Sources.buffs_add_skipped sources coms
     | None ->
-        if has_out_arg args then
-          let coms = Printf.sprintf "Not implemented %s - out argument not handled" symbol in
-          Sources.buffs_add_comments sources coms
-        else if has_in_out_arg args then
-          let coms  = Printf.sprintf "Not implemented %s - in out argument not handled" symbol in
-          Sources.buffs_add_comments sources coms
-        else match get_return_types callable "Core" skip_types with
-          | Not_handled t ->
-              let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
+        match get_return_types callable "Core" skip_types with
+        | Not_handled t ->
+            let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
+            Sources.buffs_add_comments sources coms
+        | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
+            Sources.buffs_add_skipped sources coms
+        | Type_names ret_types ->
+            if has_out_arg args then
+              generate_callable_bindings_when_out_args callable name symbol args ret_types sources
+              (* let coms = Printf.sprintf "Not implemented %s - out argument not handled" symbol in
+              Sources.buffs_add_comments sources coms *)
+            else if has_in_out_arg args then
+              let coms  = Printf.sprintf "Not implemented %s - in out argument not handled" symbol in
               Sources.buffs_add_comments sources coms
-          | Skipped t ->let coms = Printf.sprintf "%s return type %s" symbol t in
-              Sources.buffs_add_skipped sources coms
-          | Type_names ret_types ->
-              generate_callable_bindings_when_only_in_arg callable name symbol args ret_types sources
+            else generate_callable_bindings_when_only_in_arg callable name symbol args ret_types sources
 
 (* Given that method (GIFunction with method flags) of a container (object,
  * structure, union ... ) has at least the container type as argument,
