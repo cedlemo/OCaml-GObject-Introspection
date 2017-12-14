@@ -338,17 +338,12 @@ let generate_callable_bindings_when_out_args callable name symbol arguments ret_
    return the args out value
    *)
   in
-  let _ = File.buff_add_line mli "(*" in
-  File.buff_add_line ml "(*"
+  let _ = File.buff_add_line mli "*)" in
+  File.buff_add_line ml "*)"
 
 
-let append_ctypes_function_bindings raw_name info sources skip_types =
+let should_be_implemented args sources symbol =
   let open Binding_utils in
-  let symbol = Function_info.get_symbol info in
-  let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
-  let callable = Function_info.to_callableinfo info in
-  let _ = test_new_args_data name callable skip_types in
-  let args = get_args_information callable skip_types in
   let get_info_for_non_usable_arg = function
       | Arg _ -> raise (Failure "get_info_for_non_usable_arg: this should never has been reached")
       | Not_implemented message -> message
@@ -356,11 +351,19 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
   in
   match has_not_implemented_arg args with
   | Some arg -> let coms = Printf.sprintf "Not implemented %s type %s not implemented" symbol (get_info_for_non_usable_arg arg) in
-    Sources.buffs_add_comments sources coms
+      let _ = Sources.buffs_add_comments sources coms in false
   | None -> match has_skipped_arg args with
     | Some arg -> let coms = Printf.sprintf " %s type %s skipped" symbol (get_info_for_non_usable_arg arg) in
-      Sources.buffs_add_skipped sources coms
-    | None ->
+    let _ = Sources.buffs_add_skipped sources coms in false
+    | None -> true
+
+let append_ctypes_function_bindings raw_name info sources skip_types =
+  let open Binding_utils in
+  let symbol = Function_info.get_symbol info in
+  let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
+  let callable = Function_info.to_callableinfo info in
+  let args = get_args_information callable skip_types in
+  if should_be_implemented args sources symbol then (
         match get_return_types callable "Core" skip_types with
         | Not_handled t ->
             let coms = Printf.sprintf "Not implemented %s return type %s not handled" symbol t in
@@ -370,12 +373,11 @@ let append_ctypes_function_bindings raw_name info sources skip_types =
         | Type_names ret_types ->
             if has_out_arg args then
               generate_callable_bindings_when_out_args callable name symbol args ret_types sources
-              (* let coms = Printf.sprintf "Not implemented %s - out argument not handled" symbol in
-              Sources.buffs_add_comments sources coms *)
             else if has_in_out_arg args then
               let coms  = Printf.sprintf "Not implemented %s - in out argument not handled" symbol in
               Sources.buffs_add_comments sources coms
             else generate_callable_bindings_when_only_in_arg callable name symbol args ret_types sources
+    )
 
 (* Given that method (GIFunction with method flags) of a container (object,
  * structure, union ... ) has at least the container type as argument,
