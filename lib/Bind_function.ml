@@ -310,8 +310,8 @@ let generate_callable_bindings_when_out_args callable name symbol arguments ret_
   let (ocaml_ret, ctypes_ret) = List.hd ret_types in
   let mli = Sources.mli sources in
   let ml = Sources.ml sources in
-  let _ = File.buff_add_line mli "(*" in
-  let _ = File.buff_add_line ml "(*" in
+  let _ = File.bprintf mli "(* Not implemented %s - out argument not handled\n" symbol in
+  let _ = File.bprintf ml "(* Not implemented %s - out argument not handled\n" symbol in
   let _ = match arguments with
     | No_args -> raise (Failure "generate_callable_bindings_when_out_args with No_args")
     | Args args ->
@@ -328,9 +328,9 @@ let generate_callable_bindings_when_out_args callable name symbol arguments ret_
       let _ = File.bprintf mli "%s" (String.concat " -> " (List.map (fun a -> get_ocaml_type a) args.in_list)) in
       let _ = File.bprintf ml "(%s" (String.concat " @-> " (List.map (fun a -> get_ctypes_type a) args.in_list)) in
       let _ = File.bprintf mli " -> %s\n" ocaml_types_out in
-      File.bprintf ml " @-> returning (%s)) |return type: %s %s\n" ctypes_types_out ocaml_ret ctypes_ret
+      File.bprintf ml " @-> returning %s)\n" ctypes_types_out
 
-        (* generate the function return types with the args out
+   (* generate the function return types with the args out
    generate the function signature with only "in args"
    allocate the args out
    create the raw function binding
