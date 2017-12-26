@@ -81,7 +81,7 @@ let append_ctypes_struct_methods_bindings struct_name info sources skip_types =
     match Base_info.get_name base_info with
     | None -> ()
     | Some name ->
-        Bind_function.append_ctypes_method_bindings name method_info struct_name sources skip_types
+        Bind_function.append_ctypes_function_bindings name method_info struct_name sources skip_types
   done
 
 let parse_struct_info info sources skip_types =

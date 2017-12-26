@@ -35,7 +35,7 @@ type arg =
          | Arg of { name : string;
                     ocaml_type : string;
                     ctypes_type : string;
-                    type_info : Type_info.t structure ptr }
+                    type_info : Type_info.t structure ptr option}
 
 type arg_lists = { in_list : arg list;
                    out_list : arg list;
@@ -68,9 +68,6 @@ val get_return_types:
   Callable_info.t structure ptr -> string -> string list -> func_types
 
 val append_ctypes_function_bindings:
-  string -> Function_info.t structure ptr -> Binding_utils.Sources.t -> string list -> unit
-
-val append_ctypes_method_bindings:
   string -> Function_info.t structure ptr -> string -> Binding_utils.Sources.t -> string list -> unit
 
 val parse_function_info :
