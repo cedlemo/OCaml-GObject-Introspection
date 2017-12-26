@@ -40,13 +40,16 @@ let test_function_info name fn =
 
 let test_get_arguments_types test_ctx =
   test_function_info name (fun info ->
+      let open Bind_function in
       let callable = Function_info.to_callableinfo info in
-      match Bind_function.get_arguments_types callable [] with
-      | Bind_function.Type_names l -> let ocaml_types = String.concat " -> " (List.map (fun (a, b) -> a) l) in
-        assert_equal_string "string -> string" ocaml_types;
-        let ctypes_types = String.concat " -> " (List.map (fun (a, b) -> b) l) in
-        assert_equal_string "string -> string" ctypes_types;
-      | _ -> assert_equal_string "It should returns " "Ctypes arguments"
+      match get_args_information callable [] with
+      | No_args -> assert_equal_string "It should return " "some arguments"
+      | Args arg_lists ->
+          let _ = assert_equal_int 2 (List.length arg_lists.in_list) in
+          let flat =
+            List.map (fun a -> get_ocaml_type a) arg_lists.in_list
+            |> String.concat " " in
+          assert_equal_string "string string" flat
     )
 
 let test_get_return_types test_ctx =
