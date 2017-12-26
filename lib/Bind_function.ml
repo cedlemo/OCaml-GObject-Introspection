@@ -39,30 +39,6 @@ type func_types = | Not_handled of string
                   | Skipped of string
                   | Type_names of (string * string) list
 
-(* Returns None if there is an out or in/out argument,
- * else returns (string list, string list) whch correspond to
- * the ocaml types of the args for the mli file and the Ctypes for
- * the args for the ml file and the Ctypes functions binding *)
-let get_arguments_types callable skip_types =
-  let n = Callable_info.get_n_args callable in
-  if n = 0 then Type_names [("unit", "void")]
-  else let rec parse_args index args_types =
-         if index = n then Type_names (List.rev args_types)
-         else let arg = Callable_info.get_arg callable index in
-           match Arg_info.get_direction arg with
-           | Arg_info.In -> (
-               let type_info = Arg_info.get_type arg in
-               let may_be_null = Arg_info.may_be_null arg in
-               match Binding_utils.type_info_to_bindings_types type_info may_be_null with
-               | Binding_utils.Not_implemented tag_name -> Not_handled tag_name
-               | Types {ocaml = ocaml_type; ctypes = ctypes_typ} ->
-                   let types = check_if_types_are_not_from_core (ocaml_type, ctypes_typ) in
-                   if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
-                   else parse_args (index + 1) (types :: args_types)
-             )
-           | _ -> Not_handled "Arg_info.In or Arg_info.Out"
-    in parse_args 0 []
-
 let get_return_types callable container skip_types =
   if Callable_info.skip_return callable then Type_names [("unit", "void")]
   else let ret = Callable_info.get_return_type callable in
