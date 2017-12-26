@@ -29,9 +29,39 @@ type func_types = | Not_handled of string (** One of the argument type is not ha
                   | Skipped of string (** One of the type must be skipped. *)
                   | Type_names of (string * string) list (** Returns a list of tuples (OCaml type, Ctypes type). *)
 
+type arg =
+         | Not_implemented of string
+         | Skipped of string
+         | Arg of { name : string;
+                    ocaml_type : string;
+                    ctypes_type : string;
+                    type_info : Type_info.t structure ptr }
+
+type arg_lists = { in_list : arg list;
+                   out_list : arg list;
+                   in_out_list : arg list}
+
+type args = No_args | Args of arg_lists
+
+(* Get the escaped name (valid OCaml variable name) of the argument. Raise a Failure
+ * exception. It is an error to try to get the name of the argument while I should
+ * skeep / not implement the function bindings *)
+val get_escaped_arg_names :
+  arg list -> string list
+
+(* get the OCaml type of an argument and raise an exception if it is not implemented
+ * or if it is skipped. *)
+val get_ocaml_type :
+  arg -> string
+
+(* get the Ctypes type of an argument and raise an exception if it is not implemented
+ * or if it is skipped. *)
+val get_ctypes_type :
+  arg -> string
+
 (** Get a list of the function arguments types, both OCaml types and Ctypes types. *)
-val get_arguments_types:
-  Callable_info.t structure ptr -> string list -> func_types
+val get_args_information:
+  Callable_info.t structure ptr -> string list -> args
 
 (** Get the type names of the return value, both OCaml and Ctypes type names. *)
 val get_return_types:
