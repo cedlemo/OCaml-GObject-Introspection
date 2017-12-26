@@ -26,94 +26,67 @@ val f_reserved2: (unit ptr, t structure) field
 
 val new_file:
   string -> string -> (t structure ptr, Error.t structure ptr option) result
-
 val unix_new:
   int32 -> t structure ptr
-
 val close:
   t structure ptr -> unit
-
 val flush:
   t structure ptr -> (IOStatus.t, Error.t structure ptr option) result
-
 val get_buffer_condition:
   t structure ptr -> IOCondition.t_list
-
 val get_buffer_size:
   t structure ptr -> Unsigned.uint64
-
 val get_buffered:
   t structure ptr -> bool
-
 val get_close_on_unref:
   t structure ptr -> bool
-
 val get_encoding:
   t structure ptr -> string
-
 val get_flags:
   t structure ptr -> IOFlags.t_list
-
 val get_line_term:
   t structure ptr -> int32 ptr -> string
-
 val init:
   t structure ptr -> unit
-
 val read:
   t structure ptr -> string -> Unsigned.uint64 -> Unsigned.uint64 ptr -> IOError.t
-
-(*Not implemented g_io_channel_read_chars argument typeArg_info.InOut or Arg_info.Out not handled*)
-(*Not implemented g_io_channel_read_line argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_io_channel_read_chars type C Array type for Types.Array tag not implemented*)
+(* Not implemented g_io_channel_read_line - out argument not handled
+t structure ptr -> (IOStatus.t, string, Unsigned.uint64, Unsigned.uint64)
+*)
 val read_line_string:
   t structure ptr -> String.t structure ptr -> Unsigned.uint64 ptr option -> (IOStatus.t, Error.t structure ptr option) result
-
-(*Not implemented g_io_channel_read_to_end argument typeArg_info.InOut or Arg_info.Out not handled*)
-(*Not implemented g_io_channel_read_unichar argument typeArg_info.InOut or Arg_info.Out not handled*)
+(*Not implemented g_io_channel_read_to_end type C Array type for Types.Array tag not implemented*)
+(*Not implemented g_io_channel_read_unichar type unichar not implemented*)
 val ref:
   t structure ptr -> t structure ptr
-
 val seek:
   t structure ptr -> int64 -> Seek_type.t -> IOError.t
-
 val seek_position:
   t structure ptr -> int64 -> Seek_type.t -> (IOStatus.t, Error.t structure ptr option) result
-
 val set_buffer_size:
   t structure ptr -> Unsigned.uint64 -> unit
-
 val set_buffered:
   t structure ptr -> bool -> unit
-
 val set_close_on_unref:
   t structure ptr -> bool -> unit
-
 val set_encoding:
   t structure ptr -> string option -> (IOStatus.t, Error.t structure ptr option) result
-
 val set_flags:
   t structure ptr -> IOFlags.t_list -> (IOStatus.t, Error.t structure ptr option) result
-
 val set_line_term:
   t structure ptr -> string option -> int32 -> unit
-
 val shutdown:
   t structure ptr -> bool -> (IOStatus.t, Error.t structure ptr option) result
-
 val unix_get_fd:
   t structure ptr -> int32
-
 val unref:
   t structure ptr -> unit
-
 val write:
   t structure ptr -> string -> Unsigned.uint64 -> Unsigned.uint64 ptr -> IOError.t
-
-(*Not implemented g_io_channel_write_chars argument typeC Array type for Types.Array tag not handled*)
-(*Not implemented g_io_channel_write_unichar argument typeunichar not handled*)
+(*Not implemented g_io_channel_write_chars type C Array type for Types.Array tag not implemented*)
+(*Not implemented g_io_channel_write_unichar type unichar not implemented*)
 val error_from_errno:
   int32 -> IOChannel_error.t
-
 val error_quark:
   unit -> Unsigned.uint32
-

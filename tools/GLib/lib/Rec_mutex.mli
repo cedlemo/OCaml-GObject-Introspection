@@ -8,16 +8,11 @@ val f_p: (unit ptr, t structure) field
 
 val clear:
   t structure ptr -> unit
-
 val init:
   t structure ptr -> unit
-
 val lock:
   t structure ptr -> unit
-
 val trylock:
   t structure ptr -> bool
-
 val unlock:
   t structure ptr -> unit
-

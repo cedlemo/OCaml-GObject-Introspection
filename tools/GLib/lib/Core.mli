@@ -175,18 +175,28 @@ val ascii_strcasecmp:
 val ascii_strdown:
   string -> int64 -> string
 
-(*Not implemented g_ascii_string_to_signed - out argument not handled*)
+(* Not implemented g_ascii_string_to_signed - out argument not handled
+string -> Unsigned.uint32 -> int64 -> int64 -> (bool, int64)
+*)
 
-(*Not implemented g_ascii_string_to_unsigned - out argument not handled*)
+(* Not implemented g_ascii_string_to_unsigned - out argument not handled
+string -> Unsigned.uint32 -> Unsigned.uint64 -> Unsigned.uint64 -> (bool, Unsigned.uint64)
+*)
 
 val ascii_strncasecmp:
   string -> string -> Unsigned.uint64 -> int32
 
-(*Not implemented g_ascii_strtod - out argument not handled*)
+(* Not implemented g_ascii_strtod - out argument not handled
+string -> (float, string)
+*)
 
-(*Not implemented g_ascii_strtoll - out argument not handled*)
+(* Not implemented g_ascii_strtoll - out argument not handled
+string -> Unsigned.uint32 -> (int64, string)
+*)
 
-(*Not implemented g_ascii_strtoull - out argument not handled*)
+(* Not implemented g_ascii_strtoull - out argument not handled
+string -> Unsigned.uint32 -> (Unsigned.uint64, string)
+*)
 
 val ascii_strup:
   string -> int64 -> string
@@ -216,7 +226,7 @@ val ascii_strup:
 (*SKIPPED : atomic_pointer_set*)
 (*SKIPPED : atomic_pointer_xor*)
 
-(*Not implemented g_base64_decode - out argument not handled*)
+(*Not implemented g_base64_decode return type C Array type for Types.Array tag not handled*)
 
 (*Not implemented g_base64_decode_inplace type C Array type for Types.Array tag not implemented*)
 
@@ -296,7 +306,9 @@ val compute_checksum_for_string:
 
 (*Not implemented g_compute_hmac_for_string type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_convert - out argument not handled*)
+(* Not implemented g_convert - out argument not handled
+string -> int64 -> string -> string -> (string, Unsigned.uint64, Unsigned.uint64)
+*)
 
 val convert_error_quark:
   unit -> Unsigned.uint32
@@ -432,7 +444,9 @@ val file_error_quark:
 
 (*Not implemented g_file_get_contents type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_file_open_tmp - out argument not handled*)
+(* Not implemented g_file_open_tmp - out argument not handled
+string option -> (int32, string)
+*)
 
 val file_read_link:
   string -> (string option, Error.t structure ptr option) result
@@ -448,14 +462,18 @@ val filename_display_basename:
 val filename_display_name:
   string -> string
 
-(*Not implemented g_filename_from_uri - out argument not handled*)
+(* Not implemented g_filename_from_uri - out argument not handled
+string -> (string, string option)
+*)
 
-(*Not implemented g_filename_from_utf8 - out argument not handled*)
+(*Not implemented g_filename_from_utf8 return type C Array type for Types.Array tag not handled*)
 
 val filename_to_uri:
   string -> string option -> (string option, Error.t structure ptr option) result
 
-(*Not implemented g_filename_to_utf8 - out argument not handled*)
+(* Not implemented g_filename_to_utf8 - out argument not handled
+string -> int64 -> (string, Unsigned.uint64, Unsigned.uint64)
+*)
 
 val find_program_in_path:
   string -> string
@@ -473,7 +491,9 @@ val free:
 val get_application_name:
   unit -> string
 
-(*Not implemented g_get_charset - out argument not handled*)
+(* Not implemented g_get_charset - out argument not handled
+ -> (bool, string)
+*)
 
 val get_codeset:
   unit -> string
@@ -557,7 +577,9 @@ val hash_table_insert:
 val hash_table_lookup:
   Hash_table.t structure ptr -> unit ptr option -> unit ptr option
 
-(*Not implemented g_hash_table_lookup_extended - out argument not handled*)
+(* Not implemented g_hash_table_lookup_extended - out argument not handled
+Hash_table.t structure ptr -> unit ptr option -> (bool, unit ptr option, unit ptr option)
+*)
 
 val hash_table_remove:
   Hash_table.t structure ptr -> unit ptr option -> bool
@@ -652,9 +674,13 @@ val key_file_error_quark:
 
 (*Not implemented g_listenv return type C Array type for Types.Array tag not handled*)
 
-(*Not implemented g_locale_from_utf8 - out argument not handled*)
+(* Not implemented g_locale_from_utf8 - out argument not handled
+string -> int64 -> (string, Unsigned.uint64, Unsigned.uint64)
+*)
 
-(*Not implemented g_locale_to_utf8 - out argument not handled*)
+(* Not implemented g_locale_to_utf8 - out argument not handled
+string -> int64 -> (string, Unsigned.uint64, Unsigned.uint64)
+*)
 (*SKIPPED : log_default_handler*)
 (*SKIPPED : log_remove_handler*)
 (*SKIPPED : log_set_always_fatal*)
@@ -755,7 +781,9 @@ val pointer_bit_unlock:
 val poll:
   Poll_fd.t structure ptr -> Unsigned.uint32 -> int32 -> int32
 
-(*Not implemented g_propagate_error - out argument not handled*)
+(* Not implemented g_propagate_error - out argument not handled
+Error.t structure ptr -> (unit, Error.t structure ptr option)
+*)
 
 val quark_from_static_string:
   string option -> Unsigned.uint32
@@ -786,7 +814,9 @@ val random_set_seed:
 (*SKIPPED : realloc*)
 (*SKIPPED : realloc_n*)
 
-(*Not implemented g_regex_check_replacement - out argument not handled*)
+(* Not implemented g_regex_check_replacement - out argument not handled
+string -> (bool, bool)
+*)
 
 val regex_error_quark:
   unit -> Unsigned.uint32
@@ -828,7 +858,9 @@ val rmdir:
 val set_application_name:
   string -> unit
 
-(*Not implemented g_set_error_literal - out argument not handled*)
+(* Not implemented g_set_error_literal - out argument not handled
+Unsigned.uint32 -> int32 -> string -> (unit, Error.t structure ptr)
+*)
 
 val set_prgname:
   string -> unit
@@ -1010,7 +1042,9 @@ val strsignal:
 val strstr_len:
   string -> int64 -> string -> string
 
-(*Not implemented g_strtod - out argument not handled*)
+(* Not implemented g_strtod - out argument not handled
+string -> (float, string)
+*)
 (*DEPRECATED : strup*)
 (*SKIPPED : strv_contains*)
 
@@ -1080,7 +1114,9 @@ val thread_self:
 val thread_yield:
   unit -> unit
 
-(*Not implemented g_time_val_from_iso8601 - out argument not handled*)
+(* Not implemented g_time_val_from_iso8601 - out argument not handled
+string -> (bool, Time_val.t structure)
+*)
 
 (*Not implemented g_timeout_add_full type callback not implemented*)
 
@@ -1221,9 +1257,11 @@ val uri_unescape_string:
 val usleep:
   Unsigned.uint64 -> unit
 
-(*Not implemented g_utf16_to_ucs4 - out argument not handled*)
+(*Not implemented g_utf16_to_ucs4 return type unichar not handled*)
 
-(*Not implemented g_utf16_to_utf8 - out argument not handled*)
+(* Not implemented g_utf16_to_utf8 - out argument not handled
+Unsigned.uint16 ptr -> int64 -> (string, int64, int64)
+*)
 
 val utf8_casefold:
   string -> int64 -> string
@@ -1282,11 +1320,13 @@ val utf8_strup:
 val utf8_substring:
   string -> int64 -> int64 -> string
 
-(*Not implemented g_utf8_to_ucs4 - out argument not handled*)
+(*Not implemented g_utf8_to_ucs4 return type unichar not handled*)
 
-(*Not implemented g_utf8_to_ucs4_fast - out argument not handled*)
+(*Not implemented g_utf8_to_ucs4_fast return type unichar not handled*)
 
-(*Not implemented g_utf8_to_utf16 - out argument not handled*)
+(* Not implemented g_utf8_to_utf16 - out argument not handled
+string -> int64 -> (Unsigned.uint16 ptr, int64, int64)
+*)
 
 (*Not implemented g_utf8_validate type C Array type for Types.Array tag not implemented*)
 (*SKIPPED : uuid_string_is_valid*)
@@ -1316,4 +1356,6 @@ val variant_type_checked_:
 val variant_type_string_is_valid:
   string -> bool
 
-(*Not implemented g_variant_type_string_scan - out argument not handled*)
+(* Not implemented g_variant_type_string_scan - out argument not handled
+string -> string option -> (bool, string)
+*)

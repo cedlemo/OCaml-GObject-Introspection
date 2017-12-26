@@ -179,18 +179,28 @@ let ascii_strcasecmp =
 let ascii_strdown =
   foreign "g_ascii_strdown" (string @-> int64_t @-> returning (string))
 
-(*Not implemented g_ascii_string_to_signed - out argument not handled*)
+(* Not implemented g_ascii_string_to_signed - out argument not handled
+(string @-> uint32_t @-> int64_t @-> int64_t @-> returning (bool * int64_t))
+*)
 
-(*Not implemented g_ascii_string_to_unsigned - out argument not handled*)
+(* Not implemented g_ascii_string_to_unsigned - out argument not handled
+(string @-> uint32_t @-> uint64_t @-> uint64_t @-> returning (bool * uint64_t))
+*)
 
 let ascii_strncasecmp =
   foreign "g_ascii_strncasecmp" (string @-> string @-> uint64_t @-> returning (int32_t))
 
-(*Not implemented g_ascii_strtod - out argument not handled*)
+(* Not implemented g_ascii_strtod - out argument not handled
+(string @-> returning (double * string))
+*)
 
-(*Not implemented g_ascii_strtoll - out argument not handled*)
+(* Not implemented g_ascii_strtoll - out argument not handled
+(string @-> uint32_t @-> returning (int64_t * string))
+*)
 
-(*Not implemented g_ascii_strtoull - out argument not handled*)
+(* Not implemented g_ascii_strtoull - out argument not handled
+(string @-> uint32_t @-> returning (uint64_t * string))
+*)
 
 let ascii_strup =
   foreign "g_ascii_strup" (string @-> int64_t @-> returning (string))
@@ -220,7 +230,7 @@ let ascii_strup =
 (*SKIPPED : atomic_pointer_set*)
 (*SKIPPED : atomic_pointer_xor*)
 
-(*Not implemented g_base64_decode - out argument not handled*)
+(*Not implemented g_base64_decode return type C Array type for Types.Array tag not handled*)
 
 (*Not implemented g_base64_decode_inplace type C Array type for Types.Array tag not implemented*)
 
@@ -318,7 +328,9 @@ let compute_checksum_for_string =
 
 (*Not implemented g_compute_hmac_for_string type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_convert - out argument not handled*)
+(* Not implemented g_convert - out argument not handled
+(string @-> int64_t @-> string @-> string @-> returning (string * uint64_t * uint64_t))
+*)
 
 let convert_error_quark =
   foreign "g_convert_error_quark" (void @-> returning (uint32_t))
@@ -481,7 +493,9 @@ let file_error_quark =
 
 (*Not implemented g_file_get_contents type C Array type for Types.Array tag not implemented*)
 
-(*Not implemented g_file_open_tmp - out argument not handled*)
+(* Not implemented g_file_open_tmp - out argument not handled
+(string_opt @-> returning (int32_t * string))
+*)
 
 let file_read_link filename =
   let file_read_link_raw =
@@ -506,9 +520,11 @@ let filename_display_basename =
 let filename_display_name =
   foreign "g_filename_display_name" (string @-> returning (string))
 
-(*Not implemented g_filename_from_uri - out argument not handled*)
+(* Not implemented g_filename_from_uri - out argument not handled
+(string @-> returning (string * string_opt))
+*)
 
-(*Not implemented g_filename_from_utf8 - out argument not handled*)
+(*Not implemented g_filename_from_utf8 return type C Array type for Types.Array tag not handled*)
 
 let filename_to_uri filename hostname =
   let filename_to_uri_raw =
@@ -522,7 +538,9 @@ let filename_to_uri filename hostname =
      let _ = Gc.finalise (function | Some e -> Error.free e | None -> () ) err_ptr in
      Error (err_ptr)
 
-(*Not implemented g_filename_to_utf8 - out argument not handled*)
+(* Not implemented g_filename_to_utf8 - out argument not handled
+(string @-> int64_t @-> returning (string * uint64_t * uint64_t))
+*)
 
 let find_program_in_path =
   foreign "g_find_program_in_path" (string @-> returning (string))
@@ -540,7 +558,9 @@ let free =
 let get_application_name =
   foreign "g_get_application_name" (void @-> returning (string))
 
-(*Not implemented g_get_charset - out argument not handled*)
+(* Not implemented g_get_charset - out argument not handled
+( @-> returning (bool * string))
+*)
 
 let get_codeset =
   foreign "g_get_codeset" (void @-> returning (string))
@@ -624,7 +644,9 @@ let hash_table_insert =
 let hash_table_lookup =
   foreign "g_hash_table_lookup" (ptr Hash_table.t_typ @-> ptr_opt void @-> returning (ptr_opt void))
 
-(*Not implemented g_hash_table_lookup_extended - out argument not handled*)
+(* Not implemented g_hash_table_lookup_extended - out argument not handled
+(ptr Hash_table.t_typ @-> ptr_opt void @-> returning (bool * ptr_opt void * ptr_opt void))
+*)
 
 let hash_table_remove =
   foreign "g_hash_table_remove" (ptr Hash_table.t_typ @-> ptr_opt void @-> returning (bool))
@@ -719,9 +741,13 @@ let key_file_error_quark =
 
 (*Not implemented g_listenv return type C Array type for Types.Array tag not handled*)
 
-(*Not implemented g_locale_from_utf8 - out argument not handled*)
+(* Not implemented g_locale_from_utf8 - out argument not handled
+(string @-> int64_t @-> returning (string * uint64_t * uint64_t))
+*)
 
-(*Not implemented g_locale_to_utf8 - out argument not handled*)
+(* Not implemented g_locale_to_utf8 - out argument not handled
+(string @-> int64_t @-> returning (string * uint64_t * uint64_t))
+*)
 (*SKIPPED : log_default_handler*)
 (*SKIPPED : log_remove_handler*)
 (*SKIPPED : log_set_always_fatal*)
@@ -822,7 +848,9 @@ let pointer_bit_unlock =
 let poll =
   foreign "g_poll" (ptr Poll_fd.t_typ @-> uint32_t @-> int32_t @-> returning (int32_t))
 
-(*Not implemented g_propagate_error - out argument not handled*)
+(* Not implemented g_propagate_error - out argument not handled
+(ptr Error.t_typ @-> returning (void * ptr_opt Error.t_typ))
+*)
 
 let quark_from_static_string =
   foreign "g_quark_from_static_string" (string_opt @-> returning (uint32_t))
@@ -853,7 +881,9 @@ let random_set_seed =
 (*SKIPPED : realloc*)
 (*SKIPPED : realloc_n*)
 
-(*Not implemented g_regex_check_replacement - out argument not handled*)
+(* Not implemented g_regex_check_replacement - out argument not handled
+(string @-> returning (bool * bool))
+*)
 
 let regex_error_quark =
   foreign "g_regex_error_quark" (void @-> returning (uint32_t))
@@ -895,7 +925,9 @@ let rmdir =
 let set_application_name =
   foreign "g_set_application_name" (string @-> returning (void))
 
-(*Not implemented g_set_error_literal - out argument not handled*)
+(* Not implemented g_set_error_literal - out argument not handled
+(uint32_t @-> int32_t @-> string @-> returning (void * ptr Error.t_typ))
+*)
 
 let set_prgname =
   foreign "g_set_prgname" (string @-> returning (void))
@@ -1104,7 +1136,9 @@ let strsignal =
 let strstr_len =
   foreign "g_strstr_len" (string @-> int64_t @-> string @-> returning (string))
 
-(*Not implemented g_strtod - out argument not handled*)
+(* Not implemented g_strtod - out argument not handled
+(string @-> returning (double * string))
+*)
 (*DEPRECATED : strup*)
 (*SKIPPED : strv_contains*)
 
@@ -1174,7 +1208,9 @@ let thread_self =
 let thread_yield =
   foreign "g_thread_yield" (void @-> returning (void))
 
-(*Not implemented g_time_val_from_iso8601 - out argument not handled*)
+(* Not implemented g_time_val_from_iso8601 - out argument not handled
+(string @-> returning (bool * Time_val.t_typ))
+*)
 
 (*Not implemented g_timeout_add_full type callback not implemented*)
 
@@ -1333,9 +1369,11 @@ let uri_unescape_string =
 let usleep =
   foreign "g_usleep" (uint64_t @-> returning (void))
 
-(*Not implemented g_utf16_to_ucs4 - out argument not handled*)
+(*Not implemented g_utf16_to_ucs4 return type unichar not handled*)
 
-(*Not implemented g_utf16_to_utf8 - out argument not handled*)
+(* Not implemented g_utf16_to_utf8 - out argument not handled
+(ptr uint16_t @-> int64_t @-> returning (string * int64_t * int64_t))
+*)
 
 let utf8_casefold =
   foreign "g_utf8_casefold" (string @-> int64_t @-> returning (string))
@@ -1394,11 +1432,13 @@ let utf8_strup =
 let utf8_substring =
   foreign "g_utf8_substring" (string @-> int64_t @-> int64_t @-> returning (string))
 
-(*Not implemented g_utf8_to_ucs4 - out argument not handled*)
+(*Not implemented g_utf8_to_ucs4 return type unichar not handled*)
 
-(*Not implemented g_utf8_to_ucs4_fast - out argument not handled*)
+(*Not implemented g_utf8_to_ucs4_fast return type unichar not handled*)
 
-(*Not implemented g_utf8_to_utf16 - out argument not handled*)
+(* Not implemented g_utf8_to_utf16 - out argument not handled
+(string @-> int64_t @-> returning (ptr uint16_t * int64_t * int64_t))
+*)
 
 (*Not implemented g_utf8_validate type C Array type for Types.Array tag not implemented*)
 (*SKIPPED : uuid_string_is_valid*)
@@ -1437,4 +1477,6 @@ let variant_type_checked_ =
 let variant_type_string_is_valid =
   foreign "g_variant_type_string_is_valid" (string @-> returning (bool))
 
-(*Not implemented g_variant_type_string_scan - out argument not handled*)
+(* Not implemented g_variant_type_string_scan - out argument not handled
+(string @-> string_opt @-> returning (bool * string))
+*)

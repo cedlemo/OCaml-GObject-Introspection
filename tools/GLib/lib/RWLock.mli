@@ -8,25 +8,17 @@ val f_p: (unit ptr, t structure) field
 
 val clear:
   t structure ptr -> unit
-
 val init:
   t structure ptr -> unit
-
 val reader_lock:
   t structure ptr -> unit
-
 val reader_trylock:
   t structure ptr -> bool
-
 val reader_unlock:
   t structure ptr -> unit
-
 val writer_lock:
   t structure ptr -> unit
-
 val writer_trylock:
   t structure ptr -> bool
-
 val writer_unlock:
   t structure ptr -> unit
-

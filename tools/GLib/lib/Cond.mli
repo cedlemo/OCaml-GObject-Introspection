@@ -8,15 +8,11 @@ val f_p: (unit ptr, t structure) field
 
 val broadcast:
   t structure ptr -> unit
-
 val clear:
   t structure ptr -> unit
-
 val init:
   t structure ptr -> unit
-
 val signal:
   t structure ptr -> unit
-
-(*Not implemented g_cond_wait argument typeunion not handled*)
-(*Not implemented g_cond_wait_until argument typeunion not handled*)
+(*Not implemented g_cond_wait type union not implemented*)
+(*Not implemented g_cond_wait_until type union not implemented*)

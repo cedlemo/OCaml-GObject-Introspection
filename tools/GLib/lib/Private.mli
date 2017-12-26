@@ -9,10 +9,7 @@ val f_p: (unit ptr, t structure) field
 
 val get:
   t structure ptr -> unit ptr option
-
 val replace:
   t structure ptr -> unit ptr option -> unit
-
 val set:
   t structure ptr -> unit ptr option -> unit
-

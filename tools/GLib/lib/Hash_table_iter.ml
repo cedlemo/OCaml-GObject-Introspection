@@ -14,14 +14,12 @@ let _ = seal t_typ
 
 let init =
   foreign "g_hash_table_iter_init" (ptr t_typ @-> ptr Hash_table.t_typ @-> returning (void))
-
-(*Not implemented g_hash_table_iter_next argument typeArg_info.InOut or Arg_info.Out not handled*)
+(* Not implemented g_hash_table_iter_next - out argument not handled
+(ptr t_typ @-> returning (bool * ptr_opt void * ptr_opt void))
+*)
 let remove =
   foreign "g_hash_table_iter_remove" (ptr t_typ @-> returning (void))
-
 let replace =
   foreign "g_hash_table_iter_replace" (ptr t_typ @-> ptr_opt void @-> returning (void))
-
 let steal =
   foreign "g_hash_table_iter_steal" (ptr t_typ @-> returning (void))
-

@@ -21,94 +21,64 @@ let _ = seal t_typ
 
 let create =
   foreign "g_source_new" (ptr Source_funcs.t_typ @-> uint32_t @-> returning (ptr t_typ))
-
 let add_child_source =
-  foreign "g_source_add_child_source" (ptr t_typ @-> ptr t_typ @-> returning (void))
-
+  foreign "g_source_add_child_source" (ptr t_typ @-> ptr Source.t_typ @-> returning (void))
 let add_poll =
   foreign "g_source_add_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> returning (void))
-
 let add_unix_fd =
   foreign "g_source_add_unix_fd" (ptr t_typ @-> int32_t @-> IOCondition.t_list_view @-> returning (ptr void))
-
-(*SKIPPED : g_source_attach argument type Main_context.t structure ptr option*)
+(*SKIPPED :  g_source_attach type Main_context.t structure ptr option skipped*)
 let destroy =
   foreign "g_source_destroy" (ptr t_typ @-> returning (void))
-
 let get_can_recurse =
   foreign "g_source_get_can_recurse" (ptr t_typ @-> returning (bool))
-
 (*SKIPPED : g_source_get_context return type Main_context.t structure ptr option*)
 let get_current_time =
   foreign "g_source_get_current_time" (ptr t_typ @-> ptr Time_val.t_typ @-> returning (void))
-
 let get_id =
   foreign "g_source_get_id" (ptr t_typ @-> returning (uint32_t))
-
 let get_name =
   foreign "g_source_get_name" (ptr t_typ @-> returning (string))
-
 let get_priority =
   foreign "g_source_get_priority" (ptr t_typ @-> returning (int32_t))
-
 let get_ready_time =
   foreign "g_source_get_ready_time" (ptr t_typ @-> returning (int64_t))
-
 let get_time =
   foreign "g_source_get_time" (ptr t_typ @-> returning (int64_t))
-
 let is_destroyed =
   foreign "g_source_is_destroyed" (ptr t_typ @-> returning (bool))
-
 let modify_unix_fd =
   foreign "g_source_modify_unix_fd" (ptr t_typ @-> ptr void @-> IOCondition.t_list_view @-> returning (void))
-
 let query_unix_fd =
   foreign "g_source_query_unix_fd" (ptr t_typ @-> ptr void @-> returning (IOCondition.t_list_view))
-
 let ref =
   foreign "g_source_ref" (ptr t_typ @-> returning (ptr t_typ))
-
 let remove_child_source =
-  foreign "g_source_remove_child_source" (ptr t_typ @-> ptr t_typ @-> returning (void))
-
+  foreign "g_source_remove_child_source" (ptr t_typ @-> ptr Source.t_typ @-> returning (void))
 let remove_poll =
   foreign "g_source_remove_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> returning (void))
-
 let remove_unix_fd =
   foreign "g_source_remove_unix_fd" (ptr t_typ @-> ptr void @-> returning (void))
-
-(*Not implemented g_source_set_callback argument typecallback not handled*)
+(*Not implemented g_source_set_callback type callback not implemented*)
 let set_callback_indirect =
   foreign "g_source_set_callback_indirect" (ptr t_typ @-> ptr_opt void @-> ptr Source_callback_funcs.t_typ @-> returning (void))
-
 let set_can_recurse =
   foreign "g_source_set_can_recurse" (ptr t_typ @-> bool @-> returning (void))
-
 let set_funcs =
   foreign "g_source_set_funcs" (ptr t_typ @-> ptr Source_funcs.t_typ @-> returning (void))
-
 let set_name =
   foreign "g_source_set_name" (ptr t_typ @-> string @-> returning (void))
-
 let set_priority =
   foreign "g_source_set_priority" (ptr t_typ @-> int32_t @-> returning (void))
-
 let set_ready_time =
   foreign "g_source_set_ready_time" (ptr t_typ @-> int64_t @-> returning (void))
-
 let unref =
   foreign "g_source_unref" (ptr t_typ @-> returning (void))
-
 let remove =
   foreign "g_source_remove" (uint32_t @-> returning (bool))
-
 let remove_by_funcs_user_data =
   foreign "g_source_remove_by_funcs_user_data" (ptr Source_funcs.t_typ @-> ptr_opt void @-> returning (bool))
-
 let remove_by_user_data =
   foreign "g_source_remove_by_user_data" (ptr_opt void @-> returning (bool))
-
 let set_name_by_id =
   foreign "g_source_set_name_by_id" (uint32_t @-> string @-> returning (void))
-

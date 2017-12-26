@@ -9,13 +9,9 @@ val f_message: (string, t structure) field
 
 val new_literal:
   Unsigned.uint32 -> int32 -> string -> t structure ptr
-
 val copy:
   t structure ptr -> t structure ptr
-
 val free:
   t structure ptr -> unit
-
 val matches:
   t structure ptr -> Unsigned.uint32 -> int32 -> bool
-

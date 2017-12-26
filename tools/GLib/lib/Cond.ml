@@ -10,15 +10,11 @@ let _ = seal t_typ
 
 let broadcast =
   foreign "g_cond_broadcast" (ptr t_typ @-> returning (void))
-
 let clear =
   foreign "g_cond_clear" (ptr t_typ @-> returning (void))
-
 let init =
   foreign "g_cond_init" (ptr t_typ @-> returning (void))
-
 let signal =
   foreign "g_cond_signal" (ptr t_typ @-> returning (void))
-
-(*Not implemented g_cond_wait argument typeunion not handled*)
-(*Not implemented g_cond_wait_until argument typeunion not handled*)
+(*Not implemented g_cond_wait type union not implemented*)
+(*Not implemented g_cond_wait_until type union not implemented*)

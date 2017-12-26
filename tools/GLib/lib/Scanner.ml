@@ -29,49 +29,33 @@ let _ = seal t_typ
 
 let cur_line =
   foreign "g_scanner_cur_line" (ptr t_typ @-> returning (uint32_t))
-
 let cur_position =
   foreign "g_scanner_cur_position" (ptr t_typ @-> returning (uint32_t))
-
 let cur_token =
   foreign "g_scanner_cur_token" (ptr t_typ @-> returning (Token_type.t_view))
-
 let destroy =
   foreign "g_scanner_destroy" (ptr t_typ @-> returning (void))
-
 let eof =
   foreign "g_scanner_eof" (ptr t_typ @-> returning (bool))
-
 let get_next_token =
   foreign "g_scanner_get_next_token" (ptr t_typ @-> returning (Token_type.t_view))
-
 let input_file =
   foreign "g_scanner_input_file" (ptr t_typ @-> int32_t @-> returning (void))
-
 let input_text =
   foreign "g_scanner_input_text" (ptr t_typ @-> string @-> uint32_t @-> returning (void))
-
 let lookup_symbol =
   foreign "g_scanner_lookup_symbol" (ptr t_typ @-> string @-> returning (ptr_opt void))
-
 let peek_next_token =
   foreign "g_scanner_peek_next_token" (ptr t_typ @-> returning (Token_type.t_view))
-
 let scope_add_symbol =
   foreign "g_scanner_scope_add_symbol" (ptr t_typ @-> uint32_t @-> string @-> ptr_opt void @-> returning (void))
-
 let scope_lookup_symbol =
   foreign "g_scanner_scope_lookup_symbol" (ptr t_typ @-> uint32_t @-> string @-> returning (ptr_opt void))
-
 let scope_remove_symbol =
   foreign "g_scanner_scope_remove_symbol" (ptr t_typ @-> uint32_t @-> string @-> returning (void))
-
 let set_scope =
   foreign "g_scanner_set_scope" (ptr t_typ @-> uint32_t @-> returning (uint32_t))
-
 let sync_file_offset =
   foreign "g_scanner_sync_file_offset" (ptr t_typ @-> returning (void))
-
 let unexp_token =
   foreign "g_scanner_unexp_token" (ptr t_typ @-> Token_type.t_view @-> string @-> string @-> string @-> string @-> int32_t @-> returning (void))
-

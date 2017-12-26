@@ -11,13 +11,9 @@ let _ = seal t_typ
 
 let new_literal =
   foreign "g_error_new_literal" (uint32_t @-> int32_t @-> string @-> returning (ptr t_typ))
-
 let copy =
   foreign "g_error_copy" (ptr t_typ @-> returning (ptr t_typ))
-
 let free =
   foreign "g_error_free" (ptr t_typ @-> returning (void))
-
 let matches =
   foreign "g_error_matches" (ptr t_typ @-> uint32_t @-> int32_t @-> returning (bool))
-

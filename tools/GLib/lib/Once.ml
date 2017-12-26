@@ -10,7 +10,5 @@ let _ = seal t_typ
 
 let init_enter =
   foreign "g_once_init_enter" (ptr void @-> returning (bool))
-
 let init_leave =
   foreign "g_once_init_leave" (ptr void @-> uint64_t @-> returning (void))
-
