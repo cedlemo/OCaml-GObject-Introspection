@@ -42,7 +42,7 @@ let test_get_arguments_types test_ctx =
   test_function_info name (fun info ->
       let open Bind_function in
       let callable = Function_info.to_callableinfo info in
-      match get_args_information callable [] with
+      match get_args_information callable "none" [] with
       | No_args -> assert_equal_string "It should return " "some arguments"
       | Args arg_lists ->
           let _ = assert_equal_int 2 (List.length arg_lists.in_list) in
