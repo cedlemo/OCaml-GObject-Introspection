@@ -140,7 +140,7 @@ let get_ctypes_type = function
   | Skipped message -> raise (Failure (Printf.sprintf "get_ocaml_type : Skipped -> %s" message))
   | Arg arg -> arg.ctypes_type
 
-let get_args_information callable skip_types =
+let get_args_information callable container skip_types =
   let n = Callable_info.get_n_args callable in
   let is_method = Callable_info.is_method callable in
   if n = 0 && not is_method then No_args
@@ -151,7 +151,7 @@ let get_args_information callable skip_types =
       match Binding_utils.type_info_to_bindings_types t_info may_be_null with
       | Binding_utils.Not_implemented tag_name -> Not_implemented tag_name
       | Types {ocaml = ocaml_type'; ctypes = ctypes_type'} ->
-          let (ocaml_type, ctypes_type) = check_if_types_are_not_from_core (ocaml_type', ctypes_type') in
+          let (ocaml_type, ctypes_type) = filter_same_argument_type_as_container container (ocaml_type', ctypes_type') in
           if Binding_utils.match_one_of ocaml_type skip_types then Skipped ocaml_type
           else let name = ( let info' = Arg_info.to_baseinfo arg in
                             match Base_info.get_name info' with
@@ -203,8 +203,8 @@ let log_new_args_type fun_name = function
      let _ = Printf.printf "fn - %s : (Out args) %s\n" fun_name (print_arg_list args.in_out_list) in
      print_endline "----------------------------------------------------------------------------------------------"
 
-let test_new_args_data fun_name callable skip_types =
-  let args = get_args_information callable skip_types in
+let test_new_args_data fun_name callable container skip_types =
+  let args = get_args_information callable container skip_types in
   log_new_args_type fun_name args
 
 let generate_callable_bindings callable name symbol args ret_types sources =
@@ -348,7 +348,7 @@ let append_ctypes_function_bindings raw_name info container sources skip_types =
   let symbol = Function_info.get_symbol info in
   let name = Binding_utils.ensure_valid_variable_name (if raw_name = "" then symbol else raw_name) in
   let callable = Function_info.to_callableinfo info in
-  let args = get_args_information callable skip_types in
+  let args = get_args_information callable container skip_types in
   if should_be_implemented args sources symbol then (
         match get_return_types callable container skip_types with
         | Not_handled t ->

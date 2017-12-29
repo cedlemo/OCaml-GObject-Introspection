@@ -61,7 +61,7 @@ val get_ctypes_type :
 
 (** Get a list of the function arguments types, both OCaml types and Ctypes types. *)
 val get_args_information:
-  Callable_info.t structure ptr -> string list -> args
+  Callable_info.t structure ptr -> string -> string list -> args
 
 (** Get the type names of the return value, both OCaml and Ctypes type names. *)
 val get_return_types:
