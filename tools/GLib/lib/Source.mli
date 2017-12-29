@@ -20,7 +20,7 @@ val f_priv: (Source_private.t structure ptr, t structure) field
 val create:
   Source_funcs.t structure ptr -> Unsigned.uint32 -> t structure ptr
 val add_child_source:
-  t structure ptr -> Source.t structure ptr -> unit
+  t structure ptr -> t structure ptr -> unit
 val add_poll:
   t structure ptr -> Poll_fd.t structure ptr -> unit
 val add_unix_fd:
@@ -52,7 +52,7 @@ val query_unix_fd:
 val ref:
   t structure ptr -> t structure ptr
 val remove_child_source:
-  t structure ptr -> Source.t structure ptr -> unit
+  t structure ptr -> t structure ptr -> unit
 val remove_poll:
   t structure ptr -> Poll_fd.t structure ptr -> unit
 val remove_unix_fd:

@@ -25,13 +25,13 @@ let add_months =
 let add_years =
   foreign "g_date_add_years" (ptr t_typ @-> uint32_t @-> returning (void))
 let clamp =
-  foreign "g_date_clamp" (ptr t_typ @-> ptr Date.t_typ @-> ptr Date.t_typ @-> returning (void))
+  foreign "g_date_clamp" (ptr t_typ @-> ptr t_typ @-> ptr t_typ @-> returning (void))
 let clear =
   foreign "g_date_clear" (ptr t_typ @-> uint32_t @-> returning (void))
 let compare =
-  foreign "g_date_compare" (ptr t_typ @-> ptr Date.t_typ @-> returning (int32_t))
+  foreign "g_date_compare" (ptr t_typ @-> ptr t_typ @-> returning (int32_t))
 let days_between =
-  foreign "g_date_days_between" (ptr t_typ @-> ptr Date.t_typ @-> returning (int32_t))
+  foreign "g_date_days_between" (ptr t_typ @-> ptr t_typ @-> returning (int32_t))
 let free =
   foreign "g_date_free" (ptr t_typ @-> returning (void))
 let get_day =
@@ -57,7 +57,7 @@ let is_first_of_month =
 let is_last_of_month =
   foreign "g_date_is_last_of_month" (ptr t_typ @-> returning (bool))
 let order =
-  foreign "g_date_order" (ptr t_typ @-> ptr Date.t_typ @-> returning (void))
+  foreign "g_date_order" (ptr t_typ @-> ptr t_typ @-> returning (void))
 let set_day =
   foreign "g_date_set_day" (ptr t_typ @-> uint8_t @-> returning (void))
 let set_dmy =
@@ -95,7 +95,7 @@ let get_sunday_weeks_in_year =
 let is_leap_year =
   foreign "g_date_is_leap_year" (uint16_t @-> returning (bool))
 let strftime =
-  foreign "g_date_strftime" (string @-> uint64_t @-> string @-> ptr Date.t_typ @-> returning (uint64_t))
+  foreign "g_date_strftime" (string @-> uint64_t @-> string @-> ptr t_typ @-> returning (uint64_t))
 let valid_day =
   foreign "g_date_valid_day" (uint8_t @-> returning (bool))
 let valid_dmy =

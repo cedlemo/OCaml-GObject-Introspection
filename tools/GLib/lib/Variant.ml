@@ -12,7 +12,7 @@ let new_byte =
 (*Not implemented g_variant_new_bytestring type C Array type for Types.Array tag not implemented*)
 (*Not implemented g_variant_new_bytestring_array type C Array type for Types.Array tag not implemented*)
 let new_dict_entry =
-  foreign "g_variant_new_dict_entry" (ptr Variant.t_typ @-> ptr Variant.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_new_dict_entry" (ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
 let new_double =
   foreign "g_variant_new_double" (double @-> returning (ptr t_typ))
 let new_fixed_array =
@@ -28,7 +28,7 @@ let new_int32 =
 let new_int64 =
   foreign "g_variant_new_int64" (int64_t @-> returning (ptr t_typ))
 let new_maybe =
-  foreign "g_variant_new_maybe" (ptr_opt Variant_type.t_typ @-> ptr_opt Variant.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_new_maybe" (ptr_opt Variant_type.t_typ @-> ptr_opt t_typ @-> returning (ptr t_typ))
 let new_object_path =
   foreign "g_variant_new_object_path" (string @-> returning (ptr t_typ))
 (*Not implemented g_variant_new_objv type C Array type for Types.Array tag not implemented*)
@@ -45,7 +45,7 @@ let new_uint32 =
 let new_uint64 =
   foreign "g_variant_new_uint64" (uint64_t @-> returning (ptr t_typ))
 let new_variant =
-  foreign "g_variant_new_variant" (ptr Variant.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_new_variant" (ptr t_typ @-> returning (ptr t_typ))
 let byteswap =
   foreign "g_variant_byteswap" (ptr t_typ @-> returning (ptr t_typ))
 let check_format_string =
@@ -53,7 +53,7 @@ let check_format_string =
 let classify =
   foreign "g_variant_classify" (ptr t_typ @-> returning (Variant_class.t_view))
 let compare =
-  foreign "g_variant_compare" (ptr t_typ @-> ptr Variant.t_typ @-> returning (int32_t))
+  foreign "g_variant_compare" (ptr t_typ @-> ptr t_typ @-> returning (int32_t))
 (*Not implemented g_variant_dup_bytestring return type C Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_dup_bytestring_array return type C Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_dup_objv return type C Array type for Types.Array tag not handled*)
@@ -62,7 +62,7 @@ let compare =
 *)
 (*Not implemented g_variant_dup_strv return type C Array type for Types.Array tag not handled*)
 let equal =
-  foreign "g_variant_equal" (ptr t_typ @-> ptr Variant.t_typ @-> returning (bool))
+  foreign "g_variant_equal" (ptr t_typ @-> ptr t_typ @-> returning (bool))
 let get_boolean =
   foreign "g_variant_get_boolean" (ptr t_typ @-> returning (bool))
 let get_byte =

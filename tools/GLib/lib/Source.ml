@@ -22,7 +22,7 @@ let _ = seal t_typ
 let create =
   foreign "g_source_new" (ptr Source_funcs.t_typ @-> uint32_t @-> returning (ptr t_typ))
 let add_child_source =
-  foreign "g_source_add_child_source" (ptr t_typ @-> ptr Source.t_typ @-> returning (void))
+  foreign "g_source_add_child_source" (ptr t_typ @-> ptr t_typ @-> returning (void))
 let add_poll =
   foreign "g_source_add_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> returning (void))
 let add_unix_fd =
@@ -54,7 +54,7 @@ let query_unix_fd =
 let ref =
   foreign "g_source_ref" (ptr t_typ @-> returning (ptr t_typ))
 let remove_child_source =
-  foreign "g_source_remove_child_source" (ptr t_typ @-> ptr Source.t_typ @-> returning (void))
+  foreign "g_source_remove_child_source" (ptr t_typ @-> ptr t_typ @-> returning (void))
 let remove_poll =
   foreign "g_source_remove_poll" (ptr t_typ @-> ptr Poll_fd.t_typ @-> returning (void))
 let remove_unix_fd =

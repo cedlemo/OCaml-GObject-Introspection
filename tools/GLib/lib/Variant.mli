@@ -11,7 +11,7 @@ val new_byte:
 (*Not implemented g_variant_new_bytestring type C Array type for Types.Array tag not implemented*)
 (*Not implemented g_variant_new_bytestring_array type C Array type for Types.Array tag not implemented*)
 val new_dict_entry:
-  Variant.t structure ptr -> Variant.t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr -> t structure ptr
 val new_double:
   float -> t structure ptr
 val new_fixed_array:
@@ -27,7 +27,7 @@ val new_int32:
 val new_int64:
   int64 -> t structure ptr
 val new_maybe:
-  Variant_type.t structure ptr option -> Variant.t structure ptr option -> t structure ptr
+  Variant_type.t structure ptr option -> t structure ptr option -> t structure ptr
 val new_object_path:
   string -> t structure ptr
 (*Not implemented g_variant_new_objv type C Array type for Types.Array tag not implemented*)
@@ -44,7 +44,7 @@ val new_uint32:
 val new_uint64:
   Unsigned.uint64 -> t structure ptr
 val new_variant:
-  Variant.t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr
 val byteswap:
   t structure ptr -> t structure ptr
 val check_format_string:
@@ -52,7 +52,7 @@ val check_format_string:
 val classify:
   t structure ptr -> Variant_class.t
 val compare:
-  t structure ptr -> Variant.t structure ptr -> int32
+  t structure ptr -> t structure ptr -> int32
 (*Not implemented g_variant_dup_bytestring return type C Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_dup_bytestring_array return type C Array type for Types.Array tag not handled*)
 (*Not implemented g_variant_dup_objv return type C Array type for Types.Array tag not handled*)
@@ -61,7 +61,7 @@ t structure ptr -> (string, Unsigned.uint64)
 *)
 (*Not implemented g_variant_dup_strv return type C Array type for Types.Array tag not handled*)
 val equal:
-  t structure ptr -> Variant.t structure ptr -> bool
+  t structure ptr -> t structure ptr -> bool
 val get_boolean:
   t structure ptr -> bool
 val get_byte:

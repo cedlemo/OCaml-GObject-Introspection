@@ -42,7 +42,7 @@ val add_weeks:
 val add_years:
   t structure ptr -> int32 -> t structure ptr
 val difference:
-  t structure ptr -> Date_time.t structure ptr -> int64
+  t structure ptr -> t structure ptr -> int64
 val format:
   t structure ptr -> string -> string
 val get_day_of_month:

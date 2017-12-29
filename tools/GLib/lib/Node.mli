@@ -12,13 +12,13 @@ val f_children: (t structure ptr, t structure) field
 val child_index:
   t structure ptr -> unit ptr option -> int32
 val child_position:
-  t structure ptr -> Node.t structure ptr -> int32
+  t structure ptr -> t structure ptr -> int32
 val depth:
   t structure ptr -> Unsigned.uint32
 val destroy:
   t structure ptr -> unit
 val is_ancestor:
-  t structure ptr -> Node.t structure ptr -> bool
+  t structure ptr -> t structure ptr -> bool
 val max_height:
   t structure ptr -> Unsigned.uint32
 val n_children:

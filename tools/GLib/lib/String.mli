@@ -25,7 +25,7 @@ val assign:
 val down:
   t structure ptr -> t structure ptr
 val equal:
-  t structure ptr -> String.t structure ptr -> bool
+  t structure ptr -> t structure ptr -> bool
 val erase:
   t structure ptr -> int64 -> int64 -> t structure ptr
 val free:

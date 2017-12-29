@@ -13,5 +13,5 @@ let add =
 let to_iso8601 =
   foreign "g_time_val_to_iso8601" (ptr t_typ @-> returning (string_opt))
 (* Not implemented g_time_val_from_iso8601 - out argument not handled
-(string @-> returning (bool * Time_val.t_typ))
+(string @-> returning (bool * t_typ))
 *)

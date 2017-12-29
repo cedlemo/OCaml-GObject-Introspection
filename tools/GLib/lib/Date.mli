@@ -23,13 +23,13 @@ val add_months:
 val add_years:
   t structure ptr -> Unsigned.uint32 -> unit
 val clamp:
-  t structure ptr -> Date.t structure ptr -> Date.t structure ptr -> unit
+  t structure ptr -> t structure ptr -> t structure ptr -> unit
 val clear:
   t structure ptr -> Unsigned.uint32 -> unit
 val compare:
-  t structure ptr -> Date.t structure ptr -> int32
+  t structure ptr -> t structure ptr -> int32
 val days_between:
-  t structure ptr -> Date.t structure ptr -> int32
+  t structure ptr -> t structure ptr -> int32
 val free:
   t structure ptr -> unit
 val get_day:
@@ -55,7 +55,7 @@ val is_first_of_month:
 val is_last_of_month:
   t structure ptr -> bool
 val order:
-  t structure ptr -> Date.t structure ptr -> unit
+  t structure ptr -> t structure ptr -> unit
 val set_day:
   t structure ptr -> Unsigned.uint8 -> unit
 val set_dmy:
@@ -93,7 +93,7 @@ val get_sunday_weeks_in_year:
 val is_leap_year:
   Unsigned.uint16 -> bool
 val strftime:
-  string -> Unsigned.uint64 -> string -> Date.t structure ptr -> Unsigned.uint64
+  string -> Unsigned.uint64 -> string -> t structure ptr -> Unsigned.uint64
 val valid_day:
   Unsigned.uint8 -> bool
 val valid_dmy:

@@ -27,7 +27,7 @@ let assign =
 let down =
   foreign "g_string_down" (ptr t_typ @-> returning (ptr t_typ))
 let equal =
-  foreign "g_string_equal" (ptr t_typ @-> ptr String.t_typ @-> returning (bool))
+  foreign "g_string_equal" (ptr t_typ @-> ptr t_typ @-> returning (bool))
 let erase =
   foreign "g_string_erase" (ptr t_typ @-> int64_t @-> int64_t @-> returning (ptr t_typ))
 let free =

@@ -6,11 +6,11 @@ val t_typ : t structure typ
 val create:
   string -> t structure ptr
 val new_array:
-  Variant_type.t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr
 val new_dict_entry:
-  Variant_type.t structure ptr -> Variant_type.t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr -> t structure ptr
 val new_maybe:
-  Variant_type.t structure ptr -> t structure ptr
+  t structure ptr -> t structure ptr
 (*Not implemented g_variant_type_new_tuple type C Array type for Types.Array tag not implemented*)
 val copy:
   t structure ptr -> t structure ptr
@@ -19,7 +19,7 @@ val dup_string:
 val element:
   t structure ptr -> t structure ptr
 val equal:
-  t structure ptr -> Variant_type.t structure ptr -> bool
+  t structure ptr -> t structure ptr -> bool
 val first:
   t structure ptr -> t structure ptr
 val free:
@@ -41,7 +41,7 @@ val is_dict_entry:
 val is_maybe:
   t structure ptr -> bool
 val is_subtype_of:
-  t structure ptr -> Variant_type.t structure ptr -> bool
+  t structure ptr -> t structure ptr -> bool
 val is_tuple:
   t structure ptr -> bool
 val is_variant:

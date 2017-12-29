@@ -7,11 +7,11 @@ let t_typ : t structure typ = structure "Variant_type"
 let create =
   foreign "g_variant_type_new" (string @-> returning (ptr t_typ))
 let new_array =
-  foreign "g_variant_type_new_array" (ptr Variant_type.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_type_new_array" (ptr t_typ @-> returning (ptr t_typ))
 let new_dict_entry =
-  foreign "g_variant_type_new_dict_entry" (ptr Variant_type.t_typ @-> ptr Variant_type.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_type_new_dict_entry" (ptr t_typ @-> ptr t_typ @-> returning (ptr t_typ))
 let new_maybe =
-  foreign "g_variant_type_new_maybe" (ptr Variant_type.t_typ @-> returning (ptr t_typ))
+  foreign "g_variant_type_new_maybe" (ptr t_typ @-> returning (ptr t_typ))
 (*Not implemented g_variant_type_new_tuple type C Array type for Types.Array tag not implemented*)
 let copy =
   foreign "g_variant_type_copy" (ptr t_typ @-> returning (ptr t_typ))
@@ -20,7 +20,7 @@ let dup_string =
 let element =
   foreign "g_variant_type_element" (ptr t_typ @-> returning (ptr t_typ))
 let equal =
-  foreign "g_variant_type_equal" (ptr t_typ @-> ptr Variant_type.t_typ @-> returning (bool))
+  foreign "g_variant_type_equal" (ptr t_typ @-> ptr t_typ @-> returning (bool))
 let first =
   foreign "g_variant_type_first" (ptr t_typ @-> returning (ptr t_typ))
 let free =
@@ -42,7 +42,7 @@ let is_dict_entry =
 let is_maybe =
   foreign "g_variant_type_is_maybe" (ptr t_typ @-> returning (bool))
 let is_subtype_of =
-  foreign "g_variant_type_is_subtype_of" (ptr t_typ @-> ptr Variant_type.t_typ @-> returning (bool))
+  foreign "g_variant_type_is_subtype_of" (ptr t_typ @-> ptr t_typ @-> returning (bool))
 let is_tuple =
   foreign "g_variant_type_is_tuple" (ptr t_typ @-> returning (bool))
 let is_variant =

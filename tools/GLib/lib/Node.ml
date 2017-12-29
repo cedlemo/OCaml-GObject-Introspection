@@ -14,13 +14,13 @@ let _ = seal t_typ
 let child_index =
   foreign "g_node_child_index" (ptr t_typ @-> ptr_opt void @-> returning (int32_t))
 let child_position =
-  foreign "g_node_child_position" (ptr t_typ @-> ptr Node.t_typ @-> returning (int32_t))
+  foreign "g_node_child_position" (ptr t_typ @-> ptr t_typ @-> returning (int32_t))
 let depth =
   foreign "g_node_depth" (ptr t_typ @-> returning (uint32_t))
 let destroy =
   foreign "g_node_destroy" (ptr t_typ @-> returning (void))
 let is_ancestor =
-  foreign "g_node_is_ancestor" (ptr t_typ @-> ptr Node.t_typ @-> returning (bool))
+  foreign "g_node_is_ancestor" (ptr t_typ @-> ptr t_typ @-> returning (bool))
 let max_height =
   foreign "g_node_max_height" (ptr t_typ @-> returning (uint32_t))
 let n_children =

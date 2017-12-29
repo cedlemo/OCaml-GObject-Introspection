@@ -43,7 +43,7 @@ let add_weeks =
 let add_years =
   foreign "g_date_time_add_years" (ptr t_typ @-> int32_t @-> returning (ptr t_typ))
 let difference =
-  foreign "g_date_time_difference" (ptr t_typ @-> ptr Date_time.t_typ @-> returning (int64_t))
+  foreign "g_date_time_difference" (ptr t_typ @-> ptr t_typ @-> returning (int64_t))
 let format =
   foreign "g_date_time_format" (ptr t_typ @-> string @-> returning (string))
 let get_day_of_month =
