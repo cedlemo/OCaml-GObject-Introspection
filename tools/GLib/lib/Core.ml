@@ -121,6 +121,7 @@ let c_PRIORITY_DEFAULT_IDLE = Int32.of_string "200"
 let c_PRIORITY_HIGH = Int32.of_string "-100"
 let c_PRIORITY_HIGH_IDLE = Int32.of_string "100"
 let c_PRIORITY_LOW = Int32.of_string "300"
+(*SKIPPED : Rand*)
 let c_SEARCHPATH_SEPARATOR = Int32.of_string "59"
 let c_SEARCHPATH_SEPARATOR_S = ";"
 let c_SIZEOF_LONG = Int32.of_string "8"
