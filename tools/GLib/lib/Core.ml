@@ -4,6 +4,8 @@ open Foreign
 let c_ANALYZER_ANALYZING = Int32.of_string "1"
 let c_ASCII_DTOSTR_BUF_SIZE = Int32.of_string "39"
 let c_BIG_ENDIAN = Int32.of_string "4321"
+(*SKIPPED : BookmarkFile*)
+(*SKIPPED : BookmarkFileError*)
 (*SKIPPED : ByteArray*)
 (*SKIPPED : Bytes*)
 let c_CSET_A_2_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

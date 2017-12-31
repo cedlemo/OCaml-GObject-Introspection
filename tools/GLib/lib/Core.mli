@@ -3,6 +3,8 @@ open Ctypes
 val c_ANALYZER_ANALYZING : int32
 val c_ASCII_DTOSTR_BUF_SIZE : int32
 val c_BIG_ENDIAN : int32
+(*SKIPPED : BookmarkFile*)
+(*SKIPPED : BookmarkFileError*)
 (*SKIPPED : ByteArray*)
 (*SKIPPED : Bytes*)
 val c_CSET_A_2_Z : string
