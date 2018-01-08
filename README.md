@@ -5,15 +5,19 @@
 
 # OCaml GObject-Introspection
 
-The OCaml bindings to GObject-Introspection with Ctypes.
+The OCaml bindings to the GObject-Introspection library with Ctypes.
 
-The idea is to use the GObject-Introspection information in order to generate a
-configurable loader that will be able to construct automatically most of the
-Ctypes bindings of any C GObject libraries (not all but at least a big part).
+Two ideas to explore:
 
-For now, GObject-Introspection is used to generate/bootstrap GLib2 OCaml bindings.
-Those bindings are used to test the `GObject-Introspection.Loader` module and will
-be a dependency to GObject-Introspection. ( https://github.com/cedlemo/OCaml-GLib2 )
+ - Create a generic Ctypes bindings generator, based on ocaml-gobject-introspection,
+   for the GNOME libraries : https://github.com/cedlemo/OCaml-GI-ctypes-bindings-generator
+
+ - Create a generic FFI bindings generator for bucklescript in order to be able to
+  use the javascript bindings to the GNOME libraries. (I am not sure if it is faisable).
+
+   - https://devdocs.baznga.org/
+   - https://bucklescript.github.io/bucklescript/Manual.html#_ffi
+   - https://github.com/glennsl/bucklescript-ffi-cheatsheet
 
 ## API:
 
@@ -34,15 +38,4 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
     - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#finished)
     - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#remains)
   - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#resources)
-- [GObjectIntrospection Loader](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader)
-  - [Loader Implementation](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#loader-implementation)
-  - [Loader Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#loader-progress)
-    - [Builders Started](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#builders-started)
-    - [Builders Next](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#builders-next)
-  - [Builder Code rules](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObjectIntrospection-Loader#builder-code-rules)
-    - [Module constants](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#module-constants)
-    - [Structures and Unions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#structures-and-unions)
-    - [Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#enumerations)
-      - [Simple Enumerations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#simple-enumerations)
-      - [Flags : enumerations for bitwise operations](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/GObject-Introspection-Loader#flags--enumerations-for-bitwise-operations)
 
