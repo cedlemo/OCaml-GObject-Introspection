@@ -39,12 +39,5 @@ let () =
       Test_signal_info.tests;
       Test_vfunc_info.tests;
       Test_registered_type_info.tests;
-      Test_loader.tests;
-      Test_bind_struct.tests;
-      Test_bind_enum.tests;
-      Test_bind_constant.tests;
-      Test_bind_union.tests;
-      Test_bind_function.tests;
-      Test_binding_utils.tests
     ]
   )
