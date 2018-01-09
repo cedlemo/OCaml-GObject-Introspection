@@ -43,7 +43,7 @@ COPY . /home/ocaml-gi/ocaml-gi
 RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
 WORKDIR /home/ocaml-gi/ocaml-gi
 RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
-RUN /usr/local/bin/opam init --comp 4.05.0
+RUN /usr/local/bin/opam init --comp 4.06.0
 RUN opam install ctypes configurator base stdio ctypes-foreign jbuilder odoc bisect_ppx ounit
 RUN echo ". /home/ocaml-gi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true" > /home/ocaml-gi/ocaml-gi/runtest.sh
 RUN echo "jbuilder runtest" >> /home/ocaml-gi/ocaml-gi/runtest.sh
