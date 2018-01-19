@@ -6,7 +6,7 @@ authors: "cedlemo <cedlemo@gmx.com>"
 homepage: "https://github.com/cedlemo/OCaml-GObject-Introspection"
 bug-reports: "https://github.com/cedlemo/OCaml-GObject-Introspection/issues"
 license: "GPL3"
-dev-repo: "git+https://github.com/cedlemo/OCaml-GObject-Introspection.git"
+dev-repo: "https://github.com/cedlemo/OCaml-GObject-Introspection.git"
 build: [["jbuilder" "build" "-p" name "-j" jobs]]
 build-test: [["jbuilder" "runtest" "-p" name "-j" jobs]]
 depends: [
