@@ -28,6 +28,10 @@ let typelib : typelib typ = ptr void
 
 type gerror_t
 let gerror : gerror_t structure typ = structure "GError"
+let f_domain = field gerror "domain" (uint32_t)
+let f_code = field gerror "code" (int32_t)
+let f_message = field gerror "message" (string)
+let _ = seal gerror
 
 let get_default =
   foreign "g_irepository_get_default" (void @-> returning repository)
@@ -38,11 +42,12 @@ let require repo namespace ?version () =
     (repository @-> string @-> string_opt @-> int @->  ptr (ptr gerror) @-> returning (ptr_opt void)) in
   let error_addr = allocate_n (ptr gerror) 1 in
   match require_raw repo namespace version 0 error_addr with
-  | None -> None
-  | Some typelib_ptr -> match coerce (ptr gerror) (ptr_opt gerror) (!@error_addr) with
-    | None ->let typelib_ptr' = coerce (ptr void) (typelib) typelib_ptr in
-      Some typelib_ptr'
-    | Some error -> None
+  | None -> Error "Unable to get anything"
+  | Some typelib_ptr ->
+      match coerce (ptr gerror) (ptr_opt gerror) (!@error_addr) with
+      | None ->let typelib_ptr' = coerce (ptr void) (typelib) typelib_ptr in
+          Ok typelib_ptr'
+      | Some error -> Error (getf !@error f_message)
 
 let get_loaded_namespaces repo =
   let get_loaded_namespaces_raw =

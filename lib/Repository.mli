@@ -43,7 +43,7 @@ val get_default:
     used).
  *)
 val require:
-  repository -> string -> ?version:string -> unit -> typelib option
+  repository -> string -> ?version:string -> unit -> (typelib, string) result
 
 (** Return the list of currently loaded namespaces. *)
 val get_loaded_namespaces:
