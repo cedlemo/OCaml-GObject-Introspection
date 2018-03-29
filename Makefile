@@ -12,10 +12,3 @@ documentation :
 	cp -rf _build/default/_doc/gobject-introspection/* docs/
 	# cp odoc.css docs/
 	jbuilder clean
-
-.PHONY : update_glib2_raw
-update_glib2_raw :
-	jbuilder clean
-	jbuilder build tools/glib_raw_generator.exe
-	./_build/default/tools/glib_raw_generator.exe
-	cp -rf tools/GLib/lib/* ../OCaml-GLib2/lib/
