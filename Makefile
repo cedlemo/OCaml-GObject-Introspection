@@ -6,10 +6,10 @@ coverage :
 .PHONY : documentation
 documentation :
 	jbuilder build @doc
-	find _build/default/_doc/ocaml-gobject-introspection/ -type f |xargs sed -i 's/\.\.\/odoc\.css/odoc\.css/g'
-	mv _build/default/_doc/odoc.css _build/default/_doc/ocaml-gobject-introspection/
+	find _build/default/_doc/gobject-introspection/ -type f |xargs sed -i 's/\.\.\/odoc\.css/odoc\.css/g'
+	mv _build/default/_doc/odoc.css _build/default/_doc/gobject-introspection/
 	rm -rf docs/*
-	cp -rf _build/default/_doc/ocaml-gobject-introspection/* docs/
+	cp -rf _build/default/_doc/gobject-introspection/* docs/
 	# cp odoc.css docs/
 	jbuilder clean
 
