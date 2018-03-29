@@ -27,8 +27,16 @@ let test_get_default test_ctxt =
 let test_require test_ctxt =
   let repo = Repository.get_default () in
   let namespace = "Gio" in
-  let _ = Repository.require repo namespace () in
-  assert_equal_boolean true true
+  match Repository.require repo namespace () with
+  | Error message -> assert_equal_string "Unable to get anything" message
+  | Ok typelib -> assert_equal_boolean true true
+
+let test_require_fail test_ctxt =
+  let repo = Repository.get_default () in
+  let namespace = "bad_namespace" in
+  match Repository.require repo namespace () with
+  | Error message -> assert_equal_string "Unable to get anything" message
+  | Ok typelib -> assert_equal_boolean true true
 
 let namespace = "Gio"
 let repo = Repository.get_default ()
@@ -109,6 +117,7 @@ let tests =
     [
       "Repository get default" >:: test_get_default;
       "Repository require" >:: test_require;
+      "Repository require fail" >:: test_require_fail;
       (* Disable because there is only one instance of Repository and those
        * namespaces depends on the nampespaces loaded previously and can
        * interfers with previous test.
