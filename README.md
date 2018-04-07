@@ -30,7 +30,7 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 ###  table of content.
 
 - [Introduction](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction)
-- [https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#implementation-details)
+- [Implementation details](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#implementation-details)
   - [GObjectIntrospection Info Structures hierarchy and type coercion functions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
   - [How the underlying C structures allocation and deallocation are handled](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
   - [Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#progress)
