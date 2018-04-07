@@ -30,12 +30,11 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
 ###  table of content.
 
 - [Introduction](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction)
-- [Ctypes bindings of GObject-Introspection](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection)
-  - [Implementation details](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#implementation-details)
-    - [GObjectIntrospection Info Structures hierarchy and type coercion functions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
-    - [How the underlying C structures allocation and deallocation are handled](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
-  - [Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#progress)
-    - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#finished)
-    - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#remains)
-  - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/Ctypes-bindings-of-GObject-Introspection#resources)
+- [https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#implementation-details)
+  - [GObjectIntrospection Info Structures hierarchy and type coercion functions](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#gobjectintrospection-info-structures-hierarchy-and-type-coercion-functions)
+  - [How the underlying C structures allocation and deallocation are handled](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#how-the-underlying-c-structures-allocation-and-deallocation-are-handled)
+  - [Progress](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#progress)
+    - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#finished)
+    - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#remains)
+  - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#resources)
 
