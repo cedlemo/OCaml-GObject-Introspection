@@ -22,7 +22,7 @@ let () =
   run_test_tt_main
   ("GObjectIntrospection" >:::
     [
-      Test_repository.tests;
+      (* Test_repository.tests;
       Test_base_info.tests;
       Test_function_info.tests;
       Test_struct_info.tests;
@@ -38,6 +38,6 @@ let () =
       Test_property_info.tests;
       Test_signal_info.tests;
       Test_vfunc_info.tests;
-      Test_registered_type_info.tests;
+      Test_registered_type_info.tests; *)
     ]
   )
