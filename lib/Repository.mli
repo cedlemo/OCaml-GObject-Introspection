@@ -47,7 +47,7 @@ val require:
 
 (** Return the list of currently loaded namespaces. *)
 val get_loaded_namespaces:
-  ?repository:repository -> string list
+  ?repository:repository -> unit -> string list
 
 (** Return an list of all (transitive) versioned dependencies for namespace_ .
     Returned strings are of the form namespace-version.

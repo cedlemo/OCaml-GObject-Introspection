@@ -21,7 +21,7 @@ open Foreign
 open Conversions
 
 type repository = unit ptr option
-let repository : repository typ = ptr_opt void
+let repository_typ : repository typ = ptr_opt void
 
 type typelib = unit ptr
 let typelib : typelib typ = ptr void
@@ -34,15 +34,15 @@ let f_message = field gerror "message" (string)
 let _ = seal gerror
 
 let get_default =
-  foreign "g_irepository_get_default" (void @-> returning repository)
+  foreign "g_irepository_get_default" (void @-> returning repository_typ)
 
 let require ?repository namespace ?version () =
   let require_raw =
   foreign "g_irepository_require"
-    (repository @-> string @-> string_opt @-> int @->  ptr (ptr gerror) @-> returning (ptr_opt void)) in
+    (repository_typ @-> string @-> string_opt @-> int @->  ptr (ptr gerror) @-> returning (ptr_opt void)) in
   let error_addr = allocate_n (ptr gerror) 1 in
   let repo = match repository with None -> None | Some r -> r in
-  match require_raw ~repository:repo namespace version 0 error_addr with
+  match require_raw repo namespace version 0 error_addr with
   | None -> Error "Unable to get anything"
   | Some typelib_ptr ->
       match coerce (ptr gerror) (ptr_opt gerror) (!@error_addr) with
@@ -53,46 +53,46 @@ let require ?repository namespace ?version () =
 let get_loaded_namespaces ?repository () =
   let get_loaded_namespaces_raw =
     foreign "g_irepository_get_loaded_namespaces"
-      (repository @-> returning carray_of_strings) in
+      (repository_typ @-> returning carray_of_strings) in
   let repo = match repository with None -> None | Some r -> r in
-  let c_arr = get_loaded_namespaces_raw ~repository:repo in
+  let c_arr = get_loaded_namespaces_raw repo in
   carray_of_strings_to_list c_arr
 
 let get_dependencies ?repository namespace =
   let get_dependencies_raw =
     foreign "g_irepository_get_dependencies"
-      (repository @-> string @-> returning carray_of_strings) in
+      (repository_typ @-> string @-> returning carray_of_strings) in
   let repo = match repository with None -> None | Some r -> r in
-  let c_arr = get_dependencies_raw ~repository:repo namespace in
+  let c_arr = get_dependencies_raw repo namespace in
   carray_of_strings_to_list c_arr
 
 let get_c_prefix ?repository namespace =
   let get_c_prefix_raw =
     foreign "g_irepository_get_c_prefix"
-            (repository @-> string @-> returning string) in
+            (repository_typ @-> string @-> returning string) in
   let repo = match repository with None -> None | Some r -> r in
-  get_c_prefix_raw ~repository:repo namespace
+  get_c_prefix_raw repo namespace
 
 let get_version ?repository namespace =
   let get_version_raw =
-    foreign "g_irepository_get_version" (repository @-> string @-> returning string)
+    foreign "g_irepository_get_version" (repository_typ @-> string @-> returning string)
   in
   let repo = match repository with None -> None | Some r -> r in
-  get_version_raw ~repository:repo namespace
+  get_version_raw repo namespace
 
 let get_typelib_path ?repository namespace =
   let get_typelib_path_raw =
-    foreign "g_irepository_get_typelib_path" (repository @-> string @-> returning string)
+    foreign "g_irepository_get_typelib_path" (repository_typ @-> string @-> returning string)
   in
   let repo = match repository with None -> None | Some r -> r in
-  get_version_raw ~repository:repo namespace
+  get_typelib_path_raw repo namespace
 
 let enumerate_versions ?repository namespace =
   let enumerate_versions_raw =
     foreign "g_irepository_enumerate_versions"
-      (repository @-> string @-> returning (ptr_opt glist)) in
+      (repository_typ @-> string @-> returning (ptr_opt glist)) in
   let repo = match repository with None -> None | Some r -> r in
-  match enumerate_versions_raw ~repository:repo namespace with
+  match enumerate_versions_raw repo namespace with
   | None -> []
   | Some glist_ptr -> glist_of_strings_to_list glist_ptr
 
@@ -110,35 +110,39 @@ let prepend_search_path =
 let find_by_name ?repository namespace name =
   let find_by_name_raw =
     foreign "g_irepository_find_by_name"
-      (repository @-> string @-> string @-> returning (ptr_opt Base_info.baseinfo))
+      (repository_typ @-> string @-> string @-> returning (ptr_opt Base_info.baseinfo))
+  in
   let repo = match repository with None -> None | Some r -> r in
-  in match find_by_name_raw ~repository:repo namespace name with
+  match find_by_name_raw repo namespace name with
   | None -> None
   | Some info -> let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info
     in Some info
 
 let get_n_infos ?repository namespace =
   let get_n_infos_raw =
-    foreign "g_irepository_get_n_infos" (repository @-> string @-> returning int)
+    foreign "g_irepository_get_n_infos" (repository_typ @-> string @-> returning int)
   in
   let repo = match repository with None -> None | Some r -> r in
-  get_n_infos_raw ~repository:repo namespace
+  get_n_infos_raw repo namespace
 
 let get_info ?repository namespace n=
   let get_info_raw =
     foreign "g_irepository_get_info"
-      (repository @-> string @-> int @-> returning (ptr Base_info.baseinfo))
+      (repository_typ @-> string @-> int @-> returning (ptr Base_info.baseinfo))
+  in
   let repo = match repository with None -> None | Some r -> r in
-  in let max_infos = get_n_infos repo namespace in
+  let max_infos = get_n_infos ?repository namespace in
   if (n < 0 || n >= max_infos) then raise (Failure "Array Index out of bounds")
-  else let info = get_info_raw ~repository:repo namespace n in
+  else let info = get_info_raw repo namespace n in
     let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info in
     info
 
 let get_shared_library ?repository namespace =
   let get_shared_library_raw =
-    foreign "g_irepository_get_shared_library" (repository @-> string @-> returning string_opt)
+    foreign "g_irepository_get_shared_library" (repository_typ @-> string @-> returning string_opt)
   in
+  let repo = match repository with None -> None | Some r -> r in
+  get_shared_library_raw repo namespace
 
 let prepend_library_path=
   foreign "g_irepository_prepend_library_path"
@@ -150,7 +154,7 @@ let gtype : gtype typ = int64_t
 let find_by_gtype ?repository gtyp =
   let find_by_gtype_raw =
     foreign "g_irepository_find_by_gtype"
-      (repository @-> gtype @-> returning (ptr_opt Base_info.baseinfo)) in
+      (repository_typ @-> gtype @-> returning (ptr_opt Base_info.baseinfo)) in
   let repo = match repository with None -> None | Some r -> r in
   match find_by_gtype_raw repo gtyp with
   | None -> None
