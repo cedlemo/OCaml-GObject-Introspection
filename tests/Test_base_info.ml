@@ -21,35 +21,34 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "Gio"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let info_name = "app_info_create_from_commandline"
 let callback_name = "BusNameAppearedCallback"
 
 let test_equal test_ctxt =
-  let rand_info = Repository.get_info repo namespace 10 in
+  let rand_info = Repository.get_info namespace 10 in
   match Base_info.get_name rand_info with
   | None -> assert_equal_string "Base Info " "has no name"
   | Some info_name ->
-    match Repository.find_by_name repo namespace info_name with
+    match Repository.find_by_name namespace info_name with
     | None -> assert_equal_string info_name "No base info found"
     | Some (info) -> let is_equal = Base_info.equal rand_info info in
       assert_equal_boolean true is_equal
 
 let test_get_namespace test_ctxt =
-  match Repository.find_by_name repo namespace info_name with
+  match Repository.find_by_name namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let info_namespace = Base_info.get_namespace base_info
   in assert_equal_string namespace info_namespace
 
 let test_is_deprecated test_ctxt =
-  match Repository.find_by_name repo namespace info_name with
+  match Repository.find_by_name  namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let is_deprecated = Base_info.is_deprecated base_info in
     assert_equal_boolean false is_deprecated
 
 let test_get_container test_ctxt =
-  match Repository.find_by_name repo namespace info_name with
+  match Repository.find_by_name  namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some base_info -> (
       match Base_info.get_container base_info with
