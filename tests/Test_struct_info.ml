@@ -21,12 +21,11 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "GObject"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let struct_name = "Value"
 
 let test_baseinfo_get_type test_ctxt =
-  match Repository.find_by_name repo namespace struct_name with
+  match Repository.find_by_name namespace struct_name with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
@@ -34,7 +33,7 @@ let test_baseinfo_get_type test_ctxt =
       | _ -> false)
 
 let get_struct_info () =
-  match Repository.find_by_name repo namespace struct_name with
+  match Repository.find_by_name namespace struct_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
