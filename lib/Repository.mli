@@ -43,11 +43,11 @@ val get_default:
     used).
  *)
 val require:
-  repository -> string -> ?version:string -> unit -> (typelib, string) result
+  ?repository:repository -> string -> ?version:string -> unit -> (typelib, string) result
 
 (** Return the list of currently loaded namespaces. *)
 val get_loaded_namespaces:
-  repository -> string list
+  ?repository:repository -> unit -> string list
 
 (** Return an list of all (transitive) versioned dependencies for namespace_ .
     Returned strings are of the form namespace-version.
@@ -56,7 +56,7 @@ val get_loaded_namespaces:
     dependencies for namespace_ , use Repository.get_immediate_dependencies.
  *)
 val get_dependencies:
-  repository -> string -> string list
+  ?repository:repository -> string -> string list
 
 (** This function returns the "C prefix", or the C level namespace associated
     with the given introspection namespace. Each C symbol starts with this
@@ -64,25 +64,25 @@ val get_dependencies:
     Note: The namespace must have already been loaded using a function such as
     Repository.require before calling this function. *)
 val get_c_prefix:
-  repository -> string -> string
+  ?repository:repository -> string -> string
 
 (** This function returns the loaded version associated with the given
     namespace namespace_ .
     Note: The namespace must have already been loaded using a function such as
     Repository.require before calling this function. *)
 val get_version:
-  repository -> string -> string
+  ?repository:repository -> string -> string
 
 (** If namespace namespace_ is loaded, return the full path to the .typelib
     file it was loaded from. If the typelib for namespace namespace_ was
     included in a shared library, return the special string "<builtin>". *)
 val get_typelib_path:
-  repository -> string -> string
+  ?repository:repository -> string -> string
 
 (** Obtain an unordered list of versions (either currently loaded or available)
     for namespace_ in this repository . *)
 val enumerate_versions:
-  repository -> string -> string list
+  ?repository:repository -> string -> string list
 
 (** Returns the current search path Repository will use when loading typelib
     files. The list is internal to GIRespository and should not be freed, nor
@@ -100,20 +100,20 @@ val prepend_search_path:
     once to load the namespace, or otherwise ensure the namespace has already
     been loaded.*)
 val find_by_name:
-  repository -> string -> string -> Base_info.t structure ptr option
+  ?repository:repository -> string -> string -> Base_info.t structure ptr option
 
 (** This function returns the number of metadata entries in given namespace
     namespace_ . The namespace must have already been loaded before calling
     this function. *)
 val get_n_infos:
-  repository -> string -> int
+  ?repository:repository -> string -> int
 
 (** This function returns a particular metadata entry in the given namespace
     namespace_ . The namespace must have already been loaded before calling
     this function. See Repository.get_n_infos to find the maximum number of
     entries. *)
 val get_info:
-  repository -> string -> int -> Base_info.t structure ptr
+  ?repository:repository -> string -> int -> Base_info.t structure ptr
 
 (** This function returns a comma-separated list of paths to the shared C
     libraries associated with the given namespace namespace_ . There may be no
@@ -122,7 +122,7 @@ val get_info:
     Note: The namespace must have already been loaded using a function such as
     Repository.require before calling this function. *)
 val get_shared_library:
-  repository -> string -> string option
+  ?repository:repository -> string -> string option
 
 (** Prepends directory to the search path that is used to search shared
     libraries referenced by imported namespaces. Multiple calls to this
@@ -146,7 +146,7 @@ val gtype: int64 typ
      arbitrary GType - thus, this function will operate most reliably
      when you know the GType to originate from be from a loaded namespace. *)
 val find_by_gtype:
-  repository -> gtype -> Base_info.t structure ptr option
+  ?repository:repository -> gtype -> Base_info.t structure ptr option
 
 (*
    gchar **	g_irepository_get_immediate_dependencies ()
