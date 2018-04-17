@@ -25,48 +25,48 @@ let test_get_default test_ctxt =
   assert_equal_boolean true true
 
 let test_require test_ctxt =
-  let repo = Repository.get_default () in
+  let repository = Repository.get_default () in
   let namespace = "Gio" in
-  match Repository.require repo namespace () with
+  match Repository.require ~repository namespace () with
   | Error message -> assert_equal_string "Unable to get anything" message
   | Ok typelib -> assert_equal_boolean true true
 
 let test_require_fail test_ctxt =
-  let repo = Repository.get_default () in
+  let repository = Repository.get_default () in
   let namespace = "bad_namespace" in
-  match Repository.require repo namespace () with
+  match Repository.require ~repository namespace () with
   | Error message -> assert_equal_string "Unable to get anything" message
   | Ok typelib -> assert_equal_boolean true true
 
 let namespace = "Gio"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let repository = Repository.get_default ()
+let typelib = Repository.require ~repository namespace ()
 
 let test_get_loaded_namespaces test_ctxt =
   let namespaces_check = "GLib GObject Gio" in
-  let namespaces = String.concat " " (Repository.get_loaded_namespaces repo) in
+  let namespaces = String.concat " " (Repository.get_loaded_namespaces ~repository ()) in
   assert_equal_string namespaces_check namespaces
 
 let test_get_dependencies test_ctxt =
   let dependencies_check = "GLib-2.0 GObject-2.0" in
-  let dependencies = String.concat " " (Repository.get_dependencies repo namespace) in
+  let dependencies = String.concat " " (Repository.get_dependencies ~repository namespace) in
   assert_equal_string dependencies_check dependencies
 
 let test_get_c_prefix test_ctxt =
-  let c_prefix = Repository.get_c_prefix repo namespace in
+  let c_prefix = Repository.get_c_prefix ~repository namespace in
   assert_equal_string "G" c_prefix
 
 let test_get_version test_ctxt =
-  let version = Repository.get_version repo namespace in
+  let version = Repository.get_version ~repository namespace in
   assert_equal_string "2.0" version
 
 let test_get_typelib_path text_ctxt =
-  let path = Repository.get_typelib_path repo namespace in
+  let path = Repository.get_typelib_path ~repository namespace in
   assert_equal_string "/usr/lib/girepository-1.0/Gio-2.0.typelib" path
 
 let test_enumerate_versions test_ctxt =
   let versions_check = "2.0 2.0" in
-  let versions = String.concat " " (Repository.enumerate_versions repo namespace) in
+  let versions = String.concat " " (Repository.enumerate_versions ~repository namespace) in
   assert_equal_string versions_check versions
 
 let test_get_search_path test_ctxt =
@@ -83,18 +83,18 @@ let test_prepend_search_path test_ctxt =
 
 let test_find_by_name test_ctxt =
   let info_name = "Application" in
-  match Repository.find_by_name repo namespace info_name with
+  match Repository.find_by_name ~repository namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> match Base_info.get_name base_info with
     | None -> assert_equal_string info_name "No name found"
     | Some name -> assert_equal_string info_name name
 
 let test_get_n_infos test_ctxt =
-  let n_infos = Repository.get_n_infos repo namespace in
+  let n_infos = Repository.get_n_infos ~repository namespace in
   assert_equal_int 702 n_infos
 
 let test_get_info_out_of_bounds test_ctxt =
-  try ignore (Repository.get_info repo namespace 1500)
+  try ignore (Repository.get_info ~repository namespace 1500)
   with
   | Failure message -> assert_equal_string "Array Index out of bounds"
                                               message
@@ -102,13 +102,13 @@ let test_get_info_out_of_bounds test_ctxt =
 
 let test_get_info test_ctxt =
   let info_name = "Action" in
-  let info = Repository.get_info repo namespace 0 in
+  let info = Repository.get_info ~repository namespace 0 in
   match Base_info.get_name info with
   | None -> assert_equal_string info_name "No name found"
   | Some name -> assert_equal_string info_name name
 
 let test_get_shared_library test_ctxt =
-  match Repository.get_shared_library repo namespace with
+  match Repository.get_shared_library ~repository namespace with
   | None -> assert_equal_string "It should return " "something"
   | Some shared_lib -> assert_equal_string "libgio-2.0.so.0" shared_lib
 

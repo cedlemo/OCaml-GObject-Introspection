@@ -23,8 +23,8 @@ let () =
   ("GObjectIntrospection" >:::
     [
       Test_repository_default.tests;
-      (*Test_repository.tests;
-      Test_base_info.tests;
+      Test_repository.tests;
+      (*Test_base_info.tests;
       Test_function_info.tests;
       Test_struct_info.tests;
       Test_union_info.tests;
