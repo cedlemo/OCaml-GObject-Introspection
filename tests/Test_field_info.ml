@@ -21,12 +21,11 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "GLib"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let union_name = "Mutex"
 
 let get_union_info () =
-  match Repository.find_by_name repo namespace union_name with
+  match Repository.find_by_name namespace union_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
