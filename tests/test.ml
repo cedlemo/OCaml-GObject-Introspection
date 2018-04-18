@@ -29,8 +29,8 @@ let () =
       Test_struct_info.tests;
       Test_union_info.tests;
       Test_field_info.tests;
-      (*Test_enum_info.tests;
-      Test_callable_info.tests;
+      Test_enum_info.tests;
+      (*Test_callable_info.tests;
       Test_arg_info.tests;
       Test_type_info.tests;
       Test_constant_info.tests;
