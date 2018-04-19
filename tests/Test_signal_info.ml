@@ -21,13 +21,12 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "Gtk"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let object_name = "Window"
 let signal_name = "activate-default"
 
 let get_signal_info () =
-  match Repository.find_by_name repo namespace object_name with
+  match Repository.find_by_name namespace object_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
