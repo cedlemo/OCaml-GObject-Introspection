@@ -32,8 +32,8 @@ let () =
       Test_enum_info.tests;
       Test_callable_info.tests;
       Test_arg_info.tests;
-      (*Test_type_info.tests;
-      Test_constant_info.tests;
+      Test_type_info.tests;
+      (*Test_constant_info.tests;
       Test_object_info.tests;
       Test_interface_info.tests;
       Test_property_info.tests;
