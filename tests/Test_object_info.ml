@@ -21,12 +21,11 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "Gdk"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let object_name = "Display"
 
 let test_from_baseinfo test_ctxt =
-  match Repository.find_by_name repo namespace object_name with
+  match Repository.find_by_name namespace object_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
@@ -34,7 +33,7 @@ let test_from_baseinfo test_ctxt =
       | _ -> false )
 
 let get_object_info () =
-  match Repository.find_by_name repo namespace object_name with
+  match Repository.find_by_name namespace object_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
@@ -146,12 +145,11 @@ let test_get_class_struct test_ctxt =
     )
 
 let namespace = "Gtk"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let object_name = "Window"
 
 let test_gtk_window_from_baseinfo test_ctxt =
-  match Repository.find_by_name repo namespace object_name with
+  match Repository.find_by_name namespace object_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
@@ -159,7 +157,7 @@ let test_gtk_window_from_baseinfo test_ctxt =
       | _ -> false )
 
 let get_object_info () =
-  match Repository.find_by_name repo namespace object_name with
+  match Repository.find_by_name namespace object_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
