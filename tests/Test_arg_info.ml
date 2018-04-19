@@ -21,12 +21,11 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "GObject"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let func_name = "signal_name"
 
 let get_arg_info () =
-  match Repository.find_by_name repo namespace func_name with
+  match Repository.find_by_name namespace func_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
