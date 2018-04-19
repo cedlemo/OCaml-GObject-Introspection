@@ -21,13 +21,12 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "Gtk"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let object_name = "Window"
 let vfunc_name = "activate_default"
 
 let get_vfunc_info () =
-  match Repository.find_by_name repo namespace object_name with
+  match Repository.find_by_name namespace object_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
@@ -73,5 +72,3 @@ let tests =
     "VFunc_info get signal" >:: test_get_signal;
     "VFunc_info get flags" >:: test_get_flags
   ]
-
-
