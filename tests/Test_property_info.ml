@@ -21,12 +21,11 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "Gtk"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let property_name = "accept-focus"
 
 let test_get_property_from_repo test_ctxt =
-  match Repository.find_by_name repo namespace "Window" with
+  match Repository.find_by_name namespace "Window" with
   | None -> assert_equal_string property_name "No base info found"
   | Some (base_info) ->
     match Base_info.get_type base_info with
@@ -41,7 +40,7 @@ let test_get_property_from_repo test_ctxt =
     | _ -> assert_equal_string property_name "No base info found"
 
 let get_property_info () =
-  match Repository.find_by_name repo namespace "Window" with
+  match Repository.find_by_name namespace "Window" with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with

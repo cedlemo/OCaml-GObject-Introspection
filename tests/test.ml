@@ -35,8 +35,8 @@ let () =
       Test_type_info.tests;
       Test_constant_info.tests;
       Test_object_info.tests;
-      (*Test_interface_info.tests;
-      Test_property_info.tests;
+      Test_interface_info.tests;
+      (*Test_property_info.tests;
       Test_signal_info.tests;
       Test_vfunc_info.tests;
       Test_registered_type_info.tests; *)
