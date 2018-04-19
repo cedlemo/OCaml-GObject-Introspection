@@ -22,12 +22,11 @@ open Ctypes
 open GObject_introspection
 
 let namespace = "GObject"
-let repo = Repository.get_default ()
-let typelib = Repository.require repo namespace ()
+let typelib = Repository.require namespace ()
 let const_name = "SIGNAL_FLAGS_MASK"
 
 let get_constant_info () =
-  match Repository.find_by_name repo namespace const_name with
+  match Repository.find_by_name namespace const_name with
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
