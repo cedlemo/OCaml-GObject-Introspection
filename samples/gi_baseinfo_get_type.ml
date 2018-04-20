@@ -1,5 +1,5 @@
 (*
- * Copyright 2017 Cedric LE MOIGNE, cedlemo@gmx.com
+ * Copyright 2017-2018 Cedric LE MOIGNE, cedlemo@gmx.com
  * This file is part of OCaml-GObject-Introspection.
  *
  * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
@@ -16,27 +16,26 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+open GObject_introspection
+
 let get_info_strings info n=
   ["Base_info -> number:";
   string_of_int n;
   "name:";
-  Base_info.get_name info;
+  (match Base_info.get_name info with None -> "noname" | Some name -> name);
   "type:";
-  let t = Base_info.get_type info in
-  Base_info.baseinfo_type_get_name t]
+  (let t = Base_info.get_type info in
+  Base_info.string_of_baseinfo_type t) ]
 
-let print_info repo namespace n =
-  let message =
-  match Repository.get_info repo namespace n with
-  | None -> String.concat " " ["Base_info number"; string_of_int n; "unable to be loaded"]
-  | Some (info) -> String.concat " " (get_info_strings info n)
+let print_info namespace n =
+  let message = let info = Repository.get_info namespace n in
+    String.concat " " (get_info_strings info n)
   in print_endline message
 
 let () =
   let namespace = "Gtk" in
-  let repo = Repository.get_default () in
-  let _ = Repository.require (Some repo) namespace in
-  let n = Repository.get_n_infos (Some repo) namespace in
+  let _ = Repository.require namespace in
+  let n = Repository.get_n_infos namespace in
   for i = 0 to (n - 1) do
-    print_info (Some repo) namespace i;
+    print_info namespace i;
   done

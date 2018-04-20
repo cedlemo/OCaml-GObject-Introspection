@@ -1,5 +1,5 @@
 (*
- * Copyright 2017 Cedric LE MOIGNE, cedlemo@gmx.com
+ * Copyright 2017-2018 Cedric LE MOIGNE, cedlemo@gmx.com
  * This file is part of OCaml-GObject-Introspection.
  *
  * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
@@ -16,9 +16,11 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-let print_info repo namespace n =
+open GObject_introspection
+
+let print_info namespace n =
   let message =
-    let info =  Repository.get_info repo namespace n in
+    let info =  Repository.get_info namespace n in
     let name = match Base_info.get_name info with
       | None -> "Anonymous"
       | Some name -> name in String.concat " " ["Base_info number";
@@ -28,9 +30,8 @@ let print_info repo namespace n =
 
 let () =
   let namespace = "Gtk" in
-  let repo = Repository.get_default () in
-  let _ = Repository.require repo namespace () in
-  let n = Repository.get_n_infos repo namespace in
+  let _ = Repository.require namespace () in
+  let n = Repository.get_n_infos namespace in
   for i = 0 to (n - 1) do
-    print_info repo namespace i;
+    print_info namespace i;
   done
