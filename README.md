@@ -3,9 +3,9 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
-# OCaml GObject-Introspection
+# gobject-introspection OCaml package
 
-The OCaml bindings to the GObject-Introspection library with Ctypes.
+The OCaml bindings to the GObject-Introspection library based on Ctypes.
 
 Two ideas to explore:
 
@@ -13,11 +13,13 @@ Two ideas to explore:
    for the GNOME libraries : https://github.com/cedlemo/OCaml-GI-ctypes-bindings-generator
 
  - Create a generic FFI bindings generator for bucklescript in order to be able to
-  use the javascript bindings to the GNOME libraries. (I am not sure if it is faisable).
+   use the javascript bindings to the GNOME libraries. (I am not sure if it is
+   faisable).
 
    - https://devdocs.baznga.org/
    - https://bucklescript.github.io/bucklescript/Manual.html#_ffi
    - https://github.com/glennsl/bucklescript-ffi-cheatsheet
+   - https://github.com/Place1/node-gir
 
 ## API:
 
