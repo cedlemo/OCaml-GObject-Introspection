@@ -43,7 +43,14 @@ let require ?repository namespace ?version () =
   let error_addr = allocate_n (ptr gerror) 1 in
   let repo = match repository with None -> None | Some r -> r in
   match require_raw repo namespace version 0 error_addr with
-  | None -> Error "Unable to get anything"
+  | None ->
+    let message = begin
+      match version with
+      | None -> "Unable to load namespace " ^ namespace
+      | Some v ->
+        Printf.sprintf "Unable to load namespace %s version %s" namespace v
+    end
+    in Error message
   | Some typelib_ptr ->
       match coerce (ptr gerror) (ptr_opt gerror) (!@error_addr) with
       | None ->let typelib_ptr' = coerce (ptr void) (typelib) typelib_ptr in

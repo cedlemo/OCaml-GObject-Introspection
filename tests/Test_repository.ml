@@ -28,14 +28,14 @@ let test_require test_ctxt =
   let repository = Repository.get_default () in
   let namespace = "Gio" in
   match Repository.require ~repository namespace () with
-  | Error message -> assert_equal_string "Unable to get anything" message
+  | Error message -> assert_equal_string "Unable to load namespace Gio" message
   | Ok typelib -> assert_equal_boolean true true
 
 let test_require_fail test_ctxt =
   let repository = Repository.get_default () in
   let namespace = "bad_namespace" in
   match Repository.require ~repository namespace () with
-  | Error message -> assert_equal_string "Unable to get anything" message
+  | Error message -> assert_equal_string "Unable to load namespace bad_namespace" message
   | Ok typelib -> assert_equal_boolean true true
 
 let namespace = "Gio"
