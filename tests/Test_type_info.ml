@@ -89,7 +89,7 @@ let test_get_array_type test_ctxt =
 
 let test_get_param_type test_ctxt =
   type_test (fun info ->
-     let param_type = Type_info.get_param_type info 0 in
+     let param_type = Type_info.get_param_type info in
      let tag = Type_info.get_tag param_type in
       assert_equal ~printer:(fun tag ->
           Types.string_of_tag tag

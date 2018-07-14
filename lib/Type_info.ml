@@ -79,12 +79,15 @@ let add_unref_finaliser info =
       Base_info.base_info_unref i') info
   in info
 
-let get_param_type info n =
+let unsafe_get_param_type info n =
   let get_param_type_raw =
     foreign "g_type_info_get_param_type"
       (ptr typeinfo @-> int @-> returning (ptr typeinfo)) in
     let param_type = get_param_type_raw info n in
     add_unref_finaliser param_type
+
+let get_param_type info =
+  unsafe_get_param_type info 0
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in

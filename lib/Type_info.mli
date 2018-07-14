@@ -68,17 +68,23 @@ val get_array_type:
   t structure ptr -> Types.array_type option
 
 (** Obtain the parameter type n. It is used to get the parameter type of generic
-    container. For example if the current Type_info.t is an array, a GList, a
-    GSList or an Hash, you have to use this in order to get the Type_info.t of
-    the data of the container.
-    Basicaly it is done with Type_info.get_param_type type_info 0 .
-    https://github.com/GNOME/pygobject/blob/288bd2957916568666c3d5d27e8c868d67b7e8c9/gi/pygi-argument.c#L526
-    https://github.com/ruby-gnome2/ruby-gnome2/blob/ec4160b4f4c5432c6ff8a9e962e7ffeacfd48869/gobject-introspection/ext/gobject-introspection/rb-gi-argument.c#L928"
-    This function is unsafe meanings that it is your responsability to not use
-    a number out of bounds.
+ *  container. For example if the current Type_info.t is an array, a GList, a
+ *  GSList or an Hash, you have to use this in order to get the Type_info.t of
+ *  the data of the container.
+ *  Basicaly it is done with Type_info.get_param_type type_info 0 .
+ *  https://github.com/GNOME/pygobject/blob/288bd2957916568666c3d5d27e8c868d67b7e8c9/gi/pygi-argument.c#L526
+ *  https://github.com/ruby-gnome2/ruby-gnome2/blob/ec4160b4f4c5432c6ff8a9e962e7ffeacfd48869/gobject-introspection/ext/gobject-introspection/rb-gi-argument.c#L928
+ *  This function is unsafe meanings that it is your responsability to not use
+ *  a number out of bounds.
+ *)
+val unsafe_get_param_type:
+  t structure ptr -> int -> t structure ptr
+
+(** This is just an alias to Type_info.unsage_get_param_type with the index set
+    to 0.
 *)
 val get_param_type:
-  t structure ptr -> int -> t structure ptr
+  t structure ptr -> t structure ptr
 
 (** For types which have Types.Interface such as GObjects and boxed
     values, this function returns full information about the referenced type.
