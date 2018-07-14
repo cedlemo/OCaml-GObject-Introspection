@@ -83,9 +83,7 @@ let get_param_type info n =
   let get_param_type_raw =
     foreign "g_type_info_get_param_type"
       (ptr typeinfo @-> int @-> returning (ptr typeinfo)) in
-  let max = get_array_length info in
-  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
-  else let param_type = get_param_type_raw info n in
+    let param_type = get_param_type_raw info n in
     add_unref_finaliser param_type
 
 let from_baseinfo info =

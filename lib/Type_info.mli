@@ -67,7 +67,14 @@ val is_zero_terminated:
 val get_array_type:
   t structure ptr -> Types.array_type option
 
-(** Obtain the parameter type n .*)
+(** Obtain the parameter type n. It is used to get the parameter type of generic
+    container. For example if the current Type_info.t is an array, a GList, a
+    GSList or an Hash, you have to use this in order to get the Type_info.t of
+    the data of the container.
+    Basicaly it is done with Type_info.get_param_type type_info 0 .
+    This function is unsafe meanings that it is your responsability to not use
+    a number out of bounds.
+*)
 val get_param_type:
   t structure ptr -> int -> t structure ptr
 
