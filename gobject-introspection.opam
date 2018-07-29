@@ -7,10 +7,10 @@ homepage: "https://github.com/cedlemo/OCaml-GObject-Introspection"
 bug-reports: "https://github.com/cedlemo/OCaml-GObject-Introspection/issues"
 license: "GPL3"
 dev-repo: "https://github.com/cedlemo/OCaml-GObject-Introspection.git"
-build: [["jbuilder" "build" "-p" name "-j" jobs]]
-build-test: [["jbuilder" "runtest" "-p" name "-j" jobs]]
+build: [["dune" "build" "-p" name "-j" jobs]]
+build-test: [["dune" "runtest" "-p" name "-j" jobs]]
 depends: [
-  "jbuilder" {build}
+  "dune" {build}
   "ctypes"
   "ctypes-foreign"
   "ounit"
