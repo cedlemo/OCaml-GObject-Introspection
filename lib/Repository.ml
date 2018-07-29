@@ -28,8 +28,6 @@ let typelib : typelib typ = ptr void
 
 type gerror_t
 let gerror : gerror_t structure typ = structure "GError"
-let f_domain = field gerror "domain" (uint32_t)
-let f_code = field gerror "code" (int32_t)
 let f_message = field gerror "message" (string)
 let _ = seal gerror
 
