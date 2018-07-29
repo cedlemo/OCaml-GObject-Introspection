@@ -1,0 +1,1686 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/bffbf463/
+#info-authors li	docs/odoc.css	/^#info-authors li, #info-maintainers li { display:block; }$/;"	s
+#info-authors li	odoc.css	/^#info-authors li, #info-maintainers li { display:block; }$/;"	s
+#info-maintainers li	docs/odoc.css	/^#info-authors li, #info-maintainers li { display:block; }$/;"	s
+#info-maintainers li	odoc.css	/^#info-authors li, #info-maintainers li { display:block; }$/;"	s
+()	config/discover.ml	/^let () =$/;"	f
+()	lib/Conversions.ml	/^let () = seal glist$/;"	f
+()	lib/Conversions.ml	/^let () = seal gslist$/;"	f
+()	lib/Types.ml	/^let () = seal argument$/;"	f
+()	samples/gi_baseinfo_deprecated.ml	/^let () =$/;"	f
+()	samples/gi_baseinfo_discriminated.ml	/^let () =$/;"	f
+()	samples/gi_baseinfo_get_name.ml	/^let () =$/;"	f
+()	samples/gi_baseinfo_get_type.ml	/^let () =$/;"	f
+()	samples/gi_repository.ml	/^let () =$/;"	f
+()	tests/test.ml	/^let () =$/;"	f
+*	docs/odoc.css	/^*,  *:before,  *:after { box-sizing: border-box; }$/;"	s
+*	odoc.css	/^*,  *:before,  *:after { box-sizing: border-box; }$/;"	s
+*:after	docs/odoc.css	/^*,  *:before,  *:after { box-sizing: border-box; }$/;"	s
+*:after	odoc.css	/^*,  *:before,  *:after { box-sizing: border-box; }$/;"	s
+*:before	docs/odoc.css	/^*,  *:before,  *:after { box-sizing: border-box; }$/;"	s
+*:before	odoc.css	/^*,  *:before,  *:after { box-sizing: border-box; }$/;"	s
+*:target	docs/odoc.css	/^*:target \/* Linked highlight *\/$/;"	s
+*:target	odoc.css	/^*:target \/* Linked highlight *\/$/;"	s
+.anchored:hover a.anchor	docs/odoc.css	/^.anchored:hover a.anchor { visibility: visible; }$/;"	c
+.anchored:hover a.anchor	odoc.css	/^.anchored:hover a.anchor { visibility: visible; }$/;"	c
+.at-tag.deprecated	docs/odoc.css	/^.at-tag.deprecated { font-weight: normal; color: crimson }$/;"	c
+.at-tag.deprecated	odoc.css	/^.at-tag.deprecated { font-weight: normal; color: crimson }$/;"	c
+.at-tag.raise	docs/odoc.css	/^.at-tag.raise { font-weight: bold; }$/;"	c
+.at-tag.raise	odoc.css	/^.at-tag.raise { font-weight: bold; }$/;"	c
+.by-name .version	docs/odoc.css	/^.by-name .version { font-size: 0.625rem; color: #AAA }$/;"	c
+.by-name .version	odoc.css	/^.by-name .version { font-size: 0.625rem; color: #AAA }$/;"	c
+.by-name li	docs/odoc.css	/^.by-name li, .by-tag li, .errors li { margin-left:0; }$/;"	s
+.by-name li	odoc.css	/^.by-name li, .by-tag li, .errors li { margin-left:0; }$/;"	s
+.by-name nav	docs/odoc.css	/^.by-name nav { margin-bottom: 0.625rem }$/;"	s
+.by-name nav	odoc.css	/^.by-name nav { margin-bottom: 0.625rem }$/;"	s
+.by-name nav a	docs/odoc.css	/^.by-name nav a$/;"	s
+.by-name nav a	odoc.css	/^.by-name nav a$/;"	s
+.by-name ol	docs/odoc.css	/^.by-name ol, .by-tag ol, .errors ol { list-style-type: none; margin-left:0; }$/;"	s
+.by-name ol	odoc.css	/^.by-name ol, .by-tag ol, .errors ol { list-style-type: none; margin-left:0; }$/;"	s
+.by-name ol ol	docs/odoc.css	/^.by-name ol ol, .by-tag ol ol { margin-top:0; margin-bottom: 0 }$/;"	s
+.by-name ol ol	odoc.css	/^.by-name ol ol, .by-tag ol ol { margin-top:0; margin-bottom: 0 }$/;"	s
+.by-tag > ol > li	docs/odoc.css	/^.by-tag > ol > li { margin-top: 0.625rem; }$/;"	s
+.by-tag > ol > li	odoc.css	/^.by-tag > ol > li { margin-top: 0.625rem; }$/;"	s
+.by-tag > ol > li > ol	docs/odoc.css	/^.by-tag > ol > li > ol,$/;"	s
+.by-tag > ol > li > ol	odoc.css	/^.by-tag > ol > li > ol,$/;"	s
+.by-tag > ol > li > ol > li	docs/odoc.css	/^.by-tag > ol > li > ol > li { display: inline-block; margin-right: 1ex; }$/;"	s
+.by-tag > ol > li > ol > li	odoc.css	/^.by-tag > ol > li > ol > li { display: inline-block; margin-right: 1ex; }$/;"	s
+.by-tag > ol > li > span	docs/odoc.css	/^.by-tag > ol > li > span,$/;"	s
+.by-tag > ol > li > span	odoc.css	/^.by-tag > ol > li > span,$/;"	s
+.by-tag li	docs/odoc.css	/^.by-name li, .by-tag li, .errors li { margin-left:0; }$/;"	s
+.by-tag li	odoc.css	/^.by-name li, .by-tag li, .errors li { margin-left:0; }$/;"	s
+.by-tag nav a	docs/odoc.css	/^.by-tag nav a { margin-right:1ex; color: #222; display: inline-block; }$/;"	s
+.by-tag nav a	odoc.css	/^.by-tag nav a { margin-right:1ex; color: #222; display: inline-block; }$/;"	s
+.by-tag ol	docs/odoc.css	/^.by-name ol, .by-tag ol, .errors ol { list-style-type: none; margin-left:0; }$/;"	s
+.by-tag ol	odoc.css	/^.by-name ol, .by-tag ol, .errors ol { list-style-type: none; margin-left:0; }$/;"	s
+.by-tag ol ol	docs/odoc.css	/^.by-name ol ol, .by-tag ol ol { margin-top:0; margin-bottom: 0 }$/;"	s
+.by-tag ol ol	odoc.css	/^.by-name ol ol, .by-tag ol ol { margin-top:0; margin-bottom: 0 }$/;"	s
+.center	docs/odoc.css	/^.center { text-align: center; }$/;"	c
+.center	odoc.css	/^.center { text-align: center; }$/;"	c
+.errors li	docs/odoc.css	/^.by-name li, .by-tag li, .errors li { margin-left:0; }$/;"	s
+.errors li	odoc.css	/^.by-name li, .by-tag li, .errors li { margin-left:0; }$/;"	s
+.errors ol	docs/odoc.css	/^.by-name ol, .by-tag ol, .errors ol { list-style-type: none; margin-left:0; }$/;"	s
+.errors ol	odoc.css	/^.by-name ol, .by-tag ol, .errors ol { list-style-type: none; margin-left:0; }$/;"	s
+.h10	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h10	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h7	docs/odoc.css	/^h1, h2, .h7$/;"	c
+.h7	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h7	odoc.css	/^h1, h2, .h7$/;"	c
+.h7	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h7 + *	docs/odoc.css	/^h1 + *, h2 + *, .h7 + * { margin-top: 0.625rem; }$/;"	s
+.h7 + *	odoc.css	/^h1 + *, h2 + *, .h7 + * { margin-top: 0.625rem; }$/;"	s
+.h7 + .h8	docs/odoc.css	/^h2 + h3, .h7 + .h8 { margin-top: 0.625rem; }$/;"	c
+.h7 + .h8	odoc.css	/^h2 + h3, .h7 + .h8 { margin-top: 0.625rem; }$/;"	c
+.h7 code	docs/odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+.h7 code	odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+.h7 tt	docs/odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+.h7 tt	odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+.h8	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h8	docs/odoc.css	/^h3, .h8 { font-size: 1.125rem; }$/;"	c
+.h8	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h8	odoc.css	/^h3, .h8 { font-size: 1.125rem; }$/;"	c
+.h9	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.h9	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	c
+.heading	docs/odoc.css	/^.heading$/;"	c
+.heading	odoc.css	/^.heading$/;"	c
+.heading + .parameters	docs/odoc.css	/^.heading + .parameters { margin-top: -1.25rem; }$/;"	c
+.heading + .parameters	odoc.css	/^.heading + .parameters { margin-top: -1.25rem; }$/;"	c
+.heading + .sig	docs/odoc.css	/^.heading + .sig { margin-top: -1.25rem; }$/;"	c
+.heading + .sig	odoc.css	/^.heading + .sig { margin-top: -1.25rem; }$/;"	c
+.keyword	docs/odoc.css	/^.keyword { font-weight: bold; }$/;"	c
+.keyword	odoc.css	/^.keyword { font-weight: bold; color: #FABD2F}$/;"	c
+.left	docs/odoc.css	/^.left { text-align: left; }$/;"	c
+.left	odoc.css	/^.left { text-align: left; }$/;"	c
+.modules	docs/odoc.css	/^.modules { margin:0; }$/;"	c
+.modules	odoc.css	/^.modules { margin:0; }$/;"	c
+.modules .module	docs/odoc.css	/^.modules .module { min-width:8ex; padding-right: 2ex }$/;"	c
+.modules .module	odoc.css	/^.modules .module { min-width:8ex; padding-right: 2ex }$/;"	c
+.package .version	docs/odoc.css	/^.package .version { font-size: 0.875rem; }$/;"	c
+.package .version	odoc.css	/^.package .version { font-size: 0.875rem; }$/;"	c
+.package nav	docs/odoc.css	/^.package nav { display: inline; font-size: 0.875rem; font-weight: normal; }$/;"	s
+.package nav	odoc.css	/^.package nav { display: inline; font-size: 0.875rem; font-weight: normal; }$/;"	s
+.package.info	docs/odoc.css	/^.package.info { margin: 0;}$/;"	c
+.package.info	odoc.css	/^.package.info { margin: 0;}$/;"	c
+.package.info li	docs/odoc.css	/^.package.info li { display: inline-block; margin:0; margin-right:1ex; }$/;"	s
+.package.info li	odoc.css	/^.package.info li { display: inline-block; margin:0; margin-right:1ex; }$/;"	s
+.package.info td:first-child	docs/odoc.css	/^.package.info td:first-child { font-style: italic; padding-right: 2ex; }$/;"	s
+.package.info td:first-child	odoc.css	/^.package.info td:first-child { font-style: italic; padding-right: 2ex; }$/;"	s
+.package.info ul	docs/odoc.css	/^.package.info ul { list-style-type: none; display: inline; margin:0; }$/;"	s
+.package.info ul	odoc.css	/^.package.info ul { list-style-type: none; display: inline; margin:0; }$/;"	s
+.record td.def	docs/odoc.css	/^.record td.def { padding-left:2ex; }$/;"	c
+.record td.def	odoc.css	/^.record td.def { padding-left:2ex; }$/;"	c
+.right	docs/odoc.css	/^.right { text-align: right; }$/;"	c
+.right	odoc.css	/^.right { text-align: right; }$/;"	c
+.sel	docs/odoc.css	/^.sel { font-weight: normal; font-style: italic;$/;"	c
+.sel	odoc.css	/^.sel { font-weight: normal; font-style: italic;$/;"	c
+.sel + .modules	docs/odoc.css	/^.sel + .modules { margin-top:0.625rem;$/;"	c
+.sel + .modules	odoc.css	/^.sel + .modules { margin-top:0.625rem;$/;"	c
+.spec	odoc.css	/^.spec { padding-right: 8px; border-right: 3px solid #888; }$/;"	c
+.spec:hover > a.anchor	docs/odoc.css	/^.spec:hover > a.anchor, \/* FIXME remove *\/$/;"	c
+.spec:hover > a.anchor	odoc.css	/^.spec:hover > a.anchor, \/* FIXME remove *\/$/;"	c
+.xref-unresolved	docs/odoc.css	/^.xref-unresolved { box-shadow:0 1px 0 0 red }$/;"	c
+.xref-unresolved	odoc.css	/^.xref-unresolved { box-shadow:0 1px 0 0 red }$/;"	c
+API:	README.md	/^## API:$/;"	s
+Action	lib/Signal_info.ml	/^  | Action$/;"	C	type:flags
+Action	lib/Signal_info.mli	/^  | Action        (** Action signals are signals that may freely be$/;"	C	type:flags
+Arg	lib/Base_info.ml	/^  | Arg$/;"	C	type:baseinfo_type
+Arg	lib/Base_info.mli	/^  | Arg (** argument of a function or callback, see Arg_info *)$/;"	C	type:baseinfo_type
+Arg_info	lib/Arg_info.ml	/^(*$/;"	M
+Arg_info	lib/Arg_info.mli	/^(*$/;"	M
+Array	lib/Types.ml	/^  | Array$/;"	C	type:array_type
+Array	lib/Types.ml	/^  | Array$/;"	C	type:tag
+Array	lib/Types.mli	/^  | Array      (** a GArray array *)$/;"	C	type:array_type
+Array	lib/Types.mli	/^  | Array (** an array *)$/;"	C	type:tag
+Async	lib/Arg_info.ml	/^  | Async$/;"	C	type:scope
+Async	lib/Arg_info.mli	/^  | Async     (** The callback and associated user_data is only used until the$/;"	C	type:scope
+Base_info	lib/Base_info.ml	/^(*$/;"	M
+Base_info	lib/Base_info.mli	/^(*$/;"	M
+Boolean	lib/Types.ml	/^  | Boolean$/;"	C	type:tag
+Boolean	lib/Types.mli	/^  | Boolean (** boolean *)$/;"	C	type:tag
+Boxed	lib/Base_info.ml	/^  | Boxed$/;"	C	type:baseinfo_type
+Boxed	lib/Base_info.mli	/^  | Boxed (** boxed, see Struct_info or Union_info *)$/;"	C	type:baseinfo_type
+Byte_array	lib/Types.ml	/^  | Byte_array$/;"	C	type:array_type
+Byte_array	lib/Types.mli	/^  | Byte_array (** a GByteArray array *)$/;"	C	type:array_type
+C	config/discover.ml	/^module C = Configurator$/;"	M
+C	lib/Types.ml	/^  | C$/;"	C	type:array_type
+C	lib/Types.mli	/^  | C          (** a C array, char[] for instance *)$/;"	C	type:array_type
+Call	lib/Arg_info.ml	/^  | Call$/;"	C	type:scope
+Call	lib/Arg_info.mli	/^  | Call      (** The callback and associated user_data is only used during the$/;"	C	type:scope
+Callable_info	lib/Callable_info.ml	/^(*$/;"	M
+Callable_info	lib/Callable_info.mli	/^(*$/;"	M
+Callback	lib/Base_info.ml	/^  | Callback$/;"	C	type:baseinfo_type
+Callback	lib/Base_info.mli	/^  | Callback (** callback, see Function_info *)$/;"	C	type:baseinfo_type
+Constant	lib/Base_info.ml	/^  | Constant$/;"	C	type:baseinfo_type
+Constant	lib/Base_info.mli	/^  | Constant (** contant, see Constant_info *)$/;"	C	type:baseinfo_type
+Constant_info	lib/Constant_info.ml	/^(*$/;"	M
+Constant_info	lib/Constant_info.mli	/^(*$/;"	M
+Construct	lib/Arg_info.ml	/^  | Construct$/;"	C	type:param_flags
+Construct	lib/Arg_info.mli	/^  | Construct       (** the parameter will be set upon object construction *)$/;"	C	type:param_flags
+Construct_only	lib/Arg_info.ml	/^  | Construct_only$/;"	C	type:param_flags
+Construct_only	lib/Arg_info.mli	/^  | Construct_only  (** the parameter can only be set upon object construction *)$/;"	C	type:param_flags
+Container	lib/Arg_info.ml	/^  | Container$/;"	C	type:transfer
+Container	lib/Arg_info.mli	/^  | Container  (** transfer the container (list, array, hash table) from the$/;"	C	type:transfer
+Conversions	lib/Conversions.ml	/^(** Conversions functions *)$/;"	M
+Deprecated	lib/Arg_info.ml	/^  | Deprecated$/;"	C	type:param_flags
+Deprecated	lib/Arg_info.mli	/^  | Deprecated      (** the parameter is deprecated and will be removed in a$/;"	C	type:param_flags
+Deprecated	lib/Signal_info.ml	/^  | Deprecated$/;"	C	type:flags
+Deprecated	lib/Signal_info.mli	/^  | Deprecated    (** The signal is deprecated and will be removed in a$/;"	C	type:flags
+Detailed	lib/Signal_info.ml	/^  | Detailed$/;"	C	type:flags
+Detailed	lib/Signal_info.mli	/^  | Detailed      (** This signal supports "::detail" appendices to the$/;"	C	type:flags
+Discover	config/discover.ml	/^open Base$/;"	M
+Double	lib/Types.ml	/^  | Double$/;"	C	type:tag
+Double	lib/Types.mli	/^  | Double (** double floating point *)$/;"	C	type:tag
+Enum	lib/Base_info.ml	/^  | Enum$/;"	C	type:baseinfo_type
+Enum	lib/Base_info.mli	/^  | Enum (** enum, see Enum_info *)$/;"	C	type:baseinfo_type
+Enum_info	lib/Enum_info.ml	/^(*$/;"	M
+Enum_info	lib/Enum_info.mli	/^(*$/;"	M
+Error	lib/Types.ml	/^  | Error$/;"	C	type:tag
+Error	lib/Types.mli	/^  | Error (** a GError *)$/;"	C	type:tag
+Everything	lib/Arg_info.ml	/^  | Everything$/;"	C	type:transfer
+Everything	lib/Arg_info.mli	/^  | Everything (** transfer everything, eg the container and its contents from$/;"	C	type:transfer
+Explicit_notify	lib/Arg_info.ml	/^  | Explicit_notify$/;"	C	type:param_flags
+Explicit_notify	lib/Arg_info.mli	/^  | Explicit_notify (** calls to g_object_set_property() for this property will$/;"	C	type:param_flags
+Field	lib/Base_info.ml	/^  | Field$/;"	C	type:baseinfo_type
+Field	lib/Base_info.mli	/^  | Field (** struct or union field, see Field_info *)$/;"	C	type:baseinfo_type
+Field_info	lib/Field_info.ml	/^(*$/;"	M
+Field_info	lib/Field_info.mli	/^(*$/;"	M
+Filename	lib/Types.ml	/^  | Filename$/;"	C	type:tag
+Filename	lib/Types.mli	/^  | Filename (** a filename, encoded in the same encoding as the native filesystem is using. *)$/;"	C	type:tag
+Flags	lib/Base_info.ml	/^  | Flags$/;"	C	type:baseinfo_type
+Flags	lib/Base_info.mli	/^  | Flags (** flags, see Enum_info *)$/;"	C	type:baseinfo_type
+Float	lib/Types.ml	/^  | Float$/;"	C	type:tag
+Float	lib/Types.mli	/^  | Float (** float *)$/;"	C	type:tag
+Function	lib/Base_info.ml	/^  | Function$/;"	C	type:baseinfo_type
+Function	lib/Base_info.mli	/^  | Function (** function, see Function_info *)$/;"	C	type:baseinfo_type
+Function_info	lib/Function_info.ml	/^(*$/;"	M
+Function_info	lib/Function_info.mli	/^(*$/;"	M
+GHash	lib/Types.ml	/^  | GHash$/;"	C	type:tag
+GHash	lib/Types.mli	/^  | GHash (** a GHashTable *)$/;"	C	type:tag
+GList	lib/Types.ml	/^  | GList$/;"	C	type:tag
+GList	lib/Types.mli	/^  | GList (** a GList *)$/;"	C	type:tag
+GSList	lib/Types.ml	/^  | GSList$/;"	C	type:tag
+GSList	lib/Types.mli	/^  | GSList (** a GSList *)$/;"	C	type:tag
+GType	lib/Types.ml	/^  | GType$/;"	C	type:tag
+GType	lib/Types.mli	/^  | GType (** a GType *)$/;"	C	type:tag
+Gi_baseinfo_deprecated	samples/gi_baseinfo_deprecated.ml	/^(*$/;"	M
+Gi_baseinfo_discriminated	samples/gi_baseinfo_discriminated.ml	/^(*$/;"	M
+Gi_baseinfo_get_name	samples/gi_baseinfo_get_name.ml	/^(*$/;"	M
+Gi_baseinfo_get_type	samples/gi_baseinfo_get_type.ml	/^(*$/;"	M
+Gi_repository	samples/gi_repository.ml	/^(*$/;"	M
+In	lib/Arg_info.ml	/^  | In$/;"	C	type:direction
+In	lib/Arg_info.mli	/^  | In    (** in argument. *)$/;"	C	type:direction
+InOut	lib/Arg_info.ml	/^  | InOut$/;"	C	type:direction
+InOut	lib/Arg_info.mli	/^  | InOut (** in and out argument. *)$/;"	C	type:direction
+Int16	lib/Types.ml	/^  | Int16$/;"	C	type:tag
+Int16	lib/Types.mli	/^  | Int16 (** 16-bit signed integer *)$/;"	C	type:tag
+Int32	lib/Types.ml	/^  | Int32$/;"	C	type:tag
+Int32	lib/Types.mli	/^  | Int32 (** 32-bit signed integer *)$/;"	C	type:tag
+Int64	lib/Types.ml	/^  | Int64$/;"	C	type:tag
+Int64	lib/Types.mli	/^  | Int64 (** 64-bit signed integer *)$/;"	C	type:tag
+Int8	lib/Types.ml	/^  | Int8$/;"	C	type:tag
+Int8	lib/Types.mli	/^  | Int8 (** 8-bit signed integer *)$/;"	C	type:tag
+Interface	lib/Base_info.ml	/^  | Interface$/;"	C	type:baseinfo_type
+Interface	lib/Base_info.mli	/^  | Interface (** interface, see Interface_info *)$/;"	C	type:baseinfo_type
+Interface	lib/Types.ml	/^  | Interface$/;"	C	type:tag
+Interface	lib/Types.mli	/^  | Interface (** an extended interface object *)$/;"	C	type:tag
+Interface_info	lib/Interface_info.ml	/^(*$/;"	M
+Interface_info	lib/Interface_info.mli	/^(*$/;"	M
+Invalid	lib/Arg_info.ml	/^  | Invalid$/;"	C	type:scope
+Invalid	lib/Arg_info.mli	/^  | Invalid   (** The argument is not of callback type. *)$/;"	C	type:scope
+Invalid	lib/Base_info.ml	/^  | Invalid$/;"	C	type:baseinfo_type
+Invalid	lib/Base_info.mli	/^  | Invalid (** invalid type *)$/;"	C	type:baseinfo_type
+Invalid_0	lib/Base_info.ml	/^  | Invalid_0$/;"	C	type:baseinfo_type
+Invalid_0	lib/Base_info.mli	/^  | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)$/;"	C	type:baseinfo_type
+Is_constructor	lib/Function_info.ml	/^  | Is_constructor$/;"	C	type:flags
+Is_constructor	lib/Function_info.mli	/^  | Is_constructor (** is a constructor. *)$/;"	C	type:flags
+Is_getter	lib/Function_info.ml	/^  | Is_getter$/;"	C	type:flags
+Is_getter	lib/Function_info.mli	/^  | Is_getter      (** is a getter of a Property_info. *)$/;"	C	type:flags
+Is_method	lib/Function_info.ml	/^  | Is_method$/;"	C	type:flags
+Is_method	lib/Function_info.mli	/^  | Is_method      (** is a method. *)$/;"	C	type:flags
+Is_readable	lib/Field_info.ml	/^  | Is_readable$/;"	C	type:flags
+Is_readable	lib/Field_info.mli	/^  | Is_readable (** field is readable. *)$/;"	C	type:flags
+Is_setter	lib/Function_info.ml	/^  | Is_setter$/;"	C	type:flags
+Is_setter	lib/Function_info.mli	/^  | Is_setter      (** is a setter of a Property_info. *)$/;"	C	type:flags
+Is_writable	lib/Field_info.ml	/^  | Is_writable$/;"	C	type:flags
+Is_writable	lib/Field_info.mli	/^  | Is_writable (** field is writable. *)$/;"	C	type:flags
+Lax_validation	lib/Arg_info.ml	/^  | Lax_validation$/;"	C	type:param_flags
+Lax_validation	lib/Arg_info.mli	/^  | Lax_validation  (** upon parameter conversion (see g_param_value_convert())$/;"	C	type:param_flags
+Library gobject-introspection	docs/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>index (gobject-introspection.index)</;"	i
+Module GObject_introspection	docs/GObject_introspection/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection (gobject-intro/;"	h
+Module GObject_introspection.Arg_info	docs/GObject_introspection/Arg_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Arg_info (gobject-introspection.GObj/;"	h
+Module GObject_introspection.Base_info	docs/GObject_introspection/Base_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Base_info (gobject-introspection.GOb/;"	h
+Module GObject_introspection.Callable_info	docs/GObject_introspection/Callable_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Callable_info (gobject-introspection/;"	h
+Module GObject_introspection.Constant_info	docs/GObject_introspection/Constant_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Constant_info (gobject-introspection/;"	h
+Module GObject_introspection.Conversions	docs/GObject_introspection/Conversions/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Conversions (gobject-introspection.G/;"	h
+Module GObject_introspection.Enum_info	docs/GObject_introspection/Enum_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Enum_info (gobject-introspection.GOb/;"	h
+Module GObject_introspection.Field_info	docs/GObject_introspection/Field_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Field_info (gobject-introspection.GO/;"	h
+Module GObject_introspection.Function_info	docs/GObject_introspection/Function_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Function_info (gobject-introspection/;"	h
+Module GObject_introspection.Interface_info	docs/GObject_introspection/Interface_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Interface_info (gobject-introspectio/;"	h
+Module GObject_introspection.Object_info	docs/GObject_introspection/Object_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Object_info (gobject-introspection.G/;"	h
+Module GObject_introspection.Property_info	docs/GObject_introspection/Property_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Property_info (gobject-introspection/;"	h
+Module GObject_introspection.Registered_type_info	docs/GObject_introspection/Registered_type_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Registered_type_info (gobject-intros/;"	h
+Module GObject_introspection.Repository	docs/GObject_introspection/Repository/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Repository (gobject-introspection.GO/;"	h
+Module GObject_introspection.Signal_info	docs/GObject_introspection/Signal_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Signal_info (gobject-introspection.G/;"	h
+Module GObject_introspection.Struct_info	docs/GObject_introspection/Struct_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Struct_info (gobject-introspection.G/;"	h
+Module GObject_introspection.Type_info	docs/GObject_introspection/Type_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Type_info (gobject-introspection.GOb/;"	h
+Module GObject_introspection.Types	docs/GObject_introspection/Types/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Types (gobject-introspection.GObject/;"	h
+Module GObject_introspection.Union_info	docs/GObject_introspection/Union_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Union_info (gobject-introspection.GO/;"	h
+Module GObject_introspection.VFunc_info	docs/GObject_introspection/VFunc_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>VFunc_info (gobject-introspection.GO/;"	h
+Module GObject_introspection.Value_info	docs/GObject_introspection/Value_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>Value_info (gobject-introspection.GO/;"	h
+Module GObject_introspection__Arg_info	docs/GObject_introspection__Arg_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Arg_info (gob/;"	h
+Module GObject_introspection__Base_info	docs/GObject_introspection__Base_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Base_info (go/;"	h
+Module GObject_introspection__Callable_info	docs/GObject_introspection__Callable_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Callable_info/;"	h
+Module GObject_introspection__Constant_info	docs/GObject_introspection__Constant_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Constant_info/;"	h
+Module GObject_introspection__Conversions	docs/GObject_introspection__Conversions/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Conversions (/;"	h
+Module GObject_introspection__Enum_info	docs/GObject_introspection__Enum_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Enum_info (go/;"	h
+Module GObject_introspection__Field_info	docs/GObject_introspection__Field_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Field_info (g/;"	h
+Module GObject_introspection__Function_info	docs/GObject_introspection__Function_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Function_info/;"	h
+Module GObject_introspection__Interface_info	docs/GObject_introspection__Interface_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Interface_inf/;"	h
+Module GObject_introspection__Object_info	docs/GObject_introspection__Object_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Object_info (/;"	h
+Module GObject_introspection__Property_info	docs/GObject_introspection__Property_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Property_info/;"	h
+Module GObject_introspection__Registered_type_info	docs/GObject_introspection__Registered_type_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Registered_ty/;"	h
+Module GObject_introspection__Repository	docs/GObject_introspection__Repository/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Repository (g/;"	h
+Module GObject_introspection__Signal_info	docs/GObject_introspection__Signal_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Signal_info (/;"	h
+Module GObject_introspection__Struct_info	docs/GObject_introspection__Struct_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Struct_info (/;"	h
+Module GObject_introspection__Type_info	docs/GObject_introspection__Type_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Type_info (go/;"	h
+Module GObject_introspection__Types	docs/GObject_introspection__Types/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Types (gobjec/;"	h
+Module GObject_introspection__Union_info	docs/GObject_introspection__Union_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Union_info (g/;"	h
+Module GObject_introspection__VFunc_info	docs/GObject_introspection__VFunc_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__VFunc_info (g/;"	h
+Module GObject_introspection__Value_info	docs/GObject_introspection__Value_info/index.html	/^<html xmlns="http:\/\/www.w3.org\/1999\/xhtml"><head><title>GObject_introspection__Value_info (g/;"	h
+Must_chain_up	lib/VFunc_info.ml	/^  | Must_chain_up$/;"	C	type:flags
+Must_chain_up	lib/VFunc_info.mli	/^  | Must_chain_up     (** chains up to the parent type *)$/;"	C	type:flags
+Must_collect	lib/Signal_info.ml	/^  | Must_collect$/;"	C	type:flags
+Must_collect	lib/Signal_info.mli	/^  | Must_collect  (** Varargs signal emission will always collect the$/;"	C	type:flags
+Must_not_override	lib/VFunc_info.ml	/^  | Must_not_override$/;"	C	type:flags
+Must_not_override	lib/VFunc_info.mli	/^  | Must_not_override (** does not override *)$/;"	C	type:flags
+Must_override	lib/VFunc_info.ml	/^  | Must_override$/;"	C	type:flags
+Must_override	lib/VFunc_info.mli	/^  | Must_override     (** overrides *)$/;"	C	type:flags
+No_hooks	lib/Signal_info.ml	/^  | No_hooks$/;"	C	type:flags
+No_hooks	lib/Signal_info.mli	/^  | No_hooks      (** No emissions hooks are supported for this signal. *)$/;"	C	type:flags
+No_recurse	lib/Signal_info.ml	/^  | No_recurse$/;"	C	type:flags
+No_recurse	lib/Signal_info.mli	/^  | No_recurse    (** Signals being emitted for an object while currently$/;"	C	type:flags
+Nothing	lib/Arg_info.ml	/^  | Nothing$/;"	C	type:transfer
+Nothing	lib/Arg_info.mli	/^  | Nothing    (** transfer nothing from the callee (function or the type$/;"	C	type:transfer
+Notified	lib/Arg_info.ml	/^  | Notified$/;"	C	type:scope
+Notified	lib/Arg_info.mli	/^  | Notified  (** The callback and and associated user_data is used until the$/;"	C	type:scope
+Object	lib/Base_info.ml	/^  | Object$/;"	C	type:baseinfo_type
+Object	lib/Base_info.mli	/^  | Object (** object, see Object_info *)$/;"	C	type:baseinfo_type
+Object_info	lib/Object_info.ml	/^(*$/;"	M
+Object_info	lib/Object_info.mli	/^(*$/;"	M
+Out	lib/Arg_info.ml	/^  | Out$/;"	C	type:direction
+Out	lib/Arg_info.mli	/^  | Out   (** out argument. *)$/;"	C	type:direction
+Private	lib/Arg_info.ml	/^  | Private$/;"	C	type:param_flags
+Private	lib/Arg_info.mli	/^  | Private         (** internal *)$/;"	C	type:param_flags
+Property	lib/Base_info.ml	/^  | Property$/;"	C	type:baseinfo_type
+Property	lib/Base_info.mli	/^  | Property (** GObject property, see Property_info *)$/;"	C	type:baseinfo_type
+Property_info	lib/Property_info.ml	/^(*$/;"	M
+Property_info	lib/Property_info.mli	/^(*$/;"	M
+Ptr_array	lib/Types.ml	/^  | Ptr_array$/;"	C	type:array_type
+Ptr_array	lib/Types.mli	/^  | Ptr_array  (** a GPtrArray array *)$/;"	C	type:array_type
+Readable	lib/Arg_info.ml	/^  | Readable$/;"	C	type:param_flags
+Readable	lib/Arg_info.mli	/^  | Readable        (** the parameter is readable *)$/;"	C	type:param_flags
+Readwrite	lib/Arg_info.ml	/^  | Readwrite$/;"	C	type:param_flags
+Readwrite	lib/Arg_info.mli	/^  | Readwrite       (** alias for G_PARAM_READABLE | G_PARAM_WRITABLE *)$/;"	C	type:param_flags
+Registered_type_info	lib/Registered_type_info.ml	/^(*$/;"	M
+Registered_type_info	lib/Registered_type_info.mli	/^(*$/;"	M
+Repository	lib/Repository.ml	/^(*$/;"	M
+Repository	lib/Repository.mli	/^(*$/;"	M
+Run_cleanup	lib/Signal_info.ml	/^  | Run_cleanup$/;"	C	type:flags
+Run_cleanup	lib/Signal_info.mli	/^  | Run_cleanup   (** Invoke the object method handler in the last$/;"	C	type:flags
+Run_first	lib/Signal_info.ml	/^  | Run_first$/;"	C	type:flags
+Run_first	lib/Signal_info.mli	/^  | Run_first     (** Invoke the object method handler in the first$/;"	C	type:flags
+Run_last	lib/Signal_info.ml	/^  | Run_last$/;"	C	type:flags
+Run_last	lib/Signal_info.mli	/^  | Run_last      (** Invoke the object method handler in the third$/;"	C	type:flags
+Signal	lib/Base_info.ml	/^  | Signal$/;"	C	type:baseinfo_type
+Signal	lib/Base_info.mli	/^  | Signal (** signal, see Signal_info *)$/;"	C	type:baseinfo_type
+Signal_info	lib/Signal_info.ml	/^(*$/;"	M
+Signal_info	lib/Signal_info.mli	/^(*$/;"	M
+Static_blurb	lib/Arg_info.ml	/^  | Static_blurb$/;"	C	type:param_flags
+Static_blurb	lib/Arg_info.mli	/^  | Static_blurb    (** the string used as blurb when constructing the parameter$/;"	C	type:param_flags
+Static_name	lib/Arg_info.ml	/^  | Static_name$/;"	C	type:param_flags
+Static_name	lib/Arg_info.mli	/^  | Static_name     (** the string used as name when constructing the parameter$/;"	C	type:param_flags
+Static_nick	lib/Arg_info.ml	/^  | Static_nick$/;"	C	type:param_flags
+Static_nick	lib/Arg_info.mli	/^  | Static_nick     (** the string used as nick when constructing the parameter$/;"	C	type:param_flags
+Struct	lib/Base_info.ml	/^  | Struct$/;"	C	type:baseinfo_type
+Struct	lib/Base_info.mli	/^  | Struct (** struct, see Struct_info *)$/;"	C	type:baseinfo_type
+Struct_info	lib/Struct_info.ml	/^(*$/;"	M
+Struct_info	lib/Struct_info.mli	/^(*$/;"	M
+Test	tests/test.ml	/^(*$/;"	M
+Test_arg_info	tests/Test_arg_info.ml	/^(*$/;"	M
+Test_base_info	tests/Test_base_info.ml	/^(*$/;"	M
+Test_callable_info	tests/Test_callable_info.ml	/^(*$/;"	M
+Test_constant_info	tests/Test_constant_info.ml	/^(*$/;"	M
+Test_enum_info	tests/Test_enum_info.ml	/^(*$/;"	M
+Test_field_info	tests/Test_field_info.ml	/^(*$/;"	M
+Test_function_info	tests/Test_function_info.ml	/^(*$/;"	M
+Test_interface_info	tests/Test_interface_info.ml	/^(*$/;"	M
+Test_object_info	tests/Test_object_info.ml	/^(*$/;"	M
+Test_property_info	tests/Test_property_info.ml	/^(*$/;"	M
+Test_registered_type_info	tests/Test_registered_type_info.ml	/^(*$/;"	M
+Test_repository	tests/Test_repository.ml	/^(*$/;"	M
+Test_repository_default	tests/Test_repository_default.ml	/^(*$/;"	M
+Test_signal_info	tests/Test_signal_info.ml	/^(*$/;"	M
+Test_struct_info	tests/Test_struct_info.ml	/^(*$/;"	M
+Test_type_info	tests/Test_type_info.ml	/^(*$/;"	M
+Test_union_info	tests/Test_union_info.ml	/^(*$/;"	M
+Test_utils	tests/Test_utils.ml	/^(*$/;"	M
+Test_vfunc_info	tests/Test_vfunc_info.ml	/^(*$/;"	M
+Throws	lib/Function_info.ml	/^  | Throws$/;"	C	type:flags
+Throws	lib/Function_info.mli	/^  | Throws         (** the function may throw an error. *)$/;"	C	type:flags
+Throws	lib/VFunc_info.ml	/^  | Throws$/;"	C	type:flags
+Throws	lib/VFunc_info.mli	/^  | Throws            (** Includes  a GError *)$/;"	C	type:flags
+Type	lib/Base_info.ml	/^  | Type$/;"	C	type:baseinfo_type
+Type	lib/Base_info.mli	/^  | Type (** type information, see Type_info *)$/;"	C	type:baseinfo_type
+Type_info	lib/Type_info.ml	/^(*$/;"	M
+Type_info	lib/Type_info.mli	/^(*$/;"	M
+Types	lib/Types.ml	/^(*$/;"	M
+Types	lib/Types.mli	/^(*$/;"	M
+Uint16	lib/Types.ml	/^  | Uint16$/;"	C	type:tag
+Uint16	lib/Types.mli	/^  | Uint16 (** 16-bit unsigned integer *)$/;"	C	type:tag
+Uint32	lib/Types.ml	/^  | Uint32$/;"	C	type:tag
+Uint32	lib/Types.mli	/^  | Uint32 (** 32-bit unsigned integer *)$/;"	C	type:tag
+Uint64	lib/Types.ml	/^  | Uint64$/;"	C	type:tag
+Uint64	lib/Types.mli	/^  | Uint64 (** 64-bit unsigned integer *)$/;"	C	type:tag
+Uint8	lib/Types.ml	/^  | Uint8$/;"	C	type:tag
+Uint8	lib/Types.mli	/^  | Uint8 (** 8-bit unsigned integer *)$/;"	C	type:tag
+Unichar	lib/Types.ml	/^  | Unichar$/;"	C	type:tag
+Unichar	lib/Types.mli	/^  | Unichar (** Unicode character *)$/;"	C	type:tag
+Union	lib/Base_info.ml	/^  | Union$/;"	C	type:baseinfo_type
+Union	lib/Base_info.mli	/^  | Union (** union, see Union_info *)$/;"	C	type:baseinfo_type
+Union_info	lib/Union_info.ml	/^(*$/;"	M
+Union_info	lib/Union_info.mli	/^(*$/;"	M
+Unresolved	lib/Base_info.ml	/^  | Unresolved$/;"	C	type:baseinfo_type
+Unresolved	lib/Base_info.mli	/^  | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its de/;"	C	type:baseinfo_type
+Utf8	lib/Types.ml	/^  | Utf8$/;"	C	type:tag
+Utf8	lib/Types.mli	/^  | Utf8 (** a UTF-8 encoded string *)$/;"	C	type:tag
+VFunc_info	lib/VFunc_info.ml	/^(*$/;"	M
+VFunc_info	lib/VFunc_info.mli	/^(*$/;"	M
+Value	lib/Base_info.ml	/^  | Value$/;"	C	type:baseinfo_type
+Value	lib/Base_info.mli	/^  | Value (** enum value, see Value_info *)$/;"	C	type:baseinfo_type
+Value_info	lib/Value_info.ml	/^(*$/;"	M
+Value_info	lib/Value_info.mli	/^(*$/;"	M
+Vfunc	lib/Base_info.ml	/^  | Vfunc$/;"	C	type:baseinfo_type
+Vfunc	lib/Base_info.mli	/^  | Vfunc (** virtual function, see VFunc_info *)$/;"	C	type:baseinfo_type
+Void	lib/Types.ml	/^  | Void$/;"	C	type:tag
+Void	lib/Types.mli	/^  | Void (** void *)$/;"	C	type:tag
+Wiki :	README.md	/^## Wiki :$/;"	s
+Wraps_vfunc	lib/Function_info.ml	/^  | Wraps_vfunc$/;"	C	type:flags
+Wraps_vfunc	lib/Function_info.mli	/^  | Wraps_vfunc    (** represents a virtual function. *)$/;"	C	type:flags
+Writable	lib/Arg_info.ml	/^  | Writable$/;"	C	type:param_flags
+Writable	lib/Arg_info.mli	/^  | Writable        (** the parameter is writable *)$/;"	C	type:param_flags
+_	lib/Object_info.ml	/^  let _ = Base_info.base_info_ref base_info in$/;"	f
+_	lib/Repository.ml	/^let _ = seal gerror$/;"	f
+_	tests/Test_field_info.ml	/^        | f' :: q -> let _ = assert_equal ~printer:(fun f ->$/;"	f
+_	tests/Test_signal_info.ml	/^        | f' :: q -> let _ = assert_equal ~printer:(fun f ->$/;"	f
+_	tests/Test_struct_info.ml	/^        | f' :: q -> let _ = assert_equal ~printer:(fun f ->$/;"	f
+_	tests/Test_union_info.ml	/^        | f' :: q -> let _ = assert_equal ~printer:(fun f ->$/;"	f
+a	docs/odoc.css	/^a { text-decoration:none; color:#2C5CBD; }$/;"	s
+a	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+a	odoc.css	/^a { text-decoration:none; color:#4D62B8; }$/;"	s
+a	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+a.anchor	docs/odoc.css	/^a.anchor$/;"	c
+a.anchor	odoc.css	/^a.anchor$/;"	c
+a.anchor:before	docs/odoc.css	/^a.anchor:before { content: "#" }$/;"	c
+a.anchor:before	odoc.css	/^a.anchor:before { content: "#" }$/;"	c
+a.anchor:hover	docs/odoc.css	/^a.anchor:hover {  box-shadow: none; text-decoration: underline }$/;"	c
+a.anchor:hover	odoc.css	/^a.anchor:hover {  box-shadow: none; text-decoration: underline }$/;"	c
+a:hover	docs/odoc.css	/^a:hover { box-shadow:0 1px 0 0 #2C5CBD; }$/;"	s
+a:hover	odoc.css	/^a:hover { box-shadow:0 1px 0 0 #2C5CBD; }$/;"	s
+abbr	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+abbr	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+acronym	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+acronym	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+add_unref_finaliser	lib/Arg_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Arg_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Base_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Base_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Callable_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Callable_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Constant_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Constant_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Field_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Field_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Function_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Function_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Interface_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Interface_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Object_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Property_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Property_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Registered_type_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Registered_type_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Signal_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Signal_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Struct_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Struct_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Type_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Type_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/VFunc_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/VFunc_info.mli	/^val add_unref_finaliser:$/;"	p
+add_unref_finaliser	lib/Value_info.ml	/^let add_unref_finaliser info =$/;"	f
+add_unref_finaliser	lib/Value_info.mli	/^val add_unref_finaliser:$/;"	p
+address	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+address	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+applet	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+applet	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+arg_test	tests/Test_arg_info.ml	/^let arg_test fn =$/;"	f
+arginfo	lib/Arg_info.ml	/^let arginfo : t structure typ = structure "Arg_info"$/;"	v
+arginfo	lib/Arg_info.mli	/^val arginfo : t structure typ$/;"	p
+argument	lib/Types.ml	/^let argument : argument_t union typ = union "GIArgument"$/;"	v
+argument	lib/Types.mli	/^val argument: argument_t union typ$/;"	p
+argument_t	lib/Types.ml	/^type argument_t$/;"	t
+argument_t	lib/Types.mli	/^type argument_t$/;"	t
+array_type	lib/Types.ml	/^type array_type =$/;"	t
+array_type	lib/Types.mli	/^type array_type =$/;"	t
+array_type_of_int	lib/Types.ml	/^let array_type_of_int = function$/;"	v
+array_type_of_int	lib/Types.mli	/^val array_type_of_int:$/;"	p
+article	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+article	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+aside	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+aside	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+assert_equal_boolean	tests/Test_utils.ml	/^let assert_equal_boolean bool1 bool2 =$/;"	f
+assert_equal_int	tests/Test_utils.ml	/^let assert_equal_int int1 int2 =$/;"	f
+assert_equal_or_greater	tests/Test_utils.ml	/^let assert_equal_or_greater int1 int2 =$/;"	f
+assert_equal_string	tests/Test_utils.ml	/^let assert_equal_string str1 str2 =$/;"	f
+assert_file_exists	tests/Test_utils.ml	/^let assert_file_exists filename =$/;"	f
+audio	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+audio	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+b	docs/odoc.css	/^b, strong { font-weight: bold; }$/;"	s
+b	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+b	odoc.css	/^b, strong { font-weight: bold; }$/;"	s
+b	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+base_info_ref	lib/Base_info.ml	/^let base_info_ref =$/;"	v
+base_info_ref	lib/Base_info.mli	/^val base_info_ref:$/;"	p
+base_info_unref	lib/Base_info.ml	/^let base_info_unref =$/;"	v
+base_info_unref	lib/Base_info.mli	/^val base_info_unref:$/;"	p
+baseinfo	lib/Base_info.ml	/^let baseinfo : t structure typ = structure "Base_info"$/;"	v
+baseinfo	lib/Base_info.mli	/^val baseinfo : t structure typ$/;"	p
+baseinfo_type	lib/Base_info.ml	/^type baseinfo_type =$/;"	t
+baseinfo_type	lib/Base_info.mli	/^type baseinfo_type =$/;"	t
+baseinfo_type_of_int	lib/Base_info.ml	/^let baseinfo_type_of_int = function$/;"	v
+baseinfo_type_of_int	lib/Base_info.mli	/^val baseinfo_type_of_int:$/;"	p
+big	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+big	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+blockquote	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+blockquote	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+body	docs/odoc.css	/^body$/;"	s
+body	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+body	docs/odoc.css	/^{ body { color: black; background: white; }$/;"	s
+body	docs/odoc.css	/^{ body { margin: auto; } }$/;"	s
+body	odoc.css	/^body$/;"	s
+body	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+body	odoc.css	/^{ body { color: black; background: white; }$/;"	s
+body	odoc.css	/^{ body { margin: auto; } }$/;"	s
+body nav:first-child	docs/odoc.css	/^  body nav:first-child { visibility: hidden; }}$/;"	s
+body nav:first-child	odoc.css	/^  body nav:first-child { visibility: hidden; }}$/;"	s
+callable_info	tests/Test_type_info.ml	/^        let callable_info = Callable_info.from_baseinfo base_info in$/;"	v
+callable_test	tests/Test_callable_info.ml	/^let callable_test fn =$/;"	f
+callableinfo	lib/Callable_info.ml	/^let callableinfo : t structure typ = structure "Callable_info"$/;"	v
+callableinfo	lib/Callable_info.mli	/^val callableinfo: t structure typ$/;"	p
+callback_name	tests/Test_base_info.ml	/^let callback_name = "BusNameAppearedCallback"$/;"	v
+can_throw_gerror	lib/Callable_info.ml	/^let can_throw_gerror =$/;"	v
+can_throw_gerror	lib/Callable_info.mli	/^val can_throw_gerror:$/;"	p
+canvas	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+canvas	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+caption	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+caption	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+carray_of_strings	lib/Conversions.ml	/^let carray_of_strings : carray_of_strings typ = ptr (ptr char)$/;"	v
+carray_of_strings	lib/Conversions.ml	/^type carray_of_strings = char ptr ptr$/;"	t
+carray_of_strings_to_list	lib/Conversions.ml	/^let carray_of_strings_to_list : char ptr ptr -> string list =$/;"	v
+cast_from_baseinfo	lib/Arg_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Arg_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Callable_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Callable_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Constant_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Constant_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Enum_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Enum_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Field_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Field_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Function_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Function_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Interface_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Interface_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Object_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Object_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Property_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Property_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Registered_type_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Registered_type_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Signal_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Signal_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Struct_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Type_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Type_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Union_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Union_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/VFunc_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/VFunc_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_baseinfo	lib/Value_info.ml	/^let cast_from_baseinfo info =$/;"	f
+cast_from_baseinfo	lib/Value_info.mli	/^val cast_from_baseinfo:$/;"	p
+cast_from_callableinfo	lib/Function_info.ml	/^let cast_from_callableinfo info =$/;"	f
+cast_from_callableinfo	lib/Function_info.mli	/^val cast_from_callableinfo:$/;"	p
+cast_from_callableinfo	lib/Signal_info.ml	/^let cast_from_callableinfo info =$/;"	f
+cast_from_callableinfo	lib/Signal_info.mli	/^val cast_from_callableinfo:$/;"	p
+cast_from_callableinfo	lib/VFunc_info.ml	/^let cast_from_callableinfo info =$/;"	f
+cast_from_callableinfo	lib/VFunc_info.mli	/^val cast_from_callableinfo:$/;"	p
+cast_from_registeredtypeinfo	lib/Enum_info.ml	/^let cast_from_registeredtypeinfo info =$/;"	f
+cast_from_registeredtypeinfo	lib/Enum_info.mli	/^val cast_from_registeredtypeinfo:$/;"	p
+cast_from_registeredtypeinfo	lib/Interface_info.ml	/^let cast_from_registeredtypeinfo info =$/;"	f
+cast_from_registeredtypeinfo	lib/Interface_info.mli	/^val cast_from_registeredtypeinfo:$/;"	p
+cast_from_registeredtypeinfo	lib/Object_info.mli	/^val cast_from_registeredtypeinfo:$/;"	p
+cast_from_registeredtypeinfo	lib/Struct_info.ml	/^let cast_from_registeredtypeinfo info =$/;"	f
+cast_from_registeredtypeinfo	lib/Struct_info.mli	/^val cast_from_registeredtypeinfo:$/;"	p
+cast_from_registeredtypeinfo	lib/Union_info.ml	/^let cast_from_registeredtypeinfo info =$/;"	f
+cast_from_registeredtypeinfo	lib/Union_info.mli	/^val cast_from_registeredtypeinfo:$/;"	p
+cast_to_baseinfo	lib/Arg_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Arg_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Callable_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Callable_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Constant_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Constant_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Enum_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Enum_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Field_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Field_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Function_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Function_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Interface_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Interface_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Object_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Object_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Property_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Property_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Registered_type_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Registered_type_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Signal_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Signal_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Struct_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Type_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Type_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Union_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Union_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/VFunc_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/VFunc_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_baseinfo	lib/Value_info.ml	/^let cast_to_baseinfo info =$/;"	f
+cast_to_baseinfo	lib/Value_info.mli	/^val cast_to_baseinfo:$/;"	p
+cast_to_callableinfo	lib/Function_info.ml	/^let cast_to_callableinfo info =$/;"	f
+cast_to_callableinfo	lib/Function_info.mli	/^val cast_to_callableinfo:$/;"	p
+cast_to_callableinfo	lib/Signal_info.ml	/^let cast_to_callableinfo info =$/;"	f
+cast_to_callableinfo	lib/Signal_info.mli	/^val cast_to_callableinfo:$/;"	p
+cast_to_callableinfo	lib/VFunc_info.ml	/^let cast_to_callableinfo info =$/;"	f
+cast_to_callableinfo	lib/VFunc_info.mli	/^val cast_to_callableinfo:$/;"	p
+cast_to_registeredtypeinfo	lib/Enum_info.ml	/^let cast_to_registeredtypeinfo info =$/;"	f
+cast_to_registeredtypeinfo	lib/Enum_info.mli	/^val cast_to_registeredtypeinfo:$/;"	p
+cast_to_registeredtypeinfo	lib/Interface_info.ml	/^let cast_to_registeredtypeinfo info =$/;"	f
+cast_to_registeredtypeinfo	lib/Interface_info.mli	/^val cast_to_registeredtypeinfo:$/;"	p
+cast_to_registeredtypeinfo	lib/Object_info.mli	/^val cast_to_registeredtypeinfo:$/;"	p
+cast_to_registeredtypeinfo	lib/Struct_info.ml	/^let cast_to_registeredtypeinfo info =$/;"	f
+cast_to_registeredtypeinfo	lib/Struct_info.mli	/^val cast_to_registeredtypeinfo:$/;"	p
+cast_to_registeredtypeinfo	lib/Union_info.ml	/^let cast_to_registeredtypeinfo info =$/;"	f
+cast_to_registeredtypeinfo	lib/Union_info.mli	/^val cast_to_registeredtypeinfo:$/;"	p
+center	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+center	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+check_file_and_content	tests/Test_utils.ml	/^let check_file_and_content name content =$/;"	f
+cite	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+cite	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+code	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+code	docs/odoc.css	/^tt, code, pre$/;"	s
+code	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+code	odoc.css	/^tt, code, pre$/;"	s
+const_name	tests/Test_constant_info.ml	/^let const_name = "SIGNAL_FLAGS_MASK"$/;"	v
+constant_test	tests/Test_constant_info.ml	/^let constant_test fn =$/;"	f
+constantinfo	lib/Constant_info.ml	/^let constantinfo: t structure typ = structure "Constant_info"$/;"	v
+constantinfo	lib/Constant_info.mli	/^val constantinfo : t structure typ$/;"	p
+coverage	Makefile	/^coverage :$/;"	t
+dd	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+dd	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+del	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+del	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+details	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+details	docs/odoc.css	/^details$/;"	s
+details	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+details	odoc.css	/^details$/;"	s
+details[open]	docs/odoc.css	/^details[open] { border-color: #AAA; }$/;"	s
+details[open]	odoc.css	/^details[open] { border-color: #AAA; }$/;"	s
+dfn	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+dfn	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+direction	lib/Arg_info.ml	/^type direction =$/;"	t
+direction	lib/Arg_info.mli	/^type direction =$/;"	t
+div	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+div	docs/odoc.css	/^p, div, img { margin-top: 1.25rem; }$/;"	s
+div	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+div	odoc.css	/^p, div, img { margin-top: 1.25rem; }$/;"	s
+div.def	docs/odoc.css	/^div.def { margin-top: 0rem; text-indent: -2ex; padding-left: 2ex; }$/;"	c
+div.def	odoc.css	/^div.def { margin-top: 0rem; text-indent: -2ex; padding-left: 2ex; }$/;"	c
+div.def + div.doc	docs/odoc.css	/^div.def + div.doc { margin-left: 1ex; margin-top: 0.15625rem }$/;"	c
+div.def + div.doc	odoc.css	/^div.def + div.doc { margin-left: 1ex; margin-top: 0.15625rem }$/;"	c
+div.def table	docs/odoc.css	/^div.def table { text-indent: 0em; padding:0; margin-left: -2ex; }$/;"	s
+div.def table	odoc.css	/^div.def table { text-indent: 0em; padding:0; margin-left: -2ex; }$/;"	s
+div.doc > *:first-child	docs/odoc.css	/^div.doc > *:first-child { margin-top: 0rem; }$/;"	s
+div.doc > *:first-child	odoc.css	/^div.doc > *:first-child { margin-top: 0rem; }$/;"	s
+dl	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+dl	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+documentation	Makefile	/^documentation :$/;"	t
+dt	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+dt	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+em	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+em	docs/odoc.css	/^em { font-style: italic; }$/;"	s
+em	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+em	odoc.css	/^em { font-style: italic; }$/;"	s
+embed	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+embed	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+enum_name	tests/Test_enum_info.ml	/^let enum_name = "ResourceError"$/;"	v
+enum_test	tests/Test_enum_info.ml	/^let enum_test fn =$/;"	f
+enum_test	tests/Test_registered_type_info.ml	/^let enum_test fn =$/;"	f
+enumerate_versions	lib/Repository.ml	/^let enumerate_versions ?repository namespace =$/;"	v
+enumerate_versions	lib/Repository.mli	/^val enumerate_versions:$/;"	p
+enuminfo	lib/Enum_info.ml	/^let enuminfo : t structure typ = structure "Union_info"$/;"	v
+enuminfo	lib/Enum_info.mli	/^val enuminfo : t structure typ$/;"	p
+equal	lib/Base_info.ml	/^let equal =$/;"	v
+equal	lib/Base_info.mli	/^val equal:$/;"	p
+f_message	lib/Repository.ml	/^let f_message = field gerror "message" (string)$/;"	v
+field_test	tests/Test_field_info.ml	/^let field_test fn =$/;"	f
+fieldinfo	lib/Field_info.ml	/^let fieldinfo : t structure typ = structure "Field_info"$/;"	v
+fieldinfo	lib/Field_info.mli	/^val fieldinfo : t structure typ$/;"	p
+fieldset	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+fieldset	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+figcaption	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+figcaption	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+figure	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+figure	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+file_content_to_string	tests/Test_utils.ml	/^let file_content_to_string in_ch =$/;"	f
+find_by_gtype	lib/Repository.ml	/^let find_by_gtype ?repository gtyp =$/;"	v
+find_by_gtype	lib/Repository.mli	/^val find_by_gtype:$/;"	p	type:gtype
+find_by_name	lib/Repository.ml	/^let find_by_name ?repository namespace name =$/;"	v
+find_by_name	lib/Repository.mli	/^val find_by_name:$/;"	p
+find_method	lib/Interface_info.ml	/^let find_method info name =$/;"	f
+find_method	lib/Interface_info.mli	/^val find_method:$/;"	p
+find_method	lib/Object_info.ml	/^let find_method info name =$/;"	f
+find_method	lib/Object_info.mli	/^val find_method:$/;"	p
+find_method	lib/Struct_info.ml	/^let find_method info name =$/;"	f
+find_method	lib/Struct_info.mli	/^val find_method:$/;"	p
+find_method	lib/Union_info.ml	/^let find_method info name =$/;"	f
+find_method	lib/Union_info.mli	/^val find_method:$/;"	p
+find_method_using_interfaces	lib/Object_info.ml	/^let find_method_using_interfaces info name =$/;"	f
+find_method_using_interfaces	lib/Object_info.mli	/^val find_method_using_interfaces:$/;"	p
+find_signal	lib/Interface_info.ml	/^let find_signal info name =$/;"	f
+find_signal	lib/Interface_info.mli	/^val find_signal:$/;"	p
+find_signal	lib/Object_info.ml	/^let find_signal info name =$/;"	f
+find_signal	lib/Object_info.mli	/^val find_signal:$/;"	p
+find_vfunc	lib/Interface_info.ml	/^let find_vfunc info name =$/;"	f
+find_vfunc	lib/Interface_info.mli	/^val find_vfunc:$/;"	p
+find_vfunc	lib/Object_info.ml	/^let find_vfunc info name =$/;"	f
+find_vfunc	lib/Object_info.mli	/^val find_vfunc:$/;"	p
+find_vfunc_using_interfaces	lib/Object_info.mli	/^val find_vfunc_using_interfaces:$/;"	p
+flags	lib/Field_info.ml	/^type flags =$/;"	t
+flags	lib/Field_info.mli	/^type flags =$/;"	t
+flags	lib/Function_info.ml	/^type flags =$/;"	t
+flags	lib/Function_info.mli	/^type flags =$/;"	t
+flags	lib/Signal_info.ml	/^type flags =$/;"	t
+flags	lib/Signal_info.mli	/^type flags =$/;"	t
+flags	lib/VFunc_info.ml	/^type flags =$/;"	t
+flags	lib/VFunc_info.mli	/^type flags =$/;"	t
+fn_name	tests/Test_type_info.ml	/^let fn_name = "signal_list_ids"$/;"	v
+footer	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+footer	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+form	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+form	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+from_baseinfo	lib/Arg_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Arg_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Callable_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Callable_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Constant_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Constant_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Enum_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Enum_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Field_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Field_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Function_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Function_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Interface_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Interface_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Object_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Object_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Property_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Property_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Registered_type_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Registered_type_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Signal_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Signal_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Struct_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Struct_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Type_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Type_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Union_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Union_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/VFunc_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/VFunc_info.mli	/^val from_baseinfo:$/;"	p
+from_baseinfo	lib/Value_info.ml	/^let from_baseinfo info =$/;"	f
+from_baseinfo	lib/Value_info.mli	/^val from_baseinfo:$/;"	p
+from_callableinfo	lib/Function_info.ml	/^let from_callableinfo info =$/;"	f
+from_callableinfo	lib/Function_info.mli	/^val from_callableinfo:$/;"	p
+from_callableinfo	lib/Signal_info.ml	/^let from_callableinfo info =$/;"	f
+from_callableinfo	lib/Signal_info.mli	/^val from_callableinfo:$/;"	p
+from_callableinfo	lib/VFunc_info.ml	/^let from_callableinfo info =$/;"	f
+from_callableinfo	lib/VFunc_info.mli	/^val from_callableinfo:$/;"	p
+from_registeredtypeinfo	lib/Enum_info.ml	/^let from_registeredtypeinfo info =$/;"	f
+from_registeredtypeinfo	lib/Enum_info.mli	/^val from_registeredtypeinfo:$/;"	p
+from_registeredtypeinfo	lib/Interface_info.ml	/^let from_registeredtypeinfo info =$/;"	f
+from_registeredtypeinfo	lib/Interface_info.mli	/^val from_registeredtypeinfo:$/;"	p
+from_registeredtypeinfo	lib/Object_info.mli	/^val from_registeredtypeinfo:$/;"	p
+from_registeredtypeinfo	lib/Struct_info.ml	/^let from_registeredtypeinfo info =$/;"	f
+from_registeredtypeinfo	lib/Struct_info.mli	/^val from_registeredtypeinfo:$/;"	p
+from_registeredtypeinfo	lib/Union_info.ml	/^let from_registeredtypeinfo info =$/;"	f
+from_registeredtypeinfo	lib/Union_info.mli	/^val from_registeredtypeinfo:$/;"	p
+func_name	tests/Test_arg_info.ml	/^let func_name = "signal_name"$/;"	v
+func_name	tests/Test_callable_info.ml	/^let func_name = "signal_name"$/;"	v
+functioninfo	lib/Function_info.ml	/^let functioninfo : t structure typ = structure "Function_info"$/;"	v
+functioninfo	lib/Function_info.mli	/^val functioninfo : t structure typ$/;"	p
+g_free	lib/Conversions.ml	/^let g_free =$/;"	v
+g_free_t	lib/Conversions.ml	/^let g_free_t = ptr void @-> returning void$/;"	v
+g_list_data	lib/Conversions.ml	/^let g_list_data l_ptr =$/;"	f
+g_list_next	lib/Conversions.ml	/^let g_list_next l_ptr =$/;"	f
+g_slist_data	lib/Conversions.ml	/^let g_slist_data l_ptr =$/;"	f
+g_slist_next	lib/Conversions.ml	/^let g_slist_next l_ptr =$/;"	f
+gerror	lib/Repository.ml	/^let gerror : gerror_t structure typ = structure "GError"$/;"	v
+gerror_t	lib/Repository.ml	/^type gerror_t$/;"	t
+get_abstract	lib/Object_info.ml	/^let get_abstract =$/;"	v
+get_abstract	lib/Object_info.mli	/^val get_abstract:$/;"	p
+get_alignment	lib/Struct_info.ml	/^let get_alignment =$/;"	v
+get_alignment	lib/Struct_info.mli	/^val get_alignment:$/;"	p
+get_alignment	lib/Union_info.ml	/^let get_alignment =$/;"	v
+get_alignment	lib/Union_info.mli	/^val get_alignment:$/;"	p
+get_arg	lib/Callable_info.ml	/^let get_arg info n =$/;"	f
+get_arg	lib/Callable_info.mli	/^val get_arg:$/;"	p
+get_arg_info	tests/Test_arg_info.ml	/^let get_arg_info () =$/;"	f
+get_array_fixed_size	lib/Type_info.ml	/^let get_array_fixed_size =$/;"	v
+get_array_fixed_size	lib/Type_info.mli	/^val get_array_fixed_size:$/;"	p
+get_array_length	lib/Type_info.ml	/^let get_array_length =$/;"	v
+get_array_length	lib/Type_info.mli	/^val get_array_length:$/;"	p
+get_array_type	lib/Type_info.ml	/^let get_array_type info =$/;"	f
+get_array_type	lib/Type_info.mli	/^val get_array_type:$/;"	p
+get_c_prefix	lib/Repository.ml	/^let get_c_prefix ?repository namespace =$/;"	v
+get_c_prefix	lib/Repository.mli	/^val get_c_prefix:$/;"	p
+get_callable_info	tests/Test_callable_info.ml	/^let get_callable_info () =$/;"	f
+get_caller_owns	lib/Callable_info.ml	/^let get_caller_owns info =$/;"	f
+get_caller_owns	lib/Callable_info.mli	/^val get_caller_owns:$/;"	p
+get_class_closure	lib/Signal_info.ml	/^let get_class_closure info =$/;"	f
+get_class_closure	lib/Signal_info.mli	/^val get_class_closure:$/;"	p
+get_class_struct	lib/Object_info.ml	/^let get_class_struct info =$/;"	f
+get_class_struct	lib/Object_info.mli	/^val get_class_struct:$/;"	p
+get_closure	lib/Arg_info.ml	/^let get_closure =$/;"	v
+get_closure	lib/Arg_info.mli	/^val get_closure:$/;"	p
+get_constant	lib/Interface_info.ml	/^let get_constant info n =$/;"	f
+get_constant	lib/Interface_info.mli	/^val get_constant:$/;"	p
+get_constant	lib/Object_info.ml	/^let get_constant info n =$/;"	f
+get_constant	lib/Object_info.mli	/^val get_constant:$/;"	p
+get_constant_info	tests/Test_constant_info.ml	/^let get_constant_info () =$/;"	f
+get_container	lib/Base_info.ml	/^let get_container info =$/;"	f
+get_container	lib/Base_info.mli	/^val get_container:$/;"	p
+get_default	lib/Repository.ml	/^let get_default =$/;"	v
+get_default	lib/Repository.mli	/^val get_default:$/;"	p
+get_dependencies	lib/Repository.ml	/^let get_dependencies ?repository namespace =$/;"	v
+get_dependencies	lib/Repository.mli	/^val get_dependencies:$/;"	p
+get_destroy	lib/Arg_info.ml	/^let get_destroy =$/;"	v
+get_destroy	lib/Arg_info.mli	/^val get_destroy:$/;"	p
+get_direction	lib/Arg_info.ml	/^let get_direction info =$/;"	f
+get_direction	lib/Arg_info.mli	/^val get_direction:$/;"	p
+get_discriminator	lib/Union_info.ml	/^let get_discriminator info n =$/;"	f
+get_discriminator	lib/Union_info.mli	/^val get_discriminator:$/;"	p
+get_discriminator_offset	lib/Union_info.ml	/^let get_discriminator_offset =$/;"	v
+get_discriminator_offset	lib/Union_info.mli	/^val get_discriminator_offset:$/;"	p
+get_discriminator_type	lib/Union_info.ml	/^let get_discriminator_type info =$/;"	f
+get_discriminator_type	lib/Union_info.mli	/^val get_discriminator_type:$/;"	p
+get_enum_info	tests/Test_enum_info.ml	/^let get_enum_info () =$/;"	f
+get_enum_info	tests/Test_registered_type_info.ml	/^let get_enum_info namespace enum_name =$/;"	f
+get_error_domain	lib/Enum_info.ml	/^let get_error_domain =$/;"	v
+get_error_domain	lib/Enum_info.mli	/^val get_error_domain:$/;"	p
+get_field	lib/Object_info.ml	/^let get_field info n =$/;"	f
+get_field	lib/Object_info.mli	/^val get_field:$/;"	p
+get_field	lib/Struct_info.ml	/^let get_field info n =$/;"	f
+get_field	lib/Struct_info.mli	/^val get_field:$/;"	p
+get_field	lib/Union_info.ml	/^let get_field info n =$/;"	f
+get_field	lib/Union_info.mli	/^val get_field:$/;"	p
+get_flags	lib/Field_info.ml	/^let get_flags info =$/;"	f
+get_flags	lib/Field_info.mli	/^val get_flags:$/;"	p
+get_flags	lib/Function_info.ml	/^let get_flags info =$/;"	f
+get_flags	lib/Function_info.mli	/^val get_flags:$/;"	p
+get_flags	lib/Property_info.ml	/^let get_flags info =$/;"	f
+get_flags	lib/Property_info.mli	/^val get_flags:$/;"	p
+get_flags	lib/Signal_info.ml	/^let get_flags info =$/;"	f
+get_flags	lib/Signal_info.mli	/^val get_flags:$/;"	p
+get_flags	lib/VFunc_info.ml	/^let get_flags info =$/;"	f
+get_flags	lib/VFunc_info.mli	/^val get_flags:$/;"	p
+get_function_info	tests/Test_function_info.ml	/^let get_function_info () =$/;"	f
+get_fundamental	lib/Object_info.ml	/^let get_fundamental =$/;"	v
+get_fundamental	lib/Object_info.mli	/^val get_fundamental:$/;"	p
+get_g_type	lib/Registered_type_info.ml	/^let get_g_type info =$/;"	f
+get_g_type	lib/Registered_type_info.mli	/^val get_g_type:$/;"	p
+get_get_value_function	lib/Object_info.ml	/^let get_get_value_function =$/;"	v
+get_get_value_function	lib/Object_info.mli	/^val get_get_value_function:$/;"	p
+get_iface_struct	lib/Interface_info.ml	/^let get_iface_struct info =$/;"	f
+get_iface_struct	lib/Interface_info.mli	/^val get_iface_struct:$/;"	p
+get_info	lib/Repository.ml	/^let get_info ?repository namespace n=$/;"	v
+get_info	lib/Repository.mli	/^val get_info:$/;"	p
+get_info_strings	samples/gi_baseinfo_get_type.ml	/^let get_info_strings info n=$/;"	f
+get_interface	lib/Object_info.ml	/^let get_interface info n =$/;"	f
+get_interface	lib/Object_info.mli	/^val get_interface:$/;"	p
+get_interface	lib/Type_info.ml	/^let get_interface info =$/;"	f
+get_interface	lib/Type_info.mli	/^val get_interface:$/;"	p
+get_interface_info	tests/Test_interface_info.ml	/^let get_interface_info interface_name =$/;"	f
+get_loaded_namespaces	lib/Repository.ml	/^let get_loaded_namespaces ?repository () =$/;"	v
+get_loaded_namespaces	lib/Repository.mli	/^val get_loaded_namespaces:$/;"	p
+get_method	lib/Enum_info.ml	/^let get_method info n =$/;"	f
+get_method	lib/Enum_info.mli	/^val get_method:$/;"	p
+get_method	lib/Interface_info.ml	/^let get_method info n =$/;"	f
+get_method	lib/Interface_info.mli	/^val get_method:$/;"	p
+get_method	lib/Object_info.ml	/^let get_method info n =$/;"	f
+get_method	lib/Object_info.mli	/^val get_method:$/;"	p
+get_method	lib/Struct_info.ml	/^let get_method info n =$/;"	f
+get_method	lib/Struct_info.mli	/^val get_method:$/;"	p
+get_method	lib/Union_info.ml	/^let get_method info n =$/;"	f
+get_method	lib/Union_info.mli	/^val get_method:$/;"	p
+get_n_args	lib/Callable_info.ml	/^let get_n_args =$/;"	v
+get_n_args	lib/Callable_info.mli	/^val get_n_args:$/;"	p
+get_n_constants	lib/Interface_info.ml	/^let get_n_constants =$/;"	v
+get_n_constants	lib/Interface_info.mli	/^val get_n_constants:$/;"	p
+get_n_constants	lib/Object_info.ml	/^let get_n_constants =$/;"	v
+get_n_constants	lib/Object_info.mli	/^val get_n_constants:$/;"	p
+get_n_fields	lib/Object_info.ml	/^let get_n_fields =$/;"	v
+get_n_fields	lib/Object_info.mli	/^val get_n_fields:$/;"	p
+get_n_fields	lib/Struct_info.ml	/^let get_n_fields =$/;"	v
+get_n_fields	lib/Struct_info.mli	/^val get_n_fields:$/;"	p
+get_n_fields	lib/Union_info.ml	/^let get_n_fields =$/;"	v
+get_n_fields	lib/Union_info.mli	/^val get_n_fields:$/;"	p
+get_n_infos	lib/Repository.ml	/^let get_n_infos ?repository namespace =$/;"	v
+get_n_infos	lib/Repository.mli	/^val get_n_infos:$/;"	p
+get_n_interfaces	lib/Object_info.ml	/^let get_n_interfaces =$/;"	v
+get_n_interfaces	lib/Object_info.mli	/^val get_n_interfaces:$/;"	p
+get_n_methods	lib/Enum_info.ml	/^let get_n_methods =$/;"	v
+get_n_methods	lib/Enum_info.mli	/^val get_n_methods:$/;"	p
+get_n_methods	lib/Interface_info.ml	/^let get_n_methods =$/;"	v
+get_n_methods	lib/Interface_info.mli	/^val get_n_methods:$/;"	p
+get_n_methods	lib/Object_info.ml	/^let get_n_methods =$/;"	v
+get_n_methods	lib/Object_info.mli	/^val get_n_methods:$/;"	p
+get_n_methods	lib/Struct_info.ml	/^let get_n_methods =$/;"	v
+get_n_methods	lib/Struct_info.mli	/^val get_n_methods:$/;"	p
+get_n_methods	lib/Union_info.ml	/^let get_n_methods =$/;"	v
+get_n_methods	lib/Union_info.mli	/^val get_n_methods:$/;"	p
+get_n_prerequisites	lib/Interface_info.ml	/^let get_n_prerequisites =$/;"	v
+get_n_prerequisites	lib/Interface_info.mli	/^val get_n_prerequisites:$/;"	p
+get_n_properties	lib/Interface_info.ml	/^let get_n_properties =$/;"	v
+get_n_properties	lib/Interface_info.mli	/^val get_n_properties:$/;"	p
+get_n_properties	lib/Object_info.ml	/^let get_n_properties =$/;"	v
+get_n_properties	lib/Object_info.mli	/^val get_n_properties:$/;"	p
+get_n_signals	lib/Interface_info.ml	/^let get_n_signals =$/;"	v
+get_n_signals	lib/Interface_info.mli	/^val get_n_signals:$/;"	p
+get_n_signals	lib/Object_info.ml	/^let get_n_signals =$/;"	v
+get_n_signals	lib/Object_info.mli	/^val get_n_signals:$/;"	p
+get_n_values	lib/Enum_info.ml	/^let get_n_values =$/;"	v
+get_n_values	lib/Enum_info.mli	/^val get_n_values:$/;"	p
+get_n_vfuncs	lib/Interface_info.ml	/^let get_n_vfuncs =$/;"	v
+get_n_vfuncs	lib/Interface_info.mli	/^val get_n_vfuncs:$/;"	p
+get_n_vfuncs	lib/Object_info.ml	/^let get_n_vfuncs =$/;"	v
+get_n_vfuncs	lib/Object_info.mli	/^val get_n_vfuncs:$/;"	p
+get_name	lib/Base_info.ml	/^let get_name =$/;"	v
+get_name	lib/Base_info.mli	/^val get_name:$/;"	p
+get_namespace	lib/Base_info.ml	/^let get_namespace =$/;"	v
+get_namespace	lib/Base_info.mli	/^val get_namespace:$/;"	p
+get_offset	lib/Field_info.ml	/^let get_offset =$/;"	v
+get_offset	lib/Field_info.mli	/^val get_offset:$/;"	p
+get_offset	lib/VFunc_info.ml	/^let get_offset =$/;"	v
+get_offset	lib/VFunc_info.mli	/^val get_offset:$/;"	p
+get_ownership_transfer	lib/Arg_info.ml	/^let get_ownership_transfer info =$/;"	f
+get_ownership_transfer	lib/Arg_info.mli	/^val get_ownership_transfer:$/;"	p
+get_ownership_transfer	lib/Property_info.ml	/^let get_ownership_transfer info =$/;"	f
+get_ownership_transfer	lib/Property_info.mli	/^val get_ownership_transfer:$/;"	p
+get_param_type	lib/Type_info.ml	/^let get_param_type info =$/;"	f
+get_param_type	lib/Type_info.mli	/^val get_param_type:$/;"	p
+get_parent	lib/Object_info.ml	/^let get_parent info =$/;"	f
+get_parent	lib/Object_info.mli	/^val get_parent:$/;"	p
+get_prerequisite	lib/Interface_info.ml	/^let get_prerequisite info n =$/;"	f
+get_prerequisite	lib/Interface_info.mli	/^val get_prerequisite:$/;"	p
+get_property	lib/Function_info.ml	/^let get_property info =$/;"	f
+get_property	lib/Function_info.mli	/^val get_property:$/;"	p
+get_property	lib/Interface_info.ml	/^let get_property info n =$/;"	f
+get_property	lib/Interface_info.mli	/^val get_property:$/;"	p
+get_property	lib/Object_info.ml	/^let get_property info n =$/;"	f
+get_property	lib/Object_info.mli	/^val get_property:$/;"	p
+get_property_info	tests/Test_property_info.ml	/^let get_property_info () =$/;"	f
+get_ref_function	lib/Object_info.ml	/^let get_ref_function =$/;"	v
+get_ref_function	lib/Object_info.mli	/^val get_ref_function:$/;"	p
+get_return_attribute	lib/Callable_info.ml	/^let get_return_attribute =$/;"	v
+get_return_attribute	lib/Callable_info.mli	/^val get_return_attribute:$/;"	p
+get_return_type	lib/Callable_info.ml	/^let get_return_type info =$/;"	f
+get_return_type	lib/Callable_info.mli	/^val get_return_type:$/;"	p
+get_scope	lib/Arg_info.ml	/^let get_scope info =$/;"	f
+get_scope	lib/Arg_info.mli	/^val get_scope:$/;"	p
+get_search_path	lib/Repository.ml	/^let get_search_path () =$/;"	f
+get_search_path	lib/Repository.mli	/^val get_search_path:$/;"	p
+get_set_value_function	lib/Object_info.ml	/^let get_set_value_function =$/;"	v
+get_set_value_function	lib/Object_info.mli	/^val get_set_value_function:$/;"	p
+get_shared_library	lib/Repository.ml	/^let get_shared_library ?repository namespace =$/;"	v
+get_shared_library	lib/Repository.mli	/^val get_shared_library:$/;"	p
+get_signal	lib/Interface_info.ml	/^let get_signal info n =$/;"	f
+get_signal	lib/Interface_info.mli	/^val get_signal:$/;"	p
+get_signal	lib/Object_info.ml	/^let get_signal info n =$/;"	f
+get_signal	lib/Object_info.mli	/^val get_signal:$/;"	p
+get_signal	lib/VFunc_info.ml	/^let get_signal info =$/;"	f
+get_signal	lib/VFunc_info.mli	/^val get_signal:$/;"	p
+get_signal_info	tests/Test_signal_info.ml	/^let get_signal_info () =$/;"	f
+get_size	lib/Field_info.ml	/^let get_size =$/;"	v
+get_size	lib/Field_info.mli	/^val get_size:$/;"	p
+get_size	lib/Struct_info.ml	/^let get_size =$/;"	v
+get_size	lib/Struct_info.mli	/^val get_size:$/;"	p
+get_size	lib/Union_info.ml	/^let get_size =$/;"	v
+get_size	lib/Union_info.mli	/^val get_size:$/;"	p
+get_storage_type	lib/Enum_info.ml	/^let get_storage_type info =$/;"	f
+get_storage_type	lib/Enum_info.mli	/^val get_storage_type:$/;"	p
+get_symbol	lib/Function_info.ml	/^let get_symbol =$/;"	v
+get_symbol	lib/Function_info.mli	/^val get_symbol:$/;"	p
+get_tag	lib/Type_info.ml	/^let get_tag info =$/;"	f
+get_tag	lib/Type_info.mli	/^val get_tag:$/;"	p
+get_type	lib/Arg_info.ml	/^let get_type info =$/;"	f
+get_type	lib/Arg_info.mli	/^val get_type:$/;"	p
+get_type	lib/Base_info.ml	/^let get_type info =$/;"	f
+get_type	lib/Base_info.mli	/^val get_type:$/;"	p
+get_type	lib/Constant_info.ml	/^let get_type info =$/;"	f
+get_type	lib/Constant_info.mli	/^val get_type:$/;"	p
+get_type	lib/Field_info.ml	/^let get_type info =$/;"	f
+get_type	lib/Field_info.mli	/^val get_type:$/;"	p
+get_type	lib/Property_info.ml	/^let get_type info =$/;"	f
+get_type	lib/Property_info.mli	/^val get_type:$/;"	p
+get_type_info	tests/Test_type_info.ml	/^let get_type_info () =$/;"	f
+get_type_init	lib/Object_info.ml	/^let get_type_init =$/;"	v
+get_type_init	lib/Object_info.mli	/^val get_type_init:$/;"	p
+get_type_init	lib/Registered_type_info.ml	/^let get_type_init =$/;"	v
+get_type_init	lib/Registered_type_info.mli	/^val get_type_init:$/;"	p
+get_type_name	lib/Object_info.ml	/^let get_type_name =$/;"	v
+get_type_name	lib/Object_info.mli	/^val get_type_name:$/;"	p
+get_type_name	lib/Registered_type_info.ml	/^let get_type_name =$/;"	v
+get_type_name	lib/Registered_type_info.mli	/^val get_type_name:$/;"	p
+get_typelib_path	lib/Repository.ml	/^let get_typelib_path ?repository namespace =$/;"	v
+get_typelib_path	lib/Repository.mli	/^val get_typelib_path:$/;"	p
+get_union_info	tests/Test_field_info.ml	/^let get_union_info () =$/;"	f
+get_unref_function	lib/Object_info.ml	/^let get_unref_function =$/;"	v
+get_unref_function	lib/Object_info.mli	/^val get_unref_function:$/;"	p
+get_value	lib/Constant_info.ml	/^let get_value info =$/;"	f
+get_value	lib/Constant_info.mli	/^val get_value:$/;"	p
+get_value	lib/Enum_info.ml	/^let get_value info n =$/;"	f
+get_value	lib/Enum_info.mli	/^val get_value:$/;"	p
+get_value	lib/Value_info.ml	/^let get_value =$/;"	v
+get_value	lib/Value_info.mli	/^val get_value:$/;"	p
+get_version	lib/Repository.ml	/^let get_version ?repository namespace =$/;"	v
+get_version	lib/Repository.mli	/^val get_version:$/;"	p
+get_vfunc	lib/Function_info.ml	/^let get_vfunc info =$/;"	f
+get_vfunc	lib/Function_info.mli	/^val get_vfunc:$/;"	p
+get_vfunc	lib/Interface_info.ml	/^let get_vfunc info n =$/;"	f
+get_vfunc	lib/Interface_info.mli	/^val get_vfunc:$/;"	p
+get_vfunc	lib/Object_info.ml	/^let get_vfunc info n =$/;"	f
+get_vfunc	lib/Object_info.mli	/^val get_vfunc:$/;"	p
+get_vfunc_info	tests/Test_vfunc_info.ml	/^let get_vfunc_info () =$/;"	f
+glist	lib/Conversions.ml	/^let glist : glist structure typ = structure "GList"$/;"	v
+glist	lib/Conversions.ml	/^type glist$/;"	t
+glist_data	lib/Conversions.ml	/^let glist_data  = field glist "data" (ptr void)$/;"	v
+glist_free_full	lib/Conversions.ml	/^let glist_free_full =$/;"	v
+glist_next	lib/Conversions.ml	/^let glist_next  = field glist "next" (ptr_opt glist)$/;"	v
+glist_of_strings_to_list	lib/Conversions.ml	/^let glist_of_strings_to_list glist_ptr =$/;"	f
+glist_prev	lib/Conversions.ml	/^let glist_prev  = field glist "prev" (ptr_opt glist)$/;"	v
+gobject-introspection OCaml package	README.md	/^# gobject-introspection OCaml package$/;"	c
+gslist	lib/Conversions.ml	/^let gslist : gslist structure typ = structure "GSList"$/;"	v
+gslist	lib/Conversions.ml	/^type gslist$/;"	t
+gslist_data	lib/Conversions.ml	/^let gslist_data  = field gslist "data" (ptr void)$/;"	v
+gslist_next	lib/Conversions.ml	/^let gslist_next  = field gslist "next" (ptr_opt gslist)$/;"	v
+gslist_of_strings_to_list	lib/Conversions.ml	/^let gslist_of_strings_to_list gslist_ptr =$/;"	f
+gtype	lib/Repository.ml	/^let gtype : gtype typ = int64_t$/;"	v
+gtype	lib/Repository.ml	/^type gtype = int64$/;"	t
+gtype	lib/Repository.mli	/^type gtype = int64$/;"	t
+gtype	lib/Repository.mli	/^val gtype: int64 typ$/;"	p	type:gtype
+h1	docs/odoc.css	/^h1, h2, .h7$/;"	s
+h1	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h1	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h1	odoc.css	/^h1, h2, .h7$/;"	s
+h1	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h1	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h1 + *	docs/odoc.css	/^h1 + *, h2 + *, .h7 + * { margin-top: 0.625rem; }$/;"	s
+h1 + *	odoc.css	/^h1 + *, h2 + *, .h7 + * { margin-top: 0.625rem; }$/;"	s
+h1 + .modules	docs/odoc.css	/^h1 + .modules, h1 + .sel { margin-top: 0.625rem }$/;"	c
+h1 + .modules	odoc.css	/^h1 + .modules, h1 + .sel { margin-top: 0.625rem }$/;"	c
+h1 + .sel	docs/odoc.css	/^h1 + .modules, h1 + .sel { margin-top: 0.625rem }$/;"	c
+h1 + .sel	odoc.css	/^h1 + .modules, h1 + .sel { margin-top: 0.625rem }$/;"	c
+h1 code	docs/odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h1 code	odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h1 tt	docs/odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h1 tt	odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h2	docs/odoc.css	/^h1, h2, .h7$/;"	s
+h2	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h2	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h2	odoc.css	/^h1, h2, .h7$/;"	s
+h2	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h2	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h2 + *	docs/odoc.css	/^h1 + *, h2 + *, .h7 + * { margin-top: 0.625rem; }$/;"	s
+h2 + *	odoc.css	/^h1 + *, h2 + *, .h7 + * { margin-top: 0.625rem; }$/;"	s
+h2 + h3	docs/odoc.css	/^h2 + h3, .h7 + .h8 { margin-top: 0.625rem; }$/;"	s
+h2 + h3	odoc.css	/^h2 + h3, .h7 + .h8 { margin-top: 0.625rem; }$/;"	s
+h2 code	docs/odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h2 code	odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h2 tt	docs/odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h2 tt	odoc.css	/^h1 tt, h1 code, h2 tt, h2 code, .h7 tt, .h7 code { font-size: 1.125rem }$/;"	s
+h3	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h3	docs/odoc.css	/^h3, .h8 { font-size: 1.125rem; }$/;"	s
+h3	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h3	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h3	odoc.css	/^h3, .h8 { font-size: 1.125rem; }$/;"	s
+h3	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h3 code	docs/odoc.css	/^h3 tt, h3 code { font-size: 1rem }$/;"	s
+h3 code	odoc.css	/^h3 tt, h3 code { font-size: 1rem }$/;"	s
+h3 tt	docs/odoc.css	/^h3 tt, h3 code { font-size: 1rem }$/;"	s
+h3 tt	odoc.css	/^h3 tt, h3 code { font-size: 1rem }$/;"	s
+h4	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h4	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h4	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h4	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h5	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h5	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h5	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h5	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h6	docs/odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h6	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+h6	odoc.css	/^h1, h2, h3, h4, h5, h6, .h7, .h8, .h9, .h10$/;"	s
+h6	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+header	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+header	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+hgroup	docs/odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+hgroup	odoc.css	/^article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,$/;"	s
+html	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+html	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+i	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+i	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+iframe	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+iframe	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+img	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+img	docs/odoc.css	/^p, div, img { margin-top: 1.25rem; }$/;"	s
+img	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+img	odoc.css	/^p, div, img { margin-top: 1.25rem; }$/;"	s
+implementor_addr	lib/Object_info.ml	/^  let implementor_addr = allocate_n (ptr objectinfo) ~count:1 in$/;"	v
+info	tests/Test_registered_type_info.ml	/^    | Base_info.Interface -> let info = Interface_info.from_baseinfo base_info$/;"	v
+info	tests/Test_registered_type_info.ml	/^    | Base_info.Object -> let info = Object_info.from_baseinfo base_info$/;"	v
+info	tests/Test_registered_type_info.ml	/^    | Base_info.Struct -> let info = Struct_info.from_baseinfo base_info$/;"	v
+info	tests/Test_registered_type_info.ml	/^    | Base_info.Union -> let info = Union_info.from_baseinfo base_info$/;"	v
+info_free_value	lib/Constant_info.ml	/^let info_free_value =$/;"	v
+info_name	tests/Test_base_info.ml	/^let info_name = "app_info_create_from_commandline"$/;"	v
+ins	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+ins	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+interface_name	tests/Test_interface_info.ml	/^let interface_name = "TlsServerConnection"$/;"	v
+interface_test	tests/Test_interface_info.ml	/^let interface_test fn =$/;"	f
+interface_test	tests/Test_registered_type_info.ml	/^let interface_test fn =$/;"	f
+interfaceinfo	lib/Interface_info.ml	/^let interfaceinfo : t structure typ = structure "Interface_info"$/;"	v
+interfaceinfo	lib/Interface_info.mli	/^val interfaceinfo : t structure typ$/;"	p
+is_caller_allocates	lib/Arg_info.ml	/^let is_caller_allocates =$/;"	v
+is_caller_allocates	lib/Arg_info.mli	/^val is_caller_allocates:$/;"	p
+is_deprecated	lib/Base_info.ml	/^let is_deprecated =$/;"	v
+is_deprecated	lib/Base_info.mli	/^val is_deprecated:$/;"	p
+is_discriminated	lib/Union_info.ml	/^let is_discriminated =$/;"	v
+is_discriminated	lib/Union_info.mli	/^val is_discriminated:$/;"	p
+is_foreign	lib/Struct_info.ml	/^let is_foreign =$/;"	v
+is_foreign	lib/Struct_info.mli	/^val is_foreign:$/;"	p
+is_gtype_struct	lib/Struct_info.ml	/^let is_gtype_struct =$/;"	v
+is_gtype_struct	lib/Struct_info.mli	/^val is_gtype_struct:$/;"	p
+is_method	lib/Callable_info.ml	/^let is_method =$/;"	v
+is_method	lib/Callable_info.mli	/^val is_method:$/;"	p
+is_optional	lib/Arg_info.ml	/^let is_optional =$/;"	v
+is_optional	lib/Arg_info.mli	/^val is_optional:$/;"	p
+is_pointer	lib/Type_info.ml	/^let is_pointer =$/;"	v
+is_pointer	lib/Type_info.mli	/^val is_pointer:$/;"	p
+is_return_value	lib/Arg_info.ml	/^let is_return_value =$/;"	v
+is_return_value	lib/Arg_info.mli	/^val is_return_value:$/;"	p
+is_skip	lib/Arg_info.ml	/^let is_skip =$/;"	v
+is_skip	lib/Arg_info.mli	/^val is_skip:$/;"	p
+is_travis	tests/Test_utils.ml	/^let is_travis = try$/;"	v
+is_zero_terminated	lib/Type_info.ml	/^let is_zero_terminated =$/;"	v
+is_zero_terminated	lib/Type_info.mli	/^val is_zero_terminated:$/;"	p
+kbd	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+kbd	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+label	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+label	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+legend	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+legend	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+li	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+li	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+li > *:first-child	docs/odoc.css	/^li > *:first-child { margin-top: 0 }$/;"	s
+li > *:first-child	odoc.css	/^li > *:first-child { margin-top: 0 }$/;"	s
+loop	lib/Conversions.ml	/^  let rec loop acc p =$/;"	f
+main	samples/c/gi_function_flags.c	/^int main (int argc, char **argv)$/;"	f	typeref:typename:int
+mark	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+mark	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+may_be_null	lib/Arg_info.ml	/^let may_be_null =$/;"	v
+may_be_null	lib/Arg_info.mli	/^val may_be_null:$/;"	p
+may_return_null	lib/Callable_info.ml	/^let may_return_null =$/;"	v
+may_return_null	lib/Callable_info.mli	/^val may_return_null:$/;"	p
+menu	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+menu	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+message	lib/Arg_info.ml	/^  | value -> let message = String.concat " " ["Arg_info get_direction value";$/;"	v
+message	lib/Arg_info.ml	/^  | value -> let message = String.concat " " ["Arg_info get_ownership_transfer value";$/;"	v
+message	lib/Arg_info.ml	/^  | value -> let message = String.concat " " ["Arg_info get_scope value";$/;"	v
+message	lib/Base_info.ml	/^  | value  -> let message = String.concat " " ["Base_info baseinfo_type value";$/;"	v
+message	lib/Types.ml	/^  | value  -> let message = String.concat " " ["Types array_type value";$/;"	v
+message	lib/Types.ml	/^  | value  -> let message = String.concat " " ["Types tag value";$/;"	v
+name	tests/Test_function_info.ml	/^let name = "signal_name"$/;"	v
+namespace	tests/Test_arg_info.ml	/^let namespace = "GObject"$/;"	v
+namespace	tests/Test_base_info.ml	/^let namespace = "Gio"$/;"	v
+namespace	tests/Test_callable_info.ml	/^let namespace = "GObject"$/;"	v
+namespace	tests/Test_constant_info.ml	/^let namespace = "GObject"$/;"	v
+namespace	tests/Test_enum_info.ml	/^let namespace = "Gio"$/;"	v
+namespace	tests/Test_field_info.ml	/^let namespace = "GLib"$/;"	v
+namespace	tests/Test_function_info.ml	/^let namespace = "GObject"$/;"	v
+namespace	tests/Test_interface_info.ml	/^let namespace = "Gio"$/;"	v
+namespace	tests/Test_object_info.ml	/^let namespace = "Gdk"$/;"	v
+namespace	tests/Test_object_info.ml	/^let namespace = "Gtk"$/;"	v
+namespace	tests/Test_property_info.ml	/^let namespace = "Gtk"$/;"	v
+namespace	tests/Test_repository.ml	/^let namespace = "Gio"$/;"	v
+namespace	tests/Test_repository_default.ml	/^let namespace = "Gio"$/;"	v
+namespace	tests/Test_signal_info.ml	/^let namespace = "Gtk"$/;"	v
+namespace	tests/Test_struct_info.ml	/^let namespace = "GObject"$/;"	v
+namespace	tests/Test_type_info.ml	/^let namespace = "GObject"$/;"	v
+namespace	tests/Test_union_info.ml	/^let namespace = "GLib"$/;"	v
+namespace	tests/Test_vfunc_info.ml	/^let namespace = "Gtk"$/;"	v
+nav	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+nav	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+object	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+object	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+object_name	tests/Test_object_info.ml	/^let object_name = "Display"$/;"	v
+object_name	tests/Test_object_info.ml	/^let object_name = "Window"$/;"	v
+object_name	tests/Test_signal_info.ml	/^let object_name = "Window"$/;"	v
+object_name	tests/Test_vfunc_info.ml	/^let object_name = "Window"$/;"	v
+object_test	tests/Test_object_info.ml	/^let object_test fn =$/;"	f
+object_test	tests/Test_registered_type_info.ml	/^let object_test fn =$/;"	f
+objectinfo	lib/Object_info.ml	/^let objectinfo : t structure typ = structure "Object_info"$/;"	v
+objectinfo	lib/Object_info.mli	/^val objectinfo : t structure typ$/;"	p
+ol	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+ol	docs/odoc.css	/^ul, ol$/;"	s
+ol	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+ol	odoc.css	/^ul, ol$/;"	s
+ol > li	docs/odoc.css	/^ol > li { margin-left: 1.7rem; }$/;"	s
+ol > li	odoc.css	/^ol > li { margin-left: 1.7rem; }$/;"	s
+output	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+output	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+p	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+p	docs/odoc.css	/^p, div, img { margin-top: 1.25rem; }$/;"	s
+p	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+p	odoc.css	/^p, div, img { margin-top: 1.25rem; }$/;"	s
+param_flags	lib/Arg_info.ml	/^type param_flags =$/;"	t
+param_flags	lib/Arg_info.mli	/^type param_flags =$/;"	t
+param_flags_of_int32	lib/Arg_info.ml	/^let param_flags_of_int32 flag =$/;"	f
+param_flags_of_int32	lib/Arg_info.mli	/^val param_flags_of_int32:$/;"	p
+param_flags_to_string	lib/Arg_info.ml	/^let param_flags_to_string = function$/;"	v
+param_flags_to_string	lib/Arg_info.mli	/^val param_flags_to_string:$/;"	p
+pre	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+pre	docs/odoc.css	/^pre$/;"	s
+pre	docs/odoc.css	/^tt, code, pre$/;"	s
+pre	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+pre	odoc.css	/^pre$/;"	s
+pre	odoc.css	/^tt, code, pre$/;"	s
+prepend_library_path	lib/Repository.ml	/^let prepend_library_path=$/;"	v
+prepend_library_path	lib/Repository.mli	/^val prepend_library_path:$/;"	p
+prepend_search_path	lib/Repository.ml	/^let prepend_search_path =$/;"	v
+prepend_search_path	lib/Repository.mli	/^val prepend_search_path:$/;"	p
+print_function_flags	samples/c/gi_function_flags.c	/^print_function_flags (void)$/;"	f	typeref:typename:void	file:
+print_info	samples/gi_baseinfo_get_name.ml	/^let print_info namespace n =$/;"	f
+print_info	samples/gi_baseinfo_get_type.ml	/^let print_info namespace n =$/;"	f
+property_name	tests/Test_property_info.ml	/^let property_name = "accept-focus"$/;"	v
+property_test	tests/Test_property_info.ml	/^let property_test fn =$/;"	f
+propertyinfo	lib/Property_info.ml	/^let propertyinfo : t structure typ = structure "Property_info"$/;"	v
+propertyinfo	lib/Property_info.mli	/^val propertyinfo : t structure typ$/;"	p
+q	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+q	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+registeredtypeinfo	lib/Registered_type_info.ml	/^let registeredtypeinfo : t structure typ = structure "Registered_type_info"$/;"	v
+registeredtypeinfo	lib/Registered_type_info.mli	/^val registeredtypeinfo : t structure typ$/;"	p
+repository	lib/Repository.ml	/^type repository = unit ptr option$/;"	t
+repository	lib/Repository.mli	/^type repository$/;"	t
+repository	tests/Test_repository.ml	/^let repository = Repository.get_default ()$/;"	v
+repository	tests/Test_repository_default.ml	/^let repository = Repository.get_default ()$/;"	v
+repository_typ	lib/Repository.ml	/^let repository_typ : repository typ = ptr_opt void$/;"	v
+require	lib/Repository.ml	/^let require ?repository namespace ?version () =$/;"	v
+require	lib/Repository.mli	/^val require:$/;"	p
+ruby	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+ruby	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+s	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+s	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+samp	docs/odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+samp	odoc.css	/^a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,$/;"	s
+scope	lib/Arg_info.ml	/^type scope =$/;"	t
+scope	lib/Arg_info.mli	/^type scope =$/;"	t
+section	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+section	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+signal_name	tests/Test_signal_info.ml	/^let signal_name = "activate-default"$/;"	v
+signal_test	tests/Test_signal_info.ml	/^let signal_test fn =$/;"	f
+signalinfo	lib/Signal_info.ml	/^let signalinfo : t structure typ = structure "Signal_info"$/;"	v
+signalinfo	lib/Signal_info.mli	/^val signalinfo : t structure typ$/;"	p
+skip_return	lib/Callable_info.ml	/^let skip_return =$/;"	v
+skip_return	lib/Callable_info.mli	/^val skip_return:$/;"	p
+small	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+small	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+span	docs/odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+span	odoc.css	/^html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,$/;"	s
+span.at-tag	docs/odoc.css	/^span.at-tag { font-weight: bold }$/;"	c
+span.at-tag	odoc.css	/^span.at-tag { font-weight: bold }$/;"	c
+span.module-path	odoc.css	/^span.module-path {$/;"	c
+strike	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+strike	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+string_of_array_type	lib/Types.ml	/^let string_of_array_type = function$/;"	v
+string_of_array_type	lib/Types.mli	/^val string_of_array_type:$/;"	p
+string_of_baseinfo_type	lib/Base_info.ml	/^let string_of_baseinfo_type baseinfo_t =$/;"	f
+string_of_baseinfo_type	lib/Base_info.mli	/^val string_of_baseinfo_type:$/;"	p
+string_of_flags	lib/VFunc_info.ml	/^let string_of_flags = function$/;"	v
+string_of_flags	lib/VFunc_info.mli	/^val string_of_flags:$/;"	p
+string_of_tag	lib/Types.ml	/^let string_of_tag = function$/;"	v
+string_of_tag	lib/Types.mli	/^val string_of_tag:$/;"	p
+strong	docs/odoc.css	/^b, strong { font-weight: bold; }$/;"	s
+strong	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+strong	odoc.css	/^b, strong { font-weight: bold; }$/;"	s
+strong	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+struct_name	tests/Test_struct_info.ml	/^let struct_name = "Value"$/;"	v
+struct_test	tests/Test_registered_type_info.ml	/^let struct_test fn =$/;"	f
+struct_test	tests/Test_struct_info.ml	/^let struct_test fn =$/;"	f
+structinfo	lib/Struct_info.ml	/^let structinfo : t structure typ = structure "Struct_info"$/;"	v
+structinfo	lib/Struct_info.mli	/^val structinfo : t structure typ$/;"	p
+sub	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+sub	docs/odoc.css	/^sub { vertical-align: sub; }$/;"	s
+sub	docs/odoc.css	/^sup, sub { font-size : 0.75rem; line-height: 0; margin-left: 0.2ex; }$/;"	s
+sub	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+sub	odoc.css	/^sub { vertical-align: sub; }$/;"	s
+sub	odoc.css	/^sup, sub { font-size : 0.75rem; line-height: 0; margin-left: 0.2ex; }$/;"	s
+summary	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+summary	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+sup	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+sup	docs/odoc.css	/^sup { vertical-align: super; }$/;"	s
+sup	docs/odoc.css	/^sup, sub { font-size : 0.75rem; line-height: 0; margin-left: 0.2ex; }$/;"	s
+sup	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+sup	odoc.css	/^sup { vertical-align: super; }$/;"	s
+sup	odoc.css	/^sup, sub { font-size : 0.75rem; line-height: 0; margin-left: 0.2ex; }$/;"	s
+symbol	tests/Test_union_info.ml	/^      | Some m -> let symbol = Function_info.get_symbol m in$/;"	v
+t	lib/Arg_info.ml	/^type t$/;"	t
+t	lib/Arg_info.mli	/^type t$/;"	t
+t	lib/Base_info.ml	/^type t$/;"	t
+t	lib/Base_info.mli	/^type t$/;"	t
+t	lib/Callable_info.ml	/^type t$/;"	t
+t	lib/Callable_info.mli	/^type t$/;"	t
+t	lib/Constant_info.ml	/^type t$/;"	t
+t	lib/Constant_info.mli	/^type t$/;"	t
+t	lib/Enum_info.ml	/^type t$/;"	t
+t	lib/Enum_info.mli	/^type t$/;"	t
+t	lib/Field_info.ml	/^type t$/;"	t
+t	lib/Field_info.mli	/^type t$/;"	t
+t	lib/Function_info.ml	/^type t$/;"	t
+t	lib/Function_info.mli	/^type t$/;"	t
+t	lib/Interface_info.ml	/^type t$/;"	t
+t	lib/Interface_info.mli	/^type t$/;"	t
+t	lib/Object_info.ml	/^type t$/;"	t
+t	lib/Object_info.mli	/^type t$/;"	t
+t	lib/Property_info.ml	/^type t$/;"	t
+t	lib/Property_info.mli	/^type t$/;"	t
+t	lib/Registered_type_info.ml	/^type t$/;"	t
+t	lib/Registered_type_info.mli	/^type t$/;"	t
+t	lib/Signal_info.ml	/^type t$/;"	t
+t	lib/Signal_info.mli	/^type t$/;"	t
+t	lib/Struct_info.ml	/^type t$/;"	t
+t	lib/Struct_info.mli	/^type t$/;"	t
+t	lib/Type_info.ml	/^type t$/;"	t
+t	lib/Type_info.mli	/^type t$/;"	t
+t	lib/Union_info.ml	/^type t$/;"	t
+t	lib/Union_info.mli	/^type t$/;"	t
+t	lib/VFunc_info.ml	/^type t$/;"	t
+t	lib/VFunc_info.mli	/^type t$/;"	t
+t	lib/Value_info.ml	/^type t$/;"	t
+t	lib/Value_info.mli	/^type t$/;"	t
+table	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+table	docs/odoc.css	/^table { border-collapse: collapse; border-spacing: 0; }$/;"	s
+table	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+table	odoc.css	/^table { border-collapse: collapse; border-spacing: 0; }$/;"	s
+table of content.	README.md	/^###  table of content.$/;"	S
+tag	lib/Types.ml	/^type tag =$/;"	t
+tag	lib/Types.mli	/^type tag =$/;"	t
+tag_of_int	lib/Types.ml	/^let tag_of_int = function$/;"	v
+tag_of_int	lib/Types.mli	/^val tag_of_int:$/;"	p
+tbody	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+tbody	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+td	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+td	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+td.def	docs/odoc.css	/^td.def { padding-right: 2ex }$/;"	c
+td.def	odoc.css	/^td.def { padding-right: 2ex }$/;"	c
+td.doc *:first-child	docs/odoc.css	/^td.doc *:first-child { margin-top: 0em }$/;"	s
+td.doc *:first-child	odoc.css	/^td.doc *:first-child { margin-top: 0em }$/;"	s
+test_baseinfo_get_type	tests/Test_struct_info.ml	/^let test_baseinfo_get_type test_ctxt =$/;"	f
+test_can_throw_gerror	tests/Test_callable_info.ml	/^let test_can_throw_gerror test_ctxt =$/;"	f
+test_enumerate_versions	tests/Test_repository.ml	/^let test_enumerate_versions test_ctxt =$/;"	f
+test_enumerate_versions	tests/Test_repository_default.ml	/^let test_enumerate_versions test_ctxt =$/;"	f
+test_equal	tests/Test_base_info.ml	/^let test_equal test_ctxt =$/;"	f
+test_find_by_name	tests/Test_repository.ml	/^let test_find_by_name test_ctxt =$/;"	f
+test_find_by_name	tests/Test_repository_default.ml	/^let test_find_by_name test_ctxt =$/;"	f
+test_find_method	tests/Test_object_info.ml	/^let test_find_method test_ctxt =$/;"	f
+test_find_method_bad_name	tests/Test_struct_info.ml	/^let test_find_method_bad_name test_ctxt =$/;"	f
+test_from_baseinfo	tests/Test_object_info.ml	/^let test_from_baseinfo test_ctxt =$/;"	f
+test_from_baseinfo	tests/Test_union_info.ml	/^let test_from_baseinfo test_ctxt =$/;"	f
+test_function_info	tests/Test_function_info.ml	/^let test_function_info fn =$/;"	f
+test_get_abstract	tests/Test_object_info.ml	/^let test_get_abstract test_ctxt =$/;"	f
+test_get_alignment	tests/Test_struct_info.ml	/^let test_get_alignment test_ctxt =$/;"	f
+test_get_alignment	tests/Test_union_info.ml	/^let test_get_alignment test_ctxt =$/;"	f
+test_get_array_fixed_size	tests/Test_type_info.ml	/^let test_get_array_fixed_size test_ctxt =$/;"	f
+test_get_array_length	tests/Test_type_info.ml	/^let test_get_array_length test_ctxt =$/;"	f
+test_get_array_type	tests/Test_type_info.ml	/^let test_get_array_type test_ctxt =$/;"	f
+test_get_c_prefix	tests/Test_repository.ml	/^let test_get_c_prefix test_ctxt =$/;"	f
+test_get_c_prefix	tests/Test_repository_default.ml	/^let test_get_c_prefix test_ctxt =$/;"	f
+test_get_caller_owns	tests/Test_callable_info.ml	/^let test_get_caller_owns test_ctxt =$/;"	f
+test_get_class_closure	tests/Test_signal_info.ml	/^let test_get_class_closure test_ctxt =$/;"	f
+test_get_class_struct	tests/Test_object_info.ml	/^let test_get_class_struct test_ctxt =$/;"	f
+test_get_container	tests/Test_base_info.ml	/^let test_get_container test_ctxt =$/;"	f
+test_get_default	tests/Test_repository.ml	/^let test_get_default test_ctxt =$/;"	f
+test_get_default	tests/Test_repository_default.ml	/^let test_get_default test_ctxt =$/;"	f
+test_get_dependencies	tests/Test_repository.ml	/^let test_get_dependencies test_ctxt =$/;"	f
+test_get_dependencies	tests/Test_repository_default.ml	/^let test_get_dependencies test_ctxt =$/;"	f
+test_get_destroy	tests/Test_arg_info.ml	/^let test_get_destroy test_ctxt =$/;"	f
+test_get_direction	tests/Test_arg_info.ml	/^let test_get_direction test_ctxt =$/;"	f
+test_get_field	tests/Test_struct_info.ml	/^let test_get_field test_ctxt =$/;"	f
+test_get_field	tests/Test_union_info.ml	/^let test_get_field test_ctxt =$/;"	f
+test_get_field_out_of_bounds	tests/Test_struct_info.ml	/^let test_get_field_out_of_bounds test_ctxt =$/;"	f
+test_get_field_out_of_bounds	tests/Test_union_info.ml	/^let test_get_field_out_of_bounds test_ctxt =$/;"	f
+test_get_flags	tests/Test_field_info.ml	/^let test_get_flags test_ctxt =$/;"	f
+test_get_flags	tests/Test_function_info.ml	/^let test_get_flags test_ctxt =$/;"	f
+test_get_flags	tests/Test_property_info.ml	/^let test_get_flags test_ctxt =$/;"	f
+test_get_flags	tests/Test_signal_info.ml	/^let test_get_flags test_ctxt =$/;"	f
+test_get_fundamental	tests/Test_object_info.ml	/^let test_get_fundamental test_ctxt =$/;"	f
+test_get_iface_struct	tests/Test_interface_info.ml	/^let test_get_iface_struct test_ctxt =$/;"	f
+test_get_info	tests/Test_repository.ml	/^let test_get_info test_ctxt =$/;"	f
+test_get_info	tests/Test_repository_default.ml	/^let test_get_info test_ctxt =$/;"	f
+test_get_info_out_of_bounds	tests/Test_repository.ml	/^let test_get_info_out_of_bounds test_ctxt =$/;"	f
+test_get_info_out_of_bounds	tests/Test_repository_default.ml	/^let test_get_info_out_of_bounds test_ctxt =$/;"	f
+test_get_interface_none	tests/Test_type_info.ml	/^let test_get_interface_none test_ctxt =$/;"	f
+test_get_loaded_namespaces	tests/Test_repository.ml	/^let test_get_loaded_namespaces test_ctxt =$/;"	f
+test_get_loaded_namespaces	tests/Test_repository_default.ml	/^let test_get_loaded_namespaces test_ctxt =$/;"	f
+test_get_method	tests/Test_enum_info.ml	/^let test_get_method test_ctxt =$/;"	f
+test_get_method	tests/Test_interface_info.ml	/^let test_get_method test_ctxt =$/;"	f
+test_get_method	tests/Test_object_info.ml	/^let test_get_method test_ctxt =$/;"	f
+test_get_method_out_of_bounds	tests/Test_struct_info.ml	/^let test_get_method_out_of_bounds test_ctxt =$/;"	f
+test_get_method_out_of_bounds	tests/Test_union_info.ml	/^let test_get_method_out_of_bounds test_ctxt =$/;"	f
+test_get_n_args	tests/Test_callable_info.ml	/^let test_get_n_args test_ctxt =$/;"	f
+test_get_n_constants	tests/Test_object_info.ml	/^let test_get_n_constants test_ctxt =$/;"	f
+test_get_n_fields	tests/Test_object_info.ml	/^let test_get_n_fields test_ctxt =$/;"	f
+test_get_n_fields	tests/Test_struct_info.ml	/^let test_get_n_fields test_ctxt =$/;"	f
+test_get_n_fields	tests/Test_union_info.ml	/^let test_get_n_fields test_ctxt =$/;"	f
+test_get_n_infos	tests/Test_repository.ml	/^let test_get_n_infos test_ctxt =$/;"	f
+test_get_n_infos	tests/Test_repository_default.ml	/^let test_get_n_infos test_ctxt =$/;"	f
+test_get_n_interfaces	tests/Test_object_info.ml	/^let test_get_n_interfaces test_ctxt =$/;"	f
+test_get_n_methods	tests/Test_enum_info.ml	/^let test_get_n_methods test_ctxt =$/;"	f
+test_get_n_methods	tests/Test_object_info.ml	/^let test_get_n_methods test_ctxt =$/;"	f
+test_get_n_methods	tests/Test_struct_info.ml	/^let test_get_n_methods test_ctxt =$/;"	f
+test_get_n_methods	tests/Test_union_info.ml	/^let test_get_n_methods test_ctxt =$/;"	f
+test_get_n_prerequisites	tests/Test_interface_info.ml	/^let test_get_n_prerequisites test_ctxt =$/;"	f
+test_get_n_properties	tests/Test_object_info.ml	/^let test_get_n_properties test_ctxt =$/;"	f
+test_get_n_signals	tests/Test_interface_info.ml	/^let test_get_n_signals test_ctxt =$/;"	f
+test_get_n_signals	tests/Test_object_info.ml	/^let test_get_n_signals test_ctxt =$/;"	f
+test_get_n_values	tests/Test_enum_info.ml	/^let test_get_n_values test_ctxt =$/;"	f
+test_get_n_vfuncs	tests/Test_object_info.ml	/^let test_get_n_vfuncs test_ctxt =$/;"	f
+test_get_namespace	tests/Test_base_info.ml	/^let test_get_namespace test_ctxt =$/;"	f
+test_get_offset	tests/Test_field_info.ml	/^let test_get_offset test_ctxt =$/;"	f
+test_get_offset	tests/Test_vfunc_info.ml	/^let test_get_offset test_ctxt =$/;"	f
+test_get_ownership_transfer	tests/Test_arg_info.ml	/^let test_get_ownership_transfer test_ctxt =$/;"	f
+test_get_ownership_transfer	tests/Test_property_info.ml	/^let test_get_ownership_transfer test_ctxt =$/;"	f
+test_get_parent	tests/Test_object_info.ml	/^let test_get_parent test_ctxt =$/;"	f
+test_get_prerequisite	tests/Test_interface_info.ml	/^let test_get_prerequisite test_ctxt =$/;"	f
+test_get_property	tests/Test_function_info.ml	/^let test_get_property test_ctxt =$/;"	f
+test_get_property	tests/Test_interface_info.ml	/^let test_get_property test_ctxt =$/;"	f
+test_get_property_from_repo	tests/Test_property_info.ml	/^let test_get_property_from_repo test_ctxt =$/;"	f
+test_get_return_attribute	tests/Test_callable_info.ml	/^let test_get_return_attribute test_ctxt =$/;"	f
+test_get_scope	tests/Test_arg_info.ml	/^let test_get_scope test_ctxt =$/;"	f
+test_get_search_path	tests/Test_repository.ml	/^let test_get_search_path test_ctxt =$/;"	f
+test_get_search_path	tests/Test_repository_default.ml	/^let test_get_search_path test_ctxt =$/;"	f
+test_get_shared_library	tests/Test_repository.ml	/^let test_get_shared_library test_ctxt =$/;"	f
+test_get_shared_library	tests/Test_repository_default.ml	/^let test_get_shared_library test_ctxt =$/;"	f
+test_get_signal	tests/Test_interface_info.ml	/^let test_get_signal test_ctxt =$/;"	f
+test_get_signal	tests/Test_vfunc_info.ml	/^let test_get_signal test_ctxt =$/;"	f
+test_get_size	tests/Test_field_info.ml	/^let test_get_size test_ctxt =$/;"	f
+test_get_size	tests/Test_struct_info.ml	/^let test_get_size test_ctxt =$/;"	f
+test_get_size	tests/Test_union_info.ml	/^let test_get_size test_ctxt =$/;"	f
+test_get_symbol	tests/Test_function_info.ml	/^let test_get_symbol test_ctxt =$/;"	f
+test_get_tag	tests/Test_type_info.ml	/^let test_get_tag test_ctxt =$/;"	f
+test_get_type	tests/Test_constant_info.ml	/^let test_get_type test_ctxt =$/;"	f
+test_get_type	tests/Test_field_info.ml	/^let test_get_type test_ctxt =$/;"	f
+test_get_type_init	tests/Test_object_info.ml	/^let test_get_type_init test_ctxt =$/;"	f
+test_get_type_name_from_enum	tests/Test_registered_type_info.ml	/^let test_get_type_name_from_enum test_ctxt =$/;"	f
+test_get_type_name_from_interface	tests/Test_registered_type_info.ml	/^let test_get_type_name_from_interface test_ctxt =$/;"	f
+test_get_type_name_from_object	tests/Test_registered_type_info.ml	/^let test_get_type_name_from_object test_ctxt =$/;"	f
+test_get_type_name_from_struct	tests/Test_registered_type_info.ml	/^let test_get_type_name_from_struct test_ctxt =$/;"	f
+test_get_type_name_from_union	tests/Test_registered_type_info.ml	/^let test_get_type_name_from_union test_ctxt =$/;"	f
+test_get_typelib_path	tests/Test_repository.ml	/^let test_get_typelib_path text_ctxt =$/;"	f
+test_get_typelib_path	tests/Test_repository_default.ml	/^let test_get_typelib_path text_ctxt =$/;"	f
+test_get_value	tests/Test_constant_info.ml	/^let test_get_value test_ctxt =$/;"	f
+test_get_value	tests/Test_enum_info.ml	/^let test_get_value test_ctxt =$/;"	f
+test_get_version	tests/Test_repository.ml	/^let test_get_version test_ctxt =$/;"	f
+test_get_version	tests/Test_repository_default.ml	/^let test_get_version test_ctxt =$/;"	f
+test_get_vfunc	tests/Test_interface_info.ml	/^let test_get_vfunc test_ctxt =$/;"	f
+test_gtk_window_find_method	tests/Test_object_info.ml	/^let test_gtk_window_find_method test_ctxt =$/;"	f
+test_gtk_window_find_method_using_interfaces	tests/Test_object_info.ml	/^let test_gtk_window_find_method_using_interfaces test_ctxt =$/;"	f
+test_gtk_window_from_baseinfo	tests/Test_object_info.ml	/^let test_gtk_window_from_baseinfo test_ctxt =$/;"	f
+test_gtk_window_get_abstract	tests/Test_object_info.ml	/^let test_gtk_window_get_abstract test_ctxt =$/;"	f
+test_gtk_window_get_fundamental	tests/Test_object_info.ml	/^let test_gtk_window_get_fundamental test_ctxt =$/;"	f
+test_gtk_window_get_interface	tests/Test_object_info.ml	/^let test_gtk_window_get_interface test_ctxt =$/;"	f
+test_gtk_window_get_method	tests/Test_object_info.ml	/^let test_gtk_window_get_method test_ctxt =$/;"	f
+test_gtk_window_get_n_constants	tests/Test_object_info.ml	/^let test_gtk_window_get_n_constants test_ctxt =$/;"	f
+test_gtk_window_get_n_fields	tests/Test_object_info.ml	/^let test_gtk_window_get_n_fields test_ctxt =$/;"	f
+test_gtk_window_get_n_interfaces	tests/Test_object_info.ml	/^let test_gtk_window_get_n_interfaces test_ctxt =$/;"	f
+test_gtk_window_get_n_properties	tests/Test_object_info.ml	/^let test_gtk_window_get_n_properties test_ctxt =$/;"	f
+test_gtk_window_get_parent	tests/Test_object_info.ml	/^let test_gtk_window_get_parent test_ctxt =$/;"	f
+test_gtk_window_get_property	tests/Test_object_info.ml	/^let test_gtk_window_get_property test_ctxt =$/;"	f
+test_gtk_window_get_ref_function	tests/Test_object_info.ml	/^let test_gtk_window_get_ref_function test_ctxt =$/;"	f
+test_gtk_window_get_signal	tests/Test_object_info.ml	/^let test_gtk_window_get_signal test_ctxt =$/;"	f
+test_gtk_window_get_type_init	tests/Test_object_info.ml	/^let test_gtk_window_get_type_init test_ctxt =$/;"	f
+test_gtk_window_get_vfunc	tests/Test_object_info.ml	/^let test_gtk_window_get_vfunc test_ctxt =$/;"	f
+test_is_caller_allocates	tests/Test_arg_info.ml	/^let test_is_caller_allocates test_ctxt =$/;"	f
+test_is_deprecated	tests/Test_base_info.ml	/^let test_is_deprecated test_ctxt =$/;"	f
+test_is_discriminated	tests/Test_union_info.ml	/^let test_is_discriminated test_ctxt =$/;"	f
+test_is_foreign	tests/Test_struct_info.ml	/^let test_is_foreign test_ctxt =$/;"	f
+test_is_gtype_struct	tests/Test_struct_info.ml	/^let test_is_gtype_struct test_ctxt =$/;"	f
+test_is_optional	tests/Test_arg_info.ml	/^let test_is_optional test_ctxt =$/;"	f
+test_is_pointer	tests/Test_type_info.ml	/^let test_is_pointer test_ctxt =$/;"	f
+test_is_return_value	tests/Test_arg_info.ml	/^let test_is_return_value test_ctxt =$/;"	f
+test_is_skip	tests/Test_arg_info.ml	/^let test_is_skip test_ctxt =$/;"	f
+test_is_zero_terminated	tests/Test_type_info.ml	/^let test_is_zero_terminated test_ctxt =$/;"	f
+test_may_return_null	tests/Test_callable_info.ml	/^let test_may_return_null test_ctxt =$/;"	f
+test_prepend_search_path	tests/Test_repository.ml	/^let test_prepend_search_path test_ctxt =$/;"	f
+test_prepend_search_path	tests/Test_repository_default.ml	/^let test_prepend_search_path test_ctxt =$/;"	f
+test_require	tests/Test_repository.ml	/^let test_require test_ctxt =$/;"	f
+test_require	tests/Test_repository_default.ml	/^let test_require test_ctxt =$/;"	f
+test_require_fail	tests/Test_repository.ml	/^let test_require_fail test_ctxt =$/;"	f
+test_require_fail	tests/Test_repository_default.ml	/^let test_require_fail test_ctxt =$/;"	f
+test_skip_return	tests/Test_callable_info.ml	/^let test_skip_return test_ctxt =$/;"	f
+test_to_string	tests/Test_type_info.ml	/^let test_to_string test_ctxt =$/;"	f
+test_true_stops_emit	tests/Test_signal_info.ml	/^let test_true_stops_emit test_ctxt =$/;"	f
+tests	tests/Test_arg_info.ml	/^let tests =$/;"	v
+tests	tests/Test_constant_info.ml	/^let tests =$/;"	v
+tests	tests/Test_field_info.ml	/^let tests =$/;"	v
+tests	tests/Test_property_info.ml	/^let tests =$/;"	v
+tests	tests/Test_repository.ml	/^let tests =$/;"	v
+tests	tests/Test_repository_default.ml	/^let tests =$/;"	v
+tests	tests/Test_type_info.ml	/^let tests =$/;"	v
+tests	tests/Test_union_info.ml	/^let tests =$/;"	v
+tests	tests/Test_vfunc_info.ml	/^let tests =$/;"	v
+tfoot	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+tfoot	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+th	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+th	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+thead	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+thead	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+time	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+time	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+to_baseinfo	lib/Arg_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Arg_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Callable_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Callable_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Constant_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Constant_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Enum_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Enum_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Field_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Field_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Function_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Function_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Interface_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Interface_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Object_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Object_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Property_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Property_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Registered_type_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Registered_type_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Signal_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Signal_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Struct_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Struct_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Type_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Type_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Union_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Union_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/VFunc_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/VFunc_info.mli	/^val to_baseinfo:$/;"	p
+to_baseinfo	lib/Value_info.ml	/^let to_baseinfo info =$/;"	f
+to_baseinfo	lib/Value_info.mli	/^val to_baseinfo:$/;"	p
+to_callableinfo	lib/Function_info.ml	/^let to_callableinfo info =$/;"	f
+to_callableinfo	lib/Function_info.mli	/^val to_callableinfo:$/;"	p
+to_callableinfo	lib/Signal_info.ml	/^let to_callableinfo info =$/;"	f
+to_callableinfo	lib/Signal_info.mli	/^val to_callableinfo:$/;"	p
+to_callableinfo	lib/VFunc_info.ml	/^let to_callableinfo info =$/;"	f
+to_callableinfo	lib/VFunc_info.mli	/^val to_callableinfo:$/;"	p
+to_registeredtypeinfo	lib/Enum_info.ml	/^let to_registeredtypeinfo info =$/;"	f
+to_registeredtypeinfo	lib/Enum_info.mli	/^val to_registeredtypeinfo:$/;"	p
+to_registeredtypeinfo	lib/Interface_info.ml	/^let to_registeredtypeinfo info =$/;"	f
+to_registeredtypeinfo	lib/Interface_info.mli	/^val to_registeredtypeinfo:$/;"	p
+to_registeredtypeinfo	lib/Object_info.ml	/^let to_registeredtypeinfo info =$/;"	f
+to_registeredtypeinfo	lib/Object_info.mli	/^val to_registeredtypeinfo:$/;"	p
+to_registeredtypeinfo	lib/Struct_info.ml	/^let to_registeredtypeinfo info =$/;"	f
+to_registeredtypeinfo	lib/Struct_info.mli	/^val to_registeredtypeinfo:$/;"	p
+to_registeredtypeinfo	lib/Union_info.ml	/^let to_registeredtypeinfo info =$/;"	f
+to_registeredtypeinfo	lib/Union_info.mli	/^val to_registeredtypeinfo:$/;"	p
+to_string	lib/Type_info.ml	/^let to_string =$/;"	v
+to_string	lib/Type_info.mli	/^val to_string:$/;"	p
+tr	docs/odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+tr	odoc.css	/^fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,$/;"	s
+transfer	lib/Arg_info.ml	/^type transfer =$/;"	t
+transfer	lib/Arg_info.mli	/^type transfer =$/;"	t
+transfer_of_int	lib/Arg_info.ml	/^let transfer_of_int = function$/;"	v
+transfer_of_int	lib/Arg_info.mli	/^val transfer_of_int:$/;"	p
+true_stops_emit	lib/Signal_info.ml	/^let true_stops_emit =$/;"	v
+true_stops_emit	lib/Signal_info.mli	/^val true_stops_emit:$/;"	p
+tt	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+tt	docs/odoc.css	/^tt, code, pre$/;"	s
+tt	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+tt	odoc.css	/^tt, code, pre$/;"	s
+type_test	tests/Test_type_info.ml	/^let type_test fn =$/;"	f
+typeinfo	lib/Type_info.ml	/^let typeinfo : t structure typ = structure "Type_info"$/;"	v
+typeinfo	lib/Type_info.mli	/^val typeinfo : t structure typ$/;"	p
+typelib	lib/Repository.ml	/^let typelib : typelib typ = ptr void$/;"	v
+typelib	lib/Repository.ml	/^type typelib = unit ptr$/;"	t
+typelib	lib/Repository.mli	/^type typelib$/;"	t
+typelib	tests/Test_arg_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_base_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_callable_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_constant_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_enum_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_field_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_function_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_interface_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_object_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_property_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_repository.ml	/^let typelib = Repository.require ~repository namespace ()$/;"	v
+typelib	tests/Test_repository_default.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_signal_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_struct_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_type_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_union_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+typelib	tests/Test_vfunc_info.ml	/^let typelib = Repository.require namespace ()$/;"	v
+u	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+u	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+ul	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+ul	docs/odoc.css	/^ul { list-style-type: square }$/;"	s
+ul	docs/odoc.css	/^ul, ol$/;"	s
+ul	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+ul	odoc.css	/^ul { list-style-type: square }$/;"	s
+ul	odoc.css	/^ul, ol$/;"	s
+ul > li	docs/odoc.css	/^ul > li { margin-left: 1.375rem; }$/;"	s
+ul > li	odoc.css	/^ul > li { margin-left: 1.375rem; }$/;"	s
+ul.at-tag	docs/odoc.css	/^ul.at-tag { list-style-type: none; margin-left: 0; padding: 0; }$/;"	c
+ul.at-tag	odoc.css	/^ul.at-tag { list-style-type: none; margin-left: 0; padding: 0; }$/;"	c
+ul.at-tag li	docs/odoc.css	/^ul.at-tag li { margin-left:0; padding:0; }$/;"	s
+ul.at-tag li	odoc.css	/^ul.at-tag li { margin-left:0; padding:0; }$/;"	s
+ul.at-tag li p:first-child	docs/odoc.css	/^ul.at-tag li p:first-child { margin-top: 0 } \/* FIXME remove *\/$/;"	s
+ul.at-tag li p:first-child	odoc.css	/^ul.at-tag li p:first-child { margin-top: 0 } \/* FIXME remove *\/$/;"	s
+union_name	tests/Test_field_info.ml	/^let union_name = "Mutex"$/;"	v
+union_name	tests/Test_union_info.ml	/^let union_name = "Mutex"$/;"	v
+union_test	tests/Test_registered_type_info.ml	/^let union_test fn =$/;"	f
+union_test	tests/Test_union_info.ml	/^let union_test fn =$/;"	f
+unioninfo	lib/Union_info.ml	/^let unioninfo : t structure typ = structure "Union_info"$/;"	v
+unioninfo	lib/Union_info.mli	/^val unioninfo : t structure typ$/;"	p
+unsafe_get_param_type	lib/Type_info.ml	/^let unsafe_get_param_type info n =$/;"	f
+unsafe_get_param_type	lib/Type_info.mli	/^val unsafe_get_param_type:$/;"	p
+v_boolean	lib/Types.ml	/^let v_boolean = field argument "v_boolean" (bool)$/;"	v
+v_boolean	lib/Types.mli	/^val v_boolean: (bool, argument_t union) field$/;"	p
+v_double	lib/Types.ml	/^let v_double = field argument "v_double" (double)$/;"	v
+v_double	lib/Types.mli	/^val v_double: (float, argument_t union) field$/;"	p
+v_float	lib/Types.ml	/^let v_float = field argument "v_float" (float)$/;"	v
+v_float	lib/Types.mli	/^val v_float: (float, argument_t union) field$/;"	p
+v_int	lib/Types.ml	/^let v_int = field argument "v_int" (int)$/;"	v
+v_int	lib/Types.mli	/^val v_int: (int, argument_t union) field$/;"	p
+v_int16	lib/Types.ml	/^let v_int16 = field argument "v_int16" (int16_t)$/;"	v
+v_int16	lib/Types.mli	/^val v_int16: (int, argument_t union) field$/;"	p
+v_int32	lib/Types.ml	/^let v_int32 = field argument "v_int32" (int32_t)$/;"	v
+v_int32	lib/Types.mli	/^val v_int32: (int32, argument_t union) field$/;"	p
+v_int64	lib/Types.ml	/^let v_int64 = field argument "v_int64" (int64_t)$/;"	v
+v_int64	lib/Types.mli	/^val v_int64: (int64, argument_t union) field$/;"	p
+v_int8	lib/Types.ml	/^let v_int8 = field argument "v_int8" (int8_t)$/;"	v
+v_int8	lib/Types.mli	/^val v_int8: (int, argument_t union) field$/;"	p
+v_long	lib/Types.ml	/^let v_long = field argument "v_long" (long)$/;"	v
+v_long	lib/Types.mli	/^val v_long: (Signed.long, argument_t union) field$/;"	p
+v_pointer	lib/Types.ml	/^let v_pointer = field argument "v_pointer" (ptr_opt void)$/;"	v
+v_pointer	lib/Types.mli	/^val v_pointer: (unit Ctypes_static.ptr option, argument_t union) field$/;"	p
+v_short	lib/Types.ml	/^let v_short = field argument "v_short" (short)$/;"	v
+v_short	lib/Types.mli	/^val v_short: (int, argument_t union) field$/;"	p
+v_size	lib/Types.ml	/^let v_size = field argument "v_size" (size_t)$/;"	v
+v_size	lib/Types.mli	/^val v_size: (PosixTypes.size_t, argument_t union) field$/;"	p
+v_ssize	lib/Types.ml	/^let v_ssize = field argument "v_ssize" (PosixTypes.ssize_t)$/;"	v
+v_ssize	lib/Types.mli	/^val v_ssize: (PosixTypes.ssize_t, argument_t union) field$/;"	p
+v_string	lib/Types.ml	/^let v_string = field argument "v_string" (string)$/;"	v
+v_string	lib/Types.mli	/^val v_string: (string, argument_t union) field$/;"	p
+v_uint	lib/Types.ml	/^let v_uint = field argument "v_uint" (uint)$/;"	v
+v_uint	lib/Types.mli	/^val v_uint: (Unsigned.uint, argument_t union) field$/;"	p
+v_uint16	lib/Types.ml	/^let v_uint16 = field argument "v_uint16" (uint16_t)$/;"	v
+v_uint16	lib/Types.mli	/^val v_uint16: (Unsigned.uint16, argument_t union) field$/;"	p
+v_uint32	lib/Types.ml	/^let v_uint32 = field argument "v_uint32" (uint32_t)$/;"	v
+v_uint32	lib/Types.mli	/^val v_uint32: (Unsigned.uint32, argument_t union) field$/;"	p
+v_uint64	lib/Types.ml	/^let v_uint64 = field argument "v_uint64" (uint64_t)$/;"	v
+v_uint64	lib/Types.mli	/^val v_uint64: (Unsigned.uint64, argument_t union) field$/;"	p
+v_uint8	lib/Types.ml	/^let v_uint8 = field argument "v_uint8" (uint8_t)$/;"	v
+v_uint8	lib/Types.mli	/^val v_uint8: (Unsigned.uint8, argument_t union) field$/;"	p
+v_ulong	lib/Types.ml	/^let v_ulong = field argument "v_ulong" (ulong)$/;"	v
+v_ulong	lib/Types.mli	/^val v_ulong: (Unsigned.ulong, argument_t union) field$/;"	p
+v_ushort	lib/Types.ml	/^let v_ushort = field argument "v_ushort" (ushort)$/;"	v
+v_ushort	lib/Types.mli	/^val v_ushort: (Unsigned.ushort, argument_t union) field$/;"	p
+value'	tests/Test_enum_info.ml	/^      | Some value -> let value' = Value_info.get_value value in$/;"	v
+valueinfo	lib/Value_info.ml	/^let valueinfo : t structure typ = structure "Value_info"$/;"	v
+valueinfo	lib/Value_info.mli	/^val valueinfo : t structure typ$/;"	p
+var	docs/odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+var	odoc.css	/^small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,$/;"	s
+vfunc_name	tests/Test_vfunc_info.ml	/^let vfunc_name = "activate_default"$/;"	v
+vfunc_test	tests/Test_vfunc_info.ml	/^let vfunc_test fn =$/;"	f
+vfuncinfo	lib/VFunc_info.ml	/^let vfuncinfo : t structure typ = structure "VFunc_info"$/;"	v
+vfuncinfo	lib/VFunc_info.mli	/^val vfuncinfo : t structure typ$/;"	p
+video	docs/odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+video	odoc.css	/^menu,nav,output,ruby,section,summary,time,mark,audio,video$/;"	s
+volume_interface	tests/Test_interface_info.ml	/^let volume_interface = "Volume"$/;"	v
+volume_interface_test	tests/Test_interface_info.ml	/^let volume_interface_test fn =$/;"	f
+write_sexp	config/discover.ml	/^let write_sexp fn sexp =$/;"	f
