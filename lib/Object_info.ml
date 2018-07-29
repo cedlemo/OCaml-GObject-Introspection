@@ -218,7 +218,7 @@ let find_method_using_interfaces info name =
     foreign "g_object_info_find_method_using_interfaces"
     (ptr objectinfo @-> string @-> ptr (ptr objectinfo) @->
      returning (ptr_opt Function_info.functioninfo)) in
-  let implementor_addr = allocate_n (ptr objectinfo) 1 in
+  let implementor_addr = allocate_n (ptr objectinfo) ~count:1 in
   match find_method_using_interfaces_raw info name implementor_addr with
   | None -> (None, None)
   | Some info' -> (Some info',
@@ -231,7 +231,7 @@ let find_vfunc_using_interfaces info name =
     foreign "g_object_info_find_vfunc_using_interfaces"
     (ptr objectinfo @-> string @-> ptr (ptr objectinfo) @->
      returning (ptr_opt VFunc_info.vfuncinfo)) in
-  let implementor_addr = allocate_n (ptr objectinfo) 1 in
+  let implementor_addr = allocate_n (ptr objectinfo) ~count:1 in
   match find_vfunc_using_interfaces_raw info name implementor_addr with
   | None -> (None, None)
   | Some info' -> (Some info',

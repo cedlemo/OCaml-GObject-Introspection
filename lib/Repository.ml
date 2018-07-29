@@ -38,7 +38,7 @@ let require ?repository namespace ?version () =
   let require_raw =
   foreign "g_irepository_require"
     (repository_typ @-> string @-> string_opt @-> int @->  ptr (ptr gerror) @-> returning (ptr_opt void)) in
-  let error_addr = allocate_n (ptr gerror) 1 in
+  let error_addr = allocate_n (ptr gerror) ~count:1 in
   let repo = match repository with None -> None | Some r -> r in
   match require_raw repo namespace version 0 error_addr with
   | None ->
