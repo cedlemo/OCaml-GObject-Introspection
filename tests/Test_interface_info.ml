@@ -39,13 +39,13 @@ let interface_test fn =
   | None -> assert_equal_string interface_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_n_prerequisites test_ctxt =
+let test_get_n_prerequisites _ =
   interface_test (fun info ->
       let n = Interface_info.get_n_prerequisites info in
       assert_equal_int 1 n
     )
 
-let test_get_prerequisite test_ctxt =
+let test_get_prerequisite _ =
   interface_test (fun info ->
       let info' = Interface_info.get_prerequisite info 0 in
       match Base_info.get_name info' with
@@ -53,13 +53,13 @@ let test_get_prerequisite test_ctxt =
       | Some name -> assert_equal_string "TlsConnection" name
     )
 
-let test_get_n_properties test_ctxt =
+let test_get_n_properties _ =
   interface_test (fun info ->
       let n = Interface_info.get_n_properties info in
       assert_equal_int 1 n
     )
 
-let test_get_property test_ctxt =
+let test_get_property _ =
 interface_test (fun info ->
       let info' = Interface_info.get_property info 0 in
       let base_info = Property_info.to_baseinfo info' in
@@ -68,13 +68,13 @@ interface_test (fun info ->
       | Some name -> assert_equal_string "authentication-mode" name
     )
 
-let test_get_n_methods test_ctxt =
+let test_get_n_methods _ =
   interface_test (fun info ->
       let n = Interface_info.get_n_methods info in
       assert_equal_int 1 n
     )
 
-let test_get_method test_ctxt =
+let test_get_method _ =
   interface_test (fun info ->
       let info' = Interface_info.get_method info 0 in
       let base_info = Function_info.to_baseinfo info' in
@@ -83,7 +83,7 @@ let test_get_method test_ctxt =
       | Some name -> assert_equal_string "new" name
     )
 
-let test_find_method test_ctxt =
+let test_find_method _ =
   interface_test (fun info ->
       let method_name = "new" in
       match Interface_info.find_method info method_name with
@@ -100,13 +100,13 @@ let volume_interface_test fn =
   | None -> assert_equal_string interface_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_n_signals test_ctxt =
+let test_get_n_signals _ =
   volume_interface_test (fun info ->
       let n = Interface_info.get_n_signals info in
       assert_equal_int 2 n
     )
 
-let test_get_signal test_ctxt =
+let test_get_signal _ =
   volume_interface_test (fun info ->
       let info' = Interface_info.get_signal info 0 in
       let base_info = Signal_info.to_baseinfo info' in
@@ -115,7 +115,7 @@ let test_get_signal test_ctxt =
       | Some name -> assert_equal_string "changed" name
     )
 
-let test_find_signal test_ctxt =
+let test_find_signal _ =
   volume_interface_test (fun info ->
       let signal_name = "changed" in
       match Interface_info.find_signal info signal_name with
@@ -126,13 +126,13 @@ let test_find_signal test_ctxt =
         | Some name -> assert_equal_string signal_name name
     )
 
-let test_get_n_constants test_ctxt =
+let test_get_n_constants _ =
   volume_interface_test (fun info ->
       let n = Interface_info.get_n_constants info in
       assert_equal_int 0 n
     )
 
-let test_get_iface_struct test_ctxt =
+let test_get_iface_struct _ =
   volume_interface_test (fun info ->
       match Interface_info.get_iface_struct info with
       | None -> assert_equal_string "It would be " "great to have something"
@@ -142,13 +142,13 @@ let test_get_iface_struct test_ctxt =
         | Some name -> assert_equal_string "VolumeIface" name
     )
 
-let test_get_n_vfuncs test_ctxt =
+let test_get_n_vfuncs _ =
   volume_interface_test (fun info ->
       let n = Interface_info.get_n_vfuncs info in
       assert_equal_int 21 n
     )
 
-let test_get_vfunc test_ctxt =
+let test_get_vfunc _ =
   volume_interface_test (fun info ->
       let info' = Interface_info.get_vfunc info 0 in
       let base_info = VFunc_info.to_baseinfo info' in
@@ -157,7 +157,7 @@ let test_get_vfunc test_ctxt =
       | Some name -> assert_equal_string "can_eject" name
     )
 
-let test_find_vfunc test_ctxt =
+let test_find_vfunc _ =
   volume_interface_test (fun info ->
       let vfunc_name = "can_eject" in
       match Interface_info.find_vfunc info vfunc_name with

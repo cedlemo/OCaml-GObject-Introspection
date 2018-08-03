@@ -24,7 +24,7 @@ let namespace = "GObject"
 let typelib = Repository.require namespace ()
 let struct_name = "Value"
 
-let test_baseinfo_get_type test_ctxt =
+let test_baseinfo_get_type _ =
   match Repository.find_by_name namespace struct_name with
   | None -> assert_equal_string struct_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
@@ -45,43 +45,43 @@ let struct_test fn =
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> fn info
 
-let test_is_gtype_struct test_ctxt =
+let test_is_gtype_struct _ =
   struct_test (fun info ->
     let is_struct = Struct_info.is_gtype_struct info in
     assert_equal_boolean false is_struct
   )
 
-let test_get_alignment test_ctxt =
+let test_get_alignment _ =
   struct_test (fun info ->
     let alignment = Struct_info.get_alignment info in
     assert_equal_int 8 alignment
   )
 
-let test_get_size test_ctxt =
+let test_get_size _ =
   struct_test (fun info ->
     let size = Struct_info.get_size info in
     assert_equal_int 24 size
   )
 
-let test_is_foreign test_ctxt =
+let test_is_foreign _ =
   struct_test (fun info ->
     let is_struct = Struct_info.is_foreign info in
     assert_equal_boolean false is_struct
   )
 
-let test_get_n_fields test_ctxt =
+let test_get_n_fields _ =
   struct_test (fun info ->
     let n_fields = Struct_info.get_n_fields info in
     assert_equal_int 2 n_fields
   )
 
-let test_get_n_methods test_ctxt =
+let test_get_n_methods _ =
   struct_test (fun info ->
     let n_methods = Struct_info.get_n_methods info in
     assert_equal_or_greater n_methods 62
   )
 
-let test_get_field test_ctxt =
+let test_get_field _ =
   struct_test (fun info ->
       let field = Struct_info.get_field info 0 in
       let flags = Field_info.get_flags field in
@@ -95,7 +95,7 @@ let test_get_field test_ctxt =
       in check_flags flags
     )
 
-let test_get_field_out_of_bounds test_ctxt =
+let test_get_field_out_of_bounds _ =
   struct_test (fun info ->
     try ignore(Struct_info.get_field info 300)
     with
@@ -105,14 +105,14 @@ let test_get_field_out_of_bounds test_ctxt =
   )
 
 
-let test_get_method test_ctxt =
+let test_get_method _ =
   struct_test (fun info ->
     let m = Struct_info.get_method info 0 in
     let symbol = Function_info.get_symbol m in
     assert_equal_string "g_value_copy" symbol
   )
 
-let test_get_method_out_of_bounds test_ctxt =
+let test_get_method_out_of_bounds _ =
   struct_test (fun info ->
     try ignore(Struct_info.get_method info 300)
     with
@@ -121,14 +121,14 @@ let test_get_method_out_of_bounds test_ctxt =
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
   )
 
-let test_find_method test_ctxt =
+let test_find_method _ =
   struct_test (fun info -> match Struct_info.find_method info "copy" with
     | None -> assert_equal_boolean false true
     | Some fn_info -> let symbol = Function_info.get_symbol fn_info in
       assert_equal_string "g_value_copy" symbol
   )
 
-let test_find_method_bad_name test_ctxt =
+let test_find_method_bad_name _ =
   struct_test (fun info ->
     match Struct_info.find_method info "Impossible" with
     | None -> assert_equal_boolean true true

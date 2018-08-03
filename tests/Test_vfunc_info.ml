@@ -39,20 +39,20 @@ let vfunc_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_offset test_ctxt =
+let test_get_offset _ =
   vfunc_test (fun info ->
       let offset = VFunc_info.get_offset info in
       assert_equal_int 0xFFFF offset
     )
 
-let test_get_signal test_ctxt =
+let test_get_signal _ =
   vfunc_test (fun info ->
       match VFunc_info.get_signal info with
       | None -> assert_equal_boolean true true
-      | Some info' -> assert_equal_string "It should no return " "a callable info"
+      | Some _ -> assert_equal_string "It should no return " "a callable info"
     )
 
-let test_get_flags test_ctxt =
+let test_get_flags _ =
   vfunc_test (fun info ->
       let flags = VFunc_info.get_flags info in
       let rec check_flag = function

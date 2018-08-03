@@ -38,7 +38,7 @@ let arg_test fn =
   | None -> assert_equal_string func_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_direction test_ctxt =
+let test_get_direction _ =
   arg_test (fun info ->
       let dir = Arg_info.get_direction info in
       assert_equal ~printer:(fun d ->
@@ -48,19 +48,19 @@ let test_get_direction test_ctxt =
           | Arg_info.InOut -> "InOut") Arg_info.In dir
     )
 
-let test_get_closure test_ctxt =
+let test_get_closure _ =
   arg_test (fun info ->
       let closure = Arg_info.get_closure info in
       assert_equal_int (-1) closure
     )
 
-let test_get_destroy test_ctxt =
+let test_get_destroy _ =
   arg_test (fun info ->
       let index = Arg_info.get_destroy info in
       assert_equal_int (-1) index
     )
 
-let test_get_ownership_transfer test_ctxt =
+let test_get_ownership_transfer _ =
   arg_test (fun info ->
       let transfer = Arg_info.get_ownership_transfer info in
       assert_equal ~printer:(fun t ->
@@ -71,37 +71,37 @@ let test_get_ownership_transfer test_ctxt =
         ) Arg_info.Nothing transfer
     )
 
-let test_may_be_null test_ctxt =
+let test_may_be_null _ =
   arg_test (fun info ->
       let may_be_null = Arg_info.may_be_null info in
       assert_equal_boolean false may_be_null
     )
 
-let test_is_caller_allocates test_ctxt =
+let test_is_caller_allocates _ =
   arg_test (fun info ->
       let caller_allocates = Arg_info.is_caller_allocates info in
       assert_equal_boolean false caller_allocates
     )
 
-let test_is_optional test_ctxt =
+let test_is_optional _ =
   arg_test (fun info ->
       let is_optional = Arg_info.is_optional info in
       assert_equal_boolean false is_optional
     )
 
-let test_is_return_value test_ctxt =
+let test_is_return_value _ =
   arg_test (fun info ->
       let is_return = Arg_info.is_return_value info in
       assert_equal_boolean false is_return
     )
 
-let test_is_skip test_ctxt =
+let test_is_skip _ =
   arg_test (fun info ->
       let is_skip = Arg_info.is_skip info in
       assert_equal_boolean false is_skip
     )
 
-let test_get_scope test_ctxt =
+let test_get_scope _ =
   arg_test (fun info ->
       let scope = Arg_info.get_scope info in
       assert_equal ~printer:(fun scope ->
@@ -113,7 +113,7 @@ let test_get_scope test_ctxt =
         ) Arg_info.Invalid scope
     )
 
-let test_get_type test_ctxt =
+let test_get_type _ =
   arg_test (fun info ->
         let type_info = Arg_info.get_type info in
         let type_name = Type_info.to_string type_info in

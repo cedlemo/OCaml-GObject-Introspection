@@ -37,24 +37,24 @@ let test_function_info fn =
   | None -> assert_equal_string name "No base info found"
   | Some info -> fn info
 
-let test_get_symbol test_ctxt =
+let test_get_symbol _ =
   test_function_info (fun info ->
       assert_equal "g_signal_name" (Function_info.get_symbol info)
     )
 
-let test_get_flags test_ctxt =
+let test_get_flags _ =
   test_function_info (fun info ->
       assert_equal [] (Function_info.get_flags info)
     )
 
-let test_get_property test_ctxt =
+let test_get_property _ =
   test_function_info (fun info ->
       match Function_info.get_property info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "returns something"
     )
 
-let test_get_vfunc test_ctxt =
+let test_get_vfunc _ =
   test_function_info (fun info ->
       match Function_info.get_vfunc info with
       | None -> assert_equal true true

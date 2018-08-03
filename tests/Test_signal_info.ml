@@ -43,13 +43,13 @@ let signal_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
-let test_true_stops_emit test_ctxt =
+let test_true_stops_emit _ =
   signal_test (fun info ->
       let stops = Signal_info.true_stops_emit info in
       assert_equal_boolean false stops
     )
 
-let test_get_flags test_ctxt =
+let test_get_flags _ =
   signal_test (fun info ->
       let flags = Signal_info.get_flags info in
       let rec check_flags = function
@@ -69,11 +69,11 @@ let test_get_flags test_ctxt =
       in check_flags flags
     )
 
-let test_get_class_closure test_ctxt =
+let test_get_class_closure _ =
   signal_test (fun info ->
       match Signal_info.get_class_closure info with
       | None -> assert_equal_boolean true true
-      | Some info' -> assert_equal_string "Class closure " " found"
+      | Some _ -> assert_equal_string "Class closure " " found"
     )
 
 let tests =

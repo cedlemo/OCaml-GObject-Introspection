@@ -24,7 +24,7 @@ let namespace = "GLib"
 let typelib = Repository.require namespace ()
 let union_name = "Mutex"
 
-let test_from_baseinfo test_ctxt =
+let test_from_baseinfo _ =
   match Repository.find_by_name namespace union_name with
   | None -> assert_equal_string union_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
@@ -46,31 +46,31 @@ let union_test fn =
   | None -> assert_equal_string union_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_n_fields test_ctxt =
+let test_get_n_fields _ =
   union_test (fun info ->
     let n = Union_info.get_n_fields info in
     assert_equal_int 2 n
   )
 
-let test_get_size test_ctxt =
+let test_get_size _ =
   union_test (fun info ->
     let size = Union_info.get_size info in
     assert_equal_int 8 size
   )
 
-let test_get_alignment test_ctxt =
+let test_get_alignment _ =
   union_test (fun info ->
     let alignment = Union_info.get_alignment info in
     assert_equal_boolean true (alignment = 4 || alignment = 8)
   )
 
-let test_get_n_methods test_ctxt =
+let test_get_n_methods _ =
   union_test (fun info ->
     let n = Union_info.get_n_methods info in
     assert_equal_int 5 n
   )
 
-let test_get_field test_ctxt =
+let test_get_field _ =
   union_test (fun info ->
     let field = Union_info.get_field info 0 in
       let flags = Field_info.get_flags field in
@@ -84,7 +84,7 @@ let test_get_field test_ctxt =
       in check_flags flags
     )
 
-let test_get_field_out_of_bounds test_ctxt =
+let test_get_field_out_of_bounds _ =
   union_test (fun info ->
     try ignore(Union_info.get_field info 3000)
     with
@@ -93,14 +93,14 @@ let test_get_field_out_of_bounds test_ctxt =
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
   )
 
-let test_get_method test_ctxt =
+let test_get_method _ =
   union_test (fun info ->
     let m = Union_info.get_method info 0 in
     let symbol = Function_info.get_symbol m in
     assert_equal_string "g_mutex_clear" symbol
   )
 
-let test_get_method_out_of_bounds test_ctxt =
+let test_get_method_out_of_bounds _ =
   union_test (fun info ->
     try ignore(Union_info.get_method info 300)
     with
@@ -109,7 +109,7 @@ let test_get_method_out_of_bounds test_ctxt =
     | _ -> assert_equal_string "Bad exception" "Not a Failure"
   )
 
-let test_find_method test_ctxt =
+let test_find_method _ =
   let function_name = "clear" in
   union_test (fun info ->
       match Union_info.find_method info function_name with
@@ -118,7 +118,7 @@ let test_find_method test_ctxt =
         assert_equal_string ("g_mutex_" ^ function_name) symbol
     )
 
-let test_is_discriminated test_ctxt =
+let test_is_discriminated _ =
   union_test (fun info ->
       let is_discriminated = Union_info.is_discriminated info in
       assert_equal_boolean false is_discriminated

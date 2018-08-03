@@ -24,7 +24,7 @@ let namespace = "Gtk"
 let typelib = Repository.require namespace ()
 let property_name = "accept-focus"
 
-let test_get_property_from_repo test_ctxt =
+let test_get_property_from_repo _ =
   match Repository.find_by_name namespace "Window" with
   | None -> assert_equal_string property_name "No base info found"
   | Some (base_info) ->
@@ -54,7 +54,7 @@ let property_test fn =
   | None -> assert_equal_string property_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_ownership_transfer test_ctxt =
+let test_get_ownership_transfer _ =
   property_test (fun info ->
       let transfer = Property_info.get_ownership_transfer info in
       assert_equal ~printer:(fun t ->
@@ -65,14 +65,14 @@ let test_get_ownership_transfer test_ctxt =
         ) Arg_info.Nothing transfer
     )
 
-let test_get_type test_ctxt =
+let test_get_type _ =
   property_test (fun info ->
       let info = Property_info.get_type info in
       let type_name = Type_info.to_string info in
       assert_equal_string "unknown" type_name
     )
 
-let test_get_flags test_ctxt =
+let test_get_flags _ =
   property_test (fun info ->
       let flags = Property_info.get_flags info in
       assert_equal ~printer:(fun f ->

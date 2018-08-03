@@ -38,26 +38,26 @@ let enum_test fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_n_values test_ctxt =
+let test_get_n_values _ =
   enum_test (fun info ->
       let n_values = Enum_info.get_n_values info in
       assert_equal_int 2 n_values
     )
 
-let test_get_n_methods test_ctxt =
+let test_get_n_methods _ =
   enum_test (fun info ->
       let n_methods = Enum_info.get_n_methods info in
       assert_equal_int 1 n_methods
     )
 
-let test_get_method test_ctxt =
+let test_get_method _ =
   enum_test (fun info ->
       let m = Enum_info.get_method info 0 in
       let name = Function_info.get_symbol m in
       assert_equal_string "g_resource_error_quark" name
     )
 
-let test_get_value test_ctxt =
+let test_get_value _ =
   enum_test (fun info ->
       match Enum_info.get_value info 1 with
       | None -> assert_equal_string "No value " "found"
@@ -69,14 +69,14 @@ let test_get_value test_ctxt =
         | Some name -> assert_equal_string "internal" name
     )
 
-let test_get_error_domain test_ctxt =
+let test_get_error_domain _ =
   enum_test (fun info ->
       match Enum_info.get_error_domain info with
       | None -> assert_equal_boolean true false
       | Some error_domain -> assert_equal_string "g-resource-error-quark" error_domain
     )
 
-let test_get_storage_type test_ctxt =
+let test_get_storage_type _ =
   enum_test (fun info ->
       match Enum_info.get_storage_type info with
       | Types.Uint32 -> assert_equal true true

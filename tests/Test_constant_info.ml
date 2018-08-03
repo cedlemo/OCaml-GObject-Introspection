@@ -39,7 +39,7 @@ let constant_test fn =
   | None -> assert_equal_string const_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_type test_ctxt =
+let test_get_type _ =
   constant_test (fun info ->
       let type_info = Constant_info.get_type info in
       let str = Type_info.to_string type_info in
@@ -50,7 +50,7 @@ let test_get_type test_ctxt =
         ) Types.Int32 tag
     )
 
-let test_get_value test_ctxt =
+let test_get_value _ =
   constant_test (fun info ->
       let type_info = Constant_info.get_type info in
       match Type_info.get_tag type_info with

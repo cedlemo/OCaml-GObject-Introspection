@@ -16,7 +16,6 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open GObject_introspection
 open OUnit2
 
 let assert_equal_string str1 str2 =
@@ -29,7 +28,7 @@ let assert_equal_int int1 int2 =
   assert_equal ~printer: (fun s -> string_of_int s) int1 int2
 
 let assert_equal_or_greater int1 int2 =
-  assert_equal ~printer: (fun s ->
+  assert_equal ~printer: (fun _ ->
     String.concat " " [string_of_int int1;
                        "is not >=";
                        string_of_int int2]

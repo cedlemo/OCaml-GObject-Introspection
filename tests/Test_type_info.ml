@@ -40,19 +40,19 @@ let type_test fn =
   | None -> assert_equal_string fn_name "No base info found"
   | Some info -> fn info
 
-let test_to_string test_ctxt =
+let test_to_string _ =
   type_test (fun info ->
       let str = Type_info.to_string info in
       assert_equal_string "unknown" str
     )
 
-let test_is_pointer test_ctxt =
+let test_is_pointer _ =
   type_test (fun info ->
       let is_pointer = Type_info.is_pointer info in
       assert_equal_boolean true is_pointer
     )
 
-let test_get_tag test_ctxt =
+let test_get_tag _ =
   type_test (fun info ->
       let tag = Type_info.get_tag info in
       assert_equal ~printer:(fun tag ->
@@ -60,25 +60,25 @@ let test_get_tag test_ctxt =
         ) Types.Array tag
     )
 
-let test_get_array_length test_ctxt =
+let test_get_array_length _ =
   type_test (fun info ->
       let length = Type_info.get_array_length info in
       assert_equal_int 1 length
     )
 
-let test_get_array_fixed_size test_ctxt =
+let test_get_array_fixed_size _ =
   type_test (fun info ->
       let size = Type_info.get_array_fixed_size info in
       assert_equal_int (-1) size
     )
 
-let test_is_zero_terminated test_ctxt =
+let test_is_zero_terminated _ =
   type_test (fun info ->
       let zero_terminated = Type_info.is_zero_terminated info in
       assert_equal_boolean false zero_terminated
     )
 
-let test_get_array_type test_ctxt =
+let test_get_array_type _ =
   type_test (fun info ->
       match Type_info.get_array_type info with
       | None -> assert_equal_string "It should " "be an array"
@@ -87,7 +87,7 @@ let test_get_array_type test_ctxt =
           Types.C array_type
     )
 
-let test_get_param_type test_ctxt =
+let test_get_param_type _ =
   type_test (fun info ->
      let param_type = Type_info.get_param_type info in
      let tag = Type_info.get_tag param_type in
@@ -96,14 +96,14 @@ let test_get_param_type test_ctxt =
         ) Types.Uint32 tag
     )
 
-let test_get_interface_none test_ctxt =
+let test_get_interface_none _ =
 type_test (fun info ->
       match Type_info.get_interface info with
       | None -> assert_equal true true
       | _ -> assert_equal_string "This type info " "should not have interface"
     )
 
-let test_get_interface test_ctxt =
+let test_get_interface _ =
   let name = "type_class_ref" in
   match Repository.find_by_name namespace name with
   | None -> assert_equal_string fn_name "No base info found"

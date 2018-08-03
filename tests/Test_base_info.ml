@@ -25,7 +25,7 @@ let typelib = Repository.require namespace ()
 let info_name = "app_info_create_from_commandline"
 let callback_name = "BusNameAppearedCallback"
 
-let test_equal test_ctxt =
+let test_equal _ =
   let rand_info = Repository.get_info namespace 10 in
   match Base_info.get_name rand_info with
   | None -> assert_equal_string "Base Info " "has no name"
@@ -35,25 +35,25 @@ let test_equal test_ctxt =
     | Some (info) -> let is_equal = Base_info.equal rand_info info in
       assert_equal_boolean true is_equal
 
-let test_get_namespace test_ctxt =
+let test_get_namespace _ =
   match Repository.find_by_name namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let info_namespace = Base_info.get_namespace base_info
   in assert_equal_string namespace info_namespace
 
-let test_is_deprecated test_ctxt =
+let test_is_deprecated _ =
   match Repository.find_by_name  namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some (base_info) -> let is_deprecated = Base_info.is_deprecated base_info in
     assert_equal_boolean false is_deprecated
 
-let test_get_container test_ctxt =
+let test_get_container _ =
   match Repository.find_by_name  namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some base_info -> (
       match Base_info.get_container base_info with
     | None -> assert_equal_boolean true true
-    | Some container -> assert_equal_string "It should not " "return a container here"
+    | Some _ -> assert_equal_string "It should not " "return a container here"
   )
 
 let tests =

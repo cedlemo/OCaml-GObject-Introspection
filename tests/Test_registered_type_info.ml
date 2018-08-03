@@ -37,7 +37,7 @@ let enum_test fn =
   | None -> assert_equal_string enum_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_type_name_from_enum test_ctxt =
+let test_get_type_name_from_enum _ =
   enum_test (fun info ->
       let registered = Enum_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
@@ -62,7 +62,7 @@ let interface_test fn =
   | None -> assert_equal_string interface_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_type_name_from_interface test_ctxt =
+let test_get_type_name_from_interface _ =
   interface_test (fun info ->
       let registered = Interface_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
@@ -87,7 +87,7 @@ let object_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_type_name_from_object test_ctxt =
+let test_get_type_name_from_object _ =
   object_test (fun info ->
       let registered = Object_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
@@ -112,7 +112,7 @@ let struct_test fn =
   | None -> assert_equal_string struct_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_type_name_from_struct test_ctxt =
+let test_get_type_name_from_struct _ =
   struct_test (fun info ->
       let registered = Struct_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
@@ -137,7 +137,7 @@ let union_test fn =
   | None -> assert_equal_string union_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_type_name_from_union test_ctxt =
+let test_get_type_name_from_union _ =
   union_test (fun info ->
       let registered = Union_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_type_name registered with
@@ -145,7 +145,7 @@ let test_get_type_name_from_union test_ctxt =
       | Some name -> assert_equal_string "Mutex" name
     )
 
-let test_get_type_from_enum test_ctxt =
+let test_get_type_from_enum _ =
   enum_test (fun info ->
       let registered = Enum_info.to_registeredtypeinfo info in
       match  Registered_type_info.get_g_type registered with
@@ -160,7 +160,7 @@ let test_get_type_from_enum test_ctxt =
 
   (* TODO create a GType module GType.t GType.of_int64 , GType.to_int64, GType.typ *)
 
-let test_get_type_init_from_union test_ctxt =
+let test_get_type_init_from_union _ =
   union_test (fun info ->
       let registered = Union_info.to_registeredtypeinfo info in
       match Registered_type_info.get_type_init registered with
@@ -168,7 +168,7 @@ let test_get_type_init_from_union test_ctxt =
       | Some name -> assert_equal_string "It should not return" name
     )
 
-let test_get_type_init_from_enum test_ctxt =
+let test_get_type_init_from_enum _ =
   enum_test (fun info ->
       let registered = Enum_info.to_registeredtypeinfo info in
       match Registered_type_info.get_type_init registered with

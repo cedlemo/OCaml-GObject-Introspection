@@ -21,10 +21,10 @@ open OUnit2
 open GObject_introspection
 
 let namespace = "Gdk"
-let typelib = Repository.require namespace ()
+let _ = Repository.require namespace ()
 let object_name = "Display"
 
-let test_from_baseinfo test_ctxt =
+let test_from_baseinfo _ =
   match Repository.find_by_name namespace object_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
@@ -46,19 +46,19 @@ let object_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
-let test_get_abstract test_ctxt =
+let test_get_abstract _ =
   object_test (fun info ->
       let is_abstract = Object_info.get_abstract info in
       assert_equal_boolean false is_abstract
     )
 
-let test_get_fundamental test_ctxt =
+let test_get_fundamental _ =
   object_test (fun info ->
       let is_fundamental = Object_info.get_fundamental info in
       assert_equal_boolean false is_fundamental
     )
 
-let test_get_parent test_ctxt =
+let test_get_parent _ =
   object_test (fun info ->
       let parent = Object_info.get_parent info in
       match Base_info.get_name parent with
@@ -66,50 +66,50 @@ let test_get_parent test_ctxt =
       | Some parent_name -> assert_equal_string "Object" parent_name
     )
 
-let test_get_type_name test_ctxt =
+let test_get_type_name _ =
   object_test (fun info ->
       let type_name = Object_info.get_type_name info in
       assert_equal_string "GdkDisplay" type_name
     )
 
-let test_get_type_init test_ctxt =
+let test_get_type_init _ =
   object_test (fun info ->
       let type_init = Object_info.get_type_init info in
       assert_equal_string "gdk_display_get_type" type_init
     )
 
-let test_get_n_constants test_ctxt =
+let test_get_n_constants _ =
   object_test (fun info ->
       let n = Object_info.get_n_constants info in
       assert_equal_int 0 n
     )
 
-let test_get_n_fields test_ctxt =
+let test_get_n_fields _ =
   object_test (fun info ->
       let n = Object_info.get_n_fields info in
       assert_equal_int 0 n
     )
 
-let test_get_n_interfaces test_ctxt =
+let test_get_n_interfaces _ =
   object_test (fun info ->
       let n = Object_info.get_n_interfaces info in
       assert_equal_int 0 n
     )
 
-let test_get_n_methods test_ctxt =
+let test_get_n_methods _ =
   object_test (fun info ->
       let n = Object_info.get_n_methods info in
       assert_equal_boolean true (n >= 41)
     )
 
-let test_get_method test_ctxt =
+let test_get_method _ =
   object_test (fun info ->
       let m = Object_info.get_method info 0 in
       let m_name = Function_info.get_symbol m in
       assert_equal_string "gdk_display_get_default" m_name
     )
 
-let test_find_method test_ctxt =
+let test_find_method _ =
   object_test (fun info ->
       let m_name = "get_default" in
       match Object_info.find_method info m_name with
@@ -118,25 +118,25 @@ let test_find_method test_ctxt =
         assert_equal_string ("gdk_display_" ^ m_name) symbol
     )
 
-let test_get_n_properties test_ctxt =
+let test_get_n_properties _ =
   object_test (fun info ->
       let n = Object_info.get_n_properties info in
       assert_equal_int 0 n
     )
 
-let test_get_n_signals test_ctxt =
+let test_get_n_signals _ =
   object_test (fun info ->
       let n = Object_info.get_n_signals info in
       assert_equal_boolean true (n >= 2)
     )
 
-let test_get_n_vfuncs test_ctxt =
+let test_get_n_vfuncs _ =
   object_test (fun info ->
       let n = Object_info.get_n_vfuncs info in
       assert_equal_int 0 n
     )
 
-let test_get_class_struct test_ctxt =
+let test_get_class_struct _ =
   object_test (fun info ->
       match Object_info.get_class_struct info with
       | None -> assert_equal_boolean true true
@@ -145,10 +145,10 @@ let test_get_class_struct test_ctxt =
     )
 
 let namespace = "Gtk"
-let typelib = Repository.require namespace ()
+let _ = Repository.require namespace ()
 let object_name = "Window"
 
-let test_gtk_window_from_baseinfo test_ctxt =
+let test_gtk_window_from_baseinfo _ =
   match Repository.find_by_name namespace object_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
@@ -170,19 +170,19 @@ let object_test fn =
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
-let test_gtk_window_get_abstract test_ctxt =
+let test_gtk_window_get_abstract _ =
   object_test (fun info ->
       let is_abstract = Object_info.get_abstract info in
       assert_equal_boolean false is_abstract
     )
 
-let test_gtk_window_get_fundamental test_ctxt =
+let test_gtk_window_get_fundamental _ =
   object_test (fun info ->
       let is_fundamental = Object_info.get_fundamental info in
       assert_equal_boolean false is_fundamental
     )
 
-let test_gtk_window_get_parent test_ctxt =
+let test_gtk_window_get_parent _ =
   object_test (fun info ->
       let parent = Object_info.get_parent info in
       match Base_info.get_name parent with
@@ -190,37 +190,37 @@ let test_gtk_window_get_parent test_ctxt =
       | Some parent_name -> assert_equal_string "Bin" parent_name
     )
 
-let test_gtk_window_get_type_name test_ctxt =
+let test_gtk_window_get_type_name _ =
   object_test (fun info ->
       let type_name = Object_info.get_type_name info in
       assert_equal_string "GtkWindow" type_name
     )
 
-let test_gtk_window_get_type_init test_ctxt =
+let test_gtk_window_get_type_init _ =
   object_test (fun info ->
       let type_init = Object_info.get_type_init info in
       assert_equal_string "gtk_window_get_type" type_init
     )
 
-let test_gtk_window_get_n_constants test_ctxt =
+let test_gtk_window_get_n_constants _ =
   object_test (fun info ->
       let n = Object_info.get_n_constants info in
       assert_equal_int 0 n
     )
 
-let test_gtk_window_get_n_fields test_ctxt =
+let test_gtk_window_get_n_fields _ =
   object_test (fun info ->
       let n = Object_info.get_n_fields info in
       assert_equal_int 2 n
     )
 
-let test_gtk_window_get_n_interfaces test_ctxt =
+let test_gtk_window_get_n_interfaces _ =
   object_test (fun info ->
       let n = Object_info.get_n_interfaces info in
       assert_equal_int 2 n
     )
 
-let test_gtk_window_get_interface test_ctxt =
+let test_gtk_window_get_interface _ =
    object_test (fun info ->
       let info' = Object_info.get_interface info 0 in
       let base_info' = Interface_info.to_baseinfo info' in
@@ -229,20 +229,20 @@ let test_gtk_window_get_interface test_ctxt =
       | Some interface_name -> assert_equal_string "ImplementorIface" interface_name
     )
 
-let test_gtk_window_get_n_methods test_ctxt =
+let test_gtk_window_get_n_methods _ =
   object_test (fun info ->
       let n = Object_info.get_n_methods info in
       assert_equal_boolean true (n >= 115)
     )
 
-let test_gtk_window_get_method test_ctxt =
+let test_gtk_window_get_method _ =
   object_test (fun info ->
       let m = Object_info.get_method info 0 in
       let m_name = Function_info.get_symbol m in
       assert_equal_string "gtk_window_new" m_name
     )
 
-let test_gtk_window_find_method test_ctxt =
+let test_gtk_window_find_method _ =
   object_test (fun info ->
       let m_name = "new" in
       match Object_info.find_method info m_name with
@@ -251,13 +251,13 @@ let test_gtk_window_find_method test_ctxt =
         assert_equal_string ("gtk_window_" ^ m_name) symbol
     )
 
-let test_gtk_window_get_n_properties test_ctxt =
+let test_gtk_window_get_n_properties _ =
   object_test (fun info ->
       let n = Object_info.get_n_properties info in
       assert_equal_boolean true (n >= 32)
     )
 
-let test_gtk_window_get_property test_ctxt =
+let test_gtk_window_get_property _ =
   object_test (fun info ->
       let prop = Object_info.get_property info 0 in
       let base_prop = Property_info.to_baseinfo prop in
@@ -266,13 +266,13 @@ let test_gtk_window_get_property test_ctxt =
       | Some name -> assert_equal_string "accept-focus" name
     )
 
-let test_gtk_window_get_n_signals test_ctxt =
+let test_gtk_window_get_n_signals _ =
   object_test (fun info ->
       let n = Object_info.get_n_signals info in
       assert_equal_boolean true (n >= 4)
     )
 
-let test_gtk_window_get_signal test_ctxt =
+let test_gtk_window_get_signal _ =
   object_test (fun info ->
       let info' = Object_info.get_signal info 0 in
       let base_info = Signal_info.to_baseinfo info' in
@@ -281,7 +281,7 @@ let test_gtk_window_get_signal test_ctxt =
       | Some name -> assert_equal_string "activate-default" name
     )
 
-let test_gtk_window_find_signal test_ctxt =
+let test_gtk_window_find_signal _ =
   object_test (fun info ->
       let signal_name = "activate-default" in
       match Object_info.find_signal info signal_name with
@@ -292,13 +292,13 @@ let test_gtk_window_find_signal test_ctxt =
         | Some name -> assert_equal_string signal_name name
     )
 
-let test_gtk_window_get_n_vfuncs test_ctxt =
+let test_gtk_window_get_n_vfuncs _ =
   object_test (fun info ->
       let n = Object_info.get_n_vfuncs info in
       assert_equal_boolean true (n >= 4)
     )
 
-let test_gtk_window_get_vfunc test_ctxt =
+let test_gtk_window_get_vfunc _ =
   object_test (fun info ->
       let info' = Object_info.get_vfunc info 0 in
       let base_info = VFunc_info.to_baseinfo info' in
@@ -307,7 +307,7 @@ let test_gtk_window_get_vfunc test_ctxt =
       | Some name -> assert_equal_string "activate_default" name
     )
 
-let test_gtk_window_find_vfunc test_ctxt =
+let test_gtk_window_find_vfunc _ =
   object_test (fun info ->
       let vfunc_name = "activate_default" in
       match Object_info.find_vfunc info vfunc_name with
@@ -318,7 +318,7 @@ let test_gtk_window_find_vfunc test_ctxt =
         | Some name -> assert_equal_string name vfunc_name
     )
 
-let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
+let test_gtk_window_find_vfunc_using_interfaces _ =
   object_test (fun info ->
       let vfunc_name = "activate_default" in
       let (vfunc, implementor) =
@@ -340,7 +340,7 @@ let test_gtk_window_find_vfunc_using_interfaces test_ctxt =
      )
 
 
-let test_gtk_window_get_class_struct test_ctxt =
+let test_gtk_window_get_class_struct _ =
   object_test (fun info ->
       match Object_info.get_class_struct info with
       | None -> assert_equal_boolean false true
@@ -348,7 +348,7 @@ let test_gtk_window_get_class_struct test_ctxt =
         assert_equal_boolean true is_struct
     )
 
-let test_gtk_window_find_method_using_interfaces test_ctxt =
+let test_gtk_window_find_method_using_interfaces _ =
   object_test (fun info ->
       let method_name = "set_title" in
       let (meth, implementor) =
@@ -367,28 +367,28 @@ let test_gtk_window_find_method_using_interfaces test_ctxt =
         assert_equal_string ("gtk_window_" ^ method_name) symbol
      )
 
-let test_gtk_window_get_ref_function test_ctxt =
+let test_gtk_window_get_ref_function _ =
   object_test (fun info ->
       match Object_info.get_ref_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any ref function"
     )
 
-let test_gtk_window_get_unref_function test_ctxt =
+let test_gtk_window_get_unref_function _ =
   object_test (fun info ->
       match Object_info.get_unref_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any ref function"
     )
 
-let test_gtk_window_get_set_value_function test_ctxt =
+let test_gtk_window_get_set_value_function _ =
   object_test (fun info ->
       match Object_info.get_set_value_function info with
       | None -> assert_equal true true
       | Some _ -> assert_equal_string "It should not " "have any set value function"
     )
 
-let test_gtk_window_get_get_value_function test_ctxt =
+let test_gtk_window_get_get_value_function _ =
   object_test (fun info ->
       match Object_info.get_get_value_function info with
       | None -> assert_equal true true
