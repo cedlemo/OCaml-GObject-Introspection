@@ -17,6 +17,7 @@
  *)
 
 open Ctypes
+open Foreign
 
 type t
 let registeredtypeinfo : t structure typ = structure "Registered_type_info"

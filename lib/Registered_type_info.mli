@@ -19,7 +19,6 @@
 (**  Registered_type_info — Struct representing a struct with a GType. *)
 
 open Ctypes
-open Foreign
 
 (** Registered_type_info represents an entity with a GType associated. Could be
     either a Enum_info, Interface_info, Object_info, Struct_info or a
