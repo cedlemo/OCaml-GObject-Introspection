@@ -121,7 +121,7 @@ let test_find_method _ =
 let test_get_n_properties _ =
   object_test (fun info ->
       let n = Object_info.get_n_properties info in
-      assert_equal_boolean true (n > 0)
+      assert_equal_boolean true (n >= 0)
     )
 
 let test_get_n_signals _ =
