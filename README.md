@@ -5,7 +5,7 @@
 
 # gobject-introspection OCaml package
 
-The OCaml bindings to the GObject-Introspection library based on Ctypes.
+The OCaml bindings to the [GObject-Introspection](https://gi.readthedocs.io/en/latest/index.html) library based on Ctypes.
 
 Two ideas to explore:
 
