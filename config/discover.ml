@@ -42,7 +42,7 @@ let () =
     let _ = print_endline "==================== Configurator ================" in
 
     let os_type = C.ocaml_config_var_exn (C.create "") "system" in
-    let ccopts = if Base.String.(os_type = "macosx") then [""] else ["-Wl"; "-no-as-needed"] in
+    let ccopts = if Base.String.(os_type = "macosx") then [""] else ["-Wl,-no-as-needed"] in
 
     write_sexp "c_flags.sexp"         (sexp_of_list sexp_of_string conf.cflags);
     write_sexp "c_library_flags.sexp" (sexp_of_list sexp_of_string conf.libs);

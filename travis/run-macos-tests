@@ -1,3 +1,3 @@
 #! /bin/bash
 
-opam pin add .
+opam pin add . -y
