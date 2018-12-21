@@ -4,8 +4,6 @@
   (libraries ctypes ctypes.foreign str)
   (c_flags         (:include c_flags.sexp))
   (c_library_flags (:include c_library_flags.sexp))
-  (ocamlopt_flags (-ccopt ("-Wl")))
-
 )
 (rule
   (targets c_flags.sexp c_library_flags.sexp)

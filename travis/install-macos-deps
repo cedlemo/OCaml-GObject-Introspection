@@ -1,0 +1,12 @@
+#! /bin/bash
+
+brew update
+brew install \
+    gtk+3 \
+    glib \
+    git \
+    darcs \
+    mercurial \
+    libffi \
+    gobject-introspection-1.0 \
+    opam
