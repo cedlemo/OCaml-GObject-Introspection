@@ -10,20 +10,20 @@ matrix:
   include:
     - os: osx
 
-    # - os: linux
-    #   env: TYPE=ubuntu-16.04
+    - os: linux
+      env: TYPE=ubuntu-16.04
 
-    # - os: linux
-    #   env: TYPE=ubuntu-17.10
+    - os: linux
+      env: TYPE=ubuntu-17.10
 
-    # - os: linux
-    #   env: TYPE=ubuntu-18.04
+    - os: linux
+      env: TYPE=ubuntu-18.04
 
-    # - os: linux
-    #   env: TYPE=debian-buster
+    - os: linux
+      env: TYPE=debian-buster
 
-    # - os: linux
-    #   env: TYPE=centos-7
+    - os: linux
+      env: TYPE=centos-7
 
 install:
   - source ./travis/install-deps
