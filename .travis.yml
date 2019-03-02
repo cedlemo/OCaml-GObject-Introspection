@@ -8,31 +8,33 @@ services:
 
 matrix:
   include:
-    - env: TYPE=ubuntu-18.04 OCAML_VERSION=4.05
-    - env: TYPE=ubuntu-18.04 OCAML_VERSION=4.06
-    - env: TYPE=ubuntu-18.04 OCAML_VERSION=4.07
-    - env: TYPE=ubuntu-18.10 OCAML_VERSION=4.05
-    - env: TYPE=ubuntu-18.10 OCAML_VERSION=4.06
-    - env: TYPE=ubuntu-18.10 OCAML_VERSION=4.07
-    - env: TYPE=debian-buster OCAML_VERSION=4.05
-    - env: TYPE=debian-buster OCAML_VERSION=4.06
-    - env: TYPE=debian-buster OCAML_VERSION=4.07
-    - env: TYPE=centos-7 OCAML_VERSION=4.05
-    - env: TYPE=centos-7 OCAML_VERSION=4.06
-    - env: TYPE=centos-7 OCAML_VERSION=4.07
-    - env: TYPE=fedora-29 OCAML_VERSION=4.05
-    - env: TYPE=fedora-29 OCAML_VERSION=4.06
-    - env: TYPE=fedora-29 OCAML_VERSION=4.07
-
+    - os: osx
+      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.05
+      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.06
+      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.05
+      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.06
+      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.05
+      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.06
+      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=debian-buster OCAML_VERSION=4.05
+      env: TYPE=debian-buster OCAML_VERSION=4.06
+      env: TYPE=debian-buster OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=centos-7 OCAML_VERSION=4.05
+      env: TYPE=centos-7 OCAML_VERSION=4.06
+      env: TYPE=centos-7 OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=fedora-29 OCAML_VERSION=4.05
+      env: TYPE=fedora-29 OCAML_VERSION=4.06
+      env: TYPE=fedora-29 OCAML_VERSION=4.07
 
 install:
-  - docker build
-      -t ocaml-gi/${TYPE}
-      -f travis/Dockerfile.${TYPE}
-      .
+  - source ./travis/install-deps
 
 script:
-  - docker run
-      --interactive
-      --tty
-      ocaml-gi/${TYPE}
+  - bash ./travis/run-tests

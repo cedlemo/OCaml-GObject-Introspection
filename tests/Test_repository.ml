@@ -110,7 +110,7 @@ let test_get_info _ =
 let test_get_shared_library _ =
   match Repository.get_shared_library ~repository namespace with
   | None -> assert_equal_string "It should return " "something"
-  | Some shared_lib -> assert_equal_string "libgio-2.0.so.0" shared_lib
+  | Some shared_lib -> assert_includes_string shared_lib "libgio-2.0"
 
 let tests =
   "GObject Introspection Repository tests" >:::

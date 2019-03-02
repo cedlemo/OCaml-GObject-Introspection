@@ -1,0 +1,16 @@
+#! /bin/bash
+
+brew update
+brew install \
+    gtk+3 \
+    glib \
+    git \
+    darcs \
+    mercurial \
+    libffi \
+    gobject-introspection \
+    opam
+
+RUN echo ". /home/ocaml-gi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true" > /home/ocaml-gi/ocaml-gi/runtest.sh
+opam init --comp 4.06.0  --yes
+eval $(opam env)

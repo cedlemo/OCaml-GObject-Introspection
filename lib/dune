@@ -4,11 +4,10 @@
   (libraries ctypes ctypes.foreign str)
   (c_flags         (:include c_flags.sexp))
   (c_library_flags (:include c_library_flags.sexp))
-  (ocamlopt_flags (-ccopt ("-Wl,-no-as-needed")))
-
+  (ocamlopt_flags (-ccopt (:include ccopts.sexp)))
 )
 (rule
-  (targets c_flags.sexp c_library_flags.sexp)
+  (targets c_flags.sexp c_library_flags.sexp ccopts.sexp)
   (deps    (:x ../config/discover.exe))
   (action  (run %{x} -ocamlc %{ocamlc}))
 )

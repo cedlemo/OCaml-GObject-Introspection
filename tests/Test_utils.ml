@@ -21,6 +21,14 @@ open OUnit2
 let assert_equal_string str1 str2 =
   assert_equal ~printer: (fun s -> s) str1 str2
 
+let assert_includes_string str1 str2 =
+  let re = Str.regexp_string str2 in
+  let result = try
+      (Str.search_forward re str1 0) > -1
+    with Not_found -> false
+  in
+  assert_bool (Printf.sprintf "%s should have included %s" str1 str2) result
+
 let assert_equal_boolean bool1 bool2 =
   assert_equal ~printer: (fun s -> string_of_bool s) bool1 bool2
 
