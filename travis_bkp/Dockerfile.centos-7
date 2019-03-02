@@ -1,0 +1,58 @@
+FROM centos:7
+
+RUN \
+  yum install -y epel-release
+RUN \
+  yum install -y \
+    sudo \
+    gtk+-devel \
+    glib-devel \
+    gobject-introspection-devel \
+    xorg-x11-server-Xvfb \
+    which \
+    git \
+    darcs \
+    mercurial \
+    bzip2 \
+    gcc \
+    gcc-c++ \
+    make \
+    aspcud \
+    m4 \
+    unzip \
+    openssl-devel \
+    readline-devel \
+    zlib-devel \
+    dejavu-sans-fonts \
+    gnome-icon-theme \
+    adwaita-gtk2-theme \
+    vte3 \
+    webkitgtk \
+    webkitgtk3 \
+    libwebkit2-gtk \
+    clutter-gtk \
+    gtksourceview3 \
+    dbus-x11 \
+    wget \
+    patch
+
+
+RUN \
+  useradd --user-group --create-home ocaml-gi
+
+RUN \
+  echo "ocaml-gi ALL=(ALL:ALL) NOPASSWD:ALL" | \
+    EDITOR=tee visudo -f /etc/sudoers.d/ocaml-gi
+
+USER ocaml-gi
+
+COPY . /home/ocaml-gi/ocaml-gi
+
+RUN sudo chown -R ocaml-gi:ocaml-gi /home/ocaml-gi/ocaml-gi
+WORKDIR /home/ocaml-gi/ocaml-gi
+RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sudo sh -s /usr/local/bin
+RUN /usr/local/bin/opam init --comp 4.06.0
+RUN opam install ctypes configurator base stdio ctypes-foreign jbuilder odoc bisect_ppx ounit dune
+RUN echo ". /home/ocaml-gi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true" > /home/ocaml-gi/ocaml-gi/runtest.sh
+RUN echo "dune runtest --profile release" >> /home/ocaml-gi/ocaml-gi/runtest.sh
+CMD bash -ex /home/ocaml-gi/ocaml-gi/runtest.sh

@@ -8,11 +8,22 @@ services:
 
 matrix:
   include:
-    - env: TYPE=ubuntu-16.04
-    - env: TYPE=ubuntu-17.10
-    - env: TYPE=ubuntu-18.04
-    - env: TYPE=debian-buster
-    - env: TYPE=centos-7
+    - env: TYPE=ubuntu-18.04 OCAML_VERSION=4.05
+    - env: TYPE=ubuntu-18.04 OCAML_VERSION=4.06
+    - env: TYPE=ubuntu-18.04 OCAML_VERSION=4.07
+    - env: TYPE=ubuntu-18.10 OCAML_VERSION=4.05
+    - env: TYPE=ubuntu-18.10 OCAML_VERSION=4.06
+    - env: TYPE=ubuntu-18.10 OCAML_VERSION=4.07
+    - env: TYPE=debian-buster OCAML_VERSION=4.05
+    - env: TYPE=debian-buster OCAML_VERSION=4.06
+    - env: TYPE=debian-buster OCAML_VERSION=4.07
+    - env: TYPE=centos-7 OCAML_VERSION=4.05
+    - env: TYPE=centos-7 OCAML_VERSION=4.06
+    - env: TYPE=centos-7 OCAML_VERSION=4.07
+    - env: TYPE=fedora-29 OCAML_VERSION=4.05
+    - env: TYPE=fedora-29 OCAML_VERSION=4.06
+    - env: TYPE=fedora-29 OCAML_VERSION=4.07
+
 
 install:
   - docker build

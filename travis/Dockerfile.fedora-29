@@ -1,24 +1,14 @@
-FROM ocaml/opam2:centos
+FROM ocaml/opam2:fedora
 
- RUN \
-   sudo yum install -y epel-release
 RUN \
-  sudo yum install -y \
+    sudo dnf install -y \
     gtk+-devel \
     glib-devel \
     gobject-introspection-devel \
     xorg-x11-server-Xvfb \
-    which \
-    git \
     darcs \
     mercurial \
-    bzip2 \
-    gcc \
-    gcc-c++ \
-    make \
-    aspcud \
     m4 \
-    unzip \
     openssl-devel \
     readline-devel \
     zlib-devel \
@@ -26,14 +16,11 @@ RUN \
     gnome-icon-theme \
     adwaita-gtk2-theme \
     vte3 \
-    webkitgtk \
-    webkitgtk3 \
-    libwebkit2-gtk \
+    vte3-devel \
     clutter-gtk \
     gtksourceview3 \
     dbus-x11 \
-    wget \
-    patch
+    wget
 
 COPY . /home/opam/tests
 RUN sudo chown -R opam:opam /home/opam/tests
