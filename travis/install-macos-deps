@@ -11,6 +11,5 @@ brew install \
     gobject-introspection \
     opam
 
-RUN echo ". /home/ocaml-gi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true" > /home/ocaml-gi/ocaml-gi/runtest.sh
 opam init --comp "$OCAML_VERSION.0" --yes
 eval $(opam env)
