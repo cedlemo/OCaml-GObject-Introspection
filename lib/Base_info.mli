@@ -61,36 +61,6 @@ val is_deprecated:
 val get_container:
   t structure ptr -> t structure ptr option
 
-type baseinfo_type =
-  | Invalid (** invalid type *)
-  | Function (** function, see Function_info *)
-  | Callback (** callback, see Function_info *)
-  | Struct (** struct, see Struct_info *)
-  | Boxed (** boxed, see Struct_info or Union_info *)
-  | Enum (** enum, see Enum_info *)
-  | Flags (** flags, see Enum_info *)
-  | Object (** object, see Object_info *)
-  | Interface (** interface, see Interface_info *)
-  | Constant (** contant, see Constant_info *)
-  | Invalid_0 (** deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN. *)
-  | Union (** union, see Union_info *)
-  | Value (** enum value, see Value_info *)
-  | Signal (** signal, see Signal_info *)
-  | Vfunc (** virtual function, see VFunc_info *)
-  | Property (** GObject property, see Property_info *)
-  | Field (** struct or union field, see Field_info *)
-  | Arg (** argument of a function or callback, see Arg_info *)
-  | Type (** type information, see Type_info *)
-  | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
-
-(** Transform an integer value to a baseinfo_type. *)
-val baseinfo_type_of_int:
-  int -> baseinfo_type
-
-(** Get the name of a baseinfo_type. *)
-val string_of_baseinfo_type:
-  baseinfo_type -> string
-
 (** Obtain the info type of the Base_info. *)
 val get_type:
   t structure ptr -> baseinfo_type
