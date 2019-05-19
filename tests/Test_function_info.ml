@@ -28,7 +28,7 @@ let get_function_info () =
   match Repository.find_by_name  namespace name with
   | None -> None
   | Some (base_info) -> match Base_info.get_type base_info with
-    | Base_info.Function -> let info = Function_info.from_baseinfo base_info in
+    | Function -> let info = Function_info.from_baseinfo base_info in
       Some info
     | _ -> None
 

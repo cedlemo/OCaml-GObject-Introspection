@@ -29,7 +29,7 @@ let test_baseinfo_get_type _ =
   | None -> assert_equal_string struct_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
-      | Base_info.Struct -> true
+      | Struct -> true
       | _ -> false)
 
 let get_struct_info () =
@@ -37,7 +37,7 @@ let get_struct_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Struct -> Some (Struct_info.from_baseinfo base_info)
+    | Struct -> Some (Struct_info.from_baseinfo base_info)
     | _ -> None
 
 let struct_test fn =

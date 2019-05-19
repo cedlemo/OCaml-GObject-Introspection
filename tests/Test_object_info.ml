@@ -29,7 +29,7 @@ let test_from_baseinfo _ =
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
-      | Base_info.Object -> true
+      | Object -> true
       | _ -> false )
 
 let get_object_info () =
@@ -37,7 +37,7 @@ let get_object_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let object_info = Object_info.from_baseinfo base_info in
+    | Object -> let object_info = Object_info.from_baseinfo base_info in
       Some object_info
     | _ -> None
 
@@ -153,7 +153,7 @@ let test_gtk_window_from_baseinfo _ =
   | None -> assert_equal_string object_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
-      | Base_info.Object -> true
+      | Object -> true
       | _ -> false )
 
 let get_object_info () =
@@ -161,7 +161,7 @@ let get_object_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let object_info = Object_info.from_baseinfo base_info in
+    | Object -> let object_info = Object_info.from_baseinfo base_info in
       Some object_info
     | _ -> None
 

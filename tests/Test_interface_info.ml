@@ -29,7 +29,7 @@ let get_interface_info interface_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Interface ->
+    | Interface ->
       let interface_info = Interface_info.from_baseinfo base_info in
       Some interface_info
     | _ -> None

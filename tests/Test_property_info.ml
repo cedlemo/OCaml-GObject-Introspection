@@ -29,12 +29,12 @@ let test_get_property_from_repo _ =
   | None -> assert_equal_string property_name "No base info found"
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> (
+    | Object -> (
         let info = Object_info.from_baseinfo base_info in
         let prop = Object_info.get_property info 0 in
         let base_prop = Property_info.to_baseinfo prop in
         match  Base_info.get_type base_prop with
-        | Base_info.Property -> assert_equal true true
+        | Property -> assert_equal true true
         | _ -> assert_equal_string "It should be a" "Property info"
       )
     | _ -> assert_equal_string property_name "No base info found"
@@ -44,7 +44,7 @@ let get_property_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let info = Object_info.from_baseinfo base_info in
+    | Object -> let info = Object_info.from_baseinfo base_info in
         let prop = Object_info.get_property info 0 in
         Some prop
     | _ -> None

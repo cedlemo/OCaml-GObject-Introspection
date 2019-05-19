@@ -29,7 +29,7 @@ let get_enum_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Enum -> let info = Enum_info.from_baseinfo base_info
+    | Enum -> let info = Enum_info.from_baseinfo base_info
       in Some info
     | _ -> None
 

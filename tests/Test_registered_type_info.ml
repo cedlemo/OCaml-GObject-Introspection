@@ -26,7 +26,7 @@ let get_enum_info namespace enum_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Enum -> let info = Enum_info.from_baseinfo base_info
+    | Enum -> let info = Enum_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -51,7 +51,7 @@ let get_interface_info namespace interface_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Interface -> let info = Interface_info.from_baseinfo base_info
+    | Interface -> let info = Interface_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -76,7 +76,7 @@ let get_object_info namespace object_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let info = Object_info.from_baseinfo base_info
+    | Object -> let info = Object_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -101,7 +101,7 @@ let get_struct_info namespace struct_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Struct -> let info = Struct_info.from_baseinfo base_info
+    | Struct -> let info = Struct_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
@@ -126,7 +126,7 @@ let get_union_info namespace union_name =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let info = Union_info.from_baseinfo base_info
+    | Union -> let info = Union_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
