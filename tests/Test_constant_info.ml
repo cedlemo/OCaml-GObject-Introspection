@@ -30,7 +30,7 @@ let get_constant_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Constant -> let const_info = Constant_info.from_baseinfo base_info in
+    | Constant -> let const_info = Constant_info.from_baseinfo base_info in
       Some const_info
     | _ -> None
 

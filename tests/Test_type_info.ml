@@ -29,7 +29,7 @@ let get_type_info () =
   | None -> assert_equal_string fn_name "No base info found"; None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Function ->
+    | Function ->
       let callable_info = Callable_info.from_baseinfo base_info in
       let type_info = Callable_info.get_return_type callable_info in
       Some type_info
@@ -109,7 +109,7 @@ let test_get_interface _ =
   | None -> assert_equal_string fn_name "No base info found"
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Function ->
+    | Function ->
       (
         let callable_info = Callable_info.from_baseinfo base_info in
         let type_info = Callable_info.get_return_type callable_info in

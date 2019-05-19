@@ -29,7 +29,7 @@ let get_callable_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Function -> let info = Callable_info.from_baseinfo base_info
+    | Function -> let info = Callable_info.from_baseinfo base_info
       in Some info
     | _ -> None
 

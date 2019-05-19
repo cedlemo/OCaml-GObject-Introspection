@@ -30,7 +30,7 @@ let get_vfunc_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Object -> let object_info = Object_info.from_baseinfo base_info in
+    | Object -> let object_info = Object_info.from_baseinfo base_info in
       Object_info.find_vfunc object_info vfunc_name
     | _ -> None
 

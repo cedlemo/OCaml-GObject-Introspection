@@ -29,7 +29,7 @@ let get_union_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let info = Union_info.from_baseinfo base_info
+    | Union -> let info = Union_info.from_baseinfo base_info
       in Some info
     | _ -> None
 
