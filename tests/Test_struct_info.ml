@@ -1,5 +1,5 @@
 (*
- * Copyright 2017-2018 Cedric LE MOIGNE, cedlemo@gmx.com
+ * Copyright 2017-2019 Cedric LE MOIGNE, cedlemo@gmx.com
  * This file is part of OCaml-GObject-Introspection.
  *
  * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
