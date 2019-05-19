@@ -18,9 +18,7 @@
 
 open Ctypes
 open Foreign
-
-module Stubs = Bindings.Enums(Bindings_stubs)
-include Stubs
+open Stubs
 
 type t
 let baseinfo : t structure typ = structure "Base_info"

@@ -18,6 +18,7 @@
 
 (** Base_info — Base struct for all GITypelib structs *)
 open Ctypes
+open Stubs
 
 (** Base_info is the common base struct of all other *Info structs accessible
     through the Repository API. All other structs can be casted to a
@@ -63,7 +64,7 @@ val get_container:
 
 (** Obtain the info type of the Base_info. *)
 val get_type:
-  t structure ptr -> baseinfo_type
+  t structure ptr -> Bindings.baseinfo_type
 (*
   Base_info *	g_info_new ()
   TODO : GITypelib *	g_base_info_get_typelib ()
