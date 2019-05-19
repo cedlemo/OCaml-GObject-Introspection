@@ -29,7 +29,7 @@ let test_from_baseinfo _ =
   | None -> assert_equal_string union_name "No base info found"
   | Some (base_info) -> assert_equal_boolean true (
       match Base_info.get_type base_info with
-      | Base_info.Union -> true
+      | Union -> true
       | _ -> false )
 
 let get_union_info () =
@@ -37,7 +37,7 @@ let get_union_info () =
   | None -> None
   | Some (base_info) ->
     match Base_info.get_type base_info with
-    | Base_info.Union -> let union_info = Union_info.from_baseinfo base_info in
+    | Union -> let union_info = Union_info.from_baseinfo base_info in
       Some union_info
     | _ -> None
 
