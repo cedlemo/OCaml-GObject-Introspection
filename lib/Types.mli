@@ -53,6 +53,7 @@ val tag_of_int:
 val string_of_tag:
   Bindings.type_tag -> string
 
+(**
 type array_type =
   | C          (** a C array, char[] for instance *)
   | Array      (** a GArray array *)
@@ -61,9 +62,9 @@ type array_type =
 
 val array_type_of_int:
   int -> array_type
-
+*)
 val string_of_array_type:
-  array_type -> string
+  Bindings.array_type -> string
 
 type argument_t
 val argument: argument_t union typ

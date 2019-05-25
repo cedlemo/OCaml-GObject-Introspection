@@ -84,7 +84,7 @@ let test_get_array_type _ =
       | None -> assert_equal_string "It should " "be an array"
       | Some array_type -> assert_equal ~printer:(fun t ->
           Types.string_of_array_type t)
-          Types.C array_type
+          C array_type
     )
 
 let test_get_param_type _ =

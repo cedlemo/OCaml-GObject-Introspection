@@ -66,7 +66,7 @@ val is_zero_terminated:
 (** Obtain the array type for this type. See GIArrayType for a list of possible
     values. If the type tag of this type is not array, None will be returned. *)
 val get_array_type:
-  t structure ptr -> Types.array_type option
+  t structure ptr -> Bindings.array_type option
 
 (** Obtain the parameter type n. It is used to get the parameter type of generic
  *  container. For example if the current Type_info.t is an array, a GList, a

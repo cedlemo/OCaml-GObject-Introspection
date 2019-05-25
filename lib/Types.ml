@@ -98,7 +98,7 @@ let string_of_tag : Bindings.type_tag -> string = function
   | Error -> "error"
   | Unichar -> "unichar"
 
-type array_type =
+(** type array_type =
   | C
   | Array
   | Ptr_array
@@ -113,8 +113,9 @@ let array_type_of_int = function
                                                string_of_int value;
                                                "should not have been reached"]
     in raise (Failure message)
+*)
 
-let string_of_array_type = function
+let string_of_array_type : Bindings.array_type -> string = function
   | C -> "c"
   | Array -> "array"
   | Ptr_array -> "ptr_array"

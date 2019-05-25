@@ -50,10 +50,9 @@ let is_zero_terminated =
 let get_array_type info =
   let get_array_type_raw =
     foreign "g_type_info_get_array_type"
-      (ptr typeinfo @-> returning int) in
-  match get_array_type_raw info with
-  | -1 -> None
-  | array_type -> Some (Types.array_type_of_int array_type)
+      (ptr typeinfo @-> returning array_type) in
+  try Some (get_array_type_raw info) with
+  | _ -> None
 
 let get_interface info =
   let get_interface_raw =

@@ -45,6 +45,14 @@ type type_tag =
   | Error (** a GError *)
   | Unichar (** Unicode character *)
 
+(** The type of array in a GITypeInfo. *)
+type array_type =
+  | C          (** a C array, char[] for instance *)
+  | Array      (** a GArray array *)
+  | Ptr_array  (** a GPtrArray array *)
+  | Byte_array (** a GByteArray array *)
+
+
 module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_info_type_invalid = T.constant "GI_INFO_TYPE_INVALID" T.int64_t
   let gi_info_type_function = T.constant "GI_INFO_TYPE_FUNCTION" T.int64_t
@@ -137,6 +145,19 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       GHash, gi_type_tag_ghash;
       Error, gi_type_tag_error;
       Unichar, gi_type_tag_unichar;
+    ]
+      ~unexpected:(fun _x -> assert false)
+
+  let gi_array_type_c = T.constant "GI_ARRAY_TYPE_C" T.int64_t
+  let gi_array_type_array = T.constant "GI_ARRAY_TYPE_ARRAY" T.int64_t
+  let gi_array_type_ptr_array = T.constant "GI_ARRAY_TYPE_PTR_ARRAY" T.int64_t
+  let gi_array_type_byte_array = T.constant "GI_ARRAY_TYPE_BYTE_ARRAY" T.int64_t
+
+  let array_type = T.enum "GIArrayType" ~typedef:true [
+      C, gi_array_type_c;
+      Array,  gi_array_type_array;
+      Ptr_array, gi_array_type_ptr_array;
+      Byte_array, gi_array_type_byte_array;
     ]
       ~unexpected:(fun _x -> assert false)
 end
