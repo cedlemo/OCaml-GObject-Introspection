@@ -18,6 +18,7 @@
 
 open Ctypes
 open Foreign
+open Stubs
 
 type t
 let enuminfo : t structure typ = structure "Union_info"
@@ -53,12 +54,9 @@ let get_error_domain =
   foreign "g_enum_info_get_error_domain"
     (ptr enuminfo @-> returning string_opt)
 
-let get_storage_type info =
-  let get_storage_type_raw =
+let get_storage_type =
     foreign "g_enum_info_get_storage_type"
-      (ptr enuminfo @-> returning int)
-  in let value = get_storage_type_raw info in
-  Types.tag_of_int value
+      (ptr enuminfo @-> returning type_tag)
 
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_from_baseinfo info =

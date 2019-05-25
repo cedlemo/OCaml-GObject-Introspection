@@ -79,7 +79,7 @@ let test_get_error_domain _ =
 let test_get_storage_type _ =
   enum_test (fun info ->
       match Enum_info.get_storage_type info with
-      | Types.Uint32 -> assert_equal true true
+      | Bindings.Uint32 -> assert_equal true true
       | _ -> assert_equal_string "bad " "type"
     )
 

@@ -19,8 +19,8 @@
 (** common types *)
 
 open Ctypes
-
-(** The type tag of a Type_info. *)
+open Stubs
+(** The type tag of a Type_info.
 type tag =
   | Void (** void *)
   | Boolean (** boolean *)
@@ -48,8 +48,10 @@ type tag =
 val tag_of_int:
   int -> tag
 
+*)
+
 val string_of_tag:
-  tag -> string
+  Bindings.type_tag -> string
 
 type array_type =
   | C          (** a C array, char[] for instance *)

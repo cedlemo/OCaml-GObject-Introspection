@@ -19,6 +19,7 @@
 (** Type_info — Struct representing a type *)
 
 open Ctypes
+open Stubs
 
 (** Type_info represents a type. You can retrieve a type info from an argument
     (see Arg_info), a function return value (see Function_info), a field
@@ -45,7 +46,7 @@ val is_pointer:
 
 (** Obtain the type tag for the type. See GITypeTag for a list of type tags. *)
 val get_tag:
-  t structure ptr -> Types.tag
+  t structure ptr -> Bindings.type_tag
 
 (** Obtain the array length of the type. The type tag must be a GIType.array or
     -1 will returned. *)

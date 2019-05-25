@@ -20,6 +20,31 @@ type baseinfo_type =
   | Type (** type information, see Type_info *)
   | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
 
+(** The type tag of a Type_info. *)
+type type_tag =
+  | Void (** void *)
+  | Boolean (** boolean *)
+  | Int8 (** 8-bit signed integer *)
+  | Uint8 (** 8-bit unsigned integer *)
+  | Int16 (** 16-bit signed integer *)
+  | Uint16 (** 16-bit unsigned integer *)
+  | Int32 (** 32-bit signed integer *)
+  | Uint32 (** 32-bit unsigned integer *)
+  | Int64 (** 64-bit signed integer *)
+  | Uint64 (** 64-bit unsigned integer *)
+  | Float (** float *)
+  | Double (** double floating point *)
+  | GType (** a GType *)
+  | Utf8 (** a UTF-8 encoded string *)
+  | Filename (** a filename, encoded in the same encoding as the native filesystem is using. *)
+  | Array (** an array *)
+  | Interface (** an extended interface object *)
+  | GList (** a GList *)
+  | GSList (** a GSList *)
+  | GHash (** a GHashTable *)
+  | Error (** a GError *)
+  | Unichar (** Unicode character *)
+
 module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_info_type_invalid = T.constant "GI_INFO_TYPE_INVALID" T.int64_t
   let gi_info_type_function = T.constant "GI_INFO_TYPE_FUNCTION" T.int64_t
@@ -63,6 +88,55 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Arg, gi_info_type_arg;
       Type, gi_info_type_type;
       Unresolved, gi_info_type_unresolved;
+    ]
+      ~unexpected:(fun _x -> assert false)
+
+  let gi_type_tag_void = T.constant "GI_TYPE_TAG_VOID" T.int64_t
+  let gi_type_tag_boolean = T.constant "GI_TYPE_TAG_BOOLEAN" T.int64_t
+  let gi_type_tag_int8 = T.constant "GI_TYPE_TAG_INT8" T.int64_t
+  let gi_type_tag_uint8 = T.constant "GI_TYPE_TAG_UINT8" T.int64_t
+  let gi_type_tag_int16 = T.constant "GI_TYPE_TAG_INT16" T.int64_t
+  let gi_type_tag_uint16 = T.constant "GI_TYPE_TAG_UINT16" T.int64_t
+  let gi_type_tag_int32 = T.constant "GI_TYPE_TAG_INT32" T.int64_t
+  let gi_type_tag_uint32 = T.constant "GI_TYPE_TAG_UINT32" T.int64_t
+  let gi_type_tag_int64 = T.constant "GI_TYPE_TAG_INT64" T.int64_t
+  let gi_type_tag_uint64 = T.constant "GI_TYPE_TAG_UINT64" T.int64_t
+  let gi_type_tag_float = T.constant "GI_TYPE_TAG_FLOAT" T.int64_t
+  let gi_type_tag_double = T.constant "GI_TYPE_TAG_DOUBLE" T.int64_t
+  let gi_type_tag_gtype = T.constant "GI_TYPE_TAG_GTYPE" T.int64_t
+  let gi_type_tag_utf8 = T.constant "GI_TYPE_TAG_UTF8" T.int64_t
+  let gi_type_tag_filename = T.constant "GI_TYPE_TAG_FILENAME" T.int64_t
+  let gi_type_tag_array = T.constant "GI_TYPE_TAG_ARRAY" T.int64_t
+  let gi_type_tag_interface = T.constant "GI_TYPE_TAG_INTERFACE" T.int64_t
+  let gi_type_tag_glist = T.constant "GI_TYPE_TAG_GLIST" T.int64_t
+  let gi_type_tag_gslist = T.constant "GI_TYPE_TAG_GSLIST" T.int64_t
+  let gi_type_tag_ghash = T.constant "GI_TYPE_TAG_GHASH" T.int64_t
+  let gi_type_tag_error = T.constant "GI_TYPE_TAG_ERROR" T.int64_t
+  let gi_type_tag_unichar = T.constant "GI_TYPE_TAG_UNICHAR" T.int64_t
+
+  let type_tag = T.enum "GITypeTag" ~typedef:true [
+      Void, gi_type_tag_void;
+      Boolean, gi_type_tag_boolean;
+      Int8, gi_type_tag_int8;
+      Uint8, gi_type_tag_uint8;
+      Int16, gi_type_tag_int16;
+      Uint16, gi_type_tag_uint16;
+      Int32, gi_type_tag_int32;
+      Uint32, gi_type_tag_uint32;
+      Int64, gi_type_tag_int64;
+      Uint64, gi_type_tag_uint64;
+      Float, gi_type_tag_float;
+      Double, gi_type_tag_double;
+      GType, gi_type_tag_gtype;
+      Utf8, gi_type_tag_utf8;
+      Filename, gi_type_tag_filename;
+      Array, gi_type_tag_array;
+      Interface, gi_type_tag_interface;
+      GList, gi_type_tag_glist;
+      GSList, gi_type_tag_gslist;
+      GHash, gi_type_tag_ghash;
+      Error, gi_type_tag_error;
+      Unichar, gi_type_tag_unichar;
     ]
       ~unexpected:(fun _x -> assert false)
 end

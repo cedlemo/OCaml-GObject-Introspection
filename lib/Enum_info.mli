@@ -19,6 +19,7 @@
 (** Enum_info — Structs representing an enumeration and its values *)
 
 open Ctypes
+open Stubs
 
 (** A Enum_info represents an enumeration and a Value_info struct represents
     a value of an enumeration. The Enum_info contains a set of values and a
@@ -54,7 +55,7 @@ val get_error_domain:
     correctly, but the signed or unsigned nature of the type may not match the
     sign of the type used by the C compiler. *)
 val get_storage_type:
-  t structure ptr -> Types.tag
+  t structure ptr -> Bindings.type_tag
 
 (** Just cast OCaml Ctypes base info to enum info. *)
 val cast_from_baseinfo:

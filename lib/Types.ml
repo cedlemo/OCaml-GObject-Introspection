@@ -17,7 +17,8 @@
  *)
 
 open Ctypes
-
+open Stubs
+(**
 type tag =
   | Void
   | Boolean
@@ -70,7 +71,10 @@ let tag_of_int = function
                                                "should not have been reached"]
     in raise (Failure message)
 
-let string_of_tag = function
+
+*)
+
+let string_of_tag : Bindings.type_tag -> string = function
   | Void -> "void"
   | Boolean -> "boolean"
   | Int8 -> "int8"

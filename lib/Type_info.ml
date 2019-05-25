@@ -18,6 +18,7 @@
 
 open Ctypes
 open Foreign
+open Stubs
 
 type t
 let typeinfo : t structure typ = structure "Type_info"
@@ -30,12 +31,9 @@ let is_pointer =
   foreign "g_type_info_is_pointer"
     (ptr typeinfo @-> returning bool)
 
-let get_tag info =
-  let get_tag_raw =
+let get_tag =
     foreign "g_type_info_get_tag"
-      (ptr typeinfo @-> returning int) in
-  let tag = get_tag_raw info in
-  Types.tag_of_int tag
+      (ptr typeinfo @-> returning type_tag)
 
 let get_array_length =
   foreign "g_type_info_get_array_length"
