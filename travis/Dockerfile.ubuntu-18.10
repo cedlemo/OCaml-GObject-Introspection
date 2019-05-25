@@ -2,7 +2,7 @@ FROM ocaml/opam2:ubuntu
 
 RUN \
   sudo apt update && \
-  sudo apt install -y \
+  DEBIAN_FRONTEND=noninteractive sudo apt install -y \
     libgtk-3-dev \
     libglib2.0-0 \
     xvfb \
