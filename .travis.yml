@@ -44,6 +44,8 @@ matrix:
       env: TYPE=fedora-29 OCAML_VERSION=4.06
     - os: linux
       env: TYPE=fedora-29 OCAML_VERSION=4.07
+  allow_failures:
+    - os: osx
 
 install:
   - source ./travis/install-deps
