@@ -19,6 +19,7 @@
 (** Function_info — Struct representing a function. *)
 
 open Ctypes
+open Stubs
 
 (** Function_info represents a function, method or constructor. To find out
     what kind of entity a Function_info represents, call
@@ -33,7 +34,7 @@ val functioninfo : t structure typ
 val get_symbol:
   t structure ptr -> string
 
-(** Flags for a Function_info struct. *)
+(** Flags for a Function_info struct.
 type flags =
   | Is_method      (** is a method. *)
   | Is_constructor (** is a constructor. *)
@@ -41,10 +42,10 @@ type flags =
   | Is_setter      (** is a setter of a Property_info. *)
   | Wraps_vfunc    (** represents a virtual function. *)
   | Throws         (** the function may throw an error. *)
-
+ *)
 (** Obtain the Function_infoFlags for the info . *)
 val get_flags:
-  t structure ptr -> flags list
+  t structure ptr -> Bindings.flags list
 
 (** Obtain the property associated with this Function_info. Only
     Function_info with the flag GIFunction.Is_getter or GIFunction.Is_setter

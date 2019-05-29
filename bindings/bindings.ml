@@ -1,3 +1,5 @@
+open Ctypes
+
 type baseinfo_type =
   | Invalid (** invalid type *)
   | Function (** function, see Function_info *)
@@ -52,6 +54,14 @@ type array_type =
   | Ptr_array  (** a GPtrArray array *)
   | Byte_array (** a GByteArray array *)
 
+(** Flags for a Function_info struct. *)
+type flags =
+  | Is_method      (** is a method. *)
+  | Is_constructor (** is a constructor. *)
+  | Is_getter      (** is a getter of a Property_info. *)
+  | Is_setter      (** is a setter of a Property_info. *)
+  | Wraps_vfunc    (** represents a virtual function. *)
+  | Throws         (** the function may throw an error. *)
 
 module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_info_type_invalid = T.constant "GI_INFO_TYPE_INVALID" T.int64_t
@@ -160,4 +170,12 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Byte_array, gi_array_type_byte_array;
     ]
       ~unexpected:(fun _x -> assert false)
+
+  let gi_function_is_method = T.constant "GI_FUNCTION_IS_METHOD" T.int64_t
+  let gi_function_is_constructor = T.constant "GI_FUNCTION_IS_CONSTRUCTOR" T.int64_t
+  let gi_function_is_getter = T.constant "GI_FUNCTION_IS_GETTER" T.int64_t
+  let gi_function_is_setter = T.constant "GI_FUNCTION_IS_SETTER" T.int64_t
+  let gi_function_wraps_vfunc = T.constant "GI_FUNCTION_WRAPS_VFUNC" T.int64_t
+  let gi_function_throws = T.constant "GI_FUNCTION_THROWS" T.int64_t
+
 end

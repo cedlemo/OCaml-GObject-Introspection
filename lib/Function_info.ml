@@ -18,6 +18,7 @@
 
 open Ctypes
 open Foreign
+open Stubs
 
 type t
 let functioninfo : t structure typ = structure "Function_info"
@@ -26,36 +27,55 @@ let get_symbol =
   foreign "g_function_info_get_symbol"
     (ptr functioninfo @-> returning string)
 
-type flags =
+(**type flags =
   | Is_method
   | Is_constructor
   | Is_getter
   | Is_setter
   | Wraps_vfunc
   | Throws
+ *)
+let all_flags : (int64 * Bindings.flags) list= [
+    gi_function_is_method, Is_method;
+    gi_function_is_constructor, Is_constructor;
+    gi_function_is_getter, Is_getter;
+    gi_function_is_setter, Is_setter;
+    gi_function_wraps_vfunc, Wraps_vfunc;
+    gi_function_throws, Throws;
+  ]
 
-let get_flags info =
-  let get_flags_raw =
-    foreign "g_function_info_get_flags"
-      (ptr functioninfo @-> returning uint32_t)
-  in
-  let v = get_flags_raw info in
-  let open Unsigned.UInt32 in
-  let all_flags = [( 1, Is_method ); ( 2, Is_constructor ); ( 4 , Is_getter ); ( 8 , Is_setter ); ( 16 , Wraps_vfunc ); (32, Throws)]
-  in
+let flags_of_int64 v =
+  let open Int64 in
   let rec build_flags_list allf acc =
     match allf with
     | [] -> acc
-    | (i, f) :: q -> if ((logand v (of_int i )) <> zero) then build_flags_list q (f :: acc)
-    else build_flags_list q acc
+    | (i, f) :: q -> if ((logand v i) <> zero) then build_flags_list q (f :: acc)
+       else build_flags_list q acc
   in build_flags_list all_flags []
+
+let int64_of_flags (f : Bindings.flags list) =
+  let open Int64 in
+  let bitwise_or = fun acc value ->
+    let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
+  in
+  List.fold_left bitwise_or Int64.zero f
+
+let flags =
+  view int64_t
+    ~read:flags_of_int64
+    ~write:int64_of_flags
+
+
+let get_flags =
+    foreign "g_function_info_get_flags"
+      (ptr functioninfo @-> returning flags)
 
 let get_property info =
   let flags = get_flags info in
   let rec find_set_get = function
     | [] -> false
     | h :: q -> match h with
-      | Is_setter | Is_getter -> true
+      | Bindings.Is_setter | Bindings.Is_getter -> true
       | _ -> find_set_get q
   in if (find_set_get flags) then (
     let get_property_raw =
@@ -72,7 +92,7 @@ let get_vfunc info =
   let flags = get_flags info in
   let rec has_wraps_vfunc = function
     | [] -> false
-    | h :: q -> if h == Wraps_vfunc then true
+    | h :: q -> if h == Bindings.Wraps_vfunc then true
       else has_wraps_vfunc q
   in
   if (has_wraps_vfunc flags) then
