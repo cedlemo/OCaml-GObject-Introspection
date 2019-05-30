@@ -61,10 +61,9 @@ let int64_of_flags (f : Bindings.flags list) =
   List.fold_left bitwise_or Int64.zero f
 
 let flags =
-  view int64_t
+  view enum_flags
     ~read:flags_of_int64
     ~write:int64_of_flags
-
 
 let get_flags =
     foreign "g_function_info_get_flags"
