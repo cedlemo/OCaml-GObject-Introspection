@@ -22,6 +22,28 @@ type baseinfo_type =
   | Type (** type information, see Type_info *)
   | Unresolved (** unresolved type, a type which is not present in the typelib, or any of its dependencies. *)
 
+let string_of_baseinfo_type = function
+  | Invalid -> "Invalid"
+  | Function -> "Function"
+  | Callback -> "Callback"
+  | Struct -> "Struct"
+  | Boxed -> "Boxed"
+  | Enum -> "Enum"
+  | Flags -> "Flags"
+  | Object -> "Object"
+  | Interface -> "Interface"
+  | Constant -> "Constant"
+  | Invalid_0 -> "Invalid_0"
+  | Union -> "Union"
+  | Value -> "Value"
+  | Signal -> "Signal"
+  | Vfunc -> "Vfunc"
+  | Property -> "Property"
+  | Field -> "Field"
+  | Arg -> "Arg"
+  | Type -> "Type"
+  | Unresolved -> "Unresolved "
+
 (** The type tag of a Type_info. *)
 type type_tag =
   | Void (** void *)
@@ -177,5 +199,5 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_function_is_setter = T.constant "GI_FUNCTION_IS_SETTER" T.int64_t
   let gi_function_wraps_vfunc = T.constant "GI_FUNCTION_WRAPS_VFUNC" T.int64_t
   let gi_function_throws = T.constant "GI_FUNCTION_THROWS" T.int64_t
-
+  let enum_flags = T.enum "GIFunctionInfoFlags" ~typedef:true [] ~unexpected:(fun x -> x)
 end
