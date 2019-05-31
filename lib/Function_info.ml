@@ -44,7 +44,7 @@ let all_flags : (int64 * Bindings.flags) list= [
     gi_function_throws, Throws;
   ]
 
-let flags_of_int64 v =
+let flags_list_of_int64 v =
   let open Int64 in
   let rec build_flags_list allf acc =
     match allf with
@@ -53,21 +53,21 @@ let flags_of_int64 v =
        else build_flags_list q acc
   in build_flags_list all_flags []
 
-let int64_of_flags (f : Bindings.flags list) =
+let int64_of_flags_list (f : Bindings.flags list) =
   let open Int64 in
   let bitwise_or = fun acc value ->
     let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
   in
   List.fold_left bitwise_or Int64.zero f
 
-let flags =
-  view enum_flags
-    ~read:flags_of_int64
-    ~write:int64_of_flags
+let flags_list =
+  view flags
+    ~read:flags_list_of_int64
+    ~write:int64_of_flags_list
 
 let get_flags =
     foreign "g_function_info_get_flags"
-      (ptr functioninfo @-> returning flags)
+      (ptr functioninfo @-> returning flags_list)
 
 let get_property info =
   let flags = get_flags info in
