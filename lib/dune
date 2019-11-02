@@ -14,6 +14,16 @@
 )
 
 (rule
-  (targets bindings_stubs.ml)
-  (deps ../stubgen/bindings_stubs_gen.exe)
+  (targets bindings_stubs_base_info.ml)
+  (deps ../stubgen/bindings_stubs_gen_base_info.exe)
+  (action (with-stdout-to %{targets} (run %{deps} -ml))))
+
+(rule
+  (targets bindings_stubs_function_info.ml)
+  (deps ../stubgen/bindings_stubs_gen_function_info.exe)
+  (action (with-stdout-to %{targets} (run %{deps} -ml))))
+
+(rule
+  (targets bindings_stubs_types.ml)
+  (deps ../stubgen/bindings_stubs_gen_types.exe)
   (action (with-stdout-to %{targets} (run %{deps} -ml))))

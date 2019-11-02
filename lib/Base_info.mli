@@ -64,7 +64,7 @@ val get_container:
 
 (** Obtain the info type of the Base_info. *)
 val get_type:
-  t structure ptr -> Bindings.baseinfo_type
+  t structure ptr -> Bindings.Base_info.info_type
 (*
   Base_info *	g_info_new ()
   TODO : GITypelib *	g_base_info_get_typelib ()

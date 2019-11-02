@@ -43,7 +43,7 @@ let is_deprecated =
 
 let get_type =
   foreign "g_base_info_get_type"
-    (ptr baseinfo @-> returning baseinfo_type)
+    (ptr baseinfo @-> returning Stubs.Base_info.info_type)
 
 let add_unref_finaliser info =
   let _ = Gc.finalise (fun i ->

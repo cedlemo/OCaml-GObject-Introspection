@@ -19,7 +19,6 @@
 (** Type_info — Struct representing a type *)
 
 open Ctypes
-open Stubs
 
 (** Type_info represents a type. You can retrieve a type info from an argument
     (see Arg_info), a function return value (see Function_info), a field
@@ -46,7 +45,7 @@ val is_pointer:
 
 (** Obtain the type tag for the type. See GITypeTag for a list of type tags. *)
 val get_tag:
-  t structure ptr -> Bindings.type_tag
+  t structure ptr -> Bindings.Types.tag
 
 (** Obtain the array length of the type. The type tag must be a GIType.array or
     -1 will returned. *)
@@ -66,7 +65,7 @@ val is_zero_terminated:
 (** Obtain the array type for this type. See GIArrayType for a list of possible
     values. If the type tag of this type is not array, None will be returned. *)
 val get_array_type:
-  t structure ptr -> Bindings.array_type option
+  t structure ptr -> Bindings.Types.array_type option
 
 (** Obtain the parameter type n. It is used to get the parameter type of generic
  *  container. For example if the current Type_info.t is an array, a GList, a

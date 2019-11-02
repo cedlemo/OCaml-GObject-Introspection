@@ -74,7 +74,7 @@ let tag_of_int = function
 
 *)
 
-let string_of_tag : Bindings.type_tag -> string = function
+let string_of_tag : Bindings.Types.tag -> string = function
   | Void -> "void"
   | Boolean -> "boolean"
   | Int8 -> "int8"
@@ -115,7 +115,7 @@ let array_type_of_int = function
     in raise (Failure message)
 *)
 
-let string_of_array_type : Bindings.array_type -> string = function
+let string_of_array_type : Bindings.Types.array_type -> string = function
   | C -> "c"
   | Array -> "array"
   | Ptr_array -> "ptr_array"

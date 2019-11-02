@@ -18,7 +18,6 @@
 
 open Ctypes
 open Foreign
-open Stubs
 
 type t
 let functioninfo : t structure typ = structure "Function_info"
@@ -35,13 +34,13 @@ let get_symbol =
   | Wraps_vfunc
   | Throws
  *)
-let all_flags : (int64 * Bindings.flags) list= [
-    gi_function_is_method, Is_method;
-    gi_function_is_constructor, Is_constructor;
-    gi_function_is_getter, Is_getter;
-    gi_function_is_setter, Is_setter;
-    gi_function_wraps_vfunc, Wraps_vfunc;
-    gi_function_throws, Throws;
+let all_flags : (int64 * Bindings.Function_info.flags) list= [
+    Stubs.Function_info.gi_function_is_method, Is_method;
+    Stubs.Function_info.gi_function_is_constructor, Is_constructor;
+    Stubs.Function_info.gi_function_is_getter, Is_getter;
+    Stubs.Function_info.gi_function_is_setter, Is_setter;
+    Stubs.Function_info.gi_function_wraps_vfunc, Wraps_vfunc;
+    Stubs.Function_info.gi_function_throws, Throws;
   ]
 
 let flags_list_of_int64 v =
@@ -53,7 +52,7 @@ let flags_list_of_int64 v =
        else build_flags_list q acc
   in build_flags_list all_flags []
 
-let int64_of_flags_list (f : Bindings.flags list) =
+let int64_of_flags_list (f : Bindings.Function_info.flags list) =
   let open Int64 in
   let bitwise_or = fun acc value ->
     let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
@@ -61,7 +60,7 @@ let int64_of_flags_list (f : Bindings.flags list) =
   List.fold_left bitwise_or Int64.zero f
 
 let flags_list =
-  view flags
+  view Stubs.Function_info.flags
     ~read:flags_list_of_int64
     ~write:int64_of_flags_list
 
@@ -74,7 +73,7 @@ let get_property info =
   let rec find_set_get = function
     | [] -> false
     | h :: q -> match h with
-      | Bindings.Is_setter | Bindings.Is_getter -> true
+      | Bindings.Function_info.Is_setter | Bindings.Function_info.Is_getter -> true
       | _ -> find_set_get q
   in if (find_set_get flags) then (
     let get_property_raw =
@@ -91,7 +90,7 @@ let get_vfunc info =
   let flags = get_flags info in
   let rec has_wraps_vfunc = function
     | [] -> false
-    | h :: q -> if h == Bindings.Wraps_vfunc then true
+    | h :: q -> if h == Bindings.Function_info.Wraps_vfunc then true
       else has_wraps_vfunc q
   in
   if (has_wraps_vfunc flags) then

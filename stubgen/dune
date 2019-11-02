@@ -1,18 +1,55 @@
 (executable
- (name bindings_c_gen)
- (modules bindings_c_gen)
+ (name bindings_c_gen_base_info)
+ (modules bindings_c_gen_base_info)
+ (libraries bindings ctypes.stubs ctypes))
+
+(executable
+ (name bindings_c_gen_function_info)
+ (modules bindings_c_gen_function_info)
+ (libraries bindings ctypes.stubs ctypes))
+
+(executable
+ (name bindings_c_gen_types)
+ (modules bindings_c_gen_types)
  (libraries bindings ctypes.stubs ctypes))
 
 (rule
- (targets bindings_stubs_gen.c)
- (deps (:stubgen ../stubgen/bindings_c_gen.exe))
+ (targets bindings_stubs_gen_base_info.c)
+ (deps (:stubgen ../stubgen/bindings_c_gen_base_info.exe))
  (action (with-stdout-to %{targets} (run %{stubgen} -c))))
 
-(rule (targets bindings_stubs_gen.exe)
- (deps bindings_stubs_gen.c c_flags c_library_flags)
+(rule
+ (targets bindings_stubs_gen_base_info.exe)
+ (deps bindings_stubs_gen_base_info.c c_flags c_library_flags)
  (action
   (bash
-   "%{cc} bindings_stubs_gen.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
+   "%{cc} bindings_stubs_gen_base_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
+)
+
+(rule
+ (targets bindings_stubs_gen_function_info.c)
+ (deps (:stubgen ../stubgen/bindings_c_gen_function_info.exe))
+ (action (with-stdout-to %{targets} (run %{stubgen} -c))))
+
+(rule
+ (targets bindings_stubs_gen_function_info.exe)
+ (deps bindings_stubs_gen_function_info.c c_flags c_library_flags)
+ (action
+  (bash
+   "%{cc} bindings_stubs_gen_function_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
+)
+
+(rule
+ (targets bindings_stubs_gen_types.c)
+ (deps (:stubgen ../stubgen/bindings_c_gen_types.exe))
+ (action (with-stdout-to %{targets} (run %{stubgen} -c))))
+
+(rule
+ (targets bindings_stubs_gen_types.exe)
+ (deps bindings_stubs_gen_types.c c_flags c_library_flags)
+ (action
+  (bash
+   "%{cc} bindings_stubs_gen_types.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
 )
 
 (rule

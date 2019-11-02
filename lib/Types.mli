@@ -51,7 +51,7 @@ val tag_of_int:
 *)
 
 val string_of_tag:
-  Bindings.type_tag -> string
+  Bindings.Types.tag -> string
 
 (**
 type array_type =
@@ -64,7 +64,7 @@ val array_type_of_int:
   int -> array_type
 *)
 val string_of_array_type:
-  Bindings.array_type -> string
+  Bindings.Types.array_type -> string
 
 type argument_t
 val argument: argument_t union typ
