@@ -76,12 +76,12 @@ let test_get_flags _ =
           let flags = Function_info.get_flags info' in
           let len = List.length flags in
           assert_equal_int 2 len;
-          assert_bool "It is a method" (List.mem Bindings.Is_method flags);
-          assert_bool "Throws" (List.mem Bindings.Throws flags)
+          assert_bool "It is a method" (List.mem Bindings.Function_info.Is_method flags);
+          assert_bool "Throws" (List.mem Bindings.Function_info.Throws flags)
         | None -> assert_equal_string "Gio::File#set_attribute"  "should exists"
       end
     | baseinfo_t ->
-      assert_equal_string "Gio::File should be an Interface instead of " (Bindings.string_of_baseinfo_type baseinfo_t)
+      assert_equal_string "Gio::File should be an Interface instead of " (Bindings.Base_info.string_of_info_type baseinfo_t)
 
 let tests =
   "GObject Introspection FunctionInfo tests" >:::

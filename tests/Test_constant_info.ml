@@ -47,14 +47,14 @@ let test_get_type _ =
       let tag = Type_info.get_tag type_info in
       assert_equal ~printer:(fun tag ->
           Types.string_of_tag tag
-        ) Bindings.Int32 tag
+        ) Bindings.Types.Int32 tag
     )
 
 let test_get_value _ =
   constant_test (fun info ->
       let type_info = Constant_info.get_type info in
       match Type_info.get_tag type_info with
-      | Bindings.Int32 -> let argument = Constant_info.get_value info in
+      | Bindings.Types.Int32 -> let argument = Constant_info.get_value info in
         let value = getf (!@argument) Types.v_int32 in
         assert_equal_int 511 (Int32.to_int value)
       | _ -> assert_equal_string "The tag should be " "Int32"

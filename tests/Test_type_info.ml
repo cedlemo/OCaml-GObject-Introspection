@@ -57,7 +57,7 @@ let test_get_tag _ =
       let tag = Type_info.get_tag info in
       assert_equal ~printer:(fun tag ->
           Types.string_of_tag tag
-        ) Bindings.Array tag
+        ) Bindings.Types.Array tag
     )
 
 let test_get_array_length _ =
@@ -93,7 +93,7 @@ let test_get_param_type _ =
      let tag = Type_info.get_tag param_type in
       assert_equal ~printer:(fun tag ->
           Types.string_of_tag tag
-        ) Bindings.Uint32 tag
+        ) Bindings.Types.Uint32 tag
     )
 
 let test_get_interface_none _ =
