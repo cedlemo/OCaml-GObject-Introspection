@@ -58,8 +58,8 @@ let test_get_flags _ =
       let rec check_flag = function
         | [] -> ()
         | flag :: remain ->let _ = assert_equal ~printer:(fun f ->
-            VFunc_info.string_of_flags f
-          ) VFunc_info.Must_override flag in
+            Bindings.VFunc_info.string_of_flags f
+          ) Bindings.VFunc_info.Must_override flag in
           check_flag remain
       in check_flag flags;
       assert_equal [] flags
