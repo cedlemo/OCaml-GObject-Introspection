@@ -15,8 +15,10 @@ RUN \
     dejavu-sans-fonts \
     gnome-icon-theme \
     adwaita-gtk2-theme \
-    vte3 \
-    vte3-devel \
+    vte \
+    vte-devel \
+    vte291 \
+    vte291-devel \
     clutter-gtk \
     gtksourceview3 \
     dbus-x11 \
