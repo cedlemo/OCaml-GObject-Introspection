@@ -19,47 +19,51 @@ matrix:
     - os: osx
       env: OCAML_VERSION=4.09
     - os: linux
-      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.05
+      env: TYPE=ubuntu-lts OCAML_VERSION=4.05
     - os: linux
-      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.06
+      env: TYPE=ubuntu-lts OCAML_VERSION=4.06
     - os: linux
-      env: TYPE=ubuntu-18.04 OCAML_VERSION=4.07
+      env: TYPE=ubuntu-lts OCAML_VERSION=4.07
     - os: linux
-      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.05
+      env: TYPE=ubuntu-lts OCAML_VERSION=4.08
     - os: linux
-      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.06
+      env: TYPE=ubuntu-lts OCAML_VERSION=4.09
     - os: linux
-      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.07
+      env: TYPE=ubuntu OCAML_VERSION=4.05
     - os: linux
-      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.08
+      env: TYPE=ubuntu OCAML_VERSION=4.06
     - os: linux
-      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.09
+      env: TYPE=ubuntu OCAML_VERSION=4.07
     - os: linux
-      env: TYPE=debian-buster OCAML_VERSION=4.05
+      env: TYPE=ubuntu OCAML_VERSION=4.08
     - os: linux
-      env: TYPE=debian-buster OCAML_VERSION=4.06
+      env: TYPE=ubuntu OCAML_VERSION=4.09
     - os: linux
-      env: TYPE=debian-buster OCAML_VERSION=4.07
+      env: TYPE=debian-stable OCAML_VERSION=4.05
     - os: linux
-      env: TYPE=debian-buster OCAML_VERSION=4.08
+      env: TYPE=debian-stable OCAML_VERSION=4.06
     - os: linux
-      env: TYPE=debian-buster OCAML_VERSION=4.09
+      env: TYPE=debian-stable OCAML_VERSION=4.07
     - os: linux
-      env: TYPE=centos-7 OCAML_VERSION=4.05
+      env: TYPE=debian-stable OCAML_VERSION=4.08
     - os: linux
-      env: TYPE=centos-7 OCAML_VERSION=4.06
+      env: TYPE=debian-stable OCAML_VERSION=4.09
     - os: linux
-      env: TYPE=centos-7 OCAML_VERSION=4.07
+      env: TYPE=centos OCAML_VERSION=4.05
     - os: linux
-      env: TYPE=fedora-29 OCAML_VERSION=4.05
+      env: TYPE=centos OCAML_VERSION=4.06
     - os: linux
-      env: TYPE=fedora-29 OCAML_VERSION=4.06
+      env: TYPE=centos OCAML_VERSION=4.07
     - os: linux
-      env: TYPE=fedora-29 OCAML_VERSION=4.07
+      env: TYPE=fedora OCAML_VERSION=4.05
     - os: linux
-      env: TYPE=fedora-29 OCAML_VERSION=4.08
+      env: TYPE=fedora OCAML_VERSION=4.06
     - os: linux
-      env: TYPE=fedora-29 OCAML_VERSION=4.09
+      env: TYPE=fedora OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=fedora OCAML_VERSION=4.08
+    - os: linux
+      env: TYPE=fedora OCAML_VERSION=4.09
   allow_failures:
     - os: osx
 
