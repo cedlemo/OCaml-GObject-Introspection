@@ -27,3 +27,9 @@
   (targets bindings_stubs_types.ml)
   (deps ../stubgen/bindings_stubs_gen_types.exe)
   (action (with-stdout-to %{targets} (run %{deps} -ml))))
+
+(rule
+  (targets bindings_stubs_vfunc_info.ml)
+  (deps ../stubgen/bindings_stubs_gen_vfunc_info.exe)
+  (action (with-stdout-to %{targets} (run %{deps} -ml))))
+

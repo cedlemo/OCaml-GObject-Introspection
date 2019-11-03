@@ -38,7 +38,7 @@ val get_offset:
 val get_signal:
   t structure ptr -> Callable_info.t structure ptr option
 
-type flags =
+(* type flags =
   | Must_chain_up     (** chains up to the parent type *)
   | Must_override     (** overrides *)
   | Must_not_override (** does not override *)
@@ -46,11 +46,11 @@ type flags =
 
 val string_of_flags:
   flags -> string
-
+*)
 (** Obtain the flags for this virtual function info. See VFunc_infoFlags for
     more information about possible flag values. *)
 val get_flags:
-  t structure ptr -> flags list
+  t structure ptr -> Bindings.VFunc_info.flags list
 
 (*
   TODO : Function_info *	g_vfunc_info_get_invoker ()

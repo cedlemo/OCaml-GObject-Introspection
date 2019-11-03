@@ -35,19 +35,36 @@ let get_signal info =
   | Some info' -> let info'' = Callable_info.add_unref_finaliser info' in
     Some info''
 
-type flags =
-  | Must_chain_up
-  | Must_override
-  | Must_not_override
-  | Throws
+let all_flags : (int64 * Bindings.VFunc_info.flags) list= [
+    Stubs.VFunc_info.gi_vfunc_must_chain_up, Must_chain_up;
+    Stubs.VFunc_info.gi_vfunc_must_override, Must_override;
+    Stubs.VFunc_info.gi_vfunc_must_not_override, Must_not_override;
+    Stubs.VFunc_info.gi_vfunc_throws, Throws;
+  ]
 
-let string_of_flags = function
-  | Must_chain_up -> "Must_chain_up"
-  | Must_override -> "Must_override"
-  | Must_not_override -> "Must_not_override"
-  | Throws -> "Throws"
+let flags_list_of_int64 v =
+  let open Int64 in
+  let rec build_flags_list allf acc =
+    match allf with
+    | [] -> acc
+    | (i, f) :: q -> if ((logand v i) <> zero) then build_flags_list q (f :: acc)
+       else build_flags_list q acc
+  in build_flags_list all_flags []
 
-let get_flags info =
+let int64_of_flags_list (f : Bindings.VFunc_info.flags list) =
+  let open Int64 in
+  let bitwise_or = fun acc value ->
+    let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
+  in
+  List.fold_left bitwise_or Int64.zero f
+
+let flags_list =
+  view Stubs.VFunc_info.flags
+    ~read:flags_list_of_int64
+    ~write:int64_of_flags_list
+
+
+(* let get_flags info =
   let get_flags_raw =
     foreign "g_vfunc_info_get_flags"
       (ptr vfuncinfo @-> returning int) in
@@ -58,6 +75,10 @@ let get_flags info =
   if ((c_flags land (1 lsl 2)) != 0) then ignore (Must_not_override :: flags);
   if ((c_flags land (1 lsl 3)) != 0) then ignore (Throws :: flags);
   flags
+*)
+let get_flags =
+  foreign "g_vfunc_info_get_flags"
+      (ptr vfuncinfo @-> returning flags_list)
 
 (* TODO : check that the info can be casted to vfunc info ? *)
 let cast_from_baseinfo info =
