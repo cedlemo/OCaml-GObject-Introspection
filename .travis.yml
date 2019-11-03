@@ -14,6 +14,10 @@ matrix:
       env: OCAML_VERSION=4.06
     - os: osx
       env: OCAML_VERSION=4.07
+    - os: osx
+      env: OCAML_VERSION=4.08
+    - os: osx
+      env: OCAML_VERSION=4.09
     - os: linux
       env: TYPE=ubuntu-18.04 OCAML_VERSION=4.05
     - os: linux
@@ -27,11 +31,19 @@ matrix:
     - os: linux
       env: TYPE=ubuntu-18.10 OCAML_VERSION=4.07
     - os: linux
+      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.08
+    - os: linux
+      env: TYPE=ubuntu-18.10 OCAML_VERSION=4.09
+    - os: linux
       env: TYPE=debian-buster OCAML_VERSION=4.05
     - os: linux
       env: TYPE=debian-buster OCAML_VERSION=4.06
     - os: linux
       env: TYPE=debian-buster OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=debian-buster OCAML_VERSION=4.08
+    - os: linux
+      env: TYPE=debian-buster OCAML_VERSION=4.09
     - os: linux
       env: TYPE=centos-7 OCAML_VERSION=4.05
     - os: linux
@@ -44,6 +56,10 @@ matrix:
       env: TYPE=fedora-29 OCAML_VERSION=4.06
     - os: linux
       env: TYPE=fedora-29 OCAML_VERSION=4.07
+    - os: linux
+      env: TYPE=fedora-29 OCAML_VERSION=4.08
+    - os: linux
+      env: TYPE=fedora-29 OCAML_VERSION=4.09
   allow_failures:
     - os: osx
 
