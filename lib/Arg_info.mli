@@ -42,38 +42,10 @@ val get_closure:
 val get_destroy:
   t structure ptr -> int
 
-(** The transfer is the exchange of data between two parts, from the callee to
-    the caller. The callee is either a function/method/signal or an
-    object/interface where a property is defined. The caller is the side
-    accessing a property or calling a function. GITransfer specifies who's
-    responsible for freeing the resources after the ownership transfer is
-    complete. In case of a containing type such as a list, an array or a hash
-    table the container itself is specified differently from the items within
-    the container itself. Each container is freed differently, check the
-    documentation for the types themselves for information on how to free them.*)
-type transfer =
-  | Nothing    (** transfer nothing from the callee (function or the type
-                   instance the property belongs to) to the caller. The callee
-                   retains the ownership of the transfer and the caller doesn't
-                   need to do anything to free up the resources of this transfer. *)
-  | Container  (** transfer the container (list, array, hash table) from the
-                   callee to the caller. The callee retains the ownership of
-                   the individual items in the container and the caller has to
-                   free up the container resources (g_list_free()/
-                   g_hash_table_destroy() etc) of this transfer. *)
-  | Everything (** transfer everything, eg the container and its contents from
-                   the callee to the caller. This is the case when the callee
-                   creates a copy of all the data it returns. The caller is
-                   responsible for cleaning up the container and item resources
-                   of this transfer. *)
-
-val transfer_of_int:
-  int -> transfer
-
 (** Obtain the ownership transfer for this argument. GITransfer contains a list
     of possible values. *)
 val get_ownership_transfer:
-  t structure ptr -> transfer
+  t structure ptr -> Bindings.Arg_info.transfer
 
 (** Obtain if the type of the argument includes the possibility of NULL. For
     'in' values this means that NULL is a valid value. For 'out' values, this

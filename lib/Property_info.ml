@@ -22,12 +22,9 @@ open Foreign
 type t
 let propertyinfo : t structure typ = structure "Property_info"
 
-let get_ownership_transfer info =
-  let get_ownership_transfer_raw =
+let get_ownership_transfer =
     foreign "g_property_info_get_ownership_transfer"
-      (ptr propertyinfo @-> returning int) in
-  let transfer = get_ownership_transfer_raw info in
-  Arg_info.transfer_of_int transfer
+      (ptr propertyinfo @-> returning Stubs.Arg_info.transfer)
 
 let get_type info =
   let get_type_raw =

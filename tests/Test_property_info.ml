@@ -59,10 +59,10 @@ let test_get_ownership_transfer _ =
       let transfer = Property_info.get_ownership_transfer info in
       assert_equal ~printer:(fun t ->
           match t with
-          | Arg_info.Nothing -> "nothing"
-          | Arg_info.Container -> "container"
-          | Arg_info.Everything -> "everything"
-        ) Arg_info.Nothing transfer
+          | Bindings.Arg_info.Nothing -> "nothing"
+          | Bindings.Arg_info.Container -> "container"
+          | Bindings.Arg_info.Everything -> "everything"
+        ) Bindings.Arg_info.Nothing transfer
     )
 
 let test_get_type _ =

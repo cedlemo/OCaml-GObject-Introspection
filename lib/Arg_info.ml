@@ -34,27 +34,9 @@ let get_destroy =
   foreign "g_arg_info_get_destroy"
     (ptr arginfo @-> returning int)
 
-type transfer =
-  | Nothing
-  | Container
-  | Everything
-
-let transfer_of_int = function
-  | 0 -> Nothing
-  | 1 -> Container
-  | 2 -> Everything
-  | value -> let message = String.concat " " ["Arg_info get_ownership_transfer value";
-                                              string_of_int value;
-                                              "should not have been reached"]
-    in raise (Failure message)
-
-
-let get_ownership_transfer info =
-  let get_ownership_transfer_raw =
-    foreign "g_arg_info_get_ownership_transfer"
-      (ptr arginfo @-> returning int)
-  in let transf_val = get_ownership_transfer_raw info
-  in transfer_of_int transf_val
+let get_ownership_transfer =
+  foreign "g_arg_info_get_ownership_transfer"
+    (ptr arginfo @-> returning Stubs.Arg_info.transfer)
 
 let may_be_null =
   foreign "g_arg_info_may_be_null"

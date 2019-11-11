@@ -65,12 +65,9 @@ let get_return_type info =
   in let info' = get_return_type_raw info in
   Type_info.add_unref_finaliser info'
 
-let get_caller_owns info =
-  let get_caller_owns_raw =
-    foreign "g_callable_info_get_caller_owns"
-      (ptr callableinfo @-> returning int)
-  in let transfer = get_caller_owns_raw info
-  in Arg_info.transfer_of_int transfer
+let get_caller_owns =
+  foreign "g_callable_info_get_caller_owns"
+    (ptr callableinfo @-> returning Stubs.Arg_info.transfer)
 
 let cast_from_baseinfo info =
   coerce (ptr Base_info.baseinfo) (ptr callableinfo) info

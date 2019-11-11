@@ -28,7 +28,7 @@ val propertyinfo : t structure typ
 (** Obtain the ownership transfer for this property. See GITransfer for more
     information about transfer values. *)
 val get_ownership_transfer:
-  t structure ptr -> Arg_info.transfer
+  t structure ptr -> Bindings.Arg_info.transfer
 
 (** Obtain the type information for the property info . *)
 val get_type:
