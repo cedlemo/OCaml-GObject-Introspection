@@ -25,16 +25,10 @@ open Ctypes
 type t
 val arginfo : t structure typ
 
-(** The direction of a Arg_info. *)
-type direction =
-  | In    (** in argument. *)
-  | Out   (** out argument. *)
-  | InOut (** in and out argument. *)
-
 (** Obtain the direction of the argument. Check GIDirection for possible
     direction values.*)
 val get_direction:
-  t structure ptr -> direction
+  t structure ptr -> Bindings.Arg_info.direction
 
 (** Obtain the index of the user data argument. This is only valid for
     arguments which are callbacks. Returns index of the user data argument or

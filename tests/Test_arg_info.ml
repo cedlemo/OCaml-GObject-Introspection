@@ -43,9 +43,9 @@ let test_get_direction _ =
       let dir = Arg_info.get_direction info in
       assert_equal ~printer:(fun d ->
           match d with
-          | Arg_info.In -> "In"
-          | Arg_info.Out -> "Out"
-          | Arg_info.InOut -> "InOut") Arg_info.In dir
+          | Bindings.Arg_info.In -> "In"
+          | Bindings.Arg_info.Out -> "Out"
+          | Bindings.Arg_info.InOut -> "InOut") Bindings.Arg_info.In dir
     )
 
 let test_get_closure _ =

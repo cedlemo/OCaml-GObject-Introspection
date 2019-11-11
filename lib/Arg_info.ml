@@ -22,23 +22,9 @@ open Foreign
 type t
 let arginfo : t structure typ = structure "Arg_info"
 
-type direction =
-  | In
-  | Out
-  | InOut
-
-let get_direction info =
-  let get_direction_raw =
+let get_direction =
     foreign "g_arg_info_get_direction"
-      (ptr arginfo @-> returning int)
-  in match get_direction_raw info with
-  | 0 -> In
-  | 1 -> Out
-  | 2 -> InOut
-  | value -> let message = String.concat " " ["Arg_info get_direction value";
-                                              string_of_int value;
-                                              "should not have been reached"]
-    in raise (Failure message)
+      (ptr arginfo @-> returning Stubs.Arg_info.direction)
 
 let get_closure =
   foreign "g_arg_info_get_closure"

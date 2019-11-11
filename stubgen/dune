@@ -18,6 +18,11 @@
  (modules bindings_c_gen_vfunc_info)
  (libraries bindings ctypes.stubs ctypes))
 
+(executable
+ (name bindings_c_gen_arg_info)
+ (modules bindings_c_gen_arg_info)
+ (libraries bindings ctypes.stubs ctypes))
+
 (rule
  (targets bindings_stubs_gen_base_info.c)
  (deps (:stubgen ../stubgen/bindings_c_gen_base_info.exe))
@@ -68,6 +73,19 @@
  (action
   (bash
    "%{cc} bindings_stubs_gen_vfunc_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
+)
+
+(rule
+ (targets bindings_stubs_gen_arg_info.c)
+ (deps (:stubgen ../stubgen/bindings_c_gen_arg_info.exe))
+ (action (with-stdout-to %{targets} (run %{stubgen} -c))))
+
+(rule
+ (targets bindings_stubs_gen_arg_info.exe)
+ (deps bindings_stubs_gen_arg_info.c c_flags c_library_flags)
+ (action
+  (bash
+   "%{cc} bindings_stubs_gen_arg_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
 )
 
 (rule
