@@ -106,11 +106,11 @@ let test_get_scope _ =
       let scope = Arg_info.get_scope info in
       assert_equal ~printer:(fun scope ->
           match scope with
-          | Arg_info.Invalid -> "Invalid"
-          | Arg_info.Call -> "Call"
-          | Arg_info.Async -> "Async"
-          | Arg_info.Notified -> "Notified"
-        ) Arg_info.Invalid scope
+          | Bindings.Arg_info.Invalid -> "Invalid"
+          | Bindings.Arg_info.Call -> "Call"
+          | Bindings.Arg_info.Async -> "Async"
+          | Bindings.Arg_info.Notified -> "Notified"
+        ) Bindings.Arg_info.Invalid scope
     )
 
 let test_get_type _ =

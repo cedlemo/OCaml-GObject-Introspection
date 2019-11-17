@@ -58,25 +58,9 @@ let is_skip =
   foreign "g_arg_info_is_skip"
     (ptr arginfo @-> returning bool)
 
-type scope =
-  | Invalid
-  | Call
-  | Async
-  | Notified
-
-let get_scope info =
-  let get_scope_raw =
+let get_scope =
     foreign "g_arg_info_get_scope"
-      (ptr arginfo @-> returning int)
-  in match get_scope_raw info with
-  | 0 -> Invalid
-  | 1 -> Call
-  | 2 -> Async
-  | 3 -> Notified
-  | value -> let message = String.concat " " ["Arg_info get_scope value";
-                                              string_of_int value;
-                                              "should not have been reached"]
-    in raise (Failure message)
+      (ptr arginfo @-> returning Stubs.Arg_info.scope_type)
 
 type param_flags =
   | Readable

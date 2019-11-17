@@ -31,6 +31,7 @@ type direction =
     table the container itself is specified differently from the items within
     the container itself. Each container is freed differently, check the
     documentation for the types themselves for information on how to free them.*)
+
 type transfer =
   | Nothing    (** transfer nothing from the callee (function or the type
                    instance the property belongs to) to the caller. The callee
@@ -46,6 +47,20 @@ type transfer =
                    creates a copy of all the data it returns. The caller is
                    responsible for cleaning up the container and item resources
                    of this transfer. *)
+
+(** Scope type of a Arg_info representing callback, determines how the
+    callback is invoked and is used to decided when the invoke structs can be
+    freed. *)
+type scope_type =
+  | Invalid   (** The argument is not of callback type. *)
+  | Call      (** The callback and associated user_data is only used during the
+                  call to this function. *)
+  | Async     (** The callback and associated user_data is only used until the
+                  callback is invoked, and the callback. is invoked always
+                  exactly once. *)
+  | Notified  (** The callback and and associated user_data is used until the
+                  caller is notfied via the destroy_notify. *)
+
 
 module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_direction_in = T.constant "GI_DIRECTION_IN" T.int64_t
@@ -68,4 +83,17 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Container, gi_transfer_container;
       Everything, gi_transfer_everything;
     ]
+
+  let gi_scope_type_invalid = T.constant "GI_SCOPE_TYPE_INVALID" T.int64_t
+  let gi_scope_type_call = T.constant "GI_SCOPE_TYPE_CALL" T.int64_t
+  let gi_scope_type_async = T.constant "GI_SCOPE_TYPE_ASYNC" T.int64_t
+  let gi_scope_type_notified = T.constant "GI_SCOPE_TYPE_NOTIFIED" T.int64_t
+
+  let scope_type = T.enum "GIScopeType" ~typedef:true [
+      Invalid, gi_scope_type_invalid;
+      Call, gi_scope_type_call;
+      Async, gi_scope_type_async;
+      Notified, gi_scope_type_notified;
+    ]
+      ~unexpected:(fun _x -> assert false)
 end

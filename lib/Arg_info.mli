@@ -74,21 +74,8 @@ val is_return_value:
 val is_skip:
   t structure ptr -> bool
 
-(** Scope type of a Arg_info representing callback, determines how the
-    callback is invoked and is used to decided when the invoke structs can be
-    freed. *)
-type scope =
-  | Invalid   (** The argument is not of callback type. *)
-  | Call      (** The callback and associated user_data is only used during the
-                  call to this function. *)
-  | Async     (** The callback and associated user_data is only used until the
-                  callback is invoked, and the callback. is invoked always
-                  exactly once. *)
-  | Notified  (** The callback and and associated user_data is used until the
-                  caller is notfied via the destroy_notify. *)
-
 val get_scope:
-  t structure ptr -> scope
+  t structure ptr -> Bindings.Arg_info.scope_type
 
 (** Taken from GObject
     Through the GParamFlags flag values, certain aspects of parameters can be
