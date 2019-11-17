@@ -37,7 +37,7 @@ val get_type:
 (** Obtain the flags for this property info. See GParamFlags for more
     information about possible flag values. *)
 val get_flags:
-  t structure ptr -> Arg_info.param_flags
+  t structure ptr -> Bindings.GParam.flags list
 
 (** Just cast OCaml Ctypes base info to property info. *)
 val cast_from_baseinfo:

@@ -33,12 +33,9 @@ let get_type info =
   let info' = get_type_raw info in
   Type_info.add_unref_finaliser info'
 
-let get_flags info =
-  let get_flags_raw =
+let get_flags =
     foreign "g_property_info_get_flags"
-      (ptr propertyinfo @-> returning int32_t) in
-  let flag = get_flags_raw info in
-  Arg_info.param_flags_of_int32 flag
+      (ptr propertyinfo @-> returning GParam.flags_list)
 
 (* TODO : check that the info can be casted to property info ? *)
 let cast_from_baseinfo info =

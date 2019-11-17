@@ -77,44 +77,6 @@ val is_skip:
 val get_scope:
   t structure ptr -> Bindings.Arg_info.scope_type
 
-(** Taken from GObject
-    Through the GParamFlags flag values, certain aspects of parameters can be
-    configured. *)
-
-type param_flags =
-  | Readable        (** the parameter is readable *)
-  | Writable        (** the parameter is writable *)
-  | Readwrite       (** alias for G_PARAM_READABLE | G_PARAM_WRITABLE *)
-  | Construct       (** the parameter will be set upon object construction *)
-  | Construct_only  (** the parameter can only be set upon object construction *)
-  | Lax_validation  (** upon parameter conversion (see g_param_value_convert())
-                        strict validation is not required *)
-  | Static_name     (** the string used as name when constructing the parameter
-                        is guaranteed to remain valid and unmodified for the
-                        lifetime of the parameter. Since 2.8 *)
-  | Private         (** internal *)
-  | Static_nick     (** the string used as nick when constructing the parameter
-                        is guaranteed to remain valid and unmmodified for the
-                        lifetime of the parameter. Since 2.8 *)
-  | Static_blurb    (** the string used as blurb when constructing the parameter
-                        is guaranteed to remain valid and unmodified for the
-                        lifetime of the parameter. Since 2.8 *)
-  | Explicit_notify (** calls to g_object_set_property() for this property will
-                        not automatically result in a "notify" signal being
-                        emitted: the implementation must call g_object_notify()
-                        themselves in case the property actually changes.
-                        Since: 2.42. *)
-  | Deprecated      (** the parameter is deprecated and will be removed in a
-                        future version. A warning will be generated if it is
-                        used while running with G_ENABLE_DIAGNOSTIC=1.
-                        Since 2.26 *)
-
-val param_flags_of_int32:
-  int32 -> param_flags
-
-val param_flags_to_string:
-  param_flags -> string
-
 val get_type:
   t structure ptr -> Type_info.t structure ptr
 

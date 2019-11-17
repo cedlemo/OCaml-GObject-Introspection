@@ -22,3 +22,4 @@ module Types = struct include Types end
 module VFunc_info = struct include VFunc_info end
 module Arg_info = struct include Arg_info end
 module Field_info = struct include Field_info end
+module GParam = struct include GParam end

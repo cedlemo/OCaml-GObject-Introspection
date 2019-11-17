@@ -112,6 +112,25 @@
    "%{cc} bindings_stubs_gen_field_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
 )
 
+; GParam stubs rules
+(executable
+ (name bindings_c_gen_g_param)
+ (modules bindings_c_gen_g_param)
+ (libraries bindings ctypes.stubs ctypes))
+
+(rule
+ (targets bindings_stubs_gen_g_param.c)
+ (deps (:stubgen ../stubgen/bindings_c_gen_g_param.exe))
+ (action (with-stdout-to %{targets} (run %{stubgen} -c))))
+
+(rule
+ (targets bindings_stubs_gen_g_param.exe)
+ (deps bindings_stubs_gen_g_param.c c_flags c_library_flags)
+ (action
+  (bash
+   "%{cc} bindings_stubs_gen_g_param.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
+)
+
 ; Compiling flags rules
 (rule
   (targets c_library_flags c_flags)

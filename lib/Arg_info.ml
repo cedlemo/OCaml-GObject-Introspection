@@ -62,51 +62,6 @@ let get_scope =
     foreign "g_arg_info_get_scope"
       (ptr arginfo @-> returning Stubs.Arg_info.scope_type)
 
-type param_flags =
-  | Readable
-  | Writable
-  | Readwrite
-  | Construct
-  | Construct_only
-  | Lax_validation
-  | Static_name
-  | Private
-  | Static_nick
-  | Static_blurb
-  | Explicit_notify
-  | Deprecated
-
-let param_flags_of_int32 flag =
-  if flag = (Int32.shift_left (Int32.of_int 1) 0) then Readable
-  else if flag = (Int32.shift_left (Int32.of_int 1) 1) then Writable
-  else if flag = (Int32.logor (Int32.shift_left (Int32.of_int 1) 0) (Int32.shift_left (Int32.of_int 1) 1)) then Readwrite
-  else if flag = (Int32.shift_left (Int32.of_int 1) 2) then Construct
-  else if flag = (Int32.shift_left (Int32.of_int 1) 3) then Construct_only
-  else if flag = (Int32.shift_left (Int32.of_int 1) 4) then Lax_validation
-  else if flag = (Int32.shift_left (Int32.of_int 1) 5) then Static_name
-  else if flag = (Int32.shift_left (Int32.of_int 1) 6) then Static_nick
-  else if flag = (Int32.shift_left (Int32.of_int 1) 7) then Static_blurb
-  else if flag = (Int32.shift_left (Int32.of_int 1) 30) then Explicit_notify
-  else if flag = (Int32.shift_left (Int32.of_int 1) 31) then Deprecated
-  else let message = String.concat " " ["Arg_info get_scope value";
-                                        Int32.to_string flag;
-                                        "should not have been reached"]
-    in raise (Failure message)
-
-let param_flags_to_string = function
-  | Readable -> "Readable"
-  | Writable -> "Writable"
-  | Readwrite -> "Readwrite"
-  | Construct -> "Construct"
-  | Construct_only -> "Construct_only"
-  | Lax_validation -> "Lax_validation"
-  | Static_name -> "Static_name"
-  | Private -> "Private"
-  | Static_nick -> "Static_nick"
-  | Static_blurb -> "Static_blurb"
-  | Explicit_notify -> "Explicit_notify"
-  | Deprecated -> "Deprecated"
-
 let get_type info =
   let get_type_raw =
     foreign "g_arg_info_get_type"

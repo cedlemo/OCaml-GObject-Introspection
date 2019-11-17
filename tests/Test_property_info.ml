@@ -75,9 +75,17 @@ let test_get_type _ =
 let test_get_flags _ =
   property_test (fun info ->
       let flags = Property_info.get_flags info in
-      assert_equal ~printer:(fun f ->
-          Arg_info.param_flags_to_string f
-        ) Arg_info.Readwrite flags
+      let n = List.length flags in
+      let _ = assert_equal ~printer:string_of_int 3 n in
+      let flag_names = [
+        Bindings.GParam.Readwrite;
+        Bindings.GParam.Writable;
+        Bindings.GParam.Readable] in
+      let _ = List.fold_left (fun acc flag ->
+          let _ = assert_equal ~printer:(fun f -> GParam.flag_to_string f) (List.nth flag_names acc) flag in
+          acc + 1
+        ) 0 flags
+      in ()
     )
 
 let tests =
