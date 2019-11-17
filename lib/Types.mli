@@ -20,49 +20,10 @@
 
 open Ctypes
 open Stubs
-(** The type tag of a Type_info.
-type tag =
-  | Void (** void *)
-  | Boolean (** boolean *)
-  | Int8 (** 8-bit signed integer *)
-  | Uint8 (** 8-bit unsigned integer *)
-  | Int16 (** 16-bit signed integer *)
-  | Uint16 (** 16-bit unsigned integer *)
-  | Int32 (** 32-bit signed integer *)
-  | Uint32 (** 32-bit unsigned integer *)
-  | Int64 (** 64-bit signed integer *)
-  | Uint64 (** 64-bit unsigned integer *)
-  | Float (** float *)
-  | Double (** double floating point *)
-  | GType (** a GType *)
-  | Utf8 (** a UTF-8 encoded string *)
-  | Filename (** a filename, encoded in the same encoding as the native filesystem is using. *)
-  | Array (** an array *)
-  | Interface (** an extended interface object *)
-  | GList (** a GList *)
-  | GSList (** a GSList *)
-  | GHash (** a GHashTable *)
-  | Error (** a GError *)
-  | Unichar (** Unicode character *)
-
-val tag_of_int:
-  int -> tag
-
-*)
 
 val string_of_tag:
   Bindings.Types.tag -> string
 
-(**
-type array_type =
-  | C          (** a C array, char[] for instance *)
-  | Array      (** a GArray array *)
-  | Ptr_array  (** a GPtrArray array *)
-  | Byte_array (** a GByteArray array *)
-
-val array_type_of_int:
-  int -> array_type
-*)
 val string_of_array_type:
   Bindings.Types.array_type -> string
 
