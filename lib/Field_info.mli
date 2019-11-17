@@ -31,15 +31,10 @@ open Ctypes
 type t
 val fieldinfo : t structure typ
 
-(** Flags for a Field_info. *)
-type flags =
-  | Is_readable (** field is readable. *)
-  | Is_writable (** field is writable. *)
-
 (** Obtain the flags for this Field_info. See Field_info.flags for possible
     flag values. *)
 val get_flags:
-  t structure ptr -> flags list
+  t structure ptr -> Bindings.Field_info.flags list
 
 (** Obtain the offset in bits of the field member, this is relative to the
     beginning of the struct or union. *)

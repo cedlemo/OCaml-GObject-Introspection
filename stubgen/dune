@@ -93,6 +93,25 @@
    "%{cc} bindings_stubs_gen_arg_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
 )
 
+; Field_info stubs rules
+(executable
+ (name bindings_c_gen_field_info)
+ (modules bindings_c_gen_field_info)
+ (libraries bindings ctypes.stubs ctypes))
+
+(rule
+ (targets bindings_stubs_gen_field_info.c)
+ (deps (:stubgen ../stubgen/bindings_c_gen_field_info.exe))
+ (action (with-stdout-to %{targets} (run %{stubgen} -c))))
+
+(rule
+ (targets bindings_stubs_gen_field_info.exe)
+ (deps bindings_stubs_gen_field_info.c c_flags c_library_flags)
+ (action
+  (bash
+   "%{cc} bindings_stubs_gen_field_info.c -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` -I %{ocaml_where} $(< c_flags) $(< c_library_flags) -o %{targets}"))
+)
+
 ; Compiling flags rules
 (rule
   (targets c_library_flags c_flags)

@@ -78,9 +78,9 @@ let test_get_field _ =
         | [] -> ()
         | f' :: q -> let _ = assert_equal ~printer:(fun f ->
             match f with
-            | Field_info.Is_readable -> "readable"
-            | Field_info.Is_writable -> "writable"
-          ) Field_info.Is_readable f' in check_flags q
+            | Bindings.Field_info.Is_readable -> "readable"
+            | Bindings.Field_info.Is_writable -> "writable"
+          ) Bindings.Field_info.Is_readable f' in check_flags q
       in check_flags flags
     )
 

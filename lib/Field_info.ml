@@ -22,19 +22,35 @@ open Foreign
 type t
 let fieldinfo : t structure typ = structure "Field_info"
 
-type flags =
-  | Is_readable
-  | Is_writable
+let all_flags : (int64 * Bindings.Field_info.flags) list= [
+    Stubs.Field_info.gi_field_is_readable, Is_readable;
+    Stubs.Field_info.gi_field_is_writable, Is_writable;
+  ]
 
-let get_flags info =
-  let get_flags_raw =
+let flags_list_of_int64 v =
+  let open Int64 in
+  let rec build_flags_list allf acc =
+    match allf with
+    | [] -> acc
+    | (i, f) :: q -> if ((logand v i) <> zero) then build_flags_list q (f :: acc)
+       else build_flags_list q acc
+  in build_flags_list all_flags []
+
+let int64_of_flags_list (f : Bindings.Field_info.flags list) =
+  let open Int64 in
+  let bitwise_or = fun acc value ->
+    let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
+  in
+  List.fold_left bitwise_or Int64.zero f
+
+let flags_list =
+  view Stubs.Function_info.flags
+    ~read:flags_list_of_int64
+    ~write:int64_of_flags_list
+
+let get_flags =
     foreign "g_field_info_get_flags"
-      (ptr fieldinfo @-> returning int)
-  in let flags = [] in
-  let c_flags = get_flags_raw info in
-  if ((c_flags land (1 lsl 0)) != 0) then ignore (Is_readable :: flags);
-  if ((c_flags land (1 lsl 1)) != 0) then ignore (Is_writable :: flags);
-  flags
+      (ptr fieldinfo @-> returning flags_list)
 
 let get_offset =
   foreign "g_field_info_get_offset"
