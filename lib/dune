@@ -48,3 +48,8 @@
   (deps ../stubgen/bindings_stubs_gen_g_param.exe)
   (action (with-stdout-to %{targets} (run %{deps} -ml))))
 
+(rule
+  (targets bindings_stubs_g_signal.ml)
+  (deps ../stubgen/bindings_stubs_gen_g_signal.exe)
+  (action (with-stdout-to %{targets} (run %{deps} -ml))))
+

@@ -26,33 +26,9 @@ let true_stops_emit =
   foreign "g_signal_info_true_stops_emit"
     (ptr signalinfo @-> returning bool)
 
-type flags =
-  | Run_first
-  | Run_last
-  | Run_cleanup
-  | No_recurse
-  | Detailed
-  | Action
-  | No_hooks
-  | Must_collect
-  | Deprecated
-
-let get_flags info =
-  let get_flags_raw =
-    foreign "g_signal_info_get_flags"
-      (ptr signalinfo @-> returning int)
-  in let flags = [] in
-  let c_flags = get_flags_raw info in
-  if ((c_flags land (1 lsl 0)) != 0) then ignore (Run_first :: flags);
-  if ((c_flags land (1 lsl 1)) != 0) then ignore (Run_last :: flags);
-  if ((c_flags land (1 lsl 2)) != 0) then ignore (Run_cleanup :: flags);
-  if ((c_flags land (1 lsl 3)) != 0) then ignore (No_recurse :: flags);
-  if ((c_flags land (1 lsl 4)) != 0) then ignore (Detailed :: flags);
-  if ((c_flags land (1 lsl 5)) != 0) then ignore (Action :: flags);
-  if ((c_flags land (1 lsl 6)) != 0) then ignore (No_hooks :: flags);
-  if ((c_flags land (1 lsl 7)) != 0) then ignore (Must_collect :: flags);
-  if ((c_flags land (1 lsl 8)) != 0) then ignore (Deprecated :: flags);
-  flags
+let get_flags =
+  foreign "g_signal_info_get_flags"
+      (ptr signalinfo @-> returning GSignal.flags_list)
 
 let get_class_closure info =
   let get_class_closure_raw =

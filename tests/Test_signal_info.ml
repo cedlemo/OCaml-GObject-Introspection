@@ -25,7 +25,7 @@ let typelib = Repository.require namespace ()
 let object_name = "Window"
 let signal_name = "activate-default"
 
-let get_signal_info () =
+let get_signal_info signal_name =
   match Repository.find_by_name namespace object_name with
   | None -> None
   | Some (base_info) ->
@@ -38,48 +38,53 @@ let get_signal_info () =
       )
     | _ -> None
 
-let signal_test fn =
-  match get_signal_info () with
+let signal_activate_default_test fn =
+  match get_signal_info signal_name with
   | None -> assert_equal_string object_name "No base info found"
   | Some (info) -> fn info
 
 let test_true_stops_emit _ =
-  signal_test (fun info ->
+  signal_activate_default_test (fun info ->
       let stops = Signal_info.true_stops_emit info in
       assert_equal_boolean false stops
     )
 
-let test_get_flags _ =
-  signal_test (fun info ->
-      let flags = Signal_info.get_flags info in
-      let rec check_flags = function
-        | [] -> ()
-        | f' :: q -> let _ = assert_equal ~printer:(fun f ->
-            match f with
-            | Signal_info.Run_first -> "Run_first"
-            | Signal_info.Run_last -> "Run_last"
-            | Signal_info.Run_cleanup -> "Run_cleanup"
-            | Signal_info.No_recurse -> "No_recurse"
-            | Signal_info.Detailed -> "Detailed"
-            | Signal_info.Action -> "Action"
-            | Signal_info.No_hooks -> "No_hooks"
-            | Signal_info.Must_collect -> "Must_collect"
-            | Signal_info.Deprecated -> "Deprecated"
-          ) Signal_info.Run_first f' in check_flags q
-      in check_flags flags
-    )
-
 let test_get_class_closure _ =
-  signal_test (fun info ->
+  signal_activate_default_test (fun info ->
       match Signal_info.get_class_closure info with
       | None -> assert_equal_boolean true true
       | Some _ -> assert_equal_string "Class closure " " found"
+    )
+
+let test_get_multiple_flags _ =
+  signal_activate_default_test (fun info ->
+      let flags = Signal_info.get_flags info in
+      let len = List.length flags in
+      let _ = assert_equal_int 2 len in
+      let _ = assert_bool "Run last" (List.mem Bindings.GSignal.Run_last flags) in
+      assert_bool "Action" (List.mem Bindings.GSignal.Action flags)
+    )
+
+let signal_name = "keys-changed"
+
+let signal_keys_changed_test fn =
+  match get_signal_info signal_name with
+  | None -> assert_equal_string object_name "No base info found"
+  | Some (info) -> fn info
+
+let test_get_simple_flags _ =
+  signal_keys_changed_test (fun info ->
+      let flags = Signal_info.get_flags info in
+      let len = List.length flags in
+      let _ = assert_equal_int 1 len in
+      assert_bool "Run First" (List.mem Bindings.GSignal.Run_first flags)
     )
 
 let tests =
   "GObject Introspection SignalInfo tests" >:::
   [
     "Signal_info true stops emit" >:: test_true_stops_emit;
-    "Signal_info get flags" >:: test_get_flags;
-    "GISingalInfo get class closure" >:: test_get_class_closure
+    "GISingalInfo get class closure" >:: test_get_class_closure;
+    "Signal_info get multiple flags" >:: test_get_multiple_flags;
+    "Signal_info get simple flags" >:: test_get_simple_flags;
   ]
