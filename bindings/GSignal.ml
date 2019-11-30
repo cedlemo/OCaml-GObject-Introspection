@@ -49,6 +49,17 @@ type flags =
                       connected while running with G_ENABLE_DIAGNOSTIC=1.
                       Since 2.32. *)
 
+let string_of_flag = function
+  | Run_first -> "Run_first"
+  | Run_last -> "Run_last"
+  | Run_cleanup -> "Run_cleanup"
+  | No_recurse -> "No_recurse"
+  | Detailed -> "Detailed"
+  | Action -> "Action"
+  | No_hooks -> "No_hooks"
+  | Must_collect -> "Must_collect"
+  | Deprecated -> "Deprecated"
+
 module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let g_signal_run_first = T.constant "G_SIGNAL_RUN_FIRST" T.int64_t
   let g_signal_run_last = T.constant "G_SIGNAL_RUN_LAST" T.int64_t

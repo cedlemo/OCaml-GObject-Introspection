@@ -47,6 +47,19 @@ type flags =
                         used while running with G_ENABLE_DIAGNOSTIC=1.
                         Since 2.26 *)
 
+let string_of_flag = function
+  | Readable -> "Readable"
+  | Writable -> "Writable"
+  | Readwrite -> "Readwrite"
+  | Construct -> "Construct"
+  | Construct_only -> "Construct_only"
+  | Lax_validation -> "Lax_validation"
+  | Static_name -> "Static_name"
+  | Static_nick -> "Static_nick"
+  | Static_blurb -> "Static_blurb"
+  | Explicit_notify -> "Explicit_notify"
+  | Deprecated -> "Deprecated"
+
 module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let g_param_readable = T.constant "G_PARAM_READABLE" T.int64_t
   let g_param_writable = T.constant "G_PARAM_WRITABLE" T.int64_t

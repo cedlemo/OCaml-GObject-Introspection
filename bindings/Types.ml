@@ -23,6 +23,11 @@ type array_type =
   | Ptr_array  (** a GPtrArray array *)
   | Byte_array (** a GByteArray array *)
 
+let string_of_array_type = function
+  | C -> "C"
+  | Array -> "Array"
+  | Ptr_array -> "Ptr_array"
+  | Byte_array -> "Byte_array"
 
 (** The type tag of a Type_info. *)
 type tag =
@@ -48,6 +53,30 @@ type tag =
   | GHash (** a GHashTable *)
   | Error (** a GError *)
   | Unichar (** Unicode character *)
+
+let string_of_tag = function
+  | Void -> "Void"
+  | Boolean -> "Boolean"
+  | Int8 -> "Int8"
+  | Uint8 -> "Uint8"
+  | Int16 -> "Int16"
+  | Uint16 -> "Uint16"
+  | Int32 -> "Int32"
+  | Uint32 -> "Uint32"
+  | Int64 -> "Int64"
+  | Uint64 -> "Uint64"
+  | Float -> "Float"
+  | Double -> "Double"
+  | GType -> "GType"
+  | Utf8 -> "Utf8"
+  | Filename -> "Filename"
+  | Array -> "Array"
+  | Interface -> "Interface"
+  | GList -> "GList"
+  | GSList -> "GSList"
+  | GHash -> "GHash"
+  | Error -> "Error"
+  | Unichar -> "Unichar"
 
 module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_type_tag_void = T.constant "GI_TYPE_TAG_VOID" T.int64_t

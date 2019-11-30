@@ -22,6 +22,11 @@ type direction =
   | Out   (** out argument. *)
   | InOut (** in and out argument. *)
 
+let string_of_direction = function
+  | In -> "In"
+  | Out -> "Out"
+  | InOut -> "InOut"
+
 (** The transfer is the exchange of data between two parts, from the callee to
     the caller. The callee is either a function/method/signal or an
     object/interface where a property is defined. The caller is the side
@@ -48,6 +53,11 @@ type transfer =
                    responsible for cleaning up the container and item resources
                    of this transfer. *)
 
+let string_of_transfert = function
+  | Nothing -> "Nothing"
+  | Container -> "Container"
+  | Everything -> "Everything"
+
 (** Scope type of a Arg_info representing callback, determines how the
     callback is invoked and is used to decided when the invoke structs can be
     freed. *)
@@ -61,6 +71,11 @@ type scope_type =
   | Notified  (** The callback and and associated user_data is used until the
                   caller is notfied via the destroy_notify. *)
 
+let string_of_scope_type = function
+  | Invalid -> "Invalid"
+  | Call -> "Call"
+  | Async -> "Async"
+  | Notified -> "Notified"
 
 module Enums = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_direction_in = T.constant "GI_DIRECTION_IN" T.int64_t

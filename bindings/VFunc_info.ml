@@ -22,7 +22,7 @@ type flags =
   | Must_not_override (** does not override *)
   | Throws            (** Includes  a GError *)
 
-let string_of_flags = function
+let string_of_flag = function
   | Must_chain_up -> "Must_chain_up"
   | Must_override -> "Must_override"
   | Must_not_override -> "Must_not_override"

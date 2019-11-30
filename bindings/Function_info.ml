@@ -25,6 +25,14 @@ type flags =
   | Wraps_vfunc    (** represents a virtual function. *)
   | Throws         (** the function may throw an error. *)
 
+let string_of_flag = function
+  | Is_method -> "Is_method"
+  | Is_constructor -> "Is_constructor"
+  | Is_getter -> "Is_getter"
+  | Is_setter -> "Is_setter"
+  | Wraps_vfunc -> "Wraps_vfunc"
+  | Throws -> "Throws"
+
 module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_function_is_method = T.constant "GI_FUNCTION_IS_METHOD" T.int64_t
   let gi_function_is_constructor = T.constant "GI_FUNCTION_IS_CONSTRUCTOR" T.int64_t
