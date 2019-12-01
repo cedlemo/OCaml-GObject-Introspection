@@ -87,7 +87,7 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Out, gi_direction_out;
       InOut, gi_direction_inout;
     ]
-      ~unexpected:(fun _x -> assert false)
+      ~unexpected:(Utils.unexpected_value_for "GIDirection")
 
   let gi_transfer_nothing = T.constant "GI_TRANSFER_NOTHING" T.int64_t
   let gi_transfer_container = T.constant "GI_TRANSFER_CONTAINER" T.int64_t
@@ -98,6 +98,7 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Container, gi_transfer_container;
       Everything, gi_transfer_everything;
     ]
+      ~unexpected:(Utils.unexpected_value_for "GITransfer")
 
   let gi_scope_type_invalid = T.constant "GI_SCOPE_TYPE_INVALID" T.int64_t
   let gi_scope_type_call = T.constant "GI_SCOPE_TYPE_CALL" T.int64_t
@@ -110,5 +111,5 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Async, gi_scope_type_async;
       Notified, gi_scope_type_notified;
     ]
-      ~unexpected:(fun _x -> assert false)
+      ~unexpected:(Utils.unexpected_value_for "GIScopeType")
 end

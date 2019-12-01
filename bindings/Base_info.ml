@@ -104,5 +104,5 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Type, gi_info_type_type;
       Unresolved, gi_info_type_unresolved;
     ]
-      ~unexpected:(fun _x -> assert false)
+      ~unexpected:(Utils.unexpected_value_for "GIInfoType")
 end

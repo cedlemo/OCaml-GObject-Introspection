@@ -126,7 +126,7 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Error, gi_type_tag_error;
       Unichar, gi_type_tag_unichar;
     ]
-      ~unexpected:(fun _x -> assert false)
+      ~unexpected:(Utils.unexpected_value_for "GITypeTag")
 
   let gi_array_type_c = T.constant "GI_ARRAY_TYPE_C" T.int64_t
   let gi_array_type_array = T.constant "GI_ARRAY_TYPE_ARRAY" T.int64_t
@@ -139,6 +139,6 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Ptr_array, gi_array_type_ptr_array;
       Byte_array, gi_array_type_byte_array;
     ]
-      ~unexpected:(fun _x -> assert false)
+      ~unexpected:(Utils.unexpected_value_for "GIArrayType")
 
 end
