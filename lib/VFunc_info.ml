@@ -63,19 +63,6 @@ let flags_list =
     ~read:flags_list_of_int64
     ~write:int64_of_flags_list
 
-
-(* let get_flags info =
-  let get_flags_raw =
-    foreign "g_vfunc_info_get_flags"
-      (ptr vfuncinfo @-> returning int) in
-  let flags = [] in
-  let c_flags = get_flags_raw info in
-  if ((c_flags land (1 lsl 0)) != 0) then ignore (Must_chain_up :: flags);
-  if ((c_flags land (1 lsl 1)) != 0) then ignore (Must_override :: flags);
-  if ((c_flags land (1 lsl 2)) != 0) then ignore (Must_not_override :: flags);
-  if ((c_flags land (1 lsl 3)) != 0) then ignore (Throws :: flags);
-  flags
-*)
 let get_flags =
   foreign "g_vfunc_info_get_flags"
       (ptr vfuncinfo @-> returning flags_list)

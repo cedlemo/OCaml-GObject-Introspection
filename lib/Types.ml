@@ -18,61 +18,6 @@
 
 open Ctypes
 open Stubs
-(**
-type tag =
-  | Void
-  | Boolean
-  | Int8
-  | Uint8
-  | Int16
-  | Uint16
-  | Int32
-  | Uint32
-  | Int64
-  | Uint64
-  | Float
-  | Double
-  | GType
-  | Utf8
-  | Filename
-  | Array
-  | Interface
-  | GList
-  | GSList
-  | GHash
-  | Error
-  | Unichar
-
-let tag_of_int = function
-  | 0 -> Void
-  | 1 -> Boolean
-  | 2 -> Int8
-  | 3 -> Uint8
-  | 4 -> Int16
-  | 5 -> Uint16
-  | 6 -> Int32
-  | 7 -> Uint32
-  | 8 -> Int64
-  | 9 -> Uint64
-  | 10 -> Float
-  | 11 -> Double
-  | 12 -> GType
-  | 13 -> Utf8
-  | 14 -> Filename
-  | 15 -> Array
-  | 16 -> Interface
-  | 17 -> GList
-  | 18 -> GSList
-  | 19 -> GHash
-  | 20 -> Error
-  | 21 -> Unichar
-  | value  -> let message = String.concat " " ["Types tag value";
-                                               string_of_int value;
-                                               "should not have been reached"]
-    in raise (Failure message)
-
-
-*)
 
 let string_of_tag : Bindings.Types.tag -> string = function
   | Void -> "void"
@@ -97,23 +42,6 @@ let string_of_tag : Bindings.Types.tag -> string = function
   | GHash -> "gHash"
   | Error -> "error"
   | Unichar -> "unichar"
-
-(** type array_type =
-  | C
-  | Array
-  | Ptr_array
-  | Byte_array
-
-let array_type_of_int = function
-  | 0 -> C
-  | 1 -> Array
-  | 2 -> Ptr_array
-  | 3 -> Byte_array
-  | value  -> let message = String.concat " " ["Types array_type value";
-                                               string_of_int value;
-                                               "should not have been reached"]
-    in raise (Failure message)
-*)
 
 let string_of_array_type : Bindings.Types.array_type -> string = function
   | C -> "c"

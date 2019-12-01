@@ -72,5 +72,5 @@ module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let g_param_static_blurb = T.constant "G_PARAM_STATIC_BLURB" T.int64_t
   let g_param_explicit_notify = T.constant "G_PARAM_EXPLICIT_NOTIFY" T.int64_t
   let g_param_deprecated = T.constant "G_PARAM_DEPRECATED" T.int64_t
-  let flags = T.enum "GParamFlags" ~typedef:true [] ~unexpected:(fun x -> x)
+  let flags = T.enum "GParamFlags" ~typedef:true []
 end

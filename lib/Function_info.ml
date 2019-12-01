@@ -26,14 +26,6 @@ let get_symbol =
   foreign "g_function_info_get_symbol"
     (ptr functioninfo @-> returning string)
 
-(**type flags =
-  | Is_method
-  | Is_constructor
-  | Is_getter
-  | Is_setter
-  | Wraps_vfunc
-  | Throws
- *)
 let all_flags : (int64 * Bindings.Function_info.flags) list= [
     Stubs.Function_info.gi_function_is_method, Is_method;
     Stubs.Function_info.gi_function_is_constructor, Is_constructor;

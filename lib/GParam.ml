@@ -67,4 +67,3 @@ let flag_to_string = function
   | Bindings.GParam.Explicit_notify -> "Explicit_notify"
   | Bindings.GParam.Deprecated -> "Deprecated"
 
-

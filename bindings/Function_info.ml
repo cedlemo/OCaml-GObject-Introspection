@@ -40,5 +40,5 @@ module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_function_is_setter = T.constant "GI_FUNCTION_IS_SETTER" T.int64_t
   let gi_function_wraps_vfunc = T.constant "GI_FUNCTION_WRAPS_VFUNC" T.int64_t
   let gi_function_throws = T.constant "GI_FUNCTION_THROWS" T.int64_t
-  let flags = T.enum "GIFunctionInfoFlags" ~typedef:true [] ~unexpected:(fun x -> x)
+  let flags = T.enum "GIFunctionInfoFlags" ~typedef:true []
 end

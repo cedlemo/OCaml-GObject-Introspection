@@ -70,5 +70,5 @@ module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let g_signal_no_hooks = T.constant "G_SIGNAL_NO_HOOKS" T.int64_t
   let g_signal_must_collect = T.constant "G_SIGNAL_MUST_COLLECT" T.int64_t
   let g_signal_deprecated = T.constant "G_SIGNAL_DEPRECATED" T.int64_t
-  let flags = T.enum "GSignalFlags" ~typedef:true [] ~unexpected:(fun x -> x)
+  let flags = T.enum "GSignalFlags" ~typedef:true []
 end
