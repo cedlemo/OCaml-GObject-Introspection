@@ -33,5 +33,5 @@ module Flags = functor (T : Cstubs.Types.TYPE) -> struct
   let gi_vfunc_must_override = T.constant "GI_VFUNC_MUST_OVERRIDE" T.int64_t
   let gi_vfunc_must_not_override = T.constant "GI_VFUNC_MUST_NOT_OVERRIDE" T.int64_t
   let gi_vfunc_throws = T.constant "GI_VFUNC_THROWS" T.int64_t
-  let flags = T.enum "GIVFuncInfoFlags" ~typedef:true []
+  let flags = T.enum "GIVFuncInfoFlags" ~typedef:true [] ~unexpected:(fun x -> x)
 end
