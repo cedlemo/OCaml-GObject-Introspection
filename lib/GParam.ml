@@ -33,26 +33,7 @@ let all_flags : (int64 * Bindings.GParam.flags) list= [
     Stubs.GParam.g_param_deprecated,  Bindings.GParam.Deprecated;
   ]
 
-let flags_list_of_int64 v =
-  let open Int64 in
-  let rec build_flags_list allf acc =
-    match allf with
-    | [] -> acc
-    | (i, f) :: q -> if ((logand v i) <> zero) then build_flags_list q (f :: acc)
-       else build_flags_list q acc
-  in build_flags_list all_flags []
-
-let int64_of_flags_list (f : Bindings.GParam.flags list) =
-  let open Int64 in
-  let bitwise_or = fun acc value ->
-    let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
-  in
-  List.fold_left bitwise_or Int64.zero f
-
-let flags_list =
-  view Stubs.GParam.flags
-    ~read:flags_list_of_int64
-    ~write:int64_of_flags_list
+let flags_list = Utils.generate_flags_list_view Stubs.GParam.flags all_flags
 
 let flag_to_string = function
   | Bindings.GParam.Readable -> "Readable"

@@ -21,12 +21,6 @@
 open Ctypes
 open Stubs
 
-val string_of_tag:
-  Bindings.Types.tag -> string
-
-val string_of_array_type:
-  Bindings.Types.array_type -> string
-
 type argument_t
 val argument: argument_t union typ
 val v_boolean: (bool, argument_t union) field

@@ -27,26 +27,7 @@ let all_flags : (int64 * Bindings.Field_info.flags) list= [
     Stubs.Field_info.gi_field_is_writable, Is_writable;
   ]
 
-let flags_list_of_int64 v =
-  let open Int64 in
-  let rec build_flags_list allf acc =
-    match allf with
-    | [] -> acc
-    | (i, f) :: q -> if ((logand v i) <> zero) then build_flags_list q (f :: acc)
-       else build_flags_list q acc
-  in build_flags_list all_flags []
-
-let int64_of_flags_list (f : Bindings.Field_info.flags list) =
-  let open Int64 in
-  let bitwise_or = fun acc value ->
-    let (i, _f) = List.find (fun (i', f') -> value = f') all_flags in logor acc i
-  in
-  List.fold_left bitwise_or Int64.zero f
-
-let flags_list =
-  view Stubs.Function_info.flags
-    ~read:flags_list_of_int64
-    ~write:int64_of_flags_list
+let flags_list = Utils.generate_flags_list_view Stubs.Function_info.flags all_flags
 
 let get_flags =
     foreign "g_field_info_get_flags"
