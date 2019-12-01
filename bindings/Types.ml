@@ -140,5 +140,4 @@ module Enums = functor (T : Cstubs.Types.TYPE) -> struct
       Byte_array, gi_array_type_byte_array;
     ]
       ~unexpected:(Utils.unexpected_value_for "GIArrayType")
-
 end

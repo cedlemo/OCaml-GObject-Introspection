@@ -56,7 +56,7 @@ let test_get_tag _ =
   type_test (fun info ->
       let tag = Type_info.get_tag info in
       assert_equal ~printer:(fun tag ->
-          Types.string_of_tag tag
+          Bindings.Types.string_of_tag tag
         ) Bindings.Types.Array tag
     )
 
@@ -83,7 +83,7 @@ let test_get_array_type _ =
       match Type_info.get_array_type info with
       | None -> assert_equal_string "It should " "be an array"
       | Some array_type -> assert_equal ~printer:(fun t ->
-          Types.string_of_array_type t)
+          Bindings.Types.string_of_array_type t)
           C array_type
     )
 
@@ -92,7 +92,7 @@ let test_get_param_type _ =
      let param_type = Type_info.get_param_type info in
      let tag = Type_info.get_tag param_type in
       assert_equal ~printer:(fun tag ->
-          Types.string_of_tag tag
+          Bindings.Types.string_of_tag tag
         ) Bindings.Types.Uint32 tag
     )
 

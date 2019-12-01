@@ -46,7 +46,7 @@ let test_get_type _ =
       assert_equal_string "unknown" str ;
       let tag = Type_info.get_tag type_info in
       assert_equal ~printer:(fun tag ->
-          Types.string_of_tag tag
+          Bindings.Types.string_of_tag tag
         ) Bindings.Types.Int32 tag
     )
 
