@@ -25,7 +25,7 @@ let get_info_strings info n=
   (match Base_info.get_name info with None -> "noname" | Some name -> name);
   "type:";
   (let t = Base_info.get_type info in
-  Base_info.string_of_baseinfo_type t) ]
+  Bindings.Base_info.string_of_info_type t) ]
 
 let print_info namespace n =
   let message = let info = Repository.get_info namespace n in
