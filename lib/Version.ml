@@ -1,5 +1,5 @@
 (*
- * Copyright 2017-2019 Cedric LE MOIGNE, cedlemo@gmx.com
+ * Copyright 2019 Cedric LE MOIGNE, cedlemo@gmx.com
  * This file is part of OCaml-GObject-Introspection.
  *
  * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
@@ -16,30 +16,14 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open OUnit2
+open Ctypes
+open Foreign
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      Test_repository_default.tests;
-      Test_repository.tests;
-      Test_base_info.tests;
-      Test_function_info.tests;
-      Test_struct_info.tests;
-      Test_union_info.tests;
-      Test_field_info.tests;
-      Test_enum_info.tests;
-      Test_callable_info.tests;
-      Test_arg_info.tests;
-      Test_type_info.tests;
-      Test_constant_info.tests;
-      Test_object_info.tests;
-      Test_interface_info.tests;
-      Test_property_info.tests;
-      Test_signal_info.tests;
-      Test_vfunc_info.tests;
-      Test_registered_type_info.tests;
-      Test_version.tests;
-    ]
-  )
+let get_major_version =
+  foreign "gi_get_major_version" (void @-> returning int)
+
+let get_minor_version =
+  foreign "gi_get_minor_version" (void @-> returning int)
+
+let get_micro_version =
+  foreign "gi_get_micro_version" (void @-> returning int)

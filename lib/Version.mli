@@ -1,5 +1,5 @@
 (*
- * Copyright 2017-2019 Cedric LE MOIGNE, cedlemo@gmx.com
+ * Copyright 2019 Cedric LE MOIGNE, cedlemo@gmx.com
  * This file is part of OCaml-GObject-Introspection.
  *
  * OCaml-GObject-Introspection is free software: you can redistribute it and/or modify
@@ -16,30 +16,17 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open OUnit2
+(**
+ * Returns the major version number of the girepository library. (e.g. in version 1.58.2 this is 1.)
+ * *)
+val get_major_version : unit -> int
 
-let () =
-  run_test_tt_main
-  ("GObjectIntrospection" >:::
-    [
-      Test_repository_default.tests;
-      Test_repository.tests;
-      Test_base_info.tests;
-      Test_function_info.tests;
-      Test_struct_info.tests;
-      Test_union_info.tests;
-      Test_field_info.tests;
-      Test_enum_info.tests;
-      Test_callable_info.tests;
-      Test_arg_info.tests;
-      Test_type_info.tests;
-      Test_constant_info.tests;
-      Test_object_info.tests;
-      Test_interface_info.tests;
-      Test_property_info.tests;
-      Test_signal_info.tests;
-      Test_vfunc_info.tests;
-      Test_registered_type_info.tests;
-      Test_version.tests;
-    ]
-  )
+(**
+ * Returns the minor version number of the girepository library. (e.g. in version 1.58.2 this is 58.)
+ * *)
+val get_minor_version : unit -> int
+
+(**
+ * Returns the micro version number of the girepository library. (e.g. in version 1.58.2 this is 2.)
+ * *)
+val get_micro_version : unit -> int
