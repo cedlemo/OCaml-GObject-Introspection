@@ -1,15 +1,20 @@
-opam-version: "1.2"
+opam-version: "2.0"
 name: "OCaml-GObject-Introspection"
 version: "0.1"
-maintainer: "cedlemo <cedlemo@gmx.com>"
-authors: "cedlemo <cedlemo@gmx.com>"
+maintainer: "Cédric Le Moigne <cedlemo@gmx.com>"
+authors: "Cédric Le Moigne <cedlemo@gmx.com>"
 homepage: "https://github.com/cedlemo/OCaml-GObject-Introspection"
 bug-reports: "https://github.com/cedlemo/OCaml-GObject-Introspection/issues"
 license: "GPL3"
-dev-repo: "https://github.com/cedlemo/OCaml-GObject-Introspection.git"
-build: [["dune" "build" "-p" name "-j" jobs]]
-build-test: [["dune" "runtest" "-p" name "-j" jobs]]
+dev-repo: "git+https://github.com/cedlemo/OCaml-GObject-Introspection.git"
+synopsis: "OCaml bindings for the GObject-Introspection library (https://gi.readthedocs.io/en/latest/)"
+description: "This library provides bindings based on Ctypes for the libgirepository API (see https://developer.gnome.org/gi/stable/)"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
 depends: [
+  "ocaml"
   "dune" {build}
   "ctypes"
   "ctypes-foreign"
