@@ -1,6 +1,6 @@
 opam-version: "2.0"
 name: "OCaml-GObject-Introspection"
-version: "0.1"
+version: "0.2"
 maintainer: "Cédric Le Moigne <cedlemo@gmx.com>"
 authors: "Cédric Le Moigne <cedlemo@gmx.com>"
 homepage: "https://github.com/cedlemo/OCaml-GObject-Introspection"
