@@ -22,4 +22,6 @@ depends: [
   "base"
   "stdio"
   "configurator"
+  "conf-pkg-config" {build}
+  "conf-gobject-introspection" {build}
 ]
