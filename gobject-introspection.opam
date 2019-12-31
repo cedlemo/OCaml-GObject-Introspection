@@ -24,4 +24,6 @@ depends: [
   "configurator"
   "conf-pkg-config" {build}
   "conf-gobject-introspection" {build}
+  "conf-glib-2" {build}
+  "conf-gtk3" {build}
 ]
