@@ -15,7 +15,7 @@ build: [
 ]
 depends: [
   "ocaml"
-  "dune" {build}
+  "dune" {>= "1.2"}
   "ctypes"
   "ctypes-foreign"
   "ounit"
