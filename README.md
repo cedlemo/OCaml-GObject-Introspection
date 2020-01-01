@@ -6,6 +6,20 @@
 
 The OCaml bindings to the [GObject-Introspection](https://gi.readthedocs.io/en/latest/index.html) library based on Ctypes.
 
+## Installation
+
+the package gobject-introspection is now published and available in the opam-repository:
+
+```
+opam install gobject-introspection
+```
+
+## API:
+
+https://cedlemo.github.io/OCaml-GObject-Introspection/
+
+## Usage
+
 Two ideas to explore:
 
  - Create a generic Ctypes bindings generator, based on ocaml-gobject-introspection,
@@ -19,10 +33,6 @@ Two ideas to explore:
    - https://bucklescript.github.io/bucklescript/Manual.html#_ffi
    - https://github.com/glennsl/bucklescript-ffi-cheatsheet
    - https://github.com/Place1/node-gir
-
-## API:
-
-https://cedlemo.github.io/OCaml-GObject-Introspection/
 
 ## Wiki :
 
