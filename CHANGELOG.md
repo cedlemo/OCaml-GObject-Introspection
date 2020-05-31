@@ -1,10 +1,11 @@
 # OCaml GObject-Introspection library
 
-# Current Version
+## Current Version
 - Add system dependencies in the opam file
+- Update Dune supported version to 2.5
 
-# Version 0.2 (2019-12-28)
+## Version 0.2 (2019-12-28)
 - Add missing fields in gobject-introspection.opam file
 
-# Version 0.1 (2019-12-28)
+## Version 0.1 (2019-12-28)
 - First release
