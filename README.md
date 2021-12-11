@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection.svg?branch=master)](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
 # gobject-introspection OCaml package
@@ -48,4 +48,3 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
     - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#finished)
     - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#remains)
   - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#resources)
-
