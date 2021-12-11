@@ -16,10 +16,9 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Ctypes
 (** Base_info — Base struct for all GITypelib structs *)
 
-open Stubs
+open Ctypes
 
 type t
 (** Base_info is the common base struct of all other *Info structs accessible

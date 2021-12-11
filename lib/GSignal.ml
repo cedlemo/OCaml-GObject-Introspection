@@ -16,9 +16,6 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Ctypes
-open Foreign
-
 let all_flags : (int64 * Bindings.GSignal.flags) list =
   [
     (Stubs.GSignal.g_signal_run_first, Bindings.GSignal.Run_first);

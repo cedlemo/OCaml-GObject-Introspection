@@ -18,7 +18,6 @@
 
 open Ctypes
 open Foreign
-open Stubs
 
 type t
 

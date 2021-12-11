@@ -16,9 +16,6 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Ctypes
-open Foreign
-
 let all_flags : (int64 * Bindings.GParam.flags) list =
   [
     (Stubs.GParam.g_param_readable, Bindings.GParam.Readable);

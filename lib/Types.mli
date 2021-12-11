@@ -19,7 +19,6 @@
 (** common types *)
 
 open Ctypes
-open Stubs
 
 type argument_t
 
