@@ -36,7 +36,7 @@ let test_function_info namespace name fn =
   | Some info -> fn info
 
 let namespace = "GObject"
-let typelib = Repository.require namespace ()
+let _typelib = Repository.require namespace ()
 let name = "signal_name"
 
 let test_get_symbol _ =

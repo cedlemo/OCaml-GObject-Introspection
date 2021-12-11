@@ -38,7 +38,7 @@ let print_info namespace n =
 
 let () =
   let namespace = "Gtk" in
-  let _ = Repository.require namespace in
+  let _ = Repository.require namespace () in
   let n = Repository.get_n_infos namespace in
   for i = 0 to n - 1 do
     print_info namespace i
