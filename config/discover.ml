@@ -1,6 +1,6 @@
 open Base
 open Stdio
-module C = Configurator
+module C = Configurator.V1
 
 let write_sexp fn list_of_str =
   let data = sexp_of_list sexp_of_string list_of_str |> Sexp.to_string in

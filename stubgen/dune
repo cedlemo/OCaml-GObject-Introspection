@@ -154,5 +154,5 @@
 (rule
   (targets c_library_flags c_flags)
   (deps    (:x ../config/discover.exe))
-  (action  (run %{x} -ocamlc %{ocamlc}))
+  (action  (run %{x}))
 )
