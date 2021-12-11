@@ -32,7 +32,7 @@ let flags_list_of_int64 all_flags v =
 let int64_of_flags_list all_flags f =
   let open Int64 in
   let bitwise_or acc value =
-    let i, _f = List.find (fun (i', f') -> value = f') all_flags in
+    let i, _f = List.find (fun (_, f') -> value = f') all_flags in
     logor acc i
   in
   List.fold_left bitwise_or Int64.zero f
