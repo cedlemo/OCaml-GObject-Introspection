@@ -16,17 +16,17 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
+val get_major_version : unit -> int
 (**
  * Returns the major version number of the girepository library. (e.g. in version 1.58.2 this is 1.)
  * *)
-val get_major_version : unit -> int
 
+val get_minor_version : unit -> int
 (**
  * Returns the minor version number of the girepository library. (e.g. in version 1.58.2 this is 58.)
  * *)
-val get_minor_version : unit -> int
 
+val get_micro_version : unit -> int
 (**
  * Returns the micro version number of the girepository library. (e.g. in version 1.58.2 this is 2.)
  * *)
-val get_micro_version : unit -> int

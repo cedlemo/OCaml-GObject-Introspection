@@ -22,6 +22,7 @@ open Ctypes
 open Foreign
 
 type t
+
 let callableinfo : t structure typ = structure "Callable_info"
 
 let can_throw_gerror =
@@ -29,31 +30,28 @@ let can_throw_gerror =
     (ptr callableinfo @-> returning bool)
 
 let get_n_args =
-  foreign "g_callable_info_get_n_args"
-    (ptr callableinfo @-> returning int)
+  foreign "g_callable_info_get_n_args" (ptr callableinfo @-> returning int)
 
 let get_return_attribute =
   foreign "g_callable_info_get_return_attribute"
     (ptr callableinfo @-> returning string_opt)
 
 let is_method =
-  foreign "g_callable_info_is_method"
-    (ptr callableinfo @-> returning bool)
+  foreign "g_callable_info_is_method" (ptr callableinfo @-> returning bool)
 
 let may_return_null =
-  foreign "g_callable_info_may_return_null"
-    (ptr callableinfo @-> returning bool)
+  foreign "g_callable_info_may_return_null" (ptr callableinfo @-> returning bool)
 
 let skip_return =
-  foreign "g_callable_info_skip_return"
-    (ptr callableinfo @-> returning bool)
+  foreign "g_callable_info_skip_return" (ptr callableinfo @-> returning bool)
 
 let get_arg info n =
   let get_arg_raw =
     foreign "g_callable_info_get_arg"
       (ptr callableinfo @-> int @-> returning (ptr Arg_info.arginfo))
-  in let max = get_n_args info in
-  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  in
+  let max = get_n_args info in
+  if n < 0 || n >= max then raise (Failure "Array Index out of bounds")
   else
     let info' = get_arg_raw info n in
     Arg_info.add_unref_finaliser info'
@@ -62,7 +60,8 @@ let get_return_type info =
   let get_return_type_raw =
     foreign "g_callable_info_get_return_type"
       (ptr callableinfo @-> returning (ptr Type_info.typeinfo))
-  in let info' = get_return_type_raw info in
+  in
+  let info' = get_return_type_raw info in
   Type_info.add_unref_finaliser info'
 
 let get_caller_owns =
@@ -76,10 +75,14 @@ let cast_to_baseinfo info =
   coerce (ptr callableinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info
-  in info
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info
+  in
+  info
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in
@@ -89,6 +92,5 @@ let from_baseinfo info =
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
-  let _ = Gc.finalise (fun i ->
-      Base_info.base_info_unref i) info' in
+  let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info' in
   info'

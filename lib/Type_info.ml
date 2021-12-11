@@ -20,70 +20,70 @@ open Ctypes
 open Foreign
 
 type t
+
 let typeinfo : t structure typ = structure "Type_info"
 
 let to_string =
-  foreign "g_info_type_to_string"
-    (ptr typeinfo @-> returning string)
+  foreign "g_info_type_to_string" (ptr typeinfo @-> returning string)
 
 let is_pointer =
-  foreign "g_type_info_is_pointer"
-    (ptr typeinfo @-> returning bool)
+  foreign "g_type_info_is_pointer" (ptr typeinfo @-> returning bool)
 
 let get_tag =
-    foreign "g_type_info_get_tag"
-      (ptr typeinfo @-> returning Stubs.Types.tag)
+  foreign "g_type_info_get_tag" (ptr typeinfo @-> returning Stubs.Types.tag)
 
 let get_array_length =
-  foreign "g_type_info_get_array_length"
-    (ptr typeinfo @-> returning int)
+  foreign "g_type_info_get_array_length" (ptr typeinfo @-> returning int)
 
 let get_array_fixed_size =
-  foreign "g_type_info_get_array_fixed_size"
-    (ptr typeinfo @-> returning int)
+  foreign "g_type_info_get_array_fixed_size" (ptr typeinfo @-> returning int)
 
 let is_zero_terminated =
-  foreign "g_type_info_is_zero_terminated"
-    (ptr typeinfo @-> returning bool)
+  foreign "g_type_info_is_zero_terminated" (ptr typeinfo @-> returning bool)
 
 let get_array_type info =
   let get_array_type_raw =
     foreign "g_type_info_get_array_type"
-      (ptr typeinfo @-> returning Stubs.Types.array_type) in
-  try Some (get_array_type_raw info) with
-  | _ -> None
+      (ptr typeinfo @-> returning Stubs.Types.array_type)
+  in
+  try Some (get_array_type_raw info) with _ -> None
 
 let get_interface info =
   let get_interface_raw =
     foreign "g_type_info_get_interface"
-      (ptr typeinfo @-> returning (ptr_opt Base_info.baseinfo)) in
+      (ptr typeinfo @-> returning (ptr_opt Base_info.baseinfo))
+  in
   match get_interface_raw info with
   | None -> None
-  | Some info' -> let info'' = Base_info.add_unref_finaliser info' in
-    Some info''
+  | Some info' ->
+      let info'' = Base_info.add_unref_finaliser info' in
+      Some info''
 
 (* TODO : check that the info can be casted to arg info ? *)
 let cast_from_baseinfo info =
   coerce (ptr Base_info.baseinfo) (ptr typeinfo) info
 
-let cast_to_baseinfo info =
-  coerce (ptr typeinfo) (ptr Base_info.baseinfo) info
+let cast_to_baseinfo info = coerce (ptr typeinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info
-  in info
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info
+  in
+  info
 
 let unsafe_get_param_type info n =
   let get_param_type_raw =
     foreign "g_type_info_get_param_type"
-      (ptr typeinfo @-> int @-> returning (ptr typeinfo)) in
-    let param_type = get_param_type_raw info n in
-    add_unref_finaliser param_type
+      (ptr typeinfo @-> int @-> returning (ptr typeinfo))
+  in
+  let param_type = get_param_type_raw info n in
+  add_unref_finaliser param_type
 
-let get_param_type info =
-  unsafe_get_param_type info 0
+let get_param_type info = unsafe_get_param_type info 0
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in
@@ -93,6 +93,5 @@ let from_baseinfo info =
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
-  let _ = Gc.finalise (fun i ->
-      Base_info.base_info_unref i) info' in
+  let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info' in
   info'

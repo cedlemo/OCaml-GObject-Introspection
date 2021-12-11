@@ -22,26 +22,26 @@ open Ctypes
 open Stubs
 
 type argument_t
-val argument: argument_t union typ
-val v_boolean: (bool, argument_t union) field
-val v_int8: (int, argument_t union) field
-val v_uint8: (Unsigned.uint8, argument_t union) field
-val v_int16: (int, argument_t union) field
-val v_uint16: (Unsigned.uint16, argument_t union) field
-val v_int32: (int32, argument_t union) field
-val v_uint32: (Unsigned.uint32, argument_t union) field
-val v_int64: (int64, argument_t union) field
-val v_uint64: (Unsigned.uint64, argument_t union) field
-val v_float: (float, argument_t union) field
-val v_double: (float, argument_t union) field
-val v_short: (int, argument_t union) field
-val v_ushort: (Unsigned.ushort, argument_t union) field
-val v_int: (int, argument_t union) field
-val v_uint: (Unsigned.uint, argument_t union) field
-val v_long: (Signed.long, argument_t union) field
-val v_ulong: (Unsigned.ulong, argument_t union) field
-val v_ssize: (PosixTypes.ssize_t, argument_t union) field
-val v_size: (PosixTypes.size_t, argument_t union) field
-val v_string: (string, argument_t union) field
-val v_pointer: (unit Ctypes_static.ptr option, argument_t union) field
 
+val argument : argument_t union typ
+val v_boolean : (bool, argument_t union) field
+val v_int8 : (int, argument_t union) field
+val v_uint8 : (Unsigned.uint8, argument_t union) field
+val v_int16 : (int, argument_t union) field
+val v_uint16 : (Unsigned.uint16, argument_t union) field
+val v_int32 : (int32, argument_t union) field
+val v_uint32 : (Unsigned.uint32, argument_t union) field
+val v_int64 : (int64, argument_t union) field
+val v_uint64 : (Unsigned.uint64, argument_t union) field
+val v_float : (float, argument_t union) field
+val v_double : (float, argument_t union) field
+val v_short : (int, argument_t union) field
+val v_ushort : (Unsigned.ushort, argument_t union) field
+val v_int : (int, argument_t union) field
+val v_uint : (Unsigned.uint, argument_t union) field
+val v_long : (Signed.long, argument_t union) field
+val v_ulong : (Unsigned.ulong, argument_t union) field
+val v_ssize : (PosixTypes.ssize_t, argument_t union) field
+val v_size : (PosixTypes.size_t, argument_t union) field
+val v_string : (string, argument_t union) field
+val v_pointer : (unit Ctypes_static.ptr option, argument_t union) field

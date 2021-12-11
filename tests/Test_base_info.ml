@@ -29,38 +29,41 @@ let test_equal _ =
   let rand_info = Repository.get_info namespace 10 in
   match Base_info.get_name rand_info with
   | None -> assert_equal_string "Base Info " "has no name"
-  | Some info_name ->
-    match Repository.find_by_name namespace info_name with
-    | None -> assert_equal_string info_name "No base info found"
-    | Some (info) -> let is_equal = Base_info.equal rand_info info in
-      assert_equal_boolean true is_equal
+  | Some info_name -> (
+      match Repository.find_by_name namespace info_name with
+      | None -> assert_equal_string info_name "No base info found"
+      | Some info ->
+          let is_equal = Base_info.equal rand_info info in
+          assert_equal_boolean true is_equal)
 
 let test_get_namespace _ =
   match Repository.find_by_name namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
-  | Some (base_info) -> let info_namespace = Base_info.get_namespace base_info
-  in assert_equal_string namespace info_namespace
+  | Some base_info ->
+      let info_namespace = Base_info.get_namespace base_info in
+      assert_equal_string namespace info_namespace
 
 let test_is_deprecated _ =
-  match Repository.find_by_name  namespace info_name with
+  match Repository.find_by_name namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
-  | Some (base_info) -> let is_deprecated = Base_info.is_deprecated base_info in
-    assert_equal_boolean false is_deprecated
+  | Some base_info ->
+      let is_deprecated = Base_info.is_deprecated base_info in
+      assert_equal_boolean false is_deprecated
 
 let test_get_container _ =
-  match Repository.find_by_name  namespace info_name with
+  match Repository.find_by_name namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
   | Some base_info -> (
       match Base_info.get_container base_info with
-    | None -> assert_equal_boolean true true
-    | Some _ -> assert_equal_string "It should not " "return a container here"
-  )
+      | None -> assert_equal_boolean true true
+      | Some _ -> assert_equal_string "It should not " "return a container here"
+      )
 
 let tests =
-  "GObject Introspection BaseInfo tests" >:::
-    [
-      "Base_info equal" >:: test_equal;
-      "Base_info get namespace" >:: test_get_namespace;
-      "Base_info is deprecated" >:: test_is_deprecated;
-      "Base_info get_container" >:: test_get_container
-    ]
+  "GObject Introspection BaseInfo tests"
+  >::: [
+         "Base_info equal" >:: test_equal;
+         "Base_info get namespace" >:: test_get_namespace;
+         "Base_info is deprecated" >:: test_is_deprecated;
+         "Base_info get_container" >:: test_get_container;
+       ]

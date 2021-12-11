@@ -9,4 +9,3 @@ let main () =
   close_out stubs_out
 
 let () = main ()
-

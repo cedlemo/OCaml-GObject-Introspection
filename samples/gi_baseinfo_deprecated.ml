@@ -22,15 +22,16 @@ let () =
   let namespace = "Gtk" in
   let _ = Repository.require namespace () in
   let n = Repository.get_n_infos namespace in
-  for i = 0 to (n - 1) do
-    print_endline (String.concat "/" ["\t\t"; string_of_int i; string_of_int n]);
+  for i = 0 to n - 1 do
+    print_endline
+      (String.concat "/" [ "\t\t"; string_of_int i; string_of_int n ]);
     let info = Repository.get_info namespace i in
     if Base_info.is_deprecated info then
-        let name = (match Base_info.get_name info with
-          | None -> "No name"
-          | Some str -> str ) in
-        let message = String.concat " " ["Base_info number";
-                                         string_of_int i;
-                                         name]
-        in print_endline message;
+      let name =
+        match Base_info.get_name info with None -> "No name" | Some str -> str
+      in
+      let message =
+        String.concat " " [ "Base_info number"; string_of_int i; name ]
+      in
+      print_endline message
   done

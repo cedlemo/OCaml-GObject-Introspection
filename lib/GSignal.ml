@@ -19,16 +19,17 @@
 open Ctypes
 open Foreign
 
-let all_flags : (int64 * Bindings.GSignal.flags) list= [
-  Stubs.GSignal.g_signal_run_first, Bindings.GSignal.Run_first;
-  Stubs.GSignal.g_signal_run_last, Bindings.GSignal.Run_last;
-  Stubs.GSignal.g_signal_run_cleanup, Bindings.GSignal.Run_cleanup;
-  Stubs.GSignal.g_signal_no_recurse, Bindings.GSignal.No_recurse;
-  Stubs.GSignal.g_signal_detailed, Bindings.GSignal.Detailed;
-  Stubs.GSignal.g_signal_action, Bindings.GSignal.Action;
-  Stubs.GSignal.g_signal_no_hooks, Bindings.GSignal.No_hooks;
-  Stubs.GSignal.g_signal_must_collect, Bindings.GSignal.Must_collect;
-  Stubs.GSignal.g_signal_deprecated,  Bindings.GSignal.Deprecated;
+let all_flags : (int64 * Bindings.GSignal.flags) list =
+  [
+    (Stubs.GSignal.g_signal_run_first, Bindings.GSignal.Run_first);
+    (Stubs.GSignal.g_signal_run_last, Bindings.GSignal.Run_last);
+    (Stubs.GSignal.g_signal_run_cleanup, Bindings.GSignal.Run_cleanup);
+    (Stubs.GSignal.g_signal_no_recurse, Bindings.GSignal.No_recurse);
+    (Stubs.GSignal.g_signal_detailed, Bindings.GSignal.Detailed);
+    (Stubs.GSignal.g_signal_action, Bindings.GSignal.Action);
+    (Stubs.GSignal.g_signal_no_hooks, Bindings.GSignal.No_hooks);
+    (Stubs.GSignal.g_signal_must_collect, Bindings.GSignal.Must_collect);
+    (Stubs.GSignal.g_signal_deprecated, Bindings.GSignal.Deprecated);
   ]
 
 let flags_list = Utils.generate_flags_list_view Stubs.GSignal.flags all_flags

@@ -28,47 +28,49 @@ let vfunc_name = "activate_default"
 let get_vfunc_info () =
   match Repository.find_by_name namespace object_name with
   | None -> None
-  | Some (base_info) ->
-    match Base_info.get_type base_info with
-    | Object -> let object_info = Object_info.from_baseinfo base_info in
-      Object_info.find_vfunc object_info vfunc_name
-    | _ -> None
+  | Some base_info -> (
+      match Base_info.get_type base_info with
+      | Object ->
+          let object_info = Object_info.from_baseinfo base_info in
+          Object_info.find_vfunc object_info vfunc_name
+      | _ -> None)
 
 let vfunc_test fn =
   match get_vfunc_info () with
   | None -> assert_equal_string object_name "No base info found"
-  | Some (info) -> fn info
+  | Some info -> fn info
 
 let test_get_offset _ =
   vfunc_test (fun info ->
       let offset = VFunc_info.get_offset info in
-      assert_equal_int 0xFFFF offset
-    )
+      assert_equal_int 0xFFFF offset)
 
 let test_get_signal _ =
   vfunc_test (fun info ->
       match VFunc_info.get_signal info with
       | None -> assert_equal_boolean true true
-      | Some _ -> assert_equal_string "It should no return " "a callable info"
-    )
+      | Some _ -> assert_equal_string "It should no return " "a callable info")
 
 let test_get_flags _ =
   vfunc_test (fun info ->
       let flags = VFunc_info.get_flags info in
       let rec check_flag = function
         | [] -> ()
-        | flag :: remain ->let _ = assert_equal ~printer:(fun f ->
-            Bindings.VFunc_info.string_of_flag f
-          ) Bindings.VFunc_info.Must_override flag in
-          check_flag remain
-      in check_flag flags;
-      assert_equal [] flags
-    )
+        | flag :: remain ->
+            let _ =
+              assert_equal
+                ~printer:(fun f -> Bindings.VFunc_info.string_of_flag f)
+                Bindings.VFunc_info.Must_override flag
+            in
+            check_flag remain
+      in
+      check_flag flags;
+      assert_equal [] flags)
 
 let tests =
-  "GObject Introspection VFuncInfo tests" >:::
-  [
-    "VFunc_info get offset" >:: test_get_offset;
-    "VFunc_info get signal" >:: test_get_signal;
-    "VFunc_info get flags" >:: test_get_flags
-  ]
+  "GObject Introspection VFuncInfo tests"
+  >::: [
+         "VFunc_info get offset" >:: test_get_offset;
+         "VFunc_info get signal" >:: test_get_signal;
+         "VFunc_info get flags" >:: test_get_flags;
+       ]

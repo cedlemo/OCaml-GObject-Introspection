@@ -20,34 +20,29 @@
 
 open Ctypes
 
-(** Represents a enum value of a Enum_info.*)
 type t
+(** Represents a enum value of a Enum_info.*)
+
 val valueinfo : t structure typ
 
+val get_value : t structure ptr -> int64
 (** Obtain the enumeration value of the Value_info. *)
-val get_value:
-  t structure ptr -> int64
 
+val cast_from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Just cast OCaml Ctypes base info to enum info. *)
-val cast_from_baseinfo:
-  Base_info.t structure ptr -> t structure ptr
 
+val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes enum info to base info *)
-val cast_to_baseinfo:
-  t structure ptr -> Base_info.t structure ptr
 
+val add_unref_finaliser : t structure ptr -> t structure ptr
 (** Add unref of the C underlying structure whith Gc.finalise. *)
-val add_unref_finaliser:
-  t structure ptr -> t structure ptr
 
+val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Struct_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
-val from_baseinfo:
-  Base_info.t structure ptr -> t structure ptr
 
+val to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Return a Base_info.t form a Struct_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
-val to_baseinfo:
-  t structure ptr -> Base_info.t structure ptr

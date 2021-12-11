@@ -20,45 +20,38 @@
 
 open Ctypes
 
+type t
 (** Property_info represents a property. A property belongs to either a
     Object_info or a Interface_info.*)
-type t
+
 val propertyinfo : t structure typ
 
+val get_ownership_transfer : t structure ptr -> Bindings.Arg_info.transfer
 (** Obtain the ownership transfer for this property. See GITransfer for more
     information about transfer values. *)
-val get_ownership_transfer:
-  t structure ptr -> Bindings.Arg_info.transfer
 
+val get_type : t structure ptr -> Type_info.t structure ptr
 (** Obtain the type information for the property info . *)
-val get_type:
-  t structure ptr -> Type_info.t structure ptr
 
+val get_flags : t structure ptr -> Bindings.GParam.flags list
 (** Obtain the flags for this property info. See GParamFlags for more
     information about possible flag values. *)
-val get_flags:
-  t structure ptr -> Bindings.GParam.flags list
 
+val cast_from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Just cast OCaml Ctypes base info to property info. *)
-val cast_from_baseinfo:
-  Base_info.t structure ptr -> t structure ptr
 
+val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes property info to base info *)
-val cast_to_baseinfo:
-  t structure ptr -> Base_info.t structure ptr
 
+val add_unref_finaliser : t structure ptr -> t structure ptr
 (** Add unref of the C underlying structure whith Gc.finalise. *)
-val add_unref_finaliser:
-  t structure ptr -> t structure ptr
 
+val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Property_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
-val from_baseinfo:
-  Base_info.t structure ptr -> t structure ptr
 
+val to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Return a Base_info.t from a Property_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
-val to_baseinfo:
-  t structure ptr -> Base_info.t structure ptr

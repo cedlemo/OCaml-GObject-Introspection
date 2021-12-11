@@ -35,7 +35,8 @@ let test_require_fail _ =
   let repository = Repository.get_default () in
   let namespace = "bad_namespace" in
   match Repository.require ~repository namespace () with
-  | Error message -> assert_equal_string "Unable to load namespace bad_namespace" message
+  | Error message ->
+      assert_equal_string "Unable to load namespace bad_namespace" message
   | Ok _ -> assert_equal_boolean true true
 
 let namespace = "Gio"
@@ -44,12 +45,16 @@ let typelib = Repository.require ~repository namespace ()
 
 let test_get_loaded_namespaces _ =
   let namespaces_check = "GLib GObject Gio" in
-  let namespaces = String.concat " " (Repository.get_loaded_namespaces ~repository ()) in
+  let namespaces =
+    String.concat " " (Repository.get_loaded_namespaces ~repository ())
+  in
   assert_equal_string namespaces_check namespaces
 
 let test_get_dependencies _ =
   let dependencies_check = "GLib-2.0 GObject-2.0" in
-  let dependencies = String.concat " " (Repository.get_dependencies ~repository namespace) in
+  let dependencies =
+    String.concat " " (Repository.get_dependencies ~repository namespace)
+  in
   assert_equal_string dependencies_check dependencies
 
 let test_get_c_prefix _ =
@@ -66,7 +71,9 @@ let test_get_typelib_path _ =
 
 let test_enumerate_versions _ =
   let versions_check = "2.0 2.0" in
-  let versions = String.concat " " (Repository.enumerate_versions ~repository namespace) in
+  let versions =
+    String.concat " " (Repository.enumerate_versions ~repository namespace)
+  in
   assert_equal_string versions_check versions
 
 let test_get_search_path _ =
@@ -78,26 +85,25 @@ let test_prepend_search_path _ =
   let new_path = "/home/myhome" in
   let _ = Repository.prepend_search_path new_path in
   let paths = String.concat " " (Repository.get_search_path ()) in
-  let initial_paths = String.concat " " [new_path; initial_path] in
+  let initial_paths = String.concat " " [ new_path; initial_path ] in
   assert_equal_string initial_paths paths
 
 let test_find_by_name _ =
   let info_name = "Application" in
   match Repository.find_by_name ~repository namespace info_name with
   | None -> assert_equal_string info_name "No base info found"
-  | Some (base_info) -> match Base_info.get_name base_info with
-    | None -> assert_equal_string info_name "No name found"
-    | Some name -> assert_equal_string info_name name
+  | Some base_info -> (
+      match Base_info.get_name base_info with
+      | None -> assert_equal_string info_name "No name found"
+      | Some name -> assert_equal_string info_name name)
 
 let test_get_n_infos _ =
   let n_infos = Repository.get_n_infos ~repository namespace in
   assert_equal_int 702 n_infos
 
 let test_get_info_out_of_bounds _ =
-  try ignore (Repository.get_info ~repository namespace 1500)
-  with
-  | Failure message -> assert_equal_string "Array Index out of bounds"
-                                              message
+  try ignore (Repository.get_info ~repository namespace 1500) with
+  | Failure message -> assert_equal_string "Array Index out of bounds" message
   | _ -> assert_equal_string "Bad exception" "Not a Failure"
 
 let test_get_info _ =
@@ -113,26 +119,26 @@ let test_get_shared_library _ =
   | Some shared_lib -> assert_includes_string shared_lib "libgio-2.0"
 
 let tests =
-  "GObject Introspection Repository tests" >:::
-    [
-      "Repository get default" >:: test_get_default;
-      "Repository require" >:: test_require;
-      "Repository require fail" >:: test_require_fail;
-      (* Disable because there is only one instance of Repository and those
-       * namespaces depends on the nampespaces loaded previously and can
-       * interfers with previous test.
-       * "Repository get loaded namespaces" >:: test_get_loaded_namespaces;*)
-      "Repository get c prefix" >:: test_get_c_prefix;
-      "Repository get version" >:: test_get_version;
-      (* Tests depend too much on system (ubuntu, arch, centos ...)
-        "Repository get typelib path" >:: test_get_typelib_path;
-        "Repository prepend search path" >:: test_prepend_search_path;
-        "Repository get search path" >:: test_get_search_path;
-        "Repository get dependencies" >:: test_get_dependencies;
-        "Repository get n infos" >:: test_get_n_infos *)
-      "Repository enumerate versions" >:: test_enumerate_versions;
-      "Repository find by name" >:: test_find_by_name;
-      "Repository get info out of bounds" >:: test_get_info_out_of_bounds;
-      "Repository get info" >:: test_get_info;
-      "Repository get shared library" >:: test_get_shared_library
-    ]
+  "GObject Introspection Repository tests"
+  >::: [
+         "Repository get default" >:: test_get_default;
+         "Repository require" >:: test_require;
+         "Repository require fail" >:: test_require_fail;
+         (* Disable because there is only one instance of Repository and those
+          * namespaces depends on the nampespaces loaded previously and can
+          * interfers with previous test.
+          * "Repository get loaded namespaces" >:: test_get_loaded_namespaces;*)
+         "Repository get c prefix" >:: test_get_c_prefix;
+         "Repository get version" >:: test_get_version;
+         (* Tests depend too much on system (ubuntu, arch, centos ...)
+            "Repository get typelib path" >:: test_get_typelib_path;
+            "Repository prepend search path" >:: test_prepend_search_path;
+            "Repository get search path" >:: test_get_search_path;
+            "Repository get dependencies" >:: test_get_dependencies;
+            "Repository get n infos" >:: test_get_n_infos *)
+         "Repository enumerate versions" >:: test_enumerate_versions;
+         "Repository find by name" >:: test_find_by_name;
+         "Repository get info out of bounds" >:: test_get_info_out_of_bounds;
+         "Repository get info" >:: test_get_info;
+         "Repository get shared library" >:: test_get_shared_library;
+       ]

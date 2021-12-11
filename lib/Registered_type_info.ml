@@ -20,6 +20,7 @@ open Ctypes
 open Foreign
 
 type t
+
 let registeredtypeinfo : t structure typ = structure "Registered_type_info"
 
 let get_type_name =
@@ -29,9 +30,10 @@ let get_type_name =
 let get_g_type info =
   let get_g_type_raw =
     foreign "g_registered_type_info_get_g_type"
-      (ptr registeredtypeinfo @-> returning Repository.gtype) in
+      (ptr registeredtypeinfo @-> returning Repository.gtype)
+  in
   let gtype = get_g_type_raw info in
-  if gtype == (Int64.shift_left (Int64.of_int 1) 2) then None (* G_TYPE_NONE *)
+  if gtype == Int64.shift_left (Int64.of_int 1) 2 then None (* G_TYPE_NONE *)
   else Some gtype
 
 let get_type_init =
@@ -46,10 +48,14 @@ let cast_to_baseinfo info =
   coerce (ptr registeredtypeinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info
-  in info
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info
+  in
+  info
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in
@@ -59,6 +65,5 @@ let from_baseinfo info =
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
-  let _ = Gc.finalise (fun i ->
-      Base_info.base_info_unref i) info' in
+  let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info' in
   info'

@@ -20,63 +20,67 @@ open Ctypes
 open Foreign
 
 type t
+
 let enuminfo : t structure typ = structure "Union_info"
 
 let get_n_values =
-  foreign "g_enum_info_get_n_values"
-    (ptr enuminfo @-> returning int)
+  foreign "g_enum_info_get_n_values" (ptr enuminfo @-> returning int)
 
 let get_n_methods =
-  foreign "g_enum_info_get_n_methods"
-    (ptr enuminfo @-> returning int)
+  foreign "g_enum_info_get_n_methods" (ptr enuminfo @-> returning int)
 
 let get_method info n =
   let get_method_raw =
     foreign "g_enum_info_get_method"
-      (ptr enuminfo @-> int @-> returning (ptr Function_info.functioninfo)) in
+      (ptr enuminfo @-> int @-> returning (ptr Function_info.functioninfo))
+  in
   let max = get_n_methods info in
-  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
-  else let info' = get_method_raw info n in
+  if n < 0 || n >= max then raise (Failure "Array Index out of bounds")
+  else
+    let info' = get_method_raw info n in
     Function_info.add_unref_finaliser info'
 
 let get_value info n =
   let get_value_raw =
     foreign "g_enum_info_get_value"
-      (ptr enuminfo @-> int @-> returning (ptr_opt Value_info.valueinfo)) in
+      (ptr enuminfo @-> int @-> returning (ptr_opt Value_info.valueinfo))
+  in
   let max = get_n_values info in
-  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
-  else match get_value_raw info n with
+  if n < 0 || n >= max then raise (Failure "Array Index out of bounds")
+  else
+    match get_value_raw info n with
     | None -> None
     | Some info' -> Some (Value_info.add_unref_finaliser info')
 
 let get_error_domain =
-  foreign "g_enum_info_get_error_domain"
-    (ptr enuminfo @-> returning string_opt)
+  foreign "g_enum_info_get_error_domain" (ptr enuminfo @-> returning string_opt)
 
 let get_storage_type =
-    foreign "g_enum_info_get_storage_type"
-      (ptr enuminfo @-> returning Stubs.Types.tag)
+  foreign "g_enum_info_get_storage_type"
+    (ptr enuminfo @-> returning Stubs.Types.tag)
 
 (* TODO : check that the info can be casted to a enuminfo ? *)
 let cast_from_baseinfo info =
   coerce (ptr Base_info.baseinfo) (ptr enuminfo) info
 
-let cast_to_baseinfo info =
-  coerce (ptr enuminfo) (ptr Base_info.baseinfo) info
+let cast_to_baseinfo info = coerce (ptr enuminfo) (ptr Base_info.baseinfo) info
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info' in
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info'
+  in
   info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
-  let _ = Gc.finalise (fun i ->
-      Base_info.base_info_unref i) info' in
+  let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info' in
   info'
 
 (* TODO : check that the info can be casted to a enuminfo ? *)
@@ -90,16 +94,24 @@ let from_registeredtypeinfo info =
   let base_info = Registered_type_info.cast_to_baseinfo info in
   let _ = Base_info.base_info_ref base_info in
   let info' = cast_from_registeredtypeinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info' in
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info'
+  in
   info'
 
 let to_registeredtypeinfo info =
   let base_info = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref base_info in
   let info' = cast_to_registeredtypeinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = Registered_type_info.cast_to_baseinfo i in
-      Base_info.base_info_unref i') info' in
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = Registered_type_info.cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info'
+  in
   info'

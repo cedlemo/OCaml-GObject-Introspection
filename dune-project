@@ -1,6 +1,5 @@
 (lang dune 2.9)
 (name gobject-introspection)
-(formatting disabled)
 (generate_opam_files true)
 (source (github cedlemo/OCaml-GObject-Introspection))
 (authors "Cédric Le Moigne <cedlemo@gmx.com>")

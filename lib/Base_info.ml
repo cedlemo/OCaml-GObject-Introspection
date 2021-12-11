@@ -21,6 +21,7 @@ open Foreign
 open Stubs
 
 type t
+
 let baseinfo : t structure typ = structure "Base_info"
 
 let base_info_ref =
@@ -46,35 +47,34 @@ let get_type =
     (ptr baseinfo @-> returning Stubs.Base_info.info_type)
 
 let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      base_info_unref i
-    ) info in
+  let _ = Gc.finalise (fun i -> base_info_unref i) info in
   info
 
 let get_container info =
   let get_container_raw =
-  foreign "g_base_info_get_container"
-  (ptr baseinfo @-> returning (ptr_opt baseinfo)) in
+    foreign "g_base_info_get_container"
+      (ptr baseinfo @-> returning (ptr_opt baseinfo))
+  in
   match get_container_raw info with
   | None -> None
   | Some container_info -> Some (add_unref_finaliser container_info)
 
 (** GIRealInfo private struct only used to check ref_count and memory leaks *)
 (* type realinfo
-let realinfo : realinfo structure typ = structure "GIRealInfo"
-let girealinfo_type = field realinfo "type" (int32_t)
-let girealinfo_ref_count = field realinfo "ref_count" (int)
-let () = seal realinfo
+   let realinfo : realinfo structure typ = structure "GIRealInfo"
+   let girealinfo_type = field realinfo "type" (int32_t)
+   let girealinfo_ref_count = field realinfo "ref_count" (int)
+   let () = seal realinfo
 
-let realinfo_of_baseinfo info =
-  coerce (ptr baseinfo) (ptr realinfo) info
+   let realinfo_of_baseinfo info =
+     coerce (ptr baseinfo) (ptr realinfo) info
 
-let get_ref_count info =
-  let realinfo = realinfo_of_baseinfo info in
-  getf (!@realinfo) girealinfo_ref_count
+   let get_ref_count info =
+     let realinfo = realinfo_of_baseinfo info in
+     getf (!@realinfo) girealinfo_ref_count
 
-let ref_count_file = (Sys.getcwd ()) ^ "/ref_count.log"
-   *)
+   let ref_count_file = (Sys.getcwd ()) ^ "/ref_count.log"
+*)
 (* http://stackoverflow.com/questions/8090490/how-to-implement-appendfile-function *)
 (*
 let write_ref_count_log message =

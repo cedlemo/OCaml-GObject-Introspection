@@ -20,12 +20,14 @@ open Ctypes
 open Foreign
 
 type t
-let constantinfo: t structure typ = structure "Constant_info"
+
+let constantinfo : t structure typ = structure "Constant_info"
 
 let get_type info =
   let get_type_raw =
     foreign "g_constant_info_get_type"
-      (ptr constantinfo @-> returning (ptr Type_info.typeinfo)) in
+      (ptr constantinfo @-> returning (ptr Type_info.typeinfo))
+  in
   let info' = get_type_raw info in
   Type_info.add_unref_finaliser info'
 
@@ -37,24 +39,31 @@ let cast_to_baseinfo info =
   coerce (ptr constantinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info in
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info
+  in
   info
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info' in
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info'
+  in
   info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
-  let _ = Gc.finalise (fun i ->
-      Base_info.base_info_unref i) info' in
+  let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info' in
   info'
 
 let info_free_value =
@@ -64,9 +73,9 @@ let info_free_value =
 let get_value info =
   let get_value_raw =
     foreign "g_constant_info_get_value"
-      (ptr constantinfo @-> ptr Types.argument @-> returning int) in
+      (ptr constantinfo @-> ptr Types.argument @-> returning int)
+  in
   let arg_ptr = allocate_n Types.argument ~count:1 in
   let _ = get_value_raw info arg_ptr in
-  let _ = Gc.finalise (fun v ->
-      info_free_value info v) arg_ptr in
+  let _ = Gc.finalise (fun v -> info_free_value info v) arg_ptr in
   arg_ptr
