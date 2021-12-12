@@ -27,7 +27,7 @@ type t
     Struct_info.get_field,
     Union_info.get_field
     or Object_info.get_field. A field has a size, type and a struct offset
-    asssociated and a set of flags, which is currently
+    associated and a set of flags, which is currently
     GI_FIELD_IS_READABLE or GI_FIELD_IS_WRITABLE.*)
 
 val fieldinfo : t structure typ
@@ -59,7 +59,7 @@ val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes field info to base info *)
 
 val add_unref_finaliser : t structure ptr -> t structure ptr
-(** Add unref of the C underlying structure whith Gc.finalise. *)
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
 val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Field_info.t from a Base_info.t, the underlying C structure

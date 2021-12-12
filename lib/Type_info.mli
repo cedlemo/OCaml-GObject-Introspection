@@ -66,10 +66,10 @@ val unsafe_get_param_type : t structure ptr -> int -> t structure ptr
  *  container. For example if the current Type_info.t is an array, a GList, a
  *  GSList or an Hash, you have to use this in order to get the Type_info.t of
  *  the data of the container.
- *  Basicaly it is done with Type_info.get_param_type type_info 0 .
+ *  Basically it is done with Type_info.get_param_type type_info 0 .
  *  https://github.com/GNOME/pygobject/blob/288bd2957916568666c3d5d27e8c868d67b7e8c9/gi/pygi-argument.c#L526
  *  https://github.com/ruby-gnome2/ruby-gnome2/blob/ec4160b4f4c5432c6ff8a9e962e7ffeacfd48869/gobject-introspection/ext/gobject-introspection/rb-gi-argument.c#L928
- *  This function is unsafe meanings that it is your responsability to not use
+ *  This function is unsafe meanings that it is your responsibility to not use
  *  a number out of bounds.
  *)
 
@@ -92,7 +92,7 @@ val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes typeinfo to base info *)
 
 val add_unref_finaliser : t structure ptr -> t structure ptr
-(** Add unref of the C underlying structure whith Gc.finalise. *)
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
 val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Type_info.t from a Base_info.t, the underlying C structure

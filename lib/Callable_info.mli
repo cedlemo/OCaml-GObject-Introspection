@@ -76,7 +76,7 @@ val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes callable info to base info *)
 
 val add_unref_finaliser : t structure ptr -> t structure ptr
-(** Add unref of the C underlying structure whith Gc.finalise. *)
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
 val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Function_info.t from a Base_info.t, the underlying C structure

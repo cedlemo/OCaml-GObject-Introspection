@@ -24,7 +24,7 @@ type t
 (** Function_info represents a function, method or constructor. To find out
     what kind of entity a Function_info represents, call
     Function_info.get_flags.
-    See also Callable_info for information on how to retreive arguments and
+    See also Callable_info for information on how to retrieve arguments and
     other metadata. *)
 
 val functioninfo : t structure typ
@@ -46,7 +46,7 @@ val get_vfunc : t structure ptr -> Callable_info.t structure ptr option
     Function_info with the flag Wraps_vfunc has a virtual function set. For
     other cases, None will be returned.
     In order to avoid circular call graph between Function_info and VFunc_info,
-    this function will return a Callable_info. It is upto the user to use
+    this function will return a Callable_info. It is up to the user to use
     VFunc_info.from_callableinfo in order to have the VFunc_info.*)
 
 (*
@@ -61,7 +61,7 @@ val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes function info to base info *)
 
 val add_unref_finaliser : t structure ptr -> t structure ptr
-(** Add unref of the C underlying structure whith Gc.finalise. *)
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
 val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Function_info.t from a Base_info.t, the underlying C structure

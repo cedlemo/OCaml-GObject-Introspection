@@ -122,7 +122,7 @@ let tests =
          "Repository require fail" >:: test_require_fail;
          (* Disable because there is only one instance of Repository and those
           * namespaces depends on the nampespaces loaded previously and can
-          * interfers with previous test.
+          * interferes with previous test.
           * "Repository get loaded namespaces" >:: test_get_loaded_namespaces;*)
          "Repository get c prefix" >:: test_get_c_prefix;
          "Repository get version" >:: test_get_version;

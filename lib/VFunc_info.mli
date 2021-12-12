@@ -34,7 +34,7 @@ val get_signal : t structure ptr -> Callable_info.t structure ptr option
 (** Obtain the signal for the virtual function if one is set. The signal comes
     from the object or interface to which this virtual function belongs.
     In order to avoid circular call graph between VFunc_info and Signal_info,
-    this function will return a Callable_info. It is upto the user to use
+    this function will return a Callable_info. It is up to the user to use
     Signal_info.from_callableinfo in order to have the Signal_info.*)
 
 val get_flags : t structure ptr -> Bindings.VFunc_info.flags list
@@ -54,7 +54,7 @@ val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes vfunc info to base info *)
 
 val add_unref_finaliser : t structure ptr -> t structure ptr
-(** Add unref of the C underlying structure whith Gc.finalise. *)
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
 val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a VFunc_info.t from a Base_info.t, the underlying C structure

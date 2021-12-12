@@ -45,7 +45,7 @@ val get_g_type : t structure ptr -> Repository.gtype option
 val get_type_init : t structure ptr -> string option
 (** Obtain the type init function for info . The type init function is the
     function which will register the GType within the GObject type system.
-    Usually this is not called by langauge bindings or applications, use
+    Usually this is not called by language bindings or applications, use
     Registered_type_info.get_g_type directly instead. *)
 
 val cast_from_baseinfo : Base_info.t structure ptr -> t structure ptr
@@ -55,7 +55,7 @@ val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes registeredtype info to base info *)
 
 val add_unref_finaliser : t structure ptr -> t structure ptr
-(** Add unref of the C underlying structure whith Gc.finalise. *)
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
 val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Registered_type_info.t from a Base_info.t, the underlying C structure
