@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection.svg?branch=master)](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection)
+[![Build Status](https://github.com/cedlemo/OCaml-GObject-Introspection/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/cedlemo/OCaml-GObject-Introspection/actions)
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
