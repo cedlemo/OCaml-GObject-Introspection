@@ -1,0 +1,43 @@
+{0 gobject-introspection OCaml package}
+
+The OCaml bindings to the {{: https://gi.readthedocs.io/en/latest/index.html} GObject-Introspection}
+library based on Ctypes.
+
+{1 Installation}
+
+The package gobject-introspection is now published and available in
+the opam-repository:
+
+{[
+opam install gobject-introspection
+]}
+
+{1 API}
+
+{2 Library gobject-introspection}
+
+The entry point of this library is the module: {!GObject_introspection}.
+
+{2 Library gobject-introspection.bindings}
+
+The entry point of this library is the module: {!Bindings}.
+
+{1 Usage}
+
+Two ideas to explore:
+{ul {- Create a generic Ctypes bindings generator, based on
+       ocaml-gobject-introspection, for the GNOME libraries:
+       {{: https://github.com/cedlemo/OCaml-GI-ctypes-bindings-generator}}.}
+
+    {- Create a generic FFI bindings generator for bucklescript in order to be
+       able to use the javascript bindings to the GNOME libraries. (I am not
+       sure if it is feasible).
+
+       {ul {- {{: https://devdocs.baznga.org/}}}
+           {- {{: https://bucklescript.github.io/bucklescript/Manual.html#_ffi}}}
+           {- {{: https://github.com/glennsl/bucklescript-ffi-cheatsheet}}}
+           {- {{: https://github.com/Place1/node-gir}}}}}}
+
+{1 Manual}
+
+{{!page-manual}Manual}.

@@ -1,0 +1,120 @@
+{0 Introduction}
+
+The Ctypes bindings to the GObject-Introspection (all the files/modules named
+[GISomething]).
+
+{1 Implementation details}
+
+{2 GObjectIntrospection Info Structures hierarchy and type coercion functions}
+
+{[
+GIBaseInfo
+  +----GIArgInfo
+  +----GICallableInfo
+        +----GIFunctionInfo
+        +----GISignalInfo
+        +----GIVFuncInfo
+  +----GIConstantInfo
+  +----GIFieldInfo
+  +----GIPropertyInfo
+  +----GIRegisteredTypeInfo
+        +----GIEnumInfo
+        +----GIInterfaceInfo
+        +----GIObjectInfo
+        +----GIStructInfo
+        +----GIUnionInfo
+  +----GITypeInfo
+]}
+
+This hierarchy determines the need to cast structures. For example [GIArgInfo]
+needs only to be casted to [GIBaseInfo].
+
+[GIFunctionInfo] needs to be casted to [GICallableInfo] and to [GIBaseInfo].
+
+So each module will (except GIBaseInfo), have functions for type coercion like:
+
+{[
+    GIArgInfo.to_baseinfo
+    GIArgInfo.from_baseinfo
+    GIFunctionInfo.to_baseinfo
+    GIFunctionInfo.from_baseinfo
+    GIFunctionInfo.to_callableinfo
+    GIFunctionInfo.from_callableinfo
+]}
+
+{2 How the underlying C structures allocation and deallocation are handled}
+
+When an info structure pointer is returned with full transfert via the C api,
+each OCaml value that wraps them is finalised with [Gc.finalise] for example:
+
+{[
+let get_field info n =
+  let get_field_raw =
+    foreign "g_struct_info_get_field"
+      (ptr structinfo @-> int @-> returning (ptr GIFieldInfo.fieldinfo)) in
+  let max = get_n_fields info in
+  if (n < 0 || n >= max) then raise (Failure "Array Index out of bounds")
+  else let info' = get_field_raw info n in
+    GIFieldInfo.add_unref_finaliser info'
+]}
+
+So when the [info'] value is garbage collected, the
+[GIFieldInfo.add_unref_finaliser] is called. Here is the code of this function:
+
+{[
+let add_unref_finaliser info =
+  let _ = Gc.finalise (fun i ->
+      let i' = cast_to_baseinfo i in
+      GIBaseInfo.base_info_unref i') info
+  in info
+]}
+
+Each info module have this kind of function but the end user of the lib should
+not use them. When a cast need to be done, each module have the following two
+functions:
+
+{ul {- [to_baseinfo]}
+    {- [from_baseinfo] }}
+
+Those functions allow to transform an OCaml value that represents a [GIInfo] to
+another [GIInfo] type while the underlying C structure are ref'ed and linked to
+a Gc finaliser that unref them. This should avoid zombies OCaml values (with C
+structure already deallocated) and memory leaks.
+
+{1 Progress}
+
+{2 Finished}
+
+{ul {- GIRepository — GObject Introspection repository manager}
+    {- GIBaseInfo — Base struct for all GITypelib structs}
+    {- GIFunctionInfo — Struct representing a function}
+    {- GIStructInfo — Struct representing a C structure}
+    {- GIFieldInfo — Struct representing a struct or union field}
+    {- GIUnionInfo — Struct representing a union.}
+    {- GIEnumInfo — Structs representing an enumeration and its values}
+    {- GIValueInfo — Struct representing a value}
+    {- GICallableInfo — Struct representing a callable}
+    {- GIArgInfo — Struct representing an argument}
+    {- GITypeInfo — Struct representing a type}
+    {- GIConstantInfo — Struct representing a constant}
+    {- GIObjectInfo — Struct representing a GObject}
+    {- GIInterfaceInfo — Struct representing a GInterface}
+    {- GIPropertyInfo — Struct representing a property}
+    {- GISignalInfo — Struct representing a signal}
+    {- GIVFuncInfo — Struct representing a virtual function}
+    {- GIRegisteredTypeInfo — Struct representing a struct with a GType}}
+        
+{2 Remains}
+
+{ul {- GICallbackInfo — Struct representing a callback (no C API for now).}}
+
+{1 Resources}
+
+{ul {- {{: https://ocaml.org/learn/tutorials/calling_c_libraries.html}}}
+    {- {{: https://developer.gnome.org/gi/}}}
+    {- {{: https://developer.gnome.org/gi/1.52/GIRepository.html}}}
+    {- {{: https://ocaml.org/learn/tutorials/objects.html}}}
+    {- {{: https://ocaml.org/manual/index.html}}}
+    {- {{: https://ocaml.org/manual/intfc.html}}}
+    {- {{: https://web.archive.org/web/20200223115730/http://www.linux-nantes.org/~fmonnier/OCaml/ocaml-wrapping-c.html} http://www.linux-nantes.org/~fmonnier/OCaml/ocaml-wrapping-c.html} (old)}
+    {- {{: https://wiki.haskell.org/GObjectIntrospection}}}}
