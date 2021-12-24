@@ -1,14 +1,21 @@
-open Base
-open Stdio
+open Sexplib0
+open Sexplib0.Sexp_conv
+open StdLabels
 module C = Configurator.V1
+
+let write_data fn data =
+  let och = open_out fn in
+  Fun.protect
+    (fun () -> output_string och data)
+    ~finally:(fun () -> close_out och)
 
 let write_sexp fn list_of_str =
   let data = sexp_of_list sexp_of_string list_of_str |> Sexp.to_string in
-  Out_channel.write_all fn ~data
+  write_data fn data
 
-let write_flags file list_of_str =
+let write_flags fn list_of_str =
   let data = String.concat list_of_str ~sep:" " in
-  Out_channel.write_all file ~data
+  write_data fn data
 
 let () =
   C.main ~name:"GObject-Introspection" (fun c ->
@@ -64,8 +71,7 @@ let () =
       in
       let os_type = C.ocaml_config_var_exn (C.create "") "system" in
       let ccopts =
-        if Base.String.(os_type = "macosx") then [ "" ]
-        else [ "-Wl,-no-as-needed" ]
+        if os_type = "macosx" then [ "" ] else [ "-Wl,-no-as-needed" ]
       in
       write_sexp "c_flags.sexp" conf.cflags;
       write_sexp "c_library_flags.sexp" conf.libs;

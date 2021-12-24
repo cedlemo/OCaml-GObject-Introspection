@@ -12,14 +12,14 @@
  (description "This library provides bindings based on Ctypes for the libgirepository API (see https://developer.gnome.org/gi/stable/)")
  (depends
   (ocaml (>= 4.08))
-  ctypes
-  ctypes-foreign
-  (dune-configurator :build)
-  (base :build)
-  (stdio (and :build :with-test))
   (conf-pkg-config :build)
   (conf-gobject-introspection :build)
   (conf-glib-2 :build)
   (conf-gtk3 :build)
+  (dune-configurator :build)
+  (sexplib0 :build)
+  ctypes
+  ctypes-foreign
   (ounit2 :with-test)
+  (stdio :with-test)
  ))
