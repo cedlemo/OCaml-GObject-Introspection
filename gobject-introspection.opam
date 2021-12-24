@@ -41,3 +41,6 @@ build: [
   ["dune" "install" "-p" name "--create-install-files" name]
 ]
 dev-repo: "git+https://github.com/cedlemo/OCaml-GObject-Introspection.git"
+pin-depends: [
+  ["ctypes.0.20.0" "git+https://github.com/ocamllabs/ocaml-ctypes.git#673c98baddf77dae763139fe7dca47ed107cf412"]
+]
