@@ -21,5 +21,4 @@
   ctypes
   ctypes-foreign
   (ounit2 :with-test)
-  (stdio :with-test)
  ))
