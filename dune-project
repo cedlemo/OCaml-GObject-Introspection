@@ -1,1 +1,24 @@
-(lang dune 2.5)
+(lang dune 2.9)
+(name gobject-introspection)
+(generate_opam_files true)
+(source (github cedlemo/OCaml-GObject-Introspection))
+(authors "Cédric Le Moigne <cedlemo@gmx.com>")
+(maintainers "Cédric Le Moigne <cedlemo@gmx.com>")
+(license "GPL-3.0-or-later")
+(documentation https://github.com/cedlemo/OCaml-GObject-Introspection/wiki)
+(package
+ (name gobject-introspection)
+ (synopsis "OCaml bindings for the GObject-Introspection library (https://gi.readthedocs.io/en/latest/)")
+ (description "This library provides bindings based on Ctypes for the libgirepository API (see https://developer.gnome.org/gi/stable/)")
+ (depends
+  (ocaml (>= 4.08))
+  (conf-pkg-config :build)
+  (conf-gobject-introspection :build)
+  (conf-glib-2 :build)
+  (conf-gtk3 :build)
+  (dune-configurator :build)
+  (sexplib0 :build)
+  ctypes
+  ctypes-foreign
+  (ounit2 :with-test)
+ ))

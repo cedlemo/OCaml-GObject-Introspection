@@ -18,16 +18,21 @@
 
 (** Flags for a Field_info. *)
 type flags =
-  | Is_readable (** field is readable. *)
-  | Is_writable (** field is writable. *)
+  | Is_readable  (** field is readable. *)
+  | Is_writable  (** field is writable. *)
 
 let string_of_flag = function
   | Is_readable -> "Is_readable"
   | Is_writable -> "Is_writable"
 
-module Flags = functor (T : Cstubs.Types.TYPE) -> struct
-  let gi_field_is_readable = T.constant "GI_FIELD_IS_READABLE" T.int64_t
-  let gi_field_is_writable = T.constant "GI_FIELD_IS_WRITABLE" T.int64_t
+module Flags =
+functor
+  (T : Cstubs.Types.TYPE)
+  ->
+  struct
+    let gi_field_is_readable = T.constant "GI_FIELD_IS_READABLE" T.int64_t
+    let gi_field_is_writable = T.constant "GI_FIELD_IS_WRITABLE" T.int64_t
 
-  let flags = T.enum "GIFieldInfoFlags" ~typedef:true [] ~unexpected:(fun x -> x)
-end
+    let flags =
+      T.enum "GIFieldInfoFlags" ~typedef:true [] ~unexpected:(fun x -> x)
+  end

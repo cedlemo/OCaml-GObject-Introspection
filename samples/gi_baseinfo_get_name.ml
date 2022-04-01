@@ -20,18 +20,20 @@ open GObject_introspection
 
 let print_info namespace n =
   let message =
-    let info =  Repository.get_info namespace n in
-    let name = match Base_info.get_name info with
+    let info = Repository.get_info namespace n in
+    let name =
+      match Base_info.get_name info with
       | None -> "Anonymous"
-      | Some name -> name in String.concat " " ["Base_info number";
-                                                string_of_int n;
-                                                name]
-  in print_endline message
+      | Some name -> name
+    in
+    String.concat " " [ "Base_info number"; string_of_int n; name ]
+  in
+  print_endline message
 
 let () =
   let namespace = "Gtk" in
   let _ = Repository.require namespace () in
   let n = Repository.get_n_infos namespace in
-  for i = 0 to (n - 1) do
-    print_info namespace i;
+  for i = 0 to n - 1 do
+    print_info namespace i
   done

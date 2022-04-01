@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection.svg?branch=master)](https://travis-ci.org/cedlemo/OCaml-GObject-Introspection)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
+[![Build Status](https://github.com/cedlemo/OCaml-GObject-Introspection/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/cedlemo/OCaml-GObject-Introspection/actions)
+[![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 # gobject-introspection OCaml package
 
@@ -8,35 +7,35 @@ The OCaml bindings to the [GObject-Introspection](https://gi.readthedocs.io/en/l
 
 ## Installation
 
-the package gobject-introspection is now published and available in the opam-repository:
+The package gobject-introspection is now published and available in the opam-repository:
 
 ```
 opam install gobject-introspection
 ```
 
-## API:
+## API
 
-https://cedlemo.github.io/OCaml-GObject-Introspection/
+<https://cedlemo.github.io/OCaml-GObject-Introspection/>
 
 ## Usage
 
 Two ideas to explore:
 
  - Create a generic Ctypes bindings generator, based on ocaml-gobject-introspection,
-   for the GNOME libraries : https://github.com/cedlemo/OCaml-GI-ctypes-bindings-generator
+   for the GNOME libraries: <https://github.com/cedlemo/OCaml-GI-ctypes-bindings-generator>.
 
  - Create a generic FFI bindings generator for bucklescript in order to be able to
    use the javascript bindings to the GNOME libraries. (I am not sure if it is
-   faisable).
+   feasible).
 
-   - https://devdocs.baznga.org/
-   - https://bucklescript.github.io/bucklescript/Manual.html#_ffi
-   - https://github.com/glennsl/bucklescript-ffi-cheatsheet
-   - https://github.com/Place1/node-gir
+   - <https://devdocs.baznga.org/>
+   - <https://bucklescript.github.io/bucklescript/Manual.html#_ffi>
+   - <https://github.com/glennsl/bucklescript-ffi-cheatsheet>
+   - <https://github.com/Place1/node-gir>
 
-## Wiki :
+## Manual
 
-https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
+<https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction>
 
 ###  table of content.
 
@@ -48,4 +47,3 @@ https://github.com/cedlemo/OCaml-GObject-Introspection/wiki#introduction
     - [Finished](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#finished)
     - [Remains](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#remains)
   - [Resources](https://github.com/cedlemo/OCaml-GObject-Introspection/wiki/#resources)
-

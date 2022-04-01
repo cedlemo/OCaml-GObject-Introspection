@@ -18,24 +18,28 @@
 
 open GObject_introspection
 
-let get_info_strings info n=
-  ["Base_info -> number:";
-  string_of_int n;
-  "name:";
-  (match Base_info.get_name info with None -> "noname" | Some name -> name);
-  "type:";
-  (let t = Base_info.get_type info in
-  Bindings.Base_info.string_of_info_type t) ]
+let get_info_strings info n =
+  [
+    "Base_info -> number:";
+    string_of_int n;
+    "name:";
+    (match Base_info.get_name info with None -> "noname" | Some name -> name);
+    "type:";
+    (let t = Base_info.get_type info in
+     Bindings.Base_info.string_of_info_type t);
+  ]
 
 let print_info namespace n =
-  let message = let info = Repository.get_info namespace n in
+  let message =
+    let info = Repository.get_info namespace n in
     String.concat " " (get_info_strings info n)
-  in print_endline message
+  in
+  print_endline message
 
 let () =
   let namespace = "Gtk" in
-  let _ = Repository.require namespace in
+  let _ = Repository.require namespace () in
   let n = Repository.get_n_infos namespace in
-  for i = 0 to (n - 1) do
-    print_info namespace i;
+  for i = 0 to n - 1 do
+    print_info namespace i
   done

@@ -20,36 +20,42 @@ open Ctypes
 open Foreign
 
 type t
+
 let valueinfo : t structure typ = structure "Value_info"
 
 let get_value =
-  foreign "g_value_info_get_value"
-    (ptr valueinfo @-> returning int64_t)
+  foreign "g_value_info_get_value" (ptr valueinfo @-> returning int64_t)
 
 (* TODO : check that the info can be casted to a valueinfo ? *)
 let cast_from_baseinfo info =
   coerce (ptr Base_info.baseinfo) (ptr valueinfo) info
 
-let cast_to_baseinfo info =
-  coerce (ptr valueinfo) (ptr Base_info.baseinfo) info
+let cast_to_baseinfo info = coerce (ptr valueinfo) (ptr Base_info.baseinfo) info
 
 let add_unref_finaliser info =
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info
-  in info
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info
+  in
+  info
 
 let from_baseinfo info =
   let _ = Base_info.base_info_ref info in
   let info' = cast_from_baseinfo info in
-  let _ = Gc.finalise (fun i ->
-      let i' = cast_to_baseinfo i in
-      Base_info.base_info_unref i') info' in
+  let _ =
+    Gc.finalise
+      (fun i ->
+        let i' = cast_to_baseinfo i in
+        Base_info.base_info_unref i')
+      info'
+  in
   info'
 
 let to_baseinfo info =
   let info' = cast_to_baseinfo info in
   let _ = Base_info.base_info_ref info' in
-  let _ = Gc.finalise (fun i ->
-      Base_info.base_info_unref i) info' in
+  let _ = Gc.finalise (fun i -> Base_info.base_info_unref i) info' in
   info'

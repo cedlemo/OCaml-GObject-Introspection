@@ -16,21 +16,19 @@
  * along with OCaml-GObject-Introspection.  If not, see <http://www.gnu.org/licenses/>.
  *)
 
-open Ctypes
-open Foreign
-
-let all_flags : (int64 * Bindings.GParam.flags) list= [
-    Stubs.GParam.g_param_readable, Bindings.GParam.Readable;
-    Stubs.GParam.g_param_writable, Bindings.GParam.Writable;
-    Stubs.GParam.g_param_readwrite, Bindings.GParam.Readwrite;
-    Stubs.GParam.g_param_construct, Bindings.GParam.Construct;
-    Stubs.GParam.g_param_construct_only, Bindings.GParam.Construct_only;
-    Stubs.GParam.g_param_lax_validation, Bindings.GParam.Lax_validation;
-    Stubs.GParam.g_param_static_name, Bindings.GParam.Static_name;
-    Stubs.GParam.g_param_static_nick, Bindings.GParam.Static_nick;
-    Stubs.GParam.g_param_static_blurb, Bindings.GParam.Static_blurb;
-    Stubs.GParam.g_param_explicit_notify,  Bindings.GParam.Explicit_notify;
-    Stubs.GParam.g_param_deprecated,  Bindings.GParam.Deprecated;
+let all_flags : (int64 * Bindings.GParam.flags) list =
+  [
+    (Stubs.GParam.g_param_readable, Bindings.GParam.Readable);
+    (Stubs.GParam.g_param_writable, Bindings.GParam.Writable);
+    (Stubs.GParam.g_param_readwrite, Bindings.GParam.Readwrite);
+    (Stubs.GParam.g_param_construct, Bindings.GParam.Construct);
+    (Stubs.GParam.g_param_construct_only, Bindings.GParam.Construct_only);
+    (Stubs.GParam.g_param_lax_validation, Bindings.GParam.Lax_validation);
+    (Stubs.GParam.g_param_static_name, Bindings.GParam.Static_name);
+    (Stubs.GParam.g_param_static_nick, Bindings.GParam.Static_nick);
+    (Stubs.GParam.g_param_static_blurb, Bindings.GParam.Static_blurb);
+    (Stubs.GParam.g_param_explicit_notify, Bindings.GParam.Explicit_notify);
+    (Stubs.GParam.g_param_deprecated, Bindings.GParam.Deprecated);
   ]
 
 let flags_list = Utils.generate_flags_list_view Stubs.GParam.flags all_flags
@@ -47,4 +45,3 @@ let flag_to_string = function
   | Bindings.GParam.Static_blurb -> "Static_blurb"
   | Bindings.GParam.Explicit_notify -> "Explicit_notify"
   | Bindings.GParam.Deprecated -> "Deprecated"
-

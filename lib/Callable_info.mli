@@ -20,55 +20,47 @@
 
 open Ctypes
 
+type t
 (** Callable_info represents an entity which is callable. Currently a function
     (Function_info), virtual function, (VFunc_info) or callback
     (GICallbackInfo).
     A callable has a list of arguments (Arg_info), a return type, direction
     and a flag which decides if it returns null*)
-type t
-val callableinfo: t structure typ
 
+val callableinfo : t structure typ
+
+val can_throw_gerror : t structure ptr -> bool
 (** Does the function throws an error. *)
-val can_throw_gerror:
-  t structure ptr -> bool
 
+val get_n_args : t structure ptr -> int
 (** Obtain the number of arguments (both IN and OUT) for this callable. *)
-val get_n_args:
-  t structure ptr -> int
 
+val get_return_attribute : t structure ptr -> string option
 (** Retrieve an arbitrary attribute associated with the return value. *)
-val get_return_attribute:
-  t structure ptr -> string option
 
+val is_method : t structure ptr -> bool
 (** Determines if the callable info is a method. For VFunc_infos,
     GICallbackInfos, and Signal_infos, this is always true. Otherwise, this
     looks at the Function_info.Is_method flag on the Function_info.
     Concretely, this function returns whether Callable_info.get_n_args matches
     the number of arguments in the raw C method. For methods, there is one more
     C argument than is exposed by introspection: the "self" or "this" object. *)
-val is_method:
-  t structure ptr -> bool
 
+val may_return_null : t structure ptr -> bool
 (** See if a callable could return NULL.*)
-val may_return_null:
-  t structure ptr -> bool
 
+val skip_return : t structure ptr -> bool
 (** See if a callable's return value is only useful in C. *)
-val skip_return:
-  t structure ptr -> bool
 
+val get_arg : t structure ptr -> int -> Arg_info.t structure ptr
 (** Obtain information about a particular argument of this callable. *)
-val get_arg:
-  t structure ptr -> int -> Arg_info.t structure ptr
 
+val get_return_type : t structure ptr -> Type_info.t structure ptr
 (** Obtain the return type of a callable item as a Type_info. *)
-val get_return_type:
-  t structure ptr -> Type_info.t structure ptr
 
+val get_caller_owns : t structure ptr -> Bindings.Arg_info.transfer
 (** See whether the caller owns the return value of this callable. GITransfer
     contains a list of possible transfer values. *)
-val get_caller_owns:
-  t structure ptr -> Bindings.Arg_info.transfer
 
 (*
   gboolean	g_callable_info_invoke ()
@@ -77,26 +69,21 @@ val get_caller_owns:
   void	g_callable_info_load_return_type ()
  *)
 
+val cast_from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Just cast OCaml Ctypes base info to callable info. *)
-val cast_from_baseinfo:
-  Base_info.t structure ptr -> t structure ptr
 
+val cast_to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Just cast OCaml Ctypes callable info to base info *)
-val cast_to_baseinfo:
-  t structure ptr -> Base_info.t structure ptr
 
-(** Add unref of the C underlying structure whith Gc.finalise. *)
-val add_unref_finaliser:
-  t structure ptr -> t structure ptr
+val add_unref_finaliser : t structure ptr -> t structure ptr
+(** Add unref of the C underlying structure with Gc.finalise. *)
 
+val from_baseinfo : Base_info.t structure ptr -> t structure ptr
 (** Return a Function_info.t from a Base_info.t, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
-val from_baseinfo:
-  Base_info.t structure ptr -> t structure ptr
 
+val to_baseinfo : t structure ptr -> Base_info.t structure ptr
 (** Return a Base_info.t from a Function_info, the underlying C structure
     ref count is increased and the value is Gc.finalis"ed" with
     Base_info.baseinfo_unref. *)
-val to_baseinfo:
-  t structure ptr -> Base_info.t structure ptr

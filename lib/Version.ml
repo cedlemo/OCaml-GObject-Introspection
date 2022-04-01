@@ -19,11 +19,6 @@
 open Ctypes
 open Foreign
 
-let get_major_version =
-  foreign "gi_get_major_version" (void @-> returning int)
-
-let get_minor_version =
-  foreign "gi_get_minor_version" (void @-> returning int)
-
-let get_micro_version =
-  foreign "gi_get_micro_version" (void @-> returning int)
+let get_major_version = foreign "gi_get_major_version" (void @-> returning int)
+let get_minor_version = foreign "gi_get_minor_version" (void @-> returning int)
+let get_micro_version = foreign "gi_get_micro_version" (void @-> returning int)
